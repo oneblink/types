@@ -562,9 +562,9 @@ declare type FormSubmissionResult = {
   formsAppId: number,
   submissionId: string | null,
   submissionTimestamp: string | null,
-  payment?: {
+  payment: ?{
     hostedFormUrl: string,
-    submissionEvent: FormSubmissionEvent,
+    submissionEvent: PaymentSubmissionEvent,
   },
   keyId?: string,
   captchaTokens?: string[],
