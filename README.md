@@ -5,10 +5,10 @@ A central repository for OneBlink flow types used internally.
 ## Installation
 
 ```sh
-npm install --save-dev oneblink/flow-types
+npm install --save-dev oneblink/flow-types#master
 ```
 
-This will install the package to node_modules and add `"@oneblink/flow-types": "github:oneblink/flow-types"` to your `package.json` file
+This will install the package to node_modules and add `"@oneblink/flow-types": "github:oneblink/flow-types#master"` to your `package.json` file
 
 You then need to add
 
