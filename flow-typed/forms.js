@@ -1,7 +1,5 @@
 // @flow
 
-declare type FormId = number | 'create'
-
 ////////////////////////////////////////
 // Element Types
 
@@ -387,51 +385,11 @@ declare type TrimUriOption = {
   label: string,
   uri: number,
 }
-declare type FormSubmissionEventConfiguration = {
-  url?: string,
-  recordTitle?: string | void,
-  container?: TrimUriOption,
-  username?: string,
-  password?: string,
-  recordType?: TrimUriOption,
-  actionDefinition?: TrimUriOption,
-  location?: TrimUriOption,
-  secret?: string,
-  email?: string,
-  emailSubjectLine?: string,
-  pdfFileName?: string,
-  apiId?: string,
-  apiEnvironment?: string,
-  apiEnvironmentRoute?: string,
-  contentTypeName?: string,
-  gatewayId?: string,
-  environmentId?: string,
-}
-
-declare type FormSubmissionEventType =
-  | 'PDF'
-  | 'CALLBACK'
-  | 'SPOTTO'
-  | 'ONEBLINK_API'
-  | 'TRIM'
-  | 'CP_PAY'
-  | 'CP_HCMS'
-  | 'BPOINT'
-
-declare type FormSubmissionEvent = {
-  id?: number,
-  type: FormSubmissionEventType,
-  configuration: FormSubmissionEventConfiguration,
-  isDraft: boolean,
-  conditionallyExecute?: boolean,
-  requiresAllConditionallyExecutePredicates?: boolean,
-  conditionallyExecutePredicates?: ConditionallyShowPredicate[],
-}
 
 declare type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
 
 declare type Form = {
-  id: FormId,
+  id: number,
   name: string,
   description: string,
   organisationId: string,
@@ -484,7 +442,7 @@ declare type FormElementsValidation = {
 declare type FormState = {
   forms: ?(Form[]),
   isFetching: boolean,
-  selectedId: FormId | null,
+  selectedId: number | null,
   isSaving: boolean,
   isSaveable: boolean,
   isUploading: boolean,
