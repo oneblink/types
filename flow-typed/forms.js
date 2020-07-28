@@ -601,6 +601,7 @@ declare type FormSubmissionResult = {
     [key: string]: mixed,
   },
   definition: Form,
+  formsAppId: number,
   submissionId: string | null,
   submissionTimestamp: string | null,
   payment?: {
