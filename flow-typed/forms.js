@@ -609,10 +609,12 @@ declare type FormSubmissionResult = {
   },
   keyId?: string,
   captchaTokens?: string[],
-  draftId?: string,
-  jobId?: string,
-  externalId?: string,
-  preFillFormDataId?: string,
+  draftId: ?string,
+  jobId: ?string,
+  externalId: ?string,
+  preFillFormDataId: ?string,
+  isInPendingQueue?: boolean,
+  isOffline?: boolean,
 }
 
 declare type PendingFormSubmissionResult = FormSubmissionResult & {
@@ -621,15 +623,17 @@ declare type PendingFormSubmissionResult = FormSubmissionResult & {
   error?: string,
 }
 
-declare type FormsAppDraft = {
+declare type NewFormsAppDraft = {
   title: string,
   formId: number,
+  externalId: ?string,
+  jobId: ?string,
+}
+
+declare type FormsAppDraft = NewFormsAppDraft & {
   draftId: string,
+  draftDataId?: string,
   updatedAt: string,
-  draftDataId: string,
-  externalId?: string,
-  jobId?: string,
-  preFillFormDataId?: string,
 }
 
 declare type FormsAppDrafts = {
