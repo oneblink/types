@@ -134,12 +134,14 @@ declare type FormFormElement = _FormElementBase & {
   type: 'form',
   name: string,
   formId: number,
+  elements?: FormElement[],
 }
 
 declare type InfoPageElement = _FormElementBase & {
   type: 'infoPage',
   name: string,
   formId: number,
+  elements?: FormElement[],
 }
 
 declare type RadioButtonElement = FormElementWithOptionsBase & {
@@ -242,11 +244,13 @@ declare type ImageElement = FormElementBase & {
 declare type DrawElement = FormElementRequired & {
   type: 'draw',
   readOnly: boolean,
+  defaultValue?: string,
 }
 
 declare type CameraElement = FormElementRequired & {
   type: 'camera',
   readOnly: boolean,
+  defaultValue?: string,
 }
 
 declare type HeadingElement = FormElementBase & {
@@ -257,6 +261,7 @@ declare type HeadingElement = FormElementBase & {
 declare type LocationElement = FormElementRequired & {
   type: 'location',
   readOnly: boolean,
+  defaultValue?: mixed,
 } & LookupFormElement
 
 declare type _NestedElementsElement = {
@@ -304,6 +309,7 @@ declare type FilesElement = FormElementBase & {
   maxEntries: number | void,
   restrictFileTypes: boolean,
   restrictedFileTypes?: string[],
+  defaultValue?: mixed,
 }
 
 declare type FileElement = FormElementRequired & {
@@ -311,6 +317,7 @@ declare type FileElement = FormElementRequired & {
   readOnly: boolean,
   restrictFileTypes: boolean,
   restrictedFileTypes?: string[],
+  defaultValue?: string,
 }
 
 declare type CalculationElement = FormElementBase & {
@@ -554,29 +561,35 @@ declare type FormElementsCalculationPath = FormElementCalculationPath[]
 
 //////////// NEW
 
-declare type FormSubmissionResult = {
+declare type DraftSubmission = {
   submission: {
     [key: string]: mixed,
   },
   definition: Form,
   formsAppId: number,
-  submissionId: string | null,
-  submissionTimestamp: string | null,
-  payment: ?{
-    hostedFormUrl: string,
-    submissionEvent: PaymentSubmissionEvent,
-  },
+  draftId: string | null,
+  jobId: string | null,
+  externalId: string | null,
+  preFillFormDataId: string | null,
   keyId?: string,
-  captchaTokens?: string[],
-  draftId: ?string,
-  jobId: ?string,
-  externalId: ?string,
-  preFillFormDataId: ?string,
-  isInPendingQueue?: boolean,
-  isOffline?: boolean,
 }
 
-declare type PendingFormSubmissionResult = FormSubmissionResult & {
+declare type FormSubmission = DraftSubmission & {
+  captchaTokens: string[],
+}
+
+declare type FormSubmissionResult = FormSubmission & {
+  submissionId: string | null,
+  submissionTimestamp: string | null,
+  payment: {
+    hostedFormUrl: string,
+    submissionEvent: PaymentSubmissionEvent,
+  } | null,
+  isInPendingQueue: boolean,
+  isOffline: boolean,
+}
+
+declare type PendingFormSubmissionResult = FormSubmission & {
   pendingTimestamp: string,
   isSubmitting?: boolean,
   error?: string,
