@@ -59,7 +59,7 @@ declare type LookupFormElement = {
   dataLookupId?: number,
   isElementLookup: boolean,
   elementLookupId?: number,
-} & FormElementBase
+} & FormElementRequired
 
 declare type ConditionallyShowPredicateBase = {
   elementId: string,
@@ -121,7 +121,7 @@ declare type DynamicOptionsSetAttributeMap = {
   attribute: string,
 }
 
-declare type FormElementWithOptionsBase = FormElementRequired & {
+type FormElementWithOptionsBase = LookupFormElement & {
   options: ChoiceElementOption[],
   optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH',
   dynamicOptionSetId: ?number,
@@ -149,21 +149,21 @@ declare type RadioButtonElement = FormElementWithOptionsBase & {
   buttons: boolean,
   readOnly: boolean,
   defaultValue: ?string,
-} & LookupFormElement
+}
 
 declare type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes',
   buttons: boolean,
   readOnly: boolean,
   defaultValue: ?(string[]),
-} & LookupFormElement
+}
 
 declare type SelectElement = FormElementWithOptionsBase & {
   type: 'select',
   multi: boolean,
   readOnly: boolean,
   defaultValue: ?(string | string[]),
-} & LookupFormElement
+}
 
 declare type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete',
@@ -171,7 +171,7 @@ declare type AutoCompleteElement = FormElementWithOptionsBase & {
   defaultValue: ?string,
   searchUrl?: string,
   placeholderValue?: string,
-} & LookupFormElement
+}
 
 declare type FormElementWithOptions =
   | RadioButtonElement
@@ -180,7 +180,7 @@ declare type FormElementWithOptions =
   | AutoCompleteElement
 
 // date element types
-type DateElementBase = FormElementRequired & {
+type DateElementBase = {
   readOnly: boolean,
   fromDate?: ?Date,
   toDate?: ?Date,
@@ -190,21 +190,21 @@ type DateElementBase = FormElementRequired & {
 declare type DateElement = DateElementBase & {
   type: 'date',
   placeholderValue?: string,
-} & LookupFormElement
+}
 
 declare type DateTimeElement = DateElementBase & {
   type: 'datetime',
   placeholderValue?: string,
-} & LookupFormElement
+}
 
-declare type TimeElement = FormElementRequired & {
+declare type TimeElement = {
   type: 'time',
   readOnly: boolean,
   defaultValue: ?(Date | 'NOW'),
   placeholderValue?: string,
 } & LookupFormElement
 
-declare type NumberElement = FormElementRequired & {
+declare type NumberElement = {
   type: 'number',
   readOnly: boolean,
   minNumber?: ?number,
@@ -215,21 +215,21 @@ declare type NumberElement = FormElementRequired & {
   placeholderValue?: string,
 } & LookupFormElement
 
-declare type TextElement = FormElementRequired & {
+declare type TextElement = {
   type: 'text',
   readOnly: boolean,
   defaultValue: ?string,
   placeholderValue?: string,
 } & LookupFormElement
 
-declare type TextareaElement = FormElementRequired & {
+declare type TextareaElement = {
   type: 'textarea',
   readOnly: boolean,
   defaultValue: ?string,
   placeholderValue?: string,
 } & LookupFormElement
 
-declare type EmailElement = FormElementRequired & {
+declare type EmailElement = {
   type: 'email',
   readOnly: boolean,
   defaultValue: ?string,
@@ -258,7 +258,7 @@ declare type HeadingElement = FormElementBase & {
   headingType: number,
 }
 
-declare type LocationElement = FormElementRequired & {
+declare type LocationElement = {
   type: 'location',
   readOnly: boolean,
   defaultValue?: mixed,
@@ -289,7 +289,7 @@ declare type HtmlElement = FormElementBase & {
   defaultValue: string,
 }
 
-declare type BarcodeScannerElement = FormElementRequired & {
+declare type BarcodeScannerElement = {
   type: 'barcodeScanner',
   readOnly: boolean,
   defaultValue: ?string,
@@ -327,7 +327,7 @@ declare type CalculationElement = FormElementBase & {
   preCalculationDisplay: ?string,
 }
 
-declare type TelephoneElement = FormElementRequired & {
+declare type TelephoneElement = {
   type: 'telephone',
   readOnly: boolean,
   defaultValue: ?string,
