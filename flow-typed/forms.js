@@ -563,7 +563,7 @@ declare type FormElementsCalculationPath = FormElementCalculationPath[]
 
 declare type DraftSubmission = {
   submission: {
-    [key: string]: mixed,
+    +[key: string]: mixed,
   },
   definition: Form,
   formsAppId: number,
