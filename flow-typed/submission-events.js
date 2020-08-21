@@ -70,27 +70,20 @@ declare type OneBlinkAPISubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean,
 }
 
+declare type TrimUriOption = {
+  label: string,
+  uri: number,
+}
+
 declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM',
   configuration: {
     environmentId: string,
     recordTitle: string | void,
-    container: {
-      uri: number,
-      label: string,
-    },
-    recordType: {
-      uri: number,
-      label: string,
-    },
-    actionDefinition: {
-      uri: number,
-      label: string,
-    },
-    location: {
-      uri: number,
-      label: string,
-    },
+    container: TrimUriOption,
+    recordType: TrimUriOption,
+    actionDefinition: TrimUriOption,
+    location: TrimUriOption,
   },
   isDraft: boolean,
 }
