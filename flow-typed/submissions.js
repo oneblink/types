@@ -14,14 +14,16 @@ declare type NewFormSubmission = NewDraftSubmission & {
 
 declare type DraftSubmission = NewDraftSubmission & {
   formsAppId: number,
-  draftId: string | null,
-  jobId: string | null,
-  externalId: string | null,
-  preFillFormDataId: string | null,
   keyId?: string,
 }
 
-declare type FormSubmission = DraftSubmission & NewFormSubmission
+declare type FormSubmission = DraftSubmission &
+  NewFormSubmission & {
+    draftId: string | null,
+    jobId: string | null,
+    externalId: string | null,
+    preFillFormDataId: string | null,
+  }
 
 declare type FormSubmissionResult = FormSubmission & {
   submissionId: string | null,
