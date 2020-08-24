@@ -1,11 +1,18 @@
 // @flow
 'use strict'
 
-declare type DraftSubmission = {
+declare type NewDraftSubmission = {
   submission: {
     +[key: string]: mixed,
   },
   definition: Form,
+}
+
+declare type NewFormSubmission = NewDraftSubmission & {
+  captchaTokens: string[],
+}
+
+declare type DraftSubmission = NewDraftSubmission & {
   formsAppId: number,
   draftId: string | null,
   jobId: string | null,
@@ -14,9 +21,7 @@ declare type DraftSubmission = {
   keyId?: string,
 }
 
-declare type FormSubmission = DraftSubmission & {
-  captchaTokens: string[],
-}
+declare type FormSubmission = DraftSubmission & NewFormSubmission
 
 declare type FormSubmissionResult = FormSubmission & {
   submissionId: string | null,
