@@ -74,7 +74,6 @@ type FormsAppPWASettings = {
 type _NewFormsApp = {
   name: string,
   hostname: string,
-  slug: string,
   oAuthClientId: ?string,
   organisationId: string,
   pwaSettings: FormsAppPWASettings,
@@ -97,6 +96,7 @@ declare type NewVolunteersFormsApp = _NewFormsApp & {
 
 declare type NewFormsListFormsApp = _NewFormsApp & {
   type: 'FORMS_LIST',
+  slug: string,
   formIds: number[],
   styles: FormsListStyles,
 }
