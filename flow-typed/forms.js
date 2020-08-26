@@ -425,26 +425,6 @@ declare type FormElementDynamicOptionSetEnvironment = {
   formsAppEnvironmentId: number,
 }
 
-declare type FormElementDynamicOptionSet = {
-  id?: number,
-  apiId?: string,
-  name: string,
-  organisationId: string,
-  environments: FormElementDynamicOptionSetEnvironment[],
-  createdAt?: string,
-  updatedAt?: string,
-}
-
-declare type FormElementLookup = FormElementDynamicOptionSet & {
-  type: 'ELEMENT' | 'DATA',
-  builtInId?: number,
-}
-
-declare type FormElementDynamicOptionSetEnvironment = {
-  url: string,
-  formsAppEnvironmentId: number,
-}
-
 declare type NewFormElementDynamicOptionSet = {
   name: string,
   organisationId: string,
