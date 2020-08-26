@@ -22,13 +22,13 @@ declare type BaseFormsAppStyles = {
   foregroundColour?: string,
   highlightColour?: string,
   contrastColour?: string,
-  logoUrl?: string,
   customCss?: string,
 }
 
 declare type VolunteersStyles = BaseFormsAppStyles
 
 declare type FormsListStyles = BaseFormsAppStyles & {
+  logoUrl?: string,
   menuItems: FormsAppMenuItem[],
 }
 
@@ -89,8 +89,8 @@ type _NewFormsApp = {
 declare type NewVolunteersFormsApp = _NewFormsApp & {
   type: 'VOLUNTEERS',
   styles: _AppStyles,
-  availabilities: string[],
-  categories: string[],
+  availabilities: Array<{ label: string }>,
+  categories: Array<{ label: string }>,
   waiverUrl: string | null, // nullable to allow creating solution without waiver
 }
 
