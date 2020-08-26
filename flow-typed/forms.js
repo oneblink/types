@@ -409,7 +409,16 @@ declare type Form = {
   tags: Array<string>,
 }
 
-declare type ApiForm = Form
+declare type FormQuerystringParameters = {
+  name?: string,
+  isAuthenticated?: boolean,
+  isInfoPage?: boolean,
+  limit?: number,
+  offset: number,
+  injectForms?: boolean,
+}
+
+// Options Sets/Lookups
 
 declare type FormElementDynamicOptionSetEnvironment = {
   url: string,
@@ -430,3 +439,54 @@ declare type FormElementLookup = FormElementDynamicOptionSet & {
   type: 'ELEMENT' | 'DATA',
   builtInId?: number,
 }
+
+declare type FormElementDynamicOptionSetEnvironment = {
+  url: string,
+  formsAppEnvironmentId: number,
+}
+
+declare type NewFormElementDynamicOptionSet = {
+  name: string,
+  organisationId: string,
+  apiId?: string,
+  environments: FormElementDynamicOptionSetEnvironment[],
+}
+
+declare type FormElementDynamicOptionSet = NewFormElementDynamicOptionSet & {
+  id: number,
+  createdAt: string,
+  updatedAt: string,
+}
+
+declare type FormElementDynamicOptionSetSearchParameters = {
+  organisationIds: string[],
+  limit?: number,
+  offset?: number,
+}
+
+declare type NewBuiltInFormElementLookup = {
+  type: 'ELEMENT' | 'DATA',
+  name: string,
+  url: string,
+  description: string,
+  supportUrl: string,
+  createdAt: string,
+  updatedAt: string,
+}
+
+declare type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
+  id: number,
+}
+
+declare type NewFormElementLookup = NewFormElementDynamicOptionSet & {
+  type: 'ELEMENT' | 'DATA',
+  builtInId?: number,
+}
+
+declare type FormElementLookup = NewFormElementLookup & {
+  id: number,
+  createdAt: string,
+  updatedAt: string,
+}
+
+declare type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters

@@ -1,5 +1,4 @@
 // @flow
-'use strict'
 
 declare type FormSubmissionEventType =
   | 'CALLBACK'
@@ -127,3 +126,40 @@ declare type FormSubmissionEvent =
 declare type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
+
+declare type WebhookSubscription = {
+  id: number,
+  createdAt?: Date,
+  callbackUrl: string,
+  organisationId: string,
+  keyId: string,
+}
+
+type BaseFormSubmissionLambdaEvent = {
+  submissionId: string,
+  formId: number,
+  organisationId: string,
+  bucketName: string,
+  key: string,
+  isDraft: boolean,
+  jobId?: string,
+  externalId?: string,
+  submissionTimestamp: string,
+  formsAppId: number,
+  keyId?: string,
+  user?: {
+    userId: string,
+    firstName?: string,
+    picture?: string,
+    providerUserId?: string,
+    providerType?: string,
+    fullName?: string,
+    lastName?: string,
+    email?: string,
+  },
+  lambda: string,
+}
+
+declare type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
+  submissionEvent: T,
+}

@@ -1,5 +1,4 @@
 // @flow
-'use strict'
 
 declare type NewDraftSubmission = {
   submission: {
@@ -63,18 +62,31 @@ declare type FormsAppDrafts = {
 
 declare type FormsAppJob = {
   id: string,
+  username: string,
   formId: number,
   draft?: FormsAppDraft,
+  updatedAt: string,
+  isSubmitted: boolean,
   externalId?: string,
   preFillFormDataId?: string,
   createdAt: string,
   details: {
     title: string,
-    key: ?string,
-    priority: ?string,
-    description: ?string,
-    type: ?string,
+    key?: string,
+    description?: string,
+    type?: string,
+    priority?: number,
   },
+}
+
+declare type JobSearchParameters = {
+  jobId?: string,
+  formIds?: number[],
+  username?: string,
+  externalId?: string,
+  isSubmitted?: boolean,
+  limit?: number,
+  offset: number,
 }
 
 declare type S3UploadCredentials = {
@@ -90,4 +102,80 @@ declare type S3UploadCredentials = {
     bucket: string,
     key: string,
   },
+}
+
+declare type FormSubmissionMeta = {
+  submissionId: string,
+  formId: number,
+  formsAppId: number,
+  dateTimeSubmitted: string,
+  formName?: string,
+  user?: {
+    userId: string,
+    firstName?: string,
+    picture?: string,
+    providerUserId?: string,
+    providerType?: string,
+    fullName?: string,
+    lastName?: string,
+    email?: string,
+  },
+  key?: {
+    id: string,
+    name: string,
+  },
+}
+
+declare type FormSubmissionRequest = {
+  submissionId: string,
+  recaptchas: Array<{
+    token: string,
+  }>,
+}
+
+declare type S3SubmissionData = {
+  submission: {
+    [name: string]: any,
+  },
+  definition: Form,
+  submissionTimestamp: string,
+}
+
+declare type GeneratePaymentConfigPayload = {
+  submissionId: string,
+  amount: number,
+  redirectUrl: string,
+}
+
+declare type CPPayHostedForm = {
+  id: number,
+  amount: number,
+  orderNumber: string,
+  redirectUri: string,
+  postbackUri: string,
+  firstName: ?string,
+  lastName: ?string,
+  email: string,
+  paymentType: number,
+  savePaymentMethod: boolean,
+  token: string,
+  transactionId: string,
+  paymentGatewayAccountId: number,
+}
+
+declare type CPPayPreparedRequest = {
+  token: string,
+  baseUrl: string,
+  user: JWTPayload,
+}
+
+declare type BpointPreparedRequest = {
+  environment: IntegrationBPOINTEnvironment,
+  user: JWTPayload,
+}
+
+declare type BpointCreds = {
+  Username: string,
+  Password: string,
+  MerchantNumber: string,
 }
