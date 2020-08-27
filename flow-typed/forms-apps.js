@@ -113,7 +113,8 @@ declare type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
 declare type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
 
-declare type FormsApp = FormsListFormsApp | VolunteersFormsApp
+declare type SolutionsApp = VolunteersFormsApp
+declare type FormsApp = FormsListFormsApp | SolutionsApp
 
 declare type OrganisationAppUser = {
   email: string,

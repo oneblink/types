@@ -15,6 +15,7 @@ declare type Organisation = {
   prefillDataRetentionDays?: number,
   retainDraftData: boolean,
   draftDataRetentionDays?: number,
+  solutions: Array<$PropertyType<SolutionsApp, 'type'>>,
 }
 
 declare type AWSAccount = {
