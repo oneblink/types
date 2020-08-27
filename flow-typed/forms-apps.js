@@ -164,6 +164,7 @@ declare type SendingAddress = {
 }
 
 declare type FormsAppConfiguration = {
+  type: $PropertyType<FormsApp, 'type'>,
   organisationId: string,
   formsAppId: number,
   formsAppEnvironmentId: number,
