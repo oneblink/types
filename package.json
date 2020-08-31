@@ -1,25 +1,28 @@
 {
-  "name": "@oneblink/flow-types",
-  "description": "Central repository for OneBlink flow types used internally",
+  "name": "@oneblink/types",
+  "description": "Central repository for OneBlink flow and typescript types used internally",
   "version": "1.0.0",
   "author": "OneBlink <developers@oneblink.io (https://oneblink.io)> (https://oneblink.io)",
   "bugs": {
-    "url": "https://github.com/oneblink/flow-types/issues"
+    "url": "https://github.com/oneblink/types/issues"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "typescript": "^4.0.2"
   },
   "files": [
     "flow-typed",
-    "index.js"
+    "index.js",
+    "typescript",
+    "index.d.ts"
   ],
-  "homepage": "https://github.com/oneblink/flow-types#readme",
+  "homepage": "https://github.com/oneblink/types#readme",
   "license": "GPL-3.0-only",
   "main": "index.js",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oneblink/flow-types.git"
+    "url": "git+https://github.com/oneblink/types.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
