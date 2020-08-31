@@ -1,6 +1,6 @@
 # OneBlink Flow Types
 
-A central repository for OneBlink flow types used internally.
+A central repository for OneBlink flow and typescript types, used internally.
 
 ## Installation
 
