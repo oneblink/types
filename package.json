@@ -7,7 +7,6 @@
     "url": "https://github.com/oneblink/flow-types/issues"
   },
   "devDependencies": {
-    "flow-bin": "^0.130.0",
     "prettier": "^2.0.5"
   },
   "files": [

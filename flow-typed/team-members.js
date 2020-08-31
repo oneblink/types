@@ -84,6 +84,11 @@ declare type ServiceRoles = {
   isSuperUser: boolean,
 }
 
+type Profile = {
+  email: string,
+  name: string | null,
+}
+
 type TeamMemberBase = Profile & {
   roleId: number,
 }

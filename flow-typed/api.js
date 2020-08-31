@@ -56,7 +56,7 @@ declare type APIDeploymentPayload = {
   runtime: string,
   handler: string,
   variables: {
-    [string: key]: string,
+    [key: string]: string,
   },
   routes: Array<{
     module: string,
