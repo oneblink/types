@@ -154,7 +154,7 @@ declare type FormsAppsDraft = {
   updatedAt: string,
 } & NewFormsAppsDraft
 
-declare type SendingAddress = {
+declare type FormsAppSendingAddress = {
   emailAddress: string,
   formsAppId: number,
   sesVerificationAttributes?: {
