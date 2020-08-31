@@ -34,12 +34,3 @@ You need to import types where you want to use them
 import { FormTypes, FormsAppsTypes, MiscTypes, SubmissionEventTypes } from '@oneblink/types'
 ```
 
-or specify them in your tsconfig.json file to make them global
-
-```json
-
-"typeRoots": [
-    "./node_modules/@oneblink/types"
-],
-
-```
