@@ -1,4 +1,4 @@
-# OneBlink Flow Types
+# OneBlink Flow and Typescript Types
 
 A central repository for OneBlink flow and typescript types, used internally.
 
