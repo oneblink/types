@@ -90,7 +90,7 @@ type _NewFormsApp = {
 
 declare type NewVolunteersFormsApp = _NewFormsApp & {
     type: 'VOLUNTEERS'
-    styles: _AppStyles
+    styles: VolunteersStyles
     availabilities: Array<{ label: string }>
     categories: Array<{ label: string }>
     waiverUrl: string | null // nullable to allow creating solution without waiver
@@ -175,7 +175,7 @@ declare type FormsAppConfiguration = {
     isTrialExpired: boolean
     formsHostname: string
     samlIdentityProviderName: string | NoU
-    styles: _AppStyles
+    styles: BaseFormsAppStyles
     pwaSettings: FormsAppPWASettings | NoU
     isDraftsEnabled: boolean
     locale: string
