@@ -146,36 +146,3 @@ declare type GeneratePaymentConfigPayload = {
   amount: number,
   redirectUrl: string,
 }
-
-declare type CPPayHostedForm = {
-  id: number,
-  amount: number,
-  orderNumber: string,
-  redirectUri: string,
-  postbackUri: string,
-  firstName: ?string,
-  lastName: ?string,
-  email: string,
-  paymentType: number,
-  savePaymentMethod: boolean,
-  token: string,
-  transactionId: string,
-  paymentGatewayAccountId: number,
-}
-
-declare type CPPayPreparedRequest = {
-  token: string,
-  baseUrl: string,
-  user: JWTPayload,
-}
-
-declare type BpointPreparedRequest = {
-  environment: IntegrationBPOINTEnvironment,
-  user: JWTPayload,
-}
-
-declare type BpointCreds = {
-  Username: string,
-  Password: string,
-  MerchantNumber: string,
-}
