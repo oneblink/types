@@ -23,7 +23,7 @@ to your `.flowconfig` file, or just the types you need.
 
 ```
 [libs]
-node_modules/@oneblink/flow-types/flow-typed/forms.js
+node_modules/@oneblink/types/flow-typed/forms.js
 ```
 
 ### For typescript types:
