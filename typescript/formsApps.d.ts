@@ -180,4 +180,11 @@ declare type FormsAppConfiguration = {
     isDraftsEnabled: boolean
     locale: string
     tz: string
+    volunteers:
+        | {
+              availabilities: VolunteersFormsApp['availabilities']
+              categories: VolunteersFormsApp['categories']
+              waiverUrl: VolunteersFormsApp['waiverUrl']
+          }
+        | undefined
 }

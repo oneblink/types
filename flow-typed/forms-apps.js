@@ -178,4 +178,9 @@ declare type FormsAppConfiguration = {
   isDraftsEnabled: boolean,
   locale: string,
   tz: string,
+  volunteers: {
+    availabilities: $PropertyType<VolunteersFormsApp, 'availabilities'>,
+    categories: $PropertyType<VolunteersFormsApp, 'categories'>,
+    waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
+  } | void,
 }
