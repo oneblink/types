@@ -183,5 +183,5 @@ declare type FormsAppConfiguration = {
     categories: $PropertyType<VolunteersFormsApp, 'categories'>,
     waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
   } | void,
-  supportedIdentityProviders: string[],
+  isGoogleLoginSupported: boolean,
 }
