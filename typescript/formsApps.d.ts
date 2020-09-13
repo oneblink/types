@@ -187,5 +187,5 @@ declare type FormsAppConfiguration = {
               waiverUrl: VolunteersFormsApp['waiverUrl']
           }
         | undefined
-    supportedIdentityProviders: string[]
+    isGoogleLoginSupported: boolean
 }
