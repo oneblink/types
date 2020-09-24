@@ -89,7 +89,6 @@ type _NewFormsApp = {
 declare type NewVolunteersFormsApp = _NewFormsApp & {
   type: 'VOLUNTEERS',
   styles: VolunteersStyles,
-  availabilities: Array<{ label: string }>,
   categories: Array<{ label: string }>,
   waiverUrl: string | null, // nullable to allow creating solution without waiver
 }
@@ -179,7 +178,6 @@ declare type FormsAppConfiguration = {
   locale: string,
   tz: string,
   volunteers: {
-    availabilities: $PropertyType<VolunteersFormsApp, 'availabilities'>,
     categories: $PropertyType<VolunteersFormsApp, 'categories'>,
     waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
   } | void,
