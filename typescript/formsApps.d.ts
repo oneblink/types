@@ -91,7 +91,6 @@ type _NewFormsApp = {
 declare type NewVolunteersFormsApp = _NewFormsApp & {
     type: 'VOLUNTEERS'
     styles: VolunteersStyles
-    availabilities: Array<{ label: string }>
     categories: Array<{ label: string }>
     waiverUrl: string | null // nullable to allow creating solution without waiver
     sendingEmailName?: string
@@ -182,4 +181,11 @@ declare type FormsAppConfiguration = {
     isDraftsEnabled: boolean
     locale: string
     tz: string
+    volunteers:
+        | {
+              categories: VolunteersFormsApp['categories']
+              waiverUrl: VolunteersFormsApp['waiverUrl']
+          }
+        | undefined
+    isGoogleLoginSupported: boolean
 }

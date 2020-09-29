@@ -13,4 +13,5 @@ declare type Key = {
   links: {
     organisations: string,
   },
+  isSolutions: boolean,
 }

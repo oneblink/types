@@ -89,7 +89,6 @@ type _NewFormsApp = {
 declare type NewVolunteersFormsApp = _NewFormsApp & {
   type: 'VOLUNTEERS',
   styles: VolunteersStyles,
-  availabilities: Array<{ label: string }>,
   categories: Array<{ label: string }>,
   waiverUrl: string | null, // nullable to allow creating solution without waiver
   sendingEmailName?: string,
@@ -156,7 +155,7 @@ declare type FormsAppsDraft = {
   updatedAt: string,
 } & NewFormsAppsDraft
 
-declare type SendingAddress = {
+declare type FormsAppSendingAddress = {
   emailAddress: string,
   formsAppId: number,
   sesVerificationAttributes?: {
@@ -180,4 +179,9 @@ declare type FormsAppConfiguration = {
   isDraftsEnabled: boolean,
   locale: string,
   tz: string,
+  volunteers: {
+    categories: $PropertyType<VolunteersFormsApp, 'categories'>,
+    waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
+  } | void,
+  isGoogleLoginSupported: boolean,
 }

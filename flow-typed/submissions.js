@@ -119,6 +119,12 @@ declare type FormSubmissionMeta = {
     fullName?: string,
     lastName?: string,
     email?: string,
+    role?: string,
+    supervisor?: {
+      email?: string,
+      fullName?: string,
+      providerUserId?: string,
+    },
   },
   key?: {
     id: string,
