@@ -92,6 +92,8 @@ declare type NewVolunteersFormsApp = _NewFormsApp & {
   availabilities: Array<{ label: string }>,
   categories: Array<{ label: string }>,
   waiverUrl: string | null, // nullable to allow creating solution without waiver
+  sendingEmailName?: string,
+  sendingEmailAddress?: string,
 }
 
 declare type NewFormsListFormsApp = _NewFormsApp & {
