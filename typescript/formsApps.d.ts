@@ -159,7 +159,12 @@ declare type SendingAddress = {
     emailAddress: string
     formsAppId: number
     sesVerificationAttributes?: {
-        VerificationStatus: string
+        VerificationStatus:
+            | 'Pending'
+            | 'Success'
+            | 'Failed'
+            | 'TemporaryFailure'
+            | 'NotStarted'
     }
     createdAt: Date
     updatedAt: Date

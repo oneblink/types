@@ -158,7 +158,12 @@ declare type FormsAppSendingAddress = {
   emailName?: string,
   formsAppId: number,
   sesVerificationAttributes?: {
-    VerificationStatus: string,
+    VerificationStatus:
+      | 'Pending'
+      | 'Success'
+      | 'Failed'
+      | 'TemporaryFailure'
+      | 'NotStarted',
   },
   createdAt: Date,
   updatedAt: Date,
