@@ -65,29 +65,3 @@ declare type Tier = {
   updatedAt?: string,
   isDefault: boolean,
 }
-
-declare type TrialOrganisationSubmission = {
-  submission: {
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-    companyName: string,
-    position?: string,
-  },
-  submissionTimestamp: string,
-}
-
-declare type TrialOrganisationRequest = {
-  formId: number,
-  submissionId: string,
-  secret: string,
-  externalId?: string,
-}
-
-declare type TrialOrganisation = {
-  request: TrialOrganisationRequest,
-  form: Form,
-  organisation: Organisation,
-  formsApp: FormsApp,
-}
