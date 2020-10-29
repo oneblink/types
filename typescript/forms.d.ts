@@ -78,9 +78,16 @@ export type ConditionallyShowPredicateOptions = ConditionallyShowPredicateBase &
     optionIds: string[]
 }
 
+export type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase & {
+    type: 'BETWEEN'
+    min: number
+    max: number
+}
+
 export type ConditionallyShowPredicate =
     | ConditionallyShowPredicateNumeric
     | ConditionallyShowPredicateOptions
+    | ConditionallyShowPredicateBetween
 
 export interface _FormElementBase {
     isNew?: boolean

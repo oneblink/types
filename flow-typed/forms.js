@@ -76,9 +76,16 @@ declare type ConditionallyShowPredicateOptions = ConditionallyShowPredicateBase 
   optionIds: Array<string>,
 }
 
+declare type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase & {
+  type: 'BETWEEN',
+  min: number,
+  max: number,
+}
+
 declare type ConditionallyShowPredicate =
   | ConditionallyShowPredicateNumeric
   | ConditionallyShowPredicateOptions
+  | ConditionallyShowPredicateBetween
 
 declare type _FormElementBase = {
   isNew?: boolean,
