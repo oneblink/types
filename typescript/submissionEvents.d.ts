@@ -58,14 +58,16 @@ export type SpottoSubmissionEvent = FormSubmissionEventConditional & {
     isDraft: boolean
 }
 
+export interface OneBlinkAPISubmissionEventConfiguration {
+    apiId: string
+    apiEnvironment: string
+    apiEnvironmentRoute: string
+    secret?: string
+}
+
 export type OneBlinkAPISubmissionEvent = FormSubmissionEventConditional & {
     type: 'ONEBLINK_API'
-    configuration: {
-        apiId: string
-        apiEnvironment: string
-        apiEnvironmentRoute: string
-        secret?: string
-    }
+    configuration: OneBlinkAPISubmissionEventConfiguration
     isDraft: boolean
 }
 
