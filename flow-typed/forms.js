@@ -76,6 +76,11 @@ declare type ConditionallyShowPredicateOptions = ConditionallyShowPredicateBase 
   optionIds: Array<string>,
 }
 
+declare type ConditionallyShowPredicateHasValue = ConditionallyShowPredicateBase & {
+  type: 'VALUE',
+  hasValue: boolean,
+}
+
 declare type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase & {
   type: 'BETWEEN',
   min: number,
@@ -85,6 +90,7 @@ declare type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase 
 declare type ConditionallyShowPredicate =
   | ConditionallyShowPredicateNumeric
   | ConditionallyShowPredicateOptions
+  | ConditionallyShowPredicateHasValue
   | ConditionallyShowPredicateBetween
 
 declare type _FormElementBase = {
