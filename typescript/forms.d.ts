@@ -150,12 +150,14 @@ export type FormFormElement = _FormElementBase & {
   type: 'form'
   name: string
   formId: number
+  elements?: FormElement[]
 }
 
 export type InfoPageElement = _FormElementBase & {
   type: 'infoPage'
   name: string
   formId: number
+  elements?: FormElement[]
 }
 
 export type RadioButtonElement = FormElementWithOptionsBase & {
