@@ -147,6 +147,18 @@ export interface S3SubmissionData {
   }
   definition: Form
   submissionTimestamp: string
+  formsAppId: number
+  keyId?: string
+  user?: {
+    userId: string
+    firstName?: string
+    picture?: string
+    providerUserId?: string
+    providerType?: string
+    fullName?: string
+    lastName?: string
+    email?: string
+  }
 }
 
 export interface GeneratePaymentConfigPayload {
