@@ -236,6 +236,8 @@ export type TextElement = FormElementRequired & {
   readOnly: boolean
   defaultValue: NoU | string
   placeholderValue?: string
+  minLength?: number
+  maxLength?: number
 } & LookupFormElement
 
 export type TextareaElement = FormElementRequired & {
@@ -243,6 +245,8 @@ export type TextareaElement = FormElementRequired & {
   readOnly: boolean
   defaultValue: NoU | string
   placeholderValue?: string
+  minLength?: number
+  maxLength?: number
 } & LookupFormElement
 
 export type EmailElement = FormElementRequired & {
