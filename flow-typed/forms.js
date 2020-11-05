@@ -233,6 +233,8 @@ declare type TextElement = {
   readOnly: boolean,
   defaultValue: ?string,
   placeholderValue?: string,
+  minLength?: number,
+  maxLength?: number,
 } & LookupFormElement
 
 declare type TextareaElement = {
@@ -240,6 +242,8 @@ declare type TextareaElement = {
   readOnly: boolean,
   defaultValue: ?string,
   placeholderValue?: string,
+  minLength?: number,
+  maxLength?: number,
 } & LookupFormElement
 
 declare type EmailElement = {
