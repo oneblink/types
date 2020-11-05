@@ -226,6 +226,7 @@ declare type NumberElement = {
   isSlider: boolean,
   sliderIncrement?: ?number,
   placeholderValue?: string,
+  isInteger?: boolean,
 } & LookupFormElement
 
 declare type TextElement = {

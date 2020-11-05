@@ -229,6 +229,7 @@ export type NumberElement = FormElementRequired & {
   isSlider: boolean
   sliderIncrement?: NoU | number
   placeholderValue?: string
+  isInteger?: boolean
 } & LookupFormElement
 
 export type TextElement = FormElementRequired & {
