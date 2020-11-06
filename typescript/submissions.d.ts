@@ -91,8 +91,7 @@ export interface JobSearchParameters {
   offset: number
 }
 
-export interface S3UploadCredentials {
-  submissionId: string
+interface _S3UploadCredentials {
   submissionTimestamp: string
   credentials: {
     AccessKeyId: string
@@ -104,6 +103,14 @@ export interface S3UploadCredentials {
     bucket: string
     key: string
   }
+}
+
+export type S3UploadCredentials = _S3UploadCredentials & {
+  submissionId: string
+}
+
+export type S3DraftUploadCredentials = _S3UploadCredentials & {
+  draftDataId: string
 }
 
 export interface FormSubmissionMeta {

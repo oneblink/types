@@ -89,7 +89,7 @@ declare type JobSearchParameters = {
   offset: number,
 }
 
-declare type S3UploadCredentials = {
+type _S3UploadCredentials = {
   submissionId: string,
   submissionTimestamp: string,
   credentials: {
@@ -102,6 +102,14 @@ declare type S3UploadCredentials = {
     bucket: string,
     key: string,
   },
+}
+
+declare type S3UploadCredentials = _S3UploadCredentials & {
+  submissionId: string,
+}
+
+declare type S3DraftUploadCredentials = _S3UploadCredentials & {
+  draftDataId: string,
 }
 
 declare type FormSubmissionMeta = {
