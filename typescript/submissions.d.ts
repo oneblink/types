@@ -46,7 +46,7 @@ export type PendingFormSubmissionResult = FormSubmission & {
 export interface NewFormsAppDraft {
   title: string
   formId: number
-  externalId: string
+  externalId: string | NoU
   jobId: string | NoU
 }
 
