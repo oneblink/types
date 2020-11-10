@@ -43,6 +43,13 @@ export type PendingFormSubmissionResult = FormSubmission & {
   error?: string
 }
 
+export type PendingFormSubmissionResultWithOptionalSubmission = Pick<
+  PendingFormSubmissionResult,
+  Exclude<keyof PendingFormSubmissionResult, 'submission'>
+> & {
+  submission?: PendingFormSubmissionResult['submission']
+}
+
 export interface NewFormsAppDraft {
   title: string
   formId: number
