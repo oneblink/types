@@ -269,6 +269,7 @@ declare type CameraElement = FormElementRequired & {
   type: 'camera',
   readOnly: boolean,
   defaultValue?: string,
+  includeTimestampWatermark: boolean,
 }
 
 declare type HeadingElement = FormElementBase & {

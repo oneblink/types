@@ -270,6 +270,8 @@ export type DrawElement = FormElementRequired & {
 export type CameraElement = FormElementRequired & {
   type: 'camera'
   readOnly: boolean
+  defaultValue?: string
+  includeTimestampWatermark: boolean
 }
 
 export type HeadingElement = FormElementBase & {
