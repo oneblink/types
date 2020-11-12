@@ -3,7 +3,6 @@
 declare type FormSubmissionEventType =
   | 'CALLBACK'
   | 'PDF'
-  | 'SPOTTO'
   | 'ONEBLINK_API'
   | 'TRIM'
   | 'CP_PAY'
@@ -50,11 +49,6 @@ declare type PdfSubmissionEvent = FormSubmissionEventConditional & {
     emailSubjectLine: ?string,
     pdfFileName: ?string,
   },
-  isDraft: boolean,
-}
-
-declare type SpottoSubmissionEvent = FormSubmissionEventConditional & {
-  type: 'SPOTTO',
   isDraft: boolean,
 }
 
@@ -118,7 +112,6 @@ declare type BPOINTSubmissionEvent = {
 declare type FormSubmissionEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
-  | SpottoSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
