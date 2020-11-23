@@ -110,7 +110,7 @@ interface _S3UploadCredentials {
     bucket: string
     key: string
   }
-  userNameToken: string
+  usernameToken: string
 }
 
 export type S3UploadCredentials = _S3UploadCredentials & {
