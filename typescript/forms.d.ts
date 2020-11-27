@@ -432,6 +432,14 @@ export interface Form {
   tags: string[]
 }
 
+export interface FormTemplate {
+  id: number,
+  name: string,
+  description: string,
+  elements: FormElement[],
+  tags: string[]
+}
+
 export type ApiForm = Form
 
 export interface FormElementOptionsValidationOption {
