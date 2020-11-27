@@ -428,6 +428,14 @@ declare type Form = {
   tags: Array<string>,
 }
 
+declare type FormTemplate = {
+  id: number,
+  name: string,
+  description: string,
+  elements: FormElement[],
+  tags: string[],
+}
+
 declare type FormQuerystringParameters = {
   name?: string,
   isAuthenticated?: boolean,
