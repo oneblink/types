@@ -431,7 +431,7 @@ declare type Form = {
 declare type FormTemplate = {
   id: number,
   name: string,
-  description: string,
+  description?: string,
   elements: FormElement[],
   tags: string[],
 }

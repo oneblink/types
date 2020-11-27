@@ -435,7 +435,7 @@ export interface Form {
 export interface FormTemplate {
   id: number,
   name: string,
-  description: string,
+  description?: string,
   elements: FormElement[],
   tags: string[]
 }
