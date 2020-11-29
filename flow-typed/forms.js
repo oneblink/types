@@ -428,12 +428,19 @@ declare type Form = {
   tags: Array<string>,
 }
 
-declare type FormTemplate = {
-  id: number,
+declare type NewFormTemplate = {
   name: string,
   description?: string,
   elements: FormElement[],
   tags: string[],
+  isInfoPage: boolean,
+  isMultiPage: boolean,
+}
+
+declare type FormTemplate = NewFormTemplate & {
+  id: number,
+  createdAt: string,
+  updatedAt: string,
 }
 
 declare type FormQuerystringParameters = {
