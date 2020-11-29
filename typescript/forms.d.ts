@@ -432,19 +432,22 @@ export interface Form {
   tags: string[]
 }
 
-export interface NewFormTemplate {
+export type PreviewUrl = {
+  label: string
+  url: string
+}
+
+export interface FormTemplate {
+  id: number
   name: string
   description?: string
   elements: FormElement[]
   tags: string[]
   isInfoPage: boolean
   isMultiPage: boolean
-}
-
-export type FormTemplate = NewFormTemplate & {
-  id: number
   createdAt: string
   updatedAt: string
+  previewUrls: PreviewUrl[]
 }
 
 export type ApiForm = Form
