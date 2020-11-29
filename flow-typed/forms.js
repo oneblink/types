@@ -428,6 +428,24 @@ declare type Form = {
   tags: Array<string>,
 }
 
+declare type PreviewUrl = {
+  label: String,
+  url: string
+}
+
+declare type FormTemplate = {
+  id: number,
+  name: string,
+  description?: string,
+  elements: FormElement[],
+  tags: string[],
+  isInfoPage: boolean,
+  isMultiPage: boolean,
+  createdAt: string,
+  updatedAt: string,
+  previewUrls: PreviewUrl[]
+}
+
 declare type FormQuerystringParameters = {
   name?: string,
   isAuthenticated?: boolean,
