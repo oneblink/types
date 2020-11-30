@@ -24,7 +24,7 @@ declare type FormMigrationOptions = {
   formsAppEnvironmentId: number,
   elements: boolean,
   submissionEvents: boolean,
-  tags: boolean
+  tags: boolean,
   postSubmissionAction: boolean,
   embeddedForms?: Array<{
     sourceElementId: string,
