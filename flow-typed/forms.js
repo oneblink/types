@@ -426,10 +426,12 @@ declare type Form = {
   redirectUrl?: ?string,
   submissionEvents: FormSubmissionEvent[],
   tags: Array<string>,
+  createdAt: string,
+  updatedAt: string,
 }
 
 declare type PreviewUrl = {
-  label: String,
+  label: string,
   url: string
 }
 
