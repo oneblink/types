@@ -1,3 +1,4 @@
+import * as APITypes from './typescript/api'
 import * as FormTypes from './typescript/forms'
 import * as MiscTypes from './typescript/misc'
 import * as SubmissionEventTypes from './typescript/submissionEvents'
@@ -9,6 +10,7 @@ import * as IntegrationTypes from './typescript/integrations'
 import * as TeamMemberTypes from './typescript/teamMembers'
 import * as OrganisationTypes from './typescript/organisations'
 export {
+  APITypes,
   FormTypes,
   MiscTypes,
   SubmissionEventTypes,
