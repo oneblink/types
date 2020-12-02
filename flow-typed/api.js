@@ -90,3 +90,39 @@ declare type APIEnvironmentMetricsSearchParameters = {
   endTime: string,
   period: number,
 }
+
+declare type OneBlinkAPIHostingRequest<T = void> = {
+  body: T,
+  headers: {
+    [id: string]: string | boolean,
+  },
+  method: string,
+  route: string,
+  url: {
+    host: string,
+    hostname: string,
+    params: { [id: string]: string },
+    pathname: string,
+    protocol: 'http:' | 'https:',
+    query: { [id: string]: string },
+  },
+}
+
+declare interface OneBlinkAPIHostingResponse<T = void> {
+  +headers: $PropertyType<OneBlinkAPIHostingRequest<void>, 'headers'>;
+  +payload: T;
+  +statusCode: number;
+  setHeader(key: string, value: string): OneBlinkAPIHostingResponse<T>;
+  setPayload(payload: T): OneBlinkAPIHostingResponse<T>;
+  setStatusCode(code: number): OneBlinkAPIHostingResponse<T>;
+}
+
+declare type OneBlinkAPIHostingHandler<In = void, Out = void> = (
+  OneBlinkAPIHostingRequest<In>,
+  OneBlinkAPIHostingResponse<Out>
+) =>
+  | Promise<OneBlinkAPIHostingResponse<Out> | Out | number | void>
+  | OneBlinkAPIHostingResponse<Out>
+  | Out
+  | number
+  | void
