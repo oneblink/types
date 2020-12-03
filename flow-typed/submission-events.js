@@ -158,3 +158,15 @@ type BaseFormSubmissionLambdaEvent = {
 declare type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
   submissionEvent: T,
 }
+
+declare type WebhookSubmissionEventPayload = {
+  formId: number,
+  submissionId: string,
+  isDraft: boolean,
+  submissionTimestamp: string,
+  jobId?: string,
+  externalId?: string,
+  userToken?: string,
+  username?: string,
+  secret?: string,
+}

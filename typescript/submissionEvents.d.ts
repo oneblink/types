@@ -128,3 +128,15 @@ export type FormSubmissionEvent =
 export type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
+
+export type WebhookSubmissionEventPayload = {
+  formId: number
+  submissionId: string
+  isDraft: boolean
+  submissionTimestamp: string
+  jobId?: string
+  externalId?: string
+  userToken?: string
+  username?: string
+  secret?: string
+}
