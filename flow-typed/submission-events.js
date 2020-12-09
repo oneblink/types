@@ -87,6 +87,7 @@ declare type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_HCMS',
   configuration: {
     contentTypeName: string,
+    encryptedElementIds: ?Array<string>,
   },
   isDraft: boolean,
 }
