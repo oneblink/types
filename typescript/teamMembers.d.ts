@@ -15,6 +15,7 @@ interface RolePrivileges {
   KEYS?: 'MANAGER' | 'READONLY'
   WEB_APP_HOSTING?: 'MANAGER' | 'DEVELOPER' | 'READONLY'
   SOLUTIONS?: 'MANAGER' | 'READONLY'
+  BILLING?: 'MANAGER' | 'READONLY'
 }
 
 export interface ServiceRoles {
@@ -57,6 +58,9 @@ export interface ServiceRoles {
     }
     SOLUTIONS?: {
       [organisationId: string]: RolePrivileges['SOLUTIONS']
+    }
+    BILLING?: {
+      [organisationId: string]: RolePrivileges['BILLING']
     }
   }
   key?: Key

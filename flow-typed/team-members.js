@@ -14,6 +14,7 @@ type RolePrivileges = {
   KEYS?: 'MANAGER' | 'READONLY',
   WEB_APP_HOSTING?: 'MANAGER' | 'DEVELOPER' | 'READONLY',
   SOLUTIONS?: 'MANAGER' | 'READONLY',
+  BILLING?: 'MANAGER' | 'READONLY',
 }
 
 declare type ServiceRoles = {
@@ -77,6 +78,9 @@ declare type ServiceRoles = {
     },
     SOLUTIONS?: {
       [organisationId: string]: $PropertyType<RolePrivileges, 'SOLUTIONS'>,
+    },
+    BILLING?: {
+      [organisationId: string]: $PropertyType<RolePrivileges, 'BILLING'>,
     },
   },
   key?: Key,
