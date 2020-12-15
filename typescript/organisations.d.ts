@@ -65,4 +65,5 @@ export interface Tier {
   createdAt?: string
   updatedAt?: string
   isDefault: boolean
+  isAWSFirst: boolean
 }
