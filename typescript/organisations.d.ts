@@ -44,7 +44,7 @@ export type TierLimitation =
     }
 
 export interface Tier {
-  id: number | NoU
+  id?: number
   name: string
   tierData: {
     maximumFormSubmissions: TierLimitation
