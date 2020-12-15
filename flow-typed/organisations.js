@@ -63,6 +63,6 @@ declare type Tier = {
   },
   createdAt?: string,
   updatedAt?: string,
-  isDefault: boolean,
+  isTrialTier: boolean,
   isAWSFirst: boolean,
 }
