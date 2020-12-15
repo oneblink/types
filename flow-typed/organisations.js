@@ -41,7 +41,7 @@ declare type TierLimitation =
     }
 
 declare type Tier = {
-  id: number,
+  id: ?number,
   name: string,
   tierData: {
     maximumFormSubmissions: TierLimitation,

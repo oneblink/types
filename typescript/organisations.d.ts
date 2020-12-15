@@ -1,6 +1,8 @@
 import { FormSubmissionEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { SolutionsApp } from './formsApps'
+import { NoU } from './misc'
+
 export interface Organisation {
   id: string
   name: string
@@ -42,7 +44,7 @@ export type TierLimitation =
     }
 
 export interface Tier {
-  id: number
+  id: number | NoU
   name: string
   tierData: {
     maximumFormSubmissions: TierLimitation
