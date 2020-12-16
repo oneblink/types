@@ -19,6 +19,7 @@ export interface Organisation {
   retainDraftData: boolean
   draftDataRetentionDays?: number
   solutions: Array<SolutionsApp['type']>
+  awsCustomerId?: string,
 }
 
 export interface AWSAccount {
