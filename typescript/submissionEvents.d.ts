@@ -113,6 +113,8 @@ export interface BPOINTSubmissionEvent {
   configuration: {
     elementId: string
     environmentId: string
+    crn2?: string
+    crn3?: string
   }
   isDraft: boolean
 }
