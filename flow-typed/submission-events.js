@@ -80,6 +80,7 @@ declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
     recordType: TrimUriOption,
     actionDefinition: TrimUriOption,
     location: TrimUriOption,
+    includeSubmissionIdInPdf?: boolean,
   },
   isDraft: boolean,
 }

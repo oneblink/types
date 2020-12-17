@@ -87,6 +87,7 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
       uri: number
       label: string
     }
+    includeSubmissionIdInPdf?: boolean
   }
   isDraft: boolean
 }
