@@ -41,8 +41,7 @@ declare type TierLimitation =
       unlimited: false,
     }
 
-declare type Tier = {
-  id?: number,
+declare type NewTier = {
   name: string,
   tierData: {
     maximumFormSubmissions: TierLimitation,
@@ -62,8 +61,12 @@ declare type Tier = {
     allowFormsAppCustomDomains: boolean,
     allowFormsAppMenu: boolean,
   },
-  createdAt?: string,
-  updatedAt?: string,
   isTrialTier: boolean,
   isAWSFirst: boolean,
+}
+
+declare type Tier = NewTier & {
+  id: number,
+  createdAt: string,
+  updatedAt: string,
 }
