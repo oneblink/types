@@ -172,4 +172,6 @@ declare type GeneratePaymentConfigPayload = {
   submissionId: string,
   amount: number,
   redirectUrl: string,
+  crn2?: string,
+  crn3?: string,
 }
