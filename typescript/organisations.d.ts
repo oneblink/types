@@ -19,7 +19,7 @@ export interface Organisation {
   retainDraftData: boolean
   draftDataRetentionDays?: number
   solutions: Array<SolutionsApp['type']>
-  awsCustomerId?: string,
+  awsCustomerId?: string
 }
 
 export interface AWSAccount {
@@ -44,8 +44,7 @@ export type TierLimitation =
       unlimited: false
     }
 
-export interface Tier {
-  id?: number
+export interface NewTier {
   name: string
   tierData: {
     maximumFormSubmissions: TierLimitation
@@ -65,8 +64,12 @@ export interface Tier {
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
   }
-  createdAt?: string
-  updatedAt?: string
   isTrialTier: boolean
   isAWSFirst: boolean
+}
+
+export type Tier = NewTier & {
+  id: number
+  createdAt: string
+  updatedAt: string
 }
