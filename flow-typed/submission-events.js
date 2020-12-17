@@ -48,7 +48,7 @@ declare type PdfSubmissionEvent = FormSubmissionEventConditional & {
     email: string,
     emailSubjectLine: ?string,
     pdfFileName: ?string,
-    includeSubmissionIdInPDF?: boolean,
+    includeSubmissionIdInPdf?: boolean,
   },
   isDraft: boolean,
 }
