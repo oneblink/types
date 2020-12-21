@@ -49,6 +49,7 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
     emailSubjectLine: NoU | string
     pdfFileName: NoU | string
     includeSubmissionIdInPdf?: boolean
+    excludedElementIds?: string[]
   }
   isDraft: boolean
 }
