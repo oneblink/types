@@ -1,6 +1,11 @@
 // @flow
 
-declare type IntegrationType = 'CP_PAY' | 'TRIM' | 'CP_HCMS' | 'BPOINT'
+declare type IntegrationType =
+  | 'CP_PAY'
+  | 'TRIM'
+  | 'CP_HCMS'
+  | 'BPOINT'
+  | 'GEOSCOPE'
 
 type IntegrationBase = {
   organisationId: string,
@@ -64,8 +69,16 @@ declare type IntegrationBPOINT = IntegrationBase & {
   },
 }
 
+declare type IntegrationGeoscope = IntegrationBase & {
+  type: 'GEOSCOPE',
+  configuration: {
+    apiKey: string,
+  },
+}
+
 declare type Integration =
   | IntegrationTrim
   | IntegrationCPPay
   | IntegrationCPHCMS
   | IntegrationBPOINT
+  | IntegrationGeoscope
