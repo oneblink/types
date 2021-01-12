@@ -119,7 +119,7 @@ declare type DynamicOptionsSetAttributeMap = {
 type FormElementWithOptionsBase = LookupFormElement & {
   options: ChoiceElementOption[],
   optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH',
-  dynamicOptionSetId: ?number,
+  dynamicOptionSetId?: number,
   conditionallyShowOptions?: boolean,
   conditionallyShowOptionsElementIds?: string[],
   attributesMapping?: DynamicOptionsSetAttributeMap[],

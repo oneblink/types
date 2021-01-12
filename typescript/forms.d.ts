@@ -119,7 +119,7 @@ export interface DynamicOptionsSetAttributeMap {
 export type FormElementWithOptionsBase = FormElementRequired & {
   options: ChoiceElementOption[]
   optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH'
-  dynamicOptionSetId: number
+  dynamicOptionSetId?: number
   conditionallyShowOptions?: boolean
   conditionallyShowOptionsElementIds?: string[]
   attributesMapping?: DynamicOptionsSetAttributeMap[]
@@ -438,83 +438,6 @@ export interface FormTemplate {
   previewUrls: PreviewUrl[]
 }
 
-export type ApiForm = Form
-
-export interface FormElementOptionsValidationOption {
-  [optionId: string]: {
-    label?: string
-    value?: string
-    colour?: string
-    attributes?: string
-  }
-}
-
-export type FormElementOptionsValidation = FormElementOptionsValidationOption & {
-  allOptions?: string
-}
-
-export interface FormElementValidationProperty {
-  [propertyName: string]: string | undefined
-}
-export type FormElementValidation = FormElementValidationProperty & {
-  conditionallyShowPredicates?: {
-    [index: string]: {
-      elementId?: string
-      optionIds?: string
-      operator?: string
-      value?: string
-    }
-  }
-  options?: FormElementOptionsValidation
-  attributesMapping?: {
-    [label: string]: string | undefined
-  }
-}
-
-export interface FormElementsValidation {
-  [elementId: string]: FormElementValidation
-}
-
-export interface FormState {
-  forms: NoU | Form[]
-  isFetching: boolean
-  selectedId: number | null
-  isSaving: boolean
-  isSaveable: boolean
-  isUploading: boolean
-  error?: string
-  fetchError: NoU | Error
-  isShowingPreview: boolean
-  isShowingUnsavedChangesPrompt: boolean
-  formToDelete?: Form
-  isDeleting: boolean
-  isShowingElementInUsePrompt: boolean
-  selectedElementId: NoU | string
-  selectedPageElementId: NoU | string
-  elementsValidation: FormElementsValidation
-  conditionallyShownOptionsToClearAttributes?: Array<{
-    element: FormElementWithOptions
-    options: ChoiceElementOption[]
-  }>
-  conditionalLogicPredicatesToDelete?: ConditionalLogicPredicatesToDelete
-  optionIdToDelete?: string
-  isExporting: boolean
-  isImporting: boolean
-  formToConvert: NoU | Form
-  formToFetchJSONSchema: NoU | Form
-  isFetchingJSONSchema: boolean
-  fetchJSONSchemaError: NoU | Error
-  formJSONSchema: NoU | object
-  confirmationType?: string
-}
-
-export type ConditionalLogicPredicatesToDelete = Array<{
-  elementId: string
-  elementLabel: string
-  predicateIndex: number
-  optionId?: string
-}>
-
 export interface FormElementDynamicOptionSetEnvironment {
   url: string
   formsAppEnvironmentId: number
@@ -535,43 +458,6 @@ export type FormElementLookup = FormElementDynamicOptionSet & {
   builtInId?: number
 }
 
-export interface DynamicOptionSetData {
-  options: DynamicChoiceElementOption[]
-  isFetching: boolean
-  fetchError: boolean
-}
-
-export interface DynamicOptionSetDataById {
-  [formsAppEnvironmentId: number]: {
-    [dynamicOptionSetId: number]: DynamicOptionSetData
-  }
-}
-
-export interface FormElementDynamicOptionSetsState {
-  formElementDynamicOptionSets: NoU | FormElementDynamicOptionSet[]
-  isFetching: boolean
-  fetchError: NoU | string
-  formElementDynamicOptionsSetToEdit: NoU | FormElementDynamicOptionSet
-  isSaving: boolean
-  saveError: NoU | Error
-  formElementDynamicOptionsSetToDelete: NoU | FormElementDynamicOptionSet
-  isDeleting: boolean
-  deleteError: NoU | Error
-  dynamicOptionSetData: DynamicOptionSetDataById
-}
-
-export interface FormElementLookupsState {
-  formElementLookups: FormElementLookup[]
-  isFetching: boolean
-  fetchError: NoU | Error
-  formElementLookupToEdit: NoU | FormElementLookup
-  isSaving: boolean
-  saveError: NoU | Error
-  formElementLookupToDelete: NoU | FormElementLookup
-  isDeleting: boolean
-  deleteError: NoU | Error
-}
-
 export interface BaseSearchResult {
   meta: {
     limit: null
@@ -587,11 +473,3 @@ export type FormElementLookupSearchResponse = {
 export type FormElementDynamicOptionSetSearchResponse = {
   formElementDynamicOptionSets: FormElementDynamicOptionSet[]
 } & BaseSearchResult
-
-export interface FormElementCalculationPath {
-  label: string
-  path: string
-  elements: FormElementCalculationPath[]
-}
-
-export type FormElementsCalculationPath = FormElementCalculationPath[]
