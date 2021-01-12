@@ -9,7 +9,7 @@ import * as KeyTypes from './typescript/keys'
 import * as IntegrationTypes from './typescript/integrations'
 import * as TeamMemberTypes from './typescript/teamMembers'
 import * as OrganisationTypes from './typescript/organisations'
-import * as GeoscopeTypes from './typescript/geoscope'
+import * as GeoscapeTypes from './typescript/geoscape'
 export {
   APITypes,
   FormTypes,
@@ -22,5 +22,5 @@ export {
   IntegrationTypes,
   TeamMemberTypes,
   OrganisationTypes,
-  GeoscopeTypes,
+  GeoscapeTypes,
 }

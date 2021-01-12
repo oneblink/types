@@ -1,4 +1,4 @@
-import { GeoscopeAddress } from './geoscope'
+import { GeoscapeAddress } from './geoscape'
 import type { NoU } from './misc'
 import type { FormSubmissionEvent } from './submissionEvents'
 
@@ -41,7 +41,7 @@ export type FormElementType =
   | 'form'
   | 'infoPage'
   | 'summary'
-  | 'geoscopeAddress'
+  | 'geoscapeAddress'
 
 export interface ElementType {
   id: FormElementType
@@ -357,10 +357,10 @@ export type SummaryElement = FormElementBase & {
   elementIds: string[]
 }
 
-export type GeoscopeAddressElement = FormElementRequired & {
-  type: 'geoscopeAddress'
+export type GeoscapeAddressElement = FormElementRequired & {
+  type: 'geoscapeAddress'
   readOnly: boolean
-  defaultValue?: GeoscopeAddress
+  defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: string[]
 } & LookupFormElement

@@ -1,6 +1,6 @@
 // @flow
 
-import { type Address as GeoscopeAddress } from './geoscope/address-details'
+import { type Address as GeoscapeAddress } from './geoscape/address-details'
 
 ////////////////////////////////////////
 // Element Types
@@ -41,7 +41,7 @@ declare type FormElementType =
   | 'form'
   | 'infoPage'
   | 'summary'
-  | 'geoscopeAddress'
+  | 'geoscapeAddress'
 
 declare type ElementType = {
   id: FormElementType,
@@ -361,10 +361,10 @@ declare type SummaryElement = FormElementBase & {
   elementIds: string[],
 }
 
-declare type GeoscopeAddressElement = FormElementRequired & {
-  type: 'geoscopeAddress',
+declare type GeoscapeAddressElement = FormElementRequired & {
+  type: 'geoscapeAddress',
   readOnly: boolean,
-  defaultValue?: GeoscopeAddress,
+  defaultValue?: GeoscapeAddress,
   placeholderValue?: string,
   stateTerritoryFilter?: string[],
 } & LookupFormElement

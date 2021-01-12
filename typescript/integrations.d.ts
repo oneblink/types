@@ -3,7 +3,7 @@ export type IntegrationType =
   | 'TRIM'
   | 'CP_HCMS'
   | 'BPOINT'
-  | 'GEOSCOPE'
+  | 'GEOSCAPE'
 
 interface IntegrationBase {
   organisationId: string
@@ -66,8 +66,8 @@ export type IntegrationBPOINT = IntegrationBase & {
     environments: IntegrationBPOINTEnvironment[]
   }
 }
-export type IntegrationGeoscope = IntegrationBase & {
-  type: 'GEOSCOPE'
+export type IntegrationGeoscape = IntegrationBase & {
+  type: 'GEOSCAPE'
   configuration: {
     apiKey: string
   }
@@ -78,4 +78,4 @@ export type Integration =
   | IntegrationCPPay
   | IntegrationCPHCMS
   | IntegrationBPOINT
-  | IntegrationGeoscope
+  | IntegrationGeoscape
