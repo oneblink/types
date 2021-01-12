@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "title": "Address Suggestion",
+  "properties": {
+    "suggest": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 16
+          },
+          "address": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 19
+          }
+        }
+      }
+    },
+    "messages": {
+      "type": "array",
+      "title": "Messages",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "suggest"
+  ]
+}

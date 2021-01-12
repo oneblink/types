@@ -7,6 +7,7 @@
     "url": "https://github.com/oneblink/types/issues"
   },
   "devDependencies": {
+    "json-schema-to-typescript": "^10.1.2",
     "prettier": "^2.0.5",
     "typescript": "^4.0.2"
   },

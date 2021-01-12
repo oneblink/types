@@ -1,10 +1,9 @@
+import { GeoscopeAddress } from './geoscope'
+import type { NoU } from './misc'
+import type { FormSubmissionEvent } from './submissionEvents'
+
 ////////////////////////////////////////
 // Element Types
-import type { NoU } from './misc'
-import type {
-  FormSubmissionEvent,
-  PaymentSubmissionEvent,
-} from './submissionEvents'
 
 export type FormElementTypeGroup =
   | 'STATIC'
@@ -42,6 +41,7 @@ export type FormElementType =
   | 'form'
   | 'infoPage'
   | 'summary'
+  | 'geoscopeAddress'
 
 export interface ElementType {
   id: FormElementType
@@ -356,6 +356,13 @@ export type SummaryElement = FormElementBase & {
   type: 'summary'
   elementIds: string[]
 }
+
+export type GeoscopeAddressElement = FormElementRequired & {
+  type: 'geoscopeAddress'
+  readOnly: boolean
+  defaultValue?: GeoscopeAddress
+  placeholderValue?: string
+} & LookupFormElement
 
 export type FormElementWithoutForm =
   | TextElement
