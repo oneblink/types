@@ -361,7 +361,7 @@ declare type SummaryElement = FormElementBase & {
   elementIds: string[],
 }
 
-declare type GeoscapeAddressElement = FormElementRequired & {
+declare type GeoscapeAddressElement = {
   type: 'geoscapeAddress',
   readOnly: boolean,
   defaultValue?: GeoscapeAddress,
@@ -396,6 +396,7 @@ declare type FormElementWithoutForm =
   | TelephoneElement
   | AutoCompleteElement
   | SummaryElement
+  | GeoscapeAddressElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 

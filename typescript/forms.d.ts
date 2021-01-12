@@ -392,6 +392,7 @@ export type FormElementWithoutForm =
   | TelephoneElement
   | AutoCompleteElement
   | SummaryElement
+  | GeoscapeAddressElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
