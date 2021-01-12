@@ -5,13 +5,6 @@ import type { FormSubmissionEvent } from './submissionEvents'
 ////////////////////////////////////////
 // Element Types
 
-export type FormElementTypeGroup =
-  | 'STATIC'
-  | 'INPUT'
-  | 'DATE'
-  | 'OPTIONS'
-  | 'ADVANCED'
-
 export type FormElementType =
   | 'text'
   | 'email'
@@ -42,20 +35,6 @@ export type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
-
-export interface ElementType {
-  id: FormElementType
-  display: string
-  isInfoPageType: boolean
-  group: FormElementTypeGroup
-}
-
-export interface ElementTypeGroup {
-  id: FormElementTypeGroup
-  isInfoPageType: boolean
-  display: string
-  elementTypes: ElementType[]
-}
 
 export type LookupFormElement = {
   isDataLookup: boolean
@@ -164,27 +143,27 @@ export type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio'
   buttons: boolean
   readOnly: boolean
-  defaultValue: string | NoU
+  defaultValue?: string | NoU
 } & LookupFormElement
 
 export type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes'
   buttons: boolean
   readOnly: boolean
-  defaultValue: string[] | NoU
+  defaultValue?: string[] | NoU
 } & LookupFormElement
 
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
   multi: boolean
   readOnly: boolean
-  defaultValue: NoU | (string | string[])
+  defaultValue?: NoU | (string | string[])
 } & LookupFormElement
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
   readOnly: boolean
-  defaultValue: string | NoU
+  defaultValue?: string | NoU
   searchUrl?: string
   placeholderValue?: string
 } & LookupFormElement
@@ -200,7 +179,7 @@ export type DateElementBase = FormElementRequired & {
   readOnly: boolean
   fromDate?: Date | NoU
   toDate?: Date | NoU
-  defaultValue: NoU | (Date | 'NOW')
+  defaultValue?: NoU | (Date | 'NOW')
 } & LookupFormElement
 
 export type DateElement = DateElementBase & {
@@ -216,7 +195,7 @@ export type DateTimeElement = DateElementBase & {
 export type TimeElement = FormElementRequired & {
   type: 'time'
   readOnly: boolean
-  defaultValue: NoU | (Date | 'NOW')
+  defaultValue?: NoU | (Date | 'NOW')
   placeholderValue?: string
 } & LookupFormElement
 
@@ -225,7 +204,7 @@ export type NumberElement = FormElementRequired & {
   readOnly: boolean
   minNumber?: NoU | number
   maxNumber?: NoU | number
-  defaultValue: NoU | number
+  defaultValue?: NoU | number
   isSlider: boolean
   sliderIncrement?: NoU | number
   placeholderValue?: string
@@ -235,7 +214,7 @@ export type NumberElement = FormElementRequired & {
 export type TextElement = FormElementRequired & {
   type: 'text'
   readOnly: boolean
-  defaultValue: NoU | string
+  defaultValue?: NoU | string
   placeholderValue?: string
   minLength?: number
   maxLength?: number
@@ -244,7 +223,7 @@ export type TextElement = FormElementRequired & {
 export type TextareaElement = FormElementRequired & {
   type: 'textarea'
   readOnly: boolean
-  defaultValue: NoU | string
+  defaultValue?: NoU | string
   placeholderValue?: string
   minLength?: number
   maxLength?: number
@@ -253,7 +232,7 @@ export type TextareaElement = FormElementRequired & {
 export type EmailElement = FormElementRequired & {
   type: 'email'
   readOnly: boolean
-  defaultValue: NoU | string
+  defaultValue?: NoU | string
   placeholderValue?: string
 } & LookupFormElement
 
@@ -312,7 +291,7 @@ export type HtmlElement = FormElementBase & {
 export type BarcodeScannerElement = FormElementRequired & {
   type: 'barcodeScanner'
   readOnly: boolean
-  defaultValue: NoU | string
+  defaultValue?: NoU | string
   restrictBarcodeTypes: boolean
   restrictedBarcodeTypes?: string[]
   placeholderValue?: string
@@ -348,7 +327,7 @@ export type CalculationElement = FormElementBase & {
 export type TelephoneElement = FormElementRequired & {
   type: 'telephone'
   readOnly: boolean
-  defaultValue: NoU | string
+  defaultValue?: NoU | string
   placeholderValue?: string
 } & LookupFormElement
 
@@ -432,8 +411,8 @@ export interface Form {
   elements: FormElement[]
   isAuthenticated: boolean
   isMultiPage: boolean
-  publishStartDate: NoU | string
-  publishEndDate: NoU | string
+  publishStartDate?: NoU | string
+  publishEndDate?: NoU | string
   isInfoPage: boolean
   postSubmissionAction: FormPostSubmissionAction
   redirectUrl?: NoU | string

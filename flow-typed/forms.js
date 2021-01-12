@@ -5,13 +5,6 @@ import { type Address as GeoscapeAddress } from './geoscape/address-details'
 ////////////////////////////////////////
 // Element Types
 
-declare type FormElementTypeGroup =
-  | 'STATIC'
-  | 'INPUT'
-  | 'DATE'
-  | 'OPTIONS'
-  | 'ADVANCED'
-
 declare type FormElementType =
   | 'text'
   | 'email'
@@ -42,20 +35,6 @@ declare type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
-
-declare type ElementType = {
-  id: FormElementType,
-  display: string,
-  isInfoPageType: boolean,
-  group: FormElementTypeGroup,
-}
-
-declare type ElementTypeGroup = {
-  id: FormElementTypeGroup,
-  isInfoPageType: boolean,
-  display: string,
-  elementTypes: ElementType[],
-}
 
 declare type LookupFormElement = {
   isDataLookup: boolean,
@@ -164,27 +143,27 @@ declare type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio',
   buttons: boolean,
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
 }
 
 declare type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes',
   buttons: boolean,
   readOnly: boolean,
-  defaultValue: ?(string[]),
+  defaultValue?: ?(string[]),
 }
 
 declare type SelectElement = FormElementWithOptionsBase & {
   type: 'select',
   multi: boolean,
   readOnly: boolean,
-  defaultValue: ?(string | string[]),
+  defaultValue?: ?(string | string[]),
 }
 
 declare type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   searchUrl?: string,
   placeholderValue?: string,
 }
@@ -200,7 +179,7 @@ type DateElementBase = {
   readOnly: boolean,
   fromDate?: ?Date,
   toDate?: ?Date,
-  defaultValue: ?(Date | 'NOW'),
+  defaultValue?: ?(Date | 'NOW'),
 } & LookupFormElement
 
 declare type DateElement = DateElementBase & {
@@ -216,7 +195,7 @@ declare type DateTimeElement = DateElementBase & {
 declare type TimeElement = {
   type: 'time',
   readOnly: boolean,
-  defaultValue: ?(Date | 'NOW'),
+  defaultValue?: ?(Date | 'NOW'),
   placeholderValue?: string,
 } & LookupFormElement
 
@@ -225,7 +204,7 @@ declare type NumberElement = {
   readOnly: boolean,
   minNumber?: ?number,
   maxNumber?: ?number,
-  defaultValue: ?number,
+  defaultValue?: ?number,
   isSlider: boolean,
   sliderIncrement?: ?number,
   placeholderValue?: string,
@@ -235,7 +214,7 @@ declare type NumberElement = {
 declare type TextElement = {
   type: 'text',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
@@ -244,7 +223,7 @@ declare type TextElement = {
 declare type TextareaElement = {
   type: 'textarea',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
@@ -253,7 +232,7 @@ declare type TextareaElement = {
 declare type EmailElement = {
   type: 'email',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   placeholderValue?: string,
 } & LookupFormElement
 
@@ -314,7 +293,7 @@ declare type HtmlElement = FormElementBase & {
 declare type BarcodeScannerElement = {
   type: 'barcodeScanner',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   restrictBarcodeTypes: boolean,
   restrictedBarcodeTypes?: string[],
   placeholderValue?: string,
@@ -352,7 +331,7 @@ declare type CalculationElement = FormElementBase & {
 declare type TelephoneElement = {
   type: 'telephone',
   readOnly: boolean,
-  defaultValue: ?string,
+  defaultValue?: ?string,
   placeholderValue?: string,
 } & LookupFormElement
 
@@ -431,8 +410,8 @@ declare type Form = {
   elements: Array<FormElement>,
   isAuthenticated: boolean,
   isMultiPage: boolean,
-  publishStartDate: ?string,
-  publishEndDate: ?string,
+  publishStartDate?: ?string,
+  publishEndDate?: ?string,
   isInfoPage: boolean,
   postSubmissionAction: FormPostSubmissionAction,
   redirectUrl?: ?string,
