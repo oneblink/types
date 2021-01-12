@@ -60,16 +60,13 @@ declare type FormsAppDrafts = {
   updatedAt?: string,
 }
 
-declare type FormsAppJob = {
-  id: string,
+declare type NewFormsAppJob = {
   username: string,
   formId: number,
   draft?: FormsAppDraft,
   updatedAt: string,
-  isSubmitted: boolean,
   externalId?: string,
   preFillFormDataId?: string,
-  createdAt: string,
   details: {
     title: string,
     key?: string,
@@ -77,6 +74,12 @@ declare type FormsAppJob = {
     type?: string,
     priority?: number,
   },
+}
+
+declare type FormsAppJob = NewFormsAppJob & {
+  id: string,
+  isSubmitted: boolean,
+  createdAt: string,
 }
 
 declare type JobSearchParameters = {

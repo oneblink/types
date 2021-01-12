@@ -69,16 +69,13 @@ export interface FormsAppDrafts {
   updatedAt?: string
 }
 
-export interface FormsAppJob {
-  id: string
+export interface NewFormsAppJob {
   username: string
   formId: number
   draft?: FormsAppDraft
   updatedAt: string
-  isSubmitted: boolean
   externalId?: string
   preFillFormDataId?: string
-  createdAt: string
   details: {
     title: string
     key?: string
@@ -86,6 +83,12 @@ export interface FormsAppJob {
     type?: string
     priority?: number
   }
+}
+
+export type FormsAppJob = NewFormsAppJob & {
+  id: string
+  isSubmitted: boolean
+  createdAt: string
 }
 
 export interface JobSearchParameters {
