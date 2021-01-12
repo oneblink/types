@@ -362,6 +362,7 @@ export type GeoscopeAddressElement = FormElementRequired & {
   readOnly: boolean
   defaultValue?: GeoscopeAddress
   placeholderValue?: string
+  stateTerritoryFilter?: string[]
 } & LookupFormElement
 
 export type FormElementWithoutForm =

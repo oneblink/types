@@ -366,6 +366,7 @@ declare type GeoscopeAddressElement = FormElementRequired & {
   readOnly: boolean,
   defaultValue?: GeoscopeAddress,
   placeholderValue?: string,
+  stateTerritoryFilter?: string[],
 } & LookupFormElement
 
 declare type FormElementWithoutForm =
