@@ -3,14 +3,14 @@
 export type StateElectorate = {
   stateElectoralName?: string,
   stateElectoralType?: string,
-  [k: string]: unknown,
+  [k: string]: mixed,
 }[]
 export type MessagesLegacy = {
   code?: string,
   description?: string,
   message?: string,
   severity?: string,
-  [k: string]: unknown,
+  [k: string]: mixed,
 }[]
 
 export interface Address {
@@ -27,7 +27,7 @@ export interface Address {
   relatedBuildingIds?: string[];
   stateElectorate?: StateElectorate;
   messages?: MessagesLegacy;
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
 export interface AddressDetails {
   cadastralIdentifier?: string;
@@ -47,9 +47,9 @@ export interface AddressDetails {
   streetPrefix?: string;
   complexLevelIdentifier?: string;
   complexLevelType?: string;
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
-export interface ASGSMain {
+export type ASGSMain = {
   '2011'?: {
     mbId?: string,
     sa1Id?: string,
@@ -59,8 +59,8 @@ export interface ASGSMain {
     sa3Name?: string,
     sa4Id?: string,
     sa4Name?: string,
-    [k: string]: unknown,
-  };
+    [k: string]: mixed,
+  },
   '2016'?: {
     mbId?: string,
     sa1Id?: string,
@@ -70,29 +70,29 @@ export interface ASGSMain {
     sa3Name?: string,
     sa4Id?: string,
     sa4Name?: string,
-    [k: string]: unknown,
-  };
-  [k: string]: unknown;
+    [k: string]: mixed,
+  },
+  [k: string]: mixed,
 }
-export interface ASGSRemoteness {
+export type ASGSRemoteness = {
   '2011'?: {
     categoryCode?: string,
     categoryName?: string,
     code?: string,
-    [k: string]: unknown,
-  };
+    [k: string]: mixed,
+  },
   '2016'?: {
     categoryCode?: string,
     categoryName?: string,
     code?: string,
-    [k: string]: unknown,
-  };
-  [k: string]: unknown;
+    [k: string]: mixed,
+  },
+  [k: string]: mixed,
 }
 export interface CommonwealthElectorate {
   commElectoralName?: string;
   commElectoralPid?: string;
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
 export interface Geo {
   geoDatumCode?: string;
@@ -100,9 +100,9 @@ export interface Geo {
   geometry?: {
     coordinates?: number[],
     type?: string,
-    [k: string]: unknown,
+    [k: string]: mixed,
   };
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
 export interface AddressLinks {
   addressDetails?: string;
@@ -112,11 +112,11 @@ export interface AddressLinks {
   geo?: string;
   localGovernmentArea?: string;
   stateElectorate?: string;
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
 export interface LocalGovernmentArea {
   lgaName?: string;
   lgaPid?: string;
   lgaShortName?: string;
-  [k: string]: unknown;
+  [k: string]: mixed;
 }
