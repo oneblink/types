@@ -29,6 +29,10 @@ declare type BaseFormsAppStyles = {
 
 declare type VolunteersStyles = BaseFormsAppStyles
 
+declare type TilesStyles = BaseFormsAppStyles & {
+  logoUrl?: string,
+}
+
 declare type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string,
   menuItems: FormsAppMenuItem[],
@@ -106,7 +110,7 @@ declare type NewTilesFormsApp = _NewFormsApp & {
   type: 'TILES',
   slug: string,
   tiles: Array<FormTile | HrefTile | AppTile>,
-  styles: FormsListStyles,
+  styles: TilesStyles,
 }
 
 declare type Tile = {
