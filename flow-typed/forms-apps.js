@@ -1,5 +1,7 @@
 // @flow
 
+import { type Form } from './forms'
+
 type FormsAppBaseMenuItem = {
   label: string,
   icon: string,
@@ -26,6 +28,10 @@ declare type BaseFormsAppStyles = {
 }
 
 declare type VolunteersStyles = BaseFormsAppStyles
+
+declare type TilesStyles = BaseFormsAppStyles & {
+  logoUrl?: string,
+}
 
 declare type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string,
@@ -100,7 +106,35 @@ declare type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles,
 }
 
-declare type NewFormsApp = NewFormsListFormsApp | NewVolunteersFormsApp
+declare type NewTilesFormsApp = _NewFormsApp & {
+  type: 'TILES',
+  slug: string,
+  tiles: Array<FormTile | HrefTile | ContainerTile>,
+  styles: TilesStyles,
+}
+
+declare type Tile = {
+  icon: string
+}
+
+declare type FormTile = Tile & {
+  type: 'FORM'
+  form: Form,
+}
+
+declare type HrefTile = Tile & {
+  type: 'HREF'
+  url: string
+}
+
+declare type ContainerTile = Tile & {
+  type: 'CONTAINER',
+  slug: string,
+  title: string,
+  forms: Form[]
+}
+
+declare type NewFormsApp = NewFormsListFormsApp | NewVolunteersFormsApp | NewTilesFormsApp
 
 type _FormsApp = {
   id: number,
@@ -112,8 +146,10 @@ declare type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
 declare type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
 
+declare type TilesFormsApp = NewTilesFormsApp & _FormsApp
+
 declare type SolutionsApp = VolunteersFormsApp
-declare type FormsApp = FormsListFormsApp | SolutionsApp
+declare type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
 declare type OrganisationAppUser = {
   email: string,
