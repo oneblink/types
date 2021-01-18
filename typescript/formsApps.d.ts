@@ -110,7 +110,7 @@ declare type NewFormsListFormsApp = _NewFormsApp & {
 declare type NewTilesFormsApp = _NewFormsApp & {
   type: 'TILES'
   slug: string
-  tiles: Array<FormTile | HrefTile | AppTile>
+  tiles: Array<FormTile | HrefTile | ContainerTile>
   styles: TilesStyles
 }
 
@@ -128,8 +128,8 @@ declare type HrefTile = Tile & {
   url: string
 }
 
-declare type AppTile = Tile & {
-  type: 'TILE'
+declare type ContainerTile = Tile & {
+  type: 'CONTAINER'
   slug: string
   title: string
   forms: Form[]
