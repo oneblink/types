@@ -1,7 +1,5 @@
 // @flow
 
-import { type Form } from './forms'
-
 type FormsAppBaseMenuItem = {
   label: string,
   icon: string,
@@ -119,7 +117,7 @@ declare type Tile = {
 
 declare type FormTile = Tile & {
   type: 'FORM'
-  form: Form,
+  formId: number,
 }
 
 declare type HrefTile = Tile & {
@@ -131,7 +129,7 @@ declare type ContainerTile = Tile & {
   type: 'CONTAINER',
   slug: string,
   title: string,
-  forms: Form[]
+  formIds: number[]
 }
 
 declare type NewFormsApp = NewFormsListFormsApp | NewVolunteersFormsApp | NewTilesFormsApp
