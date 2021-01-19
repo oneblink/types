@@ -2,6 +2,7 @@
 
 declare type WebApp = {
   id: string,
+  isCorsEnabled: boolean,
   createdAt: string,
   links: {
     awsAccounts: string,
