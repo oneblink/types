@@ -112,7 +112,7 @@ declare type NewTilesFormsApp = _NewFormsApp & {
 }
 
 declare type Tile = {
-  icon: string
+  icon: string,
 }
 
 declare type FormTile = Tile & {
@@ -121,18 +121,21 @@ declare type FormTile = Tile & {
 }
 
 declare type HrefTile = Tile & {
-  type: 'HREF'
-  url: string
+  type: 'HREF',
+  url: string,
 }
 
 declare type ContainerTile = Tile & {
   type: 'CONTAINER',
   slug: string,
   title: string,
-  formIds: number[]
+  formIds: number[],
 }
 
-declare type NewFormsApp = NewFormsListFormsApp | NewVolunteersFormsApp | NewTilesFormsApp
+declare type NewFormsApp =
+  | NewFormsListFormsApp
+  | NewVolunteersFormsApp
+  | NewTilesFormsApp
 
 type _FormsApp = {
   id: number,
