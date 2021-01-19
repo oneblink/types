@@ -4,13 +4,14 @@ declare type WebApp = {
   id: string,
   isCorsEnabled: boolean,
   createdAt: string,
+  environments?: WebAppEnvironment[],
   links: {
     awsAccounts: string,
     organisations: string,
   },
 }
 
-declare type webAppEnvironment = {
+declare type WebAppEnvironment = {
   webAppId: string,
   environment: string,
   lastDeployment: string,

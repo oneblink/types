@@ -2,13 +2,14 @@ export interface WebApp {
   id: string
   isCorsEnabled: boolean
   createdAt: string
+  environments?: WebAppEnvironment[]
   links: {
     awsAccounts: string
     organisations: string
   }
 }
 
-export interface webAppEnvironment {
+export interface WebAppEnvironment {
   webAppId: string
   environment: string
   lastDeployment: string
