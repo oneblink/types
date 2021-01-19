@@ -116,7 +116,7 @@ declare type Tile = {
 }
 
 declare type FormTile = Tile & {
-  type: 'FORM'
+  type: 'FORM',
   formId: number,
 }
 
