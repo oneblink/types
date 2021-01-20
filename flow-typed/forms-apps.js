@@ -104,34 +104,34 @@ declare type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles,
 }
 
-type Tile = {
+type _BaseFormsAppTile = {
   icon: string,
   title: string,
 }
 
-declare type FormTile = Tile & {
+declare type FormTile = _BaseFormsAppTile & {
   type: 'FORM',
   formId: number,
 }
 
-declare type DraftsTile = Tile & {
+declare type DraftsTile = _BaseFormsAppTile & {
   type: 'DRAFTS',
 }
 
-declare type PendingTile = Tile & {
+declare type PendingTile = _BaseFormsAppTile & {
   type: 'PENDING_SUBMISSIONS',
 }
 
-declare type JobsTile = Tile & {
+declare type JobsTile = _BaseFormsAppTile & {
   type: 'JOBS',
 }
 
-declare type HrefTile = Tile & {
+declare type HrefTile = _BaseFormsAppTile & {
   type: 'HREF',
   url: string,
 }
 
-declare type ContainerTile = Tile & {
+declare type ContainerTile = _BaseFormsAppTile & {
   type: 'CONTAINER',
   slug: string,
   formIds: number[],
