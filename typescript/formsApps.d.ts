@@ -116,8 +116,8 @@ export type FormTile = _BaseFormsAppTile & {
   formId: number
 }
 
-export type DraftTile = _BaseFormsAppTile & {
-  type: 'DRAFT'
+export type DraftsTile = _BaseFormsAppTile & {
+  type: 'DRAFTS'
 }
 
 export type PendingTile = _BaseFormsAppTile & {
@@ -141,7 +141,7 @@ export type ContainerTile = _BaseFormsAppTile & {
 
 export type FormsAppTile =
   | FormTile
-  | DraftTile
+  | DraftsTile
   | PendingTile
   | JobsTile
   | HrefTile

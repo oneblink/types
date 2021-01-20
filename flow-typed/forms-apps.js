@@ -114,8 +114,8 @@ declare type FormTile = Tile & {
   formId: number,
 }
 
-declare type DraftTile = Tile & {
-  type: 'DRAFT',
+declare type DraftsTile = Tile & {
+  type: 'DRAFTS',
 }
 
 declare type PendingTile = Tile & {
@@ -139,7 +139,7 @@ declare type ContainerTile = Tile & {
 
 declare type FormsAppTile =
   | FormTile
-  | DraftTile
+  | DraftsTile
   | PendingTile
   | JobsTile
   | HrefTile
