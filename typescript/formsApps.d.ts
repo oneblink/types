@@ -7,38 +7,38 @@ type FormsAppBaseMenuItem = {
   icon: string
 }
 
-declare type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
+export type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
   type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PENDING_SUBMISSIONS' | 'PROFILE'
   isHidden: boolean
   isDefault: boolean
 }
 
-declare type FormsAppHrefMenuItem = FormsAppBaseMenuItem & {
+export type FormsAppHrefMenuItem = FormsAppBaseMenuItem & {
   type: 'HREF'
   href: string
 }
 
-declare type FormsAppMenuItem = FormsAppHrefMenuItem | FormsAppScreenMenuItem
+export type FormsAppMenuItem = FormsAppHrefMenuItem | FormsAppScreenMenuItem
 
-declare type BaseFormsAppStyles = {
+export type BaseFormsAppStyles = {
   foregroundColour?: string
   highlightColour?: string
   contrastColour?: string
   customCss?: string
 }
 
-declare type VolunteersStyles = BaseFormsAppStyles
+export type VolunteersStyles = BaseFormsAppStyles
 
-declare type TilesStyles = BaseFormsAppStyles & {
+export type TilesStyles = BaseFormsAppStyles & {
   logoUrl?: string
 }
 
-declare type FormsListStyles = BaseFormsAppStyles & {
+export type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string
   menuItems: FormsAppMenuItem[]
 }
 
-declare type AppleTouchStartupImage = {
+export type AppleTouchStartupImage = {
   href: string
   media: {
     deviceWidthPixels: number
@@ -47,7 +47,7 @@ declare type AppleTouchStartupImage = {
   }
 }
 
-declare type FormsAppHostnameConfiguration = {
+export type FormsAppHostnameConfiguration = {
   formsAppId: number
   createdAt: string
   updatedAt: string
@@ -92,49 +92,69 @@ type _NewFormsApp = {
   notificationEmailAddresses: string[]
 }
 
-declare type NewVolunteersFormsApp = _NewFormsApp & {
+export type NewVolunteersFormsApp = _NewFormsApp & {
   type: 'VOLUNTEERS'
   styles: VolunteersStyles
   categories: Array<{ label: string }>
   waiverUrl: string | null // nullable to allow creating solution without waiver
 }
 
-declare type NewFormsListFormsApp = _NewFormsApp & {
+export type NewFormsListFormsApp = _NewFormsApp & {
   type: 'FORMS_LIST'
   slug: string
   formIds: number[]
   styles: FormsListStyles
 }
 
-declare type NewTilesFormsApp = _NewFormsApp & {
-  type: 'TILES'
-  slug: string
-  tiles: Array<FormTile | HrefTile | ContainerTile>
-  styles: TilesStyles
-}
-
-declare type Tile = {
+type _BaseFormsAppTile = {
   icon: string
+  title: string
 }
 
-declare type FormTile = Tile & {
+export type FormTile = _BaseFormsAppTile & {
   type: 'FORM'
   formId: number
 }
 
-declare type HrefTile = Tile & {
+export type DraftTile = _BaseFormsAppTile & {
+  type: 'DRAFT'
+}
+
+export type PendingTile = _BaseFormsAppTile & {
+  type: 'PENDING_SUBMISSIONS'
+}
+
+export type JobsTile = _BaseFormsAppTile & {
+  type: 'JOBS'
+}
+
+export type HrefTile = _BaseFormsAppTile & {
   type: 'HREF'
   url: string
 }
 
-declare type ContainerTile = Tile & {
+export type ContainerTile = _BaseFormsAppTile & {
   type: 'CONTAINER'
   slug: string
-  title: string
   formIds: number[]
 }
 
-declare type NewFormsApp =
+export type FormsAppTile =
+  | FormTile
+  | DraftTile
+  | PendingTile
+  | JobsTile
+  | HrefTile
+  | ContainerTile
+
+export type NewTilesFormsApp = _NewFormsApp & {
+  type: 'TILES'
+  slug: string
+  tiles: FormsAppTile[]
+  styles: TilesStyles
+}
+
+export type NewFormsApp =
   | NewFormsListFormsApp
   | NewVolunteersFormsApp
   | NewTilesFormsApp
@@ -145,39 +165,39 @@ type _FormsApp = {
   updatedAt: string
 }
 
-declare type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
+export type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
-declare type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
+export type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
 
-declare type TilesFormsApp = NewTilesFormsApp & _FormsApp
+export type TilesFormsApp = NewTilesFormsApp & _FormsApp
 
-declare type SolutionsApp = VolunteersFormsApp
-declare type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
+export type SolutionsApp = VolunteersFormsApp
+export type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
-declare type OrganisationAppUser = {
+export type OrganisationAppUser = {
   email: string
   formsAppIds: number[]
 }
 
-declare type NewFormsAppUser = {
+export type NewFormsAppUser = {
   generatePassword: boolean
   welcomeEmailParameters?: unknown
 } & FormsAppUser
 
-declare type FormsAppUser = {
+export type FormsAppUser = {
   id: number
   email: string
   formsAppId: number
   createdAt: string
 }
 
-declare type NewFormsAppsDraft = {
+export type NewFormsAppsDraft = {
   formsAppUserUsername: string
   formsAppId: number
   drafts: AppDraft[]
 }
 
-declare type AppDraft = {
+export type AppDraft = {
   preFillFormDataId: string
   draftId: string
   formId: number
@@ -187,12 +207,12 @@ declare type AppDraft = {
   updatedAt: string
 }
 
-declare type FormsAppsDraft = {
+export type FormsAppsDraft = {
   createdAt: string
   updatedAt: string
 } & NewFormsAppsDraft
 
-declare type SendingAddress = {
+export type SendingAddress = {
   emailAddress: string
   formsAppId: number
   sesVerificationAttributes?: {
@@ -207,7 +227,7 @@ declare type SendingAddress = {
   updatedAt: Date
 }
 
-declare type FormsAppConfiguration = {
+export type FormsAppConfiguration = {
   type: FormsApp['type']
   organisationId: string
   formsAppId: number
@@ -217,6 +237,7 @@ declare type FormsAppConfiguration = {
   formsHostname: string
   samlIdentityProviderName: string | NoU
   styles: BaseFormsAppStyles
+  tiles?: FormsAppTile[]
   pwaSettings: FormsAppPWASettings | NoU
   isDraftsEnabled: boolean
   locale: string

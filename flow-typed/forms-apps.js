@@ -104,20 +104,26 @@ declare type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles,
 }
 
-declare type NewTilesFormsApp = _NewFormsApp & {
-  type: 'TILES',
-  slug: string,
-  tiles: Array<FormTile | HrefTile | ContainerTile>,
-  styles: TilesStyles,
-}
-
-declare type Tile = {
+type Tile = {
   icon: string,
+  title: string,
 }
 
 declare type FormTile = Tile & {
   type: 'FORM',
   formId: number,
+}
+
+declare type DraftTile = Tile & {
+  type: 'DRAFT',
+}
+
+declare type PendingTile = Tile & {
+  type: 'PENDING_SUBMISSIONS',
+}
+
+declare type JobsTile = Tile & {
+  type: 'JOBS',
 }
 
 declare type HrefTile = Tile & {
@@ -128,8 +134,22 @@ declare type HrefTile = Tile & {
 declare type ContainerTile = Tile & {
   type: 'CONTAINER',
   slug: string,
-  title: string,
   formIds: number[],
+}
+
+declare type FormsAppTile =
+  | FormTile
+  | DraftTile
+  | PendingTile
+  | JobsTile
+  | HrefTile
+  | ContainerTile
+
+declare type NewTilesFormsApp = _NewFormsApp & {
+  type: 'TILES',
+  slug: string,
+  tiles: FormsAppTile[],
+  styles: TilesStyles,
 }
 
 declare type NewFormsApp =
@@ -216,6 +236,7 @@ declare type FormsAppConfiguration = {
   formsHostname: string,
   samlIdentityProviderName: ?string,
   styles: BaseFormsAppStyles,
+  tiles?: FormsAppTile[],
   pwaSettings: ?FormsAppPWASettings,
   isDraftsEnabled: boolean,
   locale: string,
