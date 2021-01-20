@@ -13,7 +13,6 @@ declare type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
 
 declare type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
   type: 'CONTAINER',
-  slug: string,
   formIds: number[],
 }
 

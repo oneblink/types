@@ -15,7 +15,6 @@ export type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
 
 export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
   type: 'CONTAINER'
-  slug: string
   formIds: number[]
 }
 
