@@ -13,12 +13,27 @@ export type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean
 }
 
+export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
+  type: 'CONTAINER'
+  slug: string
+  formIds: number[]
+}
+
+export type FormsAppFormMenuItem = FormsAppBaseMenuItem & {
+  type: 'FORM'
+  formId: number
+}
+
 export type FormsAppHrefMenuItem = FormsAppBaseMenuItem & {
   type: 'HREF'
   href: string
 }
 
-export type FormsAppMenuItem = FormsAppHrefMenuItem | FormsAppScreenMenuItem
+export type FormsAppMenuItem =
+  | FormsAppHrefMenuItem
+  | FormsAppContainerMenuItem
+  | FormsAppFormMenuItem
+  | FormsAppScreenMenuItem
 
 export type BaseFormsAppStyles = {
   foregroundColour?: string
@@ -29,14 +44,12 @@ export type BaseFormsAppStyles = {
 
 export type VolunteersStyles = BaseFormsAppStyles
 
-export type TilesStyles = BaseFormsAppStyles & {
-  logoUrl?: string
-}
-
 export type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string
   menuItems: FormsAppMenuItem[]
 }
+
+export type TilesStyles = FormsListStyles
 
 export type AppleTouchStartupImage = {
   href: string
@@ -106,51 +119,9 @@ export type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles
 }
 
-type _BaseFormsAppTile = {
-  icon: string
-  title: string
-}
-
-export type FormTile = _BaseFormsAppTile & {
-  type: 'FORM'
-  formId: number
-}
-
-export type DraftsTile = _BaseFormsAppTile & {
-  type: 'DRAFTS'
-}
-
-export type PendingTile = _BaseFormsAppTile & {
-  type: 'PENDING_SUBMISSIONS'
-}
-
-export type JobsTile = _BaseFormsAppTile & {
-  type: 'JOBS'
-}
-
-export type HrefTile = _BaseFormsAppTile & {
-  type: 'HREF'
-  url: string
-}
-
-export type ContainerTile = _BaseFormsAppTile & {
-  type: 'CONTAINER'
-  slug: string
-  formIds: number[]
-}
-
-export type FormsAppTile =
-  | FormTile
-  | DraftsTile
-  | PendingTile
-  | JobsTile
-  | HrefTile
-  | ContainerTile
-
 export type NewTilesFormsApp = _NewFormsApp & {
   type: 'TILES'
   slug: string
-  tiles: FormsAppTile[]
   styles: TilesStyles
 }
 
@@ -227,7 +198,9 @@ export type SendingAddress = {
   updatedAt: Date
 }
 
-export type FormsAppConfiguration = {
+export type FormsAppConfiguration<
+  T extends BaseFormsAppStyles = BaseFormsAppStyles
+> = {
   type: FormsApp['type']
   organisationId: string
   formsAppId: number
@@ -236,8 +209,7 @@ export type FormsAppConfiguration = {
   isTrialExpired: boolean
   formsHostname: string
   samlIdentityProviderName: string | NoU
-  styles: BaseFormsAppStyles
-  tiles?: FormsAppTile[]
+  styles: T
   pwaSettings: FormsAppPWASettings | NoU
   isDraftsEnabled: boolean
   locale: string

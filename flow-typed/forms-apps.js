@@ -11,12 +11,27 @@ declare type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean,
 }
 
+declare type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
+  type: 'CONTAINER',
+  slug: string,
+  formIds: number[],
+}
+
+declare type FormsAppFormMenuItem = FormsAppBaseMenuItem & {
+  type: 'FORM',
+  formId: number,
+}
+
 declare type FormsAppHrefMenuItem = FormsAppBaseMenuItem & {
   type: 'HREF',
   href: string,
 }
 
-declare type FormsAppMenuItem = FormsAppHrefMenuItem | FormsAppScreenMenuItem
+declare type FormsAppMenuItem =
+  | FormsAppHrefMenuItem
+  | FormsAppContainerMenuItem
+  | FormsAppFormMenuItem
+  | FormsAppScreenMenuItem
 
 declare type BaseFormsAppStyles = {
   foregroundColour?: string,
@@ -27,14 +42,12 @@ declare type BaseFormsAppStyles = {
 
 declare type VolunteersStyles = BaseFormsAppStyles
 
-declare type TilesStyles = BaseFormsAppStyles & {
-  logoUrl?: string,
-}
-
 declare type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string,
   menuItems: FormsAppMenuItem[],
 }
+
+declare type TilesStyles = FormsListStyles
 
 declare type AppleTouchStartupImage = {
   href: string,
@@ -104,51 +117,9 @@ declare type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles,
 }
 
-type _BaseFormsAppTile = {
-  icon: string,
-  title: string,
-}
-
-declare type FormTile = _BaseFormsAppTile & {
-  type: 'FORM',
-  formId: number,
-}
-
-declare type DraftsTile = _BaseFormsAppTile & {
-  type: 'DRAFTS',
-}
-
-declare type PendingTile = _BaseFormsAppTile & {
-  type: 'PENDING_SUBMISSIONS',
-}
-
-declare type JobsTile = _BaseFormsAppTile & {
-  type: 'JOBS',
-}
-
-declare type HrefTile = _BaseFormsAppTile & {
-  type: 'HREF',
-  url: string,
-}
-
-declare type ContainerTile = _BaseFormsAppTile & {
-  type: 'CONTAINER',
-  slug: string,
-  formIds: number[],
-}
-
-declare type FormsAppTile =
-  | FormTile
-  | DraftsTile
-  | PendingTile
-  | JobsTile
-  | HrefTile
-  | ContainerTile
-
 declare type NewTilesFormsApp = _NewFormsApp & {
   type: 'TILES',
   slug: string,
-  tiles: FormsAppTile[],
   styles: TilesStyles,
 }
 
@@ -226,7 +197,9 @@ declare type FormsAppSendingAddress = {
   updatedAt: Date,
 }
 
-declare type FormsAppConfiguration = {
+declare type FormsAppConfiguration<
+  T: BaseFormsAppStyles = BaseFormsAppStyles
+> = {
   type: $PropertyType<FormsApp, 'type'>,
   organisationId: string,
   formsAppId: number,
@@ -235,8 +208,7 @@ declare type FormsAppConfiguration = {
   isTrialExpired: boolean,
   formsHostname: string,
   samlIdentityProviderName: ?string,
-  styles: BaseFormsAppStyles,
-  tiles?: FormsAppTile[],
+  styles: T,
   pwaSettings: ?FormsAppPWASettings,
   isDraftsEnabled: boolean,
   locale: string,
