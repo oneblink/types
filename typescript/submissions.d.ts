@@ -188,12 +188,17 @@ export interface GeneratePaymentConfigPayload {
 }
 
 export type NewFormSubmissionFileAccessToken = {
-  expiry: string
-  s3Location: string
   submisionId: string
+  expiresAt: string
+  s3: {
+    region: string
+    bucket: string
+    key: string
+  }
   emailAddress: string
 }
 
 export type FormSubmissionFileAccessToken = {
-  uniqueId: string
+  id: string
+  createdAt: string
 } & NewFormSubmissionFileAccessToken
