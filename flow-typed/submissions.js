@@ -183,8 +183,8 @@ declare type NewFormSubmissionFileAccessToken = {
   submisionId: string,
   expiresAt: string,
   s3: {
-    region: string
-    bucket: string
+    region: string,
+    bucket: string,
     key: string
   }
   emailAddress: string,
