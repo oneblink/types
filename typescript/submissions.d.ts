@@ -186,3 +186,14 @@ export interface GeneratePaymentConfigPayload {
   crn2?: string
   crn3?: string
 }
+
+export type NewFormSubmissionFileAccessToken = {
+  expiry: string
+  s3Location: string
+  submisionId: string
+  emailAddress: string
+}
+
+export type FormSubmissionFileAccessToken = {
+  uniqueId: string
+} & NewFormSubmissionFileAccessToken
