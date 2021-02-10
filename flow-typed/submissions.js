@@ -178,3 +178,19 @@ declare type GeneratePaymentConfigPayload = {
   crn2?: string,
   crn3?: string,
 }
+
+declare type NewFormSubmissionFileAccessToken = {
+  submisionId: string,
+  expiresAt: string,
+  s3: {
+    region: string
+    bucket: string
+    key: string
+  }
+  emailAddress: string,
+}
+
+declare type FormSubmissionFileAccessToken = {
+  id: string,
+  createdAt: string
+} & NewFormSubmissionFileAccessToken
