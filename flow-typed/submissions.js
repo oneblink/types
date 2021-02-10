@@ -186,7 +186,7 @@ declare type NewFormSubmissionFileAccessToken = {
     region: string,
     bucket: string,
     key: string
-  }
+  },
   emailAddress: string,
 }
 
