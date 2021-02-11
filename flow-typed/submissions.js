@@ -180,7 +180,7 @@ declare type GeneratePaymentConfigPayload = {
 }
 
 declare type NewFormSubmissionFileAccessToken = {
-  submisionId: string,
+  submissionId: string,
   expiresAt: string,
   s3: {
     region: string,
