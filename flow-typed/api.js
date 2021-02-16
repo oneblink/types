@@ -10,7 +10,7 @@ declare type APIEnvironment = {
   environment: string,
   lastDeployment: string,
   routes: APIEnvironmentRoute[],
-  cors: Object | boolean,
+  cors: APIEnvironmentCorsConfiguration | boolean,
   vpcSecurityGroupIds?: string,
   vpcSubnetIds?: string,
   status?: 'Warning' | 'Error' | 'Okay' | 'Unknown',
@@ -30,6 +30,19 @@ declare type API = {
   whiteListedEmails?: string[],
 }
 
+export type APIEnvironmentCorsConfiguration = {
+  maxAge?: number,
+  credentials?: boolean,
+  headers?: string[],
+  exposedHeaders?: string[],
+  origins?: string[],
+}
+
+export type APIEnvironmentNetworkConfiguration = {
+  vpcSubnets: string[],
+  vpcSecurityGroups: string[],
+}
+
 declare type APIDeploymentPayload = {
   scope: string,
   env: string,
@@ -38,21 +51,8 @@ declare type APIDeploymentPayload = {
     key: string,
     bucket: string,
   },
-  analytics?: {
-    key?: string,
-    secret?: string,
-    origin?: string,
-  },
   timeout: number,
-  cors:
-    | boolean
-    | {
-        maxAge?: number,
-        credentials?: boolean,
-        headers?: string[],
-        exposedHeaders?: string[],
-        origins?: string[],
-      },
+  cors: boolean | APIEnvironmentCorsConfiguration,
   runtime: string,
   handler: string,
   variables: {
@@ -62,10 +62,7 @@ declare type APIDeploymentPayload = {
     module: string,
     route: string,
   }>,
-  network: ?{
-    vpcSubnets: string[],
-    vpcSecurityGroups: string[],
-  },
+  network: ?APIEnvironmentNetworkConfiguration,
   memorySize?: number,
 }
 
