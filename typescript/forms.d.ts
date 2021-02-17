@@ -474,13 +474,13 @@ export type FormElementDynamicOptionSetSearchResponse = {
   formElementDynamicOptionSets: FormElementDynamicOptionSet[]
 } & BaseSearchResult
 
-export type NewFormApproval = {
+export type NewFormApprover = {
   formId: number
   type: 'SINGLE'
   appUserId: number
 }
 
-export type FormApproval = NewFormApproval & {
+export type FormApprover = NewFormApprover & {
   createdAt: string
   updatedAt: string
 }
