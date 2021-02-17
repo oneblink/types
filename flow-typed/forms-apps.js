@@ -109,6 +109,11 @@ declare type NewVolunteersFormsApp = _NewFormsApp & {
   waiverUrl: string | null, // nullable to allow creating solution without waiver
 }
 
+declare type NewApprovalsApp = _NewFormsApp & {
+  type: 'APPROVALS'
+  styles: VolunteersStyles
+}
+
 declare type NewFormsListFormsApp = _NewFormsApp & {
   type: 'FORMS_LIST',
   slug: string,
@@ -126,6 +131,7 @@ declare type NewFormsApp =
   | NewFormsListFormsApp
   | NewVolunteersFormsApp
   | NewTilesFormsApp
+  | NewApprovalsApp
 
 type _FormsApp = {
   id: number,
@@ -136,10 +142,11 @@ type _FormsApp = {
 declare type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
 declare type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
+declare type ApprovalsApp = NewApprovalsApp & _FormsApp
 
 declare type TilesFormsApp = NewTilesFormsApp & _FormsApp
 
-declare type SolutionsApp = VolunteersFormsApp
+declare type SolutionsApp = VolunteersFormsApp | ApprovalsApp
 declare type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
 declare type OrganisationAppUser = {
@@ -217,4 +224,10 @@ declare type FormsAppConfiguration<
     waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
   } | void,
   isGoogleLoginSupported: boolean,
+}
+
+declare type FormApproval = {
+  formId: number
+  type: 'SINGLE'
+  appUserId: number
 }

@@ -124,10 +124,16 @@ export type NewTilesFormsApp = _NewFormsApp & {
   styles: TilesStyles
 }
 
+export type NewApprovalsApp = _NewFormsApp & {
+  type: 'APPROVALS'
+  styles: VolunteersStyles
+}
+
 export type NewFormsApp =
   | NewFormsListFormsApp
   | NewVolunteersFormsApp
   | NewTilesFormsApp
+  | NewApprovalsApp
 
 type _FormsApp = {
   id: number
@@ -138,10 +144,12 @@ type _FormsApp = {
 export type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
 export type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
+export type ApprovalsApp = NewApprovalsApp & _FormsApp
 
 export type TilesFormsApp = NewTilesFormsApp & _FormsApp
 
-export type SolutionsApp = VolunteersFormsApp
+export type SolutionsApp = VolunteersFormsApp | ApprovalsApp
+
 export type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
 export type OrganisationAppUser = {
@@ -220,4 +228,10 @@ export type FormsAppConfiguration<
       }
     | undefined
   isGoogleLoginSupported: boolean
+}
+
+export type FormApproval = {
+  formId: number
+  type: 'SINGLE'
+  appUserId: number
 }
