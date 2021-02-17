@@ -230,14 +230,3 @@ export type FormsAppConfiguration<
     | undefined
   isGoogleLoginSupported: boolean
 }
-
-export type NewFormApproval = {
-  formId: number
-  type: 'SINGLE'
-  appUserId: number
-}
-
-export type FormApproval = NewFormApproval & {
-  createdAt: string
-  updatedAt: string
-}

@@ -185,12 +185,29 @@ declare type NewFormSubmissionFileAccessToken = {
   s3: {
     region: string,
     bucket: string,
-    key: string
+    key: string,
   },
   emailAddress: string,
 }
 
 declare type FormSubmissionFileAccessToken = {
   id: string,
-  createdAt: string
+  createdAt: string,
 } & NewFormSubmissionFileAccessToken
+
+declare type NewFormSubmissionApproval = {
+  previousFormSubmissionApprovalId?: number,
+  status: 'PENDING',
+  notificationEmailAddress?: string,
+  notes?: string,
+  submissionId: string,
+  formId: number,
+  appUserId: number,
+}
+
+declare type FormSubmissionApproval = NewFormSubmissionApproval & {
+  id: number,
+  status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
+  createdAt: string,
+  updatedAt: string,
+}

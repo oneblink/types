@@ -226,14 +226,3 @@ declare type FormsAppConfiguration<
   } | void,
   isGoogleLoginSupported: boolean,
 }
-
-declare type NewFormApproval = {
-  formId: number,
-  type: 'SINGLE',
-  appUserId: number,
-}
-
-declare type FormApproval = NewFormApproval & {
-  createdAt: string,
-  updatedAt: string,
-}

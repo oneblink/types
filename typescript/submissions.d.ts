@@ -202,3 +202,20 @@ export type FormSubmissionFileAccessToken = {
   id: string
   createdAt: string
 } & NewFormSubmissionFileAccessToken
+
+export type NewFormSubmissionApproval = {
+  previousFormSubmissionApprovalId?: number
+  status: 'PENDING'
+  notificationEmailAddress?: string
+  notes?: string
+  submissionId: string
+  formId: number
+  appUserId: number
+}
+
+export type FormSubmissionApproval = NewFormSubmissionApproval & {
+  id: number
+  status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
+  createdAt: string
+  updatedAt: string
+}
