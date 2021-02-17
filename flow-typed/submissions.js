@@ -202,7 +202,7 @@ declare type NewFormSubmissionApproval = {
   notes?: string,
   submissionId: string,
   formId: number,
-  appUserId: number,
+  formsAppUserId: number,
 }
 
 declare type FormSubmissionApproval = NewFormSubmissionApproval & {

@@ -504,7 +504,7 @@ declare type FormElementLookupSearchParameters = FormElementDynamicOptionSetSear
 declare type NewFormApprover = {
   formId: number,
   type: 'SINGLE',
-  appUserId: number,
+  formsAppUserId: number,
 }
 
 declare type FormApprover = NewFormApprover & {

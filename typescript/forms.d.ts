@@ -477,7 +477,7 @@ export type FormElementDynamicOptionSetSearchResponse = {
 export type NewFormApprover = {
   formId: number
   type: 'SINGLE'
-  appUserId: number
+  formsAppUserId: number
 }
 
 export type FormApprover = NewFormApprover & {

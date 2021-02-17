@@ -210,7 +210,7 @@ export type NewFormSubmissionApproval = {
   notes?: string
   submissionId: string
   formId: number
-  appUserId: number
+  formsAppUserId: number
 }
 
 export type FormSubmissionApproval = NewFormSubmissionApproval & {
