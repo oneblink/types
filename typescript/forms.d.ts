@@ -473,3 +473,20 @@ export type FormElementLookupSearchResponse = {
 export type FormElementDynamicOptionSetSearchResponse = {
   formElementDynamicOptionSets: FormElementDynamicOptionSet[]
 } & BaseSearchResult
+
+export type NewFormSubmissionApproval = {
+  previousFormSubmissionApprovalId?: number
+  status: 'PENDING'
+  notificationEmailAddress?: string
+  notes?: string
+  submissionId: string
+  formId: number
+  appUserId: number
+}
+
+export type FormSubmissionApproval = NewFormSubmissionApproval & {
+  id: number
+  status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
+  createdAt: string
+  updatedAt: string
+}

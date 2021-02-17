@@ -40,6 +40,7 @@ declare type BaseFormsAppStyles = {
 }
 
 declare type VolunteersStyles = BaseFormsAppStyles
+declare type ApprovalsStyles = BaseFormsAppStyles
 
 declare type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string,
@@ -110,8 +111,8 @@ declare type NewVolunteersFormsApp = _NewFormsApp & {
 }
 
 declare type NewApprovalsApp = _NewFormsApp & {
-  type: 'APPROVALS'
-  styles: VolunteersStyles
+  type: 'APPROVALS',
+  styles: ApprovalsStyles,
 }
 
 declare type NewFormsListFormsApp = _NewFormsApp & {
@@ -226,8 +227,13 @@ declare type FormsAppConfiguration<
   isGoogleLoginSupported: boolean,
 }
 
-declare type FormApproval = {
-  formId: number
-  type: 'SINGLE'
-  appUserId: number
+declare type NewFormApproval = {
+  formId: number,
+  type: 'SINGLE',
+  appUserId: number,
+}
+
+declare type FormApproval = NewFormApproval & {
+  createdAt: string,
+  updatedAt: string,
 }

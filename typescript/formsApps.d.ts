@@ -42,6 +42,7 @@ export type BaseFormsAppStyles = {
 }
 
 export type VolunteersStyles = BaseFormsAppStyles
+export type ApprovalsStyles = BaseFormsAppStyles
 
 export type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string
@@ -126,7 +127,7 @@ export type NewTilesFormsApp = _NewFormsApp & {
 
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
-  styles: VolunteersStyles
+  styles: ApprovalsStyles
 }
 
 export type NewFormsApp =
@@ -230,8 +231,13 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
 }
 
-export type FormApproval = {
+export type NewFormApproval = {
   formId: number
   type: 'SINGLE'
   appUserId: number
+}
+
+export type FormApproval = NewFormApproval & {
+  createdAt: string
+  updatedAt: string
 }
