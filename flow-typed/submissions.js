@@ -195,18 +195,22 @@ declare type FormSubmissionFileAccessToken = {
   createdAt: string,
 } & NewFormSubmissionFileAccessToken
 
-declare type NewFormSubmissionApproval = {
+declare type BaseFormSubmissionApproval = {
   previousFormSubmissionApprovalId?: number,
-  status: 'PENDING',
-  notificationEmailAddress?: string,
-  notes?: string,
+
   submissionId: string,
   formId: number,
   formsAppUserId: number,
 }
 
-declare type FormSubmissionApproval = NewFormSubmissionApproval & {
+declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
+  status: 'PENDING',
+}
+
+declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: number,
+  notificationEmailAddress?: string,
+  notes?: string,
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
