@@ -195,7 +195,7 @@ declare type FormSubmissionFileAccessToken = {
   createdAt: string,
 } & NewFormSubmissionFileAccessToken
 
-declare type BaseFormSubmissionApproval = {
+type BaseFormSubmissionApproval = {
   previousFormSubmissionApprovalId?: number,
 
   submissionId: string,
