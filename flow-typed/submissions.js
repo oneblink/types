@@ -22,6 +22,7 @@ declare type FormSubmission = DraftSubmission &
     jobId: string | null,
     externalId: string | null,
     preFillFormDataId: string | null,
+    previousFormSubmissionApprovalId?: number,
   }
 
 declare type FormSubmissionResult = FormSubmission & {

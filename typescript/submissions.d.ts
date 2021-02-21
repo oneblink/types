@@ -24,6 +24,7 @@ export type FormSubmission = DraftSubmission &
     jobId: string | null
     externalId: string | null
     preFillFormDataId: string | null
+    previousFormSubmissionApprovalId?: number
   }
 
 export type FormSubmissionResult = FormSubmission & {
