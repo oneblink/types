@@ -201,11 +201,11 @@ type BaseFormSubmissionApproval = {
   submissionId: string,
   formId: number,
   formsAppUserId: number,
+  notificationEmailAddress?: string,
 }
 
 declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING',
-  notificationEmailAddress?: string,
 }
 
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
