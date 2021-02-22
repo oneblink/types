@@ -206,15 +206,15 @@ export type FormSubmissionFileAccessToken = {
 
 type BaseFormSubmissionApproval = {
   previousFormSubmissionApprovalId?: number
-
   submissionId: string
   formId: number
   formsAppUserId: number
+  notificationEmailAddress?: string
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING'
-  notificationEmailAddress?: string
+  
 }
 
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
