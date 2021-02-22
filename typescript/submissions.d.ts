@@ -214,13 +214,14 @@ type BaseFormSubmissionApproval = {
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING'
+  notificationEmailAddress?: string
 }
 
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: number
-  notificationEmailAddress?: string
   notes?: string
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
   createdAt: string
   updatedAt: string
+  submissionTimestamp: string
 }
