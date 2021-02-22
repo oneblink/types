@@ -198,7 +198,6 @@ declare type FormSubmissionFileAccessToken = {
 
 type BaseFormSubmissionApproval = {
   previousFormSubmissionApprovalId?: number,
-
   submissionId: string,
   formId: number,
   formsAppUserId: number,
@@ -206,13 +205,14 @@ type BaseFormSubmissionApproval = {
 
 declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING',
+  notificationEmailAddress?: string,
 }
 
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: number,
-  notificationEmailAddress?: string,
   notes?: string,
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
+  submissionTimestamp: string,
 }
