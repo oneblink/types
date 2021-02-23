@@ -214,5 +214,4 @@ declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
-  submissionTimestamp: string,
 }
