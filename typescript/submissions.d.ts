@@ -125,7 +125,7 @@ export type S3DraftUploadCredentials = _S3UploadCredentials & {
   draftDataId: string
 }
 
-export interface FormSubmissionMeta {
+type _FormSubmissionMeta = {
   submissionId: string
   formId: number
   formsAppId: number
@@ -147,6 +147,13 @@ export interface FormSubmissionMeta {
       providerUserId?: string
     }
   }
+}
+
+export type NewFormSubmissionMeta = _FormSubmissionMeta & {
+  keyId?: string
+}
+
+export type FormSubmissionMeta = _FormSubmissionMeta & {
   key?: {
     id: string
     name: string

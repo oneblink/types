@@ -117,7 +117,7 @@ declare type S3DraftUploadCredentials = _S3UploadCredentials & {
   draftDataId: string,
 }
 
-declare type FormSubmissionMeta = {
+type _FormSubmissionMeta = {
   submissionId: string,
   formId: number,
   formsAppId: number,
@@ -139,6 +139,13 @@ declare type FormSubmissionMeta = {
       providerUserId?: string,
     },
   },
+}
+
+declare type NewFormSubmissionMeta = _FormSubmissionMeta & {
+  keyId?: string,
+}
+
+declare type FormSubmissionMeta = _FormSubmissionMeta & {
   key?: {
     id: string,
     name: string,
