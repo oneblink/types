@@ -136,7 +136,7 @@ export type WebhookSubscription = {
   keyId: string
 }
 
-type BaseFormSubmissionLambdaEvent = {
+export type BaseFormSubmissionLambdaEvent = {
   submissionId: string
   formId: number
   organisationId: string
