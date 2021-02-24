@@ -67,27 +67,20 @@ export type OneBlinkAPISubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean
 }
 
+export type TrimUriOption = {
+  label: string
+  uri: number
+}
+
 export type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM'
   configuration: {
     environmentId: string
     recordTitle: string | undefined
-    container: {
-      uri: number
-      label: string
-    }
-    recordType: {
-      uri: number
-      label: string
-    }
-    actionDefinition: {
-      uri: number
-      label: string
-    }
-    location: {
-      uri: number
-      label: string
-    }
+    container: TrimUriOption
+    recordType: TrimUriOption
+    actionDefinition: TrimUriOption
+    location: TrimUriOption
     includeSubmissionIdInPdf?: boolean
   }
   isDraft: boolean
@@ -134,6 +127,43 @@ export type FormSubmissionEvent =
 export type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
+
+export type WebhookSubscription = {
+  id: number
+  createdAt?: Date
+  callbackUrl: string
+  organisationId: string
+  keyId: string
+}
+
+type BaseFormSubmissionLambdaEvent = {
+  submissionId: string
+  formId: number
+  organisationId: string
+  bucketName: string
+  key: string
+  isDraft: boolean
+  jobId?: string
+  externalId?: string
+  submissionTimestamp: string
+  formsAppId: number
+  keyId?: string
+  user?: {
+    userId: string
+    firstName?: string
+    picture?: string
+    providerUserId?: string
+    providerType?: string
+    fullName?: string
+    lastName?: string
+    email?: string
+  }
+  lambda: string
+}
+
+export type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
+  submissionEvent: T
+}
 
 export type WebhookSubmissionEventPayload = {
   formId: number
