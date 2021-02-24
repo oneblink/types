@@ -136,6 +136,15 @@ export type WebhookSubscription = {
   keyId: string
 }
 
+export interface S3SubmissionTags {
+  externalId?: string
+  jobId?: string
+  payment?: 'PENDING' | 'SUCCEEDED' | 'FAILED'
+  userToken?: string
+  usernameToken?: string
+  previousFormSubmissionApprovalId?: string
+}
+
 export type BaseFormSubmissionLambdaEvent = {
   submissionId: string
   formId: number
@@ -143,8 +152,6 @@ export type BaseFormSubmissionLambdaEvent = {
   bucketName: string
   key: string
   isDraft: boolean
-  jobId?: string
-  externalId?: string
   submissionTimestamp: string
   formsAppId: number
   keyId?: string
@@ -158,8 +165,8 @@ export type BaseFormSubmissionLambdaEvent = {
     lastName?: string
     email?: string
   }
-  lambda: string
-}
+  lambda?: string
+} & S3SubmissionTags
 
 export type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
   submissionEvent: T

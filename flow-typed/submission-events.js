@@ -136,15 +136,22 @@ declare type WebhookSubscription = {
   keyId: string,
 }
 
-type BaseFormSubmissionLambdaEvent = {
+declare interface S3SubmissionTags {
+  externalId?: string;
+  jobId?: string;
+  payment?: 'PENDING' | 'SUCCEEDED' | 'FAILED';
+  userToken?: string;
+  usernameToken?: string;
+  previousFormSubmissionApprovalId?: string;
+}
+
+declare type BaseFormSubmissionLambdaEvent = {
   submissionId: string,
   formId: number,
   organisationId: string,
   bucketName: string,
   key: string,
   isDraft: boolean,
-  jobId?: string,
-  externalId?: string,
   submissionTimestamp: string,
   formsAppId: number,
   keyId?: string,
@@ -158,8 +165,8 @@ type BaseFormSubmissionLambdaEvent = {
     lastName?: string,
     email?: string,
   },
-  lambda: string,
-}
+  lambda?: string,
+} & S3SubmissionTags
 
 declare type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
   submissionEvent: T,
