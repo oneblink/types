@@ -215,7 +215,8 @@ type BaseFormSubmissionApproval = {
   previousFormSubmissionApprovalId?: number
   submissionId: string
   formId: number
-  formsAppUserId: number
+  username: string
+  approvalsFormsAppId: number
   notificationEmailAddress?: string
 }
 
