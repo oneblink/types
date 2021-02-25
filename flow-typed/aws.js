@@ -1,17 +1,17 @@
 // @flow
 
 declare type AWSCredentials = {
-  AccessKeyId: string
-  SecretAccessKey: string
-  SessionToken: string
-  Expiration: string
+  AccessKeyId: string,
+  SecretAccessKey: string,
+  SessionToken: string,
+  Expiration: string,
 }
 
 declare type FormS3Credentials = {
-  credentials: AWSCredentials
+  credentials: AWSCredentials,
   s3: {
-    bucket: string
-    key: string
-    region: string
-  }
+    bucket: string,
+    key: string,
+    region: string,
+  },
 }
