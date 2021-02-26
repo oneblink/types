@@ -1,5 +1,3 @@
-// @flow
-
 import { NoU } from './misc'
 
 type FormsAppBaseMenuItem = {
@@ -191,8 +189,9 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & NewFormsAppsDraft
 
-export type SendingAddress = {
+export type FormsAppSendingAddress = {
   emailAddress: string
+  emailName?: string
   formsAppId: number
   sesVerificationAttributes?: {
     VerificationStatus:
