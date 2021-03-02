@@ -56,6 +56,7 @@ export interface NewFormsAppDraft {
   formId: number
   externalId: string | NoU
   jobId: string | NoU
+  previousFormSubmissionApprovalId?: number
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {

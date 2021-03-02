@@ -1,4 +1,5 @@
 // @flow
+// @ts-nocheck
 
 declare type NewDraftSubmission = {
   submission: {
@@ -47,6 +48,7 @@ declare type NewFormsAppDraft = {
   formId: number,
   externalId: ?string,
   jobId: ?string,
+  previousFormSubmissionApprovalId?: number,
 }
 
 declare type FormsAppDraft = NewFormsAppDraft & {
