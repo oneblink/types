@@ -6,13 +6,9 @@ declare type NewDraftSubmission = {
     +[key: string]: mixed,
   },
   definition: Form,
-  previousFormSubmissionApprovalId: number | void,
 }
 
-declare type NewFormSubmission = $Diff<
-  NewDraftSubmission,
-  {| previousFormSubmissionApprovalId: number | void |}
-> & {
+declare type NewFormSubmission = NewDraftSubmission & {
   captchaTokens: string[],
 }
 
@@ -52,6 +48,7 @@ declare type NewFormsAppDraft = {
   formId: number,
   externalId: ?string,
   jobId: ?string,
+  previousFormSubmissionApprovalId?: number,
 }
 
 declare type FormsAppDraft = NewFormsAppDraft & {
