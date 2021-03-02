@@ -228,6 +228,7 @@ export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: number
   notes?: string
+  internateNotes?: string
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
   createdAt: string
   updatedAt: string

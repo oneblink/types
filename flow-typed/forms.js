@@ -501,10 +501,14 @@ declare type FormElementLookup = NewFormElementLookup & {
 
 declare type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
 
-declare type NewFormApprover = {
-  formId: number,
+declare type FormApprovalStep = {
   type: 'SINGLE',
   username: string,
+  label: string,
+}
+declare type NewFormApprover = {
+  formId: number,
+  steps: FormApprovalStep[],
 }
 
 declare type FormApprover = NewFormApprover & {

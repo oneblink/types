@@ -221,6 +221,7 @@ declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: number,
   notes?: string,
+  internalNotes?: string,
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
