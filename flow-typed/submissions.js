@@ -1,13 +1,18 @@
 // @flow
+// @ts-nocheck
 
 declare type NewDraftSubmission = {
   submission: {
     +[key: string]: mixed,
   },
   definition: Form,
+  previousFormSubmissionApprovalId: number | void,
 }
 
-declare type NewFormSubmission = NewDraftSubmission & {
+declare type NewFormSubmission = $Diff<
+  NewDraftSubmission,
+  {| previousFormSubmissionApprovalId: number | void |}
+> & {
   captchaTokens: string[],
 }
 

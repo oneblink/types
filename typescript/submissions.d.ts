@@ -7,9 +7,13 @@ export interface NewDraftSubmission {
     readonly [key: string]: unknown
   }
   definition: Form
+  previousFormSubmissionApprovalId?: number
 }
 
-export type NewFormSubmission = NewDraftSubmission & {
+export type NewFormSubmission = Omit<
+  NewDraftSubmission,
+  'previousFormSubmissionApprovalId'
+> & {
   captchaTokens: string[]
 }
 
