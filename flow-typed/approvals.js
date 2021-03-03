@@ -9,7 +9,6 @@ declare type FormApprovalFlowStep = {
 declare type NewFormApprovalFlow = {
   formId: number,
   steps: FormApprovalFlowStep[],
-  approvalsFormsAppId: number,
 }
 declare type FormApprovalFlow = NewFormApprovalFlow & {
   createdAt: string,
@@ -18,7 +17,7 @@ declare type FormApprovalFlow = NewFormApprovalFlow & {
 
 declare type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
   submissionId: string,
-  formId: number,
+  approvalsFormsAppId: number,
 }
 declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,
