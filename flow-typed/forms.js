@@ -500,18 +500,3 @@ declare type FormElementLookup = NewFormElementLookup & {
 }
 
 declare type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
-
-declare type FormApprovalStep = {
-  type: 'SINGLE',
-  username: string,
-  label: string,
-}
-declare type NewFormApprover = {
-  formId: number,
-  steps: FormApprovalStep[],
-}
-
-declare type FormApprover = NewFormApprover & {
-  createdAt: string,
-  updatedAt: string,
-}

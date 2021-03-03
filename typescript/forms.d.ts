@@ -473,18 +473,3 @@ export type FormElementLookupSearchResponse = {
 export type FormElementDynamicOptionSetSearchResponse = {
   formElementDynamicOptionSets: FormElementDynamicOptionSet[]
 } & BaseSearchResult
-
-export interface FormApprovalStep {
-  type: 'SINGLE'
-  username: string
-  label: string
-}
-export interface NewFormApprover {
-  formId: number
-  steps: FormApprovalStep[]
-}
-
-export type FormApprover = NewFormApprover & {
-  createdAt: string
-  updatedAt: string
-}

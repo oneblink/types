@@ -11,6 +11,7 @@ import * as TeamMemberTypes from './typescript/teamMembers'
 import * as OrganisationTypes from './typescript/organisations'
 import * as GeoscapeTypes from './typescript/geoscape'
 import * as AWSTypes from './typescript/aws'
+import * as ApprovalTypes from './typescript/approvals'
 export {
   APITypes,
   FormTypes,
@@ -25,4 +26,5 @@ export {
   OrganisationTypes,
   GeoscapeTypes,
   AWSTypes,
+  ApprovalTypes,
 }
