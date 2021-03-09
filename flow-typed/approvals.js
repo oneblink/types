@@ -18,7 +18,7 @@ declare type FormApprovalFlow = NewFormApprovalFlow & {
 declare type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
   submissionId: string,
   approvalsFormsAppId: number,
-  previousFormSubmissionApprovalId?: number,
+  previousFormSubmissionApprovalId?: string,
 }
 declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,

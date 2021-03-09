@@ -15,7 +15,7 @@ export type FormApprovalFlow = NewFormApprovalFlow & {
 export type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
   submissionId: string
   approvalsFormsAppId: number
-  previousFormSubmissionApprovalId?: number
+  previousFormSubmissionApprovalId?: string
 }
 export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number
