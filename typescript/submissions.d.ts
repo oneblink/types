@@ -24,7 +24,7 @@ export type FormSubmission = DraftSubmission &
     jobId: string | null
     externalId: string | null
     preFillFormDataId: string | null
-    previousFormSubmissionApprovalId?: number
+    previousFormSubmissionApprovalId?: string
   }
 
 export type FormSubmissionResult = FormSubmission & {
@@ -56,7 +56,7 @@ export interface NewFormsAppDraft {
   formId: number
   externalId: string | NoU
   jobId: string | NoU
-  previousFormSubmissionApprovalId?: number
+  previousFormSubmissionApprovalId?: string
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {

@@ -23,7 +23,7 @@ declare type FormSubmission = DraftSubmission &
     jobId: string | null,
     externalId: string | null,
     preFillFormDataId: string | null,
-    previousFormSubmissionApprovalId?: number,
+    previousFormSubmissionApprovalId?: string,
   }
 
 declare type FormSubmissionResult = FormSubmission & {
@@ -48,7 +48,7 @@ declare type NewFormsAppDraft = {
   formId: number,
   externalId: ?string,
   jobId: ?string,
-  previousFormSubmissionApprovalId?: number,
+  previousFormSubmissionApprovalId?: string,
 }
 
 declare type FormsAppDraft = NewFormsAppDraft & {
