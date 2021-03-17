@@ -344,6 +344,12 @@ export type GeoscapeAddressElement = FormElementRequired & {
   stateTerritoryFilter?: string[]
 } & LookupFormElement
 
+export type ComplianceElement = FormElementWithOptionsBase & {
+  type: 'compliance'
+  readOnly: boolean
+  defaultValue?: NoU | string
+}
+
 export type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -372,6 +378,7 @@ export type FormElementWithoutForm =
   | AutoCompleteElement
   | SummaryElement
   | GeoscapeAddressElement
+  | ComplianceElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
