@@ -169,11 +169,18 @@ declare type AutoCompleteElement = FormElementWithOptionsBase & {
   placeholderValue?: string,
 }
 
+declare type ComplianceElement = FormElementWithOptionsBase & {
+  type: 'compliance',
+  readOnly: boolean,
+  defaultValue?: ?string,
+}
+
 declare type FormElementWithOptions =
   | RadioButtonElement
   | CheckboxElement
   | SelectElement
   | AutoCompleteElement
+  | ComplianceElement
 
 // date element types
 type DateElementBase = {
@@ -349,20 +356,11 @@ declare type GeoscapeAddressElement = {
   stateTerritoryFilter?: string[],
 } & LookupFormElement
 
-declare type ComplianceElement = FormElementWithOptionsBase & {
-  type: 'compliance',
-  readOnly: boolean,
-  defaultValue?: ?string,
-}
-
 declare type FormElementWithoutForm =
   | TextElement
   | EmailElement
   | TextareaElement
   | NumberElement
-  | SelectElement
-  | RadioButtonElement
-  | CheckboxElement
   | DrawElement
   | CameraElement
   | DateElement
@@ -380,10 +378,9 @@ declare type FormElementWithoutForm =
   | FilesElement
   | CalculationElement
   | TelephoneElement
-  | AutoCompleteElement
   | SummaryElement
   | GeoscapeAddressElement
-  | ComplianceElement
+  | FormElementWithOptions
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 

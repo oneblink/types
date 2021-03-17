@@ -169,11 +169,18 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
   placeholderValue?: string
 } & LookupFormElement
 
+export type ComplianceElement = FormElementWithOptionsBase & {
+  type: 'compliance'
+  readOnly: boolean
+  defaultValue?: NoU | string
+}
+
 export type FormElementWithOptions =
   | RadioButtonElement
   | CheckboxElement
   | SelectElement
   | AutoCompleteElement
+  | ComplianceElement
 
 // date element types
 export type DateElementBase = FormElementRequired & {
@@ -345,20 +352,11 @@ export type GeoscapeAddressElement = FormElementRequired & {
   stateTerritoryFilter?: string[]
 } & LookupFormElement
 
-export type ComplianceElement = FormElementWithOptionsBase & {
-  type: 'compliance'
-  readOnly: boolean
-  defaultValue?: NoU | string
-}
-
 export type FormElementWithoutForm =
   | TextElement
   | EmailElement
   | TextareaElement
   | NumberElement
-  | SelectElement
-  | RadioButtonElement
-  | CheckboxElement
   | DrawElement
   | CameraElement
   | DateElement
@@ -376,10 +374,9 @@ export type FormElementWithoutForm =
   | FilesElement
   | CalculationElement
   | TelephoneElement
-  | AutoCompleteElement
   | SummaryElement
   | GeoscapeAddressElement
-  | ComplianceElement
+  | FormElementWithOptions
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
