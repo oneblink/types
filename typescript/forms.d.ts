@@ -346,6 +346,7 @@ export type GeoscapeAddressElement = FormElementRequired & {
 
 export type ComplianceElement = FormElementWithOptionsBase & {
   type: 'compliance'
+  buttons: boolean
   readOnly: boolean
   defaultValue?: NoU | string
 }
