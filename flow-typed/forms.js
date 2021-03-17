@@ -348,6 +348,12 @@ declare type GeoscapeAddressElement = {
   stateTerritoryFilter?: string[],
 } & LookupFormElement
 
+declare type ComplianceElement = FormElementWithOptionsBase & {
+  type: 'compliance',
+  readOnly: boolean,
+  defaultValue?: ?string,
+}
+
 declare type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -376,6 +382,7 @@ declare type FormElementWithoutForm =
   | AutoCompleteElement
   | SummaryElement
   | GeoscapeAddressElement
+  | ComplianceElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 
