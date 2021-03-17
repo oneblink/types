@@ -86,6 +86,7 @@ export interface _FormElementBase {
 export type FormElementBase = _FormElementBase & {
   name: string
   label: string
+  hint?: string
 }
 
 export type FormElementRequired = FormElementBase & {
@@ -400,11 +401,6 @@ export type ConditionalPredicateElement =
   | AutoCompleteElement
 
 ///////////////////////////////////////////////////////////////
-
-export interface TrimUriOption {
-  label: string
-  uri: number
-}
 
 export type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
 

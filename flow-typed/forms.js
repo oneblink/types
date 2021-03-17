@@ -86,6 +86,7 @@ declare type _FormElementBase = {
 declare type FormElementBase = _FormElementBase & {
   name: string,
   label: string,
+  hint?: string,
 }
 
 declare type FormElementRequired = FormElementBase & {
