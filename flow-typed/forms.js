@@ -35,6 +35,7 @@ declare type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
+  | 'compliance'
 
 declare type LookupFormElement = {
   isDataLookup: boolean,

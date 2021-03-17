@@ -35,6 +35,7 @@ export type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
+  | 'compliance'
 
 export type LookupFormElement = {
   isDataLookup: boolean
