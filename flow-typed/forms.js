@@ -350,7 +350,6 @@ declare type GeoscapeAddressElement = {
 
 declare type ComplianceElement = FormElementWithOptionsBase & {
   type: 'compliance',
-  buttons: boolean,
   readOnly: boolean,
   defaultValue?: ?string,
 }
