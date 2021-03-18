@@ -134,6 +134,7 @@ type _FormSubmissionMeta = {
   formName?: string
   user?: {
     userId: string
+    username?: string
     firstName?: string
     picture?: string
     providerUserId?: string
@@ -176,16 +177,7 @@ export interface S3SubmissionData {
   submissionTimestamp: string
   formsAppId: number
   keyId?: string
-  user?: {
-    userId: string
-    firstName?: string
-    picture?: string
-    providerUserId?: string
-    providerType?: string
-    fullName?: string
-    lastName?: string
-    email?: string
-  }
+  user?: _FormSubmissionMeta['user']
 }
 
 export interface GeneratePaymentConfigPayload {

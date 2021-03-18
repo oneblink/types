@@ -127,6 +127,7 @@ type _FormSubmissionMeta = {
   formName?: string,
   user?: {
     userId: string,
+    username?: string,
     firstName?: string,
     picture?: string,
     providerUserId?: string,
@@ -169,16 +170,7 @@ declare type S3SubmissionData = {
   submissionTimestamp: string,
   formsAppId: number,
   keyId?: string,
-  user?: {
-    userId: string,
-    firstName?: string,
-    picture?: string,
-    providerUserId?: string,
-    providerType?: string,
-    fullName?: string,
-    lastName?: string,
-    email?: string,
-  },
+  user?: $PropertyType<_FormSubmissionMeta, 'user'>,
 }
 
 declare type GeneratePaymentConfigPayload = {
