@@ -157,6 +157,7 @@ export type OrganisationAppUser = {
 }
 
 export type NewFormsAppUser = {
+  groups?: string[]
   generatePassword: boolean
   welcomeEmailParameters?: unknown
 } & FormsAppUser
@@ -165,7 +166,9 @@ export type FormsAppUser = {
   id: number
   email: string
   formsAppId: number
+  groups: string[]
   createdAt: string
+  updatedAt: string
 }
 
 export type NewFormsAppsDraft = {

@@ -1,24 +1,35 @@
 // @flow
 // @ts-nocheck
 
-declare type FormApprovalFlowStep = {
-  type: 'SINGLE',
-  username: string,
+import { type ConditionalPredicate } from './conditions'
+
+declare type FormApprovalFlowStepBase = {
+  group: string,
   label: string,
 }
+declare type FormApprovalFlowStep = FormApprovalFlowStepBase & {
+  isConditional?: boolean,
+  requiresAllConditionalPredicates?: boolean,
+  conditionalPredicates?: ConditionalPredicate[],
+}
+declare type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
+  isSkipped: boolean,
+}
+
 declare type NewFormApprovalFlow = {
   formId: number,
-  steps: FormApprovalFlowStep[],
 }
 declare type FormApprovalFlow = NewFormApprovalFlow & {
   createdAt: string,
   updatedAt: string,
+  steps: FormApprovalFlowStep[],
 }
 
 declare type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
   submissionId: string,
   approvalsFormsAppId: number,
   previousFormSubmissionApprovalId?: string,
+  steps: FormApprovalFlowInstanceStep[],
 }
 declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,
@@ -26,7 +37,7 @@ declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
 }
 
 type BaseFormSubmissionApproval = {
-  username: string,
+  group: string,
   notificationEmailAddress?: string,
   formApprovalFlowInstanceId: number,
   stepLabel: string,
@@ -43,4 +54,5 @@ declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
+  updatedBy?: string,
 }

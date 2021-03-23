@@ -1,21 +1,32 @@
-export type FormApprovalFlowStep = {
-  type: 'SINGLE'
-  username: string
+import type { ConditionalPredicate } from './conditions'
+
+export type FormApprovalFlowStepBase = {
+  group: string
   label: string
 }
+export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
+  isConditional?: boolean
+  requiresAllConditionalPredicates?: boolean
+  conditionalPredicates?: ConditionalPredicate[]
+}
+export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
+  isSkipped: boolean
+}
+
 export type NewFormApprovalFlow = {
   formId: number
-  steps: FormApprovalFlowStep[]
 }
 export type FormApprovalFlow = NewFormApprovalFlow & {
   createdAt: string
   updatedAt: string
+  steps: FormApprovalFlowStep[]
 }
 
 export type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
   submissionId: string
   approvalsFormsAppId: number
   previousFormSubmissionApprovalId?: string
+  steps: FormApprovalFlowInstanceStep[]
 }
 export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number
@@ -23,7 +34,7 @@ export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
 }
 
 type BaseFormSubmissionApproval = {
-  username: string
+  group: string
   notificationEmailAddress?: string
   formApprovalFlowInstanceId: number
   stepLabel: string
@@ -40,4 +51,5 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
   createdAt: string
   updatedAt: string
+  updatedBy?: string
 }

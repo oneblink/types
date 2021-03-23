@@ -156,6 +156,7 @@ declare type OrganisationAppUser = {
 }
 
 declare type NewFormsAppUser = {
+  groups?: string[],
   generatePassword: boolean,
   welcomeEmailParameters?: mixed,
 } & FormsAppUser
@@ -164,7 +165,9 @@ declare type FormsAppUser = {
   id: number,
   email: string,
   formsAppId: number,
+  groups: string[],
   createdAt: string,
+  updatedAt: string,
 }
 
 declare type NewFormsAppsDraft = {
