@@ -1,6 +1,7 @@
 import { GeoscapeAddress } from './geoscape'
 import type { NoU } from './misc'
 import type { FormSubmissionEvent } from './submissionEvents'
+import type { ConditionalPredicate } from './conditions'
 
 ////////////////////////////////////////
 // Element Types
@@ -44,44 +45,12 @@ export type LookupFormElement = {
   elementLookupId?: number
 } & FormElementBase
 
-export interface ConditionallyShowPredicateBase {
-  elementId: string
-}
-
-export type ConditionallyShowPredicateNumeric = ConditionallyShowPredicateBase & {
-  type: 'NUMERIC'
-  operator: '===' | '!==' | '>' | '>=' | '<' | '<='
-  value: number
-}
-
-export type ConditionallyShowPredicateOptions = ConditionallyShowPredicateBase & {
-  type: 'OPTIONS'
-  optionIds: string[]
-}
-
-export declare type ConditionallyShowPredicateHasValue = ConditionallyShowPredicateBase & {
-  type: 'VALUE'
-  hasValue: boolean
-}
-
-export type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase & {
-  type: 'BETWEEN'
-  min: number
-  max: number
-}
-
-export type ConditionallyShowPredicate =
-  | ConditionallyShowPredicateNumeric
-  | ConditionallyShowPredicateOptions
-  | ConditionallyShowPredicateHasValue
-  | ConditionallyShowPredicateBetween
-
 export interface _FormElementBase {
   isNew?: boolean
   id: string
   conditionallyShow: boolean
   requiresAllConditionallyShowPredicates: boolean
-  conditionallyShowPredicates?: ConditionallyShowPredicate[]
+  conditionallyShowPredicates?: ConditionalPredicate[]
 }
 
 export type FormElementBase = _FormElementBase & {

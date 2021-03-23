@@ -1,5 +1,7 @@
 // @flow
 
+import { type ConditionalPredicate } from './conditions'
+
 declare type FormSubmissionEventType =
   | 'CALLBACK'
   | 'PDF'
@@ -8,24 +10,6 @@ declare type FormSubmissionEventType =
   | 'CP_PAY'
   | 'BPOINT'
   | 'CP_HCMS'
-
-declare type ConditionalPredicateBase = {
-  elementId: string,
-}
-
-declare type ConditionalPredicateNumeric = ConditionalPredicateBase & {
-  type: 'NUMERIC',
-  operator: '===' | '!==' | '>' | '>=' | '<' | '<=',
-  value: number,
-}
-
-declare type ConditionalPredicateOptions = ConditionalPredicateBase & {
-  type: 'OPTIONS',
-  optionIds: Array<string>,
-}
-declare type ConditionalPredicate =
-  | ConditionalPredicateNumeric
-  | ConditionalPredicateOptions
 
 declare type FormSubmissionEventConditional = {
   conditionallyExecute?: boolean,

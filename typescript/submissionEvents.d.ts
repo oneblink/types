@@ -1,4 +1,5 @@
 import type { NoU } from './misc'
+import type { ConditionalPredicate } from './conditions'
 
 export type FormSubmissionEventType =
   | 'CALLBACK'
@@ -8,24 +9,6 @@ export type FormSubmissionEventType =
   | 'CP_PAY'
   | 'BPOINT'
   | 'CP_HCMS'
-
-export interface ConditionalPredicateBase {
-  elementId: string
-}
-
-export type ConditionalPredicateNumeric = ConditionalPredicateBase & {
-  type: 'NUMERIC'
-  operator: '===' | '!==' | '>' | '>=' | '<' | '<='
-  value: number
-}
-
-export type ConditionalPredicateOptions = ConditionalPredicateBase & {
-  type: 'OPTIONS'
-  optionIds: string[]
-}
-export type ConditionalPredicate =
-  | ConditionalPredicateNumeric
-  | ConditionalPredicateOptions
 
 export interface FormSubmissionEventConditional {
   conditionallyExecute?: boolean

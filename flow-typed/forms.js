@@ -1,6 +1,7 @@
 // @flow
 
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
+import { type ConditionalPredicate } from './conditions'
 
 ////////////////////////////////////////
 // Element Types
@@ -44,44 +45,12 @@ declare type LookupFormElement = {
   elementLookupId?: number,
 } & FormElementRequired
 
-declare type ConditionallyShowPredicateBase = {
-  elementId: string,
-}
-
-declare type ConditionallyShowPredicateNumeric = ConditionallyShowPredicateBase & {
-  type: 'NUMERIC',
-  operator: '===' | '!==' | '>' | '>=' | '<' | '<=',
-  value: number,
-}
-
-declare type ConditionallyShowPredicateOptions = ConditionallyShowPredicateBase & {
-  type: 'OPTIONS',
-  optionIds: Array<string>,
-}
-
-declare type ConditionallyShowPredicateHasValue = ConditionallyShowPredicateBase & {
-  type: 'VALUE',
-  hasValue: boolean,
-}
-
-declare type ConditionallyShowPredicateBetween = ConditionallyShowPredicateBase & {
-  type: 'BETWEEN',
-  min: number,
-  max: number,
-}
-
-declare type ConditionallyShowPredicate =
-  | ConditionallyShowPredicateNumeric
-  | ConditionallyShowPredicateOptions
-  | ConditionallyShowPredicateHasValue
-  | ConditionallyShowPredicateBetween
-
 declare type _FormElementBase = {
   isNew?: boolean,
   id: string,
   conditionallyShow: boolean,
   requiresAllConditionallyShowPredicates: boolean,
-  conditionallyShowPredicates?: ConditionallyShowPredicate[],
+  conditionallyShowPredicates?: ConditionalPredicate[],
 }
 
 declare type FormElementBase = _FormElementBase & {
