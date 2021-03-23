@@ -12,6 +12,8 @@ import * as OrganisationTypes from './typescript/organisations'
 import * as GeoscapeTypes from './typescript/geoscape'
 import * as AWSTypes from './typescript/aws'
 import * as ApprovalTypes from './typescript/approvals'
+import * as ConditionTypes from './typescript/conditions'
+import * as PDFTypes from './typescript/pdf'
 export {
   APITypes,
   FormTypes,
@@ -27,4 +29,6 @@ export {
   GeoscapeTypes,
   AWSTypes,
   ApprovalTypes,
+  ConditionTypes,
+  PDFTypes,
 }
