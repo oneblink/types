@@ -15,14 +15,15 @@ export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
 
 export type NewFormApprovalFlow = {
   formId: number
+  steps: FormApprovalFlowStep[]
 }
 export type FormApprovalFlow = NewFormApprovalFlow & {
   createdAt: string
   updatedAt: string
-  steps: FormApprovalFlowStep[]
 }
 
-export type NewFormApprovalFlowInstance = NewFormApprovalFlow & {
+export type NewFormApprovalFlowInstance = {
+  formId: number
   submissionId: string
   approvalsFormsAppId: number
   previousFormSubmissionApprovalId?: string
