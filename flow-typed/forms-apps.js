@@ -155,17 +155,19 @@ declare type OrganisationAppUser = {
   formsAppIds: number[],
 }
 
-declare type NewFormsAppUser = {
-  groups?: string[],
-  generatePassword: boolean,
-  welcomeEmailParameters?: mixed,
-} & FormsAppUser
-
-declare type FormsAppUser = {
-  id: number,
+declare type FormsAppUserBase = {
   email: string,
   formsAppId: number,
   groups: string[],
+}
+
+declare type NewFormsAppUser = FormsAppUserBase & {
+  generatePassword: boolean,
+  welcomeEmailParameters?: mixed,
+}
+
+declare type FormsAppUser = FormsAppUserBase & {
+  id: number,
   createdAt: string,
   updatedAt: string,
 }

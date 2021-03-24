@@ -156,17 +156,19 @@ export type OrganisationAppUser = {
   formsAppIds: number[]
 }
 
-export type NewFormsAppUser = {
-  groups?: string[]
-  generatePassword: boolean
-  welcomeEmailParameters?: unknown
-} & FormsAppUser
-
-export type FormsAppUser = {
-  id: number
+export type FormsAppUserBase = {
   email: string
   formsAppId: number
   groups: string[]
+}
+
+export type NewFormsAppUser = FormsAppUserBase & {
+  generatePassword: boolean
+  welcomeEmailParameters?: unknown
+}
+
+export type FormsAppUser = FormsAppUserBase & {
+  id: number
   createdAt: string
   updatedAt: string
 }
