@@ -1,4 +1,5 @@
 import { GeoscapeAddress } from './geoscape'
+import { PointAddress } from './point'
 import type { NoU } from './misc'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
@@ -36,6 +37,7 @@ export type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
+  | 'pointAddress'
   | 'compliance'
 
 export type LookupFormElement = {
@@ -322,6 +324,15 @@ export type GeoscapeAddressElement = FormElementRequired & {
   stateTerritoryFilter?: string[]
 } & LookupFormElement
 
+declare type PointAddressElement = {
+  type: 'pointAddress'
+  readOnly: boolean
+  defaultValue?: PointAddress
+  placeholderValue?: string
+  stateTerritoryFilter?: string[]
+  addressTypeFilter?: string[]
+} & LookupFormElement
+
 export type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -346,6 +357,7 @@ export type FormElementWithoutForm =
   | TelephoneElement
   | SummaryElement
   | GeoscapeAddressElement
+  | PointAddressElement
   | FormElementWithOptions
 
 export type FormElementWithForm = FormFormElement | InfoPageElement

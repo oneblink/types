@@ -6,6 +6,7 @@ declare type IntegrationType =
   | 'CP_HCMS'
   | 'BPOINT'
   | 'GEOSCAPE'
+  | 'POINT'
 
 type IntegrationBase = {
   organisationId: string,
@@ -76,9 +77,17 @@ declare type IntegrationGeoscape = IntegrationBase & {
   },
 }
 
+declare type IntegrationPoint = IntegrationBase & {
+  type: 'POINT',
+  configuration: {
+    apiKey: string,
+  },
+}
+
 declare type Integration =
   | IntegrationTrim
   | IntegrationCPPay
   | IntegrationCPHCMS
   | IntegrationBPOINT
   | IntegrationGeoscape
+  | IntegrationPoint
