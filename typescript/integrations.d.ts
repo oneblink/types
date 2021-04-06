@@ -4,6 +4,7 @@ export type IntegrationType =
   | 'CP_HCMS'
   | 'BPOINT'
   | 'GEOSCAPE'
+  | 'POINT'
 
 interface IntegrationBase {
   organisationId: string
@@ -73,9 +74,17 @@ export type IntegrationGeoscape = IntegrationBase & {
   }
 }
 
+export type IntegrationPoint = IntegrationBase & {
+  type: 'POINT'
+  configuration: {
+    apiKey: string
+  }
+}
+
 export type Integration =
   | IntegrationTrim
   | IntegrationCPPay
   | IntegrationCPHCMS
   | IntegrationBPOINT
   | IntegrationGeoscape
+  | IntegrationPoint

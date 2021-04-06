@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "maxLength": 16
+      },
+      "address": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "rank": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 19
+      }
+    }
+  }
+}

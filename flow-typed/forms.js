@@ -1,6 +1,7 @@
 // @flow
 
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
+import { type Address as PointAddress } from './point/address-details'
 import { type ConditionalPredicate } from './conditions'
 
 ////////////////////////////////////////
@@ -36,6 +37,7 @@ declare type FormElementType =
   | 'infoPage'
   | 'summary'
   | 'geoscapeAddress'
+  | 'pointAddress'
   | 'compliance'
 
 declare type LookupFormElement = {
@@ -326,6 +328,15 @@ declare type GeoscapeAddressElement = {
   stateTerritoryFilter?: string[],
 } & LookupFormElement
 
+declare type PointAddressElement = {
+  type: 'pointAddress',
+  readOnly: boolean,
+  defaultValue?: PointAddress,
+  placeholderValue?: string,
+  stateTerritoryFilter?: string[],
+  addressTypeFilter?: string[],
+} & LookupFormElement
+
 declare type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -350,6 +361,7 @@ declare type FormElementWithoutForm =
   | TelephoneElement
   | SummaryElement
   | GeoscapeAddressElement
+  | PointAddressElement
   | FormElementWithOptions
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
