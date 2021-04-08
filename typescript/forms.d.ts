@@ -324,7 +324,7 @@ export type GeoscapeAddressElement = FormElementRequired & {
   stateTerritoryFilter?: string[]
 } & LookupFormElement
 
-declare type PointAddressElement = {
+declare type PointAddressElement = FormElementRequired & {
   type: 'pointAddress'
   readOnly: boolean
   defaultValue?: PointAddress
