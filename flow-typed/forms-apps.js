@@ -101,6 +101,7 @@ type _NewFormsApp = {
   hasSamlIdentityProvider: boolean,
   formsAppEnvironmentId: number,
   notificationEmailAddresses: string[],
+  isClientLoggingEnabled: boolean,
 }
 
 declare type NewVolunteersFormsApp = _NewFormsApp & {
@@ -230,4 +231,5 @@ declare type FormsAppConfiguration<
     waiverUrl: $PropertyType<VolunteersFormsApp, 'waiverUrl'>,
   } | void,
   isGoogleLoginSupported: boolean,
+  isClientLoggingEnabled: boolean,
 }

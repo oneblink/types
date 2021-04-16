@@ -101,6 +101,7 @@ type _NewFormsApp = {
   hasSamlIdentityProvider: boolean
   formsAppEnvironmentId: number
   notificationEmailAddresses: string[]
+  isClientLoggingEnabled: boolean
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -233,4 +234,5 @@ export type FormsAppConfiguration<
       }
     | undefined
   isGoogleLoginSupported: boolean
+  isClientLoggingEnabled: boolean
 }
