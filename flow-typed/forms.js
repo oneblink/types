@@ -306,6 +306,7 @@ declare type CalculationElement = FormElementBase & {
   defaultValue: string,
   calculation: ?string,
   preCalculationDisplay: ?string,
+  displayAsCurrency?: boolean,
 }
 
 declare type TelephoneElement = {
