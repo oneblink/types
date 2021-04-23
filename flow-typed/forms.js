@@ -65,6 +65,10 @@ declare type FormElementRequired = FormElementBase & {
   required: boolean,
 }
 
+declare type FormElementBinaryStorage = {
+  storageType?: 'legacy' | 'public' | 'private',
+}
+
 // Choice element types
 declare type DynamicChoiceElementOption = {
   label: string,
@@ -221,18 +225,20 @@ declare type ImageElement = FormElementBase & {
   defaultValue: string,
 }
 
-declare type DrawElement = FormElementRequired & {
-  type: 'draw',
-  readOnly: boolean,
-  defaultValue?: string,
-}
+declare type DrawElement = FormElementRequired &
+  FormElementBinaryStorage & {
+    type: 'draw',
+    readOnly: boolean,
+    defaultValue?: string,
+  }
 
-declare type CameraElement = FormElementRequired & {
-  type: 'camera',
-  readOnly: boolean,
-  defaultValue?: string,
-  includeTimestampWatermark: boolean,
-}
+declare type CameraElement = FormElementRequired &
+  FormElementBinaryStorage & {
+    type: 'camera',
+    readOnly: boolean,
+    defaultValue?: string,
+    includeTimestampWatermark: boolean,
+  }
 
 declare type HeadingElement = FormElementBase & {
   type: 'heading',
@@ -283,15 +289,16 @@ declare type CaptchaElement = FormElementRequired & {
   type: 'captcha',
 }
 
-declare type FilesElement = FormElementBase & {
-  type: 'files',
-  readOnly: boolean,
-  minEntries: number | void,
-  maxEntries: number | void,
-  restrictFileTypes: boolean,
-  restrictedFileTypes?: string[],
-  defaultValue?: mixed,
-}
+declare type FilesElement = FormElementBase &
+  FormElementBinaryStorage & {
+    type: 'files',
+    readOnly: boolean,
+    minEntries: number | void,
+    maxEntries: number | void,
+    restrictFileTypes: boolean,
+    restrictedFileTypes?: string[],
+    defaultValue?: mixed,
+  }
 
 declare type FileElement = FormElementRequired & {
   type: 'file',

@@ -65,6 +65,10 @@ export type FormElementRequired = FormElementBase & {
   required: boolean
 }
 
+declare type FormElementBinaryStorage = {
+  storageType?: 'legacy' | 'public' | 'private'
+}
+
 // Choice element types
 export interface DynamicChoiceElementOption {
   label: string
@@ -221,17 +225,19 @@ export type ImageElement = FormElementBase & {
   defaultValue: string
 }
 
-export type DrawElement = FormElementRequired & {
-  type: 'draw'
-  readOnly: boolean
-}
+export type DrawElement = FormElementRequired &
+  FormElementBinaryStorage & {
+    type: 'draw'
+    readOnly: boolean
+  }
 
-export type CameraElement = FormElementRequired & {
-  type: 'camera'
-  readOnly: boolean
-  defaultValue?: string
-  includeTimestampWatermark: boolean
-}
+export type CameraElement = FormElementRequired &
+  FormElementBinaryStorage & {
+    type: 'camera'
+    readOnly: boolean
+    defaultValue?: string
+    includeTimestampWatermark: boolean
+  }
 
 export type HeadingElement = FormElementBase & {
   type: 'heading'
@@ -281,14 +287,15 @@ export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
 
-export type FilesElement = FormElementBase & {
-  type: 'files'
-  readOnly: boolean
-  minEntries: number | undefined
-  maxEntries: number | undefined
-  restrictFileTypes: boolean
-  restrictedFileTypes?: string[]
-}
+export type FilesElement = FormElementBase &
+  FormElementBinaryStorage & {
+    type: 'files'
+    readOnly: boolean
+    minEntries: number | undefined
+    maxEntries: number | undefined
+    restrictFileTypes: boolean
+    restrictedFileTypes?: string[]
+  }
 
 export type FileElement = FormElementRequired & {
   type: 'file'
