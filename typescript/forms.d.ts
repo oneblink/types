@@ -302,6 +302,7 @@ export type CalculationElement = FormElementBase & {
   defaultValue: string
   calculation: NoU | string
   preCalculationDisplay: NoU | string
+  displayAsCurrency?: boolean
 }
 
 export type TelephoneElement = FormElementRequired & {
