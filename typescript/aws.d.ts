@@ -16,4 +16,5 @@ export interface FormS3Credentials {
 
 export type FormAttachmentS3Credentials = FormS3Credentials & {
   attachmentDataId: string
+  usernameToken: string
 }
