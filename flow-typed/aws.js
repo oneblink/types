@@ -15,3 +15,7 @@ declare type FormS3Credentials = {
     region: string,
   },
 }
+
+export type FormAttachmentS3Credentials = FormS3Credentials & {
+  attachmentDataId: string,
+}
