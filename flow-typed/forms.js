@@ -145,11 +145,12 @@ declare type AutoCompleteElement = FormElementWithOptionsBase & {
   placeholderValue?: string,
 }
 
-declare type ComplianceElement = FormElementWithOptionsBase & {
-  type: 'compliance',
-  readOnly: boolean,
-  defaultValue?: ?string,
-}
+declare type ComplianceElement = FormElementWithOptionsBase &
+  FormElementBinaryStorage & {
+    type: 'compliance',
+    readOnly: boolean,
+    defaultValue?: ?string,
+  }
 
 declare type FormElementWithOptions =
   | RadioButtonElement
