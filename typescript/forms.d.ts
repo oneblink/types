@@ -145,11 +145,12 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
   placeholderValue?: string
 } & LookupFormElement
 
-export type ComplianceElement = FormElementWithOptionsBase & {
-  type: 'compliance'
-  readOnly: boolean
-  defaultValue?: NoU | string
-} & LookupFormElement
+export type ComplianceElement = FormElementWithOptionsBase &
+  FormElementBinaryStorage & {
+    type: 'compliance'
+    readOnly: boolean
+    defaultValue?: NoU | string
+  } & LookupFormElement
 
 export type FormElementWithOptions =
   | RadioButtonElement
