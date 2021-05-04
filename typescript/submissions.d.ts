@@ -1,6 +1,6 @@
 import { Form } from './forms'
 import { PaymentSubmissionEvent } from './submissionEvents'
-import { NoU } from './misc'
+import { NoU, UserProfile } from './misc'
 
 export interface NewDraftSubmission {
   submission: {
@@ -132,23 +132,7 @@ type _FormSubmissionMeta = {
   formsAppId: number
   dateTimeSubmitted: string
   formName?: string
-  user?: {
-    userId: string
-    username?: string
-    firstName?: string
-    picture?: string
-    providerUserId?: string
-    providerType?: string
-    fullName?: string
-    lastName?: string
-    email?: string
-    role?: string
-    supervisor?: {
-      email?: string
-      fullName?: string
-      providerUserId?: string
-    }
-  }
+  user?: UserProfile
 }
 
 export type NewFormSubmissionMeta = _FormSubmissionMeta & {

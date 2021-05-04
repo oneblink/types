@@ -1,30 +1,33 @@
 export type NoU = null | undefined
 
 export interface UserProfile {
-    isSAMLUser: boolean
-    providerType: string
-    providerUserId: string
-    userId: string
-    username: string
-    email: string | NoU
-    firstName: string | NoU
-    lastName: string | NoU
-    fullName: string | NoU
-    picture: string | NoU
-    role: string | NoU
-    supervisor:
-        | {
-              fullName: string | NoU
-              email: string | NoU
-              providerUserId: string | NoU
-          }
-        | NoU
+  isSAMLUser?: boolean
+  providerType?: string
+  providerUserId?: string
+  userId: string
+  username?: string
+  email?: string
+  firstName?: string
+  lastName?: string
+  fullName?: string
+  picture?: string
+  role?: string
+  supervisor?: {
+    fullName?: string
+    email?: string
+    providerUserId?: string
+  }
 }
-
 export interface QueryParameters {
-    [property: string]: string | Array<string | number> | null
+  [property: string]: string | Array<string | number> | null
 }
 
-export interface GenericObject {
-    [property: string]: unknown
+export type GenericObject = Record<string, unknown>
+
+export type BaseSearchResult = {
+  meta: {
+    limit?: number
+    offset?: number
+    nextOffset?: number
+  }
 }

@@ -3,6 +3,7 @@ import { PointAddress } from './point'
 import type { NoU } from './misc'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
+import type { BaseSearchResult } from './misc'
 
 ////////////////////////////////////////
 // Element Types
@@ -45,9 +46,9 @@ export type LookupFormElement = {
   dataLookupId?: number
   isElementLookup: boolean
   elementLookupId?: number
-} & FormElementBase
+} & FormElementRequired
 
-export interface _FormElementBase {
+export type _FormElementBase = {
   isNew?: boolean
   id: string
   conditionallyShow: boolean
@@ -65,18 +66,18 @@ export type FormElementRequired = FormElementBase & {
   required: boolean
 }
 
-declare type FormElementBinaryStorage = {
+export type FormElementBinaryStorage = FormElementBase & {
   storageType?: 'legacy' | 'public' | 'private'
 }
 
 // Choice element types
-export interface DynamicChoiceElementOption {
+export type DynamicChoiceElementOption = {
   label: string
   value: string
   colour?: string
 }
 
-export interface ChoiceElementOptionAttribute {
+export type ChoiceElementOptionAttribute = {
   label?: string
   value?: string
   elementId: string
@@ -88,12 +89,12 @@ export type ChoiceElementOption = {
   attributes?: ChoiceElementOptionAttribute[]
 } & DynamicChoiceElementOption
 
-export interface DynamicOptionsSetAttributeMap {
+export type DynamicOptionsSetAttributeMap = {
   elementId: string
   attribute: string
 }
 
-export type FormElementWithOptionsBase = FormElementRequired & {
+type FormElementWithOptionsBase = LookupFormElement & {
   options: ChoiceElementOption[]
   optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH'
   dynamicOptionSetId?: number
@@ -121,21 +122,21 @@ export type RadioButtonElement = FormElementWithOptionsBase & {
   buttons: boolean
   readOnly: boolean
   defaultValue?: string | NoU
-} & LookupFormElement
+}
 
 export type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes'
   buttons: boolean
   readOnly: boolean
   defaultValue?: string[] | NoU
-} & LookupFormElement
+}
 
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
   multi: boolean
   readOnly: boolean
   defaultValue?: NoU | (string | string[])
-} & LookupFormElement
+}
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
@@ -143,14 +144,14 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
   defaultValue?: string | NoU
   searchUrl?: string
   placeholderValue?: string
-} & LookupFormElement
+}
 
 export type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance'
     readOnly: boolean
     defaultValue?: NoU | string
-  } & LookupFormElement
+  }
 
 export type FormElementWithOptions =
   | RadioButtonElement
@@ -160,7 +161,7 @@ export type FormElementWithOptions =
   | ComplianceElement
 
 // date element types
-export type DateElementBase = FormElementRequired & {
+type DateElementBase = {
   readOnly: boolean
   fromDate?: Date | NoU
   toDate?: Date | NoU
@@ -170,21 +171,21 @@ export type DateElementBase = FormElementRequired & {
 export type DateElement = DateElementBase & {
   type: 'date'
   placeholderValue?: string
-} & LookupFormElement
+}
 
 export type DateTimeElement = DateElementBase & {
   type: 'datetime'
   placeholderValue?: string
-} & LookupFormElement
+}
 
-export type TimeElement = FormElementRequired & {
+export type TimeElement = {
   type: 'time'
   readOnly: boolean
   defaultValue?: NoU | (Date | 'NOW')
   placeholderValue?: string
 } & LookupFormElement
 
-export type NumberElement = FormElementRequired & {
+export type NumberElement = {
   type: 'number'
   readOnly: boolean
   minNumber?: NoU | number
@@ -196,7 +197,7 @@ export type NumberElement = FormElementRequired & {
   isInteger?: boolean
 } & LookupFormElement
 
-export type TextElement = FormElementRequired & {
+export type TextElement = {
   type: 'text'
   readOnly: boolean
   defaultValue?: NoU | string
@@ -205,7 +206,7 @@ export type TextElement = FormElementRequired & {
   maxLength?: number
 } & LookupFormElement
 
-export type TextareaElement = FormElementRequired & {
+export type TextareaElement = {
   type: 'textarea'
   readOnly: boolean
   defaultValue?: NoU | string
@@ -214,7 +215,7 @@ export type TextareaElement = FormElementRequired & {
   maxLength?: number
 } & LookupFormElement
 
-export type EmailElement = FormElementRequired & {
+export type EmailElement = {
   type: 'email'
   readOnly: boolean
   defaultValue?: NoU | string
@@ -230,6 +231,7 @@ export type DrawElement = FormElementRequired &
   FormElementBinaryStorage & {
     type: 'draw'
     readOnly: boolean
+    defaultValue?: string
   }
 
 export type CameraElement = FormElementRequired &
@@ -245,12 +247,13 @@ export type HeadingElement = FormElementBase & {
   headingType: number
 }
 
-export type LocationElement = FormElementRequired & {
+export type LocationElement = {
   type: 'location'
   readOnly: boolean
+  defaultValue?: unknown
 } & LookupFormElement
 
-export interface _NestedElementsElement {
+export type _NestedElementsElement = {
   elements: FormElement[]
 }
 
@@ -275,7 +278,7 @@ export type HtmlElement = FormElementBase & {
   defaultValue: string
 }
 
-export type BarcodeScannerElement = FormElementRequired & {
+export type BarcodeScannerElement = {
   type: 'barcodeScanner'
   readOnly: boolean
   defaultValue?: NoU | string
@@ -288,21 +291,22 @@ export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
 
-export type FilesElement = FormElementBase &
-  FormElementBinaryStorage & {
-    type: 'files'
-    readOnly: boolean
-    minEntries: number | undefined
-    maxEntries: number | undefined
-    restrictFileTypes: boolean
-    restrictedFileTypes?: string[]
-  }
+export type FilesElement = FormElementBinaryStorage & {
+  type: 'files'
+  readOnly: boolean
+  minEntries: number | undefined
+  maxEntries: number | undefined
+  restrictFileTypes: boolean
+  restrictedFileTypes?: string[]
+  defaultValue?: unknown
+}
 
 export type FileElement = FormElementRequired & {
   type: 'file'
   readOnly: boolean
   restrictFileTypes: boolean
   restrictedFileTypes?: string[]
+  defaultValue?: string
 }
 
 export type CalculationElement = FormElementBase & {
@@ -313,7 +317,7 @@ export type CalculationElement = FormElementBase & {
   displayAsCurrency?: boolean
 }
 
-export type TelephoneElement = FormElementRequired & {
+export type TelephoneElement = {
   type: 'telephone'
   readOnly: boolean
   defaultValue?: NoU | string
@@ -325,7 +329,7 @@ export type SummaryElement = FormElementBase & {
   elementIds: string[]
 }
 
-export type GeoscapeAddressElement = FormElementRequired & {
+export type GeoscapeAddressElement = {
   type: 'geoscapeAddress'
   readOnly: boolean
   defaultValue?: GeoscapeAddress
@@ -333,7 +337,7 @@ export type GeoscapeAddressElement = FormElementRequired & {
   stateTerritoryFilter?: string[]
 } & LookupFormElement
 
-declare type PointAddressElement = FormElementRequired & {
+export type PointAddressElement = {
   type: 'pointAddress'
   readOnly: boolean
   defaultValue?: PointAddress
@@ -392,14 +396,14 @@ export type ConditionalPredicateElement =
 
 export type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
 
-export interface Form {
+export type Form = {
   id: number
   name: string
   description: string
   organisationId: string
   formsAppEnvironmentId: number
   formsAppIds: number[]
-  elements: FormElement[]
+  elements: Array<FormElement>
   isAuthenticated: boolean
   isMultiPage: boolean
   publishStartDate?: NoU | string
@@ -408,7 +412,9 @@ export interface Form {
   postSubmissionAction: FormPostSubmissionAction
   redirectUrl?: NoU | string
   submissionEvents: FormSubmissionEvent[]
-  tags: string[]
+  tags: Array<string>
+  createdAt: string
+  updatedAt: string
 }
 
 export type PreviewUrl = {
@@ -416,7 +422,7 @@ export type PreviewUrl = {
   url: string
 }
 
-export interface FormTemplate {
+export type FormTemplate = {
   id: number
   name: string
   description?: string
@@ -429,33 +435,67 @@ export interface FormTemplate {
   previewUrls: PreviewUrl[]
 }
 
-export interface FormElementDynamicOptionSetEnvironment {
+export type FormQuerystringParameters = {
+  name?: string
+  isAuthenticated?: boolean
+  isInfoPage?: boolean
+  limit?: number
+  offset: number
+  injectForms?: boolean
+}
+
+// Options Sets/Lookups
+
+export type FormElementDynamicOptionSetEnvironment = {
   url: string
   formsAppEnvironmentId: number
 }
 
-export interface FormElementDynamicOptionSet {
-  id?: number
-  apiId?: string
+export type NewFormElementDynamicOptionSet = {
   name: string
   organisationId: string
+  apiId?: string
   environments: FormElementDynamicOptionSetEnvironment[]
-  createdAt?: string
-  updatedAt?: string
 }
 
-export type FormElementLookup = FormElementDynamicOptionSet & {
+export type FormElementDynamicOptionSet = NewFormElementDynamicOptionSet & {
+  id: number
+  createdAt: string
+  updatedAt: string
+}
+
+export type FormElementDynamicOptionSetSearchParameters = {
+  organisationIds: string[]
+  limit?: number
+  offset?: number
+}
+
+export type NewBuiltInFormElementLookup = {
+  type: 'ELEMENT' | 'DATA'
+  name: string
+  url: string
+  description: string
+  supportUrl: string
+  createdAt: string
+  updatedAt: string
+}
+
+export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
+  id: number
+}
+
+export type NewFormElementLookup = NewFormElementDynamicOptionSet & {
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
 }
 
-export interface BaseSearchResult {
-  meta: {
-    limit: null
-    offset: null
-    nextOffset: null
-  }
+export type FormElementLookup = NewFormElementLookup & {
+  id: number
+  createdAt: string
+  updatedAt: string
 }
+
+export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]

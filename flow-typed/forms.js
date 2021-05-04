@@ -3,6 +3,8 @@
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
 import { type ConditionalPredicate } from './conditions'
+import { type FormSubmissionEvent } from './submission-events'
+import { type BaseSearchResult } from './misc'
 
 ////////////////////////////////////////
 // Element Types
@@ -65,7 +67,7 @@ declare type FormElementRequired = FormElementBase & {
   required: boolean,
 }
 
-declare type FormElementBinaryStorage = {
+declare type FormElementBinaryStorage = FormElementBase & {
   storageType?: 'legacy' | 'public' | 'private',
 }
 
@@ -290,16 +292,15 @@ declare type CaptchaElement = FormElementRequired & {
   type: 'captcha',
 }
 
-declare type FilesElement = FormElementBase &
-  FormElementBinaryStorage & {
-    type: 'files',
-    readOnly: boolean,
-    minEntries: number | void,
-    maxEntries: number | void,
-    restrictFileTypes: boolean,
-    restrictedFileTypes?: string[],
-    defaultValue?: mixed,
-  }
+declare type FilesElement = FormElementBinaryStorage & {
+  type: 'files',
+  readOnly: boolean,
+  minEntries: number | void,
+  maxEntries: number | void,
+  restrictFileTypes: boolean,
+  restrictedFileTypes?: string[],
+  defaultValue?: mixed,
+}
 
 declare type FileElement = FormElementRequired & {
   type: 'file',
@@ -496,3 +497,11 @@ declare type FormElementLookup = NewFormElementLookup & {
 }
 
 declare type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+
+declare type FormElementLookupSearchResponse = {
+  formElementLookups: FormElementLookup[],
+} & BaseSearchResult
+
+declare type FormElementDynamicOptionSetSearchResponse = {
+  formElementDynamicOptionSets: FormElementDynamicOptionSet[],
+} & BaseSearchResult

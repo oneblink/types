@@ -1,5 +1,6 @@
 // @flow
-// @ts-nocheck
+
+import { type UserProfile } from './misc'
 
 declare type NewDraftSubmission = {
   submission: {
@@ -125,23 +126,7 @@ type _FormSubmissionMeta = {
   formsAppId: number,
   dateTimeSubmitted: string,
   formName?: string,
-  user?: {
-    userId: string,
-    username?: string,
-    firstName?: string,
-    picture?: string,
-    providerUserId?: string,
-    providerType?: string,
-    fullName?: string,
-    lastName?: string,
-    email?: string,
-    role?: string,
-    supervisor?: {
-      email?: string,
-      fullName?: string,
-      providerUserId?: string,
-    },
-  },
+  user?: UserProfile,
 }
 
 declare type NewFormSubmissionMeta = _FormSubmissionMeta & {

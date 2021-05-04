@@ -99,7 +99,7 @@ declare type BPOINTSubmissionEvent = {
   isDraft: boolean,
 }
 
-declare type FormSubmissionEvent =
+declare export type FormSubmissionEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
