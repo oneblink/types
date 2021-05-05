@@ -26,7 +26,7 @@ declare type ConditionalPredicateBetween = ConditionalPredicateBase & {
   max: number,
 }
 
-declare export type ConditionalPredicate =
+declare type ConditionalPredicate =
   | ConditionalPredicateNumeric
   | ConditionalPredicateOptions
   | ConditionalPredicateHasValue
