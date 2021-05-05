@@ -1,6 +1,6 @@
 // @flow
 
-declare export type UserProfile = {
+declare type UserProfile = {
   isSAMLUser?: boolean,
   providerType?: string,
   providerUserId?: string,
@@ -19,11 +19,11 @@ declare export type UserProfile = {
   },
 }
 
-export type QueryParameters {
+declare type QueryParameters {
   [property: string]: string | Array<string | number> | null
 }
 
-export type BaseSearchResult = {
+declare type BaseSearchResult = {
   meta: {
     limit?: number
     offset?: number
