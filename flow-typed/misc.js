@@ -20,13 +20,13 @@ declare type UserProfile = {
 }
 
 declare type QueryParameters = {
-  [property: string]: string | Array<string | number> | null
+  [property: string]: string | Array<string | number> | null,
 }
 
 declare type BaseSearchResult = {
   meta: {
-    limit?: number
-    offset?: number
-    nextOffset?: number
-  }
+    limit?: number,
+    offset?: number,
+    nextOffset?: number,
+  },
 }
