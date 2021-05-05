@@ -19,7 +19,7 @@ declare type UserProfile = {
   },
 }
 
-declare type QueryParameters {
+declare type QueryParameters = {
   [property: string]: string | Array<string | number> | null
 }
 
