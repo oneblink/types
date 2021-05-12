@@ -53,18 +53,18 @@ declare type IntegrationCPHCMS = IntegrationBase & {
   },
 }
 
-export type IntegrationRecaptcha = IntegrationBase & {
-  type: 'RECAPTCHA'
+declare type IntegrationRecaptcha = IntegrationBase & {
+  type: 'RECAPTCHA',
   configuration: {
-    domains: IntegrationRecaptchaDomain[]
-  }
+    domains: IntegrationRecaptchaDomain[],
+  },
 }
 
-export interface IntegrationRecaptchaDomain {
-  id: string
-  domain: string
-  privateKey: string
-  publicKey: string
+declare type IntegrationRecaptchaDomain = {
+  id: string,
+  domain: string,
+  privateKey: string,
+  publicKey: string,
 }
 declare type IntegrationBPOINTEnvironment = {
   id: string,
