@@ -79,7 +79,7 @@ export type FormsAppHostnameConfiguration = {
     distributionDomain: string
   }
   errorMessage: null | string
-  recaptchaIntegrationPublicKey?: string
+  recaptchaPublicKey: string
 }
 
 type FormsAppPWASettings = {
