@@ -7,6 +7,7 @@ declare type IntegrationType =
   | 'BPOINT'
   | 'GEOSCAPE'
   | 'POINT'
+  | 'RECAPTCHA'
 
 type IntegrationBase = {
   organisationId: string,
@@ -52,6 +53,19 @@ declare type IntegrationCPHCMS = IntegrationBase & {
   },
 }
 
+export type IntegrationRecaptcha = IntegrationBase & {
+  type: 'RECAPTCHA'
+  configuration: {
+    domains: IntegrationRecaptchaDomain[]
+  }
+}
+
+export interface IntegrationRecaptchaDomain {
+  id: string
+  domain: string
+  privateKey: string
+  publicKey: string
+}
 declare type IntegrationBPOINTEnvironment = {
   id: string,
   label: string,
@@ -91,3 +105,4 @@ declare type Integration =
   | IntegrationBPOINT
   | IntegrationGeoscape
   | IntegrationPoint
+  | IntegrationRecaptcha
