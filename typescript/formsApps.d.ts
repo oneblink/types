@@ -79,6 +79,7 @@ export type FormsAppHostnameConfiguration = {
     distributionDomain: string
   }
   errorMessage: null | string
+  recaptchaIntegrationPublicKey?: string
 }
 
 type FormsAppPWASettings = {
@@ -102,6 +103,7 @@ type _NewFormsApp = {
   formsAppEnvironmentId: number
   notificationEmailAddresses: string[]
   isClientLoggingEnabled: boolean
+  recaptchaIntegrationDomainId?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
