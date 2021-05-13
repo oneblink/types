@@ -60,7 +60,7 @@ export type IntegrationRecaptcha = IntegrationBase & {
 
 export interface IntegrationRecaptchaDomain {
   id: string
-  domain: string
+  label: string
   privateKey: string
   publicKey: string
 }

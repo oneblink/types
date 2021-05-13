@@ -62,7 +62,7 @@ declare type IntegrationRecaptcha = IntegrationBase & {
 
 declare type IntegrationRecaptchaDomain = {
   id: string,
-  domain: string,
+  label: string,
   privateKey: string,
   publicKey: string,
 }
