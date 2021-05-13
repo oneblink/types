@@ -79,7 +79,6 @@ export type FormsAppHostnameConfiguration = {
     distributionDomain: string
   }
   errorMessage: null | string
-  recaptchaPublicKey: string
 }
 
 type FormsAppPWASettings = {
@@ -237,4 +236,5 @@ export type FormsAppConfiguration<
     | undefined
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
+  recaptchaPublicKey: string
 }
