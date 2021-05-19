@@ -75,7 +75,9 @@ export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   configuration: {
     contentTypeName: string
     encryptedElementIds: NoU | string[]
+    encryptPdf?: boolean
   }
+
   isDraft: boolean
 }
 

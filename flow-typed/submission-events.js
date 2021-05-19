@@ -76,6 +76,7 @@ declare type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   configuration: {
     contentTypeName: string,
     encryptedElementIds: ?Array<string>,
+    encryptPdf?: boolean,
   },
   isDraft: boolean,
 }
