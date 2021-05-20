@@ -164,11 +164,11 @@ declare type FormElementWithOptions =
 // date element types
 type DateElementBase = {
   readOnly: boolean,
-  fromDate?: ?Date | 'NOW',
+  fromDate?: string | 'NOW',
   fromDateDaysOffset?: number,
-  toDate?: ?Date | 'NOW',
+  toDate?: string | 'NOW',
   toDateDaysOffset?: number,
-  defaultValue?: ?(Date | 'NOW'),
+  defaultValue?: string | 'NOW',
   defaultValueDaysOffset?: number,
 } & LookupFormElement
 
