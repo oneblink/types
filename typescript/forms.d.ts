@@ -163,9 +163,12 @@ export type FormElementWithOptions =
 // date element types
 type DateElementBase = {
   readOnly: boolean
-  fromDate?: Date | NoU
-  toDate?: Date | NoU
+  fromDate?: Date | NoU | 'NOW'
+  fromDateDaysOffset?: number
+  toDate?: Date | NoU | 'NOW'
+  toDateDaysOffset?: number
   defaultValue?: NoU | (Date | 'NOW')
+  defaultValueDaysOffset?: number
 } & LookupFormElement
 
 export type DateElement = DateElementBase & {
