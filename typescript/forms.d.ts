@@ -161,7 +161,7 @@ export type FormElementWithOptions =
   | ComplianceElement
 
 // date element types
-type DateElementBase = {
+export type FormElementWithDate = {
   readOnly: boolean
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
@@ -169,24 +169,20 @@ type DateElementBase = {
   toDateDaysOffset?: number
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
+  placeholderValue?: string
 } & LookupFormElement
 
-export type DateElement = DateElementBase & {
+export type DateElement = FormElementWithDate & {
   type: 'date'
-  placeholderValue?: string
 }
 
-export type DateTimeElement = DateElementBase & {
+export type DateTimeElement = FormElementWithDate & {
   type: 'datetime'
-  placeholderValue?: string
 }
 
-export type TimeElement = {
+export type TimeElement = FormElementWithDate & {
   type: 'time'
-  readOnly: boolean
-  defaultValue?: NoU | (Date | 'NOW')
-  placeholderValue?: string
-} & LookupFormElement
+}
 
 export type NumberElement = {
   type: 'number'
