@@ -394,7 +394,11 @@ declare type ConditionalPredicateElement =
 
 ///////////////////////////////////////////////////////////////
 
-declare type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
+declare type FormPostSubmissionAction =
+  | 'BACK'
+  | 'URL'
+  | 'CLOSE'
+  | 'FORMS_LIBRARY'
 
 declare type Form = {
   id: number,
@@ -410,7 +414,9 @@ declare type Form = {
   publishEndDate?: ?string,
   isInfoPage: boolean,
   postSubmissionAction: FormPostSubmissionAction,
-  redirectUrl?: ?string,
+  redirectUrl?: string,
+  cancelAction: FormPostSubmissionAction,
+  cancelRedirectUrl?: string,
   submissionEvents: FormSubmissionEvent[],
   tags: Array<string>,
   createdAt: string,
