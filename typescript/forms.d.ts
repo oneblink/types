@@ -393,7 +393,11 @@ export type ConditionalPredicateElement =
 
 ///////////////////////////////////////////////////////////////
 
-export type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
+export type FormPostSubmissionAction =
+  | 'BACK'
+  | 'URL'
+  | 'CLOSE'
+  | 'FORMS_LIBRARY'
 
 export type Form = {
   id: number
@@ -409,7 +413,9 @@ export type Form = {
   publishEndDate?: NoU | string
   isInfoPage: boolean
   postSubmissionAction: FormPostSubmissionAction
-  redirectUrl?: NoU | string
+  redirectUrl?: string
+  cancelAction: FormPostSubmissionAction
+  cancelRedirectUrl?: string
   submissionEvents: FormSubmissionEvent[]
   tags: Array<string>
   createdAt: string
