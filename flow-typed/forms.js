@@ -191,7 +191,7 @@ declare type FormElementWithInput<DefaultValue> = {
   placeholderValue?: string,
   regexValidation?: {
     pattern: string,
-    flags: string,
+    flags?: string,
     message: string,
   },
 } & LookupFormElement
