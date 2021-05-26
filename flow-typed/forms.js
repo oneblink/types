@@ -185,42 +185,51 @@ declare type TimeElement = FormElementWithDate & {
   type: 'time',
 }
 
-declare type NumberElement = {
-  type: 'number',
+declare type FormElementWithInput<DefaultValue> = {
   readOnly: boolean,
-  minNumber?: ?number,
-  maxNumber?: ?number,
-  defaultValue?: ?number,
-  isSlider: boolean,
-  sliderIncrement?: ?number,
+  defaultValue?: DefaultValue,
   placeholderValue?: string,
-  isInteger?: boolean,
+  regexValidation?: {
+    pattern: string,
+    flags: string,
+    message: string,
+  },
 } & LookupFormElement
+
+export type NumberElement = {
+  type: 'number',
+  minNumber?: number,
+  maxNumber?: number,
+  isSlider: boolean,
+  sliderIncrement?: number,
+  isInteger?: boolean,
+} & FormElementWithInput<number>
 
 declare type TextElement = {
   type: 'text',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 declare type TextareaElement = {
   type: 'textarea',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 declare type EmailElement = {
   type: 'email',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
-} & LookupFormElement
+} & FormElementWithInput<string>
+
+declare type BarcodeScannerElement = {
+  type: 'barcodeScanner',
+  restrictBarcodeTypes: boolean,
+  restrictedBarcodeTypes?: string[],
+} & FormElementWithInput<string>
+
+declare type TelephoneElement = {
+  type: 'telephone',
+} & FormElementWithInput<string>
 
 declare type ImageElement = FormElementBase & {
   type: 'image',
@@ -278,15 +287,6 @@ declare type HtmlElement = FormElementBase & {
   defaultValue: string,
 }
 
-declare type BarcodeScannerElement = {
-  type: 'barcodeScanner',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  restrictBarcodeTypes: boolean,
-  restrictedBarcodeTypes?: string[],
-  placeholderValue?: string,
-} & LookupFormElement
-
 declare type CaptchaElement = FormElementRequired & {
   type: 'captcha',
 }
@@ -316,13 +316,6 @@ declare type CalculationElement = FormElementBase & {
   preCalculationDisplay: ?string,
   displayAsCurrency?: boolean,
 }
-
-declare type TelephoneElement = {
-  type: 'telephone',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
-} & LookupFormElement
 
 declare type SummaryElement = FormElementBase & {
   type: 'summary',
