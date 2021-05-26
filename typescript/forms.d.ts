@@ -187,11 +187,9 @@ export type FormElementWithInput<DefaultValue> = {
   readOnly: boolean
   defaultValue?: DefaultValue
   placeholderValue?: string
-  regexValidation?: {
-    pattern: string
-    flags?: string
-    message: string
-  }
+  regexPattern?: string
+  regexFlags?: string
+  regexMessage?: string
 } & LookupFormElement
 
 export type NumberElement = {
