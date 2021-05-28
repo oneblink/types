@@ -45,6 +45,28 @@ export type ApprovalsStyles = BaseFormsAppStyles
 export type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string
   menuItems: FormsAppMenuItem[]
+  buttons?: {
+    submit?: {
+      icon?: string
+      label?: string
+    }
+    cancel?: {
+      icon?: string
+      label?: string
+    }
+    saveDraft?: {
+      icon?: string
+      label?: string
+    }
+    cancelPromptYes?: {
+      icon?: string
+      label?: string
+    }
+    cancelPromptNo?: {
+      icon?: string
+      label?: string
+    }
+  }
 }
 
 export type TilesStyles = FormsListStyles
