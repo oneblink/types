@@ -1,6 +1,7 @@
 // @flow
 
 import { type UserProfile } from './misc'
+import { type S3ObjectCredentials } from './aws'
 
 declare type NewDraftSubmission = {
   submission: {
@@ -96,19 +97,9 @@ declare type JobSearchParameters = {
   offset: number,
 }
 
-type _S3UploadCredentials = {
+type _S3UploadCredentials = import('./aws').S3ObjectCredentials & {
   submissionId: string,
   submissionTimestamp: string,
-  credentials: {
-    AccessKeyId: string,
-    SecretAccessKey: string,
-    SessionToken: string,
-  },
-  s3: {
-    region: string,
-    bucket: string,
-    key: string,
-  },
   usernameToken: string,
 }
 
@@ -169,11 +160,7 @@ declare type GeneratePaymentConfigPayload = {
 declare type NewFormSubmissionFileAccessToken = {
   submissionId: string,
   expiresAt: string,
-  s3: {
-    region: string,
-    bucket: string,
-    key: string,
-  },
+  s3: $PropertyType<S3ObjectCredentials, 's3'>,
   emailAddress: string,
 }
 

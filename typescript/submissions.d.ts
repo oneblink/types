@@ -1,6 +1,7 @@
 import { Form } from './forms'
 import { PaymentSubmissionEvent } from './submissionEvents'
 import { NoU, UserProfile } from './misc'
+import { S3ObjectCredentials } from './aws'
 
 export interface NewDraftSubmission {
   submission: {
@@ -103,18 +104,8 @@ export interface JobSearchParameters {
   offset: number
 }
 
-interface _S3UploadCredentials {
+type _S3UploadCredentials = S3ObjectCredentials & {
   submissionTimestamp: string
-  credentials: {
-    AccessKeyId: string
-    SecretAccessKey: string
-    SessionToken: string
-  }
-  s3: {
-    region: string
-    bucket: string
-    key: string
-  }
   usernameToken: string
 }
 
@@ -175,11 +166,7 @@ export interface GeneratePaymentConfigPayload {
 export type NewFormSubmissionFileAccessToken = {
   submissionId: string
   expiresAt: string
-  s3: {
-    region: string
-    bucket: string
-    key: string
-  }
+  s3: S3ObjectCredentials['s3']
   emailAddress: string
 }
 
