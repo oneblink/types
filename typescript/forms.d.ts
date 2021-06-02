@@ -128,14 +128,22 @@ export type CheckboxElement = FormElementWithOptionsBase & {
   buttons: boolean
   readOnly: boolean
   defaultValue?: string[]
+  canToggleAll?: boolean
 }
 
+type SelectMulti =
+  | {
+      multi: true
+      canToggleAll?: boolean
+    }
+  | {
+      multi: false
+    }
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
-  multi: boolean
   readOnly: boolean
   defaultValue?: string | string[]
-}
+} & SelectMulti
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
