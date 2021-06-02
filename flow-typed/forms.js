@@ -133,20 +133,13 @@ declare type CheckboxElement = FormElementWithOptionsBase & {
   canToggleAll?: boolean,
 }
 
-type SelectMultiOn = {
-  multi: true,
-  canToggleAll?: boolean,
-}
-type SelectMultiOff = {
-  multi: false,
-}
-type SelectMulti = SelectMultiOn | SelectMultiOff
-
 declare type SelectElement = FormElementWithOptionsBase & {
   type: 'select',
+  multi: boolean,
   readOnly: boolean,
   defaultValue?: ?(string | string[]),
-} & SelectMulti
+  canToggleAll?: boolean,
+}
 
 declare type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete',
