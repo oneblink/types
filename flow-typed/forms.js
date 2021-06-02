@@ -130,13 +130,13 @@ declare type CheckboxElement = FormElementWithOptionsBase & {
   buttons: boolean,
   readOnly: boolean,
   defaultValue?: ?(string[]),
-  canSelectAll?: boolean,
+  canToggleAll?: boolean,
 }
 
 type SelectMulti =
   | {
       multi: true,
-      canSelectAll?: boolean,
+      canToggleAll?: boolean,
     }
   | {
       multi: false,
