@@ -97,7 +97,7 @@ declare type JobSearchParameters = {
   offset: number,
 }
 
-type _S3UploadCredentials = import('./aws').S3ObjectCredentials & {
+type _S3UploadCredentials = S3ObjectCredentials & {
   submissionId: string,
   submissionTimestamp: string,
   usernameToken: string,
