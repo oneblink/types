@@ -1,6 +1,5 @@
 import { GeoscapeAddress } from './geoscape'
 import { PointAddress } from './point'
-import type { NoU } from './misc'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { BaseSearchResult } from './misc'
@@ -121,14 +120,14 @@ export type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio'
   buttons: boolean
   readOnly: boolean
-  defaultValue?: string | NoU
+  defaultValue?: string
 }
 
 export type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes'
   buttons: boolean
   readOnly: boolean
-  defaultValue?: string[] | NoU
+  defaultValue?: string[]
   canSelectAll?: boolean
 }
 
@@ -143,13 +142,13 @@ type SelectMulti =
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
   readOnly: boolean
-  defaultValue?: NoU | (string | string[])
+  defaultValue?: string | string[]
 } & SelectMulti
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
   readOnly: boolean
-  defaultValue?: string | NoU
+  defaultValue?: string
   searchUrl?: string
   placeholderValue?: string
 }
@@ -158,7 +157,7 @@ export type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance'
     readOnly: boolean
-    defaultValue?: NoU | string
+    defaultValue?: string
   }
 
 export type FormElementWithOptions =
@@ -169,7 +168,7 @@ export type FormElementWithOptions =
   | ComplianceElement
 
 // date element types
-type DateElementBase = {
+export type FormElementWithDate = {
   readOnly: boolean
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
@@ -177,61 +176,64 @@ type DateElementBase = {
   toDateDaysOffset?: number
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
+  placeholderValue?: string
 } & LookupFormElement
 
-export type DateElement = DateElementBase & {
+export type DateElement = FormElementWithDate & {
   type: 'date'
-  placeholderValue?: string
 }
 
-export type DateTimeElement = DateElementBase & {
+export type DateTimeElement = FormElementWithDate & {
   type: 'datetime'
-  placeholderValue?: string
 }
 
-export type TimeElement = {
+export type TimeElement = FormElementWithDate & {
   type: 'time'
+}
+
+export type FormElementWithInput<DefaultValue> = {
   readOnly: boolean
-  defaultValue?: NoU | (Date | 'NOW')
+  defaultValue?: DefaultValue
   placeholderValue?: string
+  regexPattern?: string
+  regexFlags?: string
+  regexMessage?: string
 } & LookupFormElement
 
 export type NumberElement = {
   type: 'number'
-  readOnly: boolean
-  minNumber?: NoU | number
-  maxNumber?: NoU | number
-  defaultValue?: NoU | number
+  minNumber?: number
+  maxNumber?: number
   isSlider: boolean
-  sliderIncrement?: NoU | number
-  placeholderValue?: string
+  sliderIncrement?: number
   isInteger?: boolean
-} & LookupFormElement
+} & FormElementWithInput<number>
 
 export type TextElement = {
   type: 'text'
-  readOnly: boolean
-  defaultValue?: NoU | string
-  placeholderValue?: string
   minLength?: number
   maxLength?: number
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 export type TextareaElement = {
   type: 'textarea'
-  readOnly: boolean
-  defaultValue?: NoU | string
-  placeholderValue?: string
   minLength?: number
   maxLength?: number
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 export type EmailElement = {
   type: 'email'
-  readOnly: boolean
-  defaultValue?: NoU | string
-  placeholderValue?: string
-} & LookupFormElement
+} & FormElementWithInput<string>
+
+export type BarcodeScannerElement = {
+  type: 'barcodeScanner'
+  restrictBarcodeTypes: boolean
+  restrictedBarcodeTypes?: string[]
+} & FormElementWithInput<string>
+
+export type TelephoneElement = {
+  type: 'telephone'
+} & FormElementWithInput<string>
 
 export type ImageElement = FormElementBase & {
   type: 'image'
@@ -289,15 +291,6 @@ export type HtmlElement = FormElementBase & {
   defaultValue: string
 }
 
-export type BarcodeScannerElement = {
-  type: 'barcodeScanner'
-  readOnly: boolean
-  defaultValue?: NoU | string
-  restrictBarcodeTypes: boolean
-  restrictedBarcodeTypes?: string[]
-  placeholderValue?: string
-} & LookupFormElement
-
 export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
@@ -323,17 +316,10 @@ export type FileElement = FormElementRequired & {
 export type CalculationElement = FormElementBase & {
   type: 'calculation'
   defaultValue: string
-  calculation: NoU | string
-  preCalculationDisplay: NoU | string
+  calculation: string
+  preCalculationDisplay?: string
   displayAsCurrency?: boolean
 }
-
-export type TelephoneElement = {
-  type: 'telephone'
-  readOnly: boolean
-  defaultValue?: NoU | string
-  placeholderValue?: string
-} & LookupFormElement
 
 export type SummaryElement = FormElementBase & {
   type: 'summary'
@@ -405,7 +391,11 @@ export type ConditionalPredicateElement =
 
 ///////////////////////////////////////////////////////////////
 
-export type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
+export type FormPostSubmissionAction =
+  | 'BACK'
+  | 'URL'
+  | 'CLOSE'
+  | 'FORMS_LIBRARY'
 
 export type Form = {
   id: number
@@ -417,11 +407,13 @@ export type Form = {
   elements: Array<FormElement>
   isAuthenticated: boolean
   isMultiPage: boolean
-  publishStartDate?: NoU | string
-  publishEndDate?: NoU | string
+  publishStartDate?: string
+  publishEndDate?: string
   isInfoPage: boolean
   postSubmissionAction: FormPostSubmissionAction
-  redirectUrl?: NoU | string
+  redirectUrl?: string
+  cancelAction: FormPostSubmissionAction
+  cancelRedirectUrl?: string
   submissionEvents: FormSubmissionEvent[]
   tags: Array<string>
   createdAt: string

@@ -1,5 +1,7 @@
 // @flow
 
+import { type S3ObjectCredentials } from './aws'
+
 declare type APIEnvironmentRoute = {
   module: string,
   route: string,
@@ -46,11 +48,7 @@ export type APIEnvironmentNetworkConfiguration = {
 declare type APIDeploymentPayload = {
   scope: string,
   env: string,
-  s3: {
-    region: string,
-    key: string,
-    bucket: string,
-  },
+  s3: $PropertyType<S3ObjectCredentials, 's3'>,
   timeout: number,
   cors: boolean | APIEnvironmentCorsConfiguration,
   runtime: string,

@@ -13,7 +13,8 @@ export interface FormS3Credentials {
     region: string
   }
 }
+export type S3ObjectCredentials = FormS3Credentials
 
-export type FormAttachmentS3Credentials = FormS3Credentials & {
+export type FormAttachmentS3Credentials = S3ObjectCredentials & {
   attachmentDataId: string
 }

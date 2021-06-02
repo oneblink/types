@@ -171,7 +171,7 @@ declare type FormElementWithOptions =
   | ComplianceElement
 
 // date element types
-type DateElementBase = {
+declare type FormElementWithDate = {
   readOnly: boolean,
   fromDate?: string | 'NOW',
   fromDateDaysOffset?: number,
@@ -179,61 +179,64 @@ type DateElementBase = {
   toDateDaysOffset?: number,
   defaultValue?: string | 'NOW',
   defaultValueDaysOffset?: number,
+  placeholderValue?: string,
 } & LookupFormElement
 
-declare type DateElement = DateElementBase & {
+declare type DateElement = FormElementWithDate & {
   type: 'date',
-  placeholderValue?: string,
 }
 
-declare type DateTimeElement = DateElementBase & {
+declare type DateTimeElement = FormElementWithDate & {
   type: 'datetime',
-  placeholderValue?: string,
 }
 
-declare type TimeElement = {
+declare type TimeElement = FormElementWithDate & {
   type: 'time',
+}
+
+declare type FormElementWithInput<DefaultValue> = {
   readOnly: boolean,
-  defaultValue?: ?(Date | 'NOW'),
+  defaultValue?: DefaultValue,
   placeholderValue?: string,
+  regexPattern?: string,
+  regexFlags?: string,
+  regexMessage?: string,
 } & LookupFormElement
 
-declare type NumberElement = {
+export type NumberElement = {
   type: 'number',
-  readOnly: boolean,
-  minNumber?: ?number,
-  maxNumber?: ?number,
-  defaultValue?: ?number,
+  minNumber?: number,
+  maxNumber?: number,
   isSlider: boolean,
-  sliderIncrement?: ?number,
-  placeholderValue?: string,
+  sliderIncrement?: number,
   isInteger?: boolean,
-} & LookupFormElement
+} & FormElementWithInput<number>
 
 declare type TextElement = {
   type: 'text',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 declare type TextareaElement = {
   type: 'textarea',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
   minLength?: number,
   maxLength?: number,
-} & LookupFormElement
+} & FormElementWithInput<string>
 
 declare type EmailElement = {
   type: 'email',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
-} & LookupFormElement
+} & FormElementWithInput<string>
+
+declare type BarcodeScannerElement = {
+  type: 'barcodeScanner',
+  restrictBarcodeTypes: boolean,
+  restrictedBarcodeTypes?: string[],
+} & FormElementWithInput<string>
+
+declare type TelephoneElement = {
+  type: 'telephone',
+} & FormElementWithInput<string>
 
 declare type ImageElement = FormElementBase & {
   type: 'image',
@@ -291,15 +294,6 @@ declare type HtmlElement = FormElementBase & {
   defaultValue: string,
 }
 
-declare type BarcodeScannerElement = {
-  type: 'barcodeScanner',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  restrictBarcodeTypes: boolean,
-  restrictedBarcodeTypes?: string[],
-  placeholderValue?: string,
-} & LookupFormElement
-
 declare type CaptchaElement = FormElementRequired & {
   type: 'captcha',
 }
@@ -329,13 +323,6 @@ declare type CalculationElement = FormElementBase & {
   preCalculationDisplay: ?string,
   displayAsCurrency?: boolean,
 }
-
-declare type TelephoneElement = {
-  type: 'telephone',
-  readOnly: boolean,
-  defaultValue?: ?string,
-  placeholderValue?: string,
-} & LookupFormElement
 
 declare type SummaryElement = FormElementBase & {
   type: 'summary',
@@ -407,7 +394,11 @@ declare type ConditionalPredicateElement =
 
 ///////////////////////////////////////////////////////////////
 
-declare type FormPostSubmissionAction = 'URL' | 'CLOSE' | 'FORMS_LIBRARY'
+declare type FormPostSubmissionAction =
+  | 'BACK'
+  | 'URL'
+  | 'CLOSE'
+  | 'FORMS_LIBRARY'
 
 declare type Form = {
   id: number,
@@ -423,7 +414,9 @@ declare type Form = {
   publishEndDate?: ?string,
   isInfoPage: boolean,
   postSubmissionAction: FormPostSubmissionAction,
-  redirectUrl?: ?string,
+  redirectUrl?: string,
+  cancelAction: FormPostSubmissionAction,
+  cancelRedirectUrl?: string,
   submissionEvents: FormSubmissionEvent[],
   tags: Array<string>,
   createdAt: string,
