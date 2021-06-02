@@ -133,14 +133,14 @@ declare type CheckboxElement = FormElementWithOptionsBase & {
   canToggleAll?: boolean,
 }
 
-type SelectMulti =
-  | {
-      multi: true,
-      canToggleAll?: boolean,
-    }
-  | {
-      multi: false,
-    }
+type SelectMultiOn = {
+  multi: true,
+  canToggleAll?: boolean,
+}
+type SelectMultiOff = {
+  multi: false,
+}
+type SelectMulti = SelectMultiOn | SelectMultiOff
 
 declare type SelectElement = FormElementWithOptionsBase & {
   type: 'select',
