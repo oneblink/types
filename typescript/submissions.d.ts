@@ -159,6 +159,7 @@ export interface GeneratePaymentConfigPayload {
   submissionId: string
   amount: number
   redirectUrl: string
+  customerReferenceNumber?: string
   crn2?: string
   crn3?: string
 }
