@@ -8,6 +8,7 @@ declare type IntegrationType =
   | 'GEOSCAPE'
   | 'POINT'
   | 'RECAPTCHA'
+  | 'WESTPAC_QUICK_WEB'
 
 type IntegrationBase = {
   organisationId: string,
@@ -84,6 +85,22 @@ declare type IntegrationBPOINT = IntegrationBase & {
   },
 }
 
+declare type IntegrationWestpacQuickWebEnvironment = {
+  id: string,
+  label: string,
+  username: string,
+  password: string,
+  supplierBusinessCode: string,
+  communityCode: string,
+  isTestMode: boolean,
+}
+declare type IntegrationWestpacQuickWeb = IntegrationBase & {
+  type: 'WESTPAC_QUICK_WEB',
+  configuration: {
+    environments: IntegrationWestpacQuickWebEnvironment[],
+  },
+}
+
 declare type IntegrationGeoscape = IntegrationBase & {
   type: 'GEOSCAPE',
   configuration: {
@@ -106,3 +123,4 @@ declare type Integration =
   | IntegrationGeoscape
   | IntegrationPoint
   | IntegrationRecaptcha
+  | IntegrationWestpacQuickWeb

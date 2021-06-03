@@ -1,6 +1,6 @@
 // @flow
 
-import { type ConditionalPredicate } from './conditions'
+import type { ConditionalPredicate } from './conditions'
 
 declare type FormSubmissionEventType =
   | 'CALLBACK'
@@ -10,11 +10,12 @@ declare type FormSubmissionEventType =
   | 'CP_PAY'
   | 'BPOINT'
   | 'CP_HCMS'
+  | 'WESTPAC_QUICK_WEB'
 
 declare type FormSubmissionEventConditional = {
   conditionallyExecute?: boolean,
   requiresAllConditionallyExecutePredicates?: boolean,
-  conditionallyExecutePredicates?: Array<ConditionalPredicate>,
+  conditionallyExecutePredicates?: ConditionalPredicate[],
 }
 
 declare type CallbackSubmissionEvent = FormSubmissionEventConditional & {
@@ -30,8 +31,8 @@ declare type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF',
   configuration: {
     email: string,
-    emailSubjectLine: ?string,
-    pdfFileName: ?string,
+    emailSubjectLine?: string,
+    pdfFileName?: string,
     includeSubmissionIdInPdf?: boolean,
     excludedElementIds?: string[],
   },
@@ -60,7 +61,7 @@ declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM',
   configuration: {
     environmentId: string,
-    recordTitle: string | void,
+    recordTitle?: string,
     container: TrimUriOption,
     recordType: TrimUriOption,
     actionDefinition: TrimUriOption,
@@ -75,7 +76,7 @@ declare type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_HCMS',
   configuration: {
     contentTypeName: string,
-    encryptedElementIds: ?Array<string>,
+    encryptedElementIds?: string[],
     encryptPdf?: boolean,
   },
   isDraft: boolean,
@@ -101,18 +102,28 @@ declare type BPOINTSubmissionEvent = {
   isDraft: boolean,
 }
 
+declare type WestpacQuickWebSubmissionEvent = {
+  type: 'WESTPAC_QUICK_WEB',
+  configuration: {
+    elementId: string,
+    environmentId: string,
+    customerReferenceNumber?: string,
+  },
+  isDraft: boolean,
+}
+
+declare type PaymentSubmissionEvent =
+  | CPPaySubmissionEvent
+  | BPOINTSubmissionEvent
+  | WestpacQuickWebSubmissionEvent
+
 declare type FormSubmissionEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
-  | CPPaySubmissionEvent
-  | BPOINTSubmissionEvent
-
-declare type PaymentSubmissionEvent =
-  | CPPaySubmissionEvent
-  | BPOINTSubmissionEvent
+  | PaymentSubmissionEvent
 
 declare type WebhookSubscription = {
   id: number,

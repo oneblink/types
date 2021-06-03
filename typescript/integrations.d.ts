@@ -6,14 +6,15 @@ export type IntegrationType =
   | 'GEOSCAPE'
   | 'POINT'
   | 'RECAPTCHA'
+  | 'WESTPAC_QUICK_WEB'
 
-interface IntegrationBase {
+type IntegrationBase = {
   organisationId: string
   updatedAt: Date
   createdAt: Date
 }
 
-export interface IntegrationTrimEnvironment {
+export type IntegrationTrimEnvironment = {
   id: string
   label: string
   baseUrl: string
@@ -27,7 +28,7 @@ export type IntegrationTrim = IntegrationBase & {
   }
 }
 
-export interface IntegrationCPPayGateway {
+export type IntegrationCPPayGateway = {
   id: string
   label: string
   clientId: string
@@ -58,13 +59,13 @@ export type IntegrationRecaptcha = IntegrationBase & {
   }
 }
 
-export interface IntegrationRecaptchaDomain {
+export type IntegrationRecaptchaDomain = {
   id: string
   label: string
   privateKey: string
   publicKey: string
 }
-export interface IntegrationBPOINTEnvironment {
+export type IntegrationBPOINTEnvironment = {
   id: string
   label: string
   baseUrl: string
@@ -81,6 +82,23 @@ export type IntegrationBPOINT = IntegrationBase & {
     environments: IntegrationBPOINTEnvironment[]
   }
 }
+
+export type IntegrationWestpacQuickWebEnvironment = {
+  id: string
+  label: string
+  username: string
+  password: string
+  supplierBusinessCode: string
+  communityCode: string
+  isTestMode: boolean
+}
+export type IntegrationWestpacQuickWeb = IntegrationBase & {
+  type: 'WESTPAC_QUICK_WEB'
+  configuration: {
+    environments: IntegrationWestpacQuickWebEnvironment[]
+  }
+}
+
 export type IntegrationGeoscape = IntegrationBase & {
   type: 'GEOSCAPE'
   configuration: {
@@ -103,3 +121,4 @@ export type Integration =
   | IntegrationGeoscape
   | IntegrationPoint
   | IntegrationRecaptcha
+  | IntegrationWestpacQuickWeb

@@ -1,4 +1,3 @@
-import type { NoU } from './misc'
 import type { ConditionalPredicate } from './conditions'
 
 export type FormSubmissionEventType =
@@ -9,8 +8,9 @@ export type FormSubmissionEventType =
   | 'CP_PAY'
   | 'BPOINT'
   | 'CP_HCMS'
+  | 'WESTPAC_QUICK_WEB'
 
-export interface FormSubmissionEventConditional {
+export type FormSubmissionEventConditional = {
   conditionallyExecute?: boolean
   requiresAllConditionallyExecutePredicates?: boolean
   conditionallyExecutePredicates?: ConditionalPredicate[]
@@ -29,15 +29,15 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
   configuration: {
     email: string
-    emailSubjectLine: NoU | string
-    pdfFileName: NoU | string
+    emailSubjectLine?: string
+    pdfFileName?: string
     includeSubmissionIdInPdf?: boolean
     excludedElementIds?: string[]
   }
   isDraft: boolean
 }
 
-export interface OneBlinkAPISubmissionEventConfiguration {
+export type OneBlinkAPISubmissionEventConfiguration = {
   apiId: string
   apiEnvironment: string
   apiEnvironmentRoute: string
@@ -59,7 +59,7 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM'
   configuration: {
     environmentId: string
-    recordTitle: string | undefined
+    recordTitle?: string
     container: TrimUriOption
     recordType: TrimUriOption
     actionDefinition: TrimUriOption
@@ -74,14 +74,13 @@ export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_HCMS'
   configuration: {
     contentTypeName: string
-    encryptedElementIds: NoU | string[]
+    encryptedElementIds?: string[]
     encryptPdf?: boolean
   }
-
   isDraft: boolean
 }
 
-export interface CPPaySubmissionEvent {
+export type CPPaySubmissionEvent = {
   type: 'CP_PAY'
   configuration: {
     elementId: string
@@ -90,7 +89,7 @@ export interface CPPaySubmissionEvent {
   isDraft: boolean
 }
 
-export interface BPOINTSubmissionEvent {
+export type BPOINTSubmissionEvent = {
   type: 'BPOINT'
   configuration: {
     elementId: string
@@ -101,18 +100,28 @@ export interface BPOINTSubmissionEvent {
   isDraft: boolean
 }
 
+export type WestpacQuickWebSubmissionEvent = {
+  type: 'WESTPAC_QUICK_WEB'
+  configuration: {
+    elementId: string
+    environmentId: string
+    customerReferenceNumber?: string
+  }
+  isDraft: boolean
+}
+
+export type PaymentSubmissionEvent =
+  | CPPaySubmissionEvent
+  | BPOINTSubmissionEvent
+  | WestpacQuickWebSubmissionEvent
+
 export type FormSubmissionEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
-  | CPPaySubmissionEvent
-  | BPOINTSubmissionEvent
-
-export type PaymentSubmissionEvent =
-  | CPPaySubmissionEvent
-  | BPOINTSubmissionEvent
+  | PaymentSubmissionEvent
 
 export type WebhookSubscription = {
   id: number
