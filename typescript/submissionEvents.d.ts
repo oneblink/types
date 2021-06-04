@@ -105,7 +105,7 @@ export type WestpacQuickWebSubmissionEvent = {
   configuration: {
     elementId: string
     environmentId: string
-    customerReferenceNumber?: string
+    customerReferenceNumber: string
   }
   isDraft: boolean
 }

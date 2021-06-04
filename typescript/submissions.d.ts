@@ -155,15 +155,6 @@ export interface S3SubmissionData {
   user?: _FormSubmissionMeta['user']
 }
 
-export interface GeneratePaymentConfigPayload {
-  submissionId: string
-  amount: number
-  redirectUrl: string
-  customerReferenceNumber?: string
-  crn2?: string
-  crn3?: string
-}
-
 export type NewFormSubmissionFileAccessToken = {
   submissionId: string
   expiresAt: string

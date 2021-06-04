@@ -149,15 +149,6 @@ declare type S3SubmissionData = {
   user?: $PropertyType<_FormSubmissionMeta, 'user'>,
 }
 
-declare type GeneratePaymentConfigPayload = {
-  submissionId: string,
-  amount: number,
-  redirectUrl: string,
-  customerReferenceNumber?: string,
-  crn2?: string,
-  crn3?: string,
-}
-
 declare type NewFormSubmissionFileAccessToken = {
   submissionId: string,
   expiresAt: string,
