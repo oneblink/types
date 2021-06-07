@@ -2,6 +2,7 @@
 
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
+import { type CivicaStreetName } from './civica/street-name'
 import { type ConditionalPredicate } from './conditions'
 import { type FormSubmissionEvent } from './submission-events'
 import { type BaseSearchResult } from './misc'
@@ -41,6 +42,7 @@ declare type FormElementType =
   | 'geoscapeAddress'
   | 'pointAddress'
   | 'compliance'
+  | 'civicaStreetName'
 
 declare type LookupFormElement = {
   isDataLookup: boolean,
@@ -122,14 +124,14 @@ declare type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio',
   buttons: boolean,
   readOnly: boolean,
-  defaultValue?: ?string,
+  defaultValue?: string,
 }
 
 declare type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes',
   buttons: boolean,
   readOnly: boolean,
-  defaultValue?: ?(string[]),
+  defaultValue?: string[],
   canToggleAll?: boolean,
 }
 
@@ -137,14 +139,14 @@ declare type SelectElement = FormElementWithOptionsBase & {
   type: 'select',
   multi: boolean,
   readOnly: boolean,
-  defaultValue?: ?(string | string[]),
+  defaultValue?: string | string[],
   canToggleAll?: boolean,
 }
 
 declare type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete',
   readOnly: boolean,
-  defaultValue?: ?string,
+  defaultValue?: string,
   searchUrl?: string,
   placeholderValue?: string,
 }
@@ -153,7 +155,7 @@ declare type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance',
     readOnly: boolean,
-    defaultValue?: ?string,
+    defaultValue?: string,
   }
 
 declare type FormElementWithOptions =
@@ -269,8 +271,8 @@ declare type _NestedElementsElement = {
 declare type RepeatableSetElement = FormElementBase & {
   type: 'repeatableSet',
   readOnly: boolean,
-  minSetEntries: ?number,
-  maxSetEntries: ?number,
+  minSetEntries?: number,
+  maxSetEntries?: number,
   addSetEntryLabel?: string,
   removeSetEntryLabel?: string,
 } & _NestedElementsElement
@@ -294,8 +296,8 @@ declare type CaptchaElement = FormElementRequired & {
 declare type FilesElement = FormElementBinaryStorage & {
   type: 'files',
   readOnly: boolean,
-  minEntries: number | void,
-  maxEntries: number | void,
+  minEntries?: number,
+  maxEntries?: number,
   restrictFileTypes: boolean,
   restrictedFileTypes?: string[],
   defaultValue?: mixed,
@@ -312,8 +314,8 @@ declare type FileElement = FormElementRequired & {
 declare type CalculationElement = FormElementBase & {
   type: 'calculation',
   defaultValue: string,
-  calculation: ?string,
-  preCalculationDisplay: ?string,
+  calculation: string,
+  preCalculationDisplay?: string,
   displayAsCurrency?: boolean,
 }
 
@@ -337,6 +339,13 @@ declare type PointAddressElement = {
   placeholderValue?: string,
   stateTerritoryFilter?: string[],
   addressTypeFilter?: string[],
+} & LookupFormElement
+
+declare type CivicaStreetNameElement = {
+  type: 'civicaStreetName',
+  readOnly: boolean,
+  defaultValue?: CivicaStreetName,
+  placeholderValue?: string,
 } & LookupFormElement
 
 declare type FormElementWithoutForm =
@@ -365,6 +374,7 @@ declare type FormElementWithoutForm =
   | GeoscapeAddressElement
   | PointAddressElement
   | FormElementWithOptions
+  | CivicaStreetNameElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 
@@ -403,8 +413,8 @@ declare type Form = {
   elements: Array<FormElement>,
   isAuthenticated: boolean,
   isMultiPage: boolean,
-  publishStartDate?: ?string,
-  publishEndDate?: ?string,
+  publishStartDate?: string,
+  publishEndDate?: string,
   isInfoPage: boolean,
   postSubmissionAction: FormPostSubmissionAction,
   redirectUrl?: string,

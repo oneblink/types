@@ -11,6 +11,7 @@ import * as TeamMemberTypes from './typescript/teamMembers'
 import * as OrganisationTypes from './typescript/organisations'
 import * as GeoscapeTypes from './typescript/geoscape'
 import * as PointTypes from './typescript/point'
+import * as CivicaTypes from './typescript/civica'
 import * as AWSTypes from './typescript/aws'
 import * as ApprovalTypes from './typescript/approvals'
 import * as ConditionTypes from './typescript/conditions'
@@ -29,6 +30,7 @@ export {
   OrganisationTypes,
   GeoscapeTypes,
   PointTypes,
+  CivicaTypes,
   AWSTypes,
   ApprovalTypes,
   ConditionTypes,
