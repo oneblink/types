@@ -140,6 +140,7 @@ declare type FormSubmissionEvent =
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
+  | CivicaCrmSubmissionEvent
   | PaymentSubmissionEvent
 
 declare type WebhookSubscription = {

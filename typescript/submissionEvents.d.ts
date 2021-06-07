@@ -138,6 +138,7 @@ export type FormSubmissionEvent =
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
+  | CivicaCrmSubmissionEvent
   | PaymentSubmissionEvent
 
 export type WebhookSubscription = {
