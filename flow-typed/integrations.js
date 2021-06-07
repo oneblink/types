@@ -3,6 +3,7 @@
 declare type IntegrationType =
   | 'CP_PAY'
   | 'TRIM'
+  | 'CIVICA'
   | 'CP_HCMS'
   | 'BPOINT'
   | 'GEOSCAPE'
@@ -27,6 +28,20 @@ declare type IntegrationTrim = IntegrationBase & {
   type: 'TRIM',
   configuration: {
     environments: Array<IntegrationTrimEnvironment>,
+  },
+}
+
+declare type IntegrationCivicaEnvironment = {
+  id: string,
+  label: string,
+  baseUrl: string,
+  username: string,
+  password: string,
+}
+declare type IntegrationCivica = IntegrationBase & {
+  type: 'CIVICA',
+  configuration: {
+    environments: Array<IntegrationCivicaEnvironment>,
   },
 }
 

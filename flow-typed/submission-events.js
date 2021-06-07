@@ -7,6 +7,7 @@ declare type FormSubmissionEventType =
   | 'PDF'
   | 'ONEBLINK_API'
   | 'TRIM'
+  | 'CIVICA_CRM'
   | 'CP_PAY'
   | 'BPOINT'
   | 'CP_HCMS'
@@ -68,6 +69,22 @@ declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
     location: TrimUriOption,
     includeSubmissionIdInPdf?: boolean,
     author?: TrimUriOption,
+  },
+  isDraft: boolean,
+}
+
+declare type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
+  type: 'CIVICA_CRM',
+  configuration: {
+    environmentId: string,
+    civicaCategoryId: number,
+    mapping: Array<{
+      civicaCategoryItemNumber: number,
+      formElementId: string,
+    }>,
+    pdfFileName?: string,
+    includeSubmissionIdInPdf?: boolean,
+    excludedElementIds?: string[],
   },
   isDraft: boolean,
 }

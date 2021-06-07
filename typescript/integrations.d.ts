@@ -1,6 +1,7 @@
 export type IntegrationType =
   | 'CP_PAY'
   | 'TRIM'
+  | 'CIVICA'
   | 'CP_HCMS'
   | 'BPOINT'
   | 'GEOSCAPE'
@@ -25,6 +26,20 @@ export type IntegrationTrim = IntegrationBase & {
   type: 'TRIM'
   configuration: {
     environments: Array<IntegrationTrimEnvironment>
+  }
+}
+
+export type IntegrationCivicaEnvironment = {
+  id: string
+  label: string
+  baseUrl: string
+  username: string
+  password: string
+}
+export type IntegrationCivica = IntegrationBase & {
+  type: 'CIVICA'
+  configuration: {
+    environments: Array<IntegrationCivicaEnvironment>
   }
 }
 
