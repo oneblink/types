@@ -374,6 +374,7 @@ declare type FormElementWithoutForm =
   | GeoscapeAddressElement
   | PointAddressElement
   | FormElementWithOptions
+  | CivicaStreetNameElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 

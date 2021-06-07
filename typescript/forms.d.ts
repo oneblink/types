@@ -372,6 +372,7 @@ export type FormElementWithoutForm =
   | GeoscapeAddressElement
   | PointAddressElement
   | FormElementWithOptions
+  | CivicaStreetNameElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
