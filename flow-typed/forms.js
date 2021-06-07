@@ -342,7 +342,7 @@ declare type PointAddressElement = {
   addressTypeFilter?: string[],
 } & LookupFormElement
 
-declare type BooleanElement = FormElementBase & {
+declare type BooleanElement = LookupFormElement & {
   type: 'boolean',
   defaultValue: boolean,
 }

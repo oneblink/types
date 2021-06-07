@@ -340,7 +340,7 @@ export type PointAddressElement = {
   addressTypeFilter?: string[]
 } & LookupFormElement
 
-export type BooleanElement = FormElementBase & {
+export type BooleanElement = LookupFormElement & {
   type: 'boolean'
   defaultValue: boolean
 }
