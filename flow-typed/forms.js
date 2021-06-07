@@ -339,6 +339,11 @@ declare type PointAddressElement = {
   addressTypeFilter?: string[],
 } & LookupFormElement
 
+declare type BooleanElement = FormElementBase & {
+  type: 'boolean',
+  defaultValue: boolean,
+}
+
 declare type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -364,6 +369,7 @@ declare type FormElementWithoutForm =
   | SummaryElement
   | GeoscapeAddressElement
   | PointAddressElement
+  | BooleanElement
   | FormElementWithOptions
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
