@@ -139,3 +139,4 @@ declare type Integration =
   | IntegrationPoint
   | IntegrationRecaptcha
   | IntegrationWestpacQuickWeb
+  | IntegrationCivica

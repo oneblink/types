@@ -1,5 +1,6 @@
 import { GeoscapeAddress } from './geoscape'
 import { PointAddress } from './point'
+import { CivicaStreetName } from './civica/street-name'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { BaseSearchResult } from './misc'
@@ -39,6 +40,7 @@ export type FormElementType =
   | 'geoscapeAddress'
   | 'pointAddress'
   | 'compliance'
+  | 'civicaStreetName'
 
 export type LookupFormElement = {
   isDataLookup: boolean
@@ -267,8 +269,8 @@ export type _NestedElementsElement = {
 export type RepeatableSetElement = FormElementBase & {
   type: 'repeatableSet'
   readOnly: boolean
-  minSetEntries: undefined | number
-  maxSetEntries: undefined | number
+  minSetEntries?: number
+  maxSetEntries?: number
   addSetEntryLabel?: string
   removeSetEntryLabel?: string
 } & _NestedElementsElement
@@ -292,8 +294,8 @@ export type CaptchaElement = FormElementRequired & {
 export type FilesElement = FormElementBinaryStorage & {
   type: 'files'
   readOnly: boolean
-  minEntries: number | undefined
-  maxEntries: number | undefined
+  minEntries?: number
+  maxEntries?: number
   restrictFileTypes: boolean
   restrictedFileTypes?: string[]
   defaultValue?: unknown
@@ -341,6 +343,12 @@ export type BooleanElement = FormElementBase & {
   type: 'boolean'
   defaultValue: boolean
 }
+export type CivicaStreetNameElement = {
+  type: 'civicaStreetName'
+  readOnly: boolean
+  defaultValue?: CivicaStreetName
+  placeholderValue?: string
+} & LookupFormElement
 
 export type FormElementWithoutForm =
   | TextElement
@@ -367,8 +375,9 @@ export type FormElementWithoutForm =
   | SummaryElement
   | GeoscapeAddressElement
   | PointAddressElement
-  | BooleanElement
   | FormElementWithOptions
+  | BooleanElement
+  | CivicaStreetNameElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
