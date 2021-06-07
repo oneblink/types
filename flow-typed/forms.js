@@ -43,6 +43,7 @@ declare type FormElementType =
   | 'pointAddress'
   | 'compliance'
   | 'civicaStreetName'
+  | 'boolean'
 
 declare type LookupFormElement = {
   isDataLookup: boolean,
@@ -341,6 +342,10 @@ declare type PointAddressElement = {
   addressTypeFilter?: string[],
 } & LookupFormElement
 
+declare type BooleanElement = FormElementBase & {
+  type: 'boolean',
+  defaultValue: boolean,
+}
 declare type CivicaStreetNameElement = {
   type: 'civicaStreetName',
   readOnly: boolean,
@@ -374,6 +379,7 @@ declare type FormElementWithoutForm =
   | GeoscapeAddressElement
   | PointAddressElement
   | FormElementWithOptions
+  | BooleanElement
   | CivicaStreetNameElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
