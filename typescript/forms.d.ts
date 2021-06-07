@@ -41,6 +41,7 @@ export type FormElementType =
   | 'pointAddress'
   | 'compliance'
   | 'civicaStreetName'
+  | 'boolean'
 
 export type LookupFormElement = {
   isDataLookup: boolean

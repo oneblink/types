@@ -43,6 +43,7 @@ declare type FormElementType =
   | 'pointAddress'
   | 'compliance'
   | 'civicaStreetName'
+  | 'boolean'
 
 declare type LookupFormElement = {
   isDataLookup: boolean,
