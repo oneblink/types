@@ -343,6 +343,7 @@ export type PointAddressElement = {
 export type BooleanElement = LookupFormElement & {
   type: 'boolean'
   defaultValue: boolean
+  readOnly: boolean
 }
 export type CivicaStreetNameElement = {
   type: 'civicaStreetName'

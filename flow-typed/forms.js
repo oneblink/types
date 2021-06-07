@@ -345,6 +345,7 @@ declare type PointAddressElement = {
 declare type BooleanElement = LookupFormElement & {
   type: 'boolean',
   defaultValue: boolean,
+  readOnly: boolean,
 }
 declare type CivicaStreetNameElement = {
   type: 'civicaStreetName',
