@@ -2,7 +2,7 @@
 
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
-import { CivicaStreetName } from './civica/street-name'
+import { type CivicaStreetName } from './civica/street-name'
 import { type ConditionalPredicate } from './conditions'
 import { type FormSubmissionEvent } from './submission-events'
 import { type BaseSearchResult } from './misc'
