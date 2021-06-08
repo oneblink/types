@@ -71,11 +71,19 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean
 }
 
+export type CivicaRecord = {
+  id: number
+  label: string
+}
+
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
   configuration: {
     environmentId: string
-    civicaCategoryId: number
+    civicaDescription: string
+    civicaCustomerContactMethod: string
+    civicaRequestor: CivicaRecord
+    civicaCategory: CivicaRecord
     mapping: Array<{
       civicaCategoryItemNumber: number
       formElementId: string
