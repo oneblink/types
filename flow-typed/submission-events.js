@@ -78,13 +78,17 @@ declare type CivicaRecord = {
   label: string,
 }
 
+declare type CivicaCustomerContactMethod = {
+  code: string
+  description: string
+}
+
 declare type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM',
   configuration: {
     environmentId: string,
     civicaDescription: string,
-    civicaCustomerContactMethod: string,
-    civicaRequestor: CivicaRecord,
+    civicaCustomerContactMethod: CivicaCustomerContactMethod,
     civicaCategory: CivicaRecord,
     mapping: Array<{
       civicaCategoryItemNumber: number,

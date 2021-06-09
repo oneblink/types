@@ -75,14 +75,17 @@ export type CivicaRecord = {
   id: number
   label: string
 }
+export type CivicaCustomerContactMethod = {
+  code: string
+  description: string
+}
 
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
   configuration: {
     environmentId: string
     civicaDescription: string
-    civicaCustomerContactMethod: string
-    civicaRequestor: CivicaRecord
+    civicaCustomerContactMethod: CivicaCustomerContactMethod
     civicaCategory: CivicaRecord
     mapping: Array<{
       civicaCategoryItemNumber: number
