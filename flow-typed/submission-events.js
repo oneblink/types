@@ -79,8 +79,8 @@ declare type CivicaRecord = {
 }
 
 declare type CivicaCustomerContactMethod = {
-  code: string
-  description: string
+  code: string,
+  description: string,
 }
 
 declare type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
