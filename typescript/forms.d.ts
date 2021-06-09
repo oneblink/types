@@ -360,7 +360,7 @@ export type CivicaNameRecordElement = {
   defaultValue?: CivicaNameRecord
   placeholderValue?: string
   useGeoscapeAddressing: boolean
-} & LookupFormElement
+} & FormElementRequired
 
 export type FormElementWithoutForm =
   | TextElement
