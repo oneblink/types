@@ -360,7 +360,6 @@ declare type CivicaNameRecordElement = {
   type: 'civicaNameRecord',
   readOnly: boolean,
   defaultValue?: CivicaNameRecord,
-  placeholderValue?: string,
   useGeoscapeAddressing: boolean,
 } & FormElementRequired
 
