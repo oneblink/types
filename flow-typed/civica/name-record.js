@@ -1,3 +1,5 @@
+// @flow
+
 export type CivicaNameRecord = {
   title: string,
   givenName1: string,
@@ -7,11 +9,11 @@ export type CivicaNameRecord = {
   businessPhone?: string,
   mobilePhone?: string,
   faxPhone?: string,
-  streetAddress: [
-    {
-      address1: string,
-      address2: string,
-      postcode: string,
-    }
-  ],
+  streetAddress: StreetAddress[],
+}
+
+export type StreetAddress = {
+  address1: string,
+  address2: string,
+  postcode: string,
 }
