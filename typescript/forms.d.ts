@@ -9,43 +9,6 @@ import type { BaseSearchResult } from './misc'
 ////////////////////////////////////////
 // Element Types
 
-export type FormElementType =
-  | 'text'
-  | 'email'
-  | 'textarea'
-  | 'number'
-  | 'select'
-  | 'checkboxes'
-  | 'radio'
-  | 'draw'
-  | 'camera'
-  | 'date'
-  | 'time'
-  | 'datetime'
-  | 'heading'
-  | 'location'
-  | 'repeatableSet'
-  | 'page'
-  | 'html'
-  | 'barcodeScanner'
-  | 'captcha'
-  | 'image'
-  | 'file'
-  | 'files'
-  | 'calculation'
-  | 'telephone'
-  | 'autocomplete'
-  | 'form'
-  | 'infoPage'
-  | 'summary'
-  | 'geoscapeAddress'
-  | 'pointAddress'
-  | 'compliance'
-  | 'civicaStreetName'
-  | 'boolean'
-  | 'section'
-  | 'civicaNameRecord'
-
 export type LookupFormElement = {
   isDataLookup: boolean
   dataLookupId?: number
@@ -406,6 +369,8 @@ export type FormElementWithoutForm =
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
 export type FormElement = FormElementWithoutForm | FormElementWithForm
+
+export type FormElementType = FormElement['type']
 
 export type CalculationInsertionElement =
   | NumberElement
