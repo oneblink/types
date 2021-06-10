@@ -11,43 +11,6 @@ import { type BaseSearchResult } from './misc'
 ////////////////////////////////////////
 // Element Types
 
-declare type FormElementType =
-  | 'text'
-  | 'email'
-  | 'textarea'
-  | 'number'
-  | 'select'
-  | 'checkboxes'
-  | 'radio'
-  | 'draw'
-  | 'camera'
-  | 'date'
-  | 'time'
-  | 'datetime'
-  | 'heading'
-  | 'location'
-  | 'repeatableSet'
-  | 'page'
-  | 'html'
-  | 'barcodeScanner'
-  | 'captcha'
-  | 'image'
-  | 'file'
-  | 'files'
-  | 'calculation'
-  | 'telephone'
-  | 'autocomplete'
-  | 'form'
-  | 'infoPage'
-  | 'summary'
-  | 'geoscapeAddress'
-  | 'pointAddress'
-  | 'compliance'
-  | 'civicaStreetName'
-  | 'boolean'
-  | 'section'
-  | 'civicaNameRecord'
-
 declare type LookupFormElement = {
   isDataLookup: boolean,
   dataLookupId?: number,
@@ -407,6 +370,8 @@ declare type FormElementWithoutForm =
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 
 declare type FormElement = FormElementWithoutForm | FormElementWithForm
+
+declare type FormElementType = $PropertyType<FormElement, 'type'>
 
 declare type CalculationInsertionElement =
   | NumberElement
