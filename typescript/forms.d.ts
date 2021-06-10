@@ -43,6 +43,7 @@ export type FormElementType =
   | 'compliance'
   | 'civicaStreetName'
   | 'boolean'
+  | 'section'
   | 'civicaNameRecord'
 
 export type LookupFormElement = {
@@ -283,7 +284,17 @@ export type PageElement = _FormElementBase & {
   label: string
 } & _NestedElementsElement
 
-export type NestedElementsElement = PageElement | RepeatableSetElement
+export type SectionElement = {
+  type: 'section'
+  isCollapsed: boolean
+  label: string
+} & _NestedElementsElement &
+  _FormElementBase
+
+export type NestedElementsElement =
+  | PageElement
+  | RepeatableSetElement
+  | SectionElement
 
 export type HtmlElement = FormElementBase & {
   type: 'html'
@@ -389,6 +400,7 @@ export type FormElementWithoutForm =
   | FormElementWithOptions
   | BooleanElement
   | CivicaStreetNameElement
+  | SectionElement
   | CivicaNameRecordElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement

@@ -45,6 +45,7 @@ declare type FormElementType =
   | 'compliance'
   | 'civicaStreetName'
   | 'boolean'
+  | 'section'
   | 'civicaNameRecord'
 
 declare type LookupFormElement = {
@@ -285,7 +286,16 @@ declare type PageElement = _FormElementBase & {
   label: string,
 } & _NestedElementsElement
 
-declare type NestedElementsElement = PageElement | RepeatableSetElement
+declare type SectionElement = _FormElementBase & {
+  type: 'section',
+  isCollapsed: boolean,
+  label: string,
+} & _NestedElementsElement
+
+declare type NestedElementsElement =
+  | PageElement
+  | RepeatableSetElement
+  | SectionElement
 
 declare type HtmlElement = FormElementBase & {
   type: 'html',
@@ -391,6 +401,7 @@ declare type FormElementWithoutForm =
   | FormElementWithOptions
   | BooleanElement
   | CivicaStreetNameElement
+  | SectionElement
   | CivicaNameRecordElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
