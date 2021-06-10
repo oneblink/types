@@ -249,10 +249,9 @@ declare type PageElement = _FormElementBase & {
   label: string,
 } & _NestedElementsElement
 
-declare type SectionElement = _FormElementBase & {
+declare type SectionElement = FormElementBase & {
   type: 'section',
   isCollapsed: boolean,
-  label: string,
 } & _NestedElementsElement
 
 declare type NestedElementsElement =

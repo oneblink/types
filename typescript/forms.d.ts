@@ -247,12 +247,10 @@ export type PageElement = _FormElementBase & {
   label: string
 } & _NestedElementsElement
 
-export type SectionElement = {
+export type SectionElement = FormElementBase & {
   type: 'section'
   isCollapsed: boolean
-  label: string
-} & _NestedElementsElement &
-  _FormElementBase
+} & _NestedElementsElement
 
 export type NestedElementsElement =
   | PageElement
