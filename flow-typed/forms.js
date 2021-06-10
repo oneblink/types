@@ -3,6 +3,7 @@
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
 import { type CivicaStreetName } from './civica/street-name'
+import { type CivicaNameRecord } from './civica/name-record'
 import { type ConditionalPredicate } from './conditions'
 import { type FormSubmissionEvent } from './submission-events'
 import { type BaseSearchResult } from './misc'
@@ -45,6 +46,7 @@ declare type FormElementType =
   | 'civicaStreetName'
   | 'boolean'
   | 'section'
+  | 'civicaNameRecord'
 
 declare type LookupFormElement = {
   isDataLookup: boolean,
@@ -364,6 +366,13 @@ declare type CivicaStreetNameElement = {
   placeholderValue?: string,
 } & LookupFormElement
 
+declare type CivicaNameRecordElement = {
+  type: 'civicaNameRecord',
+  readOnly: boolean,
+  defaultValue?: CivicaNameRecord,
+  useGeoscapeAddressing: boolean,
+} & FormElementRequired
+
 declare type FormElementWithoutForm =
   | TextElement
   | EmailElement
@@ -393,6 +402,7 @@ declare type FormElementWithoutForm =
   | BooleanElement
   | CivicaStreetNameElement
   | SectionElement
+  | CivicaNameRecordElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 
