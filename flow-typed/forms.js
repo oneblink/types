@@ -256,11 +256,6 @@ declare type SectionElement = _FormElementBase & {
   hint?: string,
 } & _NestedElementsElement
 
-declare type NestedElementsElement =
-  | PageElement
-  | RepeatableSetElement
-  | SectionElement
-
 declare type HtmlElement = FormElementBase & {
   type: 'html',
   defaultValue: string,
@@ -337,7 +332,12 @@ declare type CivicaNameRecordElement = {
   useGeoscapeAddressing: boolean,
 } & FormElementRequired
 
-declare type FormElementWithoutForm =
+declare type NestedElementsElement =
+  | PageElement
+  | RepeatableSetElement
+  | SectionElement
+
+declare type NonNestedElementsElement =
   | TextElement
   | EmailElement
   | TextareaElement
@@ -349,8 +349,6 @@ declare type FormElementWithoutForm =
   | DateTimeElement
   | HeadingElement
   | LocationElement
-  | RepeatableSetElement
-  | PageElement
   | HtmlElement
   | BarcodeScannerElement
   | CaptchaElement
@@ -365,8 +363,11 @@ declare type FormElementWithoutForm =
   | FormElementWithOptions
   | BooleanElement
   | CivicaStreetNameElement
-  | SectionElement
   | CivicaNameRecordElement
+
+declare type FormElementWithoutForm =
+  | NonNestedElementsElement
+  | NestedElementsElement
 
 declare type FormElementWithForm = FormFormElement | InfoPageElement
 
