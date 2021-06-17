@@ -254,11 +254,6 @@ export type SectionElement = _FormElementBase & {
   hint?: string
 } & _NestedElementsElement
 
-export type NestedElementsElement =
-  | PageElement
-  | RepeatableSetElement
-  | SectionElement
-
 export type HtmlElement = FormElementBase & {
   type: 'html'
   defaultValue: string
@@ -335,7 +330,12 @@ export type CivicaNameRecordElement = {
   useGeoscapeAddressing: boolean
 } & FormElementRequired
 
-export type FormElementWithoutForm =
+export type NestedElementsElement =
+  | PageElement
+  | RepeatableSetElement
+  | SectionElement
+
+export type NonNestedElementsElement =
   | TextElement
   | EmailElement
   | TextareaElement
@@ -347,8 +347,6 @@ export type FormElementWithoutForm =
   | DateTimeElement
   | HeadingElement
   | LocationElement
-  | RepeatableSetElement
-  | PageElement
   | HtmlElement
   | BarcodeScannerElement
   | CaptchaElement
@@ -363,8 +361,11 @@ export type FormElementWithoutForm =
   | FormElementWithOptions
   | BooleanElement
   | CivicaStreetNameElement
-  | SectionElement
   | CivicaNameRecordElement
+
+export type FormElementWithoutForm =
+  | NonNestedElementsElement
+  | NestedElementsElement
 
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
