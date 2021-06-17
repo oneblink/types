@@ -3,7 +3,10 @@
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
 import { type CivicaStreetName } from './civica/street-name'
-import { type CivicaNameRecord } from './civica/name-record'
+import {
+  type CivicaNameRecord,
+  type CivicaNameRecordElementConfigurations,
+} from './civica/name-record'
 import { type ConditionalPredicate } from './conditions'
 import { type FormSubmissionEvent } from './submission-events'
 import { type BaseSearchResult } from './misc'
@@ -335,7 +338,8 @@ declare type CivicaNameRecordElement = {
   readOnly: boolean,
   defaultValue?: CivicaNameRecord,
   useGeoscapeAddressing: boolean,
-} & FormElementRequired
+} & FormElementRequired &
+  CivicaNameRecordElementConfigurations
 
 declare type FormElementWithoutForm =
   | TextElement
