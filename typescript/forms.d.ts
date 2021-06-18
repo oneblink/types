@@ -1,7 +1,10 @@
 import { GeoscapeAddress } from './geoscape'
 import { PointAddress } from './point'
 import { CivicaStreetName } from './civica/street-name'
-import { CivicaNameRecord } from './civica/name-record'
+import {
+  CivicaNameRecord,
+  CivicaNameRecordElementConfigurations,
+} from './civica/name-record'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { BaseSearchResult } from './misc'
@@ -328,7 +331,8 @@ export type CivicaNameRecordElement = {
   readOnly: boolean
   defaultValue?: CivicaNameRecord
   useGeoscapeAddressing: boolean
-} & FormElementRequired
+} & FormElementRequired &
+  CivicaNameRecordElementConfigurations
 
 export type NestedElementsElement =
   | PageElement
