@@ -328,6 +328,8 @@ export type CivicaNameRecordElement = {
   readOnly: boolean
   defaultValue?: CivicaNameRecord
   useGeoscapeAddressing: boolean
+  titleLabel?: string
+  familyNameLabel?: string
   givenName1Label?: string
   givenName1IsRequired?: boolean
   givenName1IsHidden?: boolean
