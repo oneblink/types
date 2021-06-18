@@ -17,29 +17,29 @@ export interface StreetAddress {
 }
 
 export interface CivicaNameRecordElementConfigurations {
-  givenNameLabel?: string
-  givenNameLabelIsRequired?: boolean
-  givenNameLabelIsHidden?: boolean
+  givenName1Label?: string
+  givenName1IsRequired?: boolean
+  givenName1IsHidden?: boolean
 
   emailAddressLabel?: string
-  emailAddressLabelIsRequired?: boolean
-  emailAddressLabelIsHidden?: boolean
+  emailAddressIsRequired?: boolean
+  emailAddressIsHidden?: boolean
 
   homePhoneLabel?: string
-  homePhoneLabelIsRequired?: boolean
-  homePhoneLabelIsHidden?: boolean
+  homePhoneIsRequired?: boolean
+  homePhoneIsHidden?: boolean
 
   businessPhoneLabel?: string
-  businessPhoneLabelIsRequired?: boolean
-  businessPhoneLabelIsHidden?: boolean
+  businessPhoneIsRequired?: boolean
+  businessPhoneIsHidden?: boolean
 
   mobilePhoneLabel?: string
-  mobilePhoneLabelIsRequired?: boolean
-  mobilePhoneLabelIsHidden?: boolean
+  mobilePhoneIsRequired?: boolean
+  mobilePhoneIsHidden?: boolean
 
   faxPhoneLabel?: string
-  faxPhoneLabelIsRequired?: boolean
-  faxPhoneLabelIsHidden?: boolean
+  faxPhoneIsRequired?: boolean
+  faxPhoneIsHidden?: boolean
 
   address1Label?: string
   address2Label?: string
