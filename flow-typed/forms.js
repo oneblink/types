@@ -3,10 +3,7 @@
 import { type Address as GeoscapeAddress } from './geoscape/address-details'
 import { type Address as PointAddress } from './point/address-details'
 import { type CivicaStreetName } from './civica/street-name'
-import {
-  type CivicaNameRecord,
-  type CivicaNameRecordElementConfigurations,
-} from './civica/name-record'
+import { type CivicaNameRecord } from './civica/name-record'
 import { type ConditionalPredicate } from './conditions'
 import { type FormSubmissionEvent } from './submission-events'
 import { type BaseSearchResult } from './misc'
@@ -333,8 +330,28 @@ declare type CivicaNameRecordElement = {
   readOnly: boolean,
   defaultValue?: CivicaNameRecord,
   useGeoscapeAddressing: boolean,
-} & FormElementRequired &
-  CivicaNameRecordElementConfigurations
+  givenName1Label?: string,
+  givenName1IsRequired?: boolean,
+  givenName1IsHidden?: boolean,
+  emailAddressLabel?: string,
+  emailAddressIsRequired?: boolean,
+  emailAddressIsHidden?: boolean,
+  homePhoneLabel?: string,
+  homePhoneIsRequired?: boolean,
+  homePhoneIsHidden?: boolean,
+  businessPhoneLabel?: string,
+  businessPhoneIsRequired?: boolean,
+  businessPhoneIsHidden?: boolean,
+  mobilePhoneLabel?: string,
+  mobilePhoneIsRequired?: boolean,
+  mobilePhoneIsHidden?: boolean,
+  faxPhoneLabel?: string,
+  faxPhoneIsRequired?: boolean,
+  faxPhoneIsHidden?: boolean,
+  address1Label?: string,
+  address2Label?: string,
+  postcodeLabel?: string,
+} & FormElementRequired
 
 declare type NestedElementsElement =
   | PageElement
