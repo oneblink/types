@@ -350,6 +350,7 @@ declare type CivicaNameRecordElement = {
   faxPhoneLabel?: string,
   faxPhoneIsRequired?: boolean,
   faxPhoneIsHidden?: boolean,
+  streetAddressesLabel?: string,
   address1Label?: string,
   address2Label?: string,
   postcodeLabel?: string,
