@@ -57,6 +57,7 @@ export interface NewTier {
     maximumAPIHostingInstances: TierLimitation
     maximumCDNHostingInstances: TierLimitation
     maximumFormsApps: TierLimitation
+    maximumSchedulingCalendars: TierLimitation
     availableFormSubmissionEvents?: FormSubmissionEventType[]
     availableFormPostSubmissionActions?: FormPostSubmissionAction[]
     allowFormsAppPWASettings: boolean
