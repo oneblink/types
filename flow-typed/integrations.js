@@ -10,6 +10,7 @@ declare type IntegrationType =
   | 'POINT'
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_WEB'
+  | 'SCHEDULING'
 
 type IntegrationBase = {
   organisationId: string,
@@ -130,6 +131,18 @@ declare type IntegrationPoint = IntegrationBase & {
   },
 }
 
+declare type IntegrationSchedulingProvider = {
+  nylasAccountId: string,
+  nylasAccountAccessToken: string,
+}
+
+declare type IntegrationScheduling = IntegrationBase & {
+  type: 'SCHEDULING',
+  configuration: {
+    providers: IntegrationSchedulingProvider[],
+  },
+}
+
 declare type Integration =
   | IntegrationTrim
   | IntegrationCPPay
@@ -140,3 +153,4 @@ declare type Integration =
   | IntegrationRecaptcha
   | IntegrationWestpacQuickWeb
   | IntegrationCivica
+  | IntegrationScheduling
