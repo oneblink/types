@@ -8,6 +8,7 @@ export type IntegrationType =
   | 'POINT'
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_WEB'
+  | 'SCHEDULING'
 
 type IntegrationBase = {
   organisationId: string
@@ -128,6 +129,18 @@ export type IntegrationPoint = IntegrationBase & {
   }
 }
 
+export type IntegrationSchedulingProvider = {
+  nylasAccountId: string
+  nylasAccountAccessToken: string
+}
+
+export type IntegrationScheduling = IntegrationBase & {
+  type: 'SCHEDULING'
+  configuration: {
+    providers: IntegrationSchedulingProvider[]
+  }
+}
+
 export type Integration =
   | IntegrationTrim
   | IntegrationCPPay
@@ -138,3 +151,4 @@ export type Integration =
   | IntegrationRecaptcha
   | IntegrationWestpacQuickWeb
   | IntegrationCivica
+  | IntegrationScheduling
