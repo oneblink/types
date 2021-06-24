@@ -160,3 +160,16 @@ declare type FormSubmissionFileAccessToken = {
   id: string,
   createdAt: string,
 } & NewFormSubmissionFileAccessToken
+
+declare type FormSubmissionAttachment = {
+  s3: {
+    bucket: string,
+    key: string,
+    region: string,
+  },
+  url: string,
+  contentType: string,
+  fileName: string,
+  id: string,
+  isPrivate: boolean,
+}

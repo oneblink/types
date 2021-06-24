@@ -166,3 +166,16 @@ export type FormSubmissionFileAccessToken = {
   id: string
   createdAt: string
 } & NewFormSubmissionFileAccessToken
+
+export type FormSubmissionAttachment = {
+  s3: {
+    bucket: string
+    key: string
+    region: string
+  }
+  url: string
+  contentType: string
+  fileName: string
+  id: string
+  isPrivate: boolean
+}
