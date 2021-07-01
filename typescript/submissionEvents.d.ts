@@ -109,7 +109,7 @@ export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean
 }
 
-export type CPPaySubmissionEvent = {
+export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_PAY'
   configuration: {
     elementId: string
@@ -118,7 +118,7 @@ export type CPPaySubmissionEvent = {
   isDraft: boolean
 }
 
-export type BPOINTSubmissionEvent = {
+export type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
   type: 'BPOINT'
   configuration: {
     elementId: string
@@ -129,7 +129,7 @@ export type BPOINTSubmissionEvent = {
   isDraft: boolean
 }
 
-export type WestpacQuickWebSubmissionEvent = {
+export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
     elementId: string

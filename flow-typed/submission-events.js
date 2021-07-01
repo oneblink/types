@@ -112,7 +112,7 @@ declare type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean,
 }
 
-declare type CPPaySubmissionEvent = {
+declare type CPPaySubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_PAY',
   configuration: {
     elementId: string,
@@ -121,7 +121,7 @@ declare type CPPaySubmissionEvent = {
   isDraft: boolean,
 }
 
-declare type BPOINTSubmissionEvent = {
+declare type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
   type: 'BPOINT',
   configuration: {
     elementId: string,
@@ -132,7 +132,7 @@ declare type BPOINTSubmissionEvent = {
   isDraft: boolean,
 }
 
-declare type WestpacQuickWebSubmissionEvent = {
+declare type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
   type: 'WESTPAC_QUICK_WEB',
   configuration: {
     elementId: string,
