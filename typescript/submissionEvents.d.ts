@@ -174,7 +174,6 @@ export type WebhookSubscription = {
 export interface S3SubmissionTags {
   externalId?: string
   jobId?: string
-  payment?: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   userToken?: string
   usernameToken?: string
   previousFormSubmissionApprovalId?: string
