@@ -10,6 +10,7 @@ export type FormSubmissionEventType =
   | 'BPOINT'
   | 'CP_HCMS'
   | 'WESTPAC_QUICK_WEB'
+  | 'SCHEDULING'
 
 export type FormSubmissionEventConditional = {
   conditionallyExecute?: boolean
@@ -138,6 +139,15 @@ export type WestpacQuickWebSubmissionEvent = {
   isDraft: boolean
 }
 
+export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
+  type: 'SCHEDULING'
+  configuration: {
+    nylasAccountId: string
+    nylasSchedulingPageId: number
+  }
+  isDraft: boolean
+}
+
 export type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
@@ -150,6 +160,7 @@ export type FormSubmissionEvent =
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
   | CivicaCrmSubmissionEvent
+  | SchedulingSubmissionEvent
   | PaymentSubmissionEvent
 
 export type WebhookSubscription = {
