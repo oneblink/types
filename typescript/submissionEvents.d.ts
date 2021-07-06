@@ -144,6 +144,8 @@ export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
   configuration: {
     nylasAccountId: string
     nylasSchedulingPageId: number
+    nameElementId?: string
+    emailElementId?: string
   }
   isDraft: boolean
 }
