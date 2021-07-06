@@ -1,5 +1,8 @@
 import { Form } from './forms'
-import { PaymentSubmissionEvent } from './submissionEvents'
+import {
+  PaymentSubmissionEvent,
+  SchedulingSubmissionEvent,
+} from './submissionEvents'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
 
@@ -34,6 +37,10 @@ export type FormSubmissionResult = FormSubmission & {
   payment: {
     hostedFormUrl: string
     submissionEvent: PaymentSubmissionEvent
+  } | null
+  scheduling: {
+    bookingUrl: string
+    submissionEvent: SchedulingSubmissionEvent
   } | null
   isInPendingQueue: boolean
   isOffline: boolean

@@ -35,6 +35,10 @@ declare type FormSubmissionResult = FormSubmission & {
     hostedFormUrl: string,
     submissionEvent: PaymentSubmissionEvent,
   } | null,
+  scheduling: {
+    bookingUrl: string,
+    submissionEvent: SchedulingSubmissionEvent,
+  } | null,
   isInPendingQueue: boolean,
   isOffline: boolean,
 }
