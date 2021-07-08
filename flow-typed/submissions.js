@@ -3,52 +3,6 @@
 import { type UserProfile } from './misc'
 import { type S3ObjectCredentials } from './aws'
 
-declare type NewDraftSubmission = {
-  submission: {
-    +[key: string]: mixed,
-  },
-  definition: Form,
-}
-
-declare type NewFormSubmission = NewDraftSubmission & {
-  captchaTokens: string[],
-}
-
-declare type DraftSubmission = NewDraftSubmission & {
-  formsAppId: number,
-  keyId?: string,
-}
-
-declare type FormSubmission = DraftSubmission &
-  NewFormSubmission & {
-    draftId: string | null,
-    jobId: string | null,
-    externalId: string | null,
-    preFillFormDataId: string | null,
-    previousFormSubmissionApprovalId?: string,
-  }
-
-declare type FormSubmissionResult = FormSubmission & {
-  submissionId: string | null,
-  submissionTimestamp: string | null,
-  payment: {
-    hostedFormUrl: string,
-    submissionEvent: PaymentSubmissionEvent,
-  } | null,
-  scheduling: {
-    bookingUrl: string,
-    submissionEvent: SchedulingSubmissionEvent,
-  } | null,
-  isInPendingQueue: boolean,
-  isOffline: boolean,
-}
-
-declare type PendingFormSubmissionResult = FormSubmission & {
-  pendingTimestamp: string,
-  isSubmitting?: boolean,
-  error?: string,
-}
-
 declare type NewFormsAppDraft = {
   title: string,
   formId: number,

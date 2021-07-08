@@ -1,63 +1,6 @@
 import { Form } from './forms'
-import {
-  PaymentSubmissionEvent,
-  SchedulingSubmissionEvent,
-} from './submissionEvents'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
-
-export interface NewDraftSubmission {
-  submission: {
-    readonly [key: string]: unknown
-  }
-  definition: Form
-}
-
-export type NewFormSubmission = NewDraftSubmission & {
-  captchaTokens: string[]
-}
-
-export type DraftSubmission = NewDraftSubmission & {
-  formsAppId: number
-  keyId?: string
-}
-
-export type FormSubmission = DraftSubmission &
-  NewFormSubmission & {
-    draftId: string | null
-    jobId: string | null
-    externalId: string | null
-    preFillFormDataId: string | null
-    previousFormSubmissionApprovalId?: string
-  }
-
-export type FormSubmissionResult = FormSubmission & {
-  submissionId: string | null
-  submissionTimestamp: string | null
-  payment: {
-    hostedFormUrl: string
-    submissionEvent: PaymentSubmissionEvent
-  } | null
-  scheduling: {
-    bookingUrl: string
-    submissionEvent: SchedulingSubmissionEvent
-  } | null
-  isInPendingQueue: boolean
-  isOffline: boolean
-}
-
-export type PendingFormSubmissionResult = FormSubmission & {
-  pendingTimestamp: string
-  isSubmitting?: boolean
-  error?: string
-}
-
-export type PendingFormSubmissionResultWithOptionalSubmission = Pick<
-  PendingFormSubmissionResult,
-  Exclude<keyof PendingFormSubmissionResult, 'submission'>
-> & {
-  submission?: PendingFormSubmissionResult['submission']
-}
 
 export interface NewFormsAppDraft {
   title: string
