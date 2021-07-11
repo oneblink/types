@@ -16,6 +16,7 @@ import * as AWSTypes from './typescript/aws'
 import * as ApprovalTypes from './typescript/approvals'
 import * as ConditionTypes from './typescript/conditions'
 import * as PDFTypes from './typescript/pdf'
+import * as SchedulingTypes from './typescript/scheduling'
 export {
   APITypes,
   FormTypes,
@@ -35,4 +36,5 @@ export {
   ApprovalTypes,
   ConditionTypes,
   PDFTypes,
+  SchedulingTypes,
 }
