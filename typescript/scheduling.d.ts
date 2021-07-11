@@ -15,6 +15,8 @@ export type SchedulingBooking = NewSchedulingBooking & {
   location?: string
   startTime?: number
   endTime?: number
+  previousStartTime?: number
+  previousEndTime?: number
   timezone?: string
   cancelledReason?: string
   createdAt?: string
