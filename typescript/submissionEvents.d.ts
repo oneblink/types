@@ -219,3 +219,15 @@ export type WebhookSubmissionEventPayload = {
   username?: string
   secret?: string
 }
+
+export type FormSubmissionEventInstance = Omit<
+  FormSubmissionEvent,
+  keyof FormSubmissionEventConditional
+> & {
+  id: number
+  submissionId: string
+  formId: number
+  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
+  createAt: string
+  updatedAt: string
+}
