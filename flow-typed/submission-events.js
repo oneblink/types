@@ -222,3 +222,15 @@ declare type WebhookSubmissionEventPayload = {
   username?: string,
   secret?: string,
 }
+
+declare type FormSubmissionEventInstance = $Diff<
+  FormSubmissionEvent,
+  FormSubmissionEventConditional
+> & {
+  id: number,
+  submissionId: string,
+  formId: number,
+  status: 'PENDING' | 'SUCCEEDED' | 'FAILED',
+  createdAt: string,
+  updatedAt: string,
+}
