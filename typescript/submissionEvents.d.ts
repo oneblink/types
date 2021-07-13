@@ -228,6 +228,6 @@ export type FormSubmissionEventInstance = Omit<
   submissionId: string
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
-  createAt: string
+  createdAt: string
   updatedAt: string
 }
