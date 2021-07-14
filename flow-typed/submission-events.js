@@ -149,6 +149,7 @@ declare type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
     nylasSchedulingPageId: number,
     nameElementId?: string,
     emailElementId?: string,
+    emailDescription?: string,
   },
   isDraft: boolean,
 }
