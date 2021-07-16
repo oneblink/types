@@ -8,7 +8,6 @@ declare type NewSchedulingBooking = {
 
 declare type SchedulingBooking = NewSchedulingBooking & {
   nylasCalendarId?: string,
-  nylasEventId?: string,
   nylasEditHash?: string,
   emailAddress?: string,
   name?: string,
