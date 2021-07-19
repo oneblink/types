@@ -18,6 +18,7 @@ declare type SchedulingBooking = NewSchedulingBooking & {
   previousEndTime?: number,
   timezone?: string,
   cancelledReason?: string,
-  createdAt?: string,
-  updatedAt?: string,
+  isDenied: boolean,
+  createdAt: string,
+  updatedAt: string,
 }
