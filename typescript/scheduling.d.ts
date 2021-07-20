@@ -9,6 +9,7 @@ export type NewSchedulingBooking = {
 export type SchedulingBooking = NewSchedulingBooking & {
   nylasCalendarId?: string
   nylasEditHash?: string
+  nylasProposedEventId?: string
   emailAddress?: string
   name?: string
   location?: string
