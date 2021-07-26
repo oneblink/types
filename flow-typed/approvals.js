@@ -39,7 +39,7 @@ declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
 
 type BaseFormSubmissionApproval = {
   group: string,
-  notificationEmailAddress?: string,
+  notificationEmailAddress?: string[],
   formApprovalFlowInstanceId: number,
   stepLabel: string,
 }
