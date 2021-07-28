@@ -422,6 +422,21 @@ declare type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
+type FormServerValidation =
+  | {
+      type: 'CALLBACK',
+      configuration: {
+        url: string,
+      },
+    }
+  | {
+      type: 'ONEBLINK_API',
+      configuration: {
+        apiId: string,
+        apiEnvironment: string,
+        apiEnvironmentRoute: string,
+      },
+    }
 declare type Form = {
   id: number,
   name: string,
@@ -443,6 +458,7 @@ declare type Form = {
   tags: Array<string>,
   createdAt: string,
   updatedAt: string,
+  serverValidation?: FormServerValidation,
 }
 
 declare type PreviewUrl = {
