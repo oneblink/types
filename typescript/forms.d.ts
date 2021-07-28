@@ -456,7 +456,7 @@ export type Form = {
   tags: Array<string>
   createdAt: string
   updatedAt: string
-  validationEndpoint: FormValidationEndpoint
+  validationEndpoint?: FormValidationEndpoint
 }
 
 export type PreviewUrl = {

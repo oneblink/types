@@ -458,7 +458,7 @@ declare type Form = {
   tags: Array<string>,
   createdAt: string,
   updatedAt: string,
-  validationEndpoint: FormValidationEndpoint,
+  validationEndpoint?: FormValidationEndpoint,
 }
 
 declare type PreviewUrl = {
