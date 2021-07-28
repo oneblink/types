@@ -420,6 +420,21 @@ export type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
+type FormValidationEndpoint =
+  | {
+      type: 'CALLBACK'
+      configuration: {
+        url: string
+      }
+    }
+  | {
+      type: 'ONEBLINK_API'
+      configuration: {
+        apiId: string
+        apiEnvironment: string
+        apiEnvironmentRoute: string
+      }
+    }
 export type Form = {
   id: number
   name: string
@@ -441,6 +456,7 @@ export type Form = {
   tags: Array<string>
   createdAt: string
   updatedAt: string
+  validationEndpoint: FormValidationEndpoint
 }
 
 export type PreviewUrl = {
