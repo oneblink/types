@@ -422,7 +422,7 @@ declare type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
-type FormValidationEndpoint =
+type FormServerValidation =
   | {
       type: 'CALLBACK',
       configuration: {
@@ -458,7 +458,7 @@ declare type Form = {
   tags: Array<string>,
   createdAt: string,
   updatedAt: string,
-  validationEndpoint?: FormValidationEndpoint,
+  serverValidation?: FormServerValidation,
 }
 
 declare type PreviewUrl = {
