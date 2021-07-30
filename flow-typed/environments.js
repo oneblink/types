@@ -11,6 +11,7 @@ declare type NewFormsAppEnvironment = {
     isCloningFormElementLookups: boolean,
     isCloningFormSubmissionEvents: boolean,
     isCloningFormPostSubmissionActions: boolean,
+    isCloningFormServerValidation: boolean,
   },
 }
 
@@ -26,6 +27,7 @@ declare type FormMigrationOptions = {
   submissionEvents: boolean,
   tags: boolean,
   postSubmissionAction: boolean,
+  serverValidation: boolean,
   embeddedForms?: Array<{
     sourceElementId: string,
     targetFormId: number,
