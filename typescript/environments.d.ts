@@ -9,6 +9,7 @@ export interface NewFormsAppEnvironment {
     isCloningFormElementLookups: boolean
     isCloningFormSubmissionEvents: boolean
     isCloningFormPostSubmissionActions: boolean
+    isCloningFormServerValidation: boolean
   }
 }
 
@@ -24,6 +25,7 @@ export interface FormMigrationOptions {
   submissionEvents: boolean
   tags: boolean
   postSubmissionAction: boolean
+  serverValidation: boolean
   embeddedForms?: Array<{
     sourceElementId: string
     targetFormId: number
