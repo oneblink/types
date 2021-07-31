@@ -74,6 +74,8 @@ type _FormSubmissionMeta = {
   dateTimeSubmitted: string
   formName?: string
   user?: UserProfile
+  externalId?: string
+  jobId?: string
 }
 
 export type NewFormSubmissionMeta = _FormSubmissionMeta & {

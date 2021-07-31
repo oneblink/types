@@ -76,6 +76,8 @@ type _FormSubmissionMeta = {
   dateTimeSubmitted: string,
   formName?: string,
   user?: UserProfile,
+  externalId?: string,
+  jobId?: string,
 }
 
 declare type NewFormSubmissionMeta = _FormSubmissionMeta & {
