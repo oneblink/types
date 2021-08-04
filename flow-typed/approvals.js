@@ -45,7 +45,7 @@ type BaseFormSubmissionApproval = {
 }
 
 declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
-  status: 'PENDING',
+  status: 'PENDING' | 'APPROVED',
 }
 
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
