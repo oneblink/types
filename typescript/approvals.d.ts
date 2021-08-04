@@ -42,7 +42,7 @@ type BaseFormSubmissionApproval = {
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
-  status: 'PENDING' | 'APPROVED'
+  status: 'PENDING'
 }
 
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
