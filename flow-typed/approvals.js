@@ -30,8 +30,8 @@ declare type NewFormApprovalFlowInstance = {
   submissionId: string,
   approvalsFormsAppId: number,
   previousFormSubmissionApprovalId?: string,
-  steps: FormApprovalFlowInstanceStep[]
-  isLatest: boolean
+  steps: FormApprovalFlowInstanceStep[],
+  isLatest: boolean,
   status:
     | 'PENDING'
     | 'CLARIFICATION_RECEIVED'
