@@ -40,6 +40,7 @@ declare type NewFormApprovalFlowInstance = {
 }
 declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,
+  updatedAt: string,
   createdAt: string,
 }
 

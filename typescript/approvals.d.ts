@@ -37,6 +37,7 @@ export type NewFormApprovalFlowInstance = {
 }
 export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number
+  updatedAt: string
   createdAt: string
 }
 
