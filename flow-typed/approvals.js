@@ -31,6 +31,12 @@ declare type NewFormApprovalFlowInstance = {
   approvalsFormsAppId: number,
   previousFormSubmissionApprovalId?: string,
   steps: FormApprovalFlowInstanceStep[],
+  status:
+    | 'PENDING'
+    | 'CLARIFICATION_RECEIVED'
+    | 'APPROVED'
+    | 'CLARIFICATION_REQUIRED'
+    | 'CLOSED',
 }
 declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,
