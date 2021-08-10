@@ -459,6 +459,7 @@ declare type Form = {
   createdAt: string,
   updatedAt: string,
   serverValidation?: FormServerValidation,
+  externalIdGeneration?: FormServerValidation,
 }
 
 declare type PreviewUrl = {
