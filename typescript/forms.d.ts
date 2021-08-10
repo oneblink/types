@@ -457,6 +457,7 @@ export type Form = {
   createdAt: string
   updatedAt: string
   serverValidation?: FormServerValidation
+  externalIdGeneration?: FormServerValidation,
 }
 
 export type PreviewUrl = {
