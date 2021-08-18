@@ -88,10 +88,10 @@ declare type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM',
   configuration: {
     environmentId: string,
-    civicaDescription: string,
     civicaCustomerContactMethod: CivicaCustomerContactMethod,
     civicaCategory: CivicaRecord,
     mapping: Array<{
+      isDescription: boolean,
       civicaCategoryItemNumber: number,
       formElementId: string,
     }>,
