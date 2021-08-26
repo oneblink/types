@@ -121,10 +121,10 @@ declare type S3SubmissionData = {
   definition: Form,
   submissionTimestamp: string,
   formsAppId: number,
-  ipAddress?: string
+  ipAddress?: string,
   keyId?: string,
   user?: $PropertyType<_FormSubmissionMeta, 'user'>,
-  device?: S3SubmissionDataDevice
+  device?: S3SubmissionDataDevice,
 }
 
 declare type NewFormSubmissionFileAccessToken = {
