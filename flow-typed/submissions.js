@@ -55,20 +55,6 @@ declare type JobSearchParameters = {
   offset: number,
 }
 
-type _S3UploadCredentials = S3ObjectCredentials & {
-  submissionId: string,
-  submissionTimestamp: string,
-  usernameToken: string,
-}
-
-declare type S3UploadCredentials = _S3UploadCredentials & {
-  submissionId: string,
-}
-
-declare type S3DraftUploadCredentials = _S3UploadCredentials & {
-  draftDataId: string,
-}
-
 type _FormSubmissionMeta = {
   submissionId: string,
   formId: number,
@@ -98,6 +84,36 @@ declare type FormSubmissionRequest = {
   }>,
 }
 
+declare type S3SubmissionDataDeviceCordova = {
+  type: 'CORDOVA',
+  cordova?: boolean,
+  model?: string,
+  platform?: string,
+  uuid?: string,
+  version?: string,
+  manufacturer?: string,
+  isVirtual?: boolean,
+  serial?: string,
+}
+declare type S3SubmissionDataDeviceBrowser = {
+  type: 'PWA' | 'BROWSER',
+  appCodeName: typeof window.navigator.appCodeName,
+  appName: typeof window.navigator.appName,
+  appVersion: typeof window.navigator.appVersion,
+  cookieEnabled: typeof window.navigator.cookieEnabled,
+  hardwareConcurrency: typeof window.navigator.hardwareConcurrency,
+  language: typeof window.navigator.language,
+  maxTouchPoints: typeof window.navigator.maxTouchPoints,
+  platform: typeof window.navigator.platform,
+  userAgent: typeof window.navigator.userAgent,
+  vendor: typeof window.navigator.vendor,
+  vendorSub: typeof window.navigator.vendorSub,
+  webdriver: typeof window.navigator.webdriver,
+}
+declare type S3SubmissionDataDevice =
+  | S3SubmissionDataDeviceCordova
+  | S3SubmissionDataDeviceBrowser
+
 declare type S3SubmissionData = {
   submission: {
     [name: string]: any,
@@ -105,8 +121,10 @@ declare type S3SubmissionData = {
   definition: Form,
   submissionTimestamp: string,
   formsAppId: number,
+  ipAddress?: string
   keyId?: string,
   user?: $PropertyType<_FormSubmissionMeta, 'user'>,
+  device?: S3SubmissionDataDevice
 }
 
 declare type NewFormSubmissionFileAccessToken = {
