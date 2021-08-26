@@ -50,18 +50,18 @@ type BaseFormSubmissionApproval = {
   notificationEmailAddress?: string[],
   formApprovalFlowInstanceId: number,
   stepLabel: string,
+  notes?: string,
+  internalNotes?: string,
+  updatedBy?: string,
 }
 
 declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
-  status: 'PENDING',
+  status: 'PENDING' | 'CLARIFICATION_REQUIRED',
 }
 
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string,
-  notes?: string,
-  internalNotes?: string,
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
   createdAt: string,
   updatedAt: string,
-  updatedBy?: string,
 }
