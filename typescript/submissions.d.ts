@@ -54,19 +54,6 @@ export interface JobSearchParameters {
   offset: number
 }
 
-type _S3UploadCredentials = S3ObjectCredentials & {
-  submissionTimestamp: string
-  usernameToken: string
-}
-
-export type S3UploadCredentials = _S3UploadCredentials & {
-  submissionId: string
-}
-
-export type S3DraftUploadCredentials = _S3UploadCredentials & {
-  draftDataId: string
-}
-
 type _FormSubmissionMeta = {
   submissionId: string
   formId: number
@@ -96,15 +83,47 @@ export interface FormSubmissionRequest {
   }>
 }
 
-export interface S3SubmissionData {
+export type S3SubmissionDataDeviceCordova = {
+  type: 'CORDOVA'
+  cordova?: boolean
+  model?: string
+  platform?: string
+  uuid?: string
+  version?: string
+  manufacturer?: string
+  isVirtual?: boolean
+  serial?: string
+}
+export type S3SubmissionDataDeviceBrowser = {
+  type: 'PWA' | 'BROWSER'
+  appCodeName: typeof window.navigator.appCodeName
+  appName: typeof window.navigator.appName
+  appVersion: typeof window.navigator.appVersion
+  cookieEnabled: typeof window.navigator.cookieEnabled
+  hardwareConcurrency: typeof window.navigator.hardwareConcurrency
+  language: typeof window.navigator.language
+  maxTouchPoints: typeof window.navigator.maxTouchPoints
+  platform: typeof window.navigator.platform
+  userAgent: typeof window.navigator.userAgent
+  vendor: typeof window.navigator.vendor
+  vendorSub: typeof window.navigator.vendorSub
+  webdriver: typeof window.navigator.webdriver
+}
+export type S3SubmissionDataDevice =
+  | S3SubmissionDataDeviceCordova
+  | S3SubmissionDataDeviceBrowser
+
+export type S3SubmissionData = {
   submission: {
     [name: string]: any
   }
   definition: Form
   submissionTimestamp: string
   formsAppId: number
+  ipAddress?: string
   keyId?: string
   user?: _FormSubmissionMeta['user']
+  device?: S3SubmissionDataDevice
 }
 
 export type NewFormSubmissionFileAccessToken = {
