@@ -43,7 +43,7 @@ declare type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   id: number,
   updatedAt: string,
   createdAt: string,
-  lastUpdatedBy: string,
+  lastUpdatedBy?: string,
 }
 
 type BaseFormSubmissionApproval = {
