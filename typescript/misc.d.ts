@@ -5,7 +5,7 @@ export interface UserProfile {
   providerType?: string
   providerUserId?: string
   userId: string
-  username?: string
+  username: string
   email?: string
   firstName?: string
   lastName?: string
