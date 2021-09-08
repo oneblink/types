@@ -1,4 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
+import type { UserProfile } from './misc'
 
 export type FormSubmissionEventType =
   | 'CALLBACK'
@@ -192,16 +193,7 @@ export type BaseFormSubmissionLambdaEvent = {
   submissionTimestamp: string
   formsAppId: number
   keyId?: string
-  user?: {
-    userId: string
-    firstName?: string
-    picture?: string
-    providerUserId?: string
-    providerType?: string
-    fullName?: string
-    lastName?: string
-    email?: string
-  }
+  user?: UserProfile
   lambda?: string
 } & S3SubmissionTags
 
