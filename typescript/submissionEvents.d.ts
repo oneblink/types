@@ -210,6 +210,7 @@ export type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
 }
 
 export type WebhookSubmissionEventPayload = {
+  formsAppId: number
   formId: number
   submissionId: string
   isDraft: boolean
