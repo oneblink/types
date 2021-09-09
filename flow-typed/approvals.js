@@ -68,7 +68,7 @@ declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   updatedAt: string,
 }
 
-declare type WebhookEvent =
+declare type FormApprovalWebhookEvent =
   | 'FORM_SUBMISSION_CREATED'
   | 'CLARIFICATION_SUBMISSION_CREATED'
   | 'STEP_CREATED'
@@ -81,7 +81,7 @@ declare type WebhookEvent =
 declare type NewFormApprovalWebhook = {
   endpoint: FormServerValidation,
   secret: string,
-  webhookEvents: WebhookEvent[],
+  webhookEvents: FormApprovalWebhookEvent[],
   isEnabled: boolean,
   formsAppId: number,
   formIds: number[],

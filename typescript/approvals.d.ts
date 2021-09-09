@@ -65,7 +65,7 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   updatedAt: string
 }
 
-export type WebhookEvent =
+export type FormApprovalWebhookEvent =
   | 'FORM_SUBMISSION_CREATED'
   | 'CLARIFICATION_SUBMISSION_CREATED'
   | 'STEP_CREATED'
@@ -78,7 +78,7 @@ export type WebhookEvent =
 export type NewFormApprovalWebhook = {
   endpoint: FormServerValidation
   secret: string
-  webhookEvents: WebhookEvent[]
+  webhookEvents: FormApprovalWebhookEvent[]
   isEnabled: boolean
   formsAppId: number
   formIds: number[]
