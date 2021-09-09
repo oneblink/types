@@ -420,7 +420,7 @@ export type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
-type FormServerValidation =
+export type FormServerValidation =
   | {
       type: 'CALLBACK'
       configuration: {
@@ -457,7 +457,7 @@ export type Form = {
   createdAt: string
   updatedAt: string
   serverValidation?: FormServerValidation
-  externalIdGeneration?: FormServerValidation,
+  externalIdGeneration?: FormServerValidation
 }
 
 export type PreviewUrl = {

@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import { type ConditionalPredicate } from './conditions'
+import { type FormServerValidation } from './forms'
 
 declare type FormApprovalFlowStepBase = {
   group: string,
@@ -63,6 +64,31 @@ declare type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
 declare type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string,
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED',
+  createdAt: string,
+  updatedAt: string,
+}
+
+declare type FormApprovalWebhookEvent =
+  | 'FORM_SUBMISSION_CREATED'
+  | 'CLARIFICATION_SUBMISSION_CREATED'
+  | 'STEP_CREATED'
+  | 'STEP_APPROVED'
+  | 'STEP_CLOSED'
+  | 'STEP_CLARIFICATION_REQUIRED'
+  | 'APPROVAL_APPROVED'
+  | 'APPROVAL_REOPENED'
+
+declare type NewFormApprovalWebhook = {
+  endpoint: FormServerValidation,
+  secret: string,
+  webhookEvents: FormApprovalWebhookEvent[],
+  isEnabled: boolean,
+  formsAppId: number,
+  formIds: number[],
+}
+
+declare type FormApprovalWebhook = NewFormApprovalWebhook & {
+  id: number,
   createdAt: string,
   updatedAt: string,
 }
