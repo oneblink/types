@@ -1,4 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
+import type { FormServerValidation } from './forms'
 
 export type FormApprovalFlowStepBase = {
   group: string
@@ -60,6 +61,31 @@ export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
+  createdAt: string
+  updatedAt: string
+}
+
+export type WebhookEvent =
+  | 'FORM_SUBMISSION_CREATED'
+  | 'CLARIFICATION_SUBMISSION_CREATED'
+  | 'STEP_CREATED'
+  | 'STEP_APPROVED'
+  | 'STEP_CLOSED'
+  | 'STEP_CLARIFICATION_REQUIRED'
+  | 'APPROVAL_APPROVED'
+  | 'APPROVAL_REOPENED'
+
+export type NewFormApprovalWebhook = {
+  endpoint: FormServerValidation
+  secret: string
+  webhookEvents: WebhookEvent[]
+  isEnabled: boolean
+  formsAppId: number
+  formIds: number[]
+}
+
+export type FormApprovalWebhook = NewFormApprovalWebhook & {
+  id: number
   createdAt: string
   updatedAt: string
 }
