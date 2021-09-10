@@ -85,6 +85,7 @@ declare type NewFormApprovalWebhook = {
   isEnabled: boolean,
   formsAppId: number,
   formIds: number[],
+  label: string,
 }
 
 declare type FormApprovalWebhook = NewFormApprovalWebhook & {
