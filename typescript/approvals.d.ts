@@ -81,7 +81,7 @@ export type NewFormApprovalWebhook = {
   webhookEvents: FormApprovalWebhookEvent[]
   isEnabled: boolean
   formsAppId: number
-  formIds: number[]
+  formIds?: number[]
   label: string
 }
 
