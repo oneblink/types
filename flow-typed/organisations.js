@@ -17,6 +17,8 @@ declare type Organisation = {
   draftDataRetentionDays?: number,
   solutions: Array<$PropertyType<SolutionsApp, 'type'>>,
   awsCustomerId?: string,
+  apiHostingAwsAccountId: string,
+  cdnHostingAwsAccountId: string,
 }
 
 declare type AWSAccount = {
@@ -25,11 +27,9 @@ declare type AWSAccount = {
   accountNumber: string,
   tenancy: string,
   createdAt: string,
-  apiHosting: {
-    vpcSecurityGroupIds: string,
-    vpcSubnetIds: string,
-  },
   isDefault: boolean,
+  isDefaultAPIHosting: boolean,
+  isDefaultCDNHosting: boolean,
 }
 
 declare type TierLimitation =

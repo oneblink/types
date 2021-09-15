@@ -19,6 +19,8 @@ export interface Organisation {
   draftDataRetentionDays?: number
   solutions: Array<SolutionsApp['type']>
   awsCustomerId?: string
+  apiHostingAwsAccountId: string
+  cdnHostingAwsAccountId: string
 }
 
 export interface AWSAccount {
@@ -27,11 +29,9 @@ export interface AWSAccount {
   accountNumber: string
   tenancy: string
   createdAt: string
-  apiHosting: {
-    vpcSecurityGroupIds: string
-    vpcSubnetIds: string
-  }
   isDefault: boolean
+  isDefaultAPIHosting: boolean
+  isDefaultCDNHosting: boolean
 }
 
 export type TierLimitation =
