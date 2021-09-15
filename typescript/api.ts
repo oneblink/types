@@ -62,22 +62,6 @@ export type APIDeploymentPayload = {
   memorySize?: number
 }
 
-export type APIDeploymentResult = {
-  awsBaseUrl: string
-  baseUrl: string
-}
-
-export type APIDeployment = {
-  id: number
-  createdAt: string
-  lastUpdated: string
-  error?: {
-    error: string
-    message: string
-  }
-  result?: APIDeploymentResult
-}
-
 export type APIEnvironmentMetricsSearchParameters = {
   startTime: string
   endTime: string
