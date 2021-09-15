@@ -29,10 +29,6 @@ export interface AWSAccount {
   accountNumber: string
   tenancy: string
   createdAt: string
-  apiHosting: {
-    vpcSecurityGroupIds: string
-    vpcSubnetIds: string
-  }
   isDefault: boolean
   isDefaultAPIHosting: boolean
   isDefaultCDNHosting: boolean
