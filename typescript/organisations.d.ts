@@ -19,6 +19,8 @@ export interface Organisation {
   draftDataRetentionDays?: number
   solutions: Array<SolutionsApp['type']>
   awsCustomerId?: string
+  apiHostingAwsAccountId: string
+  cdnHostingAwsAccountId: string
 }
 
 export interface AWSAccount {
