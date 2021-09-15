@@ -34,6 +34,8 @@ export interface AWSAccount {
     vpcSubnetIds: string
   }
   isDefault: boolean
+  isDefaultAPIHosting: boolean
+  isDefaultCDNHosting: boolean
 }
 
 export type TierLimitation =

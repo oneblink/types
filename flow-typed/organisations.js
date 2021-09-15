@@ -32,6 +32,8 @@ declare type AWSAccount = {
     vpcSubnetIds: string,
   },
   isDefault: boolean,
+  isDefaultAPIHosting: boolean,
+  isDefaultCDNHosting: boolean,
 }
 
 declare type TierLimitation =
