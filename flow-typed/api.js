@@ -64,22 +64,6 @@ declare type APIDeploymentPayload = {
   memorySize?: number,
 }
 
-declare type APIDeploymentResult = {
-  awsBaseUrl: string,
-  baseUrl: string,
-}
-
-declare type APIDeployment = {
-  id: number,
-  createdAt: string,
-  lastUpdated: string,
-  error?: {
-    error: string,
-    message: string,
-  },
-  result?: APIDeploymentResult,
-}
-
 declare type APIEnvironmentMetricsSearchParameters = {
   startTime: string,
   endTime: string,
