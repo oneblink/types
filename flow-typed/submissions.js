@@ -128,7 +128,6 @@ declare type S3SubmissionData = {
 }
 
 declare type NewFormSubmissionFileAccessToken = {
-  submissionId: string,
   expiresAt: string,
   s3: $PropertyType<S3ObjectCredentials, 's3'>,
   emailAddress: string,

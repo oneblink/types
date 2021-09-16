@@ -127,7 +127,6 @@ export type S3SubmissionData = {
 }
 
 export type NewFormSubmissionFileAccessToken = {
-  submissionId: string
   expiresAt: string
   s3: S3ObjectCredentials['s3']
   emailAddress: string
