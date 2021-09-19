@@ -356,6 +356,13 @@ declare type CivicaNameRecordElement = {
   postcodeLabel?: string,
 } & FormElementRequired
 
+declare type BSBElement = {
+  type: 'bsb',
+  readOnly: boolean,
+  defaultValue?: string,
+  placeholderValue?: string,
+} & LookupFormElement
+
 declare type NestedElementsElement =
   | PageElement
   | RepeatableSetElement
@@ -388,6 +395,7 @@ declare type NonNestedElementsElement =
   | BooleanElement
   | CivicaStreetNameElement
   | CivicaNameRecordElement
+  | BSBElement
 
 declare type FormElementWithoutForm =
   | NonNestedElementsElement
