@@ -354,6 +354,13 @@ export type CivicaNameRecordElement = {
   postcodeLabel?: string
 } & FormElementRequired
 
+export type BSBElement = {
+  type: 'bsb'
+  readOnly: boolean
+  defaultValue?: string
+  placeholderValue?: string
+} & LookupFormElement
+
 export type NestedElementsElement =
   | PageElement
   | RepeatableSetElement
@@ -386,6 +393,7 @@ export type NonNestedElementsElement =
   | BooleanElement
   | CivicaStreetNameElement
   | CivicaNameRecordElement
+  | BSBElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
