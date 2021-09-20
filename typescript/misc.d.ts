@@ -31,3 +31,14 @@ export type BaseSearchResult = {
     nextOffset?: number
   }
 }
+
+export type BSBRecord = {
+  bsb: string
+  financialInstitutionMnemonic: string
+  name: string
+  street: string
+  suburb: string
+  state: string
+  postcode: string
+  paymentsFlags?: string
+}
