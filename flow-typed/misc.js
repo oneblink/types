@@ -30,3 +30,14 @@ declare type BaseSearchResult = {
     nextOffset?: number,
   },
 }
+
+declare type BSBRecord = {
+  bsb: string,
+  financialInstitutionMnemonic: string,
+  name: string,
+  street: string,
+  suburb: string,
+  state: string,
+  postcode: string,
+  paymentsFlags?: string,
+}
