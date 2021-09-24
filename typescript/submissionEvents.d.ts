@@ -69,7 +69,7 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
     location: TrimUriOption
     includeSubmissionIdInPdf?: boolean
     author?: TrimUriOption
-    groupFiles: boolean
+    groupFiles?: boolean
   }
   isDraft: boolean
 }
