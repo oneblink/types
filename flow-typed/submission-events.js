@@ -71,6 +71,7 @@ declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
     location: TrimUriOption,
     includeSubmissionIdInPdf?: boolean,
     author?: TrimUriOption,
+    groupFiles?: boolean,
   },
   isDraft: boolean,
 }
