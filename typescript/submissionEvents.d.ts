@@ -71,6 +71,8 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
     includeSubmissionIdInPdf?: boolean
     author?: TrimUriOption
     groupFiles?: boolean
+    usePagesAsBreaks?: boolean
+    excludedElementIds?: string[]
   }
   isDraft: boolean
 }
@@ -98,6 +100,7 @@ export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
     pdfFileName?: string
     includeSubmissionIdInPdf?: boolean
     excludedElementIds?: string[]
+    usePagesAsBreaks?: boolean
   }
   isDraft: boolean
 }
