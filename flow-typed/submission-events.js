@@ -38,6 +38,7 @@ declare type PdfSubmissionEvent = FormSubmissionEventConditional & {
     pdfFileName?: string,
     includeSubmissionIdInPdf?: boolean,
     excludedElementIds?: string[],
+    usePagesAsBreaks?: boolean,
   },
   isDraft: boolean,
 }
@@ -72,6 +73,8 @@ declare type TrimSubmissionEvent = FormSubmissionEventConditional & {
     includeSubmissionIdInPdf?: boolean,
     author?: TrimUriOption,
     groupFiles?: boolean,
+    usePagesAsBreaks?: boolean,
+    excludedElementIds?: string[],
   },
   isDraft: boolean,
 }
@@ -100,6 +103,7 @@ declare type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
     pdfFileName?: string,
     includeSubmissionIdInPdf?: boolean,
     excludedElementIds?: string[],
+    usePagesAsBreaks?: boolean,
   },
   isDraft: boolean,
 }
