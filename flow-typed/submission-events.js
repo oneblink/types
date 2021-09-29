@@ -38,6 +38,7 @@ declare type PdfSubmissionEvent = FormSubmissionEventConditional & {
     pdfFileName?: string,
     includeSubmissionIdInPdf?: boolean,
     excludedElementIds?: string[],
+    usePagesAsBreaks?: boolean,
   },
   isDraft: boolean,
 }
