@@ -17,6 +17,7 @@ import * as ApprovalTypes from './typescript/approvals'
 import * as ConditionTypes from './typescript/conditions'
 import * as PDFTypes from './typescript/pdf'
 import * as SchedulingTypes from './typescript/scheduling'
+import * as CDNTypes from './typescript/cdn'
 export {
   APITypes,
   FormTypes,
@@ -37,4 +38,5 @@ export {
   ConditionTypes,
   PDFTypes,
   SchedulingTypes,
+  CDNTypes,
 }
