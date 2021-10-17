@@ -121,6 +121,7 @@ type _NewFormsApp = {
     subject: string | void
   }
   hasSamlIdentityProvider: boolean
+  enableSamlIdentityProviderLogout?: boolean
   formsAppEnvironmentId: number
   notificationEmailAddresses: string[]
   isClientLoggingEnabled: boolean
