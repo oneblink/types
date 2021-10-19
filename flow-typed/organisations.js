@@ -24,7 +24,6 @@ declare type Organisation = {
   awsCustomerId?: string,
   apiHostingAwsAccountId: string,
   cdnHostingAwsAccountId: string,
-  formRetentionPolicies?: Array<FormRetentionPolicy>,
 }
 
 declare type AWSAccount = {

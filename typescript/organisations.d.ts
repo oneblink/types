@@ -26,7 +26,6 @@ export interface Organisation {
   awsCustomerId?: string
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
-  formRetentionPolicies?: Array<FormRetentionPolicy>
 }
 
 export interface AWSAccount {
