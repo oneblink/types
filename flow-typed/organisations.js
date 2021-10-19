@@ -1,8 +1,13 @@
 // @flow
 
-declare type FormRetentionPolicy = {
+declare type NewFormRetentionPolicy = {
   formId: number,
   submissionDataRetentionDays?: number,
+}
+
+declare type FormRetentionPolicy = NewFormRetentionPolicy & {
+  createdAt: string,
+  updatedAt: string,
 }
 
 declare type Organisation = {
