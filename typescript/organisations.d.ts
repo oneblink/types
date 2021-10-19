@@ -2,6 +2,16 @@ import { FormSubmissionEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { SolutionsApp } from './formsApps'
 
+export interface NewFormRetentionPolicy {
+  formId: number
+  submissionDataRetentionDays?: number
+}
+
+export type FormRetentionPolicy = NewFormRetentionPolicy & {
+  createdAt: string
+  updatedAt: string
+}
+
 export interface Organisation {
   id: string
   name: string
