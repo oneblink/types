@@ -2,6 +2,11 @@ import { FormSubmissionEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { SolutionsApp } from './formsApps'
 
+export interface FormRetentionPolicy {
+  formId: number
+  submissionDataRetentionDays?: number
+}
+
 export interface Organisation {
   id: string
   name: string
@@ -21,6 +26,7 @@ export interface Organisation {
   awsCustomerId?: string
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
+  formRetentionPolicies?: Array<FormRetentionPolicy>
 }
 
 export interface AWSAccount {
