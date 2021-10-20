@@ -245,6 +245,7 @@ declare type FormsAppConfiguration<
   isTrialExpired: boolean,
   formsHostname: string,
   samlIdentityProviderName: ?string,
+  logoutRedirectUrl?: string,
   styles: T,
   pwaSettings: ?FormsAppPWASettings,
   isDraftsEnabled: boolean,

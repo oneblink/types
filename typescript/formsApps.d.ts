@@ -246,6 +246,7 @@ export type FormsAppConfiguration<
   isTrialExpired: boolean
   formsHostname: string
   samlIdentityProviderName: string | NoU
+  logoutRedirectUrl?: string
   styles: T
   pwaSettings: FormsAppPWASettings | NoU
   isDraftsEnabled: boolean
