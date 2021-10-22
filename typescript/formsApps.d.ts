@@ -84,10 +84,6 @@ export type FormsAppHostnameConfiguration = {
   formsAppId: number
   createdAt: string
   updatedAt: string
-  route53: {
-    hostedZoneId: string
-    hostedZoneNameServers: string[]
-  }
   acm: {
     certificateArn: string
     dnsValidation: {
@@ -100,7 +96,6 @@ export type FormsAppHostnameConfiguration = {
     distributionId: string
     distributionDomain: string
   }
-  errorMessage: null | string
 }
 
 type FormsAppPWASettings = {
