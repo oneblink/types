@@ -16,7 +16,7 @@ declare type LookupFormElement = {
   dataLookupId?: number,
   isElementLookup: boolean,
   elementLookupId?: number,
-} & FormElementRequired
+}
 
 declare type _FormElementBase = {
   isNew?: boolean,
@@ -64,14 +64,15 @@ declare type DynamicOptionsSetAttributeMap = {
   attribute: string,
 }
 
-type FormElementWithOptionsBase = LookupFormElement & {
-  options: ChoiceElementOption[],
-  optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH',
-  dynamicOptionSetId?: number,
-  conditionallyShowOptions?: boolean,
-  conditionallyShowOptionsElementIds?: string[],
-  attributesMapping?: DynamicOptionsSetAttributeMap[],
-}
+type FormElementWithOptionsBase = LookupFormElement &
+  FormElementRequired & {
+    options: ChoiceElementOption[],
+    optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH',
+    dynamicOptionSetId?: number,
+    conditionallyShowOptions?: boolean,
+    conditionallyShowOptionsElementIds?: string[],
+    attributesMapping?: DynamicOptionsSetAttributeMap[],
+  }
 
 declare type FormFormElement = _FormElementBase & {
   type: 'form',
@@ -142,7 +143,8 @@ declare type FormElementWithDate = {
   defaultValue?: string | 'NOW',
   defaultValueDaysOffset?: number,
   placeholderValue?: string,
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 declare type DateElement = FormElementWithDate & {
   type: 'date',
@@ -229,7 +231,8 @@ declare type LocationElement = {
   type: 'location',
   readOnly: boolean,
   defaultValue?: mixed,
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 declare type _NestedElementsElement = {
   elements: FormElement[],
@@ -265,15 +268,16 @@ declare type CaptchaElement = FormElementRequired & {
   type: 'captcha',
 }
 
-declare type FilesElement = FormElementBinaryStorage & {
-  type: 'files',
-  readOnly: boolean,
-  minEntries?: number,
-  maxEntries?: number,
-  restrictFileTypes: boolean,
-  restrictedFileTypes?: string[],
-  defaultValue?: mixed,
-}
+declare type FilesElement = FormElementBinaryStorage &
+  LookupFormElement & {
+    type: 'files',
+    readOnly: boolean,
+    minEntries?: number,
+    maxEntries?: number,
+    restrictFileTypes: boolean,
+    restrictedFileTypes?: string[],
+    defaultValue?: mixed,
+  }
 
 declare type FileElement = FormElementRequired & {
   type: 'file',
@@ -302,7 +306,8 @@ declare type GeoscapeAddressElement = {
   defaultValue?: GeoscapeAddress,
   placeholderValue?: string,
   stateTerritoryFilter?: string[],
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 declare type PointAddressElement = {
   type: 'pointAddress',
@@ -311,13 +316,15 @@ declare type PointAddressElement = {
   placeholderValue?: string,
   stateTerritoryFilter?: string[],
   addressTypeFilter?: string[],
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
-declare type BooleanElement = LookupFormElement & {
-  type: 'boolean',
-  defaultValue: boolean,
-  readOnly: boolean,
-}
+declare type BooleanElement = LookupFormElement &
+  FormElementRequired & {
+    type: 'boolean',
+    defaultValue: boolean,
+    readOnly: boolean,
+  }
 declare type CivicaStreetNameElement = {
   type: 'civicaStreetName',
   readOnly: boolean,
@@ -361,7 +368,8 @@ declare type BSBElement = {
   readOnly: boolean,
   defaultValue?: string,
   placeholderValue?: string,
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 declare type NestedElementsElement =
   | PageElement

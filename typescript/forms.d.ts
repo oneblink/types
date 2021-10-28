@@ -14,7 +14,7 @@ export type LookupFormElement = {
   dataLookupId?: number
   isElementLookup: boolean
   elementLookupId?: number
-} & FormElementRequired
+}
 
 export type _FormElementBase = {
   isNew?: boolean
@@ -62,14 +62,15 @@ export type DynamicOptionsSetAttributeMap = {
   attribute: string
 }
 
-type FormElementWithOptionsBase = LookupFormElement & {
-  options: ChoiceElementOption[]
-  optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH'
-  dynamicOptionSetId?: number
-  conditionallyShowOptions?: boolean
-  conditionallyShowOptionsElementIds?: string[]
-  attributesMapping?: DynamicOptionsSetAttributeMap[]
-}
+type FormElementWithOptionsBase = LookupFormElement &
+  FormElementRequired & {
+    options: ChoiceElementOption[]
+    optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH'
+    dynamicOptionSetId?: number
+    conditionallyShowOptions?: boolean
+    conditionallyShowOptionsElementIds?: string[]
+    attributesMapping?: DynamicOptionsSetAttributeMap[]
+  }
 
 export type FormFormElement = _FormElementBase & {
   type: 'form'
@@ -140,7 +141,8 @@ export type FormElementWithDate = {
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
   placeholderValue?: string
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type DateElement = FormElementWithDate & {
   type: 'date'
@@ -161,7 +163,8 @@ export type FormElementWithInput<DefaultValue> = {
   regexPattern?: string
   regexFlags?: string
   regexMessage?: string
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type NumberElement = {
   type: 'number'
@@ -227,7 +230,8 @@ export type LocationElement = {
   type: 'location'
   readOnly: boolean
   defaultValue?: unknown
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type _NestedElementsElement = {
   elements: FormElement[]
@@ -263,15 +267,16 @@ export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
 
-export type FilesElement = FormElementBinaryStorage & {
-  type: 'files'
-  readOnly: boolean
-  minEntries?: number
-  maxEntries?: number
-  restrictFileTypes: boolean
-  restrictedFileTypes?: string[]
-  defaultValue?: unknown
-}
+export type FilesElement = FormElementBinaryStorage &
+  LookupFormElement & {
+    type: 'files'
+    readOnly: boolean
+    minEntries?: number
+    maxEntries?: number
+    restrictFileTypes: boolean
+    restrictedFileTypes?: string[]
+    defaultValue?: unknown
+  }
 
 export type FileElement = FormElementRequired & {
   type: 'file'
@@ -300,7 +305,8 @@ export type GeoscapeAddressElement = {
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: string[]
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type PointAddressElement = {
   type: 'pointAddress'
@@ -309,19 +315,22 @@ export type PointAddressElement = {
   placeholderValue?: string
   stateTerritoryFilter?: string[]
   addressTypeFilter?: string[]
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
-export type BooleanElement = LookupFormElement & {
-  type: 'boolean'
-  defaultValue: boolean
-  readOnly: boolean
-}
+export type BooleanElement = LookupFormElement &
+  FormElementRequired & {
+    type: 'boolean'
+    defaultValue: boolean
+    readOnly: boolean
+  }
 export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
   readOnly: boolean
   defaultValue?: CivicaStreetName
   placeholderValue?: string
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type CivicaNameRecordElement = {
   type: 'civicaNameRecord'
@@ -359,7 +368,8 @@ export type BSBElement = {
   readOnly: boolean
   defaultValue?: string
   placeholderValue?: string
-} & LookupFormElement
+} & LookupFormElement &
+  FormElementRequired
 
 export type NestedElementsElement =
   | PageElement
