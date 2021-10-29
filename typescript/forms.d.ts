@@ -9,13 +9,6 @@ import type { BaseSearchResult } from './misc'
 ////////////////////////////////////////
 // Element Types
 
-export type LookupFormElement = {
-  isDataLookup: boolean
-  dataLookupId?: number
-  isElementLookup: boolean
-  elementLookupId?: number
-}
-
 export type _FormElementBase = {
   isNew?: boolean
   id: string
@@ -28,6 +21,13 @@ export type FormElementBase = _FormElementBase & {
   name: string
   label: string
   hint?: string
+}
+
+export type LookupFormElement = FormElementBase & {
+  isDataLookup: boolean
+  dataLookupId?: number
+  isElementLookup: boolean
+  elementLookupId?: number
 }
 
 export type FormElementRequired = FormElementBase & {
