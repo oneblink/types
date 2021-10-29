@@ -18,6 +18,7 @@ import * as ConditionTypes from './typescript/conditions'
 import * as PDFTypes from './typescript/pdf'
 import * as SchedulingTypes from './typescript/scheduling'
 import * as CDNTypes from './typescript/cdn'
+import * as EmailTemplateTypes from './typescript/emailTemplates'
 export {
   APITypes,
   FormTypes,
@@ -39,4 +40,5 @@ export {
   PDFTypes,
   SchedulingTypes,
   CDNTypes,
+  EmailTemplateTypes,
 }
