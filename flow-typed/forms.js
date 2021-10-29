@@ -11,13 +11,6 @@ import { type BaseSearchResult } from './misc'
 ////////////////////////////////////////
 // Element Types
 
-declare type LookupFormElement = {
-  isDataLookup: boolean,
-  dataLookupId?: number,
-  isElementLookup: boolean,
-  elementLookupId?: number,
-}
-
 declare type _FormElementBase = {
   isNew?: boolean,
   id: string,
@@ -30,6 +23,13 @@ declare type FormElementBase = _FormElementBase & {
   name: string,
   label: string,
   hint?: string,
+}
+
+declare type LookupFormElement = FormElementBase & {
+  isDataLookup: boolean,
+  dataLookupId?: number,
+  isElementLookup: boolean,
+  elementLookupId?: number,
 }
 
 declare type FormElementRequired = FormElementBase & {
