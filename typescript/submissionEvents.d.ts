@@ -1,6 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
 import type { UserProfile } from './misc'
-
 export type FormSubmissionEventType =
   | 'CALLBACK'
   | 'PDF'
@@ -28,6 +27,33 @@ export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean
 }
 
+type PdfSubmissionEventEmailTemplate = {
+  mustacheTag: string
+} & (
+  | {
+      type: 'FORM_ELEMENT'
+      formElementId: string
+    }
+  | {
+      type: 'TEXT'
+      text: string
+    }
+  | {
+      type: 'EXTERNAL_ID'
+    }
+  | {
+      type: 'FORM_NAME'
+    }
+  | {
+      type: 'SUBMISSION_ID'
+    }
+  | {
+      type: 'TIMESTAMP'
+    }
+  | {
+      type: 'DATE'
+    }
+)
 export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
   configuration: {
@@ -37,6 +63,10 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
     includeSubmissionIdInPdf?: boolean
     excludedElementIds?: string[]
     usePagesAsBreaks?: boolean
+    emailTemplate?: {
+      id: number
+      mapping: Array<PdfSubmissionEventEmailTemplate>
+    }
   }
   isDraft: boolean
 }
