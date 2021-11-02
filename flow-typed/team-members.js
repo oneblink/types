@@ -15,6 +15,7 @@ type RolePrivileges = {
   WEB_APP_HOSTING?: 'MANAGER' | 'DEVELOPER' | 'READONLY',
   SOLUTIONS?: 'MANAGER' | 'READONLY',
   BILLING?: 'MANAGER' | 'READONLY',
+  EMAIL_TEMPLATES?: 'MANAGER' | 'READONLY',
 }
 
 type Profile = {
