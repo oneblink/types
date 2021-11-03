@@ -27,7 +27,7 @@ export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
   isDraft: boolean
 }
 
-type PdfSubmissionEventEmailTemplate = {
+export type PdfSubmissionEventEmailTemplateMapping = {
   mustacheTag: string
 } & (
   | {
@@ -65,7 +65,7 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
     usePagesAsBreaks?: boolean
     emailTemplate?: {
       id: number
-      mapping: Array<PdfSubmissionEventEmailTemplate>
+      mapping: Array<PdfSubmissionEventEmailTemplateMapping>
     }
   }
   isDraft: boolean
