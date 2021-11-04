@@ -38,21 +38,6 @@ export type PdfSubmissionEventEmailTemplateMapping = {
       type: 'TEXT'
       text: string
     }
-  | {
-      type: 'EXTERNAL_ID'
-    }
-  | {
-      type: 'FORM_NAME'
-    }
-  | {
-      type: 'SUBMISSION_ID'
-    }
-  | {
-      type: 'TIMESTAMP'
-    }
-  | {
-      type: 'DATE'
-    }
 )
 export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
