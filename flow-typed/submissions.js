@@ -27,7 +27,6 @@ declare type NewFormsAppJob = {
   username: string,
   formId: number,
   draft?: FormsAppDraft,
-  updatedAt: string,
   externalId?: string,
   preFillFormDataId?: string,
   details: {
@@ -43,6 +42,7 @@ declare type FormsAppJob = NewFormsAppJob & {
   id: string,
   isSubmitted: boolean,
   createdAt: string,
+  updatedAt: string,
 }
 
 declare type JobSearchParameters = {
