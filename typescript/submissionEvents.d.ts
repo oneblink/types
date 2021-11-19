@@ -3,6 +3,7 @@ import type { UserProfile } from './misc'
 export type FormSubmissionEventType =
   | 'CALLBACK'
   | 'PDF'
+  | 'EMAIL'
   | 'ONEBLINK_API'
   | 'TRIM'
   | 'CIVICA_CRM'
@@ -46,6 +47,21 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
     emailSubjectLine?: string
     pdfFileName?: string
     includeSubmissionIdInPdf?: boolean
+    excludedElementIds?: string[]
+    usePagesAsBreaks?: boolean
+    emailTemplate?: {
+      id: number
+      mapping: Array<PdfSubmissionEventEmailTemplateMapping>
+    }
+  }
+  isDraft: boolean
+}
+
+export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
+  type: 'PDF'
+  configuration: {
+    email: string
+    emailSubjectLine: string
     excludedElementIds?: string[]
     usePagesAsBreaks?: boolean
     emailTemplate?: {
