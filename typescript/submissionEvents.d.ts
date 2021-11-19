@@ -200,6 +200,7 @@ export type FormSubmissionEvent =
   | CivicaCrmSubmissionEvent
   | SchedulingSubmissionEvent
   | PaymentSubmissionEvent
+  | EmailOnlySubmissionEvent
 
 export type WebhookSubscription = {
   id: number
