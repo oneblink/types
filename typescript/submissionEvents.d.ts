@@ -58,12 +58,10 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
 }
 
 export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
-  type: 'PDF'
+  type: 'EMAIL'
   configuration: {
     email: string
     emailSubjectLine: string
-    excludedElementIds?: string[]
-    usePagesAsBreaks?: boolean
     emailTemplate?: {
       id: number
       mapping: Array<PdfSubmissionEventEmailTemplateMapping>
