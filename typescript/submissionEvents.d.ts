@@ -102,7 +102,7 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
     groupFiles?: boolean
     usePagesAsBreaks?: boolean
     excludedElementIds?: string[]
-    preventExtensionlessAttachments: boolean
+    preventExtensionlessAttachments?: boolean
   }
   isDraft: boolean
 }
