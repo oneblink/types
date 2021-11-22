@@ -174,7 +174,6 @@
 | `groupFiles`               | no       | `boolean`                                                                                 | Whether the submission pdf and attachments should be zipped before uploading (defaults to `false`). |
 | `excludedElementIds`       | no       | `string[]`                                                                                | An array of element ids to exclude from the submission when generating pdf.                         |
 | `usePagesAsBreaks`         | no       | `boolean`                                                                                 | Whether pages in the form submission should translate to page breaks in the PDF.                    |
-| `preventExtensionlessAttachments`         | no       | `boolean`                                                                                 | Whether file attachments require extensions or not.                   |
 
 ### TRIMSubmissionEventConfigurationAttribute
 

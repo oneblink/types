@@ -276,6 +276,7 @@ export type FilesElement = FormElementBinaryStorage &
     restrictFileTypes: boolean
     restrictedFileTypes?: string[]
     defaultValue?: unknown
+    allowExtensionlessAttachments?: boolean
   }
 
 export type FileElement = FormElementRequired & {
@@ -284,6 +285,7 @@ export type FileElement = FormElementRequired & {
   restrictFileTypes: boolean
   restrictedFileTypes?: string[]
   defaultValue?: string
+  allowExtensionlessAttachments?: boolean
 }
 
 export type CalculationElement = FormElementBase & {
