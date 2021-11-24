@@ -12,10 +12,14 @@ export type FormSubmissionEventType =
   | 'CP_HCMS'
   | 'WESTPAC_QUICK_WEB'
   | 'SCHEDULING'
+  | 'FRESHDESK_CREATE_TICKET'
 
 export type FormSubmissionEventConditional = {
+  /** Whether the submission event should be condtionally executed. */
   conditionallyExecute?: boolean
+  /** Whether the conditional execution requires all predicates to be true as opposed to one. */
   requiresAllConditionallyExecutePredicates?: boolean
+  /** Array of the conditional predicates. */
   conditionallyExecutePredicates?: ConditionalPredicate[]
 }
 
@@ -259,4 +263,29 @@ export type FormSubmissionEventInstance = Omit<
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   createdAt: string
   updatedAt: string
+}
+
+export type FreshdeskSubmissionEventFieldMapping = {
+  freshdeskFieldName: string
+} & (
+  | {
+      type: 'FORM_ELEMENT'
+      formElementId: string
+    }
+  | {
+      type: 'VALUE'
+      value: number | string
+    }
+)
+
+export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
+  /** The type of submission event. */
+  type: 'FRESHDESK_CREATE_TICKET'
+  /** Configuration specific to the type of submission event.*/
+  configuration: {
+    /** Array of freshdesk field mappings. */
+    mapping: FreshdeskSubmissionEventFieldMapping[] 
+  }
+  /** Whether the submission event should run for drafts */
+  isDraft: boolean
 }
