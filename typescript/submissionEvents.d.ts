@@ -205,6 +205,7 @@ export type FormSubmissionEvent =
   | SchedulingSubmissionEvent
   | PaymentSubmissionEvent
   | EmailOnlySubmissionEvent
+  | FreshdeskCreateTicketSubmissionEvent
 
 export type WebhookSubscription = {
   id: number
