@@ -9,6 +9,7 @@ export type IntegrationType =
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_WEB'
   | 'SCHEDULING'
+  | 'FRESHDESK'
 
 type IntegrationBase = {
   organisationId: string
@@ -141,6 +142,14 @@ export type IntegrationScheduling = IntegrationBase & {
   }
 }
 
+export type IntegrationFreshdesk = IntegrationBase & {
+  type: 'FRESHDESK'
+  configuration: {
+    baseUrl: string
+    apiKey: string
+  }
+}
+
 export type Integration =
   | IntegrationTrim
   | IntegrationCPPay
@@ -152,3 +161,4 @@ export type Integration =
   | IntegrationWestpacQuickWeb
   | IntegrationCivica
   | IntegrationScheduling
+  | IntegrationFreshdesk
