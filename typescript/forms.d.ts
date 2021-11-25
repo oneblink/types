@@ -65,7 +65,8 @@ export type DynamicOptionsSetAttributeMap = {
 type FormElementWithOptionsBase = LookupFormElement &
   FormElementRequired & {
     options?: ChoiceElementOption[]
-    optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH'
+    optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH' | 'FRESHDESK_FIELD'
+    freshdeskFieldName?: string
     dynamicOptionSetId?: number
     conditionallyShowOptions?: boolean
     conditionallyShowOptionsElementIds?: string[]
