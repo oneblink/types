@@ -41,7 +41,7 @@ export type FreshdeskField = {
   /** ISO timestamp string */
   created_at: string
   /** ISO timestamp string */
-  updated_at: Date
+  updated_at: string
   /** I think we can ignore this */
   portal_cc?: boolean
   /** I think we can ignore this */
