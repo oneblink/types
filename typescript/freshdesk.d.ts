@@ -19,8 +19,25 @@ export type FreshdeskField = {
    * "required_for_customers"
    */
   required_for_agents: boolean
-  /** Not really useful */
-  type: string
+  /** There are only a specific number of types Freshdesk support */
+  type:
+    | 'custom_number'
+    | 'custom_decimal'
+    | 'custom_date'
+    | 'custom_text'
+    | 'custom_paragraph'
+    | 'custom_checkbox'
+    | 'custom_dropdown'
+    | 'default_company'
+    | 'default_source'
+    | 'default_status'
+    | 'default_priority'
+    | 'default_agent'
+    | 'default_group'
+    | 'default_ticket_type'
+    | 'default_requester'
+    | 'default_subject'
+    | 'default_description'
   /** This is just true if its a default field (i.e. cannot be deleted), not really useful */
   default: boolean
   /**
