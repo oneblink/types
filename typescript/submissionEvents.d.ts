@@ -275,7 +275,7 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
   | {
       type: 'VALUE'
-      value: number | string
+      value: number | string | boolean
     }
 )
 
@@ -285,7 +285,7 @@ export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditiona
   /** Configuration specific to the type of submission event.*/
   configuration: {
     /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[] 
+    mapping: FreshdeskSubmissionEventFieldMapping[]
   }
   /** Whether the submission event should run for drafts */
   isDraft: boolean
