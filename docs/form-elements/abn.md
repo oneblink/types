@@ -2,20 +2,20 @@
 
 [Back to all Elements](./README.md)
 
-## BSB Element
+## ABN Element
 
-Allow the user to enter a valid BSB number(as per https://bsb.auspaynet.com.au/public/BSB_DB.NSF/publicBSB.xsp).
+Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
 
 | Property       | Required | Type      | Default | Description                                                                              |
 | -------------- | -------- | --------- | ------- | ---------------------------------------------------------------------------------------- |
-| `type`         | Yes      | `string`  | `'bsb'` | The type of Form Element.                                                                |
+| `type`         | Yes      | `string`  | `'abn'` | The type of Form Element.                                                                |
 | `name`         | Yes      | `string`  |         | The key that will be assigned a value in the submission data when the form is submitted. |
 | `label`        | Yes      | `string`  |         | Display text presented to the user above the input by default.                           |
 | `defaultValue` | No       | `string`  |         | A default value when the form is opened.                                                 |
 | `required`     | Yes      | `boolean` | `false` | Determine if this input requires a value entered by the user (`true`) or not (`false`).  |
 | `readOnly`     | Yes      | `boolean` | `false` | Determine if this input can be edited by the user (`false`) or not (`true`).             |
 
-BSB element also inherits the properties of the following:
+ABN element also inherits the properties of the following:
 
 - [Base Element](./base-element.md)
 - [Lookup Element](./lookup-element.md)
@@ -25,10 +25,10 @@ BSB element also inherits the properties of the following:
 ```JSON
 {
   "id": "b1311ae0-6bb7-11e9-a923-1681be663d3e",
-  "type": "bsb",
-  "name": "BSB",
-  "label": "Please Enter Your BSB number",
-  "defaultValue": "923-100",
+  "type": "abn",
+  "name": "ABN",
+  "label": "Please Enter Your ABN number",
+  "defaultValue": "26008672179",
   "required": true,
   "readOnly": false
 }
@@ -39,7 +39,9 @@ BSB element also inherits the properties of the following:
 ```json
 {
   "submission": {
-    "[element.name]": "923-100"
+    "[element.name]": {
+      "abn": "26008672179"
+    }
   }
 }
 ```
