@@ -256,4 +256,5 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
+  abnLookupAuthenticationGuid?: string
 }
