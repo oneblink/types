@@ -415,6 +415,11 @@ export type NonNestedElementsElement =
   | CivicaStreetNameElement
   | CivicaNameRecordElement
   | BSBElement
+  | RadioButtonElement
+  | CheckboxElement
+  | SelectElement
+  | AutoCompleteElement
+  | ComplianceElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
@@ -567,7 +572,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
