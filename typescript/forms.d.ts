@@ -4,7 +4,7 @@ import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
-import type { BaseSearchResult } from './misc'
+import type { ABNRecord, BaseSearchResult } from './misc'
 
 ////////////////////////////////////////
 // Element Types
@@ -365,6 +365,14 @@ export type CivicaNameRecordElement = {
   address2Label?: string
   postcodeLabel?: string
 } & FormElementRequired
+
+export type ABNElement = {
+  type: 'abn'
+  readOnly: boolean
+  defaultValue?: ABNRecord
+  placeholderValue?: string
+} & LookupFormElement &
+  FormElementRequired
 
 export type BSBElement = {
   type: 'bsb'

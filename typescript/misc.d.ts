@@ -32,6 +32,51 @@ export type BaseSearchResult = {
   }
 }
 
+export type ABNRecord = {
+  recordLastUpdatedDate: string
+  ABN: {
+    identifierValue: string
+    isCurrentIndicator: string
+    replacedFrom: string
+  }
+  entityStatus: {
+    entityStatusCode: string
+    effectiveFrom: string
+    effectiveTo: string
+  }
+  ASICNumber: string
+  entityType: {
+    entityTypeCode: string
+    entityDescription: string
+  }
+  goodsAndServicesTax: {
+    effectiveFrom: string
+    effectiveTo: string
+  }
+  mainName: {
+    organisationName: string
+    effectiveFrom: string
+  }
+  mainTradingName: {
+    organisationName: string
+    effectiveFrom: string
+  }
+  otherTradingName: {
+    organisationName: string
+    effectiveFrom: string
+  }
+  mainBusinessPhysicalAddress: {
+    stateCode: string
+    postcode: string
+    effectiveFrom: string
+    effectiveTo: string
+  }
+  businessName: Array<{
+    organisationName: string
+    effectiveFrom: string
+  }>
+}
+
 export type BSBRecord = {
   bsb: string
   financialInstitutionMnemonic: string
