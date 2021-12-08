@@ -11,30 +11,66 @@ import type { ABNRecord, BaseSearchResult } from './misc'
 
 export type _FormElementBase = {
   isNew?: boolean
+  /** The unique identifier for an individual form element. */
   id: string
+  /** Determine if the element is conditionally shown (`true`) or not (`false`). */
   conditionallyShow: boolean
-  requiresAllConditionallyShowPredicates: boolean
+  /**
+   * Determine if the predicates must all match (`true`) or if only one needs to
+   * match (`false`) for the element to shown.
+   */
+  requiresAllConditionallyShowPredicates?: boolean
+  /** Predicates to evaluate. */
   conditionallyShowPredicates?: ConditionalPredicate[]
 }
 
 export type FormElementBase = _FormElementBase & {
+  /**
+   * The key that will be assigned a value in the submission data when the form
+   * is submitted.
+   */
   name: string
+  /** Display text presented to the user above the input by default. */
   label: string
+  /**
+   * A hint triggered by an icon tooltip to be displayed when hovering beside
+   * the element label.
+   */
   hint?: string
 }
 
 export type LookupFormElement = FormElementBase & {
+  /** Determine if the element is a Data Lookup element (`true`) or not (`false`). */
   isDataLookup: boolean
+  /**
+   * The Id of the Data Lookup configured in the OneBlink System which will
+   * return updated submission data.
+   */
   dataLookupId?: number
+  /** Determine if the element is a Data Lookup element (`true`) or not (`false`). */
   isElementLookup: boolean
+  /**
+   * The Id of the Element Lookup configured in the OneBlink System which will
+   * return Form Elements to inject.
+   */
   elementLookupId?: number
 }
 
+export type FormElementReadOnly = {
+  /* Determine if this input can be edited by the user (`false`) or not (`true`). */
+  readOnly?: boolean
+}
+
 export type FormElementRequired = FormElementBase & {
+  /**
+   * Determine if this input requires a value entered by the user (`true`) or
+   * not (`false`).
+   */
   required: boolean
 }
 
 export type FormElementBinaryStorage = FormElementBase & {
+  /** How the photo taken by a user will be stored: `private`, `public`, `legacy`. */
   storageType?: 'legacy' | 'public' | 'private'
 }
 
@@ -63,7 +99,8 @@ export type DynamicOptionsSetAttributeMap = {
 }
 
 type FormElementWithOptionsBase = LookupFormElement &
-  FormElementRequired & {
+  FormElementRequired &
+  FormElementReadOnly & {
     options?: ChoiceElementOption[]
     optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH' | 'FRESHDESK_FIELD'
     freshdeskFieldName?: string
@@ -90,14 +127,12 @@ export type InfoPageElement = _FormElementBase & {
 export type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio'
   buttons: boolean
-  readOnly: boolean
   defaultValue?: string
 }
 
 export type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes'
   buttons: boolean
-  readOnly: boolean
   defaultValue?: string[]
   canToggleAll?: boolean
 }
@@ -105,14 +140,12 @@ export type CheckboxElement = FormElementWithOptionsBase & {
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
   multi: boolean
-  readOnly: boolean
   defaultValue?: string | string[]
   canToggleAll?: boolean
 }
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
-  readOnly: boolean
   defaultValue?: string
   searchUrl?: string
   placeholderValue?: string
@@ -121,7 +154,6 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
 export type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance'
-    readOnly: boolean
     defaultValue?: string
   }
 
@@ -134,7 +166,6 @@ export type FormElementWithOptions =
 
 // date element types
 export type FormElementWithDate = {
-  readOnly: boolean
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
   toDate?: string | 'NOW'
@@ -143,7 +174,8 @@ export type FormElementWithDate = {
   defaultValueDaysOffset?: number
   placeholderValue?: string
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type DateElement = FormElementWithDate & {
   type: 'date'
@@ -158,14 +190,14 @@ export type TimeElement = FormElementWithDate & {
 }
 
 export type FormElementWithInput<DefaultValue> = {
-  readOnly: boolean
   defaultValue?: DefaultValue
   placeholderValue?: string
   regexPattern?: string
   regexFlags?: string
   regexMessage?: string
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type NumberElement = {
   type: 'number'
@@ -208,16 +240,16 @@ export type ImageElement = FormElementBase & {
 }
 
 export type DrawElement = FormElementRequired &
+  FormElementReadOnly &
   FormElementBinaryStorage & {
     type: 'draw'
-    readOnly: boolean
     defaultValue?: string
   }
 
 export type CameraElement = FormElementRequired &
+  FormElementReadOnly &
   FormElementBinaryStorage & {
     type: 'camera'
-    readOnly: boolean
     defaultValue?: string
     includeTimestampWatermark: boolean
   }
@@ -229,23 +261,22 @@ export type HeadingElement = FormElementBase & {
 
 export type LocationElement = {
   type: 'location'
-  readOnly: boolean
   defaultValue?: unknown
 } & LookupFormElement &
-  FormElementRequired
-
+  FormElementRequired &
+  FormElementReadOnly
 export type _NestedElementsElement = {
   elements: FormElement[]
 }
 
 export type RepeatableSetElement = FormElementBase & {
   type: 'repeatableSet'
-  readOnly: boolean
   minSetEntries?: number
   maxSetEntries?: number
   addSetEntryLabel?: string
   removeSetEntryLabel?: string
-} & _NestedElementsElement
+} & _NestedElementsElement &
+  FormElementReadOnly
 
 export type PageElement = _FormElementBase & {
   type: 'page'
@@ -269,9 +300,9 @@ export type CaptchaElement = FormElementRequired & {
 }
 
 export type FilesElement = FormElementBinaryStorage &
-  LookupFormElement & {
+  LookupFormElement &
+  FormElementReadOnly & {
     type: 'files'
-    readOnly: boolean
     minEntries?: number
     maxEntries?: number
     restrictFileTypes: boolean
@@ -279,15 +310,6 @@ export type FilesElement = FormElementBinaryStorage &
     defaultValue?: unknown
     allowExtensionlessAttachments?: boolean
   }
-
-export type FileElement = FormElementRequired & {
-  type: 'file'
-  readOnly: boolean
-  restrictFileTypes: boolean
-  restrictedFileTypes?: string[]
-  defaultValue?: string
-  allowExtensionlessAttachments?: boolean
-}
 
 export type CalculationElement = FormElementBase & {
   type: 'calculation'
@@ -304,40 +326,39 @@ export type SummaryElement = FormElementBase & {
 
 export type GeoscapeAddressElement = {
   type: 'geoscapeAddress'
-  readOnly: boolean
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: string[]
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type PointAddressElement = {
   type: 'pointAddress'
-  readOnly: boolean
   defaultValue?: PointAddress
   placeholderValue?: string
   stateTerritoryFilter?: string[]
   addressTypeFilter?: string[]
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type BooleanElement = LookupFormElement &
-  FormElementRequired & {
+  FormElementRequired &
+  FormElementReadOnly & {
     type: 'boolean'
     defaultValue: boolean
-    readOnly: boolean
   }
 export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
-  readOnly: boolean
   defaultValue?: CivicaStreetName
   placeholderValue?: string
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type CivicaNameRecordElement = {
   type: 'civicaNameRecord'
-  readOnly: boolean
   defaultValue?: CivicaNameRecord
   useGeoscapeAddressing: boolean
   titleLabel?: string
@@ -364,23 +385,155 @@ export type CivicaNameRecordElement = {
   address1Label?: string
   address2Label?: string
   postcodeLabel?: string
-} & FormElementRequired
+} & FormElementRequired &
+  FormElementReadOnly
 
+/**
+ * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
+ *
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "id": "b1311ae0-6bb7-11e9-a923-1681be663d3e",
+ *   "type": "abn",
+ *   "name": "ABN",
+ *   "label": "Please Enter Your ABN number",
+ *   "defaultValue": {
+ *     "recordLastUpdatedDate": "2021-11-13",
+ *     "ABN": {
+ *       "identifierValue": "26008672179",
+ *       "isCurrentIndicator": "Y",
+ *       "replacedFrom": "0001-01-01"
+ *     },
+ *     "entityStatus": {
+ *       "entityStatusCode": "Active",
+ *       "effectiveFrom": "1999-11-01",
+ *       "effectiveTo": "0001-01-01"
+ *     },
+ *     "ASICNumber": "008672179",
+ *     "entityType": {
+ *       "entityTypeCode": "PUB",
+ *       "entityDescription": "Australian Public Company"
+ *     },
+ *     "goodsAndServicesTax": {
+ *       "effectiveFrom": "2000-07-01",
+ *       "effectiveTo": "0001-01-01"
+ *     },
+ *     "mainName": {
+ *       "organisationName": "BUNNINGS GROUP LIMITED",
+ *       "effectiveFrom": "2005-09-01"
+ *     },
+ *     "mainTradingName": {
+ *       "organisationName": "BUNNINGS GROUP LIMITED",
+ *       "effectiveFrom": "2005-12-07"
+ *     },
+ *     "otherTradingName": {
+ *       "organisationName": "BUNNINGS WAREHOUSE",
+ *       "effectiveFrom": "2004-05-26"
+ *     },
+ *     "mainBusinessPhysicalAddress": {
+ *       "stateCode": "VIC",
+ *       "postcode": "3123",
+ *       "effectiveFrom": "2020-02-04",
+ *       "effectiveTo": "0001-01-01"
+ *     },
+ *     "businessName": [
+ *       {
+ *         "organisationName": "TOOL KIT DEPOT",
+ *         "effectiveFrom": "2021-09-07"
+ *       },
+ *       {
+ *         "organisationName": "CRAFTRIGHT",
+ *         "effectiveFrom": "2021-05-20"
+ *       }
+ *     ]
+ *   },
+ *   "required": true,
+ *   "readOnly": false
+ * }
+ * ```
+ *
+ * ### Example Submission Data
+ *
+ * ```json
+ * {
+ *   "submission": {
+ *     "[element.name]": {
+ *       "recordLastUpdatedDate": "2021-11-13",
+ *       "ABN": {
+ *         "identifierValue": "26008672179",
+ *         "isCurrentIndicator": "Y",
+ *         "replacedFrom": "0001-01-01"
+ *       },
+ *       "entityStatus": {
+ *         "entityStatusCode": "Active",
+ *         "effectiveFrom": "1999-11-01",
+ *         "effectiveTo": "0001-01-01"
+ *       },
+ *       "ASICNumber": "008672179",
+ *       "entityType": {
+ *         "entityTypeCode": "PUB",
+ *         "entityDescription": "Australian Public Company"
+ *       },
+ *       "goodsAndServicesTax": {
+ *         "effectiveFrom": "2000-07-01",
+ *         "effectiveTo": "0001-01-01"
+ *       },
+ *       "mainName": {
+ *         "organisationName": "BUNNINGS GROUP LIMITED",
+ *         "effectiveFrom": "2005-09-01"
+ *       },
+ *       "mainTradingName": {
+ *         "organisationName": "BUNNINGS GROUP LIMITED",
+ *         "effectiveFrom": "2005-12-07"
+ *       },
+ *       "otherTradingName": {
+ *         "organisationName": "BUNNINGS WAREHOUSE",
+ *         "effectiveFrom": "2004-05-26"
+ *       },
+ *       "mainBusinessPhysicalAddress": {
+ *         "stateCode": "VIC",
+ *         "postcode": "3123",
+ *         "effectiveFrom": "2020-02-04",
+ *         "effectiveTo": "0001-01-01"
+ *       },
+ *       "businessName": [
+ *         {
+ *           "organisationName": "TOOL KIT DEPOT",
+ *           "effectiveFrom": "2021-09-07"
+ *         },
+ *         {
+ *           "organisationName": "CRAFTRIGHT",
+ *           "effectiveFrom": "2021-05-20"
+ *         }
+ *       ]
+ *     }
+ *   }
+ * }
+ * ```
+ */
 export type ABNElement = {
+  /** The type of Form Element. */
   type: 'abn'
-  readOnly: boolean
+  /** A default value when the form is opened. */
   defaultValue?: ABNRecord
+  /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type BSBElement = {
+  /** The type of Form Element. */
   type: 'bsb'
-  readOnly: boolean
+  /** A default value when the form is opened. */
   defaultValue?: string
+  /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
 } & LookupFormElement &
-  FormElementRequired
+  FormElementRequired &
+  FormElementReadOnly
 
 export type NestedElementsElement =
   | PageElement
@@ -388,6 +541,7 @@ export type NestedElementsElement =
   | SectionElement
 
 export type NonNestedElementsElement =
+  | ABNElement
   | TextElement
   | EmailElement
   | TextareaElement
@@ -403,14 +557,12 @@ export type NonNestedElementsElement =
   | BarcodeScannerElement
   | CaptchaElement
   | ImageElement
-  | FileElement
   | FilesElement
   | CalculationElement
   | TelephoneElement
   | SummaryElement
   | GeoscapeAddressElement
   | PointAddressElement
-  | FormElementWithOptions
   | BooleanElement
   | CivicaStreetNameElement
   | CivicaNameRecordElement
@@ -431,14 +583,6 @@ export type CalculationInsertionElement =
   | CalculationElement
   | SelectElement
   | RadioButtonElement
-  | AutoCompleteElement
-
-export type ConditionalPredicateElement =
-  | NumberElement
-  | CalculationElement
-  | SelectElement
-  | RadioButtonElement
-  | CheckboxElement
   | AutoCompleteElement
 
 ///////////////////////////////////////////////////////////////
@@ -567,7 +711,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
