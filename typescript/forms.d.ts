@@ -5,6 +5,7 @@ import { CivicaNameRecord } from './civica/name-record'
 import type { FormSubmissionEvent } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { ABNRecord, BaseSearchResult } from './misc'
+import { FormApprovalFlowStep } from './approvals'
 
 ////////////////////////////////////////
 // Element Types
@@ -613,6 +614,7 @@ export type FormServerValidation =
         apiEnvironmentRoute: string
       }
     }
+
 export type Form = {
   id: number
   name: string
@@ -630,7 +632,12 @@ export type Form = {
   redirectUrl?: string
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
+  draftEvents?: FormSubmissionEvent[]
+  schedulingEvents?: FormSubmissionEvent[]
+  paymentEvents?: FormSubmissionEvent[]
   submissionEvents: FormSubmissionEvent[]
+  approvalSteps?: FormApprovalFlowStep[]
+  approvalEvents?: FormSubmissionEvent[]
   tags: Array<string>
   createdAt: string
   updatedAt: string

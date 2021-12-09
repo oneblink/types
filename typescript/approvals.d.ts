@@ -14,15 +14,6 @@ export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
   isSkipped: boolean
 }
 
-export type NewFormApprovalFlow = {
-  formId: number
-  steps: FormApprovalFlowStep[]
-}
-export type FormApprovalFlow = NewFormApprovalFlow & {
-  createdAt: string
-  updatedAt: string
-}
-
 export type NewFormApprovalFlowInstance = {
   formId: number
   submissionId: string

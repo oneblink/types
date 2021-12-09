@@ -17,7 +17,10 @@ export type FormSubmissionEventType =
 export type FormSubmissionEventConditional = {
   /** Whether the submission event should be condtionally executed. */
   conditionallyExecute?: boolean
-  /** Whether the conditional execution requires all predicates to be true as opposed to one. */
+  /**
+   * Whether the conditional execution requires all predicates to be true as
+   * opposed to one.
+   */
   requiresAllConditionallyExecutePredicates?: boolean
   /** Array of the conditional predicates. */
   conditionallyExecutePredicates?: ConditionalPredicate[]
@@ -29,7 +32,6 @@ export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
     url: string
     secret?: string
   }
-  isDraft: boolean
 }
 
 export type PdfSubmissionEventEmailTemplateMapping = {
@@ -58,7 +60,6 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
       mapping: Array<PdfSubmissionEventEmailTemplateMapping>
     }
   }
-  isDraft: boolean
 }
 
 export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
@@ -71,7 +72,6 @@ export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
       mapping: Array<PdfSubmissionEventEmailTemplateMapping>
     }
   }
-  isDraft: boolean
 }
 
 export type OneBlinkAPISubmissionEventConfiguration = {
@@ -84,7 +84,6 @@ export type OneBlinkAPISubmissionEventConfiguration = {
 export type OneBlinkAPISubmissionEvent = FormSubmissionEventConditional & {
   type: 'ONEBLINK_API'
   configuration: OneBlinkAPISubmissionEventConfiguration
-  isDraft: boolean
 }
 
 export type TrimUriOption = {
@@ -107,7 +106,6 @@ export type TrimSubmissionEvent = FormSubmissionEventConditional & {
     usePagesAsBreaks?: boolean
     excludedElementIds?: string[]
   }
-  isDraft: boolean
 }
 
 export type CivicaRecord = {
@@ -135,7 +133,6 @@ export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
     excludedElementIds?: string[]
     usePagesAsBreaks?: boolean
   }
-  isDraft: boolean
 }
 
 export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
@@ -145,7 +142,6 @@ export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
     encryptedElementIds?: string[]
     encryptPdf?: boolean
   }
-  isDraft: boolean
 }
 
 export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
@@ -154,7 +150,6 @@ export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
     elementId: string
     gatewayId: string
   }
-  isDraft: boolean
 }
 
 export type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
@@ -165,7 +160,6 @@ export type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
     crn2?: string
     crn3?: string
   }
-  isDraft: boolean
 }
 
 export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
@@ -175,7 +169,6 @@ export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
     environmentId: string
     customerReferenceNumber: string
   }
-  isDraft: boolean
 }
 
 export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
@@ -187,8 +180,31 @@ export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
     emailElementId?: string
     emailDescription?: string
   }
-  isDraft: boolean
 }
+
+export type FreshdeskSubmissionEventFieldMapping = {
+  freshdeskFieldName: string
+} & (
+  | {
+      type: 'FORM_ELEMENT'
+      formElementId: string
+    }
+  | {
+      type: 'VALUE'
+      value: number | string | boolean
+    }
+)
+
+export type FreshdeskCreateTicketSubmissionEvent =
+  FormSubmissionEventConditional & {
+    /** The type of submission event. */
+    type: 'FRESHDESK_CREATE_TICKET'
+    /** Configuration specific to the type of submission event. */
+    configuration: {
+      /** Array of freshdesk field mappings. */
+      mapping: FreshdeskSubmissionEventFieldMapping[]
+    }
+  }
 
 export type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
@@ -264,29 +280,4 @@ export type FormSubmissionEventInstance = Omit<
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   createdAt: string
   updatedAt: string
-}
-
-export type FreshdeskSubmissionEventFieldMapping = {
-  freshdeskFieldName: string
-} & (
-  | {
-      type: 'FORM_ELEMENT'
-      formElementId: string
-    }
-  | {
-      type: 'VALUE'
-      value: number | string | boolean
-    }
-)
-
-export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_CREATE_TICKET'
-  /** Configuration specific to the type of submission event.*/
-  configuration: {
-    /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[]
-  }
-  /** Whether the submission event should run for drafts */
-  isDraft: boolean
 }
