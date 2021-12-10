@@ -2,7 +2,11 @@ import { GeoscapeAddress } from './geoscape'
 import { PointAddress } from './point'
 import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
-import type { FormSubmissionEvent } from './submissionEvents'
+import type {
+  FormSubmissionEvent,
+  FormPaymentEvent,
+  FormSchedulingEvent,
+} from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { ABNRecord, BaseSearchResult } from './misc'
 import { FormApprovalFlowStep } from './approvals'
@@ -633,8 +637,8 @@ export type Form = {
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
   draftEvents?: FormSubmissionEvent[]
-  schedulingEvents?: FormSubmissionEvent[]
-  paymentEvents?: FormSubmissionEvent[]
+  schedulingEvents?: FormSchedulingEvent[]
+  paymentEvents?: FormPaymentEvent[]
   submissionEvents: FormSubmissionEvent[]
   approvalSteps?: FormApprovalFlowStep[]
   approvalEvents?: FormSubmissionEvent[]
@@ -723,8 +727,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]

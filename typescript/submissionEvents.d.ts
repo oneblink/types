@@ -1,18 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
 import type { UserProfile } from './misc'
-export type FormSubmissionEventType =
-  | 'CALLBACK'
-  | 'PDF'
-  | 'EMAIL'
-  | 'ONEBLINK_API'
-  | 'TRIM'
-  | 'CIVICA_CRM'
-  | 'CP_PAY'
-  | 'BPOINT'
-  | 'CP_HCMS'
-  | 'WESTPAC_QUICK_WEB'
-  | 'SCHEDULING'
-  | 'FRESHDESK_CREATE_TICKET'
 
 export type FormSubmissionEventConditional = {
   /** Whether the submission event should be condtionally executed. */
@@ -195,22 +182,24 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent =
-  FormSubmissionEventConditional & {
-    /** The type of submission event. */
-    type: 'FRESHDESK_CREATE_TICKET'
-    /** Configuration specific to the type of submission event. */
-    configuration: {
-      /** Array of freshdesk field mappings. */
-      mapping: FreshdeskSubmissionEventFieldMapping[]
-    }
+export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
+  /** The type of submission event. */
+  type: 'FRESHDESK_CREATE_TICKET'
+  /** Configuration specific to the type of submission event. */
+  configuration: {
+    /** Array of freshdesk field mappings. */
+    mapping: FreshdeskSubmissionEventFieldMapping[]
   }
+}
 
+// EVENTS
 export type PaymentSubmissionEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
   | WestpacQuickWebSubmissionEvent
 
+export type FormPaymentEvent = PaymentSubmissionEvent
+export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormSubmissionEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
@@ -218,10 +207,19 @@ export type FormSubmissionEvent =
   | TrimSubmissionEvent
   | CPHCMSSubmissionEvent
   | CivicaCrmSubmissionEvent
-  | SchedulingSubmissionEvent
-  | PaymentSubmissionEvent
   | EmailOnlySubmissionEvent
   | FreshdeskCreateTicketSubmissionEvent
+
+export type FormEvent =
+  | FormPaymentEvent
+  | FormSchedulingEvent
+  | FormSubmissionEvent
+
+// EVENT TYPES
+export type FormPaymentEventType = FormPaymentEvent['type']
+export type FormSchedulingEventType = FormSchedulingEvent['type']
+export type FormSubmissionEventType = FormSubmissionEvent['type']
+export type FormEventType = FormEvent['type']
 
 export type WebhookSubscription = {
   id: number

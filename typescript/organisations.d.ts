@@ -1,4 +1,4 @@
-import { FormSubmissionEventType } from './submissionEvents'
+import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { SolutionsApp } from './formsApps'
 
@@ -68,7 +68,7 @@ export interface NewTier {
     maximumCDNHostingInstances: TierLimitation
     maximumFormsApps: TierLimitation
     maximumSchedulingCalendars: TierLimitation
-    availableFormSubmissionEvents?: FormSubmissionEventType[]
+    availableFormSubmissionEvents?: FormEventType[]
     availableFormPostSubmissionActions?: FormPostSubmissionAction[]
     allowFormsAppPWASettings: boolean
     allowFormsAppCustomDomains: boolean
