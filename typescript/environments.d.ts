@@ -8,6 +8,7 @@ export interface NewFormsAppEnvironment {
     isCloningFormElementOptionsSets: boolean
     isCloningFormElementLookups: boolean
     isCloningFormSubmissionEvents: boolean
+    isCloningFormApprovalSteps: boolean
     isCloningFormPostSubmissionActions: boolean
     isCloningFormServerValidation: boolean
     isCloningFormExternalIdGeneration: boolean
@@ -23,6 +24,7 @@ export type FormsAppEnvironment = {
 export interface FormMigrationOptions {
   formsAppEnvironmentId: number
   elements: boolean
+  approvalSteps: boolean
   submissionEvents: boolean
   tags: boolean
   postSubmissionAction: boolean
