@@ -104,17 +104,18 @@ export type CivicaCustomerContactMethod = {
   description: string
 }
 
+export type CivicaCrmSubmissionEventMapping = {
+  isDescription: boolean
+  civicaCategoryItemNumber: number
+  formElementId: string
+}
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
   configuration: {
     environmentId: string
     civicaCustomerContactMethod: CivicaCustomerContactMethod
     civicaCategory: CivicaRecord
-    mapping: Array<{
-      isDescription: boolean
-      civicaCategoryItemNumber: number
-      formElementId: string
-    }>
+    mapping: CivicaCrmSubmissionEventMapping[]
     pdfFileName?: string
     includeSubmissionIdInPdf?: boolean
     excludedElementIds?: string[]
@@ -182,15 +183,16 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_CREATE_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: {
-    /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[]
+export type FreshdeskCreateTicketSubmissionEvent =
+  FormSubmissionEventConditional & {
+    /** The type of submission event. */
+    type: 'FRESHDESK_CREATE_TICKET'
+    /** Configuration specific to the type of submission event. */
+    configuration: {
+      /** Array of freshdesk field mappings. */
+      mapping: FreshdeskSubmissionEventFieldMapping[]
+    }
   }
-}
 
 // EVENTS
 export type PaymentSubmissionEvent =
