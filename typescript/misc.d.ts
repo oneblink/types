@@ -62,11 +62,11 @@ export type ABNRecord = {
     otherGivenName?: string
     familyName?: string
   }
-  mainTradingName: {
+  mainTradingName?: {
     organisationName: string
     effectiveFrom: string
   }
-  otherTradingName: {
+  otherTradingName?: {
     organisationName: string
     effectiveFrom: string
   }
