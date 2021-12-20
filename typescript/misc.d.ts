@@ -32,13 +32,15 @@ export type BaseSearchResult = {
   }
 }
 
+interface ABNValue {
+  identifierValue: string
+  isCurrentIndicator: string
+  replacedFrom: string
+}
+
 export type ABNRecord = {
   recordLastUpdatedDate: string
-  ABN: {
-    identifierValue: string
-    isCurrentIndicator: string
-    replacedFrom: string
-  }
+  ABN: ABNValue | ABNValue[]
   entityStatus: {
     entityStatusCode: string
     effectiveFrom: string
