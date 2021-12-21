@@ -34,3 +34,7 @@ You need to import types where you want to use them
 import { FormTypes, FormsAppsTypes, MiscTypes, SubmissionEventTypes } from '@oneblink/types'
 ```
 
+## Documentation
+
+See the [Documentation](https://oneblink.github.io/sdk-node-js/modules/types.html) for more details.
+
