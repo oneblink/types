@@ -44,6 +44,7 @@ type BaseFormSubmissionApproval = {
   notes?: string
   internalNotes?: string
   updatedBy?: string
+  approvalFormId?: number
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
