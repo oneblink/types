@@ -4,6 +4,7 @@ import type { FormServerValidation } from './forms'
 export type FormApprovalFlowStepBase = {
   group: string
   label: string
+  approvalFormId?: number
 }
 export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   isConditional?: boolean
@@ -52,6 +53,8 @@ export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
+  approvalFormSubmissionId?: string
+  approvalFormId?: number
   createdAt: string
   updatedAt: string
 }
