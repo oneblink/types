@@ -54,7 +54,6 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
   approvalFormSubmissionId?: string
-  approvalFormId?: number
   createdAt: string
   updatedAt: string
 }
