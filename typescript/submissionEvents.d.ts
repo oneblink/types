@@ -44,32 +44,30 @@ export type PdfSubmissionEventEmailTemplateMapping = {
       text: string
     }
 )
+export type PDFConfiguration = {
+  pdfFileName?: string
+  includeSubmissionIdInPdf?: boolean
+  excludedElementIds?: string[]
+  usePagesAsBreaks?: boolean
+}
+export type EmailConfiguration = {
+  email: string
+  emailSubjectLine?: string
+  emailTemplate?: {
+    id: number
+    mapping: Array<PdfSubmissionEventEmailTemplateMapping>
+  }
+}
 export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
-  configuration: ApprovalFormsInclusionConfiguration & {
-    email: string
-    emailSubjectLine?: string
-    pdfFileName?: string
-    includeSubmissionIdInPdf?: boolean
-    excludedElementIds?: string[]
-    usePagesAsBreaks?: boolean
-    emailTemplate?: {
-      id: number
-      mapping: Array<PdfSubmissionEventEmailTemplateMapping>
-    }
-  }
+  configuration: ApprovalFormsInclusionConfiguration &
+    PDFConfiguration &
+    EmailConfiguration
 }
 
 export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
   type: 'EMAIL'
-  configuration: ApprovalFormsInclusionConfiguration & {
-    email: string
-    emailSubjectLine: string
-    emailTemplate?: {
-      id: number
-      mapping: Array<PdfSubmissionEventEmailTemplateMapping>
-    }
-  }
+  configuration: ApprovalFormsInclusionConfiguration & EmailConfiguration
 }
 
 export type OneBlinkAPISubmissionEventConfiguration = {
@@ -91,19 +89,17 @@ export type TrimUriOption = {
 
 export type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM'
-  configuration: ApprovalFormsInclusionConfiguration & {
-    environmentId: string
-    recordTitle?: string
-    container: TrimUriOption
-    recordType: TrimUriOption
-    actionDefinition: TrimUriOption
-    location: TrimUriOption
-    includeSubmissionIdInPdf?: boolean
-    author?: TrimUriOption
-    groupFiles?: boolean
-    usePagesAsBreaks?: boolean
-    excludedElementIds?: string[]
-  }
+  configuration: ApprovalFormsInclusionConfiguration &
+    PDFConfiguration & {
+      environmentId: string
+      recordTitle?: string
+      container: TrimUriOption
+      recordType: TrimUriOption
+      actionDefinition: TrimUriOption
+      location: TrimUriOption
+      author?: TrimUriOption
+      groupFiles?: boolean
+    }
 }
 
 export type CivicaRecord = {
@@ -122,25 +118,23 @@ export type CivicaCrmSubmissionEventMapping = {
 }
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
-  configuration: ApprovalFormsInclusionConfiguration & {
-    environmentId: string
-    civicaCustomerContactMethod: CivicaCustomerContactMethod
-    civicaCategory: CivicaRecord
-    mapping: CivicaCrmSubmissionEventMapping[]
-    pdfFileName?: string
-    includeSubmissionIdInPdf?: boolean
-    excludedElementIds?: string[]
-    usePagesAsBreaks?: boolean
-  }
+  configuration: ApprovalFormsInclusionConfiguration &
+    PDFConfiguration & {
+      environmentId: string
+      civicaCustomerContactMethod: CivicaCustomerContactMethod
+      civicaCategory: CivicaRecord
+      mapping: CivicaCrmSubmissionEventMapping[]
+    }
 }
 
 export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_HCMS'
-  configuration: ApprovalFormsInclusionConfiguration & {
-    contentTypeName: string
-    encryptedElementIds?: string[]
-    encryptPdf?: boolean
-  }
+  configuration: ApprovalFormsInclusionConfiguration &
+    PDFConfiguration & {
+      contentTypeName: string
+      encryptedElementIds?: string[]
+      encryptPdf?: boolean
+    }
 }
 
 export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
@@ -172,13 +166,14 @@ export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
 
 export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
   type: 'SCHEDULING'
-  configuration: {
-    nylasAccountId: string
-    nylasSchedulingPageId: number
-    nameElementId?: string
-    emailElementId?: string
-    emailDescription?: string
-  }
+  configuration: PDFConfiguration &
+    ApprovalFormsInclusionConfiguration & {
+      nylasAccountId: string
+      nylasSchedulingPageId: number
+      nameElementId?: string
+      emailElementId?: string
+      emailDescription?: string
+    }
 }
 
 export type FreshdeskSubmissionEventFieldMapping = {
@@ -194,15 +189,16 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_CREATE_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: ApprovalFormsInclusionConfiguration & {
-    /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[]
+export type FreshdeskCreateTicketSubmissionEvent =
+  FormSubmissionEventConditional & {
+    /** The type of submission event. */
+    type: 'FRESHDESK_CREATE_TICKET'
+    /** Configuration specific to the type of submission event. */
+    configuration: ApprovalFormsInclusionConfiguration & {
+      /** Array of freshdesk field mappings. */
+      mapping: FreshdeskSubmissionEventFieldMapping[]
+    }
   }
-}
 
 // EVENTS
 export type PaymentSubmissionEvent =
