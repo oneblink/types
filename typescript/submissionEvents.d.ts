@@ -14,12 +14,14 @@ export type FormSubmissionEventConditional = {
 }
 
 export type ApprovalFormsInclusionConfiguration = {
-  approvalFormsInclusion: 'ALL'
-} | {
-  approvalFormsInclusion: 'PARTIAL'
-  approvalStepLabels: string[]
-} | {
-  approvalFormsInclusion?: 'NONE'
+  approvalFormsInclusion?:
+    | {
+        value: 'ALL'
+      }
+    | {
+        value: 'PARTIAL'
+        approvalStepLabels: string[]
+      }
 }
 
 export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
@@ -44,7 +46,7 @@ export type PdfSubmissionEventEmailTemplateMapping = {
 )
 export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
-  configuration: ApprovalFormsInclusionConfiguration &  {
+  configuration: ApprovalFormsInclusionConfiguration & {
     email: string
     emailSubjectLine?: string
     pdfFileName?: string
@@ -60,7 +62,7 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
 
 export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
   type: 'EMAIL'
-  configuration:  ApprovalFormsInclusionConfiguration &  {
+  configuration: ApprovalFormsInclusionConfiguration & {
     email: string
     emailSubjectLine: string
     emailTemplate?: {
@@ -120,7 +122,7 @@ export type CivicaCrmSubmissionEventMapping = {
 }
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
-  configuration: ApprovalFormsInclusionConfiguration &  {
+  configuration: ApprovalFormsInclusionConfiguration & {
     environmentId: string
     civicaCustomerContactMethod: CivicaCustomerContactMethod
     civicaCategory: CivicaRecord
@@ -192,17 +194,15 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent =
-  FormSubmissionEventConditional & {
-    /** The type of submission event. */
-    type: 'FRESHDESK_CREATE_TICKET'
-    /** Configuration specific to the type of submission event. */
-    configuration: ApprovalFormsInclusionConfiguration &  {
-      /** Array of freshdesk field mappings. */
-      mapping: FreshdeskSubmissionEventFieldMapping[]
-    }
+export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
+  /** The type of submission event. */
+  type: 'FRESHDESK_CREATE_TICKET'
+  /** Configuration specific to the type of submission event. */
+  configuration: ApprovalFormsInclusionConfiguration & {
+    /** Array of freshdesk field mappings. */
+    mapping: FreshdeskSubmissionEventFieldMapping[]
   }
-
+}
 
 // EVENTS
 export type PaymentSubmissionEvent =
