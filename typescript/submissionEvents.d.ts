@@ -60,7 +60,7 @@ export type PdfSubmissionEvent = FormSubmissionEventConditional & {
 
 export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
   type: 'EMAIL'
-  configuration: {
+  configuration:  ApprovalFormsInclusionConfiguration &  {
     email: string
     emailSubjectLine: string
     emailTemplate?: {
