@@ -13,6 +13,15 @@ export type FormSubmissionEventConditional = {
   conditionallyExecutePredicates?: ConditionalPredicate[]
 }
 
+export type ApprovalFormsInclusionConfiguration = {
+  approvalFormsInclusion: 'ALL'
+} | {
+  approvalFormsInclusion: 'PARTIAL'
+  approvalStepLabels: string[]
+} | {
+  approvalFormsInclusion?: 'NONE'
+}
+
 export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CALLBACK'
   configuration: {
@@ -35,7 +44,7 @@ export type PdfSubmissionEventEmailTemplateMapping = {
 )
 export type PdfSubmissionEvent = FormSubmissionEventConditional & {
   type: 'PDF'
-  configuration: {
+  configuration: ApprovalFormsInclusionConfiguration &  {
     email: string
     emailSubjectLine?: string
     pdfFileName?: string
@@ -80,7 +89,7 @@ export type TrimUriOption = {
 
 export type TrimSubmissionEvent = FormSubmissionEventConditional & {
   type: 'TRIM'
-  configuration: {
+  configuration: ApprovalFormsInclusionConfiguration & {
     environmentId: string
     recordTitle?: string
     container: TrimUriOption
@@ -111,7 +120,7 @@ export type CivicaCrmSubmissionEventMapping = {
 }
 export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CIVICA_CRM'
-  configuration: {
+  configuration: ApprovalFormsInclusionConfiguration &  {
     environmentId: string
     civicaCustomerContactMethod: CivicaCustomerContactMethod
     civicaCategory: CivicaRecord
@@ -125,7 +134,7 @@ export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
 
 export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
   type: 'CP_HCMS'
-  configuration: {
+  configuration: ApprovalFormsInclusionConfiguration & {
     contentTypeName: string
     encryptedElementIds?: string[]
     encryptPdf?: boolean
@@ -188,11 +197,12 @@ export type FreshdeskCreateTicketSubmissionEvent =
     /** The type of submission event. */
     type: 'FRESHDESK_CREATE_TICKET'
     /** Configuration specific to the type of submission event. */
-    configuration: {
+    configuration: ApprovalFormsInclusionConfiguration &  {
       /** Array of freshdesk field mappings. */
       mapping: FreshdeskSubmissionEventFieldMapping[]
     }
   }
+
 
 // EVENTS
 export type PaymentSubmissionEvent =
