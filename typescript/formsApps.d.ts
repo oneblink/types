@@ -107,6 +107,7 @@ type FormsAppPWASettings = {
 
 type _NewFormsApp = {
   name: string
+  description?: string
   hostname: string
   oAuthClientId: string | NoU
   organisationId: string
