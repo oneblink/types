@@ -258,4 +258,9 @@ export type FormsAppConfiguration<
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
   abnLookupAuthenticationGuid?: string
+  accountAttachmentRetentionInDays?: number
+  formsAttachmentRetention?: Array<{
+    formId: number
+    days: number
+  }>
 }

@@ -148,4 +148,5 @@ export type FormSubmissionAttachment = {
   fileName: string
   id: string
   isPrivate: boolean
+  uploadedAt?: string
 }
