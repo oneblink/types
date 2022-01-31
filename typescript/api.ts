@@ -67,39 +67,3 @@ export type APIEnvironmentMetricsSearchParameters = {
   endTime: string
   period: number
 }
-
-export type OneBlinkAPIHostingRequest<T = void> = {
-  body: T
-  headers: {
-    [id: string]: string | boolean
-  }
-  method: string
-  route: string
-  url: {
-    host: string
-    hostname: string
-    params: { [id: string]: string }
-    pathname: string
-    protocol: 'http:' | 'https:'
-    query: { [id: string]: string }
-  }
-}
-
-export interface OneBlinkAPIHostingResponse<T = void> {
-  readonly headers: OneBlinkAPIHostingRequest['headers']
-  readonly payload: T
-  readonly statusCode: number
-  setHeader(key: string, value: string): OneBlinkAPIHostingResponse<T>
-  setPayload(payload: T): OneBlinkAPIHostingResponse<T>
-  setStatusCode(code: number): OneBlinkAPIHostingResponse<T>
-}
-
-export type OneBlinkAPIHostingHandler<In = void, Out = void> = (
-  req: OneBlinkAPIHostingRequest<In>,
-  res: OneBlinkAPIHostingResponse<Out>
-) =>
-  | Promise<OneBlinkAPIHostingResponse<Out> | Out | number | void>
-  | OneBlinkAPIHostingResponse<Out>
-  | Out
-  | number
-  | void
