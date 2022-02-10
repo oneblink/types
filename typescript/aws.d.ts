@@ -5,13 +5,14 @@ export interface AWSCredentials {
   Expiration: string
 }
 
+export interface S3Configuration {
+  bucket: string
+  key: string
+  region: string
+}
 export interface FormS3Credentials {
   credentials: AWSCredentials
-  s3: {
-    bucket: string
-    key: string
-    region: string
-  }
+  s3: S3Configuration
 }
 export type S3ObjectCredentials = FormS3Credentials
 
