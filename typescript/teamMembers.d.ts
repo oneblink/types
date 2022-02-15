@@ -16,6 +16,7 @@ interface RolePrivileges {
   SOLUTIONS?: 'MANAGER' | 'READONLY'
   BILLING?: 'MANAGER' | 'READONLY'
   EMAIL_TEMPLATES?: 'MANAGER' | 'READONLY'
+  AUDITING?: 'READONLY'
 }
 
 interface Profile {

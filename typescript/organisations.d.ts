@@ -1,6 +1,7 @@
 import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { SolutionsApp } from './formsApps'
+import { UserProfile } from './misc'
 
 export interface NewFormRetentionPolicy {
   formId: number
@@ -82,4 +83,59 @@ export type Tier = NewTier & {
   id: number
   createdAt: string
   updatedAt: string
+}
+
+export type AuditRecordType =
+  | 'User'
+  | 'AWSAccount'
+  | 'Tiers'
+  | 'Organisation'
+  | 'Key'
+  | 'API'
+  | 'FormsAppEnvironment'
+  | 'FormElementDynamicOptionSet'
+  | 'BuiltInFormElementLookup'
+  | 'FormElementLookup'
+  | 'Form'
+  | 'WebApp'
+  | 'APIEnvironment'
+  | 'FormsApp'
+  | 'FormsAppHostnameConfiguration'
+  | 'Job'
+  | 'FormSubmissionMeta'
+  | 'FormsAppUser'
+  | 'EmailReceipt'
+  | 'WebhookSubscription'
+  | 'TrialOrganisationId'
+  | 'Role'
+  | 'TeamMember'
+  | 'WebAppEnvironment'
+  | 'FormsAppDraft'
+  | 'FormsAppUserSubscription'
+  | 'FormsAppSendingAddress'
+  | 'Integration'
+  | 'FormSubmissionFileAccessToken'
+  | 'FormApprovalFlowInstance'
+  | 'FormSubmissionApproval'
+  | 'FormApprovalWebhook'
+  | 'FormRetentionPolicy'
+  | 'EmailTemplate'
+  | 'SchedulingBooking'
+  | 'FormSubmissionPayment'
+
+export type NewAuditRecord = {
+  type: AuditRecordType
+  recordId: Record<string, unknown>
+  operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
+  organisationId: string
+  user?: UserProfile
+  key?: {
+    id: string
+    name: string
+  }
+}
+
+export type AuditRecord = NewAuditRecord & {
+  id: number
+  createdAt: string
 }
