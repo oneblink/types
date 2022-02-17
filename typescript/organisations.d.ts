@@ -122,6 +122,8 @@ export type AuditRecordType =
   | 'EmailTemplate'
   | 'SchedulingBooking'
   | 'FormSubmissionPayment'
+  | 'FormSubmissionAttachment'
+  | 'FormSubmission'
 
 export type NewAuditRecord = {
   type: AuditRecordType
