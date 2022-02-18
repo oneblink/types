@@ -121,6 +121,7 @@ export type AuditRecordType =
 export type NewAuditRecord = {
   type: AuditRecordType
   recordId: Record<string, unknown>
+  recordLabel?: string
   operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
   organisationId: string
   user?: UserProfile
