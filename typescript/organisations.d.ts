@@ -86,35 +86,29 @@ export type Tier = NewTier & {
 }
 
 export type AuditRecordType =
-  | 'User'
-  | 'AWSAccount'
-  | 'Tiers'
   | 'Organisation'
   | 'Key'
   | 'API'
+  | 'APIEnvironment'
   | 'FormsAppEnvironment'
   | 'FormElementDynamicOptionSet'
-  | 'BuiltInFormElementLookup'
   | 'FormElementLookup'
   | 'Form'
   | 'WebApp'
-  | 'APIEnvironment'
+  | 'WebAppEnvironment'
   | 'FormsApp'
+  | 'FormsAppUser'
   | 'FormsAppHostnameConfiguration'
   | 'Job'
   | 'FormSubmissionMeta'
-  | 'FormsAppUser'
-  | 'EmailReceipt'
+  | 'FormSubmission'
   | 'WebhookSubscription'
-  | 'TrialOrganisationId'
   | 'Role'
   | 'TeamMember'
-  | 'WebAppEnvironment'
   | 'FormsAppDraft'
   | 'FormsAppUserSubscription'
   | 'FormsAppSendingAddress'
   | 'Integration'
-  | 'FormSubmissionFileAccessToken'
   | 'FormApprovalFlowInstance'
   | 'FormSubmissionApproval'
   | 'FormApprovalWebhook'
@@ -123,11 +117,11 @@ export type AuditRecordType =
   | 'SchedulingBooking'
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
-  | 'FormSubmission'
 
 export type NewAuditRecord = {
   type: AuditRecordType
   recordId: Record<string, unknown>
+  recordLabel?: string
   operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
   organisationId: string
   user?: UserProfile
