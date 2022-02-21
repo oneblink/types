@@ -110,6 +110,7 @@ export type AuditRecordType =
   | 'FormSubmission'
   | 'FormSubmissionUrl'
   | 'FormSubmissionExtract'
+  | 'FormSubmissionStatistics'
   | 'FormWorkflowEventReplay'
   | 'WebhookSubscription'
   | 'Role'
