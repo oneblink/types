@@ -108,6 +108,8 @@ export type AuditRecordType =
   | 'Job'
   | 'FormSubmissionMeta'
   | 'FormSubmission'
+  | 'FormSubmissionUrl'
+  | 'FormSubmissionExtract'
   | 'FormWorkflowEventReplay'
   | 'WebhookSubscription'
   | 'Role'
@@ -125,6 +127,7 @@ export type AuditRecordType =
   | 'SchedulingBooking'
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
+  | 'FormSubmissionAttachmentUrl'
 
 export type NewAuditRecord = {
   type: AuditRecordType
