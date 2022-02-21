@@ -117,6 +117,7 @@ export type AuditRecordType =
   | 'WebhookSubscription'
   | 'Role'
   | 'TeamMember'
+  | 'TeamMemberPermission'
   | 'FormsAppDraft'
   | 'FormsAppUserSubscription'
   | 'FormsAppSendingAddress'
