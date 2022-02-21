@@ -96,6 +96,7 @@ export type AuditRecordType =
   | 'FormElementDynamicOptionSet'
   | 'FormElementLookup'
   | 'Form'
+  | 'FormJsonSchema'
   | 'WebApp'
   | 'WebAppEnvironment'
   | 'FormsApp'
