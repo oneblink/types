@@ -99,6 +99,7 @@ export type AuditRecordType =
   | 'WebApp'
   | 'WebAppEnvironment'
   | 'FormsApp'
+  | 'FormsAppStyles'
   | 'FormsAppUser'
   | 'FormsAppHostnameConfiguration'
   | 'Job'
