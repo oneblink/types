@@ -93,6 +93,7 @@ export type AuditRecordType =
   | 'API'
   | 'APIEnvironment'
   | 'APIEnvironmentLogs'
+  | 'APIEnvironmentMetrics'
   | 'APIEnvironmentServe'
   | 'FormsAppEnvironment'
   | 'FormElementDynamicOptionSet'
