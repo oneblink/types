@@ -103,6 +103,7 @@ export type AuditRecordType =
   | 'FormsAppUser'
   | 'FormsAppRequestAccess'
   | 'FormsAppHostnameConfiguration'
+  | 'FormsAppHostnameConfigurationCertificate'
   | 'Job'
   | 'FormSubmissionMeta'
   | 'FormSubmission'
