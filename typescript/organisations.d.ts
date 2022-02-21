@@ -112,6 +112,7 @@ export type AuditRecordType =
   | 'FormsAppDraft'
   | 'FormsAppUserSubscription'
   | 'FormsAppSendingAddress'
+  | 'FormsAppSendingAddressResend'
   | 'Integration'
   | 'FormApprovalFlowInstance'
   | 'FormSubmissionApproval'
