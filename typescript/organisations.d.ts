@@ -128,6 +128,7 @@ export type AuditRecordType =
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
   | 'FormSubmissionAttachmentUrl'
+  | 'Audit'
 
 export type NewAuditRecord = {
   type: AuditRecordType
