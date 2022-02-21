@@ -107,6 +107,7 @@ export type AuditRecordType =
   | 'Job'
   | 'FormSubmissionMeta'
   | 'FormSubmission'
+  | 'FormWorkflowEventReplay'
   | 'WebhookSubscription'
   | 'Role'
   | 'TeamMember'
