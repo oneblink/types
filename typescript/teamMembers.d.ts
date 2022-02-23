@@ -59,6 +59,7 @@ interface PermissionBase {
     users: string
     role: Role
   }
+  isSuperUser: boolean
 }
 
 export type Permission = PermissionBase & {
