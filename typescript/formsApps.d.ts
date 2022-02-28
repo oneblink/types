@@ -194,7 +194,7 @@ export type FormsAppUser = FormsAppUserBase & {
   updatedAt: string
 }
 
-export type NewFormsAppsDraft = {
+type BaseFormsAppsDraft = {
   formsAppUserUsername: string
   formsAppId: number
   drafts: AppDraft[]
@@ -207,13 +207,18 @@ export type AppDraft = {
   externalId?: string
   jobId?: string
   title: string
-  updatedAt: string
+  updatedAt?: string
+}
+
+export type NewFormsAppsDraft = BaseFormsAppsDraft & {
+  createdAt?: string
+  updatedAt?: string
 }
 
 export type FormsAppsDraft = {
   createdAt: string
   updatedAt: string
-} & NewFormsAppsDraft
+} & BaseFormsAppsDraft
 
 export type FormsAppSendingAddress = {
   emailAddress: string
