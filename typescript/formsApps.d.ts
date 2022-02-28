@@ -1,4 +1,5 @@
 import { NoU } from './misc'
+import { FormsAppDraft } from './submissions'
 
 type FormsAppBaseMenuItem = {
   label: string
@@ -197,17 +198,7 @@ export type FormsAppUser = FormsAppUserBase & {
 type BaseFormsAppsDraft = {
   formsAppUserUsername: string
   formsAppId: number
-  drafts: AppDraft[]
-}
-
-export type AppDraft = {
-  preFillFormDataId: string
-  draftId: string
-  formId: number
-  externalId?: string
-  jobId?: string
-  title: string
-  updatedAt?: string
+  drafts: FormsAppDraft[]
 }
 
 export type NewFormsAppsDraft = BaseFormsAppsDraft & {

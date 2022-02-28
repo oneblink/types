@@ -13,12 +13,6 @@ export interface NewFormsAppDraft {
 export type FormsAppDraft = NewFormsAppDraft & {
   draftId: string
   draftDataId?: string
-  updatedAt: string
-}
-
-export interface FormsAppDrafts {
-  drafts: FormsAppDraft[]
-  createdAt?: string
   updatedAt?: string
 }
 
