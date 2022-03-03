@@ -150,3 +150,16 @@ export type FormSubmissionAttachment = {
   isPrivate: boolean
   uploadedAt?: string
 }
+
+export type FormStoreRecord = {
+  submissionId: string
+  formsAppId: number
+  dateTimeSubmitted: string
+  user?: UserProfile
+  externalId?: string
+  jobId?: string
+  keyId?: string
+  definition: Form
+  submission: Record<string, unknown>
+  createdAt: string
+}
