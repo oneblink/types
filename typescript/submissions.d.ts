@@ -1,4 +1,4 @@
-import { Form } from './forms'
+import { Form, FormElementType } from './forms'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
 
@@ -146,6 +146,7 @@ export type FormSubmissionAttachment = {
 }
 
 export type FormStoreRecord = {
+  _id: string
   submissionId: string
   formsAppId: number
   dateTimeSubmitted: string

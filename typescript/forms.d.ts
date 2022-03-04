@@ -595,6 +595,12 @@ export type CalculationInsertionElement =
   | RadioButtonElement
   | AutoCompleteElement
 
+export type StorageElement =
+  | FilesElement
+  | ComplianceElement
+  | CameraElement
+  | DrawElement
+
 ///////////////////////////////////////////////////////////////
 
 export type FormPostSubmissionAction =
