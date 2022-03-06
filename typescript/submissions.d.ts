@@ -156,5 +156,7 @@ export type FormStoreRecord = {
   keyId?: string
   definition: Form
   submission: Record<string, unknown>
+  device?: S3SubmissionDataDevice
+  ipAddress?: string
   createdAt: string
 }
