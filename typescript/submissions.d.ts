@@ -153,7 +153,10 @@ export type FormStoreRecord = {
   user?: UserProfile
   externalId?: string
   jobId?: string
-  keyId?: string
+  key?: {
+    id: string
+    name: string
+  }
   definition: Form
   submission: Record<string, unknown>
   device?: S3SubmissionDataDevice
