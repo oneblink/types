@@ -5,6 +5,7 @@ export type FormApprovalFlowStepBase = {
   group: string
   label: string
   approvalFormId?: number
+  clarificationRequestEmailTemplateId?: number
 }
 export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   isConditional?: boolean
