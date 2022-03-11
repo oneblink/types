@@ -161,5 +161,5 @@ export type FormStoreRecord = {
   submission: Record<string, unknown>
   device?: S3SubmissionDataDevice
   ipAddress?: string
-  createdAt: Date
+  createdAt: string
 }
