@@ -73,7 +73,7 @@ declare type NewTier = {
     allowFormsAppMenu: boolean,
   },
   isTrialTier: boolean,
-  isAWSFirst: boolean,
+  awsDimensionAPIName?: string,
 }
 
 declare type Tier = NewTier & {

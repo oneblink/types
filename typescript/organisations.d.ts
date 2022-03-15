@@ -77,7 +77,7 @@ export interface NewTier {
     allowFormsAppMenu: boolean
   }
   isTrialTier: boolean
-  isAWSFirst: boolean
+  awsDimensionAPIName?: string
 }
 
 export type Tier = NewTier & {
