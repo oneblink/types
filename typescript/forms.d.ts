@@ -585,13 +585,12 @@ export type FormElementWithoutForm =
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
 export type FormElement = FormElementWithoutForm | FormElementWithForm
-export type NamedFormElement = Exclude<
-  FormElement,
-  PageElement | SectionElement
->
+
+export type FormElementWithoutName = PageElement | SectionElement
+export type FormElementWithName = Exclude<FormElement, FormElementWithoutName>
 // Leaving this here to show errors if we add another form element
 // that does not have a name. Hopefully, devs see the error and fix :)
-type FormElementName = NamedFormElement['name']
+type FormElementName = FormElementWithName['name']
 
 export type FormElementType = FormElement['type']
 
