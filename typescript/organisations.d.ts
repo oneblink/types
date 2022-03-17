@@ -32,7 +32,7 @@ export interface Organisation {
   awsCustomerId?: string
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
-  formStoreEnabled?: boolean
+  formStoreEnabled: boolean
 }
 
 export interface AWSAccount {
