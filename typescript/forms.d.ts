@@ -585,6 +585,13 @@ export type FormElementWithoutForm =
 export type FormElementWithForm = FormFormElement | InfoPageElement
 
 export type FormElement = FormElementWithoutForm | FormElementWithForm
+export type NamedFormElement = Exclude<
+  FormElement,
+  PageElement | SectionElement
+>
+// Leaving this here to show errors if we add another form element
+// that does not have a name. Hopefully, devs see the error and fix :)
+type FormElementName = NamedFormElement['name']
 
 export type FormElementType = FormElement['type']
 
@@ -733,7 +740,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
