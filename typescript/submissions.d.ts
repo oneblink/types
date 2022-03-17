@@ -145,11 +145,10 @@ export type FormSubmissionAttachment = {
   uploadedAt?: string
 }
 
-export type FormStoreRecord = {
+type _BaseFormStoreRecord = {
   _id: string
   submissionId: string
   formsAppId: number
-  dateTimeSubmitted: string
   user?: UserProfile
   externalId?: string
   jobId?: string
@@ -161,5 +160,15 @@ export type FormStoreRecord = {
   submission: Record<string, unknown>
   device?: S3SubmissionDataDevice
   ipAddress?: string
+}
+
+export type DbFormStoreRecord = _BaseFormStoreRecord & {
+  dateTimeSubmitted: Date
+  createdAt: Date
+}
+export type NewDbFormStoreRecord = Omit<DbFormStoreRecord, '_id'>
+
+export type FormStoreRecord = _BaseFormStoreRecord & {
+  dateTimeSubmitted: string
   createdAt: string
 }
