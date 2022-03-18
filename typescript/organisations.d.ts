@@ -138,6 +138,7 @@ export type AuditRecordType =
   | 'AccountAsset'
   | 'FormsAppSamlIdentityProvider'
   | 'FormStore'
+  | 'FormStoreFormDefinition'
 
 export type NewAuditRecord = {
   type: AuditRecordType
