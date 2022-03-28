@@ -150,6 +150,15 @@ export type IntegrationFreshdesk = IntegrationBase & {
   }
 }
 
+export type IntegrationMailGun = IntegrationBase & {
+  type: 'MAILGUN'
+  configuration: {
+    baseUrl: string
+    username: string
+    apiKey: string
+  }
+}
+
 export type Integration =
   | IntegrationTrim
   | IntegrationCPPay
