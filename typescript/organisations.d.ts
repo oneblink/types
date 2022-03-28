@@ -20,14 +20,14 @@ export interface Organisation {
   slug: string
   tierId: number
   createdAt: Date
-  trialExpiry?: string
+  trialExpiry?: string | null
   tags: string[]
   retainSubmissionData: boolean
-  submissionDataRetentionDays?: number
+  submissionDataRetentionDays?: number | null
   retainPrefillData: boolean
-  prefillDataRetentionDays?: number
+  prefillDataRetentionDays?: number | null
   retainDraftData: boolean
-  draftDataRetentionDays?: number
+  draftDataRetentionDays?: number | null
   solutions: Array<SolutionsApp['type']>
   awsCustomerId?: string
   apiHostingAwsAccountId: string
