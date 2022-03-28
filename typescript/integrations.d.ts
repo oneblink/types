@@ -153,7 +153,7 @@ export type IntegrationFreshdesk = IntegrationBase & {
 export type IntegrationMailGun = IntegrationBase & {
   type: 'MAILGUN'
   configuration: {
-    baseUrl: string
+    domain: string
     username: string
     apiKey: string
   }
