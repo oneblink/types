@@ -171,3 +171,4 @@ export type Integration =
   | IntegrationCivica
   | IntegrationScheduling
   | IntegrationFreshdesk
+  | IntegrationMailGun
