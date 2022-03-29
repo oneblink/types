@@ -1,3 +1,4 @@
+import { IntegrationMailGun } from './integrations'
 import { NoU } from './misc'
 import { FormsAppDraft } from './submissions'
 
@@ -211,10 +212,8 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & BaseFormsAppsDraft
 
-export type FormsAppSendingAddress = {
-  emailAddress: string
-  emailName?: string
-  formsAppId: number
+export type FormsAppSendingAddressSES = {
+  type?: undefined
   sesVerificationAttributes?: {
     VerificationStatus:
       | 'Pending'
@@ -223,6 +222,15 @@ export type FormsAppSendingAddress = {
       | 'TemporaryFailure'
       | 'NotStarted'
   }
+}
+
+export type FormsAppSendingAddress = (
+  | IntegrationMailGun
+  | FormsAppSendingAddressSES
+) & {
+  emailAddress: string
+  emailName?: string
+  formsAppId: number
   createdAt: Date
   updatedAt: Date
 }
