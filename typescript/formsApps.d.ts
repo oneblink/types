@@ -212,27 +212,26 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & BaseFormsAppsDraft
 
-export type FormsAppSendingAddressSES = {
-  type?: undefined
-  sesVerificationAttributes?: {
-    VerificationStatus:
-      | 'Pending'
-      | 'Success'
-      | 'Failed'
-      | 'TemporaryFailure'
-      | 'NotStarted'
-  }
+export type FormsAppSendingAddressMailgun = {
+  type: IntegrationMailGun['type']
 }
 
-export type FormsAppSendingAddress = (
-  | IntegrationMailGun
-  | FormsAppSendingAddressSES
-) & {
+export type FormsAppSendingAddressSES = {
+  type: 'SES'
+  isEmailVerified: boolean
+}
+
+export type FormsAppSendingAddress = {
   emailAddress: string
   emailName?: string
   formsAppId: number
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
+}
+
+export type FormsAppSendingAddressResponse = {
+  integration: FormsAppSendingAddressSES | FormsAppSendingAddressMailgun
+  formsAppSendingAddress?: FormsAppSendingAddress
 }
 
 export type FormsAppConfiguration<
