@@ -10,6 +10,7 @@ export type IntegrationType =
   | 'WESTPAC_QUICK_WEB'
   | 'SCHEDULING'
   | 'FRESHDESK'
+  | 'MAILGUN'
 
 type IntegrationBase = {
   organisationId: string
