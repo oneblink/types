@@ -14,7 +14,7 @@ export type FormsAppDraft = NewFormsAppDraft & {
   draftId: string
   draftDataId?: string
   updatedAt?: string
-  lastSavedAt?: string
+  createdAt?: string
 } 
 
 export interface NewFormsAppJob {
