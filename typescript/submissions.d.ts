@@ -1,4 +1,4 @@
-import { Form, FormElementType } from './forms'
+import { Form, FormElementWithName } from './forms'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
 
@@ -15,7 +15,7 @@ export type FormsAppDraft = NewFormsAppDraft & {
   draftDataId?: string
   updatedAt?: string
   createdAt?: string
-} 
+}
 
 export interface NewFormsAppJob {
   username: string
@@ -172,4 +172,9 @@ export type NewDbFormStoreRecord = Omit<DbFormStoreRecord, '_id'>
 export type FormStoreRecord = _BaseFormStoreRecord & {
   dateTimeSubmitted: string
   createdAt: string
+}
+
+export type FormStoreDefinition = {
+  formId: number
+  formElements: FormElementWithName[]
 }
