@@ -5,8 +5,16 @@ export interface ConditionalPredicateBase {
 export type ConditionalPredicateNumeric = ConditionalPredicateBase & {
   type: 'NUMERIC'
   operator: '===' | '!==' | '>' | '>=' | '<' | '<='
-  value: number
-}
+} & (
+    | {
+        compareWith?: 'VALUE'
+        value: number
+      }
+    | {
+        compareWith: 'ELEMENT'
+        value: string
+      }
+  )
 
 export type ConditionalPredicateOptions = ConditionalPredicateBase & {
   type: 'OPTIONS'
