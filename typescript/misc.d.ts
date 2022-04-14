@@ -1,20 +1,35 @@
 export type NoU = null | undefined
 
 export interface UserProfile {
+  /** `true` if the user logged in using a SAML provider */
   isSAMLUser?: boolean
+  /** Which provider was used to login */
   providerType?: string
+  /** The id of the user from the login provider */
   providerUserId?: string
+  /** The id of the user from OneBlink */
   userId: string
+  /** The username used to login */
   username: string
+  /** The user's email address */
   email?: string
+  /** The user's first name */
   firstName?: string
+  /** The user's last name */
   lastName?: string
+  /** The user's full name */
   fullName?: string
+  /** A URL to a picture of the user */
   picture?: string
+  /** The user's role from a SAML configuration */
   role?: string
+  /** The user's supervisor information from a SAML configuration */
   supervisor?: {
+    /** The user's supervisor's full name */
     fullName?: string
+    /** The user's supervisor's full email address */
     email?: string
+    /** The user's supervisor's user id from the login provider */
     providerUserId?: string
   }
 }
