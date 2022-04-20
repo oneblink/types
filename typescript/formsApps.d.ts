@@ -43,6 +43,7 @@ export type BaseFormsAppStyles = {
 
 export type VolunteersStyles = BaseFormsAppStyles
 export type ApprovalsStyles = BaseFormsAppStyles
+export type FormStoreStyles = BaseFormsAppStyles
 
 export type FormsListStyles = BaseFormsAppStyles & {
   logoUrl?: string
@@ -151,11 +152,23 @@ export type NewApprovalsApp = _NewFormsApp & {
   styles: ApprovalsStyles
 }
 
+export type FormStoreAppForm = {
+  formId: number
+  groups: string[]
+}
+
+export type NewFormStoreApp = _NewFormsApp & {
+  type: 'FORM_STORE'
+  forms: FormStoreAppForm[]
+  styles: FormStoreStyles
+}
+
 export type NewFormsApp =
   | NewFormsListFormsApp
   | NewVolunteersFormsApp
   | NewTilesFormsApp
   | NewApprovalsApp
+  | NewFormStoreApp
 
 type _FormsApp = {
   id: number
@@ -167,10 +180,11 @@ export type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
 export type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
 export type ApprovalsApp = NewApprovalsApp & _FormsApp
+export type FormStoreApp = NewFormStoreApp & _FormsApp
 
 export type TilesFormsApp = NewTilesFormsApp & _FormsApp
 
-export type SolutionsApp = VolunteersFormsApp | ApprovalsApp
+export type SolutionsApp = VolunteersFormsApp | ApprovalsApp | FormStoreApp
 
 export type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
