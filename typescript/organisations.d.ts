@@ -95,6 +95,7 @@ export type Tier = NewTier & {
 
 export type AuditRecordType =
   | 'Organisation'
+  | 'OrganisationFormStoreForms'
   | 'EnableAwsBilling'
   | 'ExtendTrial'
   | 'Key'
