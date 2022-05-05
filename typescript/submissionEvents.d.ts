@@ -203,7 +203,7 @@ export type FreshdeskAddNoteToTicketSubmissionEvent = FormSubmissionEventConditi
   /** The type of submission event. */
   type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
   /** Configuration specific to the type of submission event. */
-  configuration: {}
+  configuration: ApprovalFormsInclusionConfiguration
 }
 
 // EVENTS
