@@ -32,7 +32,6 @@ export interface Organisation {
   awsCustomerId?: string
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
-  formStoreEnabled: boolean
   formStoreFormIds?: number[]
   tierAdditions?: {
     formStoreForms?: number
