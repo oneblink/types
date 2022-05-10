@@ -33,6 +33,11 @@ export interface Organisation {
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
   formStoreEnabled: boolean
+  formStoreFormIds?: number[]
+  tierAdditions?: {
+    formStoreForms?: number
+    formStoreAppUsers?: number
+  }
 }
 
 export interface AWSAccount {
@@ -70,11 +75,14 @@ export interface NewTier {
     maximumCDNHostingInstances: TierLimitation
     maximumFormsApps: TierLimitation
     maximumSchedulingCalendars: TierLimitation
+    maximumFormStoreForms: TierLimitation
+    maximumFormStoreAppUsers: TierLimitation
     availableFormSubmissionEvents?: FormEventType[]
     availableFormPostSubmissionActions?: FormPostSubmissionAction[]
     allowFormsAppPWASettings: boolean
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
+    allowFormStoreSolution: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
@@ -88,6 +96,7 @@ export type Tier = NewTier & {
 
 export type AuditRecordType =
   | 'Organisation'
+  | 'OrganisationFormStoreForms'
   | 'EnableAwsBilling'
   | 'ExtendTrial'
   | 'Key'
