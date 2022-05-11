@@ -13,13 +13,11 @@ export type FormRetentionPolicy = NewFormRetentionPolicy & {
   updatedAt: string
 }
 
-export interface Organisation {
-  id: string
+export type NewOrganisation = {
   name: string
   assetsS3Bucket: string
   slug: string
   tierId: number
-  createdAt: Date
   trialExpiry?: string | null
   tags: string[]
   retainSubmissionData: boolean
@@ -37,6 +35,11 @@ export interface Organisation {
     formStoreForms?: number
     formStoreAppUsers?: number
   }
+}
+
+export type Organisation = NewOrganisation & {
+  id: string
+  createdAt: string
 }
 
 export interface AWSAccount {
