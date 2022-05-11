@@ -19,7 +19,7 @@ export type NewOrganisation = {
   slug: string
   tierId: number
   trialExpiry?: string | null
-  tags: string[]
+  tags?: string[] | null
   retainSubmissionData: boolean
   submissionDataRetentionDays?: number | null
   retainPrefillData: boolean
