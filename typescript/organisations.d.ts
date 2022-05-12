@@ -84,7 +84,6 @@ export interface NewTier {
     allowFormsAppPWASettings: boolean
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
-    allowFormStoreSolution: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
