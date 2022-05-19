@@ -28,6 +28,7 @@ interface Profile {
 
 type TeamMemberBase = Profile & {
   roleId: number
+  formsAppEnvironmentIds?: number[]
 }
 
 type NewTeamMember = TeamMemberBase & {
