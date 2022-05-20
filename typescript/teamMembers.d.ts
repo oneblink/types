@@ -57,6 +57,7 @@ type Role = NewRole & {
 interface PermissionBase {
   name: string | NoU
   privilege: RolePrivileges
+  formsAppEnvironmentIds?: number[]
   links: {
     organisations: string
     users: string
