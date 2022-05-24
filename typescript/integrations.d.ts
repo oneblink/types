@@ -51,6 +51,7 @@ export type IntegrationCPPayGateway = {
   label: string
   clientId: string
   clientSecret: string
+  paymentType?: number
 }
 
 export type IntegrationCPPay = IntegrationBase & {
