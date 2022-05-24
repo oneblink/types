@@ -1,6 +1,7 @@
 import { Form, FormElementWithName } from './forms'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
+import { PaymentSubmissionEvent } from './submissionEvents'
 
 export interface NewFormsAppDraft {
   /** The title input by the user to display the draft */
@@ -209,4 +210,16 @@ export type FormStoreRecord = _BaseFormStoreRecord & {
 export type FormStoreDefinition = {
   formId: number
   formElements: FormElementWithName[]
+}
+
+export type NewFormSubmissionPayment = {
+  submissionId: string
+  formId: number
+  type: PaymentSubmissionEvent['type']
+  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
+}
+export type FormSubmissionPayment = NewFormSubmissionPayment & {
+  createdAt: string
+  updatedAt: string
+  paymentTransaction: unknown
 }
