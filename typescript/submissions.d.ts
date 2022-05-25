@@ -406,114 +406,108 @@ export type BPOINTPayment = {
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
-    APIResponse: {
-      ResponseCode: number
-      ResponseText: string
+    Action: string
+    Amount: number
+    AmountOriginal: number
+    AmountSurcharge: number
+    AuthoriseId: string
+    BankAccountDetails: {
+      AccountName: string
+      BSBNumber: string
+      TruncatedAccountNumber: string
     }
-    TxnResp: {
-      Action: string
-      Amount: number
-      AmountOriginal: number
-      AmountSurcharge: number
-      AuthoriseId: string
-      BankAccountDetails: {
-        AccountName: string
-        BSBNumber: string
-        TruncatedAccountNumber: string
-      }
-      BankResponseCode: string
-      BillerCode: string
-      CardDetails: {
-        CardHolderName: string
-        Category: string
-        ExpiryDate: string
-        Issuer: string
-        IssuerCountryCode: string
-        Localisation: string
-        MaskedCardNumber: string
-        SubType: 'debit' | 'credit' | 'charge' | 'unknown'
-      }
-      CardType: 'AX' | 'DC' | 'JC' | 'MC' | 'UP' | 'VC'
-      Crn1: string
-      Crn2: string
-      Crn3: string
-      Currency: string
-      CVNResult: {
-        CVNResultCode: 'M' | 'S' | 'P' | 'U' | 'N' | 'Unsupported'
-      }
-      DVToken: string
-      EmailAddress: string
-      FraudScreeningResponse: {
-        TxnRejected: boolean
-        ResponseCode: string
-        ResponseMessage: string
-        ReDResponse: {
-          REQ_ID: string
-          ORD_ID: string
-          STAT_CD: string
-          FRAUD_STAT_CD: string
-          FRAUD_RSP_CD: string
-          FRAUD_REC_ID: string
-          FRAUD_NEURAL: string
-          FRAUD_RFC: string
-        }
-      }
-      IsThreeDS: boolean
-      IsCVNPresent: boolean
-      IsTestTxn: boolean
-      MerchantNumber: string
-      MerchantReference: string
-      OriginalTxnNumber: string
-      ProcessedDateTime: string
-      ReceiptNumber: string
+    BankResponseCode: string
+    BillerCode: string
+    CardDetails: {
+      CardHolderName: string
+      Category: string
+      ExpiryDate: string
+      Issuer: string
+      IssuerCountryCode: string
+      Localisation: string
+      MaskedCardNumber: string
+      SubType: 'debit' | 'credit' | 'charge' | 'unknown'
+    }
+    CardType: 'AX' | 'DC' | 'JC' | 'MC' | 'UP' | 'VC'
+    Crn1: string
+    Crn2: string
+    Crn3: string
+    Currency: string
+    CVNResult: {
+      CVNResultCode: 'M' | 'S' | 'P' | 'U' | 'N' | 'Unsupported'
+    }
+    DVToken: string
+    EmailAddress: string
+    FraudScreeningResponse: {
+      TxnRejected: boolean
       ResponseCode: string
-      ResponseText: string
-      RRN: string
-      SettlementDate: string
-      Source:
-        | 'api'
-        | 'callcentre'
-        | 'customerportal'
-        | 'internet'
-        | 'invoiceportal'
-        | 'ishop'
-        | 'ivr'
-        | 'backoffice'
-        | 'mobilebackoffice'
-        | 'sftp'
-        | 'unknown'
-      StoreCard: boolean
-      SubType: 'single' | 'recurring'
-      ThreeDSResponse: {
-        Eci: string
-        Enrolled: string
-        Status: string
-        VerifySecurityLevel: string
-        VerifyStatus: string
-        VerifyToken: string
-        VerifyType: string
-        Xid: string
+      ResponseMessage: string
+      ReDResponse: {
+        REQ_ID: string
+        ORD_ID: string
+        STAT_CD: string
+        FRAUD_STAT_CD: string
+        FRAUD_RSP_CD: string
+        FRAUD_REC_ID: string
+        FRAUD_NEURAL: string
+        FRAUD_RFC: string
       }
-      TxnNumber: string
-      Type:
-        | 'callcenter'
-        | 'cardpresent'
-        | 'ecommerce'
-        | 'internet'
-        | 'ivr'
-        | 'mailorder'
-        | 'telephoneorder'
-      StatementDescriptor: {
-        AddressLine1?: string
-        AddressLine2?: string
-        City?: string
-        CompanyName?: string
-        CountryCode?: string
-        MerchantName?: string
-        PhoneNumber?: string
-        PostCode?: string
-        State?: string
-      }
+    }
+    IsThreeDS: boolean
+    IsCVNPresent: boolean
+    IsTestTxn: boolean
+    MerchantNumber: string
+    MerchantReference: string
+    OriginalTxnNumber: string
+    ProcessedDateTime: string
+    ReceiptNumber: string
+    ResponseCode: string
+    ResponseText: string
+    RRN: string
+    SettlementDate: string
+    Source:
+      | 'api'
+      | 'callcentre'
+      | 'customerportal'
+      | 'internet'
+      | 'invoiceportal'
+      | 'ishop'
+      | 'ivr'
+      | 'backoffice'
+      | 'mobilebackoffice'
+      | 'sftp'
+      | 'unknown'
+    StoreCard: boolean
+    SubType: 'single' | 'recurring'
+    ThreeDSResponse: {
+      Eci: string
+      Enrolled: string
+      Status: string
+      VerifySecurityLevel: string
+      VerifyStatus: string
+      VerifyToken: string
+      VerifyType: string
+      Xid: string
+    }
+    TxnNumber: string
+    Type:
+      | 'callcenter'
+      | 'cardpresent'
+      | 'ecommerce'
+      | 'internet'
+      | 'ivr'
+      | 'mailorder'
+      | 'telephoneorder'
+    StatementDescriptor: {
+      AddressLine1?: string
+      AddressLine2?: string
+      City?: string
+      CompanyName?: string
+      CountryCode?: string
+      MerchantName?: string
+      PhoneNumber?: string
+      PostCode?: string
+      State?: string
     }
   }
 }
