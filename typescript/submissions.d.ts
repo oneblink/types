@@ -216,10 +216,11 @@ export type FormStoreDefinition = {
   formElements: FormElementWithName[]
 }
 
-export type CPPayPayment = NewFormSubmissionPayment & {
+export type CPPayPayment = {
   type: CPPaySubmissionEvent['type']
-  createdAt: string
-  updatedAt: string
+  submissionId: string
+  formId: number
+  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     transactionId: string
     transactionToken: string
@@ -376,16 +377,11 @@ export type CPPayTransactionErrorCodes =
   | 7004
   | 7005
 
-export type NewFormSubmissionPayment = {
+export type WestpacQuickWebPayment = {
+  type: WestpacQuickWebSubmissionEvent['type']
   submissionId: string
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
-}
-
-export type WestpacQuickWebPayment = NewFormSubmissionPayment & {
-  type: WestpacQuickWebSubmissionEvent['type']
-  createdAt: string
-  updatedAt: string
   paymentTransaction?: {
     sourceCode?: string
     receiptNumber?: string
@@ -404,10 +400,11 @@ export type WestpacQuickWebPayment = NewFormSubmissionPayment & {
   }
 }
 
-export type BPOINTPayment = NewFormSubmissionPayment & {
+export type BPOINTPayment = {
   type: BPOINTSubmissionEvent['type']
-  createdAt: string
-  updatedAt: string
+  submissionId: string
+  formId: number
+  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     APIResponse: {
       ResponseCode: number
@@ -521,7 +518,12 @@ export type BPOINTPayment = NewFormSubmissionPayment & {
   }
 }
 
-export type FormSubmissionPayment =
+export type NewFormSubmissionPayment =
   | CPPayPayment
   | WestpacQuickWebPayment
   | BPOINTPayment
+
+export type FormSubmissionPayment = NewFormSubmissionPayment & {
+  createdAt: string
+  updatedAt: string
+}
