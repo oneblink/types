@@ -157,6 +157,19 @@ export type IntegrationMailGun = IntegrationBase & {
   configuration: {
     domain: string
     apiKey: string
+    userVariables: [
+      {
+        key: string
+      } & (
+        | {
+            type: 'TEXT'
+            text: string
+          }
+        | {
+            type: 'ENVIRONMENT_NAME' | 'FORM_DESCRIPTION' | 'FORM_ID'
+          }
+      )
+    ]
   }
 }
 
