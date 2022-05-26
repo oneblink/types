@@ -157,7 +157,7 @@ export type IntegrationMailGun = IntegrationBase & {
   configuration: {
     domain: string
     apiKey: string
-    userVariables: [
+    userVariables?: [
       {
         key: string
       } & (
