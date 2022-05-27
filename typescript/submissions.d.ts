@@ -389,14 +389,14 @@ export type WestpacQuickWebPayment = {
     supplierBusinessCode?: string
     paymentReference: string
     customerReferenceNumber?: string
-    paymentAmount?: number
-    surchargeAmount?: number
+    paymentAmount?: string
+    surchargeAmount?: string
     cardScheme?: string
     settlementDate?: string
     createdDateTime?: string
     responseCode?: string
     responseDescription?: string
-    successFlag: boolean
+    successFlag: string
   }
 }
 
