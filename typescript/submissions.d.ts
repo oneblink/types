@@ -230,22 +230,22 @@ export type CPPayPayment = {
     creditCardTypeId: 0 | 1 | 2 | 3 | 4 | 5 | 6
     paymentTypeId: 1 | 2
     amount: number
-    lastFour: string
+    lastFour: string | null
     expMonth: number
     expYear: number
     resultCode: number
     errorCode: CPPayTransactionErrorCodes
     errorMessage: string
     savedPaymentMethodToken: string
-    customerReceipt: string
-    merchantReceipt: string
+    customerReceipt: string | null
+    merchantReceipt: string | null
     initialChargeStatusId: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
     currentChargeStatusId: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
-    currentChargeStatusDtm: Date
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date
-    customerSignature: string
+    currentChargeStatusDtm: string
+    createdAt: string
+    updatedAt: string
+    deletedAt: string | null
+    customerSignature: string | null
     customerSignatureFormat: string
     isSuccessSavedPaymentMethod: boolean
   }
