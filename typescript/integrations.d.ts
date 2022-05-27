@@ -157,7 +157,7 @@ export type IntegrationMailGun = IntegrationBase & {
   configuration: {
     domain: string
     apiKey: string
-    userVariables?: [
+    userVariables?: Array<
       {
         key: string
       } & (
@@ -169,7 +169,7 @@ export type IntegrationMailGun = IntegrationBase & {
             type: 'ENVIRONMENT_NAME' | 'FORM_DESCRIPTION' | 'FORM_ID'
           }
       )
-    ]
+    >
   }
 }
 
