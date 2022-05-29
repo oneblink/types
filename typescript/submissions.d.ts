@@ -216,11 +216,15 @@ export type FormStoreDefinition = {
   formElements: FormElementWithName[]
 }
 
-export type CPPayPayment = {
-  type: CPPaySubmissionEvent['type']
+export type BaseFormSubmissionPayment = {
+  id: string
   submissionId: string
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
+}
+
+export type CPPayPayment = BaseFormSubmissionPayment & {
+  type: CPPaySubmissionEvent['type']
   paymentTransaction?: {
     transactionId: string
     transactionToken: string
@@ -377,11 +381,8 @@ export type CPPayTransactionErrorCodes =
   | 7004
   | 7005
 
-export type WestpacQuickWebPayment = {
+export type WestpacQuickWebPayment = BaseFormSubmissionPayment & {
   type: WestpacQuickWebSubmissionEvent['type']
-  submissionId: string
-  formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     sourceCode?: string
     receiptNumber?: string
@@ -400,11 +401,8 @@ export type WestpacQuickWebPayment = {
   }
 }
 
-export type BPOINTPayment = {
+export type BPOINTPayment = BaseFormSubmissionPayment & {
   type: BPOINTSubmissionEvent['type']
-  submissionId: string
-  formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     Action: string
     Amount: number
