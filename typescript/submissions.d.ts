@@ -216,11 +216,15 @@ export type FormStoreDefinition = {
   formElements: FormElementWithName[]
 }
 
-export type CPPayPayment = {
-  type: CPPaySubmissionEvent['type']
+export type BaseFormSubmissionPayment = {
+  id: string
   submissionId: string
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
+}
+
+export type CPPayPayment = BaseFormSubmissionPayment & {
+  type: CPPaySubmissionEvent['type']
   paymentTransaction?: {
     transactionId: string
     transactionToken: string
@@ -230,22 +234,22 @@ export type CPPayPayment = {
     creditCardTypeId: 0 | 1 | 2 | 3 | 4 | 5 | 6
     paymentTypeId: 1 | 2
     amount: number
-    lastFour: string
+    lastFour: string | null
     expMonth: number
     expYear: number
     resultCode: number
     errorCode: CPPayTransactionErrorCodes
     errorMessage: string
     savedPaymentMethodToken: string
-    customerReceipt: string
-    merchantReceipt: string
+    customerReceipt: string | null
+    merchantReceipt: string | null
     initialChargeStatusId: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
     currentChargeStatusId: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
-    currentChargeStatusDtm: Date
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date
-    customerSignature: string
+    currentChargeStatusDtm: string
+    createdAt: string
+    updatedAt: string
+    deletedAt: string | null
+    customerSignature: string | null
     customerSignatureFormat: string
     isSuccessSavedPaymentMethod: boolean
   }
@@ -377,11 +381,8 @@ export type CPPayTransactionErrorCodes =
   | 7004
   | 7005
 
-export type WestpacQuickWebPayment = {
+export type WestpacQuickWebPayment = BaseFormSubmissionPayment & {
   type: WestpacQuickWebSubmissionEvent['type']
-  submissionId: string
-  formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     sourceCode?: string
     receiptNumber?: string
@@ -400,11 +401,8 @@ export type WestpacQuickWebPayment = {
   }
 }
 
-export type BPOINTPayment = {
+export type BPOINTPayment = BaseFormSubmissionPayment & {
   type: BPOINTSubmissionEvent['type']
-  submissionId: string
-  formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
   paymentTransaction?: {
     Action: string
     Amount: number
