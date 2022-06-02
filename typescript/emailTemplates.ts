@@ -1,7 +1,12 @@
-export type NewEmailTemplate = {
-  name: string
+export type EmailTemplateEnvironment = {
   template: string
   formsAppEnvironmentId: number
+}
+
+export type NewEmailTemplate = {
+  name: string
+  organisationId: string
+  environments: EmailTemplateEnvironment[]
   type:
     | 'FORM_SUBMISSION_EVENT_PDF'
     | 'FORMS_APP_WELCOME_EMAIL'
