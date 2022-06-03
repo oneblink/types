@@ -255,6 +255,7 @@ export interface S3SubmissionTags {
 export type BaseFormSubmissionLambdaEvent = {
   submissionId: string
   formId: number
+  formsAppEnvironmentId: number
   organisationId: string
   bucketName: string
   key: string
