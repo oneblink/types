@@ -649,6 +649,7 @@ export type NonNestedElementsElement =
   | SelectElement
   | AutoCompleteElement
   | ComplianceElement
+  | FreskdeskDependentFieldElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
