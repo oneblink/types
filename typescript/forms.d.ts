@@ -543,11 +543,11 @@ export type BSBElement = {
 
 export type FreskdeskDependentFieldElementValue = {
   /** A top level value selected e.g. Country */
-  category: string
+  category?: string
   /** A second level value selected e.g. State */
-  subCategory: string
+  subCategory?: string
   /** A final level value selected e.g. Suburb */
-  item: string
+  item?: string
 }
 
 /**
