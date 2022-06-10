@@ -83,6 +83,7 @@ export type FormElementBinaryStorage = FormElementBase & {
 export type DynamicChoiceElementOption = {
   label: string
   value: string
+  options?: DynamicChoiceElementOption[]
   colour?: string
 }
 
@@ -536,6 +537,79 @@ export type BSBElement = {
   defaultValue?: string
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
+} & LookupFormElement &
+  FormElementRequired &
+  FormElementReadOnly
+
+export type FreskdeskDependentFieldElementValue = {
+  /** A top level value selected e.g. Country */
+  category: string
+  /** A second level value selected e.g. State */
+  subCategory: string
+  /** A final level value selected e.g. Suburb */
+  item: string
+}
+
+/**
+ * Allow the user to select an item after being filter down via category and sub-category
+ *
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "id": "b1311ae0-6bb7-11e9-a923-1681be663d3e",
+ *   "type": "freskdeskDependentField",
+ *   "name": "country_state_suburb",
+ *   "label": "Country",
+ *   "hint": "Please select a Country before selecting a State.",
+ *   "subCategoryLabel": "State",
+ *   "subCategoryHint": "Please select a State before selecting a Suburb.",
+ *   "itemLabel": "Suburb",
+ *   "itemHint": "Please select a Suburb.",
+ *   "defaultValue": {
+ *     "category": "Australia",
+ *     "subCategory": "NSW",
+ *     "item": "Sydney"
+ *   },
+ *   "required": true,
+ *   "readOnly": false
+ * }
+ * ```
+ *
+ * ### Example Submission Data
+ *
+ * ```json
+ * {
+ *   "submission": {
+ *     "[element.name]": {
+ *       "category": "Australia",
+ *       "subCategory": "NSW",
+ *       "item": "Sydney"
+ *     }
+ *   }
+ * }
+ * ```
+ */
+export type FreskdeskDependentFieldElement = {
+  /** The type of Form Element. */
+  type: 'freskdeskDependentField'
+  /** A default value when the form is opened. */
+  defaultValue?: FreskdeskDependentFieldElementValue
+
+  /** Display text presented to the user above the sub category input by default. */
+  subCategoryLabel: string
+  /**
+   * A hint triggered by an icon tooltip to be displayed when hovering beside
+   * the sub category label.
+   */
+  subCategoryHint?: string
+  /** Display text presented to the user above the item input by default. */
+  itemLabel: string
+  /**
+   * A hint triggered by an icon tooltip to be displayed when hovering beside
+   * the item label.
+   */
+  itemHint?: string
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly

@@ -1,3 +1,9 @@
+export type FreshdeskFieldOption = {
+  value: string | number
+  label: string
+  options?: FreshdeskFieldOption[]
+}
+
 export type FreshdeskField = {
   /** Not sure if this is useful for us */
   id: number
@@ -38,6 +44,7 @@ export type FreshdeskField = {
     | 'default_requester'
     | 'default_subject'
     | 'default_description'
+    | 'nested_field'
   /** This is just true if its a default field (i.e. cannot be deleted), not really useful */
   default: boolean
   /**
@@ -98,7 +105,30 @@ export type FreshdeskField = {
    *   "5": ["Closed", "This ticket has been Closed"]
    * }
    * ```
+   *
+   * Record<string, Record<string, string[]>>: Options are nested, value and
+   * label are the same for each option
+   *
+   * ```json
+   * {
+   *   "Australia": {
+   *     "NSW": ["Gosford", "Springfield"],
+   *     "QLD": ["Brisbane", "Gold Coast"]
+   *   },
+   *   "US": {
+   *     "Texas": ["Dalis", "Cinco Ranch"],
+   *     "Virginia": ["Arlington", "Short Pump"]
+   *   }
+   * }
+   * ```
    */
-  choices?: string[] | Record<string, number | string[]>
-  options?: Array<{ value: string | number; label: string }>
+  choices?:
+    | string[]
+    | Record<
+        string,
+        number | string[] | Record<string, Record<string, string[]>>
+      >
+  /** If the type is "nested_field" this will be an array containing the two sub categories */
+  nested_ticket_fields?: FreshdeskField[]
+  options?: FreshdeskFieldOption[]
 }
