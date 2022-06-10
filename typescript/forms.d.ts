@@ -610,9 +610,7 @@ export type FreskdeskDependentFieldElement = {
    * the item label.
    */
   itemHint?: string
-} & LookupFormElement &
-  FormElementRequired &
-  FormElementReadOnly
+} & FormElementWithOptionsBase
 
 export type NestedElementsElement =
   | PageElement
