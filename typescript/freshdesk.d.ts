@@ -124,10 +124,7 @@ export type FreshdeskField = {
    */
   choices?:
     | string[]
-    | Record<
-        string,
-        number | string[] | Record<string, Record<string, string[]>>
-      >
+    | Record<string, number | string[] | Record<string, string[]>>
   /** If the type is "nested_field" this will be an array containing the two sub categories */
   nested_ticket_fields?: FreshdeskField[]
   options?: FreshdeskFieldOption[]
