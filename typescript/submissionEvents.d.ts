@@ -187,24 +187,34 @@ export type FreshdeskSubmissionEventFieldMapping = {
       type: 'VALUE'
       value: number | string | boolean
     }
+  | {
+      type: 'DEPENDENT_FIELD_VALUE'
+      value: {
+        category: string
+        subCategory: string
+        item: string
+      }
+    }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent = FormSubmissionEventConditional & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_CREATE_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: ApprovalFormsInclusionConfiguration & {
-    /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[]
+export type FreshdeskCreateTicketSubmissionEvent =
+  FormSubmissionEventConditional & {
+    /** The type of submission event. */
+    type: 'FRESHDESK_CREATE_TICKET'
+    /** Configuration specific to the type of submission event. */
+    configuration: ApprovalFormsInclusionConfiguration & {
+      /** Array of freshdesk field mappings. */
+      mapping: FreshdeskSubmissionEventFieldMapping[]
+    }
   }
-}
 
-export type FreshdeskAddNoteToTicketSubmissionEvent = FormSubmissionEventConditional & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: ApprovalFormsInclusionConfiguration
-}
+export type FreshdeskAddNoteToTicketSubmissionEvent =
+  FormSubmissionEventConditional & {
+    /** The type of submission event. */
+    type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
+    /** Configuration specific to the type of submission event. */
+    configuration: ApprovalFormsInclusionConfiguration
+  }
 
 // EVENTS
 export type PaymentSubmissionEvent =
