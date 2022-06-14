@@ -189,7 +189,7 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
   | {
       type: 'DEPENDENT_FIELD_VALUE'
-      value: {
+      dependentFieldValue: {
         category: string
         subCategory: string
         item: string
