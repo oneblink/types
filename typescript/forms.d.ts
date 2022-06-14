@@ -541,7 +541,7 @@ export type BSBElement = {
   FormElementRequired &
   FormElementReadOnly
 
-export type FreskdeskDependentFieldElementValue = {
+export type FreshdeskDependentFieldElementValue = {
   /** A top level value selected e.g. Country */
   category?: string
   /** A second level value selected e.g. State */
@@ -558,7 +558,7 @@ export type FreskdeskDependentFieldElementValue = {
  * ```json
  * {
  *   "id": "b1311ae0-6bb7-11e9-a923-1681be663d3e",
- *   "type": "freskdeskDependentField",
+ *   "type": "freshdeskDependentField",
  *   "name": "country_state_suburb",
  *   "label": "Country",
  *   "hint": "Please select a Country before selecting a State.",
@@ -590,11 +590,11 @@ export type FreskdeskDependentFieldElementValue = {
  * }
  * ```
  */
-export type FreskdeskDependentFieldElement = {
+export type FreshdeskDependentFieldElement = {
   /** The type of Form Element. */
-  type: 'freskdeskDependentField'
+  type: 'freshdeskDependentField'
   /** A default value when the form is opened. */
-  defaultValue?: FreskdeskDependentFieldElementValue
+  defaultValue?: FreshdeskDependentFieldElementValue
 
   /** Display text presented to the user above the sub category input by default. */
   subCategoryLabel: string
@@ -649,7 +649,7 @@ export type NonNestedElementsElement =
   | SelectElement
   | AutoCompleteElement
   | ComplianceElement
-  | FreskdeskDependentFieldElement
+  | FreshdeskDependentFieldElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
@@ -812,8 +812,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
