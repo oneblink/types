@@ -128,4 +128,5 @@ export type FreshdeskField = {
   /** If the type is "nested_field" this will be an array containing the two sub categories */
   nested_ticket_fields?: FreshdeskField[]
   options?: FreshdeskFieldOption[]
+  level?: number
 }
