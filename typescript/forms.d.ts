@@ -104,7 +104,7 @@ export type DynamicOptionsSetAttributeMap = {
   attribute: string
 }
 
-type FormElementWithOptionsBase = LookupFormElement &
+export type FormElementWithOptionsBase = LookupFormElement &
   FormElementRequired &
   FormElementReadOnly & {
     options?: ChoiceElementOption[]
@@ -169,6 +169,7 @@ export type FormElementWithOptions =
   | SelectElement
   | AutoCompleteElement
   | ComplianceElement
+  | FreshdeskDependentFieldElement
 
 // date element types
 export type FormElementWithDate = {
@@ -595,7 +596,6 @@ export type FreshdeskDependentFieldElement = {
   type: 'freshdeskDependentField'
   /** A default value when the form is opened. */
   defaultValue?: FreshdeskDependentFieldElementValue
-
   /** Display text presented to the user above the sub category input by default. */
   subCategoryLabel: string
   /**
@@ -812,7 +812,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
