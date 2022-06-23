@@ -95,6 +95,22 @@ export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   lastUpdatedBy?: string
 }
 
+export type NewFormSubmissionApprovalNote = {
+  /** The note text */
+  note: string
+}
+
+export type FormSubmissionApprovalNote = NewFormSubmissionApprovalNote & {
+  /** The unique identifier for the record */
+  id: string
+  /** The date and time (in ISO format) the note was created */
+  createdAt: string
+  /** The date and time (in ISO format) the note was last updated */
+  updatedAt: string
+  /** The username of the user that last updated the note */
+  lastUpdatedBy?: string
+}
+
 type BaseFormSubmissionApproval = {
   /** The group assigned to the approval */
   group: string
@@ -112,6 +128,8 @@ type BaseFormSubmissionApproval = {
   updatedBy?: string
   /** The id of a form that should be submitted with approval */
   approvalFormId?: number
+  /** The id of a form that should be submitted with approval */
+  additionalNotes?: FormSubmissionApprovalNote[]
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
