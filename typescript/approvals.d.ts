@@ -105,10 +105,12 @@ export type FormSubmissionApprovalNote = NewFormSubmissionApprovalNote & {
   id: string
   /** The date and time (in ISO format) the note was created */
   createdAt: string
+  /** The username of the user that created the note */
+  createdBy: string
   /** The date and time (in ISO format) the note was last updated */
   updatedAt: string
   /** The username of the user that last updated the note */
-  lastUpdatedBy?: string
+  lastUpdatedBy: string
 }
 
 type BaseFormSubmissionApproval = {
