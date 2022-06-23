@@ -19,6 +19,20 @@ export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
 }
+/**
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "group": "group 1",
+ *   "label": "Step 1",
+ *   "isSkipped": false,
+ *   "isConditional": true,
+ *   "requiresAllConditionalPredicates": true,
+ *   "conditionalPredicates": []
+ * }
+ * ```
+ */
 export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
   /** Indicates if step has been skipped */
   isSkipped: boolean
@@ -51,6 +65,25 @@ export type NewFormApprovalFlowInstance = {
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
 }
+
+/**
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "id": "a2fgdc5g-79c8-4f97-8d92-cde64b34956s",
+ *   "formId": 1,
+ *   "submissionId": "c1f0f27b-4289-4ce5-9807-bf84971991aa",
+ *   "steps": [],
+ *   "isLatest": true,
+ *   "status": "APPROVED",
+ *   "createdAt": "2021-08-06T12:00:00.00Z",
+ *   "updatedAt": "2021-08-06T12:00:00.00Z",
+ *   "previousFormSubmissionApprovalId": "a2fgdc5g-79c8-4f97-8d92-cde64b34956s",
+ *   "lastUpdatedBy": "username"
+ * }
+ * ```
+ */
 export type FormApprovalFlowInstance = NewFormApprovalFlowInstance & {
   /** The unique identifier for the record */
   id: number
@@ -86,6 +119,25 @@ export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   status: 'PENDING' | 'CLARIFICATION_REQUIRED'
 }
 
+/**
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "id": "a2fgdc5g-79c8-4f97-8d92-cde64b34956s",
+ *   "formApprovalFlowInstanceId": 1,
+ *   "group": "group1",
+ *   "stepLabel": "Step 1",
+ *   "status": "APPROVED",
+ *   "createdAt": "2021-08-06T12:00:00.00Z",
+ *   "updatedAt": "2021-08-06T12:00:00.00Z",
+ *   "notificationEmailAddress": ["username@oneblink.io"],
+ *   "notes": "Notes",
+ *   "internalNotes": "Internal Notes",
+ *   "updatedBy": "username"
+ * }
+ * ```
+ */
 export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   /** The unique identifier for the record */
   id: string

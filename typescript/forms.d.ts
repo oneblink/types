@@ -81,38 +81,63 @@ export type FormElementBinaryStorage = FormElementBase & {
 
 // Choice element types
 export type DynamicChoiceElementOption = {
+  /** The label displayed to the user for an individual option. */
   label: string
+  /** The value for an individual option, sent with form submission data. */
   value: string
+  /** An array of nested options, relevant to the option. */
   options?: DynamicChoiceElementOption[]
+  /**
+   * The color of the button used to display the option, if the element has
+   * `buttons` configured as `true`.
+   */
   colour?: string
 }
 
 export type ChoiceElementOptionAttribute = {
   label?: string
   value?: string
+  /** The external element ID used in the 'conditionally show option' process */
   elementId: string
+  /** An array of option IDs associated with an individual option */
   optionIds: string[]
 }
 
 export type ChoiceElementOption = {
+  /** The unique identifier for an individual option. */
   id: string
+  /** An array of option attributes associated with an individual option. */
   attributes?: ChoiceElementOptionAttribute[]
 } & DynamicChoiceElementOption
 
 export type DynamicOptionsSetAttributeMap = {
+  /** The ID of the option value for the attribute to be mapped to. */
   elementId: string
+  /** The attribute from the dynamic options set to be mapped to the option element ID. */
   attribute: string
 }
 
 export type FormElementWithOptionsBase = LookupFormElement &
   FormElementRequired &
   FormElementReadOnly & {
+    /** An array of options, relevant to the element. */
     options?: ChoiceElementOption[]
+    /**
+     * Whether or not the options set is defined within the form definition
+     * (custom), or via an API call (dynamic OR search).
+     */
     optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH' | 'FRESHDESK_FIELD'
     freshdeskFieldName?: string
+    /** The ID of the dynamic options set configured in the OneBlink System. */
     dynamicOptionSetId?: number
+    /** Whether or not the elements options are to be shown conditionally. */
     conditionallyShowOptions?: boolean
+    /** The ID(s) of elements used in the 'conditionally show' process. */
     conditionallyShowOptionsElementIds?: string[]
+    /**
+     * Used to map an attribute from a dynamic options source with an option
+     * element ID within the form definition
+     */
     attributesMapping?: DynamicOptionsSetAttributeMap[]
   }
 
@@ -688,49 +713,105 @@ export type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
+/**
+ * ### Examples
+ *
+ * #### Callback
+ *
+ * ```json
+ * {
+ *   "type": "CALLBACK",
+ *   "configuration": {
+ *     "url": "https://api.url.com/callback"
+ *   }
+ * }
+ * ```
+ *
+ * #### OneBlink API
+ *
+ * ```json
+ * {
+ *   "type": "ONEBLINK_API",
+ *   "configuration": {
+ *     "apiId": "oneblink-api-id",
+ *     "apiEnvironment": "test",
+ *     "apiEnvironmentRoute": "/my-route"
+ *   }
+ * }
+ * ```
+ */
 export type FormServerValidation =
   | {
+      /** The type of the validation endpoint. */
       type: 'CALLBACK'
+      /** The configuration of the validation endpoint. */
       configuration: {
+        /** The url of the validation endpoint. */
         url: string
       }
     }
   | {
+      /** The type of the validation endpoint. */
       type: 'ONEBLINK_API'
+      /** The configuration of the validation endpoint. */
       configuration: {
+        /** The ID of the OneBlink hosted API that houses the validation endpoint. */
         apiId: string
+        /** The environment of the specified OneBlink hosted API. */
         apiEnvironment: string
+        /** The route of the validation endpoint. */
         apiEnvironmentRoute: string
       }
     }
 
 export type Form = {
+  /** Id of the form. */
   id: number
+  /** Name of the form. */
   name: string
+  /** A description of the form. */
   description: string
+  /** The organisation ID the form belong to. */
   organisationId: string
+  /** The forms app environment ID the form belong to. */
   formsAppEnvironmentId: number
+  /** ID's of any Forms Apps that the form is included in. */
   formsAppIds: number[]
+  /** All elements contained within the form itself. */
   elements: Array<FormElement>
+  /** Whether or not the form can only be viewed by an Authenticated user. */
   isAuthenticated: boolean
+  /** Whether or not the form contains multiple pages. */
   isMultiPage: boolean
+  /** The date and time (in ISO format) a form becomes available. */
   publishStartDate?: string
+  /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
+  /** Whether or not the Form is an Info Page. */
   isInfoPage: boolean
+  /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
+  /**
+   * The URL the form will redirect to if configured to do so by the
+   * `postSubmissionActions`.
+   */
   redirectUrl?: string
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
   draftEvents?: FormSubmissionEvent[]
   schedulingEvents?: FormSchedulingEvent[]
   paymentEvents?: FormPaymentEvent[]
+  /** Events that occur/trigger on a valid successful submission. */
   submissionEvents: FormSubmissionEvent[]
   approvalSteps?: FormApprovalFlowStep[]
   approvalEvents?: FormSubmissionEvent[]
+  /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
   createdAt: string
   updatedAt: string
+  /** The details of the form validation endpoint. */
   serverValidation?: FormServerValidation
+  /** The details of the externalId generation endpoint. */
   externalIdGeneration?: FormServerValidation
 }
 

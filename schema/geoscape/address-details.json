@@ -64,10 +64,7 @@
     },
     "addressRecordType": {
       "type": "string",
-      "enum": [
-        "Primary",
-        "Secondary"
-      ]
+      "enum": ["Primary", "Secondary"]
     },
     "asgsMain": {
       "type": "object",
@@ -169,9 +166,7 @@
     },
     "buildingsRolloutStatus": {
       "type": "string",
-      "enum": [
-        "RELEASED"
-      ]
+      "enum": ["RELEASED"]
     },
     "commonwealthElectorate": {
       "type": "object",

@@ -94,10 +94,7 @@
         },
         "addressRecordType": {
           "type": "string",
-          "enum": [
-            "Primary",
-            "Secondary"
-          ]
+          "enum": ["Primary", "Secondary"]
         },
         "asgsMain": {
           "type": "object",
@@ -238,9 +235,5 @@
       "type": "string"
     }
   },
-  "required": [
-    "data",
-    "requestTimestamp",
-    "requestDate"
-  ]
+  "required": ["data", "requestTimestamp", "requestDate"]
 }
