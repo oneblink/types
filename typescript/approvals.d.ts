@@ -1,3 +1,4 @@
+import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { FormServerValidation } from './forms'
 
@@ -105,12 +106,12 @@ export type FormSubmissionApprovalNote = NewFormSubmissionApprovalNote & {
   id: string
   /** The date and time (in ISO format) the note was created */
   createdAt: string
-  /** The username of the user that created the note */
-  createdBy: string
+  /** The user that created the note */
+  createdBy: MiscTypes.UserProfile
   /** The date and time (in ISO format) the note was last updated */
   updatedAt: string
-  /** The username of the user that last updated the note */
-  lastUpdatedBy: string
+  /** The user that last updated the note */
+  lastUpdatedBy: MiscTypes.UserProfile
 }
 
 type BaseFormSubmissionApproval = {
