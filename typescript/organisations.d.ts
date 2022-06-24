@@ -150,6 +150,7 @@ export type AuditRecordType =
   | 'FormStore'
   | 'FormStoreExport'
   | 'FormStoreFormDefinition'
+  | 'FormSubmissionApprovalAdditionalNote'
 
 export type NewAuditRecord = {
   type: AuditRecordType
