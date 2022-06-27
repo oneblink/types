@@ -65,6 +65,11 @@ export type PDFConfiguration = {
    * to `false`).
    */
   includeSubmissionIdInPdf?: boolean
+  /**
+   * Whether the payment details associated with the submission should be
+   * included in the generated pdf (defaults to `false`).
+   */
+  includePaymentInPdf?: boolean
   /** An array of element ids to exclude from the submission when generating pdf. */
   excludedElementIds?: string[]
   /** Whether pages in the form submission should translate to page breaks in the PDF. */
