@@ -1,6 +1,7 @@
 export type FreshdeskFieldOption = {
   value: string | number
   label: string
+  group_ids?: number[]
   options?: FreshdeskFieldOption[]
 }
 
