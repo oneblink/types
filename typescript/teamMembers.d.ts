@@ -36,6 +36,7 @@ type NewTeamMember = TeamMemberBase & {
 }
 
 type TeamMember = TeamMemberBase & {
+  temporaryPasswordExpiry?: string
   id: number
   createdAt: string
   updatedAt: string
