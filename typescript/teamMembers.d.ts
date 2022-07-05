@@ -64,6 +64,7 @@ interface PermissionBase {
     organisations: string
     users: string
     role: Role
+    temporaryPasswordExpiry?: string
   }
   isSuperUser: boolean
 }
