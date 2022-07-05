@@ -363,6 +363,7 @@ export type FormsAppUser = FormsAppUserBase & {
   id: number
   createdAt: string
   updatedAt: string
+  temporaryPasswordExpiry?: string
 }
 
 type BaseFormsAppsDraft = {
