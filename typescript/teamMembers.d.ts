@@ -59,6 +59,7 @@ interface PermissionBase {
   name: string | NoU
   privilege: RolePrivileges
   formsAppEnvironmentIds?: number[]
+  temporaryPasswordExpiry?: string
   links: {
     organisations: string
     users: string
