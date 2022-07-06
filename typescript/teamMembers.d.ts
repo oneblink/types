@@ -79,4 +79,5 @@ export interface User {
   type: 'SUPER' | 'USER'
   acceptedTermsAndConditionsAt: Date | null
   hasAcceptedTermsAndConditions: boolean
+  canDeleteOrganisation?: boolean
 }
