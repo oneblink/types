@@ -438,3 +438,26 @@ export type FormsAppConfiguration<
     days: number
   }>
 }
+
+export type FormsAppUserSubscription = {
+  username: string
+  formsAppId: number
+  pushSubscriptions: PushSubscription[]
+  emailSubscriptions?: EmailSubscription[]
+  createdAt: Date
+  updatedAt: Date
+}
+
+export type PushSubscription = {
+  endpoint: string
+  expirationTime: string | null
+  keys: {
+    p256dh: string
+    auth: string
+  }
+}
+
+export type EmailSubscription = {
+  newApproval?: boolean
+  clarificationReceived?: boolean
+}
