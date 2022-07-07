@@ -442,8 +442,8 @@ export type FormsAppConfiguration<
 export type FormsAppUserSubscription = {
   username: string
   formsAppId: number
-  pushSubscriptions: PushSubscription[]
-  emailSubscriptions?: EmailSubscription[]
+  pushSubscriptions?: PushSubscription[]
+  emailSubscriptions?: EmailSubscription
   createdAt: Date
   updatedAt: Date
 }
