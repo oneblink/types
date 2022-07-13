@@ -350,7 +350,7 @@ export interface S3SubmissionTags {
   previousFormSubmissionApprovalId?: string
 }
 
-export type BaseFormSubmissionLambdaEvent = {
+export type BaseFormSubmissionProcessing = {
   submissionId: string
   formId: number
   formsAppEnvironmentId: number
@@ -362,12 +362,28 @@ export type BaseFormSubmissionLambdaEvent = {
   formsAppId: number
   keyId?: string
   user?: UserProfile
-  lambda?: string
 } & S3SubmissionTags
 
-export type FormSubmissionLambdaEvent<T> = BaseFormSubmissionLambdaEvent & {
+export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
+  type: 'EVENT'
   submissionEvent: T
 }
+export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
+  type: 'JOB'
+}
+export type FormSubmissionProcessingFormStore = BaseFormSubmissionProcessing & {
+  type: 'FORM_STORE'
+}
+export type FormSubmissionProcessingTierRestrictions =
+  BaseFormSubmissionProcessing & {
+    type: 'TIER_RESTRICTIONS'
+  }
+
+export type FormSubmissionProcessing<T = undefined> =
+  | FormSubmissionProcessingEvent<T>
+  | FormSubmissionProcessingJob
+  | FormSubmissionProcessingFormStore
+  | FormSubmissionProcessingTierRestrictions
 
 export type WebhookSubmissionEventPayload = {
   formsAppId: number
