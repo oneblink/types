@@ -1,7 +1,7 @@
 import type { ConditionalPredicate } from './conditions'
 import type { UserProfile } from './misc'
 
-export type FormSubmissionEventConditional = {
+export type FormEventConditional = {
   /** Whether the submission event should be condtionally executed. */
   conditionallyExecute?: boolean
   /**
@@ -24,7 +24,7 @@ export type ApprovalFormsInclusionConfiguration = {
       }
 }
 
-export type CallbackSubmissionEvent = FormSubmissionEventConditional & {
+export type CallbackSubmissionEvent = FormEventConditional & {
   type: 'CALLBACK'
   configuration: {
     /** URL that the callback is made to. */
@@ -88,14 +88,14 @@ export type EmailConfiguration = {
     mapping: Array<PdfSubmissionEventEmailTemplateMapping>
   }
 }
-export type PdfSubmissionEvent = FormSubmissionEventConditional & {
+export type PdfSubmissionEvent = FormEventConditional & {
   type: 'PDF'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration &
     EmailConfiguration
 }
 
-export type EmailOnlySubmissionEvent = FormSubmissionEventConditional & {
+export type EmailOnlySubmissionEvent = FormEventConditional & {
   type: 'EMAIL'
   configuration: ApprovalFormsInclusionConfiguration & EmailConfiguration
 }
@@ -114,7 +114,7 @@ export type OneBlinkAPISubmissionEventConfiguration = {
   secret?: string
 }
 
-export type OneBlinkAPISubmissionEvent = FormSubmissionEventConditional & {
+export type OneBlinkAPISubmissionEvent = FormEventConditional & {
   type: 'ONEBLINK_API'
   configuration: OneBlinkAPISubmissionEventConfiguration
 }
@@ -126,7 +126,7 @@ export type TrimUriOption = {
   uri: number
 }
 
-export type TrimSubmissionEvent = FormSubmissionEventConditional & {
+export type TrimSubmissionEvent = FormEventConditional & {
   type: 'TRIM'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -170,7 +170,7 @@ export type CivicaCrmSubmissionEventMapping = {
   /** The elementId of the field to map to the civica category. */
   formElementId: string
 }
-export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
+export type CivicaCrmSubmissionEvent = FormEventConditional & {
   type: 'CIVICA_CRM'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -183,7 +183,7 @@ export type CivicaCrmSubmissionEvent = FormSubmissionEventConditional & {
     }
 }
 
-export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
+export type CPHCMSSubmissionEvent = FormEventConditional & {
   type: 'CP_HCMS'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -196,7 +196,7 @@ export type CPHCMSSubmissionEvent = FormSubmissionEventConditional & {
     }
 }
 
-export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
+export type CPPaySubmissionEvent = FormEventConditional & {
   type: 'CP_PAY'
   configuration: {
     /**
@@ -209,7 +209,7 @@ export type CPPaySubmissionEvent = FormSubmissionEventConditional & {
   }
 }
 
-export type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
+export type BPOINTSubmissionEvent = FormEventConditional & {
   type: 'BPOINT'
   configuration: {
     /**
@@ -226,7 +226,7 @@ export type BPOINTSubmissionEvent = FormSubmissionEventConditional & {
   }
 }
 
-export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
+export type WestpacQuickWebSubmissionEvent = FormEventConditional & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
     /**
@@ -239,29 +239,6 @@ export type WestpacQuickWebSubmissionEvent = FormSubmissionEventConditional & {
     /** A crn string. */
     customerReferenceNumber: string
   }
-}
-
-export type SchedulingSubmissionEvent = FormSubmissionEventConditional & {
-  type: 'SCHEDULING'
-  configuration: PDFConfiguration &
-    ApprovalFormsInclusionConfiguration & {
-      /** The id of scheduling provider. */
-      nylasAccountId: string
-      /** The id of the scheduling page. */
-      nylasSchedulingPageId: number
-      /**
-       * The id of the form element to map to the name field on the scheduling
-       * page. Must be a text element.
-       */
-      nameElementId?: string
-      /**
-       * The id of the form element to map to the email field on the scheduling
-       * page. Must be an email element.
-       */
-      emailElementId?: string
-      /** An optional extra description to be included in the email. */
-      emailDescription?: string
-    }
 }
 
 export type FreshdeskSubmissionEventFieldMapping = {
@@ -285,34 +262,54 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent =
-  FormSubmissionEventConditional & {
-    /** The type of submission event. */
-    type: 'FRESHDESK_CREATE_TICKET'
-    /** Configuration specific to the type of submission event. */
-    configuration: ApprovalFormsInclusionConfiguration & {
-      /** Array of freshdesk field mappings. */
-      mapping: FreshdeskSubmissionEventFieldMapping[]
-    }
+export type FreshdeskCreateTicketSubmissionEvent = FormEventConditional & {
+  /** The type of submission event. */
+  type: 'FRESHDESK_CREATE_TICKET'
+  /** Configuration specific to the type of submission event. */
+  configuration: ApprovalFormsInclusionConfiguration & {
+    /** Array of freshdesk field mappings. */
+    mapping: FreshdeskSubmissionEventFieldMapping[]
   }
+}
 
-export type FreshdeskAddNoteToTicketSubmissionEvent =
-  FormSubmissionEventConditional & {
-    /** The type of submission event. */
-    type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
-    /** Configuration specific to the type of submission event. */
-    configuration: ApprovalFormsInclusionConfiguration
-  }
+export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventConditional & {
+  /** The type of submission event. */
+  type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
+  /** Configuration specific to the type of submission event. */
+  configuration: ApprovalFormsInclusionConfiguration
+}
+
+export type SchedulingSubmissionEvent = FormEventConditional & {
+  type: 'SCHEDULING'
+  configuration: PDFConfiguration &
+    ApprovalFormsInclusionConfiguration & {
+      /** The id of scheduling provider. */
+      nylasAccountId: string
+      /** The id of the scheduling page. */
+      nylasSchedulingPageId: number
+      /**
+       * The id of the form element to map to the name field on the scheduling
+       * page. Must be a text element.
+       */
+      nameElementId?: string
+      /**
+       * The id of the form element to map to the email field on the scheduling
+       * page. Must be an email element.
+       */
+      emailElementId?: string
+      /** An optional extra description to be included in the email. */
+      emailDescription?: string
+    }
+}
 
 // EVENTS
-export type PaymentSubmissionEvent =
+export type FormPaymentEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
   | WestpacQuickWebSubmissionEvent
 
-export type FormPaymentEvent = PaymentSubmissionEvent
 export type FormSchedulingEvent = SchedulingSubmissionEvent
-export type FormSubmissionEvent =
+export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
@@ -326,12 +323,12 @@ export type FormSubmissionEvent =
 export type FormEvent =
   | FormPaymentEvent
   | FormSchedulingEvent
-  | FormSubmissionEvent
+  | FormWorkflowEvent
 
-// EVENT TYPES
+// EVENT TYPE PROPERTY TYPES
 export type FormPaymentEventType = FormPaymentEvent['type']
 export type FormSchedulingEventType = FormSchedulingEvent['type']
-export type FormSubmissionEventType = FormSubmissionEvent['type']
+export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
 
 export type WebhookSubscription = {
@@ -374,10 +371,9 @@ export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
 export type FormSubmissionProcessingFormStore = BaseFormSubmissionProcessing & {
   type: 'FORM_STORE'
 }
-export type FormSubmissionProcessingTierRestrictions =
-  BaseFormSubmissionProcessing & {
-    type: 'TIER_RESTRICTIONS'
-  }
+export type FormSubmissionProcessingTierRestrictions = BaseFormSubmissionProcessing & {
+  type: 'TIER_RESTRICTIONS'
+}
 
 export type FormSubmissionProcessing<T = undefined> =
   | FormSubmissionProcessingEvent<T>
@@ -398,9 +394,9 @@ export type WebhookSubmissionEventPayload = {
   secret?: string
 }
 
-export type FormSubmissionEventInstance = Omit<
-  FormSubmissionEvent,
-  keyof FormSubmissionEventConditional
+export type FormWorkflowEventInstance = Omit<
+  FormWorkflowEvent,
+  keyof FormEventConditional
 > & {
   id: number
   submissionId: string

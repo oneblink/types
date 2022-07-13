@@ -5,6 +5,7 @@ import {
   BPOINTSubmissionEvent,
   CPPaySubmissionEvent,
   WestpacQuickWebSubmissionEvent,
+  FormWorkflowEvent,
 } from './submissionEvents'
 
 export interface NewFormsAppDraft {
@@ -516,6 +517,21 @@ export type NewFormSubmissionPayment =
   | BPOINTPayment
 
 export type FormSubmissionPayment = NewFormSubmissionPayment & {
+  createdAt: string
+  updatedAt: string
+}
+
+export type NewFormSubmissionWorkflowEvent = {
+  submissionId: string
+  formId: number
+  status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
+  stage: 'DRAFT' | 'SUBMISSION' | 'APPROVAL'
+  event: FormWorkflowEvent
+  error?: string
+}
+
+export type FormSubmissionWorkflowEvent = NewFormSubmissionWorkflowEvent & {
+  id: number
   createdAt: string
   updatedAt: string
 }
