@@ -3,7 +3,7 @@ import { PointAddress } from './point'
 import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
 import type {
-  FormSubmissionEvent,
+  FormWorkflowEvent,
   FormPaymentEvent,
   FormSchedulingEvent,
 } from './submissionEvents'
@@ -798,13 +798,13 @@ export type Form = {
   redirectUrl?: string
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
-  draftEvents?: FormSubmissionEvent[]
+  draftEvents?: FormWorkflowEvent[]
   schedulingEvents?: FormSchedulingEvent[]
   paymentEvents?: FormPaymentEvent[]
   /** Events that occur/trigger on a valid successful submission. */
-  submissionEvents: FormSubmissionEvent[]
+  submissionEvents: FormWorkflowEvent[]
   approvalSteps?: FormApprovalFlowStep[]
-  approvalEvents?: FormSubmissionEvent[]
+  approvalEvents?: FormWorkflowEvent[]
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
   createdAt: string
@@ -893,8 +893,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
