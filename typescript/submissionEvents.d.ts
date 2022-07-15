@@ -393,15 +393,3 @@ export type WebhookSubmissionEventPayload = {
   username?: string
   secret?: string
 }
-
-export type FormWorkflowEventInstance = Omit<
-  FormWorkflowEvent,
-  keyof FormEventConditional
-> & {
-  id: number
-  submissionId: string
-  formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
-  createdAt: string
-  updatedAt: string
-}
