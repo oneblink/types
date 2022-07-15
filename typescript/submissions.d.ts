@@ -527,11 +527,10 @@ export type NewFormSubmissionWorkflowEvent = {
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
   event: FormWorkflowEvent | FormSchedulingEvent
   error?: string
-  originalWorkflowEventId?: number
 } & (
   | {
       submissionId: string
-      stage: 'SCHEDULING' | 'SUBMISSION' | 'APPROVAL'
+      stage: 'SCHEDULING' | 'SUBMISSION' | 'APPROVAL' | 'REPLAY'
     }
   | {
       draftId: string
