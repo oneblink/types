@@ -522,13 +522,21 @@ export type FormSubmissionPayment = NewFormSubmissionPayment & {
 }
 
 export type NewFormSubmissionWorkflowEvent = {
-  submissionId: string
   formId: number
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
-  stage: 'DRAFT' | 'SUBMISSION' | 'APPROVAL'
+
   event: FormWorkflowEvent
   error?: string
-}
+} & (
+  | {
+      submissionId: string
+      stage: 'SUBMISSION' | 'APPROVAL'
+    }
+  | {
+      draftId: string
+      stage: 'DRAFT'
+    }
+)
 
 export type FormSubmissionWorkflowEvent = NewFormSubmissionWorkflowEvent & {
   id: number
