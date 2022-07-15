@@ -524,7 +524,6 @@ export type FormSubmissionPayment = NewFormSubmissionPayment & {
 export type NewFormSubmissionWorkflowEvent = {
   formId: number
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
-
   event: FormWorkflowEvent
   error?: string
 } & (
