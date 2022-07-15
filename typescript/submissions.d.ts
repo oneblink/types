@@ -6,6 +6,7 @@ import {
   CPPaySubmissionEvent,
   WestpacQuickWebSubmissionEvent,
   FormWorkflowEvent,
+  FormSchedulingEvent,
 } from './submissionEvents'
 
 export interface NewFormsAppDraft {
@@ -524,13 +525,13 @@ export type FormSubmissionPayment = NewFormSubmissionPayment & {
 export type NewFormSubmissionWorkflowEvent = {
   formId: number
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
-  event: FormWorkflowEvent
+  event: FormWorkflowEvent | FormSchedulingEvent
   error?: string
   originalWorkflowEventId?: number
 } & (
   | {
       submissionId: string
-      stage: 'SUBMISSION' | 'APPROVAL'
+      stage: 'SCHEDULING' | 'SUBMISSION' | 'APPROVAL'
     }
   | {
       draftId: string
