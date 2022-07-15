@@ -526,6 +526,7 @@ export type NewFormSubmissionWorkflowEvent = {
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
   event: FormWorkflowEvent
   error?: string
+  originalWorkflowEventId?: number
 } & (
   | {
       submissionId: string
