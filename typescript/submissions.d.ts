@@ -541,5 +541,6 @@ export type NewFormSubmissionWorkflowEvent = {
 export type FormSubmissionWorkflowEvent = NewFormSubmissionWorkflowEvent & {
   id: number
   createdAt: string
-  updatedAt: string
+  startedAt?: string
+  finishedAt?: string
 }
