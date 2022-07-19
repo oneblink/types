@@ -527,6 +527,8 @@ export type NewFormSubmissionWorkflowEvent = {
   status: 'QUEUED' | 'STARTED' | 'FAILED' | 'SUCCEEDED'
   event: FormWorkflowEvent | FormSchedulingEvent
   error?: string
+  startedAt?: string
+  finishedAt?: string
 } & (
   | {
       submissionId: string
@@ -541,6 +543,4 @@ export type NewFormSubmissionWorkflowEvent = {
 export type FormSubmissionWorkflowEvent = NewFormSubmissionWorkflowEvent & {
   id: number
   createdAt: string
-  startedAt?: string
-  finishedAt?: string
 }
