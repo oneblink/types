@@ -172,7 +172,7 @@ export type AuditRecord = NewAuditRecord & {
 }
 
 export type NewProductNotification = {
-  type: 'FEATURE' | 'BUG_FIX' | 'ANNOUNCEMENTS'
+  type: 'FEATURE' | 'BUG_FIX' | 'ANNOUNCEMENT'
   title: string
   body: string
   linkUrl: string
