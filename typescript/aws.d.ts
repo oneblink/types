@@ -2,7 +2,7 @@ export interface AWSCredentials {
   AccessKeyId: string
   SecretAccessKey: string
   SessionToken: string
-  Expiration: string
+  Expiration?: string
 }
 
 export interface S3Configuration {
