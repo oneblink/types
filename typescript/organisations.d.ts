@@ -170,3 +170,20 @@ export type AuditRecord = NewAuditRecord & {
   id: number
   createdAt: string
 }
+
+export type NewProductNotification = {
+  type: 'FEATURE' | 'BUG_FIX' | 'ANNOUNCEMENT'
+  title: string
+  body: string
+  linkUrl: string
+  linkText?: string
+  imageUrl: string
+  imageAlt?: string
+  expiresAt: string
+}
+
+export type ProductNotification = NewProductNotification & {
+  id: number
+  createdAt: string
+  updatedAt: string
+}
