@@ -856,7 +856,6 @@ export type FormElementOptionSetEnvironmentStatic = {
 }
 export type NewFormElementOptionSetStatic = NewFormElementOptionSetBase & {
   type: 'STATIC'
-  apiId: string
   environments: FormElementOptionSetEnvironmentStatic[]
 }
 export type FormElementOptionSetStatic = IdResource &
