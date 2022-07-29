@@ -8,7 +8,7 @@ import type {
   FormSchedulingEvent,
 } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
-import type { ABNRecord, BaseSearchResult } from './misc'
+import type { ABNRecord, BaseSearchResult, IdResource } from './misc'
 import { FormApprovalFlowStep } from './approvals'
 
 ////////////////////////////////////////
@@ -844,25 +844,53 @@ export type FormQuerystringParameters = {
 
 // Options Sets/Lookups
 
-export type FormElementDynamicOptionSetEnvironment = {
+export type NewFormElementOptionSetBase = {
+  name: string
+  organisationId: string
+}
+
+// Static Options
+export type FormElementOptionSetEnvironmentStatic = {
+  options: DynamicChoiceElementOption[]
+  formsAppEnvironmentId: number
+}
+export type NewFormElementOptionSetStatic = NewFormElementOptionSetBase & {
+  type: 'STATIC'
+  environments: FormElementOptionSetEnvironmentStatic[]
+}
+export type FormElementOptionSetStatic = IdResource &
+  NewFormElementOptionSetStatic
+
+// URL request based options
+export type FormElementOptionSetEnvironmentUrl = {
   url: string
   formsAppEnvironmentId: number
 }
-
-export type NewFormElementDynamicOptionSet = {
-  name: string
-  organisationId: string
-  apiId?: string
-  environments: FormElementDynamicOptionSetEnvironment[]
+export type NewFormElementOptionSetHostedApi = NewFormElementOptionSetBase & {
+  type: 'HOSTED_API'
+  apiId: string
+  environments: FormElementOptionSetEnvironmentUrl[]
 }
+export type FormElementOptionSetHostedApi = IdResource &
+  NewFormElementOptionSetHostedApi
 
-export type FormElementDynamicOptionSet = NewFormElementDynamicOptionSet & {
-  id: number
-  createdAt: string
-  updatedAt: string
+export type NewFormElementOptionSetUrl = NewFormElementOptionSetBase & {
+  type: 'URL'
+  environments: FormElementOptionSetEnvironmentUrl[]
 }
+export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 
-export type FormElementDynamicOptionSetSearchParameters = {
+export type NewFormElementOptionSet =
+  | NewFormElementOptionSetStatic
+  | NewFormElementOptionSetHostedApi
+  | NewFormElementOptionSetUrl
+
+export type FormElementOptionSet =
+  | FormElementOptionSetStatic
+  | FormElementOptionSetHostedApi
+  | FormElementOptionSetUrl
+
+export type FormElementOptionSetSearchParameters = {
   organisationIds: string[]
   limit?: number
   offset?: number
@@ -882,7 +910,11 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
   id: number
 }
 
-export type NewFormElementLookup = NewFormElementDynamicOptionSet & {
+export type NewFormElementLookup = {
+  name: string
+  organisationId: string
+  apiId?: string
+  environments: FormElementOptionSetEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
 }
@@ -893,12 +925,12 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementDynamicOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
 } & BaseSearchResult
 
-export type FormElementDynamicOptionSetSearchResponse = {
-  formElementDynamicOptionSets: FormElementDynamicOptionSet[]
+export type FormElementOptionSetSearchResponse = {
+  formElementOptionSets: FormElementOptionSet[]
 } & BaseSearchResult

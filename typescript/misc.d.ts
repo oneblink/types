@@ -109,3 +109,9 @@ export type BSBRecord = {
   postcode: string
   paymentsFlags?: string
 }
+
+export type IdResource = {
+  id: number
+  createdAt: string
+  updatedAt: string
+}
