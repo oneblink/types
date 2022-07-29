@@ -27,6 +27,8 @@ export type _FormElementBase = {
   requiresAllConditionallyShowPredicates?: boolean
   /** Predicates to evaluate. */
   conditionallyShowPredicates?: ConditionalPredicate[]
+  /** Custom Css classes that will be added to the element during rendering */
+  customCssClasses?: string[]
 }
 
 export type FormElementBase = _FormElementBase & {
