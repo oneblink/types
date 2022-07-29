@@ -880,6 +880,11 @@ export type NewFormElementOptionSetUrl = NewFormElementOptionSetBase & {
 }
 export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 
+export type NewFormElementOptionSet =
+  | NewFormElementOptionSetStatic
+  | NewFormElementOptionSetHostedApi
+  | NewFormElementOptionSetUrl
+
 export type FormElementOptionSet =
   | FormElementOptionSetStatic
   | FormElementOptionSetHostedApi
@@ -920,8 +925,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
