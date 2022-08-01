@@ -74,6 +74,8 @@ export type FormElementRequired = FormElementBase & {
    * not (`false`).
    */
   required: boolean
+  /** The validation message to display if this input requires a value entered by the user. */
+  requiredMessage?: string
 }
 
 export type FormElementBinaryStorage = FormElementBase & {
@@ -927,7 +929,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
