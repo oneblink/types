@@ -372,15 +372,11 @@ export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
 export type FormSubmissionProcessingFormStore = BaseFormSubmissionProcessing & {
   type: 'FORM_STORE'
 }
-export type FormSubmissionProcessingTierRestrictions = BaseFormSubmissionProcessing & {
-  type: 'TIER_RESTRICTIONS'
-}
 
 export type FormSubmissionProcessing<T = undefined> =
   | FormSubmissionProcessingEvent<T>
   | FormSubmissionProcessingJob
   | FormSubmissionProcessingFormStore
-  | FormSubmissionProcessingTierRestrictions
 
 export type WebhookSubmissionEventPayload = {
   formsAppId: number
