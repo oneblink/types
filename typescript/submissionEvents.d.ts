@@ -2,7 +2,7 @@ import type { ConditionalPredicate } from './conditions'
 import type { UserProfile } from './misc'
 
 export type FormEventConditional = {
-  /** Whether the submission event should be condtionally executed. */
+  /** Whether the submission event should be conditionally executed. */
   conditionallyExecute?: boolean
   /**
    * Whether the conditional execution requires all predicates to be true as
@@ -33,7 +33,15 @@ export type CallbackSubmissionEvent = FormEventConditional & {
      * Secret string used for verifying the authenticity of the request made
      * from the OneBlink system.
      */
-    secret?: string
+    secret: string
+  }
+}
+
+export type PowerAutomateFlowSubmissionEvent = FormEventConditional & {
+  type: 'POWER_AUTOMATE_FLOW'
+  configuration: {
+    /** URL that the callback is made to. */
+    url: string
   }
 }
 
@@ -311,6 +319,7 @@ export type FormPaymentEvent =
 export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
+  | PowerAutomateFlowSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
