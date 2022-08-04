@@ -345,12 +345,16 @@ export type FormSchedulingEventType = FormSchedulingEvent['type']
 export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
 
-export type WebhookSubscription = {
-  id: number
-  createdAt?: Date
+export type NewWebhookSubscription = {
   callbackUrl: string
   organisationId: string
   keyId: string
+  label?: string
+  formId?: number
+}
+export type WebhookSubscription = NewWebhookSubscription & {
+  id: number
+  createdAt: string
 }
 
 export interface S3SubmissionTags {
