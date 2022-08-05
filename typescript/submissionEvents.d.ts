@@ -13,6 +13,11 @@ export type FormEventConditional = {
   conditionallyExecutePredicates?: ConditionalPredicate[]
 }
 
+export type FormEventBase = FormEventConditional & {
+  /** A label to identify the event. */
+  label?: string
+}
+
 export type ApprovalFormsInclusionConfiguration = {
   approvalFormsInclusion?:
     | {
@@ -24,7 +29,7 @@ export type ApprovalFormsInclusionConfiguration = {
       }
 }
 
-export type CallbackSubmissionEvent = FormEventConditional & {
+export type CallbackSubmissionEvent = FormEventBase & {
   type: 'CALLBACK'
   configuration: {
     /** URL that the callback is made to. */
@@ -37,7 +42,7 @@ export type CallbackSubmissionEvent = FormEventConditional & {
   }
 }
 
-export type PowerAutomateFlowSubmissionEvent = FormEventConditional & {
+export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   type: 'POWER_AUTOMATE_FLOW'
   configuration: {
     /** URL that the callback is made to. */
@@ -96,14 +101,14 @@ export type EmailConfiguration = {
     mapping: Array<PdfSubmissionEventEmailTemplateMapping>
   }
 }
-export type PdfSubmissionEvent = FormEventConditional & {
+export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration &
     EmailConfiguration
 }
 
-export type EmailOnlySubmissionEvent = FormEventConditional & {
+export type EmailOnlySubmissionEvent = FormEventBase & {
   type: 'EMAIL'
   configuration: ApprovalFormsInclusionConfiguration & EmailConfiguration
 }
@@ -122,7 +127,7 @@ export type OneBlinkAPISubmissionEventConfiguration = {
   secret?: string
 }
 
-export type OneBlinkAPISubmissionEvent = FormEventConditional & {
+export type OneBlinkAPISubmissionEvent = FormEventBase & {
   type: 'ONEBLINK_API'
   configuration: OneBlinkAPISubmissionEventConfiguration
 }
@@ -134,7 +139,7 @@ export type TrimUriOption = {
   uri: number
 }
 
-export type TrimSubmissionEvent = FormEventConditional & {
+export type TrimSubmissionEvent = FormEventBase & {
   type: 'TRIM'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -178,7 +183,7 @@ export type CivicaCrmSubmissionEventMapping = {
   /** The elementId of the field to map to the civica category. */
   formElementId: string
 }
-export type CivicaCrmSubmissionEvent = FormEventConditional & {
+export type CivicaCrmSubmissionEvent = FormEventBase & {
   type: 'CIVICA_CRM'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -191,7 +196,7 @@ export type CivicaCrmSubmissionEvent = FormEventConditional & {
     }
 }
 
-export type CPHCMSSubmissionEvent = FormEventConditional & {
+export type CPHCMSSubmissionEvent = FormEventBase & {
   type: 'CP_HCMS'
   configuration: ApprovalFormsInclusionConfiguration &
     PDFConfiguration & {
@@ -204,7 +209,7 @@ export type CPHCMSSubmissionEvent = FormEventConditional & {
     }
 }
 
-export type CPPaySubmissionEvent = FormEventConditional & {
+export type CPPaySubmissionEvent = FormEventBase & {
   type: 'CP_PAY'
   configuration: {
     /**
@@ -217,7 +222,7 @@ export type CPPaySubmissionEvent = FormEventConditional & {
   }
 }
 
-export type BPOINTSubmissionEvent = FormEventConditional & {
+export type BPOINTSubmissionEvent = FormEventBase & {
   type: 'BPOINT'
   configuration: {
     /**
@@ -234,7 +239,7 @@ export type BPOINTSubmissionEvent = FormEventConditional & {
   }
 }
 
-export type WestpacQuickWebSubmissionEvent = FormEventConditional & {
+export type WestpacQuickWebSubmissionEvent = FormEventBase & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
     /**
@@ -270,7 +275,7 @@ export type FreshdeskSubmissionEventFieldMapping = {
     }
 )
 
-export type FreshdeskCreateTicketSubmissionEvent = FormEventConditional & {
+export type FreshdeskCreateTicketSubmissionEvent = FormEventBase & {
   /** The type of submission event. */
   type: 'FRESHDESK_CREATE_TICKET'
   /** Configuration specific to the type of submission event. */
@@ -280,14 +285,14 @@ export type FreshdeskCreateTicketSubmissionEvent = FormEventConditional & {
   }
 }
 
-export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventConditional & {
+export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventBase & {
   /** The type of submission event. */
   type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
   /** Configuration specific to the type of submission event. */
   configuration: ApprovalFormsInclusionConfiguration
 }
 
-export type SchedulingSubmissionEvent = FormEventConditional & {
+export type SchedulingSubmissionEvent = FormEventBase & {
   type: 'SCHEDULING'
   configuration: PDFConfiguration &
     ApprovalFormsInclusionConfiguration & {
@@ -340,12 +345,16 @@ export type FormSchedulingEventType = FormSchedulingEvent['type']
 export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
 
-export type WebhookSubscription = {
-  id: number
-  createdAt?: Date
+export type NewWebhookSubscription = {
   callbackUrl: string
   organisationId: string
   keyId: string
+  label?: string
+  formId?: number
+}
+export type WebhookSubscription = NewWebhookSubscription & {
+  id: number
+  createdAt: string
 }
 
 export interface S3SubmissionTags {
