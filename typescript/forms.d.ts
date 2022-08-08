@@ -44,6 +44,10 @@ export type FormElementBase = _FormElementBase & {
    * the element label.
    */
   hint?: string
+  /**
+   * JSON metadata associated with the form element. This field is for primarily for developer use.
+   */
+  meta?: Record<string, unknown> | Array<unknown>
 }
 
 export type LookupFormElement = FormElementBase & {
@@ -929,8 +933,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
