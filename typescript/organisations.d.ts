@@ -175,10 +175,11 @@ export type NewProductNotification = {
   type: 'FEATURE' | 'BUG_FIX' | 'ANNOUNCEMENT'
   title: string
   body: string
-  linkUrl: string
+  linkUrl?: string
   linkText?: string
   imageUrl: string
   imageAlt?: string
+  publishedAt: string
   expiresAt: string
 }
 
