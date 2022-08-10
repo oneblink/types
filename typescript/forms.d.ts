@@ -29,6 +29,10 @@ export type _FormElementBase = {
   conditionallyShowPredicates?: ConditionalPredicate[]
   /** Custom Css classes that will be added to the element during rendering */
   customCssClasses?: string[]
+  /**
+   * JSON metadata associated with the form element. This field is for primarily for developer use.
+   */
+  meta?: Record<string, unknown> | Array<unknown>
 }
 
 export type FormElementBase = _FormElementBase & {
@@ -44,10 +48,6 @@ export type FormElementBase = _FormElementBase & {
    * the element label.
    */
   hint?: string
-  /**
-   * JSON metadata associated with the form element. This field is for primarily for developer use.
-   */
-  meta?: Record<string, unknown> | Array<unknown>
 }
 
 export type LookupFormElement = FormElementBase & {
