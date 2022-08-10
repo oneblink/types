@@ -29,6 +29,10 @@ export type _FormElementBase = {
   conditionallyShowPredicates?: ConditionalPredicate[]
   /** Custom Css classes that will be added to the element during rendering */
   customCssClasses?: string[]
+  /**
+   * JSON metadata associated with the form element. This field is for primarily for developer use.
+   */
+  meta?: Record<string, unknown> | Array<unknown>
 }
 
 export type FormElementBase = _FormElementBase & {
@@ -929,8 +933,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
