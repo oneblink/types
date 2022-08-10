@@ -32,7 +32,7 @@ export type _FormElementBase = {
   /**
    * JSON metadata associated with the form element. This field is for primarily for developer use.
    */
-  meta?: Record<string, unknown> | Array<unknown>
+  meta?: string
 }
 
 export type FormElementBase = _FormElementBase & {
