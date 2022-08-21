@@ -30,7 +30,8 @@ export type _FormElementBase = {
   /** Custom Css classes that will be added to the element during rendering */
   customCssClasses?: string[]
   /**
-   * JSON metadata associated with the form element. This field is for primarily for developer use.
+   * JSON metadata associated with the form element. This field is for primarily
+   * for developer use.
    */
   meta?: string
 }
@@ -83,8 +84,8 @@ export type FormElementRequired = FormElementBase & {
 }
 
 export type FormElementBinaryStorage = FormElementBase & {
-  /** How the photo taken by a user will be stored: `private`, `public`, `legacy`. */
-  storageType?: 'legacy' | 'public' | 'private'
+  /** How the photo taken by a user will be stored: `private`, `public`. */
+  storageType?: 'public' | 'private'
 }
 
 // Choice element types
@@ -933,7 +934,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
