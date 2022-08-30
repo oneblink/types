@@ -814,6 +814,15 @@ export type Form = {
   submissionEvents: FormWorkflowEvent[]
   approvalSteps?: FormApprovalFlowStep[]
   approvalEvents?: FormWorkflowEvent[]
+  /** Configuration options that affect the whole approval flow */
+  approvalConfiguration?: {
+    /** The elementId of the element to use as a default prefill for the notification email address when approving this step */
+    defaultApproveNotificationEmailElementId?: string
+    /** The elementId of the element to use as a default prefill for the notification email address when requesting clarification for this step */
+    defaultClarificationNotificationEmailElementId?: string
+    /** The elementId of the element to use as a default prefill for the notification email address when denying this step */
+    defaultDenyNotificationEmailElementId?: string
+  }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
   createdAt: string
@@ -934,8 +943,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
