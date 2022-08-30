@@ -11,6 +11,12 @@ export type FormApprovalFlowStepBase = {
   approvalFormId?: number
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
+  /** The elementId of the element to use as a default prefill for the notification email address when approving this step */
+  defaultApproveNotificationEmailElementId?: string
+  /** The elementId of the element to use as a default prefill for the notification email address when requesting clarification for this step */
+  defaultClarificationNotificationEmailElementId?: string
+  /** The elementId of the element to use as a default prefill for the notification email address when denying this step */
+  defaultDenyNotificationEmailElementId?: string
 }
 export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   /** Indicates if step could be conditionally skipped */
