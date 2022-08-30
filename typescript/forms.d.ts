@@ -816,11 +816,11 @@ export type Form = {
   approvalEvents?: FormWorkflowEvent[]
   /** Configuration options that affect the whole approval flow */
   approvalConfiguration?: {
-    /** The elementId of the element to use as a default prefill for the notification email address when approving this step */
+    /** The elementId of the element to use as a default prefill for the notification email address when approving this form */
     defaultApproveNotificationEmailElementId?: string
-    /** The elementId of the element to use as a default prefill for the notification email address when requesting clarification for this step */
+    /** The elementId of the element to use as a default prefill for the notification email address when requesting clarification for this form */
     defaultClarificationNotificationEmailElementId?: string
-    /** The elementId of the element to use as a default prefill for the notification email address when denying this step */
+    /** The elementId of the element to use as a default prefill for the notification email address when denying this form */
     defaultDenyNotificationEmailElementId?: string
   }
   /** A list of tags used to categorise or describe the form. */
