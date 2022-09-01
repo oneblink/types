@@ -13,6 +13,8 @@ export interface UserProfile {
   username: string
   /** The user's email address */
   email?: string
+  /** True if the email address is verified */
+  emailVerified?: boolean
   /** The user's first name */
   firstName?: string
   /** The user's last name */
