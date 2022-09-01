@@ -32,6 +32,8 @@ export interface UserProfile {
     /** The user's supervisor's user id from the login provider */
     providerUserId?: string
   }
+  /** The user's phone number from a SAML configuration */
+  phoneNumber?: string
 }
 export interface QueryParameters {
   [property: string]: string | Array<string | number> | null
