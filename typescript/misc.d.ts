@@ -34,6 +34,8 @@ export interface UserProfile {
   }
   /** The user's phone number from a SAML configuration */
   phoneNumber?: string
+  /** True if the phone number is verified */
+  phoneNumberVerified?: boolean
 }
 export interface QueryParameters {
   [property: string]: string | Array<string | number> | null
