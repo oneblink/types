@@ -125,6 +125,8 @@ type BaseFormSubmissionApproval = {
   stepLabel: string
   /** Notes sent to the use that submitted the form */
   notes?: string
+  /** Key to associate a canned response with an approval to allowing for reporting */
+  cannedResponseKey?: string
   /** Internal notes that are not seen by the user that submitted the form */
   internalNotes?: string
   /** The username of the user that updated the approval */
@@ -196,4 +198,13 @@ export type FormApprovalWebhook = NewFormApprovalWebhook & {
   id: number
   createdAt: string
   updatedAt: string
+}
+
+export type FormApprovalCannedResponse = {
+  /** The unique key for the response to allow for reporting */
+  key: string
+  /** The human readable text to represent the response */
+  label: string
+  /** The text to prefill as the notes for an approval (should respect line breaks) */
+  notes: string
 }
