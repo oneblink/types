@@ -197,3 +197,12 @@ export type FormApprovalWebhook = NewFormApprovalWebhook & {
   createdAt: string
   updatedAt: string
 }
+
+export type FormApprovalCannedResponse = {
+  /** The unique key for the response to allow for reporting */
+  key: string
+  /** The human readable text to represent the response */
+  label: string
+  /** The text to prefill as the notes for an approval (should respect line breaks) */
+  notes: string
+}

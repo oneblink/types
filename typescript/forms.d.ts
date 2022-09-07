@@ -9,7 +9,7 @@ import type {
 } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { ABNRecord, BaseSearchResult, IdResource } from './misc'
-import { FormApprovalFlowStep } from './approvals'
+import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 
 ////////////////////////////////////////
 // Element Types
@@ -821,6 +821,11 @@ export type Form = {
      * email address when actioning an approval for this form
      */
     defaultNotificationEmailElementId?: string
+    /**
+     * A list of canned responses available for the form that can be assigned
+     * when actioning an approval
+     */
+    cannedResponses?: FormApprovalCannedResponse[]
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
