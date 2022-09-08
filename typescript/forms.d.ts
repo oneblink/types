@@ -827,11 +827,6 @@ export type Form = {
     defaultNotificationEmailElementId?: string
     /**
      * A list of canned responses available for the form that can be assigned
-     * when approving an approval
-     */
-    approveCannedResponses?: FormApprovalCannedResponse[]
-    /**
-     * A list of canned responses available for the form that can be assigned
      * when requesting clarification
      */
     clarificationRequestCannedResponses?: FormApprovalCannedResponse[]
