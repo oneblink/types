@@ -96,6 +96,14 @@ type _FormSubmissionMeta = {
   user?: UserProfile
   externalId?: string
   jobId?: string
+  validationResult?:
+    | {
+        isInvalid: true
+        error: string
+      }
+    | {
+        isInvalid: false
+      }
 }
 
 export type NewFormSubmissionMeta = _FormSubmissionMeta & {
