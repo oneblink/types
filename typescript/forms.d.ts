@@ -757,6 +757,8 @@ export type FormServerValidation =
       configuration: {
         /** The url of the validation endpoint. */
         url: string
+        /** The secret that will be sent to the validation endpoint. This can be used to verify the request came from OneBlink. */
+        secret?: string
       }
     }
   | {
@@ -770,6 +772,8 @@ export type FormServerValidation =
         apiEnvironment: string
         /** The route of the validation endpoint. */
         apiEnvironmentRoute: string
+        /** The secret that will be sent to the validation endpoint. This can be used to verify the request came from OneBlink. */
+        secret?: string
       }
     }
 
@@ -957,8 +961,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
