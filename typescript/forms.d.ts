@@ -840,6 +840,12 @@ export type Form = {
      * when denying an approval
      */
     denyCannedResponses?: FormApprovalCannedResponse[]
+    /**
+     * The amount of days after a clarification request has been sent with no
+     * response until the approval is automatically denied. Set `undefined`
+     * or unset for no Auto Deny.
+     */
+    autoDenyAfterClarificationRequestDays?: number
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
