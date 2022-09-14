@@ -840,6 +840,31 @@ export type Form = {
      * when denying an approval
      */
     denyCannedResponses?: FormApprovalCannedResponse[]
+    /**
+     * Configuration for automatically denying an approval after a number of
+     * days when a clarification request has been sent with no response.
+     * Set `undefined` or unset for no Auto Deny.
+     */
+    autoDenyAfterClarificationRequest?: {
+      /**
+       * The amount of days after a clarification request has been sent with no
+       * response until the approval is automatically denied.
+       */
+      days: number
+      /* Configuration for notifying parties. If object is not present, no notifications will be sent **/
+      notify?: {
+        /** Notes sent to specified users */
+        notes: string
+        /** The email addresses of the users to be notified of the result. If the approval flow has a
+         * `defaultNotificationEmailElementId` configured, this address will also receive a notification email. */
+        notificationEmailAddress?: string[]
+        /** Key to associate a canned response with an approval to allow for reporting */
+        cannedResponseKey?: string
+      }
+
+      /** Internal notes that are not seen by the user that submitted the form */
+      internalNotes?: string
+    }
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>

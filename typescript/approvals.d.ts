@@ -125,7 +125,7 @@ type BaseFormSubmissionApproval = {
   stepLabel: string
   /** Notes sent to the use that submitted the form */
   notes?: string
-  /** Key to associate a canned response with an approval to allowing for reporting */
+  /** Key to associate a canned response with an approval to allow for reporting */
   cannedResponseKey?: string
   /** Internal notes that are not seen by the user that submitted the form */
   internalNotes?: string
