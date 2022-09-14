@@ -851,12 +851,17 @@ export type Form = {
        * response until the approval is automatically denied.
        */
       days: number
-      /** The email addresses of the users to be notified of the result */
-      notificationEmailAddress?: string[]
-      /** Notes sent to the use that submitted the form */
-      notes?: string
-      /** Key to associate a canned response with an approval to allow for reporting */
-      cannedResponseKey?: string
+      /* Configuration for notifying parties. If object is not present, no notifications will be sent **/
+      notify?: {
+        /** Notes sent to specified users */
+        notes: string
+        /** The email addresses of the users to be notified of the result. If the approval flow has a
+         * `defaultNotificationEmailElementId` configured, this address will also receive a notification email. */
+        notificationEmailAddress?: string[]
+        /** Key to associate a canned response with an approval to allow for reporting */
+        cannedResponseKey?: string
+      }
+
       /** Internal notes that are not seen by the user that submitted the form */
       internalNotes?: string
     }
