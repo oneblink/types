@@ -29,29 +29,7 @@ export type NewOrganisation = {
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
   formStoreFormIds?: number[]
-  tierAdditions?: {
-    formSubmissions?: number
-    authenticatedFormSubmissions?: number
-    consoleUsers?: number
-    appUsers?: number
-    formAppsEnvironments?: number
-    formElementLookups?: number
-    formElementOptionsSets?: number
-    developerKeys?: number
-    apiHostingInstances?: number
-    cdnHostingInstances?: number
-    formsApps?: number
-    schedulingCalendars?: number
-    formStoreForms?: number
-    formStoreAppUsers?: number
-    availableFormSubmissionEvents?: FormEventType[] | null
-    availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
-    allowFormsAppPWASettings?: boolean
-    allowFormsAppCustomDomains?: boolean
-    allowFormsAppMenu?: boolean
-    allowApprovalsSolution?: boolean
-    allowVolunteersSolution?: boolean
-  }
+  tierOverrides?: Partial<NewTier['tierData']>
 }
 
 export type Organisation = NewOrganisation & {
