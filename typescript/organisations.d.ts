@@ -1,6 +1,5 @@
 import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
-import { SolutionsApp } from './formsApps'
 import { UserProfile } from './misc'
 
 export interface NewFormRetentionPolicy {
@@ -26,14 +25,32 @@ export type NewOrganisation = {
   prefillDataRetentionDays?: number | null
   retainDraftData: boolean
   draftDataRetentionDays?: number | null
-  solutions: Array<SolutionsApp['type']>
   awsCustomerId?: string
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
   formStoreFormIds?: number[]
   tierAdditions?: {
+    formSubmissions?: number
+    authenticatedFormSubmissions?: number
+    consoleUsers?: number
+    appUsers?: number
+    formAppsEnvironments?: number
+    formElementLookups?: number
+    formElementOptionsSets?: number
+    developerKeys?: number
+    apiHostingInstances?: number
+    cdnHostingInstances?: number
+    formsApps?: number
+    schedulingCalendars?: number
     formStoreForms?: number
     formStoreAppUsers?: number
+    availableFormSubmissionEvents?: FormEventType[] | null
+    availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
+    allowFormsAppPWASettings?: boolean
+    allowFormsAppCustomDomains?: boolean
+    allowFormsAppMenu?: boolean
+    allowApprovalsSolution?: boolean
+    allowVolunteersSolution?: boolean
   }
 }
 
@@ -79,11 +96,13 @@ export interface NewTier {
     maximumSchedulingCalendars: TierLimitation
     maximumFormStoreForms: TierLimitation
     maximumFormStoreAppUsers: TierLimitation
-    availableFormSubmissionEvents?: FormEventType[]
-    availableFormPostSubmissionActions?: FormPostSubmissionAction[]
+    availableFormSubmissionEvents?: FormEventType[] | null
+    availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
     allowFormsAppPWASettings: boolean
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
+    allowApprovalsSolution?: boolean
+    allowVolunteersSolution?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
