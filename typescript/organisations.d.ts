@@ -29,9 +29,7 @@ export type NewOrganisation = {
   apiHostingAwsAccountId: string
   cdnHostingAwsAccountId: string
   formStoreFormIds?: number[]
-  tierOverrides?: {
-    [prop in keyof NewTier['tierData']]?: NewTier['tierData'][prop] | null
-  }
+  tierOverrides?: Partial<NewTier['tierData']>
 }
 
 export type Organisation = NewOrganisation & {
