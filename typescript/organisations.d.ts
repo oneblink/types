@@ -30,6 +30,7 @@ export type NewOrganisation = {
   cdnHostingAwsAccountId: string
   formStoreFormIds?: number[]
   tierOverrides?: Partial<NewTier['tierData']>
+  attachmentLinkExpiryDays?: number
 }
 
 export type Organisation = NewOrganisation & {
