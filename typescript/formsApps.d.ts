@@ -216,6 +216,7 @@ export type FormsAppHostnameConfiguration = {
     distributionId: string
     distributionDomain: string
   }
+  awsAccountId: string
 }
 
 type FormsAppPWASettings = {
