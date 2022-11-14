@@ -195,7 +195,6 @@ export type NewFormApprovalWebhook = {
   formsAppId: number
   formIds?: number[]
   label: string
-  noteId?: string
 }
 
 export type FormApprovalWebhook = NewFormApprovalWebhook & {
