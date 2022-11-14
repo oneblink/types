@@ -183,6 +183,9 @@ export type FormApprovalWebhookEvent =
   | 'STEP_CLARIFICATION_REQUIRED'
   | 'APPROVAL_APPROVED'
   | 'APPROVAL_REOPENED'
+  | 'NOTE_CREATED'
+  | 'NOTE_UPDATED'
+  | 'NOTE_DELETED'
 
 export type NewFormApprovalWebhook = {
   endpoint: FormServerValidation
