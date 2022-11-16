@@ -47,6 +47,8 @@ export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   configuration: {
     /** URL that the callback is made to. */
     url: string
+    /** The unique identifier for the form that should trigger this workflow event */
+    formId?: number
   }
 }
 
