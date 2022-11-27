@@ -31,6 +31,7 @@ export type NewOrganisation = {
   formStoreFormIds?: number[]
   tierOverrides?: Partial<NewTier['tierData']>
   attachmentLinkExpiryDaysOverride?: number
+  timezone?: string
 }
 
 export type Organisation = NewOrganisation & {
