@@ -379,6 +379,7 @@ export type BaseFormSubmissionProcessing = {
   formsAppId: number
   keyId?: string
   user?: UserProfile
+  timezone: string
 } & S3SubmissionTags
 
 export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
