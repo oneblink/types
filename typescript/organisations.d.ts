@@ -114,6 +114,8 @@ export type AuditRecordType =
   | 'FormJsonSchema'
   | 'WebApp'
   | 'WebAppEnvironment'
+  | 'WebAppEnvironmentCustomDomain'
+  | 'WebAppEnvironmentCustomDomainCertificate'
   | 'FormsApp'
   | 'FormsAppStyles'
   | 'FormsAppUser'

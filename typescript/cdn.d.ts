@@ -9,13 +9,32 @@ export interface WebApp {
   }
 }
 
-export interface WebAppEnvironment {
+export type NewWebAppEnvironmentDistributionConfiguration = {
+  brandedDomain: string
+  isSinglePageApplication?: boolean
+  customDomain?: {
+    domain: string
+    acm: {
+      certificateArn: string
+      dnsValidation: {
+        name: string
+        type: string
+        value: string
+      }
+    }
+  }
+}
+
+export type NewWebAppEnvironment = {
   webAppId: string
   environment: string
+  distributionConfiguration: NewWebAppEnvironmentDistributionConfiguration
+}
+
+export type WebAppEnvironment = NewWebAppEnvironment & {
   lastDeployment: string
-  distributionConfiguration: {
+  distributionConfiguration: NewWebAppEnvironmentDistributionConfiguration & {
     distributionId: string
     domainName: string
-    brandedDomain: string
   }
 }
