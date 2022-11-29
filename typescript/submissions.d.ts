@@ -8,7 +8,8 @@ import {
   FormWorkflowEvent,
   FormSchedulingEvent,
 } from './submissionEvents'
-import { components } from './cp-pay/swagger.v1'
+import { components as cpPayV1Components } from './cp-pay/swagger.v1'
+import { components as cpPayV2Components } from './cp-pay/swagger.v2'
 
 export interface NewFormsAppDraft {
   /** The title input by the user to display the draft */
@@ -235,10 +236,20 @@ export type BaseFormSubmissionPayment = {
 
 export type CPPayPayment = BaseFormSubmissionPayment & {
   type: CPPaySubmissionEvent['type']
-  paymentTransaction?: Required<
-    components['schemas']['ValidateTransactionResultDto']
-  >
-}
+} & (
+    | {
+        cpPayVersion?: 'v1'
+        paymentTransaction?: Required<
+          cpPayV1Components['schemas']['ValidateTransactionResultDto']
+        >
+      }
+    | {
+        cpPayVersion: 'v2'
+        paymentTransaction?: Required<
+          cpPayV2Components['schemas']['TransactionDetailsViewModel']
+        >
+      }
+  )
 
 export type WestpacQuickWebPayment = BaseFormSubmissionPayment & {
   type: WestpacQuickWebSubmissionEvent['type']
