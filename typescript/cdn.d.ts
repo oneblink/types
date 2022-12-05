@@ -13,6 +13,7 @@ export type NewWebAppEnvironmentDistributionConfiguration = {
   brandedDomain: string
   isSinglePageApplication?: boolean
   customDomain?: {
+    isComplete: boolean
     domain: string
     acm: {
       certificateArn: string
