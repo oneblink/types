@@ -12,6 +12,7 @@ export interface WebApp {
 export type NewWebAppEnvironmentDistributionConfiguration = {
   brandedDomain: string
   isSinglePageApplication?: boolean
+  disableSecurityResponseHeaders?: boolean
   customDomain?: {
     isComplete: boolean
     domain: string
