@@ -246,7 +246,7 @@ export type CPPayPayment = BaseFormSubmissionPayment & {
     | {
         cpPayVersion: 'v2'
         paymentTransaction?: Required<
-          cpPayV2Components['schemas']['TransactionDetailsViewModel']
+          cpPayV2Components['schemas']['TransactionDetailsViewModelResponseEnvelope']
         >
       }
   )
