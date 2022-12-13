@@ -236,20 +236,18 @@ export type BaseFormSubmissionPayment = {
 
 export type CPPayPayment = BaseFormSubmissionPayment & {
   type: CPPaySubmissionEvent['type']
-} & (
-    | {
+  paymentTransaction?:
+    | ({
         cpPayVersion?: 'v1'
-        paymentTransaction?: Required<
-          cpPayV1Components['schemas']['ValidateTransactionResultDto']
-        >
-      }
-    | {
+      } & Required<
+        cpPayV1Components['schemas']['ValidateTransactionResultDto']
+      >)
+    | ({
         cpPayVersion: 'v2'
-        paymentTransaction?: Required<
-          cpPayV2Components['schemas']['TransactionDetailsViewModelResponseEnvelope']
-        >
-      }
-  )
+      } & Required<
+        cpPayV2Components['schemas']['TransactionDetailsViewModelResponseEnvelope']
+      >)
+}
 
 export type WestpacQuickWebPayment = BaseFormSubmissionPayment & {
   type: WestpacQuickWebSubmissionEvent['type']
