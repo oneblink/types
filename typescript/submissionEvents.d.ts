@@ -156,9 +156,9 @@ export type TrimSubmissionEvent = FormEventBase & {
       /** The recordType object. Contains the recordType properties. */
       recordType: TrimUriOption
       /** The actionDefinition object. Contains the actionDefinition properties. */
-      actionDefinition: TrimUriOption
+      actionDefinition?: TrimUriOption
       /** The location object. Contains the location properties. */
-      location: TrimUriOption
+      location?: TrimUriOption
       /** The author object. Contains the author properties. */
       author?: TrimUriOption
       /**
