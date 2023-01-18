@@ -157,13 +157,6 @@ export type FormFormElement = _FormElementBase & {
   elements?: FormElement[]
 }
 
-export type InfoPageElement = _FormElementBase & {
-  type: 'infoPage'
-  name: string
-  formId: number
-  elements?: FormElement[]
-}
-
 export type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio'
   buttons: boolean
@@ -689,7 +682,7 @@ export type FormElementWithoutForm =
   | NonNestedElementsElement
   | NestedElementsElement
 
-export type FormElementWithForm = FormFormElement | InfoPageElement
+export type FormElementWithForm = FormFormElement
 
 export type FormElement = FormElementWithoutForm | FormElementWithForm
 
