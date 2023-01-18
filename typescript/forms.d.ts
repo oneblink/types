@@ -151,14 +151,7 @@ export type FormElementWithOptionsBase = LookupFormElement &
   }
 
 export type FormFormElement = _FormElementBase & {
-  type: 'form'
-  name: string
-  formId: number
-  elements?: FormElement[]
-}
-
-export type InfoPageElement = _FormElementBase & {
-  type: 'infoPage'
+  type: 'form' | 'infoPage'
   name: string
   formId: number
   elements?: FormElement[]
@@ -689,7 +682,7 @@ export type FormElementWithoutForm =
   | NonNestedElementsElement
   | NestedElementsElement
 
-export type FormElementWithForm = FormFormElement | InfoPageElement
+export type FormElementWithForm = FormFormElement
 
 export type FormElement = FormElementWithoutForm | FormElementWithForm
 
@@ -800,8 +793,6 @@ export type Form = {
   publishStartDate?: string
   /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
-  /** Whether or not the Form is an Info Page. */
-  isInfoPage: boolean
   /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
   /**
@@ -887,7 +878,6 @@ export type FormTemplate = {
   description?: string
   elements: FormElement[]
   tags: string[]
-  isInfoPage: boolean
   isMultiPage: boolean
   createdAt: string
   updatedAt: string
@@ -897,7 +887,6 @@ export type FormTemplate = {
 export type FormQuerystringParameters = {
   name?: string
   isAuthenticated?: boolean
-  isInfoPage?: boolean
   limit?: number
   offset: number
   injectForms?: boolean
