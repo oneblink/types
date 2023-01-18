@@ -151,7 +151,7 @@ export type FormElementWithOptionsBase = LookupFormElement &
   }
 
 export type FormFormElement = _FormElementBase & {
-  type: 'form'
+  type: 'form' | 'infoPage'
   name: string
   formId: number
   elements?: FormElement[]
