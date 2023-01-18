@@ -800,8 +800,6 @@ export type Form = {
   publishStartDate?: string
   /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
-  /** Whether or not the Form is an Info Page. */
-  isInfoPage: boolean
   /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
   /**
@@ -887,7 +885,6 @@ export type FormTemplate = {
   description?: string
   elements: FormElement[]
   tags: string[]
-  isInfoPage: boolean
   isMultiPage: boolean
   createdAt: string
   updatedAt: string
@@ -897,7 +894,6 @@ export type FormTemplate = {
 export type FormQuerystringParameters = {
   name?: string
   isAuthenticated?: boolean
-  isInfoPage?: boolean
   limit?: number
   offset: number
   injectForms?: boolean
