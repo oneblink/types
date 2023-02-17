@@ -856,6 +856,10 @@ export type Form = {
       /** Internal notes that are not seen by the user that submitted the form */
       internalNotes?: string
     }
+    /**
+     * Disallow approving when approval is waiting for clarification
+     */
+    disallowApprovingWhenAwaitingClarification?: boolean
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
