@@ -139,7 +139,8 @@ type BaseFormSubmissionApproval = {
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   /** The status of the approval */
-  status: 'PENDING' | 'CLARIFICATION_REQUIRED'
+  status: 'PENDING' | 'CLARIFICATION_REQUIRED' | 'APPROVED'
+  approvalFormSubmissionId?: string
 }
 
 /**
