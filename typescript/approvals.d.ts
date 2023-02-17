@@ -135,12 +135,13 @@ type BaseFormSubmissionApproval = {
   approvalFormId?: number
   /** The id of a form that should be submitted with approval */
   additionalNotes?: FormSubmissionApprovalNote[]
+  /** The id of a submission that was submitted with approval */
+  approvalFormSubmissionId?: string
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
   /** The status of the approval */
   status: 'PENDING' | 'CLARIFICATION_REQUIRED' | 'APPROVED'
-  approvalFormSubmissionId?: string
 }
 
 /**
@@ -167,8 +168,6 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   id: string
   /** The status of the approval */
   status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
-  /** The id of a submission that was submitted with approval */
-  approvalFormSubmissionId?: string
   /** The date and time (in ISO format) the approval was created */
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
