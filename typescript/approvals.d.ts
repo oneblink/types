@@ -211,3 +211,24 @@ export type FormApprovalCannedResponse = {
   /** The text to prefill as the notes for an approval (should respect line breaks) */
   notes: string
 }
+
+export type NewFormApprovalWebhookEventRecord = {
+  formId: number
+  event: {
+    type: FormApprovalWebhookEvent
+    formSubmissionApprovalId?: string
+    formApprovalFlowInstanceId?: number
+    noteId?: string
+  }
+  error?: string
+  endpointStatus?: string
+  startedAt?: string
+  finishedAt?: string
+  stage: 'APPROVAL' | 'REPLAY'
+  formApprovalFlowInstanceId: string
+}
+
+export type FormApprovalWebhookEventRecord = NewFormApprovalWebhookEventRecord & {
+  id: number
+  createdAt: string
+}
