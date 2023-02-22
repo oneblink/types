@@ -59,7 +59,7 @@ interface ABNValue {
   replacedFrom: string
 }
 
-export type ABNRecord = {
+type ABNRecordBase = {
   recordLastUpdatedDate: string
   ABN: ABNValue | ABNValue[]
   entityStatus: {
@@ -67,12 +67,12 @@ export type ABNRecord = {
     effectiveFrom: string
     effectiveTo: string
   }
-  ASICNumber?: string
-  entityType?: {
+  ASICNumber: string
+  entityType: {
     entityTypeCode: string
     entityDescription: string
   }
-  goodsAndServicesTax?: {
+  goodsAndServicesTax: {
     effectiveFrom: string
     effectiveTo: string
   }
@@ -99,10 +99,19 @@ export type ABNRecord = {
     effectiveFrom: string
     effectiveTo: string
   }
-  businessName?: Array<{
-    organisationName: string
-    effectiveFrom: string
-  }>
+}
+
+type ABNBusinessName = {
+  organisationName: string
+  effectiveFrom: string
+}
+
+export type ABNRecord = ABNRecordBase & {
+  businessName: Array<ABNBusinessName>
+}
+
+export type ABNLookupResponse = ABNRecordBase & {
+  businessName: Array<ABNBusinessName> | ABNBusinessName
 }
 
 export type BSBRecord = {
