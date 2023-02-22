@@ -225,7 +225,7 @@ export type NewFormApprovalWebhookEventRecord = {
   startedAt?: string
   finishedAt?: string
   stage: 'APPROVAL' | 'REPLAY'
-  formApprovalFlowInstanceId: string
+  formApprovalFlowInstanceId: number
 }
 
 export type FormApprovalWebhookEventRecord = NewFormApprovalWebhookEventRecord & {
