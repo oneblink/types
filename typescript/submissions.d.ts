@@ -192,6 +192,8 @@ export type FormSubmissionAttachment = {
   url: string
   contentType: string
   fileName: string
+  baseFileName: string
+  fileExtension: string
   id: string
   isPrivate: boolean
   uploadedAt?: string
