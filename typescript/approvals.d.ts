@@ -219,9 +219,10 @@ export type NewFormApprovalWebhookEventRecord = {
     formSubmissionApprovalId?: string
     formApprovalFlowInstanceId?: number
     noteId?: string
+    secret: string
   }
   error?: string
-  endpointStatus?: string
+  endpointStatus?: number
   finishedAt?: string
   stage: 'APPROVAL' | 'REPLAY'
   formApprovalFlowInstanceId: number
