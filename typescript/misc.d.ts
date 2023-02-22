@@ -67,12 +67,12 @@ export type ABNRecord = {
     effectiveFrom: string
     effectiveTo: string
   }
-  ASICNumber: string
-  entityType: {
+  ASICNumber?: string
+  entityType?: {
     entityTypeCode: string
     entityDescription: string
   }
-  goodsAndServicesTax: {
+  goodsAndServicesTax?: {
     effectiveFrom: string
     effectiveTo: string
   }
@@ -93,13 +93,13 @@ export type ABNRecord = {
     organisationName: string
     effectiveFrom: string
   }
-  mainBusinessPhysicalAddress: {
+  mainBusinessPhysicalAddress?: {
     stateCode: string
     postcode: string
     effectiveFrom: string
     effectiveTo: string
   }
-  businessName: Array<{
+  businessName?: Array<{
     organisationName: string
     effectiveFrom: string
   }>
