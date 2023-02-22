@@ -153,6 +153,7 @@ export type AuditRecordType =
   | 'FormStoreExport'
   | 'FormStoreFormDefinition'
   | 'FormSubmissionApprovalAdditionalNote'
+  | 'FormApprovalWebhookEventReplay'
 
 export type NewAuditRecord = {
   type: AuditRecordType
