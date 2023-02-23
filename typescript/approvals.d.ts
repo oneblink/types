@@ -213,7 +213,7 @@ export type FormApprovalCannedResponse = {
 }
 
 export type NewFormApprovalWebhookEventRecord = {
-  formId: number
+  formApprovalFlowInstanceId: number
   event: {
     type: FormApprovalWebhookEvent
     formSubmissionApprovalId?: string
@@ -225,7 +225,6 @@ export type NewFormApprovalWebhookEventRecord = {
   endpointStatus?: number
   finishedAt?: string
   stage: 'APPROVAL' | 'REPLAY'
-  formApprovalFlowInstanceId: number
 }
 
 export type FormApprovalWebhookEventRecord = NewFormApprovalWebhookEventRecord & {
