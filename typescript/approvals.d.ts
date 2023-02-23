@@ -214,6 +214,7 @@ export type FormApprovalCannedResponse = {
 
 export type NewFormApprovalWebhookEventRecord = {
   formApprovalFlowInstanceId: number
+  formApprovalWebhookId: number
   event: {
     type: FormApprovalWebhookEvent
     formSubmissionApprovalId?: string
