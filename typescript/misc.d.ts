@@ -72,7 +72,7 @@ export type ABNRecord = {
     entityTypeCode: string
     entityDescription: string
   }
-  goodsAndServicesTax: {
+  goodsAndServicesTax?: {
     effectiveFrom: string
     effectiveTo: string
   }
@@ -102,7 +102,7 @@ export type ABNRecord = {
   businessName: Array<{
     organisationName: string
     effectiveFrom: string
-  }>
+  } | null>
 }
 
 export type BSBRecord = {
