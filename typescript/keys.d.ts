@@ -20,9 +20,14 @@ export type DeveloperKeyAccess = {
       formIds: number[]
     }
   }
+  forms?: {
+    read: {
+      ids: number[]
+    }
+  }
   prefillData?: {
     read: {
-      ids?: string[]
+      ids: string[]
     }
   }
 }
