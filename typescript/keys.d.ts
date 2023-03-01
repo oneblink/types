@@ -13,3 +13,20 @@ export interface Key {
   }
   isSolutions: boolean
 }
+
+export type DeveloperKeyAccess = {
+  submissions?: {
+    create: {
+      formIds: number[]
+    }
+  }
+  prefillData?: {
+    read: {
+      ids?: string[]
+    }
+  }
+}
+
+export type DeveloperKeyJWTPayload = {
+  'oneblink:access'?: DeveloperKeyAccess
+}
