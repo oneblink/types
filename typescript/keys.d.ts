@@ -19,12 +19,12 @@ export type DeveloperKeyAccess = {
     create: {
       formIds: number[]
     }
-  }
+  } | null
   prefillData?: {
     read: {
-      ids?: string[]
+      ids: string[]
     }
-  }
+  } | null
 }
 
 export type DeveloperKeyJWTPayload = {
