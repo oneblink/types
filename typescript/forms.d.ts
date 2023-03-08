@@ -168,6 +168,7 @@ export type CheckboxElement = FormElementWithOptionsBase & {
   buttons: boolean
   defaultValue?: string[]
   canToggleAll?: boolean
+  requiredAll?: boolean
 }
 
 export type SelectElement = FormElementWithOptionsBase & {
@@ -750,7 +751,10 @@ export type FormServerValidation =
       configuration: {
         /** The url of the validation endpoint. */
         url: string
-        /** The secret that will be sent to the validation endpoint. This can be used to verify the request came from OneBlink. */
+        /**
+         * The secret that will be sent to the validation endpoint. This can be
+         * used to verify the request came from OneBlink.
+         */
         secret?: string
       }
     }
@@ -765,7 +769,10 @@ export type FormServerValidation =
         apiEnvironment: string
         /** The route of the validation endpoint. */
         apiEnvironmentRoute: string
-        /** The secret that will be sent to the validation endpoint. This can be used to verify the request came from OneBlink. */
+        /**
+         * The secret that will be sent to the validation endpoint. This can be
+         * used to verify the request came from OneBlink.
+         */
         secret?: string
       }
     }
@@ -833,8 +840,8 @@ export type Form = {
     denyCannedResponses?: FormApprovalCannedResponse[]
     /**
      * Configuration for automatically denying an approval after a number of
-     * days when a clarification request has been sent with no response.
-     * Set `undefined` or unset for no Auto Deny.
+     * days when a clarification request has been sent with no response. Set
+     * `undefined` or unset for no Auto Deny.
      */
     autoDenyAfterClarificationRequest?: {
       /**
@@ -846,8 +853,11 @@ export type Form = {
       notify?: {
         /** Notes sent to specified users */
         notes: string
-        /** The email addresses of the users to be notified of the result. If the approval flow has a
-         * `defaultNotificationEmailElementId` configured, this address will also receive a notification email. */
+        /**
+         * The email addresses of the users to be notified of the result. If the
+         * approval flow has a `defaultNotificationEmailElementId` configured,
+         * this address will also receive a notification email.
+         */
         notificationEmailAddress?: string[]
         /** Key to associate a canned response with an approval to allow for reporting */
         cannedResponseKey?: string
@@ -856,9 +866,7 @@ export type Form = {
       /** Internal notes that are not seen by the user that submitted the form */
       internalNotes?: string
     }
-    /**
-     * Disallow approving when approval is waiting for clarification
-     */
+    /** Disallow approving when approval is waiting for clarification */
     disallowApprovingWhenAwaitingClarification?: boolean
   }
   /** A list of tags used to categorise or describe the form. */
@@ -979,7 +987,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
