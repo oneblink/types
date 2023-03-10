@@ -719,8 +719,6 @@ export type FormPostSubmissionAction =
 /**
  * ### Examples
  *
- * #### Callback
- *
  * ```json
  * {
  *   "type": "CALLBACK",
@@ -729,8 +727,24 @@ export type FormPostSubmissionAction =
  *   }
  * }
  * ```
- *
- * #### OneBlink API
+ */
+export type EndpointConfigurationCallback = {
+  /** The type of the validation endpoint. */
+  type: 'CALLBACK'
+  /** The configuration of the validation endpoint. */
+  configuration: {
+    /** The url of the validation endpoint. */
+    url: string
+    /**
+     * The secret that will be sent to the validation endpoint. This can be used
+     * to verify the request came from OneBlink.
+     */
+    secret?: string
+  }
+}
+
+/**
+ * ### Examples
  *
  * ```json
  * {
@@ -743,51 +757,42 @@ export type FormPostSubmissionAction =
  * }
  * ```
  */
-export type FormServerValidation =
-  | {
-      /** The type of the validation endpoint. */
-      type: 'CALLBACK'
-      /** The configuration of the validation endpoint. */
-      configuration: {
-        /** The url of the validation endpoint. */
-        url: string
-        /**
-         * The secret that will be sent to the validation endpoint. This can be
-         * used to verify the request came from OneBlink.
-         */
-        secret?: string
-      }
-    }
-  | {
-      /** The type of the validation endpoint. */
-      type: 'ONEBLINK_API'
-      /** The configuration of the validation endpoint. */
-      configuration: {
-        /** The ID of the OneBlink hosted API that houses the validation endpoint. */
-        apiId: string
-        /** The environment of the specified OneBlink hosted API. */
-        apiEnvironment: string
-        /** The route of the validation endpoint. */
-        apiEnvironmentRoute: string
-        /**
-         * The secret that will be sent to the validation endpoint. This can be
-         * used to verify the request came from OneBlink.
-         */
-        secret?: string
-      }
-    }
+export type EndpointConfigurationAPI = {
+  /** The type of the validation endpoint. */
+  type: 'ONEBLINK_API'
+  /** The configuration of the validation endpoint. */
+  configuration: {
+    /** The ID of the OneBlink hosted API that houses the validation endpoint. */
+    apiId: string
+    /** The environment of the specified OneBlink hosted API. */
+    apiEnvironment: string
+    /** The route of the validation endpoint. */
+    apiEnvironmentRoute: string
+    /**
+     * The secret that will be sent to the validation endpoint. This can be used
+     * to verify the request came from OneBlink.
+     */
+    secret?: string
+  }
+}
+
+export type EndpointConfiguration =
+  | EndpointConfigurationCallback
+  | EndpointConfigurationAPI
+
+export type FormServerValidation = EndpointConfiguration
 
 export interface ReceiptTextComponent {
-  /** the type of receipt component */
+  /** The type of receipt component */
   type: 'text'
-  /** a hardcoded string value to insert into the externalId */
+  /** A hardcoded string value to insert into the externalId */
   value: string
 }
 
 export interface ReceiptDateComponent {
-  /** the type of receipt component */
+  /** The type of receipt component */
   type: 'date'
-  /** a date component to insert into the externalId */
+  /** A date component to insert into the externalId */
   format: ReceiptDateFormat
 }
 
@@ -798,15 +803,15 @@ export type ReceiptDateFormat =
   | 'year'
 
 export interface ReceiptRandomComponent {
-  /** the type of receipt component */
+  /** The type of receipt component */
   type: 'random'
-  /** the number of random characters */
+  /** The number of random characters */
   length: number
-  /** whether to include numbers */
+  /** Whether to include numbers */
   numbers: Boolean
-  /** whether to include uppercase characters */
+  /** Whether to include uppercase characters */
   uppercase: Boolean
-  /** whether to include lowercase characters */
+  /** Whether to include lowercase characters */
   lowercase: Boolean
 }
 
@@ -816,7 +821,7 @@ export type ReceiptComponent =
   | ReceiptRandomComponent
 
 export type ExternalIdGeneration =
-  | FormServerValidation
+  | EndpointConfiguration
   | {
       /** The type of the external id generation. */
       type: 'RECEIPT_ID'
@@ -1037,7 +1042,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
