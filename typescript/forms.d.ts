@@ -793,12 +793,9 @@ export interface ReceiptDateComponent {
 
 export type ReceiptDateFormat =
   | 'dayOfMonth'
-  | 'dayOfWeek'
-  | 'monthInitial'
   | 'monthNumber'
   | 'yearShort'
   | 'year'
-  | 'monthNameShort'
 
 export interface ReceiptRandomComponent {
   /** the type of receipt component */
