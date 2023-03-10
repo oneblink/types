@@ -777,21 +777,21 @@ export type FormServerValidation =
       }
     }
 
-interface ReceiptTextComponent {
+export interface ReceiptTextComponent {
   /** the type of receipt component */
   type: 'text'
   /** a hardcoded string value to insert into the externalId */
   value: string
 }
 
-interface ReceiptDateComponent {
+export interface ReceiptDateComponent {
   /** the type of receipt component */
   type: 'date'
   /** a date component to insert into the externalId */
   format: ReceiptDateFormat
 }
 
-type ReceiptDateFormat =
+export type ReceiptDateFormat =
   | 'dayOfMonth'
   | 'dayOfWeek'
   | 'monthInitial'
@@ -800,7 +800,7 @@ type ReceiptDateFormat =
   | 'year'
   | 'monthNameShort'
 
-interface ReceiptRandomComponent {
+export interface ReceiptRandomComponent {
   /** the type of receipt component */
   type: 'random'
   /** the number of random characters */
