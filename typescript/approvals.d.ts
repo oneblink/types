@@ -1,6 +1,6 @@
 import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
-import type { FormServerValidation } from './forms'
+import type { EndpointConfiguration } from './forms'
 
 export type FormApprovalFlowStepBase = {
   /** The group that will be assigned an approval for this step */
@@ -188,7 +188,7 @@ export type FormApprovalWebhookEvent =
   | 'NOTE_DELETED'
 
 export type NewFormApprovalWebhook = {
-  endpoint: FormServerValidation
+  endpoint: EndpointConfiguration
   secret: string
   webhookEvents: FormApprovalWebhookEvent[]
   isEnabled: boolean
@@ -228,7 +228,8 @@ export type NewFormApprovalWebhookEventRecord = {
   stage: 'APPROVAL' | 'REPLAY'
 }
 
-export type FormApprovalWebhookEventRecord = NewFormApprovalWebhookEventRecord & {
-  id: number
-  createdAt: string
-}
+export type FormApprovalWebhookEventRecord =
+  NewFormApprovalWebhookEventRecord & {
+    id: number
+    createdAt: string
+  }
