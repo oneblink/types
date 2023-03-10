@@ -777,6 +777,59 @@ export type FormServerValidation =
       }
     }
 
+interface ReceiptTextComponent {
+  /** the type of receipt component */
+  type: 'text'
+  /** a hardcoded string value to insert into the externalId */
+  value: string
+}
+
+interface ReceiptDateComponent {
+  /** the type of receipt component */
+  type: 'date'
+  /** a date component to insert into the externalId */
+  format: ReceiptDateFormat
+}
+
+type ReceiptDateFormat =
+  | 'dayOfMonth'
+  | 'dayOfWeek'
+  | 'monthInitial'
+  | 'monthNumber'
+  | 'yearShort'
+  | 'year'
+  | 'monthNameShort'
+
+interface ReceiptRandomComponent {
+  /** the type of receipt component */
+  type: 'random'
+  /** the number of random characters */
+  length: number
+  /** whether to include numbers */
+  numbers: Boolean
+  /** whether to include uppercase characters */
+  uppercase: Boolean
+  /** whether to include lowercase characters */
+  lowercase: Boolean
+}
+
+export type ReceiptComponent =
+  | ReceiptTextComponent
+  | ReceiptDateComponent
+  | ReceiptRandomComponent
+
+export type ExternalIdGeneration =
+  | FormServerValidation
+  | {
+      /** The type of the external id generation. */
+      type: 'RECEIPT_ID'
+      /** The configuration of the external id generation. */
+      configuration: {
+        /** An array of receipt components used to build an external Id */
+        externalIdGenerator: ReceiptComponent[]
+      }
+    }
+
 export type Form = {
   /** Id of the form. */
   id: number
@@ -876,7 +929,7 @@ export type Form = {
   /** The details of the form validation endpoint. */
   serverValidation?: FormServerValidation
   /** The details of the externalId generation endpoint. */
-  externalIdGeneration?: FormServerValidation
+  externalIdGeneration?: ExternalIdGeneration
 }
 
 export type PreviewUrl = {
@@ -987,8 +1040,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
