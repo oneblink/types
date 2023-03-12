@@ -49,6 +49,11 @@ export type FormElementBase = _FormElementBase & {
    * the element label.
    */
   hint?: string
+  /**
+   * Determine where the helper text will show based on the value provided:
+   * `BELOW_LABEL`, `TOOLTIP`
+   */
+  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
 }
 
 export type LookupFormElement = FormElementBase & {
