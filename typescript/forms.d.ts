@@ -14,7 +14,7 @@ import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 ////////////////////////////////////////
 // Element Types
 
-export type HintPositionEnum =  'BELOW_LABEL' | 'TOOLTIP'
+export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 
 export type _FormElementBase = {
   isNew?: boolean
@@ -38,24 +38,21 @@ export type _FormElementBase = {
   meta?: string
 }
 
-export type FormElementBase = _FormElementBase & FormElementHint & {
-  /**
-   * The key that will be assigned a value in the submission data when the form
-   * is submitted.
-   */
-  name: string
-  /** Display text presented to the user above the input by default. */
-  label: string
-}
+export type FormElementBase = _FormElementBase &
+  FormElementHint & {
+    /**
+     * The key that will be assigned a value in the submission data when the
+     * form is submitted.
+     */
+    name: string
+    /** Display text presented to the user above the input by default. */
+    label: string
+  }
 
 export type FormElementHint = {
-    /**
-   * The text that will be displayed based on hintPosition
-   */
+  /** The text that will be displayed based on hintPosition */
   hint?: string
-  /**
-   * Determine where the helper text will show
-   */
+  /** Determine where the helper text will show */
   hintPosition?: HintPositionEnum
 }
 
@@ -326,11 +323,12 @@ export type PageElement = _FormElementBase & {
   label: string
 } & _NestedElementsElement
 
-export type SectionElement = _FormElementBase & FormElementHint & {
-  type: 'section'
-  isCollapsed: boolean
-  label: string
-} & _NestedElementsElement
+export type SectionElement = _FormElementBase &
+  FormElementHint & {
+    type: 'section'
+    isCollapsed: boolean
+    label: string
+  } & _NestedElementsElement
 
 export type HtmlElement = FormElementBase & {
   type: 'html'
@@ -869,6 +867,9 @@ export type Form = {
    * `postSubmissionActions`.
    */
   redirectUrl?: string
+  postSubmissionReceipt?: {
+    html: string
+  }
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
   draftEvents?: FormWorkflowEvent[]
