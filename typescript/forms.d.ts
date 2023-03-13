@@ -326,6 +326,7 @@ export type SectionElement = _FormElementBase & {
   isCollapsed: boolean
   label: string
   hint?: string
+  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
 } & _NestedElementsElement
 
 export type HtmlElement = FormElementBase & {
