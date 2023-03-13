@@ -14,6 +14,8 @@ import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 ////////////////////////////////////////
 // Element Types
 
+type hintPositionEnum =  'BELOW_LABEL' | 'TOOLTIP'
+
 export type _FormElementBase = {
   isNew?: boolean
   /** The unique identifier for an individual form element. */
@@ -51,8 +53,10 @@ export type FormElementBase = _FormElementBase & {
   /**
    * Determine where the helper text will show
    */
-  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
+  hintPosition?: hintPositionEnum
 }
+
+export type FormElementBaseNoName = Omit<FormElementBase, "name">
 
 export type LookupFormElement = FormElementBase & {
   /** Determine if the element is a Data Lookup element (`true`) or not (`false`). */
@@ -321,12 +325,9 @@ export type PageElement = _FormElementBase & {
   label: string
 } & _NestedElementsElement
 
-export type SectionElement = _FormElementBase & {
+export type SectionElement = FormElementBaseNoName & {
   type: 'section'
   isCollapsed: boolean
-  label: string
-  hint?: string
-  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
 } & _NestedElementsElement
 
 export type HtmlElement = FormElementBase & {
