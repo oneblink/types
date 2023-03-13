@@ -53,7 +53,7 @@ export type FormElementBase = _FormElementBase & {
   /**
    * Determine where the helper text will show
    */
-  hintPosition?: hintPositionEnum
+  hintPosition?: HintPositionEnum
 }
 
 export type FormElementBaseNoName = Omit<FormElementBase, "name">
