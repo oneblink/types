@@ -14,6 +14,8 @@ import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 ////////////////////////////////////////
 // Element Types
 
+export type HintPositionEnum =  'BELOW_LABEL' | 'TOOLTIP'
+
 export type _FormElementBase = {
   isNew?: boolean
   /** The unique identifier for an individual form element. */
@@ -36,7 +38,7 @@ export type _FormElementBase = {
   meta?: string
 }
 
-export type FormElementBase = _FormElementBase & {
+export type FormElementBase = _FormElementBase & FormElementHint & {
   /**
    * The key that will be assigned a value in the submission data when the form
    * is submitted.
@@ -44,14 +46,17 @@ export type FormElementBase = _FormElementBase & {
   name: string
   /** Display text presented to the user above the input by default. */
   label: string
-  /**
+}
+
+export type FormElementHint = {
+    /**
    * The text that will be displayed based on hintPosition
    */
   hint?: string
   /**
    * Determine where the helper text will show
    */
-  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
+  hintPosition?: HintPositionEnum
 }
 
 export type LookupFormElement = FormElementBase & {
@@ -321,11 +326,10 @@ export type PageElement = _FormElementBase & {
   label: string
 } & _NestedElementsElement
 
-export type SectionElement = _FormElementBase & {
+export type SectionElement = _FormElementBase & FormElementHint & {
   type: 'section'
   isCollapsed: boolean
   label: string
-  hint?: string
 } & _NestedElementsElement
 
 export type HtmlElement = FormElementBase & {
