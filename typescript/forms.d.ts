@@ -45,10 +45,13 @@ export type FormElementBase = _FormElementBase & {
   /** Display text presented to the user above the input by default. */
   label: string
   /**
-   * A hint triggered by an icon tooltip to be displayed when hovering beside
-   * the element label.
+   * The text that will be displayed based on hintPosition
    */
   hint?: string
+  /**
+   * Determine where the helper text will show
+   */
+  hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
 }
 
 export type LookupFormElement = FormElementBase & {
