@@ -14,7 +14,7 @@ import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 ////////////////////////////////////////
 // Element Types
 
-type hintPositionEnum =  'BELOW_LABEL' | 'TOOLTIP'
+export type HintPositionEnum =  'BELOW_LABEL' | 'TOOLTIP'
 
 export type _FormElementBase = {
   isNew?: boolean
