@@ -50,8 +50,7 @@ export type FormElementBase = _FormElementBase & {
    */
   hint?: string
   /**
-   * Determine where the helper text will show based on the value provided:
-   * `BELOW_LABEL`, `TOOLTIP`
+   * Determine where the helper text will show
    */
   hintPosition?: 'BELOW_LABEL' | 'TOOLTIP'
 }
