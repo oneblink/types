@@ -833,7 +833,7 @@ export type ExternalIdGeneration =
       /** The configuration of the external id generation. */
       configuration: {
         /** An array of receipt components used to build an external Id */
-        externalIdGenerator: ReceiptComponent[]
+        receiptComponents: ReceiptComponent[]
       }
     }
 
