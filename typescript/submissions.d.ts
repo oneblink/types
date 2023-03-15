@@ -1,4 +1,4 @@
-import { Form, FormElementWithName } from './forms'
+import { Form, FormElement, FormElementWithName } from './forms'
 import { NoU, UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
 import {
@@ -171,6 +171,7 @@ export type S3SubmissionData = {
   keyId?: string
   user?: _FormSubmissionMeta['user']
   device?: S3SubmissionDataDevice
+  lastElementUpdated?: FormElement
 }
 
 export type NewFormSubmissionFileAccessToken = {
