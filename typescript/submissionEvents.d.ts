@@ -91,6 +91,8 @@ export type PDFConfiguration = {
   usePagesAsBreaks?: boolean
 }
 export type EmailConfiguration = {
+  /** @deprecated: use toEmail instead */
+  email?: string
   /** The to: email addresses in which a PDF copy of the form submission will be sent. */
   toEmail?: string[]
   /** The cc: email addresses in which a PDF copy of the form submission will be sent. */
