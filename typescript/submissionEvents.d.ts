@@ -72,7 +72,7 @@ export type PdfSubmissionEventEmailTemplateMapping = {
       text: string
     }
 )
-export type PDFConfiguration = {
+export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** The name of the PDF file sent to the configured email address. */
   pdfFileName?: string
   /**
@@ -90,7 +90,7 @@ export type PDFConfiguration = {
   /** Whether pages in the form submission should translate to page breaks in the PDF. */
   usePagesAsBreaks?: boolean
 }
-export type EmailConfiguration = {
+export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
   email?: string
   /** The to: email addresses in which a PDF copy of the form submission will be sent. */
@@ -111,14 +111,12 @@ export type EmailConfiguration = {
 }
 export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
-  configuration: ApprovalFormsInclusionConfiguration &
-    PDFConfiguration &
-    EmailConfiguration
+  configuration: PDFConfiguration & EmailConfiguration
 }
 
 export type EmailOnlySubmissionEvent = FormEventBase & {
   type: 'EMAIL'
-  configuration: ApprovalFormsInclusionConfiguration & EmailConfiguration
+  configuration: EmailConfiguration
 }
 
 export type OneBlinkAPISubmissionEventConfiguration = {
@@ -149,30 +147,29 @@ export type TrimUriOption = {
 
 export type TrimSubmissionEvent = FormEventBase & {
   type: 'TRIM'
-  configuration: ApprovalFormsInclusionConfiguration &
-    PDFConfiguration & {
-      /**
-       * The id of the OneBlink -> TRIM (Micro Focus Content Manager)
-       * integration environment to be used.
-       */
-      environmentId: string
-      recordTitle?: string
-      /** The container object. Contains the container properties. */
-      container: TrimUriOption
-      /** The recordType object. Contains the recordType properties. */
-      recordType: TrimUriOption
-      /** The actionDefinition object. Contains the actionDefinition properties. */
-      actionDefinition?: TrimUriOption
-      /** The location object. Contains the location properties. */
-      location?: TrimUriOption
-      /** The author object. Contains the author properties. */
-      author?: TrimUriOption
-      /**
-       * Whether the submission pdf and attachments should be zipped before
-       * uploading (defaults to `false`).
-       */
-      groupFiles?: boolean
-    }
+  configuration: PDFConfiguration & {
+    /**
+     * The id of the OneBlink -> TRIM (Micro Focus Content Manager) integration
+     * environment to be used.
+     */
+    environmentId: string
+    recordTitle?: string
+    /** The container object. Contains the container properties. */
+    container: TrimUriOption
+    /** The recordType object. Contains the recordType properties. */
+    recordType: TrimUriOption
+    /** The actionDefinition object. Contains the actionDefinition properties. */
+    actionDefinition?: TrimUriOption
+    /** The location object. Contains the location properties. */
+    location?: TrimUriOption
+    /** The author object. Contains the author properties. */
+    author?: TrimUriOption
+    /**
+     * Whether the submission pdf and attachments should be zipped before
+     * uploading (defaults to `false`).
+     */
+    groupFiles?: boolean
+  }
 }
 
 export type CivicaRecord = {
@@ -193,28 +190,26 @@ export type CivicaCrmSubmissionEventMapping = {
 }
 export type CivicaCrmSubmissionEvent = FormEventBase & {
   type: 'CIVICA_CRM'
-  configuration: ApprovalFormsInclusionConfiguration &
-    PDFConfiguration & {
-      /** The id of the OneBlink -> Civica integration environment to be used. */
-      environmentId: string
-      civicaCustomerContactMethod: CivicaCustomerContactMethod
-      civicaCategory: CivicaRecord
-      /** An array containing mapping information. */
-      mapping: CivicaCrmSubmissionEventMapping[]
-    }
+  configuration: PDFConfiguration & {
+    /** The id of the OneBlink -> Civica integration environment to be used. */
+    environmentId: string
+    civicaCustomerContactMethod: CivicaCustomerContactMethod
+    civicaCategory: CivicaRecord
+    /** An array containing mapping information. */
+    mapping: CivicaCrmSubmissionEventMapping[]
+  }
 }
 
 export type CPHCMSSubmissionEvent = FormEventBase & {
   type: 'CP_HCMS'
-  configuration: ApprovalFormsInclusionConfiguration &
-    PDFConfiguration & {
-      /** The content type name for the submission in the CivicPlus HCMS. */
-      contentTypeName: string
-      /** An array of element ids to be set as encrypted in the CP HCMS. */
-      encryptedElementIds?: string[]
-      /** Whether the generated pdf file should be encrypted. (defaults to `false`) */
-      encryptPdf?: boolean
-    }
+  configuration: PDFConfiguration & {
+    /** The content type name for the submission in the CivicPlus HCMS. */
+    contentTypeName: string
+    /** An array of element ids to be set as encrypted in the CP HCMS. */
+    encryptedElementIds?: string[]
+    /** Whether the generated pdf file should be encrypted. (defaults to `false`) */
+    encryptPdf?: boolean
+  }
 }
 
 export type CPPaySubmissionEvent = FormEventBase & {
@@ -302,25 +297,24 @@ export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventBase & {
 
 export type SchedulingSubmissionEvent = FormEventBase & {
   type: 'SCHEDULING'
-  configuration: PDFConfiguration &
-    ApprovalFormsInclusionConfiguration & {
-      /** The id of scheduling provider. */
-      nylasAccountId: string
-      /** The id of the scheduling page. */
-      nylasSchedulingPageId: number
-      /**
-       * The id of the form element to map to the name field on the scheduling
-       * page. Must be a text element.
-       */
-      nameElementId?: string
-      /**
-       * The id of the form element to map to the email field on the scheduling
-       * page. Must be an email element.
-       */
-      emailElementId?: string
-      /** An optional extra description to be included in the email. */
-      emailDescription?: string
-    }
+  configuration: PDFConfiguration & {
+    /** The id of scheduling provider. */
+    nylasAccountId: string
+    /** The id of the scheduling page. */
+    nylasSchedulingPageId: number
+    /**
+     * The id of the form element to map to the name field on the scheduling
+     * page. Must be a text element.
+     */
+    nameElementId?: string
+    /**
+     * The id of the form element to map to the email field on the scheduling
+     * page. Must be an email element.
+     */
+    emailElementId?: string
+    /** An optional extra description to be included in the email. */
+    emailDescription?: string
+  }
 }
 
 // EVENTS
