@@ -867,8 +867,18 @@ export type Form = {
    * `postSubmissionActions`.
    */
   redirectUrl?: string
+  /** Configuration to customise the display after a successful submission. */
   postSubmissionReceipt?: {
-    html: string
+    /**
+     * HTML to display instead of the default "Thank you" message after a
+     * successful submission.
+     */
+    html?: string
+    /**
+     * Whether or not to generate a token to allow downloading the form
+     * submission PDF after a successful submission.
+     */
+    generateDownloadPDFToken?: boolean
   }
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
