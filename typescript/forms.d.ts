@@ -814,11 +814,11 @@ export interface ReceiptRandomComponent {
   /** The number of random characters */
   length: number
   /** Whether to include numbers */
-  numbers: Boolean
+  numbers: boolean
   /** Whether to include uppercase characters */
-  uppercase: Boolean
+  uppercase: boolean
   /** Whether to include lowercase characters */
-  lowercase: Boolean
+  lowercase: boolean
 }
 
 export type ReceiptComponent =
