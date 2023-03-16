@@ -91,8 +91,12 @@ export type PDFConfiguration = {
   usePagesAsBreaks?: boolean
 }
 export type EmailConfiguration = {
-  /** The email in which a PDF copy of the form submission will be sent. */
-  email: string
+  /** The to: email addresses in which a PDF copy of the form submission will be sent. */
+  toEmail?: string[]
+  /** The cc: email addresses in which a PDF copy of the form submission will be sent. */
+  ccEmail?: string[]
+  /** The bcc: email addresses in which a PDF copy of the form submission will be sent. */
+  bccEmail?: string[]
   /** The subject line of the email sent to the configured email address. */
   emailSubjectLine?: string
   /** A reference to a custom template for the email body. */
