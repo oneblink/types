@@ -6,6 +6,8 @@ import type {
   FormWorkflowEvent,
   FormPaymentEvent,
   FormSchedulingEvent,
+  PDFConfiguration,
+  ApprovalFormsInclusionConfiguration,
 } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type { ABNRecord, BaseSearchResult, IdResource } from './misc'
@@ -878,7 +880,7 @@ export type Form = {
      * Whether or not to generate a token to allow downloading the form
      * submission PDF after a successful submission.
      */
-    generateDownloadPDFToken?: boolean
+    allowPDFDownload?: PDFConfiguration & ApprovalFormsInclusionConfiguration
   }
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
