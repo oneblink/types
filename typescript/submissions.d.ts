@@ -176,7 +176,6 @@ export type S3SubmissionData = {
 
 export type NewFormSubmissionFileAccessToken = {
   s3: S3ObjectCredentials['s3']
-  emailAddress: string
 }
 
 export type FormSubmissionFileAccessToken = {
