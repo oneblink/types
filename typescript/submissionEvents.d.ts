@@ -87,6 +87,8 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   includePaymentInPdf?: boolean
   /** An array of element ids to exclude from the submission when generating pdf. */
   excludedElementIds?: string[]
+  /** An array of class names to exclude from the submission when generating pdf. */
+  excludedClasses?: string[]
   /** Whether pages in the form submission should translate to page breaks in the PDF. */
   usePagesAsBreaks?: boolean
 }
