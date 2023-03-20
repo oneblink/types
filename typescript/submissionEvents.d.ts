@@ -359,14 +359,6 @@ export type WebhookSubscription = NewWebhookSubscription & {
   createdAt: string
 }
 
-export interface S3SubmissionTags {
-  externalId?: string
-  jobId?: string
-  userToken?: string
-  usernameToken?: string
-  previousFormSubmissionApprovalId?: string
-}
-
 export type BaseFormSubmissionProcessing = {
   submissionId: string
   formId: number
@@ -380,7 +372,12 @@ export type BaseFormSubmissionProcessing = {
   keyId?: string
   user?: UserProfile
   timezone: string
-} & S3SubmissionTags
+  externalId?: string
+  jobId?: string
+  userToken?: string
+  usernameToken?: string
+  previousFormSubmissionApprovalId?: string
+}
 
 export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
   type: 'EVENT'
