@@ -98,6 +98,7 @@ type _FormSubmissionMeta = {
   user?: UserProfile
   externalId?: string
   jobId?: string
+  previousFormSubmissionApprovalId?: string
   validationResult?:
     | {
         isInvalid: true
@@ -172,6 +173,11 @@ export type S3SubmissionData = {
   user?: _FormSubmissionMeta['user']
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
+  externalId?: string
+  jobId?: string
+  userToken?: string
+  usernameToken?: string
+  previousFormSubmissionApprovalId?: string
 }
 
 export type NewFormSubmissionFileAccessToken = {
@@ -204,6 +210,7 @@ type _BaseFormStoreRecord = {
   user?: UserProfile
   externalId?: string
   jobId?: string
+  previousFormSubmissionApprovalId?: string
   key?: FormSubmissionMeta['key']
   definition: Form
   submission: S3SubmissionData['submission']
