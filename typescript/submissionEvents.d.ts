@@ -359,6 +359,18 @@ export type WebhookSubscription = NewWebhookSubscription & {
   createdAt: string
 }
 
+export interface S3SubmissionTags {
+  /**
+   * @deprecated No longer stored as an S3 tag. It is now stored in the S3
+   *   object JSON data.
+   */
+  externalId?: string
+  jobId?: string
+  userToken?: string
+  usernameToken?: string
+  previousFormSubmissionApprovalId?: string
+}
+
 export type BaseFormSubmissionProcessing = {
   submissionId: string
   formId: number
@@ -373,11 +385,7 @@ export type BaseFormSubmissionProcessing = {
   user?: UserProfile
   timezone: string
   externalId?: string
-  jobId?: string
-  userToken?: string
-  usernameToken?: string
-  previousFormSubmissionApprovalId?: string
-}
+} & S3SubmissionTags
 
 export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
   type: 'EVENT'
