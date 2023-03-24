@@ -88,7 +88,7 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** An array of element ids to exclude from the submission when generating pdf. */
   excludedElementIds?: string[]
   /** An array of class names to exclude from the submission when generating pdf. */
-  excludedClasses?: string[]
+  excludedCSSClasses?: string[]
   /** Whether pages in the form submission should translate to page breaks in the PDF. */
   usePagesAsBreaks?: boolean
 }
