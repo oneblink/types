@@ -207,8 +207,10 @@ export type FormElementWithOptions =
 
 // date element types
 export type FormElementWithDate = {
+  fromDateElementId?: string
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
+  toDateElementId?: string
   toDate?: string | 'NOW'
   toDateDaysOffset?: number
   defaultValue?: string | 'NOW'
