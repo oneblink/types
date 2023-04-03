@@ -209,16 +209,24 @@ export type FormElementWithOptions =
 export type FormElementWithDate = {
   /**
    * A string GUID that references the ID of an element. This takes precedence
-   * over fromDate.
+   * over fromDate if both are used for date ranges.
    */
   fromDateElementId?: string
+  /**
+   * A string iso date or 'NOW' that references a starting date for a range. If
+   * passed with fromDateElementId, both will be allowed.
+   */
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
   /**
    * A string GUID that references the ID of an element. This takes precedence
-   * over toDate.
+   * over toDate if both are used for date ranges.
    */
   toDateElementId?: string
+  /**
+   * A string iso date or 'NOW' that references an end date for a range. If
+   * passed with toDateElementId, both will be allowed.
+   */
   toDate?: string | 'NOW'
   toDateDaysOffset?: number
   defaultValue?: string | 'NOW'
