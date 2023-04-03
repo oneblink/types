@@ -207,9 +207,17 @@ export type FormElementWithOptions =
 
 // date element types
 export type FormElementWithDate = {
+  /**
+   * A string GUID that references the ID of an element. This takes precedence
+   * over fromDate.
+   */
   fromDateElementId?: string
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
+  /**
+   * A string GUID that references the ID of an element. This takes precedence
+   * over toDate.
+   */
   toDateElementId?: string
   toDate?: string | 'NOW'
   toDateDaysOffset?: number
