@@ -278,6 +278,12 @@ export type FreshdeskSubmissionEventFieldMapping = {
         item: string
       }
     }
+  | {
+      type: 'SUBMISSION_ID'
+    }
+  | {
+      type: 'EXTERNAL_ID'
+    }
 )
 
 export type FreshdeskCreateTicketSubmissionEvent = FormEventBase & {
