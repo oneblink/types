@@ -166,7 +166,12 @@ export type IntegrationMailGun = IntegrationBase & {
             text: string
           }
         | {
-            type: 'ENVIRONMENT_NAME' | 'FORM_DESCRIPTION' | 'FORM_ID'
+            type:
+              | 'ENVIRONMENT_NAME'
+              | 'FORM_DESCRIPTION'
+              | 'FORM_ID'
+              | 'SUBMISSION_ID'
+              | 'EXTERNAL_ID'
           }
       )
     >
