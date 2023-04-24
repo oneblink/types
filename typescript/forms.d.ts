@@ -330,8 +330,18 @@ export type _NestedElementsElement = {
 
 export type RepeatableSetElement = FormElementBase & {
   type: 'repeatableSet'
-  minSetEntries?: number
-  maxSetEntries?: number
+  minSetEntries?:
+    | number
+    | {
+        type: 'FORM_ELEMENT'
+        elementId: string
+      }
+  maxSetEntries?:
+    | number
+    | {
+        type: 'FORM_ELEMENT'
+        elementId: string
+      }
   addSetEntryLabel?: string
   removeSetEntryLabel?: string
 } & _NestedElementsElement &
@@ -1079,8 +1089,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
