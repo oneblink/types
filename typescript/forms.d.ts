@@ -107,6 +107,8 @@ export type DynamicChoiceElementOption = {
    * `buttons` configured as `true`.
    */
   colour?: string
+  /** For autocomplete elements this option will always appear in the search results. */
+  displayAlways?: boolean
 }
 
 export type ChoiceElementOptionAttribute = {
