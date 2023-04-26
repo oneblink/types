@@ -363,8 +363,6 @@ export type NewWebhookSubscription = {
   formId?: number
   trigger?:
     | 'AFTER_SUBMISSION'
-    | 'AFTER_SCHEDULING_BOOKING'
-    | 'AFTER_PAYMENT'
     | 'AFTER_APPROVAL'
 }
 export type WebhookSubscription = NewWebhookSubscription & {
