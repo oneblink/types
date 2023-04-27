@@ -211,9 +211,9 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
     encryptedElementIds?: string[]
     /** Whether the generated pdf file should be encrypted. (defaults to `false`) */
     encryptPdf?: boolean
-    /** Tags that should be added the content created in the CivicPlus HCMS. */
+    /** Tags that should be added to the content created in the CivicPlus HCMS. */
     tags?: string[]
-    /** The categories that should be added the content created in the CivicPlus HCMS. */
+    /** The categories that should be added to the content created in the CivicPlus HCMS. */
     categories?: Array<{
       id: string
       name: string
