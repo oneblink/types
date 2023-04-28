@@ -1664,7 +1664,7 @@ export interface components {
       extensions?: {
         [key: string]: unknown | undefined;
       };
-      [key: string]: (Record<string, unknown> | null) | undefined;
+      // [key: string]: (Record<string, unknown> | null) | undefined;
     };
     /** @description Dto to Update Permission Set Client Permission. */
     UpdatePermissionSetClientDto: {
