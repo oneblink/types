@@ -180,6 +180,7 @@ export type IntegrationMailGun = IntegrationBase & {
 
 export type DeleteIntegrationValidationResults = {
   forms: Array<{ formId: number; formName: string }>
+  formsApps: Array<{ formsAppId: number; formsAppName: string }>
 }
 
 export type Integration =
