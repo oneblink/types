@@ -891,6 +891,8 @@ export type Form = {
   publishStartDate?: string
   /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
+  /** The message to be shown to forms users when the form is not in the published time window */
+  unpublishedUserMessage?: string
   /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
   /**
