@@ -270,6 +270,11 @@ export type FreshdeskSubmissionEventFieldMapping = {
   freshdeskFieldName: string
 } & (
   | {
+      type: 'FORM_FORM_ELEMENT'
+      formElementId: string
+      mapping: FreshdeskSubmissionEventFieldMapping
+    }
+  | {
       type: 'FORM_ELEMENT'
       formElementId: string
     }
