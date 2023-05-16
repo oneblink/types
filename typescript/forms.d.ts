@@ -141,7 +141,8 @@ export type FormElementWithOptionsBase = LookupFormElement &
     options?: ChoiceElementOption[]
     /**
      * Whether or not the options set is defined within the form definition
-     * (custom), or via an API call (dynamic OR search).
+     * (custom), or via an API call (dynamic OR search). 'SEARCH' option has
+     * been deprecated, should use 'DYNAMIC' with an options set that allows searching
      */
     optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH' | 'FRESHDESK_FIELD'
     freshdeskFieldName?: string
@@ -891,7 +892,10 @@ export type Form = {
   publishStartDate?: string
   /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
-  /** The message to be shown to forms users when the form is not in the published time window */
+  /**
+   * The message to be shown to forms users when the form is not in the
+   * published time window
+   */
   unpublishedUserMessage?: string
   /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
@@ -1030,9 +1034,12 @@ export type FormElementOptionSetStatic = IdResource &
   NewFormElementOptionSetStatic
 
 // URL request based options
-export type FormElementOptionSetEnvironmentUrl = {
+export type FormElementEnvironmentUrl = {
   url: string
   formsAppEnvironmentId: number
+}
+export type FormElementOptionSetEnvironmentUrl = FormElementEnvironmentUrl & {
+  searchableQuerystringParameter?: string
 }
 export type NewFormElementOptionSetHostedApi = NewFormElementOptionSetBase & {
   type: 'HOSTED_API'
@@ -1078,11 +1085,12 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
   id: number
 }
 
+export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 export type NewFormElementLookup = {
   name: string
   organisationId: string
   apiId?: string
-  environments: FormElementOptionSetEnvironmentUrl[]
+  environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
 }
@@ -1093,7 +1101,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
