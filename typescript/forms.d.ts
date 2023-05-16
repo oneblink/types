@@ -141,8 +141,7 @@ export type FormElementWithOptionsBase = LookupFormElement &
     options?: ChoiceElementOption[]
     /**
      * Whether or not the options set is defined within the form definition
-     * (custom), or via an API call (dynamic OR search). 'SEARCH' option has
-     * been deprecated, should use 'DYNAMIC' with an options set that allows searching
+     * (custom), or via an API call (dynamic OR search).
      */
     optionsType: 'CUSTOM' | 'DYNAMIC' | 'SEARCH' | 'FRESHDESK_FIELD'
     freshdeskFieldName?: string
@@ -190,7 +189,17 @@ export type SelectElement = FormElementWithOptionsBase & {
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
   defaultValue?: string
+  /**
+   * If specified, a request will be made to the "searchUrl" allowing the
+   * options to be filtered on the server.
+   */
   searchUrl?: string
+  /**
+   * If specified, a request will be made to the "searchUrl" with this
+   * querystring parameter assigned the value typed into the input, otherwise
+   * the querystring parameter will be "value" .
+   */
+  searchQuerystringParameter?: string
   placeholderValue?: string
 }
 
@@ -1039,7 +1048,13 @@ export type FormElementEnvironmentUrl = {
   formsAppEnvironmentId: number
 }
 export type FormElementOptionSetEnvironmentUrl = FormElementEnvironmentUrl & {
-  searchableQuerystringParameter?: string
+  /**
+   * If specified, a request will be made to the "url" with this querystring
+   * parameter assigned the value typed into an "autocomplete" type form element
+   * input allowing the options to be filtered on the server, otherwise the
+   * response is expected to include all available options.
+   */
+  searchQuerystringParameter?: string
 }
 export type NewFormElementOptionSetHostedApi = NewFormElementOptionSetBase & {
   type: 'HOSTED_API'
