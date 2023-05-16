@@ -189,7 +189,17 @@ export type SelectElement = FormElementWithOptionsBase & {
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
   defaultValue?: string
+  /**
+   * If specified, a request will be made to the "searchUrl" allowing the
+   * options to be filtered on the server.
+   */
   searchUrl?: string
+  /**
+   * If specified, a request will be made to the "searchUrl" with this
+   * querystring parameter assigned the value typed into the input, otherwise
+   * the querystring parameter will be "value" .
+   */
+  searchQuerystringParameter?: string
   placeholderValue?: string
 }
 
@@ -891,7 +901,10 @@ export type Form = {
   publishStartDate?: string
   /** The date and time (in ISO format) a form becomes unavailable. */
   publishEndDate?: string
-  /** The message to be shown to forms users when the form is not in the published time window */
+  /**
+   * The message to be shown to forms users when the form is not in the
+   * published time window
+   */
   unpublishedUserMessage?: string
   /** The action for the Form to take on a successful submission. */
   postSubmissionAction: FormPostSubmissionAction
@@ -1030,9 +1043,18 @@ export type FormElementOptionSetStatic = IdResource &
   NewFormElementOptionSetStatic
 
 // URL request based options
-export type FormElementOptionSetEnvironmentUrl = {
+export type FormElementEnvironmentUrl = {
   url: string
   formsAppEnvironmentId: number
+}
+export type FormElementOptionSetEnvironmentUrl = FormElementEnvironmentUrl & {
+  /**
+   * If specified, a request will be made to the "url" with this querystring
+   * parameter assigned the value typed into an "autocomplete" type form element
+   * input allowing the options to be filtered on the server, otherwise the
+   * response is expected to include all available options.
+   */
+  searchQuerystringParameter?: string
 }
 export type NewFormElementOptionSetHostedApi = NewFormElementOptionSetBase & {
   type: 'HOSTED_API'
@@ -1078,11 +1100,12 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
   id: number
 }
 
+export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 export type NewFormElementLookup = {
   name: string
   organisationId: string
   apiId?: string
-  environments: FormElementOptionSetEnvironmentUrl[]
+  environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
 }
@@ -1093,7 +1116,8 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
