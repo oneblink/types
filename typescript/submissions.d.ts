@@ -91,8 +91,10 @@ type _FormSubmissionMeta = {
   formId: number
   /** The id of the Forms App submitting for */
   formsAppId: number
-  /** The date and time (in ISO format) the form was submitted */
-  dateTimeSubmitted: string
+  /** The date and time (in ISO format) the form was submitted. If this is undefiend, then the submission data has not yet been submitted */
+  dateTimeSubmitted?: string
+  /** The date and time (in ISO format) the record was created. */
+  createdAt: string
   formName?: string
   /** Information about the user that submitted the form */
   user?: UserProfile
