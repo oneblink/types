@@ -21,7 +21,7 @@ interface RolePrivileges {
   AUDITING?: 'READONLY'
 }
 
-interface Profile {
+export interface Profile {
   email: string
   name: string | null
 }
@@ -37,6 +37,7 @@ type NewTeamMember = TeamMemberBase & {
 
 type TeamMember = TeamMemberBase & {
   temporaryPasswordExpiry?: string
+  isMfaEnabled?: boolean
   id: number
   createdAt: string
   updatedAt: string
@@ -60,6 +61,7 @@ interface PermissionBase {
   privilege: RolePrivileges
   formsAppEnvironmentIds?: number[]
   temporaryPasswordExpiry?: string
+  isMfaEnabled?: boolean
   links: {
     organisations: string
     users: string

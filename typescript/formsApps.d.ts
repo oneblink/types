@@ -364,6 +364,7 @@ export type FormsAppUser = FormsAppUserBase & {
   createdAt: string
   updatedAt: string
   temporaryPasswordExpiry?: string
+  isMfaEnabled?: boolean
 }
 
 type BaseFormsAppsDraft = {
