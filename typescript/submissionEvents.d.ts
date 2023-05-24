@@ -91,6 +91,11 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   excludedCSSClasses?: string[]
   /** Whether pages in the form submission should translate to page breaks in the PDF. */
   usePagesAsBreaks?: boolean
+  /**
+   * Whether the external id should be included in the generated pdf (defaults
+   * to `false`).
+   */
+  includeExternalIdInPdf?: boolean
 }
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
