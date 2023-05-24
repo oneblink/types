@@ -994,8 +994,22 @@ export type Form = {
   updatedAt: string
   /** The details of the form validation endpoint. */
   serverValidation?: FormServerValidation
-  /** The details of the externalId generation endpoint. */
+  /**
+   * @deprecated Please use "personalisation" and/or
+   *   "externalIdGenerationOnSubmit" instead as this combines the two and is no
+   *   longer supported.
+   */
   externalIdGeneration?: ExternalIdGeneration
+  /**
+   * The details of the externalId generation endpoint which will be executed
+   * after "serverValidation" but before submission.
+   */
+  externalIdGenerationOnSubmit?: ExternalIdGeneration
+  /**
+   * The details of the personalisation endpoint which will be executed on form
+   * load to prefill existing elements or return a new set of elements.
+   */
+  personalisation?: EndpointConfiguration
 }
 
 export type PreviewUrl = {
