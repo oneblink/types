@@ -12,6 +12,8 @@ export interface NewFormsAppEnvironment {
     isCloningFormPostSubmissionActions: boolean
     isCloningFormServerValidation: boolean
     isCloningFormExternalIdGeneration: boolean
+    isCloningFormExternalIdGenerationOnSubmit: boolean
+    isCloningFormPersonalisation: boolean
   }
 }
 
@@ -30,11 +32,14 @@ export interface FormMigrationOptions {
   postSubmissionAction: boolean
   serverValidation: boolean
   externalIdGeneration: boolean
+  externalIdGenerationOnSubmit: boolean
+  personalisation: boolean
   embeddedForms?: Array<{
     sourceElementId: string
     targetFormId: number
   }>
 }
+
 export type FormMigrationData = {
   sourceFormId: number
   targetFormId?: number
