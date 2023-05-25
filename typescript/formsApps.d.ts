@@ -351,6 +351,8 @@ export type OrganisationAppUser = {
 
 export type FormsAppUserBase = {
   email: string
+  firstName?: string
+  lastName?: string
   formsAppId: number
   groups: string[]
 }
