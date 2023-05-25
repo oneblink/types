@@ -360,6 +360,12 @@ export type NewFormsAppUser = FormsAppUserBase & {
   welcomeEmailParameters?: unknown
 }
 
+export type NewSignUpFormsAppUser = FormsAppUserBase & {
+  password: string
+  firstName?: string
+  lastName?: string
+}
+
 export type FormsAppUser = FormsAppUserBase & {
   id: number
   createdAt: string
