@@ -356,14 +356,10 @@ export type FormsAppUserBase = {
 }
 
 export type NewFormsAppUser = FormsAppUserBase & {
-  generatePassword: boolean
-  welcomeEmailParameters?: unknown
-}
-
-export type NewSignUpFormsAppUser = FormsAppUserBase & {
-  password: string
   firstName?: string
   lastName?: string
+  generatePassword: boolean
+  welcomeEmailParameters?: unknown
 }
 
 export type FormsAppUser = FormsAppUserBase & {
