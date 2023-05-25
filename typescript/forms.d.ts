@@ -94,6 +94,23 @@ export type FormElementBinaryStorage = FormElementBase & {
   storageType?: 'public' | 'private'
 }
 
+export type DynamicChoiceElementOptionAttribute = {
+  /**
+   * The label to display in the forms builder when selecting an element to
+   * match the "value" property. E.g. if this options set is for Cities (Sydney,
+   * Brisbane, Melbourne) and the parent options set is for States (NSW, QLD,
+   * VIC), this label could be "State".
+   */
+  label: string
+  /**
+   * The value of the parent form element option to filter this option. E.g.
+   * E.g. if this options set is for Cities (Sydney, Brisbane, Melbourne) and
+   * the parent options set is for States (NSW, QLD, VIC) and this option
+   * represented Sydney, this value would be "NSW".
+   */
+  value: string
+}
+
 // Choice element types
 export type DynamicChoiceElementOption = {
   /** The label displayed to the user for an individual option. */
@@ -101,7 +118,7 @@ export type DynamicChoiceElementOption = {
   /** The value for an individual option, sent with form submission data. */
   value: string
   /** An array of option attributes associated with an individual option. */
-  attributes?: ChoiceElementOptionAttribute[]
+  attributes?: DynamicChoiceElementOptionAttribute[]
   /** An array of nested options, relevant to the option. */
   options?: DynamicChoiceElementOption[]
   /**
@@ -114,8 +131,6 @@ export type DynamicChoiceElementOption = {
 }
 
 export type ChoiceElementOptionAttribute = {
-  label?: string
-  value?: string
   /** The external element ID used in the 'conditionally show option' process */
   elementId: string
   /** An array of option IDs associated with an individual option */
@@ -125,7 +140,9 @@ export type ChoiceElementOptionAttribute = {
 export type ChoiceElementOption = {
   /** The unique identifier for an individual option. */
   id: string
-} & DynamicChoiceElementOption
+  /** An array of option attributes associated with an individual option. */
+  attributes?: ChoiceElementOptionAttribute[]
+} & Omit<DynamicChoiceElementOption, 'attributes'>
 
 export type DynamicOptionsSetAttributeMap = {
   /** The ID of the option value for the attribute to be mapped to. */
