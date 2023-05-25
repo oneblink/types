@@ -351,13 +351,13 @@ export type OrganisationAppUser = {
 
 export type FormsAppUserBase = {
   email: string
+  firstName?: string
+  lastName?: string
   formsAppId: number
   groups: string[]
 }
 
 export type NewFormsAppUser = FormsAppUserBase & {
-  firstName?: string
-  lastName?: string
   generatePassword: boolean
   welcomeEmailParameters?: unknown
 }
