@@ -271,7 +271,7 @@ type _NewFormsApp = {
   isClientLoggingEnabled: boolean
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
-  enableAppUserSignup?: boolean
+  enableAppUserSignup: boolean
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
