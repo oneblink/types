@@ -100,6 +100,8 @@ export type DynamicChoiceElementOption = {
   label: string
   /** The value for an individual option, sent with form submission data. */
   value: string
+  /** An array of option attributes associated with an individual option. */
+  attributes?: ChoiceElementOptionAttribute[]
   /** An array of nested options, relevant to the option. */
   options?: DynamicChoiceElementOption[]
   /**
@@ -123,8 +125,6 @@ export type ChoiceElementOptionAttribute = {
 export type ChoiceElementOption = {
   /** The unique identifier for an individual option. */
   id: string
-  /** An array of option attributes associated with an individual option. */
-  attributes?: ChoiceElementOptionAttribute[]
 } & DynamicChoiceElementOption
 
 export type DynamicOptionsSetAttributeMap = {
