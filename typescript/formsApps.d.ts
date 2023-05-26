@@ -441,7 +441,7 @@ export type FormsAppConfiguration<
     formId: number
     days: number
   }>
-  isAppUserSignUpEnabled?: boolean
+  isAppUserSignUpEnabled: boolean
 }
 
 export type FormsAppUserSubscription = {
