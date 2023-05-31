@@ -1143,7 +1143,7 @@ export type FormElementLookupTableColumn = {
   type: 'TEXT'
   rows: FormElementLookupTableRow[]
 }
-export type FormElementLookupTableEnvironent = {
+export type FormElementLookupTableEnvironment = {
   formsAppEnvironmentId: number
   valueColumnElementName: string
   columns: FormElementLookupTableColumn[]
@@ -1169,7 +1169,7 @@ export type NewFormElementLookupTable = NewFormElementLookupBase & {
   name: string
   organisationId: string
   apiId?: string
-  environments: FormElementLookupEnvironmentUrl[]
+  environments: FormElementLookupTableEnvironment[]
   type: 'TABLE'
   builtInId?: number
 }
