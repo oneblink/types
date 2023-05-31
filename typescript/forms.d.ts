@@ -1133,19 +1133,42 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 
-export type FormElementLookupTableRow = {
+export type FormElementLookupTableRowBase = {
+  // value entered into the element used to trigger the lookup
   inputValue: string
-  prefillValue: object
 }
 
-export type FormElementLookupTableColumn = {
-  elementName: string
-  type: 'TEXT'
-  rows: FormElementLookupTableRow[]
+export type FormElementTableRowText = FormElementLookupTableRowBase & {
+  // the value to populate the configured element with
+  preFillValue: string
 }
+
+export type FormElementTableRowNumber = FormElementLookupTableRowBase & {
+  // The value to prefil the correpsonding column elementName with
+  preFillValue: number
+}
+
+export type FormElementLookupTableColumnBase = {
+  // the name of the form element to prefill
+  elementName: string
+}
+
+export type FormElementLookupTableColumnText = {
+  type: 'TEXT'
+  /// array of rows for each value matching agaisnt the "inputValue" from the element
+  rows: FormElementTableRowText[]
+}
+
+export type FormElementLookupTableColumnNumber = {
+  type: 'NUMBER'
+  /// array of rows for each value matching agaisnt the "inputValue" from the element
+  rows: FormElementTableRowNumber[]
+}
+
 export type FormElementLookupTableEnvironment = {
   formsAppEnvironmentId: number
-  columns: FormElementLookupTableColumn[]
+  // array of elements with prefil values for each corresponding input value
+  columns: FormElementLookupTableColumnBase[]
 }
 
 export type NewFormElementLookupBase = {
