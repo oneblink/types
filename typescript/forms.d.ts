@@ -1134,7 +1134,7 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 
 export type FormElementLookupTableRow = {
-  optionSetValue: string
+  inputValue: string
   prefillValue: object
 }
 
@@ -1145,7 +1145,6 @@ export type FormElementLookupTableColumn = {
 }
 export type FormElementLookupTableEnvironment = {
   formsAppEnvironmentId: number
-  valueColumnElementName: string
   columns: FormElementLookupTableColumn[]
 }
 
