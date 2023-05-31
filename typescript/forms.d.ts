@@ -1148,22 +1148,41 @@ export type FormElementLookupTableEnvironent = {
   valueColumnElementName: string
   columns: FormElementLookupTableColumn[]
 }
-export type NewFormElementLookup = {
+
+export type NewFormElementLookupBase = {
+  name: string
+  organisationId: string
+}
+
+export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   name: string
   organisationId: string
   apiId?: string
-  environments:
-    | FormElementLookupEnvironmentUrl[]
-    | FormElementLookupTableEnvironent[]
-  type: 'ELEMENT' | 'DATA' | 'TABLE'
+  environments: FormElementLookupEnvironmentUrl[]
+  type: 'ELEMENT' | 'DATA'
   builtInId?: number
 }
 
-export type FormElementLookup = NewFormElementLookup & {
-  id: number
-  createdAt: string
-  updatedAt: string
+export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
+
+export type NewFormElementLookupTable = NewFormElementLookupBase & {
+  name: string
+  organisationId: string
+  apiId?: string
+  environments: FormElementLookupEnvironmentUrl[]
+  type: 'TABLE'
+  builtInId?: number
 }
+
+export type FormElementLookupTable = IdResource & NewFormElementLookupTable
+
+export type NewFormElementLookup =
+  | NewFormElementLookupUrl
+  | NewFormElementLookupTable
+
+export type FormElementLookup =
+  | FormElementLookupEnvironmentUrl
+  | FormElementLookupTable
 
 export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
