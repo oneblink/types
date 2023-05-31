@@ -1132,12 +1132,30 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 }
 
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
+
+export type FormElementLookupTableRow = {
+  optionSetValue: string
+  prefillValue: object
+}
+
+export type FormElementLookupTableColumn = {
+  elementName: string
+  type: 'TEXT'
+  rows: FormElementLookupTableRow[]
+}
+export type FormElementLookupTableEnvironent = {
+  formsAppEnvironmentId: number
+  valueColumnElementName: string
+  columns: FormElementLookupTableColumn[]
+}
 export type NewFormElementLookup = {
   name: string
   organisationId: string
   apiId?: string
-  environments: FormElementLookupEnvironmentUrl[]
-  type: 'ELEMENT' | 'DATA'
+  environments:
+    | FormElementLookupEnvironmentUrl[]
+    | FormElementLookupTableEnvironent[]
+  type: 'ELEMENT' | 'DATA' | 'TABLE'
   builtInId?: number
 }
 
@@ -1147,8 +1165,7 @@ export type FormElementLookup = NewFormElementLookup & {
   updatedAt: string
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
