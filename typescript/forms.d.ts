@@ -1179,8 +1179,6 @@ export type NewFormElementLookupBase = {
 }
 
 export type NewFormElementLookupUrl = NewFormElementLookupBase & {
-  name: string
-  organisationId: string
   apiId?: string
   environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
@@ -1190,12 +1188,8 @@ export type NewFormElementLookupUrl = NewFormElementLookupBase & {
 export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
 
 export type NewFormElementLookupTable = NewFormElementLookupBase & {
-  name: string
-  organisationId: string
-  apiId?: string
   environments: FormElementLookupTableEnvironment[]
   type: 'TABLE'
-  builtInId?: number
 }
 
 export type FormElementLookupTable = IdResource & NewFormElementLookupTable
