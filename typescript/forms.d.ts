@@ -1168,10 +1168,10 @@ export type FormElementLookupTableColumnNumber = FormElementLookupTableColumnBas
 export type FormElementLookupTableEnvironment = {
   formsAppEnvironmentId: number
   /** array of elements with prefil values for each corresponding input value */
-  columns: (
+  columns: Array(
     | FormElementLookupTableColumnText
     | FormElementLookupTableColumnNumber
-  )[]
+  >
 }
 
 export type NewFormElementLookupBase = {
