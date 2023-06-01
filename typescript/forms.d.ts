@@ -1073,10 +1073,12 @@ export type NewFormElementOptionSetStatic = NewFormElementOptionSetBase & {
 export type FormElementOptionSetStatic = IdResource &
   NewFormElementOptionSetStatic
 
-// URL request based options
-export type FormElementEnvironmentUrl = {
-  url: string
+export type FormElementEnvironemntBase = {
   formsAppEnvironmentId: number
+}
+// URL request based options
+export type FormElementEnvironmentUrl = FormElementEnvironemntBase & {
+  url: string
 }
 export type FormElementOptionSetEnvironmentUrl = FormElementEnvironmentUrl & {
   /**
@@ -1165,8 +1167,7 @@ export type FormElementLookupTableColumnNumber = FormElementLookupTableColumnBas
   rows: FormElementTableRowNumber[]
 }
 
-export type FormElementLookupTableEnvironment = {
-  formsAppEnvironmentId: number
+export type FormElementLookupTableEnvironment = FormElementEnvironemntBase & {
   /** array of elements with prefil values for each corresponding input value */
   columns: Array<
     FormElementLookupTableColumnText | FormElementLookupTableColumnNumber
