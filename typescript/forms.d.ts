@@ -1153,13 +1153,13 @@ export type FormElementLookupTableColumnBase = {
   elementName: string
 }
 
-export type FormElementLookupTableColumnText = {
+export type FormElementLookupTableColumnText = FormElementLookupTableColumnBase & {
   type: 'TEXT'
   /** array of rows for each value matching agaisnt the "inputValue" from the element */
   rows: FormElementTableRowText[]
 }
 
-export type FormElementLookupTableColumnNumber = {
+export type FormElementLookupTableColumnNumber = FormElementLookupTableColumnBase & {
   type: 'NUMBER'
   /** array of rows for each value matching agaisnt the "inputValue" from the element */
   rows: FormElementTableRowNumber[]
