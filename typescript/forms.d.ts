@@ -1132,7 +1132,53 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 }
 
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
-export type NewFormElementLookup = {
+
+export type FormElementLookupTableRowBase = {
+  /** value entered into the element used to trigger the lookup */
+  inputValue: string
+}
+
+export type FormElementTableRowText = FormElementLookupTableRowBase & {
+  /** the value to populate the configured element with */
+  preFillValue: string
+}
+
+export type FormElementTableRowNumber = FormElementLookupTableRowBase & {
+  /** The value to prefil the correpsonding column elementName with */
+  preFillValue: number
+}
+
+export type FormElementLookupTableColumnBase = {
+  /** the name of the form element to prefill */
+  elementName: string
+}
+
+export type FormElementLookupTableColumnText = FormElementLookupTableColumnBase & {
+  type: 'TEXT'
+  /** array of rows for each value matching agaisnt the "inputValue" from the element */
+  rows: FormElementTableRowText[]
+}
+
+export type FormElementLookupTableColumnNumber = FormElementLookupTableColumnBase & {
+  type: 'NUMBER'
+  /** array of rows for each value matching agaisnt the "inputValue" from the element */
+  rows: FormElementTableRowNumber[]
+}
+
+export type FormElementLookupTableEnvironment = {
+  formsAppEnvironmentId: number
+  /** array of elements with prefil values for each corresponding input value */
+  columns: Array<
+    FormElementLookupTableColumnText | FormElementLookupTableColumnNumber
+  >
+}
+
+export type NewFormElementLookupBase = {
+  name: string
+  organisationId: string
+}
+
+export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   name: string
   organisationId: string
   apiId?: string
@@ -1141,14 +1187,28 @@ export type NewFormElementLookup = {
   builtInId?: number
 }
 
-export type FormElementLookup = NewFormElementLookup & {
-  id: number
-  createdAt: string
-  updatedAt: string
+export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
+
+export type NewFormElementLookupTable = NewFormElementLookupBase & {
+  name: string
+  organisationId: string
+  apiId?: string
+  environments: FormElementLookupTableEnvironment[]
+  type: 'TABLE'
+  builtInId?: number
 }
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupTable = IdResource & NewFormElementLookupTable
+
+export type NewFormElementLookup =
+  | NewFormElementLookupUrl
+  | NewFormElementLookupTable
+
+export type FormElementLookup =
+  | FormElementLookupEnvironmentUrl
+  | FormElementLookupTable
+
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
