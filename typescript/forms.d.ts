@@ -1198,9 +1198,7 @@ export type NewFormElementLookup =
   | NewFormElementLookupUrl
   | NewFormElementLookupTable
 
-export type FormElementLookup =
-  | FormElementLookupEnvironmentUrl
-  | FormElementLookupTable
+export type FormElementLookup = FormElementLookupUrl | FormElementLookupTable
 
 export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
