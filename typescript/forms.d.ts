@@ -1135,47 +1135,60 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 
-export type FormElementLookupTableRowBase = {
-  /** value entered into the element used to trigger the lookup */
-  inputValue: string
+export type FormElementLookupStaticDataPreFillBase = {
+  /** Must match a "FormElement.name" property exactly to pre-fill with the "preFillValue". */
+  formElementName: string
 }
 
-export type FormElementTableRowText = FormElementLookupTableRowBase & {
-  /** the value to populate the configured element with */
-  preFillValue: string
-}
-
-export type FormElementTableRowNumber = FormElementLookupTableRowBase & {
-  /** The value to prefil the correpsonding column elementName with */
-  preFillValue: number
-}
-
-export type FormElementLookupTableColumnBase = {
-  /** the name of the form element to prefill */
-  elementName: string
-}
-
-export type FormElementLookupTableColumnText = FormElementLookupTableColumnBase & {
+export type FormElementLookupStaticDataPreFillText = {
   type: 'TEXT'
-  /** array of rows for each value matching agaisnt the "inputValue" from the element */
-  rows: FormElementTableRowText[]
-}
+  /**
+   * The value to pre-fill the corresponding form element based on the
+   * "formElementName" property.
+   */
+  text: string
+} & FormElementLookupStaticDataPreFillBase
 
-export type FormElementLookupTableColumnNumber = FormElementLookupTableColumnBase & {
+export type FormElementLookupStaticDataPreFillNumber = {
   type: 'NUMBER'
-  /** array of rows for each value matching agaisnt the "inputValue" from the element */
-  rows: FormElementTableRowNumber[]
+  /**
+   * The value to pre-fill the corresponding form element based on the
+   * "formElementName" property.
+   */
+  number: number
+} & FormElementLookupStaticDataPreFillBase
+
+export type FormElementLookupStaticDataPreFill =
+  | FormElementLookupStaticDataPreFillText
+  | FormElementLookupStaticDataPreFillNumber
+
+export type FormElementLookupStaticDataRecord = {
+  /**
+   * The value that will be matched exactly on the form element this lookup is
+   * associated when the user is completing the form.
+   */
+  inputValue: string
+  /**
+   * The pre-fill data to inject into the form when the "inputValue" matches
+   * exactly what the user has entered or selected when completing the form.
+   */
+  preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupTableEnvironment = FormElementEnvironmentBase & {
-  /** array of elements with prefil values for each corresponding input value */
-  columns: Array<
-    FormElementLookupTableColumnText | FormElementLookupTableColumnNumber
-  >
-}
+export type FormElementLookupStaticDataEnvironment =
+  FormElementEnvironmentBase & {
+    /**
+     * Array of records, each associated with a "inputValue" that will determine
+     * the prefill data for the configured form elements based on the
+     * "FormElement.name" property.
+     */
+    records: FormElementLookupStaticDataRecord
+  }
 
 export type NewFormElementLookupBase = {
+  /** A human readable identifier for the Lookup. */
   name: string
+  /** The identifier for the organisation associated with the Lookup. */
   organisationId: string
 }
 
@@ -1188,20 +1201,24 @@ export type NewFormElementLookupUrl = NewFormElementLookupBase & {
 
 export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
 
-export type NewFormElementLookupTable = NewFormElementLookupBase & {
-  environments: FormElementLookupTableEnvironment[]
+export type NewFormElementLookupStaticData = NewFormElementLookupBase & {
+  environments: FormElementLookupStaticDataEnvironment[]
   type: 'STATIC_DATA'
 }
 
-export type FormElementLookupTable = IdResource & NewFormElementLookupTable
+export type FormElementLookupStaticData = IdResource &
+  NewFormElementLookupStaticData
 
 export type NewFormElementLookup =
   | NewFormElementLookupUrl
-  | NewFormElementLookupTable
+  | NewFormElementLookupStaticData
 
-export type FormElementLookup = FormElementLookupUrl | FormElementLookupTable
+export type FormElementLookup =
+  | FormElementLookupUrl
+  | FormElementLookupStaticData
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
