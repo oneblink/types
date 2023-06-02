@@ -1182,7 +1182,7 @@ export type FormElementLookupStaticDataEnvironment =
      * the prefill data for the configured form elements based on the
      * "FormElement.name" property.
      */
-    records: FormElementLookupStaticDataRecord
+    records: FormElementLookupStaticDataRecord[]
   }
 
 export type NewFormElementLookupBase = {
