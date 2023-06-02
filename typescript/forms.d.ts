@@ -1190,7 +1190,7 @@ export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
 
 export type NewFormElementLookupTable = NewFormElementLookupBase & {
   environments: FormElementLookupTableEnvironment[]
-  type: 'TABLE'
+  type: 'STATIC_DATA'
 }
 
 export type FormElementLookupTable = IdResource & NewFormElementLookupTable
