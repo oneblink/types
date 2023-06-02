@@ -1135,6 +1135,11 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
 
 export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
 
+export type FormElementLookupStaticDataPreFillBase = {
+  /** Must match a "FormElement.name" property exactly to pre-fill with the "preFillValue". */
+  formElementName: string
+}
+
 export type FormElementLookupStaticDataPreFillText = {
   type: 'TEXT'
   /**
@@ -1142,7 +1147,7 @@ export type FormElementLookupStaticDataPreFillText = {
    * "formElementName" property.
    */
   text: string
-}
+} & FormElementLookupStaticDataPreFillBase
 
 export type FormElementLookupStaticDataPreFillNumber = {
   type: 'NUMBER'
@@ -1151,7 +1156,11 @@ export type FormElementLookupStaticDataPreFillNumber = {
    * "formElementName" property.
    */
   number: number
-}
+} & FormElementLookupStaticDataPreFillBase
+
+export type FormElementLookupStaticDataPreFill =
+  | FormElementLookupStaticDataPreFillText
+  | FormElementLookupStaticDataPreFillNumber
 
 export type FormElementLookupStaticDataRecord = {
   /**
@@ -1163,18 +1172,7 @@ export type FormElementLookupStaticDataRecord = {
    * The pre-fill data to inject into the form when the "inputValue" matches
    * exactly what the user has entered or selected when completing the form.
    */
-  preFills: [
-    {
-      /**
-       * Must match a "FormElement.name" property exactly to pre-fill with the
-       * "preFillValue".
-       */
-      formElementName: string
-    } & (
-      | FormElementLookupStaticDataPreFillText
-      | FormElementLookupStaticDataPreFillNumber
-    )
-  ]
+  preFills: FormElementLookupStaticDataPreFill[]
 }
 
 export type FormElementLookupStaticDataEnvironment =
