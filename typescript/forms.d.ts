@@ -72,6 +72,13 @@ export type LookupFormElement = FormElementBase & {
    * return Form Elements to inject.
    */
   elementLookupId?: number
+  /** Determine if the element is a Static Data Lookup element (`true`) or not (`false`). */
+  isStaticDataLookup: boolean
+  /**
+   * The Id of the Element Lookup configured in the OneBlink System which will
+   * trigger injection of static data in submission model.
+   */
+  staticDataLookupId?: number
 }
 
 export type FormElementReadOnly = {
