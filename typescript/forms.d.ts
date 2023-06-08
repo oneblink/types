@@ -1158,9 +1158,14 @@ export type FormElementLookupStaticDataPreFillNumber = {
   number: number
 } & FormElementLookupStaticDataPreFillBase
 
+export type FormElementLookupStaticDataPreFillClearValue = {
+  type: 'CLEAR'
+} & FormElementLookupStaticDataPreFillBase
+
 export type FormElementLookupStaticDataPreFill =
   | FormElementLookupStaticDataPreFillText
   | FormElementLookupStaticDataPreFillNumber
+  | FormElementLookupStaticDataPreFillClearValue
 
 export type FormElementLookupStaticDataRecord = {
   /**
@@ -1175,15 +1180,14 @@ export type FormElementLookupStaticDataRecord = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataEnvironment =
-  FormElementEnvironmentBase & {
-    /**
-     * Array of records, each associated with a "inputValue" that will determine
-     * the prefill data for the configured form elements based on the
-     * "FormElement.name" property.
-     */
-    records: FormElementLookupStaticDataRecord[]
-  }
+export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
+  /**
+   * Array of records, each associated with a "inputValue" that will determine
+   * the prefill data for the configured form elements based on the
+   * "FormElement.name" property.
+   */
+  records: FormElementLookupStaticDataRecord[]
+}
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
@@ -1217,8 +1221,7 @@ export type FormElementLookup =
   | FormElementLookupUrl
   | FormElementLookupStaticData
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
