@@ -1172,7 +1172,7 @@ export type FormElementLookupStaticDataRecord = {
    * The value that will be matched exactly on the form element this lookup is
    * associated when the user is completing the form.
    */
-  inputValue: string | undefined
+  inputValue: string
   /**
    * The pre-fill data to inject into the form when the "inputValue" matches
    * exactly what the user has entered or selected when completing the form.
