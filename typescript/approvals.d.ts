@@ -37,6 +37,8 @@ export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
 export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
   /** Indicates if step has been skipped */
   isSkipped: boolean
+  /** Indicates if the payment was skipped for a clarification request */
+  preventPayment?: boolean
 }
 
 export type NewFormApprovalFlowInstance = {
@@ -172,6 +174,8 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
   updatedAt: string
+  /** Prevent the payment on a clarification request */
+  preventPayment?: boolean
 }
 
 export type FormApprovalWebhookEvent =
