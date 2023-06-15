@@ -1196,7 +1196,7 @@ export type FormElementLookupStaticDataEnvironmentText = FormElementEnvironmentB
    * the prefill data for the configured form elements based on the
    * "FormElement.name" property.
    */
-  inputType: 'STRING'
+  inputType: 'TEXT'
   records: FormElementLookupStaticDataRecordText[]
 }
 
