@@ -37,8 +37,6 @@ export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
 export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
   /** Indicates if step has been skipped */
   isSkipped: boolean
-  /** Indicates if the payment was skipped for a clarification request */
-  preventPayment?: boolean
 }
 
 export type NewFormApprovalFlowInstance = {
@@ -67,6 +65,8 @@ export type NewFormApprovalFlowInstance = {
     | 'APPROVED'
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
+  /** Indicates if the payment was skipped for a clarification request */
+  preventPayment?: boolean
 }
 
 /**
