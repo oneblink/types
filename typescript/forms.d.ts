@@ -1176,7 +1176,6 @@ export type FormElementLookupStaticDataRecordBase = {
 }
 
 export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
-  type: 'STRING'
   /**
    * The value that will be matched exactly on the form element this lookup is
    * associated when the user is completing the form.
@@ -1184,7 +1183,6 @@ export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataR
   inputValue: string
 }
 export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
-  type: 'NUMBER'
   /**
    * The value that will be matched exactly on the form element this lookup is
    * associated when the user is completing the form.
@@ -1192,18 +1190,29 @@ export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDat
   inputValue: number
 }
 
-export type FormElementLookupStaticDataRecord =
-  | FormElementLookupStaticDataRecordText
-  | FormElementLookupStaticDataRecordNumber
-
-export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
+export type FormElementLookupStaticDataEnvironmentText = FormElementEnvironmentBase & {
   /**
    * Array of records, each associated with a "inputValue" that will determine
    * the prefill data for the configured form elements based on the
    * "FormElement.name" property.
    */
-  records: FormElementLookupStaticDataRecord[]
+  inputType: 'STRING'
+  records: FormElementLookupStaticDataRecordText[]
 }
+
+export type FormElementLookupStaticDataEnvironmentNumber = FormElementEnvironmentBase & {
+  /**
+   * Array of records, each associated with a "inputValue" that will determine
+   * the prefill data for the configured form elements based on the
+   * "FormElement.name" property.
+   */
+  inputType: 'NUMBER'
+  records: FormElementLookupStaticDataRecordNumber[]
+}
+
+export type FormElementLookupStaticDataEnvironment =
+  | FormElementLookupStaticDataEnvironmentText
+  | FormElementLookupStaticDataEnvironmentNumber
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
