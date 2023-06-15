@@ -1004,6 +1004,11 @@ export type Form = {
     }
     /** Disallow approving when approval is waiting for clarification */
     disallowApprovingWhenAwaitingClarification?: boolean
+    /**
+     * Allow a default value for the `preventPayment` flag when approvers are
+     * requesting clarification
+     */
+    defaultPreventPaymentOnClarificationRequest?: boolean
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>

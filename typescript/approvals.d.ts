@@ -65,8 +65,6 @@ export type NewFormApprovalFlowInstance = {
     | 'APPROVED'
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
-  /** Indicates if the payment was skipped for a clarification request */
-  preventPayment?: boolean
 }
 
 /**
