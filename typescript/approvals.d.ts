@@ -65,6 +65,8 @@ export type NewFormApprovalFlowInstance = {
     | 'APPROVED'
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
+  /** Indicates if the payment was skipped for a clarification request */
+  preventPayment?: boolean
 }
 
 /**
@@ -172,6 +174,8 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
   updatedAt: string
+  /** Prevent the payment on a clarification request */
+  preventPayment?: boolean
 }
 
 export type FormApprovalWebhookEvent =
