@@ -285,7 +285,7 @@ export type GovPaySubmissionEvent = FormEventBase & {
      * Used to describe the product the customer is purchasing. Passed on GovPay
      * during the request payment process
      */
-    productDescription?: string
+    productDescription: string
     /**
      * An optional customer reference that will be passed on GovPay during the
      * request payment process
