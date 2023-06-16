@@ -271,6 +271,34 @@ export type WestpacQuickWebSubmissionEvent = FormEventBase & {
   }
 }
 
+export type GovPaySubmissionEvent = FormEventBase & {
+  type: 'GOV_PAY'
+  configuration: {
+    /**
+     * The elementId that holds the value that will be paid. Must be the id of a
+     * number or calculation element.
+     */
+    elementId: string
+    /** The id of the OneBlink -> GOV_PAY integration primary agency to be used. */
+    primaryAgencyId: string
+    /**
+     * Used to describe the product the customer is purchasing. Passed on GovPay
+     * during the request payment process
+     */
+    productDescription?: string
+    /**
+     * An optional customer reference that will be passed on GovPay during the
+     * request payment process
+     */
+    customerReference?: string
+    /**
+     * A optional sub agency code that will ensure the payment goes to the
+     * correct agency within GovPay
+     */
+    subAgencyCode?: string
+  }
+}
+
 export type FreshdeskSubmissionEventFieldMapping = {
   freshdeskFieldName: string
 } & (
@@ -347,6 +375,7 @@ export type FormPaymentEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
   | WestpacQuickWebSubmissionEvent
+  | GovPaySubmissionEvent
 
 export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormWorkflowEvent =

@@ -11,6 +11,7 @@ export type IntegrationType =
   | 'SCHEDULING'
   | 'FRESHDESK'
   | 'MAILGUN'
+  | 'GOV_PAY'
 
 type IntegrationBase = {
   organisationId: string
@@ -99,6 +100,33 @@ export type IntegrationBPOINT = IntegrationBase & {
   type: 'BPOINT'
   configuration: {
     environments: IntegrationBPOINTEnvironment[]
+  }
+}
+export type IntegrationGovPayPrimaryAgency = {
+  /** Identifier used to link to a form payment event */
+  id: string
+  /** Displayed to team members when configuring form payment events */
+  label: string
+  /** The unique identifier that GovPay need to validate primary agency details */
+  callingSystem: string
+  /** The client identifier used for Auth2.0 authentication */
+  clientId: string
+  /** The client secret used for Auth2.0 authentication */
+  clientSecret: string
+  /** Optional codes that will ensure the payment goes to the correct agency within GovPay */
+  subAgencyCodes?: string[]
+  /**
+   * Set to `true` to use the non-prod version by changing the domain used for
+   * all requests to GovPay.
+   */
+  isNonProd: boolean
+}
+export type IntegrationGovPay = IntegrationBase & {
+  type: 'GOV_PAY'
+  /** Integration configuration */
+  configuration: {
+    /** The primary agencies configured in GovPay */
+    primaryAgencies: IntegrationGovPayPrimaryAgency[]
   }
 }
 
@@ -196,3 +224,4 @@ export type Integration =
   | IntegrationScheduling
   | IntegrationFreshdesk
   | IntegrationMailGun
+  | IntegrationGovPay

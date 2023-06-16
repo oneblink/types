@@ -7,6 +7,7 @@ import {
   WestpacQuickWebSubmissionEvent,
   FormWorkflowEvent,
   FormSchedulingEvent,
+  GovPaySubmissionEvent,
 } from './submissionEvents'
 import { components as cpPayV1Components } from './cp-pay/swagger.v1'
 import { components as cpPayV2Components } from './cp-pay/swagger.v2'
@@ -91,7 +92,10 @@ type _FormSubmissionMeta = {
   formId: number
   /** The id of the Forms App submitting for */
   formsAppId: number
-  /** The date and time (in ISO format) the form was submitted. If this is undefiend, then the submission data has not yet been submitted */
+  /**
+   * The date and time (in ISO format) the form was submitted. If this is
+   * undefiend, then the submission data has not yet been submitted
+   */
   dateTimeSubmitted?: string
   /** The date and time (in ISO format) the record was created. */
   createdAt: string
@@ -380,11 +384,17 @@ export type BPOINTPayment = BaseFormSubmissionPayment & {
     }
   }
 }
+export type GovPayPayment = BaseFormSubmissionPayment & {
+  type: GovPaySubmissionEvent['type']
+  /** TODO add correct types and make this comment better */
+  paymentTransaction: Record<string, unknown>
+}
 
 export type NewFormSubmissionPayment =
   | CPPayPayment
   | WestpacQuickWebPayment
   | BPOINTPayment
+  | GovPayPayment
 
 export type FormSubmissionPayment = NewFormSubmissionPayment & {
   createdAt: string
