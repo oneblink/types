@@ -113,6 +113,8 @@ export type IntegrationGovPayPrimaryAgency = {
   clientId: string
   /** The client secret used for Auth2.0 authentication */
   clientSecret: string
+  /** The public key used to verify JSON web token to validate a payment */
+  jwtPublicKey: string
   /** Optional codes that will ensure the payment goes to the correct agency within GovPay */
   subAgencyCodes?: string[]
   /**
