@@ -391,7 +391,7 @@ export type GovPayPayment = BaseFormSubmissionPayment & {
     state: {
       /** The URL to redirect the user back to after a payment attempt */
       redirectUrl: string
-      /** The id of the OneBlink -> GOV_PAY integration primary agency to be used. */
+      /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
       integrationPrimaryAgencyId: string
       /** The Payment Reference created when the requesting a payment from GovPay */
       govPayPaymentReference: string

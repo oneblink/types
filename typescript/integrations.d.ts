@@ -11,7 +11,7 @@ export type IntegrationType =
   | 'SCHEDULING'
   | 'FRESHDESK'
   | 'MAILGUN'
-  | 'GOV_PAY'
+  | 'NSW_GOV_PAY'
 
 type IntegrationBase = {
   organisationId: string
@@ -124,7 +124,7 @@ export type IntegrationGovPayPrimaryAgency = {
   isNonProd: boolean
 }
 export type IntegrationGovPay = IntegrationBase & {
-  type: 'GOV_PAY'
+  type: 'NSW_GOV_PAY'
   /** Integration configuration */
   configuration: {
     /** The primary agencies configured in GovPay */
