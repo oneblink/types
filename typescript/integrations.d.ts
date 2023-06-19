@@ -102,12 +102,12 @@ export type IntegrationBPOINT = IntegrationBase & {
     environments: IntegrationBPOINTEnvironment[]
   }
 }
-export type IntegrationGovPayPrimaryAgency = {
+export type IntegrationNSWGovPayPrimaryAgency = {
   /** Identifier used to link to a form payment event */
   id: string
   /** Displayed to team members when configuring form payment events */
   label: string
-  /** The unique identifier that GovPay need to validate primary agency details */
+  /** The unique identifier that NSW GovPay need to validate primary agency details */
   callingSystem: string
   /** The client identifier used for Auth2.0 authentication */
   clientId: string
@@ -115,20 +115,20 @@ export type IntegrationGovPayPrimaryAgency = {
   clientSecret: string
   /** The public key used to verify JSON web token to validate a payment */
   jwtPublicKey: string
-  /** Optional codes that will ensure the payment goes to the correct agency within GovPay */
+  /** Optional codes that will ensure the payment goes to the correct agency within NSW GovPay */
   subAgencyCodes?: string[]
   /**
    * Set to `true` to use the non-prod version by changing the domain used for
-   * all requests to GovPay.
+   * all requests to NSW GovPay.
    */
   isNonProd: boolean
 }
-export type IntegrationGovPay = IntegrationBase & {
+export type IntegrationNSWGovPay = IntegrationBase & {
   type: 'NSW_GOV_PAY'
   /** Integration configuration */
   configuration: {
-    /** The primary agencies configured in GovPay */
-    primaryAgencies: IntegrationGovPayPrimaryAgency[]
+    /** The primary agencies configured in NSW GovPay */
+    primaryAgencies: IntegrationNSWGovPayPrimaryAgency[]
   }
 }
 
@@ -226,4 +226,4 @@ export type Integration =
   | IntegrationScheduling
   | IntegrationFreshdesk
   | IntegrationMailGun
-  | IntegrationGovPay
+  | IntegrationNSWGovPay

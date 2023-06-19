@@ -7,7 +7,7 @@ import {
   WestpacQuickWebSubmissionEvent,
   FormWorkflowEvent,
   FormSchedulingEvent,
-  GovPaySubmissionEvent,
+  NSWGovPaySubmissionEvent,
 } from './submissionEvents'
 import { components as cpPayV1Components } from './cp-pay/swagger.v1'
 import { components as cpPayV2Components } from './cp-pay/swagger.v2'
@@ -384,8 +384,8 @@ export type BPOINTPayment = BaseFormSubmissionPayment & {
     }
   }
 }
-export type GovPayPayment = BaseFormSubmissionPayment & {
-  type: GovPaySubmissionEvent['type']
+export type NSWGovPayPayment = BaseFormSubmissionPayment & {
+  type: NSWGovPaySubmissionEvent['type']
   /** TODO add correct types and make this comment better */
   paymentTransaction: {
     state: {
@@ -393,14 +393,14 @@ export type GovPayPayment = BaseFormSubmissionPayment & {
       redirectUrl: string
       /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
       integrationPrimaryAgencyId: string
-      /** The Payment Reference created when the requesting a payment from GovPay */
-      govPayPaymentReference: string
+      /** The Payment Reference created when the requesting a payment from NSW GovPay */
+      nswGovPayPaymentReference: string
       /**
        * The completion Reference included in the querystring of the redirect
        * after a successful payment. Should be updated after a successful
        * payment and used to retrieve the redirect URL.
        */
-      govPayCompletionReference?: string
+      nswGovPayCompletionReference?: string
     }
     transaction?: {
       /** Payment Reference shared with the agency */
@@ -467,7 +467,7 @@ export type NewFormSubmissionPayment =
   | CPPayPayment
   | WestpacQuickWebPayment
   | BPOINTPayment
-  | GovPayPayment
+  | NSWGovPayPayment
 
 export type FormSubmissionPayment = NewFormSubmissionPayment & {
   createdAt: string

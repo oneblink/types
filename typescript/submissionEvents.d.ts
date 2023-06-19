@@ -271,7 +271,7 @@ export type WestpacQuickWebSubmissionEvent = FormEventBase & {
   }
 }
 
-export type GovPaySubmissionEvent = FormEventBase & {
+export type NSWGovPaySubmissionEvent = FormEventBase & {
   type: 'NSW_GOV_PAY'
   configuration: {
     /**
@@ -282,18 +282,18 @@ export type GovPaySubmissionEvent = FormEventBase & {
     /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
     primaryAgencyId: string
     /**
-     * Used to describe the product the customer is purchasing. Passed on GovPay
+     * Used to describe the product the customer is purchasing. Passed on NSW GovPay
      * during the request payment process
      */
     productDescription: string
     /**
-     * An optional customer reference that will be passed on GovPay during the
+     * An optional customer reference that will be passed on NSW GovPay during the
      * request payment process
      */
     customerReference?: string
     /**
      * A optional sub agency code that will ensure the payment goes to the
-     * correct agency within GovPay
+     * correct agency within NSW GovPay
      */
     subAgencyCode?: string
   }
@@ -375,7 +375,7 @@ export type FormPaymentEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
   | WestpacQuickWebSubmissionEvent
-  | GovPaySubmissionEvent
+  | NSWGovPaySubmissionEvent
 
 export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormWorkflowEvent =
