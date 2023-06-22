@@ -11,6 +11,7 @@ import type {
 import type { ConditionalPredicate } from './conditions'
 import type { ABNRecord, BaseSearchResult, IdResource } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
+import { ButtonConfiguration } from './formsApps'
 
 ////////////////////////////////////////
 // Element Types
@@ -72,6 +73,8 @@ export type LookupFormElement = FormElementBase & {
    * return Form Elements to inject.
    */
   elementLookupId?: number
+  /** Button configuration for the Lookup button */
+  lookupButton?: ButtonConfiguration
 }
 
 export type FormElementReadOnly = {
