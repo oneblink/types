@@ -162,30 +162,17 @@ export type FormsListStyles = BaseFormsAppStyles & {
   /** Configuration object for button customization */
   buttons?: {
     /** Button configuration for the Submit button */
-    submit?: {
-      icon?: string
-      label?: string
-    }
+    submit?: ButtonConfiguration
     /** Button configuration for the Cancel button */
-    cancel?: {
-      icon?: string
-      label?: string
-    }
+    cancel?: ButtonConfiguration
     /** Button configuration for the Save Draft button */
-    saveDraft?: {
-      icon?: string
-      label?: string
-    }
+    saveDraft?: ButtonConfiguration
     /** Button configuration for the Cancel Prompt dialog Yes button */
-    cancelPromptYes?: {
-      icon?: string
-      label?: string
-    }
+    cancelPromptYes?: ButtonConfiguration
     /** Button configuration for the Cancel Prompt dialog No button */
-    cancelPromptNo?: {
-      icon?: string
-      label?: string
-    }
+    cancelPromptNo?: ButtonConfiguration
+    /** Button configuration for the Lookup button */
+    lookup?: ButtonConfiguration
   }
 }
 
