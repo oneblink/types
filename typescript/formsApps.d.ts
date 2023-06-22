@@ -171,8 +171,6 @@ export type FormsListStyles = BaseFormsAppStyles & {
     cancelPromptYes?: ButtonConfiguration
     /** Button configuration for the Cancel Prompt dialog No button */
     cancelPromptNo?: ButtonConfiguration
-    /** Button configuration for the Lookup button */
-    lookup?: ButtonConfiguration
   }
 }
 
