@@ -60,7 +60,7 @@ export type APIDeploymentPayload = {
   variables: {
     [key: string]: string
   }
-  routes: Array<{
+  routes?: Array<{
     module: string
     route: string
   }>
