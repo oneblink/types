@@ -61,6 +61,8 @@ export type TierLimitation =
 
 export interface NewTier {
   name: string
+  /** An `undefined` value for any sub-property matching the pattern: `maximum${x}`
+   * is treated as a value of `{ unlimited: false, limit: 0 }` */
   tierData: {
     maximumFormSubmissions?: TierLimitation
     maximumAuthenticatedFormSubmissions?: TierLimitation
