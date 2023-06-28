@@ -43,6 +43,12 @@ export type APIEnvironmentNetworkConfiguration = {
   vpcSecurityGroups: string[]
 }
 
+export type APIDeploymentPayloadScheduledFunction = {
+  name: string
+  label: string
+  module: string
+}
+
 export type APIDeploymentPayload = {
   scope: string
   env: string
@@ -60,6 +66,7 @@ export type APIDeploymentPayload = {
   }>
   network: APIEnvironmentNetworkConfiguration | null | undefined
   memorySize?: number
+  scheduledFunctions?: APIDeploymentPayloadScheduledFunction[]
 }
 
 export type APIEnvironmentMetricsSearchParameters = {
