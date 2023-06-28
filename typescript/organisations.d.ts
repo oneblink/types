@@ -76,6 +76,7 @@ export interface NewTier {
     maximumSchedulingCalendars: TierLimitation
     maximumFormStoreForms: TierLimitation
     maximumFormStoreAppUsers: TierLimitation
+    maximumScheduledFunctions: TierLimitation
     availableFormSubmissionEvents?: FormEventType[] | null
     availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
     allowFormsAppPWASettings: boolean
