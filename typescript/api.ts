@@ -5,11 +5,54 @@ export type APIEnvironmentRoute = {
   route: string
 }
 
+export type APIDeploymentPayloadScheduledFunction = {
+  name: string
+  label: string
+  module: string
+}
+
+export type APIEnvironmentSchedule = {
+  /** The days the schedule should be triggered */
+  days: Array<'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun'>
+  /**
+   * The time the schedule should be triggered in 24 hour time in the following
+   * format: "03:00" or "15:30"
+   */
+  time: string
+}
+
+export type APIEnvironmentScheduledFunction =
+  APIDeploymentPayloadScheduledFunction & {
+    /** AWS configuration */
+    aws: {
+      /** AWS Lambda configuration */
+      lambda: {
+        /** The Lambda function ARN to allow linking between EventBridge and Lambda */
+        functionArn: string
+      }
+      /** AWS EventBridge configuration */
+      eventBridge: {
+        /** The name identifier for the AWS EventBridge rule */
+        name: string
+        /** `true` if the schedule is currently disabled */
+        isDisabled?: boolean
+        /**
+         * AWS EventBridge cron expression:
+         * https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cron-expressions.html
+         */
+        scheduleExpression?: string
+      }
+    }
+    /** The schedule configuration in a structure format parsed from a cron expression */
+    schedule?: APIEnvironmentSchedule
+  }
+
 export type APIEnvironment = {
   apiId: string
   environment: string
   lastDeployment: string
   routes: APIEnvironmentRoute[]
+  scheduledFunctions?: APIEnvironmentScheduledFunction[]
   cors: APIEnvironmentCorsConfiguration | boolean
   vpcSecurityGroupIds?: string
   vpcSubnetIds?: string
@@ -43,12 +86,6 @@ export type APIEnvironmentNetworkConfiguration = {
   vpcSecurityGroups: string[]
 }
 
-export type APIDeploymentPayloadScheduledFunction = {
-  name: string
-  label: string
-  module: string
-}
-
 export type APIDeploymentPayload = {
   scope: string
   env: string
@@ -60,10 +97,7 @@ export type APIDeploymentPayload = {
   variables: {
     [key: string]: string
   }
-  routes?: Array<{
-    module: string
-    route: string
-  }>
+  routes: APIEnvironmentRoute[]
   network: APIEnvironmentNetworkConfiguration | null | undefined
   memorySize?: number
   scheduledFunctions?: APIDeploymentPayloadScheduledFunction[]
