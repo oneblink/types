@@ -13,12 +13,14 @@ export type APIDeploymentPayloadScheduledFunction = {
 
 export type APIEnvironmentSchedule = {
   /** The days the schedule should be triggered */
-  days: Array<'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun'>
+  days: Array<'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'>
   /**
-   * The time the schedule should be triggered in 24 hour time in the following
-   * format: "03:00" or "15:30"
+   * The UTC timezone hour the schedule should be triggered in 24 hour time.
+   * I.e. must be between 0 and 23.
    */
-  time: string
+  hour: number
+  /** The minute the schedule should be triggered. I.e. must be between 0 and 59. */
+  minute: number
 }
 
 export type APIEnvironmentScheduledFunction =
