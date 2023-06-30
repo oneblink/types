@@ -21,6 +21,8 @@ export type APIEnvironmentSchedule = {
   hour: number
   /** The minute the schedule should be triggered. I.e. must be between 0 and 59. */
   minute: number
+  /** `true` if the schedule is currently disabled */
+  isDisabled: boolean
 }
 
 export type APIEnvironmentScheduledFunction =
@@ -36,13 +38,6 @@ export type APIEnvironmentScheduledFunction =
       eventBridge: {
         /** The name identifier for the AWS EventBridge rule */
         name: string
-        /** `true` if the schedule is currently disabled */
-        isDisabled?: boolean
-        /**
-         * AWS EventBridge cron expression:
-         * https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cron-expressions.html
-         */
-        scheduleExpression?: string
       }
     }
     /** The schedule configuration in a structure format parsed from a cron expression */
