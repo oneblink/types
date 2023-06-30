@@ -107,6 +107,7 @@ export type AuditRecordType =
   | 'APIEnvironmentLogs'
   | 'APIEnvironmentMetrics'
   | 'APIEnvironmentServe'
+  | 'APIEnvironmentSchedule'
   | 'FormsAppEnvironment'
   | 'FormsAppEnvironmentApproverGroup'
   | 'FormElementDynamicOptionSet'
