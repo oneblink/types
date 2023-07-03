@@ -9,6 +9,7 @@ export type APIDeploymentPayloadScheduledFunction = {
   name: string
   label: string
   module: string
+  timeout: number
 }
 
 export type APIEnvironmentSchedule = {
