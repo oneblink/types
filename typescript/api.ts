@@ -6,9 +6,17 @@ export type APIEnvironmentRoute = {
 }
 
 export type APIDeploymentPayloadScheduledFunction = {
+  /** A unique identifier for the function within the scope of the Hosted API */
   name: string
+  /** A human readable label for the function to display */
   label: string
+  /** The relative path to the file to execute the function */
   module: string
+  /** The name of the exported function in the "module" to execute the function */
+  export: string
+  /** The relative path including the function name to the file to execute the function */
+  handler: string
+  /** The time in seconds allowed for the function to finish executing */
   timeout: number
 }
 
