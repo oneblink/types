@@ -32,6 +32,8 @@ export type APIEnvironmentSchedule = {
   minute: number
   /** `true` if the schedule is currently disabled */
   isDisabled: boolean
+  /** A list of email addresses to send a failure email if the scheduled function fails */
+  failureEmailAddresses: string[]
 }
 
 export type APIEnvironmentScheduledFunction =
