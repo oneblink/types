@@ -75,6 +75,8 @@ export type LookupFormElement = FormElementBase & {
   elementLookupId?: number
   /** Button configuration for the Lookup button */
   lookupButton?: ButtonConfiguration
+  /** Option to run lookup on submission value being undefined */
+  runLookupOnClear?: boolean
 }
 
 export type FormElementReadOnly = {
@@ -1200,9 +1202,14 @@ export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDat
   inputValue: number
 }
 
+export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
+  inputType: 'UNDEFINED'
+}
+
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
+  | FormElementLookupStaticDataRecordUndefined
 
 export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
   /**
