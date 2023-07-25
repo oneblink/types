@@ -1141,7 +1141,10 @@ export type BuiltInFormElementLookup = NewBuiltInFormElementLookup & {
   id: number
 }
 
-export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl
+export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl & {
+  /** Option to run lookup on submission value being undefined */
+  runLookupOnClear?: boolean
+}
 
 export type FormElementLookupStaticDataPreFillBase = {
   /** Must match a "FormElement.name" property exactly to pre-fill with the "preFillValue". */
@@ -1234,8 +1237,6 @@ export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
-  /** Option to run lookup on submission value being undefined */
-  runLookupOnClear?: boolean
 }
 
 export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
