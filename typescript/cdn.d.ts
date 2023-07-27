@@ -1,4 +1,4 @@
-export interface WebApp {
+export interface NewCDN {
   id: string
   isCorsEnabled: boolean
   createdAt: string
@@ -9,7 +9,13 @@ export interface WebApp {
   }
 }
 
-export type NewWebAppEnvironmentDistributionConfiguration = {
+export interface CDN extends NewCDN {
+  aws: {
+    cloudFrontOriginAccessControlId: string
+  }
+}
+
+export type NewCDNEnvironmentDistributionConfiguration = {
   brandedDomain: string
   isSinglePageApplication?: boolean
   disableSecurityResponseHeaders?: boolean
@@ -27,16 +33,22 @@ export type NewWebAppEnvironmentDistributionConfiguration = {
   }
 }
 
-export type NewWebAppEnvironment = {
+export type NewCDNEnvironment = {
   webAppId: string
   environment: string
   distributionConfiguration: NewWebAppEnvironmentDistributionConfiguration
 }
 
-export type WebAppEnvironment = NewWebAppEnvironment & {
+export type CDNEnvironment = NewCDNEnvironment & {
   lastDeployment: string
   distributionConfiguration: NewWebAppEnvironmentDistributionConfiguration & {
     distributionId: string
     domainName: string
   }
 }
+
+export type WebApp = CDN
+export type NewWebAppEnvironmentDistributionConfiguration =
+  NewCDNEnvironmentDistributionConfiguration
+export type NewWebAppEnvironment = NewCDNEnvironment
+export type WebAppEnvironment = CDNEnvironment
