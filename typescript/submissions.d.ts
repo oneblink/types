@@ -88,6 +88,8 @@ export interface JobSearchParameters {
 type _FormSubmissionMeta = {
   /** The id of the submission data */
   submissionId: string
+  /** The evaluation of the submission title configuration */
+  submissionTitle?: string
   /** The id of the OneBlink Form */
   formId: number
   /** The id of the Forms App submitting for */
