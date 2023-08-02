@@ -1020,12 +1020,6 @@ export type Form = {
   /** The details of the form validation endpoint. */
   serverValidation?: FormServerValidation
   /**
-   * @deprecated Please use "personalisation" and/or
-   *   "externalIdGenerationOnSubmit" instead as this combines the two and is no
-   *   longer supported.
-   */
-  externalIdGeneration?: ExternalIdGeneration
-  /**
    * The details of the externalId generation endpoint which will be executed
    * after "serverValidation" but before submission.
    */
