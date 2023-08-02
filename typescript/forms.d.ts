@@ -1035,6 +1035,8 @@ export type Form = {
    * load to prefill existing elements or return a new set of elements.
    */
   personalisation?: EndpointConfiguration
+  /** The title of a form submission, supports element injection */
+  submissionTitle?: string
 }
 
 export type PreviewUrl = {
