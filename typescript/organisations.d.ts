@@ -84,7 +84,7 @@ export interface NewTier {
     allowFormsAppMenu: boolean
     allowApprovalsSolution?: boolean
     allowVolunteersSolution?: boolean
-    allowSubmissionTitleSearch: boolean
+    allowSubmissionTitleSearch?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
