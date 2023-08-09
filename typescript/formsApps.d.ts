@@ -257,6 +257,17 @@ type _NewFormsApp = {
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
   enableAppUserSignup: boolean
+  /**
+   * The number of hours a user's session will last before they have to log in
+   * again. These tokens will get revoked when logging out. Defaults to 30 days.
+   */
+  userSessionValidityInHours?: number
+  /**
+   * The number of minutes a user's token for communicating with servers will
+   * last. These tokens do not get revoked when logging out so a shorter time
+   * period is desireable. Defaults to 1 hour.
+   */
+  userTokensValidityInMinutes?: number
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
