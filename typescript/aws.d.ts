@@ -20,3 +20,7 @@ export type FormAttachmentS3Credentials = S3ObjectCredentials & {
   attachmentDataId: string
   uploadedAt?: string
 }
+
+export type FormPdfConversionS3Credentials = FormS3Credentials & {
+  pdfConversionId: string
+}
