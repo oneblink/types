@@ -20,6 +20,7 @@ import * as SchedulingTypes from './typescript/scheduling'
 import * as CDNTypes from './typescript/cdn'
 import * as EmailTemplateTypes from './typescript/emailTemplates'
 import * as FreshdeskTypes from './typescript/freshdesk'
+import * as PDFConversionTypes from './typescript/pdfConversion'
 export {
   APITypes,
   FormTypes,
@@ -43,4 +44,5 @@ export {
   CDNTypes,
   EmailTemplateTypes,
   FreshdeskTypes,
+  PDFConversionTypes,
 }
