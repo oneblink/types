@@ -214,7 +214,6 @@ type _BaseFormStoreRecord = {
   externalId?: string
   jobId?: string
   key?: FormSubmissionMeta['key']
-  definition: Form
   submission: S3SubmissionData['submission']
   device?: S3SubmissionDataDevice
   ipAddress?: string
