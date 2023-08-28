@@ -1058,8 +1058,11 @@ export type FormQuerystringParameters = {
   injectForms?: boolean
 }
 
-// Options Sets/Lookups
-
+//
+//
+// Options Sets
+//
+//
 export type NewFormElementOptionSetBase = {
   name: string
   organisationId: string
@@ -1071,7 +1074,7 @@ export type FormElementOptionSetEnvironmentStatic = {
   formsAppEnvironmentId: number
 }
 export type NewFormElementOptionSetStatic = NewFormElementOptionSetBase & {
-  type: 'STATIC'
+  type: 'STATIC' | 'HCMS_CATEGORIES'
   environments: FormElementOptionSetEnvironmentStatic[]
 }
 export type FormElementOptionSetStatic = IdResource &
@@ -1123,6 +1126,11 @@ export type FormElementOptionSetSearchParameters = {
   offset?: number
 }
 
+//
+//
+// Lookups
+//
+//
 export type NewBuiltInFormElementLookup = {
   type: 'ELEMENT' | 'DATA'
   name: string
