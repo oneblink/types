@@ -37,6 +37,10 @@ export type FormsAppDraft = NewFormsAppDraft & {
   updatedAt?: string
   /** The date and time (in ISO format) the draft was created */
   createdAt?: string
+  /** The UserProfile of the user who first created the draft */
+  createdBy?: UserProfile
+  /** The UserProfile of the user who last updated the draft */
+  updatedBy?: UserProfile
 }
 
 export interface NewFormsAppJob {
