@@ -268,6 +268,8 @@ type _NewFormsApp = {
    * period is desireable. Defaults to 1 hour.
    */
   userTokensValidityInMinutes?: number
+  /** Whether draft submissions are shared between all app users for this app. */
+  draftsAreShared?: boolean
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
