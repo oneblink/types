@@ -424,6 +424,7 @@ export type FormsAppConfiguration<
   styles: T
   pwaSettings: FormsAppPWASettings | NoU
   isDraftsEnabled: boolean
+  draftsAreShared?: boolean
   locale: string
   tz: string
   volunteers:
