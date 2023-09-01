@@ -378,8 +378,9 @@ type BaseFormsAppsDraft = {
 
 type BaseFormsAppSharedDraft = {
   formsAppId: number
-  drafts: FormsAppDraft
+  draft: FormsAppDraft
 }
+
 export type NewFormsAppsDraft = BaseFormsAppsDraft & {
   createdAt?: string
   updatedAt?: string
