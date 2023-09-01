@@ -376,7 +376,17 @@ type BaseFormsAppsDraft = {
   drafts: FormsAppDraft[]
 }
 
+type BaseFormsAppSharedDraft = {
+  formsAppId: number
+  draft: FormsAppDraft
+}
+
 export type NewFormsAppsDraft = BaseFormsAppsDraft & {
+  createdAt?: string
+  updatedAt?: string
+}
+
+export type NewFormsAppsSharedDraft = BaseFormsAppSharedDraft & {
   createdAt?: string
   updatedAt?: string
 }
@@ -385,6 +395,11 @@ export type FormsAppsDraft = {
   createdAt: string
   updatedAt: string
 } & BaseFormsAppsDraft
+
+export type FormsAppsSharedDraft = {
+  createdAt: string
+  updatedAt: string
+} & BaseFormsAppSharedDraft
 
 export type FormsAppSendingAddressMailgun = {
   type: IntegrationMailGun['type']
