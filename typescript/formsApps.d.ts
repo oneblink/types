@@ -370,21 +370,22 @@ export type FormsAppUser = FormsAppUserBase & {
   isMfaEnabled?: boolean
 }
 
-type BaseDraft = {
+type BaseFormsAppsDraft = {
+  formsAppUserUsername: string
   formsAppId: number
   drafts: FormsAppDraft[]
 }
 
-type BaseFormsAppsDraft = BaseDraft & {
-  formsAppUserUsername: string
+type BaseFormsAppSharedDraft = {
+  formsAppId: number
+  drafts: FormsAppDraft
 }
-
 export type NewFormsAppsDraft = BaseFormsAppsDraft & {
   createdAt?: string
   updatedAt?: string
 }
 
-export type NewFormsAppsSharedDraft = BaseDraft & {
+export type NewFormsAppsSharedDraft = BaseFormsAppSharedDraft & {
   createdAt?: string
   updatedAt?: string
 }
@@ -397,7 +398,7 @@ export type FormsAppsDraft = {
 export type FormsAppsSharedDraft = {
   createdAt: string
   updatedAt: string
-} & BaseDraft
+} & BaseFormsAppSharedDraft
 
 export type FormsAppSendingAddressMailgun = {
   type: IntegrationMailGun['type']
