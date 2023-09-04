@@ -1,5 +1,4 @@
 import { IntegrationMailGun } from './integrations'
-import { NoU } from './misc'
 import { FormsAppDraft } from './submissions'
 
 type FormsAppBaseMenuItem = {
@@ -228,7 +227,7 @@ type _NewFormsApp = {
   description?: string
   hostname: string
   /** The identifier of the OAuth Client for the forms app */
-  oAuthClientId: string | NoU
+  oAuthClientId?: string | null
   /** The exact organisation identifier the forms app is associated with */
   organisationId: string
   /** Forms App progressive web app setting */
@@ -415,13 +414,13 @@ export type FormsAppConfiguration<
   organisationId: string
   formsAppId: number
   formsAppEnvironmentId: number
-  formsOAuthClientId: string | NoU
+  formsOAuthClientId?: string | null
   isTrialExpired: boolean
   formsHostname: string
-  samlIdentityProviderName: string | NoU
+  samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
-  pwaSettings: FormsAppPWASettings | NoU
+  pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
   draftsAreShared?: boolean
   locale: string

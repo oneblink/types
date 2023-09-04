@@ -1,5 +1,5 @@
 import { Form, FormElement, FormElementWithName } from './forms'
-import { NoU, UserProfile } from './misc'
+import { UserProfile } from './misc'
 import { S3ObjectCredentials } from './aws'
 import {
   BPOINTSubmissionEvent,

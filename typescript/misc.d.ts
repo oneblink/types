@@ -1,5 +1,3 @@
-export type NoU = null | undefined
-
 export interface UserProfile {
   /** `true` if the user logged in using a SAML provider */
   isSAMLUser?: boolean
