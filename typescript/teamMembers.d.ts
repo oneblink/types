@@ -1,5 +1,3 @@
-import { NoU } from './misc'
-
 interface RolePrivileges {
   API_HOSTING?: 'MANAGER' | 'DEVELOPER' | 'READONLY'
   TEAM_MEMBERS?: 'MANAGER' | 'READONLY'
@@ -57,7 +55,7 @@ type Role = NewRole & {
 }
 
 interface PermissionBase {
-  name: string | NoU
+  name?: string | null
   privilege: RolePrivileges
   formsAppEnvironmentIds?: number[]
   temporaryPasswordExpiry?: string
