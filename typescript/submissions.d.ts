@@ -33,9 +33,18 @@ export type FormsAppDraft = NewFormsAppDraft & {
   draftId: string
   /** The id of the draft data stored */
   draftDataId?: string
-  /** The date and time (in ISO format) the draft was last updated */
+  /**
+   * The date and time (in ISO format) when the draft was last synced with the
+   * server. It is NOT when a user last saved the draft after partially
+   * completing the form. This property should have actually been called `syncedAt`.
+   */
   updatedAt?: string
-  /** The date and time (in ISO format) the draft was created */
+  /**
+   * The date and time (in ISO format) the when a user last saved the draft
+   * after partially completing the form. When a draft is updated, `createdAt`
+   * is also updated to reflect when the draft was updated. This property should
+   * have actually been called `updatedAt`.
+   */
   createdAt?: string
   /** The UserProfile of the user who first created the draft */
   createdBy?: UserProfile
