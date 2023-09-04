@@ -18,9 +18,9 @@ export interface NewFormsAppDraft {
   /** The id of the form the draft was saved against */
   formId: number
   /** The external id provided by a developer */
-  externalId: string | NoU
+  externalId?: string | null
   /** The id of the job associated with the draft */
-  jobId: string | NoU
+  jobId?: string | null
   /**
    * The previous form submission approval id, if the draft is a response to a
    * clarification request on the submission approval
