@@ -24,6 +24,7 @@ export type TaskAction = BaseTaskAction &
 
 export interface NewTask {
   name: string
+  organisationId: string
   schedule: {
     startDate: string
     endDate?: string
@@ -42,7 +43,6 @@ export interface NewTask {
 }
 export type Task = NewTask & {
   id: number
-  organisationId: string
   createdAt: string
   updatedAt: string
 }
