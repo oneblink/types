@@ -1,9 +1,9 @@
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 export type TaskActionStatus = 'COMPLETE' | 'TODO'
-type BaseTask = {
+type BaseTaskAction = {
   label: string
 }
-export type TaskAction = BaseTask &
+export type TaskAction = BaseTaskAction &
   (
     | {
         type: 'FORM'
