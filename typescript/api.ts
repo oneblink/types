@@ -1,5 +1,5 @@
 import { S3ObjectCredentials } from './aws'
-
+import { DayOfWeek } from './scheduledTasks'
 export type APIEnvironmentRoute = {
   module: string
   route: string
@@ -24,7 +24,7 @@ export type APIDeploymentPayloadScheduledFunction = {
 
 export type APIEnvironmentSchedule = {
   /** The days the schedule should be triggered */
-  days: Array<'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'>
+  days: Array<DayOfWeek>
   /**
    * The UTC timezone hour the schedule should be triggered in 24 hour time.
    * I.e. must be between 0 and 23.
