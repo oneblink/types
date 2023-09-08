@@ -24,6 +24,7 @@ export type TaskAction = BaseTaskAction &
 
 export interface NewTask {
   name: string
+  formsAppEnvironmentId: number
   organisationId: string
   schedule: {
     startDate: string
