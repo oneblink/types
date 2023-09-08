@@ -39,8 +39,8 @@ export interface NewTask {
         }
   }
   description?: string
-  enabled: boolean
-  actions: TaskAction[]
+  enabled?: boolean
+  actions?: TaskAction[]
 }
 export type Task = NewTask & {
   id: number
