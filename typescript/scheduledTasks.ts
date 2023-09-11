@@ -1,6 +1,7 @@
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 type BaseTaskAction = {
   label: string
+  swipeDirection: 'LEFT' | 'RIGHT'
 }
 export type TaskAction = BaseTaskAction &
   (
