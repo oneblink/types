@@ -1,5 +1,4 @@
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
-export type TaskActionStatus = 'COMPLETE' | 'TODO'
 type BaseTaskAction = {
   label: string
 }
@@ -10,15 +9,8 @@ export type TaskAction = BaseTaskAction &
         formId: number
       }
     | {
-        type: 'HREF'
-        link: {
-          text: string
-          url: string
-        }
-      }
-    | {
         type: 'CHANGE_STATUS'
-        status: TaskActionStatus
+        status: 'COMPLETE'
       }
   )
 
