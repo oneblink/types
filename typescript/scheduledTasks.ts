@@ -20,7 +20,7 @@ export interface NewTask {
   formsAppEnvironmentId: number
   organisationId: string
   schedule: {
-    startDate: string
+    startDate?: string
     endDate?: string
     recurrence:
       | {
