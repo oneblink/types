@@ -1,7 +1,7 @@
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
-export type TaskActionStatus = 'COMPLETE' | 'TODO'
 type BaseTaskAction = {
   label: string
+  swipeDirection: 'LEFT' | 'RIGHT'
 }
 export type TaskAction = BaseTaskAction &
   (
@@ -10,15 +10,8 @@ export type TaskAction = BaseTaskAction &
         formId: number
       }
     | {
-        type: 'HREF'
-        link: {
-          text: string
-          url: string
-        }
-      }
-    | {
         type: 'CHANGE_STATUS'
-        status: TaskActionStatus
+        status: 'COMPLETE'
       }
   )
 
@@ -39,8 +32,7 @@ export interface NewTask {
         }
   }
   description?: string
-  enabled?: boolean
-  actions?: TaskAction[]
+  actions: TaskAction[]
 }
 export type Task = NewTask & {
   id: number
