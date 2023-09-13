@@ -38,11 +38,21 @@ export type FormsAppHrefMenuItem = FormsAppBaseMenuItem & {
   href: string
 }
 
+export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
+  /** Type of menu item */
+  type: 'SCHEDULED_TASKS'
+  /** The ids of the tasks assigned to the app */
+  tasks: Array<{ taskId: number }>
+  /** If true, menu item will be the default item shown */
+  isDefault: boolean
+}
+
 export type FormsAppMenuItem =
   | FormsAppHrefMenuItem
   | FormsAppContainerMenuItem
   | FormsAppFormMenuItem
   | FormsAppScreenMenuItem
+  | FormsAppScheduledTasksMenuItem
 
 export type BaseFormsAppStyles = {
   /** Foreground colour of banner in Forms App */
