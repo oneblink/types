@@ -8,19 +8,18 @@ type BaseTaskAction = {
   /** The icon that will be displayed with the action */
   icon: string
 }
-export type TaskAction = BaseTaskAction &
-  (
-    | {
-        type: 'FORM'
-        /** The related form id that will be used for the action */
-        formId: number
-      }
-    | {
-        type: 'CHANGE_STATUS'
-        /** The status that will be set on the task for the action */
-        status: 'COMPLETE'
-      }
-  )
+
+export type FormTaskAction = BaseTaskAction & {
+  type: 'FORM'
+  /** The related form id that will be used for the action */
+  formId: number
+}
+export type ChangeStatusTaskAction = BaseTaskAction & {
+  type: 'CHANGE_STATUS'
+  /** The status that will be set on the task for the action */
+  status: 'COMPLETE'
+}
+export type TaskAction = FormTaskAction | ChangeStatusTaskAction
 
 export interface NewTask {
   /** The name of the task */
