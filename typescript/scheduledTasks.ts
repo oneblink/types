@@ -1,10 +1,12 @@
+import { MiscTypes } from '..'
+
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 
 type BaseTaskAction = {
   /** The label of the action */
   label: string
-  /** The direction a user will have to swipe for this action to occur */
-  swipeDirection: 'LEFT' | 'RIGHT'
+  /** The icon that will be displayed with the action */
+  icon: string
 }
 export type TaskAction = BaseTaskAction &
   (
@@ -55,4 +57,23 @@ export type Task = NewTask & {
   createdAt: string
   /** The time the task was last updated */
   updatedAt: string
+}
+
+export interface CompletedTask {
+  /** The id of the app displaying the tasks */
+  formsAppId: number
+  /** The id of the task */
+  taskId: number
+  /** The submissionId relating to the form action */
+  submissionId?: string
+  /** The user which actioned the task */
+  completedBy: MiscTypes.UserProfile
+  /** The timestamp for when the user marked the task as done */
+  createdAt: string
+  /**
+   * If there is no form action then this will be the same as createdAt if there
+   * is a form action this will be the timestamp for when a lambda has triggered
+   * after the uploading of the s3 data
+   */
+  completedAt?: string
 }
