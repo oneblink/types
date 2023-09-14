@@ -159,6 +159,7 @@ export type AuditRecordType =
   | 'FormSubmissionApprovalAdditionalNote'
   | 'FormApprovalWebhookEventReplay'
   | 'ScheduledTask'
+  | 'CompletedTask'
 
 export type NewAuditRecord = {
   type: AuditRecordType
