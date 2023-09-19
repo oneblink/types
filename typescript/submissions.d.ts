@@ -26,6 +26,8 @@ export interface NewFormsAppDraft {
    * clarification request on the submission approval
    */
   previousFormSubmissionApprovalId?: string
+  /** The id of the scheduled task that was started when the draft was saved. */
+  taskId?: number
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {
