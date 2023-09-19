@@ -31,7 +31,7 @@ export interface NewTask {
   /** The schedule that will determine a task's frequency and date range */
   schedule: {
     /** The date a task becomes available */
-    startDate?: string
+    startDate: string
     /** The date a task becomes unavailable */
     endDate?: string
     /** The sequence in which the task will occur */
