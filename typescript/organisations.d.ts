@@ -77,6 +77,7 @@ export interface NewTier {
     maximumFormStoreForms: TierLimitation
     maximumFormStoreAppUsers: TierLimitation
     maximumScheduledFunctions: TierLimitation
+    maximumScheduledTaskCompletions: TierLimitation
     availableFormSubmissionEvents?: FormEventType[] | null
     availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
     allowFormsAppPWASettings: boolean
