@@ -43,6 +43,10 @@ export interface NewTask {
           interval: 'WEEK'
           day: DayOfWeek
         }
+      | {
+          interval: 'CUSTOM'
+          days: number
+        }
   }
   /** A description of the task */
   description?: string
