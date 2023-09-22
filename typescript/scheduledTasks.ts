@@ -7,6 +7,10 @@ type BaseTaskAction = {
   label: string
   /** The icon that will be displayed with the action */
   icon: string
+  /** The related forms app environment id that this action belongs to */
+  formsAppEnvironmentId: number
+  /** The organisation id that this action belongs to */
+  organisationId: string
 }
 
 export type NewFormTaskAction = BaseTaskAction & {
