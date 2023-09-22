@@ -9,16 +9,22 @@ type BaseTaskAction = {
   icon: string
 }
 
-export type FormTaskAction = BaseTaskAction & {
+export type NewFormTaskAction = BaseTaskAction & {
   type: 'FORM'
   /** The related form id that will be used for the action */
   formId: number
 }
-export type ChangeStatusTaskAction = BaseTaskAction & {
+export type FormTaskAction = NewFormTaskAction & MiscTypes.IdResource
+
+export type NewChangeStatusTaskAction = BaseTaskAction & {
   type: 'CHANGE_STATUS'
   /** The status that will be set on the task for the action */
   status: 'COMPLETE'
 }
+export type ChangeStatusTaskAction = NewChangeStatusTaskAction &
+  MiscTypes.IdResource
+
+export type NewTaskAction = NewFormTaskAction | NewChangeStatusTaskAction
 export type TaskAction = FormTaskAction | ChangeStatusTaskAction
 
 export interface NewTask {
@@ -46,17 +52,13 @@ export interface NewTask {
   }
   /** A description of the task */
   description?: string
-  /** A group of actions that the task can utilise within a Forms App */
-  actions: TaskAction[]
+  /**
+   * The identifiers of available actions that the task can utilise within a
+   * Forms App. The order of the identifiers is respected when displaying actions.
+   */
+  actionIds: number[]
 }
-export type Task = NewTask & {
-  /** The id of the related Task */
-  id: number
-  /** The time the task was created */
-  createdAt: string
-  /** The time the task was last updated */
-  updatedAt: string
-}
+export type Task = NewTask & MiscTypes.IdResource
 
 export interface CompletedTask {
   /** The id of the app displaying the tasks */
