@@ -116,7 +116,7 @@ export type BSBRecord = {
 
 export type IdResource = {
   /** The id the resource */
-  id: string
+  id: number
   /** The date and time (in ISO format) the resource was created */
   createdAt: string
   /** The date and time (in ISO format) the resource was last updated */
