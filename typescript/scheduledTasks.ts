@@ -65,6 +65,9 @@ export interface NewTask {
    * Forms App. The order of the identifiers is respected when displaying actions.
    */
   actionIds: number[]
+  /** Optional action identifiers for user swipe gestures */
+  swipeLeftActionId?: number
+  swipeRightActionId?: number
 }
 export type Task = NewTask & MiscTypes.IdResource
 
