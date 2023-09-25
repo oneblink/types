@@ -11,6 +11,8 @@ type BaseTaskAction = {
   formsAppEnvironmentId: number
   /** The organisation id that this action belongs to */
   organisationId: string
+  /** Optional association of a user swipe gesture to this action  */
+  userSwipeAssociation?: 'LEFT' | 'RIGHT'
 }
 
 export type NewFormTaskAction = BaseTaskAction & {
