@@ -11,8 +11,6 @@ type BaseTaskAction = {
   formsAppEnvironmentId: number
   /** The organisation id that this action belongs to */
   organisationId: string
-  /** Optional association of a user swipe gesture to this action  */
-  userSwipeAssociation?: 'LEFT' | 'RIGHT'
 }
 
 export type NewFormTaskAction = BaseTaskAction & {
@@ -67,6 +65,9 @@ export interface NewTask {
    * Forms App. The order of the identifiers is respected when displaying actions.
    */
   actionIds: number[]
+  /** Optional action identifiers for user swipe gestures */
+  swipeLeftActionId?: number
+  swipeRightActionId?: number
 }
 export type Task = NewTask & MiscTypes.IdResource
 
