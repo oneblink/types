@@ -78,6 +78,8 @@ export interface CompletedTask {
   taskId: number
   /** The submissionId relating to the form action */
   submissionId?: string
+  /** The id of the task group that displayed this task in the app */
+  taskGroupId?: number
   /** The user which actioned the task */
   completedBy: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
