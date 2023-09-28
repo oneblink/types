@@ -51,7 +51,7 @@ export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
   type: 'SCHEDULED_TASK_GROUPS'
   /** The ids of the task groups assigned to the app */
-  taskGroups: Array<TaskGroupInstance>
+  taskGroupsInstances: Array<TaskGroupInstance>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
 }
