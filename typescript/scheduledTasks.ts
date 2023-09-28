@@ -94,7 +94,7 @@ export interface CompletedTask {
 
 export type NewTaskGroup = {
   /** The label of the task group */
-  label: string
+  name: string
   /**
    * The identifiers of tasks that the task group will show within a Forms App.
    * The order of the identifiers is respected when displayingActions
