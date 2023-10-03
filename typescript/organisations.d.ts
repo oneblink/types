@@ -162,6 +162,7 @@ export type AuditRecordType =
   | 'ScheduledTask'
   | 'CompletedTask'
   | 'ScheduledTaskAction'
+  | 'ScheduledTaskGroup'
 
 export type NewAuditRecord = {
   type: AuditRecordType

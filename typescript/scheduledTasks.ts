@@ -78,6 +78,10 @@ export interface CompletedTask {
   taskId: number
   /** The submissionId relating to the form action */
   submissionId?: string
+  /** The id of the task group instance that displayed this task in the app */
+  taskGroupInstanceId?: string
+  /** The id of the task group that the task was a part of */
+  taskGroupId?: number
   /** The user which actioned the task */
   completedBy: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
@@ -89,3 +93,19 @@ export interface CompletedTask {
    */
   completedAt?: string
 }
+
+export type NewTaskGroup = {
+  /** The label of the task group */
+  name: string
+  /**
+   * The identifiers of tasks that the task group will show within a Forms App.
+   * The order of the identifiers is respected when displayingActions
+   */
+  taskIds: number[]
+  /** The related forms app environment id that this task group belongs to */
+  formsAppEnvironmentId: number
+  /** The organisation id that this task group belongs to */
+  organisationId: string
+}
+
+export type TaskGroup = NewTaskGroup & MiscTypes.IdResource
