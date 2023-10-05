@@ -1033,11 +1033,6 @@ export type Form = {
   submissionTitle?: string
 }
 
-export type PreviewUrl = {
-  label: string
-  url: string
-}
-
 export type FormTemplate = {
   id: number
   name: string
@@ -1047,7 +1042,6 @@ export type FormTemplate = {
   isMultiPage: boolean
   createdAt: string
   updatedAt: string
-  previewUrls: PreviewUrl[]
 }
 
 export type FormQuerystringParameters = {
