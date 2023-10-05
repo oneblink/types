@@ -109,3 +109,9 @@ export type NewTaskGroup = {
 }
 
 export type TaskGroup = NewTaskGroup & MiscTypes.IdResource
+
+export type TaskGroupInstance = {
+  taskGroupId: number
+  taskGroupInstanceId: string
+  label: string
+}
