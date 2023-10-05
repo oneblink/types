@@ -1,5 +1,6 @@
 import { IntegrationMailGun } from './integrations'
 import { FormsAppDraft } from './submissions'
+import { TaskGroupInstance } from './scheduledTasks'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -51,15 +52,9 @@ export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
   type: 'SCHEDULED_TASK_GROUPS'
   /** The ids of the task groups assigned to the app */
-  taskGroupsInstances: Array<TaskGroupInstance>
+  taskGroupInstances: Array<TaskGroupInstance>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
-}
-
-export type TaskGroupInstance = {
-  taskGroupId: number
-  taskGroupInstanceId: string
-  label: string
 }
 
 export type FormsAppMenuItem =
