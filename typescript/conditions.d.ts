@@ -44,8 +44,17 @@ export type ConditionalPredicateBetween = ConditionalPredicateBase & {
   max: number
 }
 
+export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
+  type: 'REPEATABLESET',
+  predicate: ConditionalPredicateNumeric
+    | ConditionalPredicateOptions
+    | ConditionalPredicateHasValue
+    | ConditionalPredicateBetween
+}
+
 export type ConditionalPredicate =
   | ConditionalPredicateNumeric
   | ConditionalPredicateOptions
   | ConditionalPredicateHasValue
   | ConditionalPredicateBetween
+  | ConditionalPredicateRepeatableSet
