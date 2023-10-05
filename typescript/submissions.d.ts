@@ -28,6 +28,8 @@ export interface NewFormsAppDraft {
   previousFormSubmissionApprovalId?: string
   /** The id of the scheduled task that was started when the draft was saved. */
   taskId?: number
+  /** The id of the scheduled task group instance that the taskId is related to. */
+  taskGroupInstanceId?: number
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {
@@ -196,6 +198,8 @@ export type S3SubmissionData = {
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
   externalId?: string
+  taskId?: number
+  taskGroupInstanceId?: string
 }
 
 export type NewFormSubmissionFileAccessToken = {
