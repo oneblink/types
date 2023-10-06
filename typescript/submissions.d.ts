@@ -29,7 +29,7 @@ export interface NewFormsAppDraft {
   /** The id of the scheduled task that was started when the draft was saved. */
   taskId?: number
   /** The id of the scheduled task group instance that the taskId is related to. */
-  taskGroupInstanceId?: number
+  taskGroupInstanceId?: string
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {
