@@ -45,8 +45,11 @@ export type ConditionalPredicateBetween = ConditionalPredicateBase & {
 }
 
 export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
-  type: 'REPEATABLESET',
-  predicate: Exclude<ConditionalPredicate, ConditionalPredicateRepeatableSet>
+  type: 'REPEATABLESET'
+  repeatableSetPredicate: Exclude<
+    ConditionalPredicate,
+    ConditionalPredicateRepeatableSet
+  >
 }
 
 export type ConditionalPredicate =
