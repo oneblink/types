@@ -46,10 +46,7 @@ export type ConditionalPredicateBetween = ConditionalPredicateBase & {
 
 export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
   type: 'REPEATABLESET',
-  predicate: ConditionalPredicateNumeric
-    | ConditionalPredicateOptions
-    | ConditionalPredicateHasValue
-    | ConditionalPredicateBetween
+  predicate: Exclude<ConditionalPredicate, ConditionalPredicateRepeatableSet>
 }
 
 export type ConditionalPredicate =
