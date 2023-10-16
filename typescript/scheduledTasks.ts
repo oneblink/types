@@ -71,7 +71,7 @@ export interface NewTask {
 }
 export type Task = NewTask & MiscTypes.IdResource
 
-export interface CompletedTask {
+export interface NewCompletedTask {
   /** The id of the app displaying the tasks */
   formsAppId: number
   /** The id of the task */
@@ -92,6 +92,11 @@ export interface CompletedTask {
    * after the uploading of the s3 data
    */
   completedAt?: string
+}
+
+export interface CompletedTask extends NewCompletedTask {
+  /** The id of the completed task record */
+  id: string
 }
 
 export type NewTaskGroup = {
