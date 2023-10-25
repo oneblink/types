@@ -28,8 +28,12 @@ export interface NewFormsAppDraft {
   previousFormSubmissionApprovalId?: string
   /** The id of the scheduled task that was started when the draft was saved. */
   taskId?: number
+  /** The name of the scheduled task that was started when the draft was saved. */
+  taskName?: string
   /** The id of the scheduled task group instance that the taskId is related to. */
   taskGroupInstanceId?: string
+  /** The label of the scheduled task group instance that the taskId is related to. */
+  taskGroupInstanceLabel?: string
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {
