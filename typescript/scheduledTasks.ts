@@ -80,8 +80,6 @@ export interface NewCompletedTask {
   submissionId?: string
   /** The id of the task group instance that displayed this task in the app */
   taskGroupInstanceId?: string
-  /** The id of the task group that the task was a part of */
-  taskGroupId?: number
   /** The user which actioned the task */
   completedBy: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
