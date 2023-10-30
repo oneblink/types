@@ -1235,6 +1235,8 @@ export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
+  /** Indicates whether the form definition will be excluded from the dynamic lookup call */
+  excludeDefinition?: boolean
 }
 
 export type FormElementLookupUrl = IdResource & NewFormElementLookupUrl
