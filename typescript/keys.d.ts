@@ -11,7 +11,6 @@ export interface Key {
   links: {
     organisations: string
   }
-  isSolutions: boolean
 }
 
 export type DeveloperKeyAccess = {
