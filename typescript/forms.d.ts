@@ -1031,6 +1031,11 @@ export type Form = {
   personalisation?: EndpointConfiguration
   /** The title of a form submission, supports element injection */
   submissionTitle?: string
+  /**
+   * Whether or not viewing the form should auto-continue with
+   * autosave data when available rather than prompting the user
+   */
+  continueWithAutosave?: boolean
 }
 
 export type FormTemplate = {
