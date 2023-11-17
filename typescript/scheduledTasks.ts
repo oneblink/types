@@ -1,7 +1,12 @@
 import { MiscTypes } from '..'
 
+interface WithVersion {
+  versionId: number
+  createdAt: string
+}
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 
+// // Task Action // //
 type BaseTaskAction = {
   /** The label of the action */
   label: string
@@ -13,24 +18,34 @@ type BaseTaskAction = {
   organisationId: string
 }
 
+// Form Task Action //
 export type NewFormTaskAction = BaseTaskAction & {
   type: 'FORM'
   /** The related form id that will be used for the action */
   formId: number
 }
-export type FormTaskAction = NewFormTaskAction & MiscTypes.IdResource
+export type EditedFormTaskAction = NewFormTaskAction & {
+  taskActionId: string
+}
+export type FormTaskAction = EditedFormTaskAction & WithVersion
 
+// Change Status Action //
 export type NewChangeStatusTaskAction = BaseTaskAction & {
   type: 'CHANGE_STATUS'
   /** The status that will be set on the task for the action */
   status: 'COMPLETE'
 }
-export type ChangeStatusTaskAction = NewChangeStatusTaskAction &
-  MiscTypes.IdResource
+export type EditedChangeStatusAction = NewChangeStatusTaskAction & {
+  taskActionId: string
+}
+export type ChangeStatusTaskAction = EditedChangeStatusAction & WithVersion
 
+// Final Actions //
 export type NewTaskAction = NewFormTaskAction | NewChangeStatusTaskAction
+export type EditedTaskAction = EditedFormTaskAction | EditedChangeStatusAction
 export type TaskAction = FormTaskAction | ChangeStatusTaskAction
 
+// // Task // //
 export interface NewTask {
   /** The name of the task */
   name: string
@@ -71,6 +86,7 @@ export interface NewTask {
 }
 export type Task = NewTask & MiscTypes.IdResource
 
+// // Completed Task // //
 export interface NewCompletedTask {
   /** The id of the app displaying the tasks */
   formsAppId: number
@@ -97,6 +113,7 @@ export interface CompletedTask extends NewCompletedTask {
   id: string
 }
 
+// // Task Group // //
 export type NewTaskGroup = {
   /** The label of the task group */
   name: string
@@ -111,8 +128,12 @@ export type NewTaskGroup = {
   organisationId: string
 }
 
-export type TaskGroup = NewTaskGroup & MiscTypes.IdResource
+export type EditedTaskGroup = NewTaskGroup & {
+  taskGroupId: string
+}
+export type TaskGroup = EditedTaskGroup & WithVersion
 
+// // Task Group Instance // //
 export type NewTaskGroupInstance = {
   taskGroupId: number
   label: string
@@ -122,7 +143,4 @@ export type EditedTaskGroupInstance = NewTaskGroupInstance & {
   taskGroupInstanceId: string
 }
 
-export type TaskGroupInstance = EditedTaskGroupInstance & {
-  versionId: number
-  createdAt: string
-}
+export type TaskGroupInstance = EditedTaskGroupInstance & WithVersion
