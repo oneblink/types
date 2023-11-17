@@ -114,6 +114,11 @@ export interface CompletedTask extends NewCompletedTask {
 }
 
 // // Task Group // //
+
+export interface TaskGroupInstance {
+  id: string
+  label: string
+}
 export type NewTaskGroup = {
   /** The label of the task group */
   name: string
@@ -126,21 +131,10 @@ export type NewTaskGroup = {
   formsAppEnvironmentId: number
   /** The organisation id that this task group belongs to */
   organisationId: string
+  instances: Array<TaskGroupInstance>
 }
 
 export type EditedTaskGroup = NewTaskGroup & {
   taskGroupId: string
 }
 export type TaskGroup = EditedTaskGroup & WithVersion
-
-// // Task Group Instance // //
-export type NewTaskGroupInstance = {
-  taskGroupId: number
-  label: string
-}
-
-export type EditedTaskGroupInstance = NewTaskGroupInstance & {
-  taskGroupInstanceId: string
-}
-
-export type TaskGroupInstance = EditedTaskGroupInstance & WithVersion
