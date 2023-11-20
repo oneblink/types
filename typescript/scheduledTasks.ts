@@ -1,7 +1,12 @@
 import { MiscTypes } from '..'
 
+interface WithVersion {
+  versionId: number
+  createdAt: string
+}
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 
+// // Task Action // //
 type BaseTaskAction = {
   /** The label of the action */
   label: string
@@ -13,24 +18,34 @@ type BaseTaskAction = {
   organisationId: string
 }
 
+// Form Task Action //
 export type NewFormTaskAction = BaseTaskAction & {
   type: 'FORM'
   /** The related form id that will be used for the action */
   formId: number
 }
-export type FormTaskAction = NewFormTaskAction & MiscTypes.IdResource
+export type EditedFormTaskAction = NewFormTaskAction & {
+  taskActionId: string
+}
+export type FormTaskAction = EditedFormTaskAction & WithVersion
 
+// Change Status Action //
 export type NewChangeStatusTaskAction = BaseTaskAction & {
   type: 'CHANGE_STATUS'
   /** The status that will be set on the task for the action */
   status: 'COMPLETE'
 }
-export type ChangeStatusTaskAction = NewChangeStatusTaskAction &
-  MiscTypes.IdResource
+export type EditedChangeStatusAction = NewChangeStatusTaskAction & {
+  taskActionId: string
+}
+export type ChangeStatusTaskAction = EditedChangeStatusAction & WithVersion
 
+// Final Actions //
 export type NewTaskAction = NewFormTaskAction | NewChangeStatusTaskAction
+export type EditedTaskAction = EditedFormTaskAction | EditedChangeStatusAction
 export type TaskAction = FormTaskAction | ChangeStatusTaskAction
 
+// // Task // //
 export interface NewTask {
   /** The name of the task */
   name: string
@@ -64,22 +79,32 @@ export interface NewTask {
    * The identifiers of available actions that the task can utilise within a
    * Forms App. The order of the identifiers is respected when displaying actions.
    */
-  actionIds: number[]
+  actionIds: string[]
   /** Optional action identifiers for user swipe gestures */
-  swipeLeftActionId?: number
-  swipeRightActionId?: number
+  swipeLeftActionId?: string
+  swipeRightActionId?: string
 }
-export type Task = NewTask & MiscTypes.IdResource
 
+export type EditedTask = NewTask & {
+  taskId: string
+}
+
+export type Task = EditedTask & WithVersion
+
+// // Completed Task // //
 export interface NewCompletedTask {
   /** The id of the app displaying the tasks */
   formsAppId: number
-  /** The id of the task */
-  taskId: number
-  /** The submissionId relating to the form action */
-  submissionId?: string
+  /** The version id of the task */
+  taskVersionId: number
+  /** The version id of the task group */
+  taskGroupVersionId: number
+  /** The version id of the task action that triggered the task completion */
+  taskActionVersionId: number
   /** The id of the task group instance that displayed this task in the app */
   taskGroupInstanceId?: string
+  /** The submissionId relating to the form action */
+  submissionId?: string
   /** The user which actioned the task */
   completedBy: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
@@ -97,6 +122,12 @@ export interface CompletedTask extends NewCompletedTask {
   id: string
 }
 
+// // Task Group // //
+
+export interface TaskGroupInstance {
+  id: string
+  label: string
+}
 export type NewTaskGroup = {
   /** The label of the task group */
   name: string
@@ -109,13 +140,10 @@ export type NewTaskGroup = {
   formsAppEnvironmentId: number
   /** The organisation id that this task group belongs to */
   organisationId: string
+  instances: Array<TaskGroupInstance>
 }
 
-export type TaskGroup = NewTaskGroup & MiscTypes.IdResource
-
-export type TaskGroupInstance = {
-  createdAt: string
-  taskGroupId: number
-  taskGroupInstanceId: string
-  label: string
+export type EditedTaskGroup = NewTaskGroup & {
+  taskGroupId: string
 }
+export type TaskGroup = EditedTaskGroup & WithVersion
