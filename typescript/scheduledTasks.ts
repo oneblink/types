@@ -84,18 +84,27 @@ export interface NewTask {
   swipeLeftActionId?: number
   swipeRightActionId?: number
 }
-export type Task = NewTask & MiscTypes.IdResource
+
+export type EditedTask = NewTask & {
+  taskId: string
+}
+
+export type Task = EditedTask & WithVersion
 
 // // Completed Task // //
 export interface NewCompletedTask {
   /** The id of the app displaying the tasks */
   formsAppId: number
-  /** The id of the task */
-  taskId: number
-  /** The submissionId relating to the form action */
-  submissionId?: string
+  /** The version id of the task */
+  taskVersionId: number
+  /** The version id of the task group */
+  taskGroupVersionId: number
+  /** The version id of the task action that triggered the task completion */
+  taskActionVersionId: number
   /** The id of the task group instance that displayed this task in the app */
   taskGroupInstanceId?: string
+  /** The submissionId relating to the form action */
+  submissionId?: string
   /** The user which actioned the task */
   completedBy: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
