@@ -79,10 +79,10 @@ export interface NewTask {
    * The identifiers of available actions that the task can utilise within a
    * Forms App. The order of the identifiers is respected when displaying actions.
    */
-  actionIds: number[]
+  actionIds: string[]
   /** Optional action identifiers for user swipe gestures */
-  swipeLeftActionId?: number
-  swipeRightActionId?: number
+  swipeLeftActionId?: string
+  swipeRightActionId?: string
 }
 
 export type EditedTask = NewTask & {
