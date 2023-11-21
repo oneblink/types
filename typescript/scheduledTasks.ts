@@ -135,7 +135,7 @@ export type NewTaskGroup = {
    * The identifiers of tasks that the task group will show within a Forms App.
    * The order of the identifiers is respected when displayingActions
    */
-  taskIds: number[]
+  taskIds: string[]
   /** The related forms app environment id that this task group belongs to */
   formsAppEnvironmentId: number
   /** The organisation id that this task group belongs to */
