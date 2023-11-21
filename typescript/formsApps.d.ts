@@ -43,7 +43,7 @@ export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
   type: 'SCHEDULED_TASKS'
   /** The ids of the tasks assigned to the app */
-  tasks: Array<{ taskId: number }>
+  tasks: Array<{ taskId: string }>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
 }
