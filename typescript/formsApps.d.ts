@@ -48,11 +48,19 @@ export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean
 }
 
+export type TaskGroupInstanceAllocation = {
+  taskGroupInstanceId: TaskGroupInstance['id']
+  /**
+   * This property is used to make sure tasks in task group instances are
+   * present in the app at the correct times
+   */
+  addedAt: string
+}
 export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
   type: 'SCHEDULED_TASK_GROUPS'
   /** The ids of the task groups assigned to the app */
-  taskGroupInstances: Array<{ taskGroupInstanceId: TaskGroupInstance['id'] }>
+  taskGroupInstances: Array<TaskGroupInstanceAllocation>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
 }
