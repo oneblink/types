@@ -102,7 +102,7 @@ export interface NewCompletedTask {
   /** The version id of the task action that triggered the task completion */
   taskActionVersionId: number
   /** The id of the task group instance that displayed this task in the app */
-  taskGroupInstanceId?: string
+  taskGroupInstanceVersionId?: number
   /** The submissionId relating to the form action */
   submissionId?: string
   /** The user which actioned the task */
@@ -124,10 +124,6 @@ export interface CompletedTask extends NewCompletedTask {
 
 // // Task Group // //
 
-export interface TaskGroupInstance {
-  id: string
-  label: string
-}
 export type NewTaskGroup = {
   /** The label of the task group */
   name: string
@@ -135,15 +131,25 @@ export type NewTaskGroup = {
    * The identifiers of tasks that the task group will show within a Forms App.
    * The order of the identifiers is respected when displayingActions
    */
-  taskIds: string[]
+  taskIds: Array<Task['taskId']>
   /** The related forms app environment id that this task group belongs to */
   formsAppEnvironmentId: number
   /** The organisation id that this task group belongs to */
   organisationId: string
-  instances: Array<TaskGroupInstance>
 }
 
 export type EditedTaskGroup = NewTaskGroup & {
   taskGroupId: string
 }
-export type TaskGroup = EditedTaskGroup & WithVersion
+export interface TaskGroup extends EditedTaskGroup, WithVersion {}
+
+export interface NewTaskGroupInstance {
+  label: string
+  taskGroupId: TaskGroup['taskGroupId']
+}
+export interface EditedTaskGroupInstance extends NewTaskGroupInstance {
+  taskGroupInstanceId: string
+}
+export interface TaskGroupInstance
+  extends EditedTaskGroupInstance,
+    WithVersion {}
