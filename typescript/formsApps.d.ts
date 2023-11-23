@@ -49,18 +49,21 @@ export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
 }
 
 export type TaskGroupInstanceAllocation = {
-  taskGroupInstanceId: TaskGroupInstance['id']
+  /** The identifier of the task group instance */
+  taskGroupInstanceId: TaskGroupInstance['taskGroupInstanceId']
   /**
    * This property is used to make sure tasks in task group instances are
-   * present in the app at the correct times
+   * present in the app at the correct times and do not appear as overdue when
+   * the start date of the the task is before the date the instance was
+   * allocated to the app.
    */
-  addedAt: string
+  allocatedAt: string
 }
 export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
   type: 'SCHEDULED_TASK_GROUPS'
   /** The ids of the task groups assigned to the app */
-  taskGroupInstances: Array<TaskGroupInstanceAllocation>
+  taskGroupInstanceAllocations: Array<TaskGroupInstanceAllocation>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
 }
