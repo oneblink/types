@@ -11,7 +11,12 @@ import {
 } from './submissionEvents'
 import { components as cpPayV1Components } from './cp-pay/swagger.v1'
 import { components as cpPayV2Components } from './cp-pay/swagger.v2'
-import { Task, TaskGroup, TaskGroupInstance } from './scheduledTasks'
+import {
+  Task,
+  TaskAction,
+  TaskGroup,
+  TaskGroupInstance,
+} from './scheduledTasks'
 
 export interface NewFormsAppDraft {
   /** The title input by the user to display the draft */
@@ -204,6 +209,7 @@ export type S3SubmissionData = {
   lastElementUpdated?: FormElement
   externalId?: string
   task?: Task
+  taskAction?: TaskAction
   taskGroup?: TaskGroup
   taskGroupInstance?: TaskGroupInstance
 }
