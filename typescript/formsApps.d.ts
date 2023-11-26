@@ -1,6 +1,7 @@
 import { IntegrationMailGun } from './integrations'
 import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
+import { ScheduledTasksTypes } from '..'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -452,6 +453,7 @@ export type FormsAppConfiguration<
   samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
+  taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
   draftsAreShared?: boolean
