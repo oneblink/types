@@ -271,9 +271,9 @@ type _NewFormsApp = {
      * A [mustache](http://mustache.github.io/#demo) template to use when
      * sending welcome emails to new app users.
      */
-    body: string | void
+    body?: string
     /** The subject to use when sending welcome emails to new app users */
-    subject: string | void
+    subject?: string
   }
   /** True when using a SAML identity provider */
   hasSamlIdentityProvider: boolean
