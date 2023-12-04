@@ -100,7 +100,7 @@ export interface NewCompletedTask {
   /** The version id of the task group */
   taskGroupVersionId?: number
   /** The version id of the task action that triggered the task completion */
-  taskActionVersionId: number
+  taskActionVersionId?: number
   /** The id of the task group instance that displayed this task in the app */
   taskGroupInstanceVersionId?: number
   /** The submissionId relating to the form action */
