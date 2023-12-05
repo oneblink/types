@@ -106,7 +106,7 @@ export interface NewCompletedTask {
   /** The submissionId relating to the form action */
   submissionId?: string
   /** The user which actioned the task */
-  completedBy: MiscTypes.UserProfile
+  completedBy?: MiscTypes.UserProfile
   /** The timestamp for when the user marked the task as done */
   createdAt: string
   /**
