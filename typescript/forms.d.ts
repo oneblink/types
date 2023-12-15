@@ -9,7 +9,12 @@ import type {
   PDFConfiguration,
 } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
-import type { ABNRecord, BaseSearchResult, IdResource } from './misc'
+import type {
+  ABNRecord,
+  BaseSearchResult,
+  EndpointConfiguration,
+  IdResource,
+} from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
 
@@ -782,70 +787,6 @@ export type FormPostSubmissionAction =
   | 'CLOSE'
   | 'FORMS_LIBRARY'
 
-/**
- * ### Examples
- *
- * ```json
- * {
- *   "type": "CALLBACK",
- *   "configuration": {
- *     "url": "https://api.url.com/callback"
- *   }
- * }
- * ```
- */
-export type EndpointConfigurationCallback = {
-  /** The type of the validation endpoint. */
-  type: 'CALLBACK'
-  /** The configuration of the validation endpoint. */
-  configuration: {
-    /** The url of the validation endpoint. */
-    url: string
-    /**
-     * The secret that will be sent to the validation endpoint. This can be used
-     * to verify the request came from OneBlink.
-     */
-    secret?: string
-  }
-}
-
-/**
- * ### Examples
- *
- * ```json
- * {
- *   "type": "ONEBLINK_API",
- *   "configuration": {
- *     "apiId": "oneblink-api-id",
- *     "apiEnvironment": "test",
- *     "apiEnvironmentRoute": "/my-route"
- *   }
- * }
- * ```
- */
-export type EndpointConfigurationAPI = {
-  /** The type of the validation endpoint. */
-  type: 'ONEBLINK_API'
-  /** The configuration of the validation endpoint. */
-  configuration: {
-    /** The ID of the OneBlink hosted API that houses the validation endpoint. */
-    apiId: string
-    /** The environment of the specified OneBlink hosted API. */
-    apiEnvironment: string
-    /** The route of the validation endpoint. */
-    apiEnvironmentRoute: string
-    /**
-     * The secret that will be sent to the validation endpoint. This can be used
-     * to verify the request came from OneBlink.
-     */
-    secret?: string
-  }
-}
-
-export type EndpointConfiguration =
-  | EndpointConfigurationCallback
-  | EndpointConfigurationAPI
-
 export type FormServerValidation = EndpointConfiguration
 
 export interface ReceiptTextComponent {
@@ -1032,8 +973,8 @@ export type Form = {
   /** The title of a form submission, supports element injection */
   submissionTitle?: string
   /**
-   * Whether or not viewing the form should auto-continue with
-   * autosave data when available rather than prompting the user
+   * Whether or not viewing the form should auto-continue with autosave data
+   * when available rather than prompting the user
    */
   continueWithAutosave?: boolean
 }

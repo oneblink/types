@@ -1,5 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
-import type { UserProfile } from './misc'
+import type { EndpointConfiguration, UserProfile } from './misc'
 
 export type FormEventConditional = {
   /** Whether the submission event should be conditionally executed. */
@@ -115,6 +115,7 @@ export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
     /** The mappings required from the email template. */
     mapping: Array<PdfSubmissionEventEmailTemplateMapping>
   }
+  emailAttachmentsWebhook?: EndpointConfiguration
 }
 export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
@@ -282,13 +283,13 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
     /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
     primaryAgencyId: string
     /**
-     * Used to describe the product the customer is purchasing. Passed on NSW GovPay
-     * during the request payment process
+     * Used to describe the product the customer is purchasing. Passed on NSW
+     * GovPay during the request payment process
      */
     productDescription: string
     /**
-     * An optional customer reference that will be passed on NSW GovPay during the
-     * request payment process
+     * An optional customer reference that will be passed on NSW GovPay during
+     * the request payment process
      */
     customerReference?: string
     /**
