@@ -110,7 +110,8 @@ export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
     /** The mappings required from the email template. */
     mapping: Array<PdfSubmissionEventEmailTemplateMapping>
   }
-  emailAttachmentsWebhook?: EndpointConfiguration
+  /** Endpoint configuration for adding custom attachments to the email. */
+  emailAttachmentsEndpoint?: EndpointConfiguration
 }
 export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
