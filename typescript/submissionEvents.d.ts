@@ -1,5 +1,10 @@
 import type { ConditionalPredicate } from './conditions'
-import type { EndpointConfiguration, UserProfile } from './misc'
+import type {
+  EndpointConfiguration,
+  EndpointConfigurationAPI,
+  EndpointConfigurationCallback,
+  UserProfile,
+} from './misc'
 
 export type FormEventConditional = {
   /** Whether the submission event should be conditionally executed. */
@@ -29,18 +34,8 @@ export type ApprovalFormsInclusionConfiguration = {
       }
 }
 
-export type CallbackSubmissionEvent = FormEventBase & {
-  type: 'CALLBACK'
-  configuration: {
-    /** URL that the callback is made to. */
-    url: string
-    /**
-     * Secret string used for verifying the authenticity of the request made
-     * from the OneBlink system.
-     */
-    secret: string
-  }
-}
+export type CallbackSubmissionEvent = FormEventBase &
+  EndpointConfigurationCallback
 
 export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   type: 'POWER_AUTOMATE_FLOW'
@@ -127,24 +122,8 @@ export type EmailOnlySubmissionEvent = FormEventBase & {
   configuration: EmailConfiguration
 }
 
-export type OneBlinkAPISubmissionEventConfiguration = {
-  /** The ID of the OneBlink hosted API that a callback is made to on submission. */
-  apiId: string
-  /** The environment of the specified OneBlink hosted API to recieve the callback. */
-  apiEnvironment: string
-  /** The route of the specified API and Environment to recieve the callback payload. */
-  apiEnvironmentRoute: string
-  /**
-   * Secret string used for verifying the authenticity of the request made from
-   * the OneBlink system.
-   */
-  secret?: string
-}
-
-export type OneBlinkAPISubmissionEvent = FormEventBase & {
-  type: 'ONEBLINK_API'
-  configuration: OneBlinkAPISubmissionEventConfiguration
-}
+export type OneBlinkAPISubmissionEvent = FormEventBase &
+  EndpointConfigurationAPI
 
 export type TrimUriOption = {
   /** The attribute label. */
