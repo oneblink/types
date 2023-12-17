@@ -136,15 +136,15 @@ export type IdResource = {
  * ```
  */
 export type EndpointConfigurationCallback = {
-  /** The type of the validation endpoint. */
+  /** The type of endpoint. */
   type: 'CALLBACK'
-  /** The configuration of the validation endpoint. */
+  /** The configuration of the endpoint. */
   configuration: {
-    /** The url of the validation endpoint. */
+    /** URL that the request is made to. */
     url: string
     /**
-     * The secret that will be sent to the validation endpoint. This can be used
-     * to verify the request came from OneBlink.
+     * Secret string used for verifying the authenticity of the request made
+     * from the OneBlink system.
      */
     secret?: string
   }
@@ -165,19 +165,19 @@ export type EndpointConfigurationCallback = {
  * ```
  */
 export type EndpointConfigurationAPI = {
-  /** The type of the validation endpoint. */
+  /** The type of endpoint. */
   type: 'ONEBLINK_API'
-  /** The configuration of the validation endpoint. */
+  /** The configuration of the OneBlink Hosted API. */
   configuration: {
-    /** The ID of the OneBlink hosted API that houses the validation endpoint. */
+    /** The ID of the OneBlink hosted API that a request is made to. */
     apiId: string
     /** The environment of the specified OneBlink hosted API. */
     apiEnvironment: string
-    /** The route of the validation endpoint. */
+    /** The route of the specified API and Environment. */
     apiEnvironmentRoute: string
     /**
-     * The secret that will be sent to the validation endpoint. This can be used
-     * to verify the request came from OneBlink.
+     * Secret string used for verifying the authenticity of the request made
+     * from the OneBlink system.
      */
     secret?: string
   }
