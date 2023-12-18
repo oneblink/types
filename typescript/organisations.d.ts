@@ -147,6 +147,7 @@ export type AuditRecordType =
   | 'FormApprovalWebhook'
   | 'FormRetentionPolicy'
   | 'EmailTemplate'
+  | 'EmailAttachment'
   | 'SchedulingBooking'
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
