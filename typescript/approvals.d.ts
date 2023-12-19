@@ -1,6 +1,6 @@
 import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
-import type { EndpointConfiguration } from './forms'
+import type { EndpointConfiguration } from './misc'
 
 export type FormApprovalFlowStepBase = {
   /** The group that will be assigned an approval for this step */
