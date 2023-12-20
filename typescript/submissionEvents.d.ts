@@ -255,6 +255,21 @@ export type WestpacQuickWebSubmissionEvent = FormEventBase & {
   }
 }
 
+export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
+  type: 'WESTPAC_QUICK_STREAM'
+  configuration: {
+    /**
+     * The elementId that holds the value that will be paid. Must be the id of a
+     * number or calculation element.
+     */
+    elementId: string
+    /** The id of the OneBlink -> WestpacQuickStream integration environment to be used. */
+    environmentId: string
+    /** A crn string. */
+    customerReferenceNumber: string
+  }
+}
+
 export type NSWGovPaySubmissionEvent = FormEventBase & {
   type: 'NSW_GOV_PAY'
   configuration: {
@@ -359,6 +374,7 @@ export type FormPaymentEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
   | WestpacQuickWebSubmissionEvent
+  | WestpacQuickStreamSubmissionEvent
   | NSWGovPaySubmissionEvent
 
 export type FormSchedulingEvent = SchedulingSubmissionEvent
