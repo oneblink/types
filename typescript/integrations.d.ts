@@ -8,6 +8,7 @@ export type IntegrationType =
   | 'POINT'
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_WEB'
+  | 'WESTPAC_QUICK_STREAM'
   | 'SCHEDULING'
   | 'FRESHDESK'
   | 'MAILGUN'
@@ -115,7 +116,10 @@ export type IntegrationNSWGovPayPrimaryAgency = {
   clientSecret: string
   /** The public key used to verify JSON web token to validate a payment */
   jwtPublicKey: string
-  /** Optional codes that will ensure the payment goes to the correct agency within NSW GovPay */
+  /**
+   * Optional codes that will ensure the payment goes to the correct agency
+   * within NSW GovPay
+   */
   subAgencyCodes?: string[]
   /**
    * Set to `true` to use the non-prod version by changing the domain used for
@@ -145,6 +149,21 @@ export type IntegrationWestpacQuickWeb = IntegrationBase & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
     environments: IntegrationWestpacQuickWebEnvironment[]
+  }
+}
+
+export type IntegrationWestpacQuickStreamEnvironment = {
+  id: string
+  label: string
+  publishableApiKey: string
+  secretApiKey: string
+  supplierBusinessCode: string
+  isTestMode: boolean
+}
+export type IntegrationWestpacQuickStream = IntegrationBase & {
+  type: 'WESTPAC_QUICK_STREAM'
+  configuration: {
+    environments: IntegrationWestpacQuickStreamEnvironment[]
   }
 }
 
@@ -222,6 +241,7 @@ export type Integration =
   | IntegrationPoint
   | IntegrationRecaptcha
   | IntegrationWestpacQuickWeb
+  | IntegrationWestpacQuickStream
   | IntegrationCivica
   | IntegrationScheduling
   | IntegrationFreshdesk
