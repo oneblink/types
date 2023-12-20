@@ -293,6 +293,18 @@ export type CPPayPayment = BaseFormSubmissionPayment & {
       >)
 }
 
+interface WestpacQuickStreamLinks {
+  /**
+   * The relationship to the resource. Open help URLs in a browser to view
+   * this developer reference. next and prev are used for paginated resources.
+   */
+  rel: string
+  /** URL of a related document or resource. */
+  href: string
+  /** HTTP Verb */
+  requestMethod: string
+}
+
 export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
   type: WestpacQuickStreamSubmissionEvent['type']
   paymentTransaction?: {
@@ -512,17 +524,7 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
        */
       customerId: string
       /** Links to related documents and resources. */
-      links: Array<{
-        /**
-         * The relationship to the resource. Open help URLs in a browser to view
-         * this developer reference. next and prev are used for paginated resources.
-         */
-        rel: string
-        /** URL of a related document or resource. */
-        href: string
-        /** HTTP Verb */
-        requestMethod: string
-      }>
+      links: WestpacQuickStreamLinks[]
     }
     /** For Australian bank account payments, your customer's bank account. */
     bankAccount?: {
@@ -567,17 +569,7 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
        */
       customerId: string
       /** Links to related documents and resources. */
-      links: Array<{
-        /**
-         * The relationship to the resource. Open help URLs in a browser to view
-         * this developer reference. next and prev are used for paginated resources.
-         */
-        rel: string
-        /** URL of a related document or resource. */
-        href: string
-        /** HTTP Verb */
-        requestMethod: string
-      }>
+      links: WestpacQuickStreamLinks[]
     }
     /**
      * This field is only relevant for credit card payments for Aggregators. The
@@ -625,17 +617,7 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
      */
     networkTransactionId?: string
     /** Links to related resources/documentation. */
-    links: Array<{
-      /**
-       * The relationship to the resource. Open help URLs in a browser to view
-       * this developer reference. next and prev are used for paginated resources.
-       */
-      rel: string
-      /** URL of a related document or resource. */
-      href: string
-      /** HTTP Verb */
-      requestMethod: string
-    }>
+    links: WestpacQuickStreamLinks[]
     /**
      * Whether this transaction was used to repay a debt. In most cases you can
      * ignore this field.
