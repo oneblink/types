@@ -36,7 +36,7 @@ export type _FormElementBase = {
   requiresAllConditionallyShowPredicates?: boolean
   /** Predicates to evaluate. */
   conditionallyShowPredicates?: ConditionalPredicate[]
-  /** Custom Css classes that will be added to the element during rendering */
+  /** Custom CSS classes that will be added to the element during rendering */
   customCssClasses?: string[]
   /**
    * JSON metadata associated with the form element. This field is for primarily
@@ -977,6 +977,7 @@ export type Form = {
    * when available rather than prompting the user
    */
   continueWithAutosave?: boolean
+  /** Custom CSS classes that will be added to the form during rendering */
   customCssClasses?: string[]
 }
 
