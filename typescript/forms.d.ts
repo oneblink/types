@@ -977,6 +977,7 @@ export type Form = {
    * when available rather than prompting the user
    */
   continueWithAutosave?: boolean
+  customCssClasses?: string[]
 }
 
 export type FormTemplate = {
