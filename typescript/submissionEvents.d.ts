@@ -91,6 +91,8 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
    * to `false`).
    */
   includeExternalIdInPdf?: boolean
+  /** The page size of the Generated PDF. */
+  pdfSize?: 'A4' | 'Letter'
 }
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
