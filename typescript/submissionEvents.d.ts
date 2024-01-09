@@ -5,6 +5,7 @@ import type {
   EndpointConfigurationCallback,
   UserProfile,
 } from './misc'
+import { GeneratePDFOptions } from './pdf'
 
 export type FormEventConditional = {
   /** Whether the submission event should be conditionally executed. */
@@ -92,7 +93,7 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
    */
   includeExternalIdInPdf?: boolean
   /** The page size of the Generated PDF. */
-  pdfSize?: 'A4' | 'Letter'
+  pdfSize?: NonNullable<GeneratePDFOptions['page']>['size']
 }
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
