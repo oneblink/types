@@ -28,6 +28,10 @@ export interface FormMigrationOptions {
   approvalSteps: boolean
   submissionEvents: boolean
   tags: boolean
+  submissionTitle: boolean
+  continueWithAutosave: boolean
+  customCssClasses: boolean
+  postSubmissionReceipt: boolean
   postSubmissionAction: boolean
   serverValidation: boolean
   externalIdGenerationOnSubmit: boolean
