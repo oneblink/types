@@ -13,6 +13,11 @@ export interface NewFormsAppEnvironment {
     isCloningFormServerValidation: boolean
     isCloningFormExternalIdGenerationOnSubmit: boolean
     isCloningFormPersonalisation: boolean
+    isCloningFormTags: boolean
+    isCloningFormSubmissionTitle: boolean
+    isCloningFormContinueWithAutosave: boolean
+    isCloningFormPostSubmissionReceipt: boolean
+    isCloningFormCustomCssClasses: boolean
   }
 }
 
