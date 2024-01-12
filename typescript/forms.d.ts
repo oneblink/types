@@ -17,6 +17,7 @@ import type {
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
+import { LiquorLicenseDetails } from './api-nsw'
 
 ////////////////////////////////////////
 // Element Types
@@ -492,6 +493,15 @@ export type CivicaNameRecordElement = {
   address2Label?: string
   postcodeLabel?: string
 } & FormElementRequired &
+  FormElementReadOnly
+
+export type APINSWLiquorLicenseElement = {
+  type: 'apiNSWLiquorLicense'
+  defaultValue?: LiquorLicenseDetails
+  placeholderValue?: string
+  //TODO: Add Configurable Attributes from Endpoint
+} & FormElementLookup &
+  FormElementRequired &
   FormElementReadOnly
 
 /**
