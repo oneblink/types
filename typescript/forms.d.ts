@@ -500,7 +500,7 @@ export type APINSWLiquorLicenseElement = {
   defaultValue?: LiquorLicenseDetails
   placeholderValue?: string
   //TODO: Add Configurable Attributes from Endpoint
-} & FormElementLookup &
+} & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
 
