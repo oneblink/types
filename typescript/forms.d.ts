@@ -759,6 +759,7 @@ export type NonNestedElementsElement =
   | AutoCompleteElement
   | ComplianceElement
   | FreshdeskDependentFieldElement
+  | APINSWLiquorLicenseElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
