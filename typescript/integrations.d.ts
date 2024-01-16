@@ -12,6 +12,7 @@ export type IntegrationType =
   | 'FRESHDESK'
   | 'MAILGUN'
   | 'NSW_GOV_PAY'
+  | 'API_NSW'
 
 type IntegrationBase = {
   organisationId: string
@@ -115,7 +116,10 @@ export type IntegrationNSWGovPayPrimaryAgency = {
   clientSecret: string
   /** The public key used to verify JSON web token to validate a payment */
   jwtPublicKey: string
-  /** Optional codes that will ensure the payment goes to the correct agency within NSW GovPay */
+  /**
+   * Optional codes that will ensure the payment goes to the correct agency
+   * within NSW GovPay
+   */
   subAgencyCodes?: string[]
   /**
    * Set to `true` to use the non-prod version by changing the domain used for
@@ -208,6 +212,15 @@ export type IntegrationMailGun = IntegrationBase & {
   }
 }
 
+export type IntegrationAPINSW = IntegrationBase & {
+  type: 'API_NSW'
+  configuration: {
+    products: {
+      liquor?: { apiKey: string; apiSecret: string }
+    }
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{ formId: number; formName: string }>
   formsApps: Array<{ formsAppId: number; formsAppName: string }>
@@ -227,3 +240,4 @@ export type Integration =
   | IntegrationFreshdesk
   | IntegrationMailGun
   | IntegrationNSWGovPay
+  | IntegrationAPINSW

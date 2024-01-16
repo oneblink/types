@@ -17,6 +17,7 @@ import type {
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
+import { LiquorLicenseDetails } from './api-nsw'
 
 ////////////////////////////////////////
 // Element Types
@@ -494,6 +495,15 @@ export type CivicaNameRecordElement = {
 } & FormElementRequired &
   FormElementReadOnly
 
+export type APINSWLiquorLicenseElement = {
+  type: 'apiNSWLiquorLicense'
+  defaultValue?: LiquorLicenseDetails
+  placeholderValue?: string
+  //TODO: Add Configurable Attributes from Endpoint
+} & LookupFormElement &
+  FormElementRequired &
+  FormElementReadOnly
+
 /**
  * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
  *
@@ -749,6 +759,7 @@ export type NonNestedElementsElement =
   | AutoCompleteElement
   | ComplianceElement
   | FreshdeskDependentFieldElement
+  | APINSWLiquorLicenseElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
