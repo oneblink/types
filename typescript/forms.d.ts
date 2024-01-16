@@ -17,7 +17,7 @@ import type {
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
-import { LiquorLicenseDetails } from './api-nsw'
+import { LiquorLicenceDetails } from './api-nsw'
 
 ////////////////////////////////////////
 // Element Types
@@ -495,9 +495,9 @@ export type CivicaNameRecordElement = {
 } & FormElementRequired &
   FormElementReadOnly
 
-export type APINSWLiquorLicenseElement = {
-  type: 'apiNSWLiquorLicense'
-  defaultValue?: LiquorLicenseDetails
+export type APINSWLiquorLicenceElement = {
+  type: 'apiNSWLiquorLicence'
+  defaultValue?: LiquorLicenceDetails
   placeholderValue?: string
   //TODO: Add Configurable Attributes from Endpoint
 } & LookupFormElement &
@@ -759,7 +759,7 @@ export type NonNestedElementsElement =
   | AutoCompleteElement
   | ComplianceElement
   | FreshdeskDependentFieldElement
-  | APINSWLiquorLicenseElement
+  | APINSWLiquorLicenceElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
