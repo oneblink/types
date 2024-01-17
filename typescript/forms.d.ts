@@ -499,7 +499,6 @@ export type APINSWLiquorLicenceElement = {
   type: 'apiNSWLiquorLicence'
   defaultValue?: LiquorLicenceDetails
   placeholderValue?: string
-  //TODO: Add Configurable Attributes from Endpoint
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
