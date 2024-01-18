@@ -8,6 +8,7 @@ export type IntegrationType =
   | 'POINT'
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_WEB'
+  | 'WESTPAC_QUICK_STREAM'
   | 'SCHEDULING'
   | 'FRESHDESK'
   | 'MAILGUN'
@@ -152,6 +153,21 @@ export type IntegrationWestpacQuickWeb = IntegrationBase & {
   }
 }
 
+export type IntegrationWestpacQuickStreamEnvironment = {
+  id: string
+  label: string
+  publishableApiKey: string
+  secretApiKey: string
+  supplierBusinessCode: string
+  isTestMode: boolean
+}
+export type IntegrationWestpacQuickStream = IntegrationBase & {
+  type: 'WESTPAC_QUICK_STREAM'
+  configuration: {
+    environments: IntegrationWestpacQuickStreamEnvironment[]
+  }
+}
+
 export type IntegrationGeoscape = IntegrationBase & {
   type: 'GEOSCAPE'
   configuration: {
@@ -235,6 +251,7 @@ export type Integration =
   | IntegrationPoint
   | IntegrationRecaptcha
   | IntegrationWestpacQuickWeb
+  | IntegrationWestpacQuickStream
   | IntegrationCivica
   | IntegrationScheduling
   | IntegrationFreshdesk
