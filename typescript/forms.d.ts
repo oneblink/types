@@ -990,6 +990,14 @@ export type Form = {
   continueWithAutosave?: boolean
   /** Custom CSS classes that will be added to the form during rendering */
   customCssClasses?: string[]
+  /** The user that last updated the form */
+  updatedByUser?: UserProfile
+  updatedByKey?: {
+    /** The id of the key */
+    id: string
+    /** The name of the key */
+    name: string
+  }
 }
 
 export type FormTemplate = {
@@ -1226,6 +1234,4 @@ export type FormVersion = {
   id: number
   formId: number
   form: Form
-  user: UserProfile
-  createdAt: Date
 }
