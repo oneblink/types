@@ -14,6 +14,7 @@ import type {
   BaseSearchResult,
   EndpointConfiguration,
   IdResource,
+  UserProfile,
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
@@ -989,6 +990,14 @@ export type Form = {
   continueWithAutosave?: boolean
   /** Custom CSS classes that will be added to the form during rendering */
   customCssClasses?: string[]
+  /** The user that last updated the form */
+  updatedByUser?: UserProfile
+  updatedByKey?: {
+    /** The id of the key */
+    id: string
+    /** The name of the key */
+    name: string
+  }
 }
 
 export type FormTemplate = {
@@ -1142,44 +1151,40 @@ export type FormElementLookupStaticDataRecordBase = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataRecordText =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'TEXT'
-    /**
-     * The value that will be matched exactly on the form element this lookup is
-     * associated when the user is completing the form.
-     */
-    inputValue: string
-  }
-export type FormElementLookupStaticDataRecordNumber =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'NUMBER'
-    /**
-     * The value that will be matched exactly on the form element this lookup is
-     * associated when the user is completing the form.
-     */
-    inputValue: number
-  }
+export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
+  inputType: 'TEXT'
+  /**
+   * The value that will be matched exactly on the form element this lookup is
+   * associated when the user is completing the form.
+   */
+  inputValue: string
+}
+export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
+  inputType: 'NUMBER'
+  /**
+   * The value that will be matched exactly on the form element this lookup is
+   * associated when the user is completing the form.
+   */
+  inputValue: number
+}
 
-export type FormElementLookupStaticDataRecordUndefined =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'UNDEFINED'
-  }
+export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
+  inputType: 'UNDEFINED'
+}
 
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
   | FormElementLookupStaticDataRecordUndefined
 
-export type FormElementLookupStaticDataEnvironment =
-  FormElementEnvironmentBase & {
-    /**
-     * Array of records, each associated with a "inputValue" that will determine
-     * the prefill data for the configured form elements based on the
-     * "FormElement.name" property.
-     */
-    records: FormElementLookupStaticDataRecord[]
-  }
+export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
+  /**
+   * Array of records, each associated with a "inputValue" that will determine
+   * the prefill data for the configured form elements based on the
+   * "FormElement.name" property.
+   */
+  records: FormElementLookupStaticDataRecord[]
+}
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
@@ -1215,8 +1220,7 @@ export type FormElementLookup =
   | FormElementLookupUrl
   | FormElementLookupStaticData
 
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
@@ -1225,3 +1229,9 @@ export type FormElementLookupSearchResponse = {
 export type FormElementOptionSetSearchResponse = {
   formElementOptionSets: FormElementOptionSet[]
 } & BaseSearchResult
+
+export type FormVersion = {
+  id: number
+  formId: number
+  form: Form
+}
