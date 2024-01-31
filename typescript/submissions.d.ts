@@ -295,8 +295,8 @@ export type CPPayPayment = BaseFormSubmissionPayment & {
 
 interface WestpacQuickStreamLinks {
   /**
-   * The relationship to the resource. Open help URLs in a browser to view
-   * this developer reference. next and prev are used for paginated resources.
+   * The relationship to the resource. Open help URLs in a browser to view this
+   * developer reference. next and prev are used for paginated resources.
    */
   rel: string
   /** URL of a related document or resource. */
@@ -835,7 +835,7 @@ export type NewFormSubmissionWorkflowEvent = {
 } & (
   | {
       submissionId: string
-      stage: 'SCHEDULING' | 'SUBMISSION' | 'APPROVAL' | 'REPLAY'
+      stage: 'SCHEDULING' | 'SUBMISSION' | 'APPROVAL' | 'REPLAY' | 'RETRY'
     }
   | {
       draftId: string

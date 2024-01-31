@@ -446,6 +446,8 @@ export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
   type: 'EVENT'
   submissionEvent: T
   formSubmissionWorkflowEventId: number
+  attempt: number
+  maxAttempts: number
 }
 export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
   type: 'JOB'
