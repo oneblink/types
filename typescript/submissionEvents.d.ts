@@ -22,6 +22,11 @@ export type FormEventConditional = {
 export type FormEventBase = FormEventConditional & {
   /** A label to identify the event. */
   label?: string
+  /**
+   * Whether the event can be retried automatically after a failure that was
+   * deemed to be the customers fault.
+   */
+  isRetryable?: boolean
 }
 
 export type ApprovalFormsInclusionConfiguration = {
