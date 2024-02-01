@@ -457,9 +457,10 @@ export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
    */
   attempt: number
   /**
-   * A number representing the maximum attempts before an error will be reported
-   * to the customer. If the event is not configured to allow retries, the
-   * `maxAttempts` should be 1.
+   * Represents the number of failed attempts before an error will be reported
+   * to the customer. If the event succeeds before reaching the maximum
+   * attempts, the customer will be notified. If the event is not configured to
+   * allow retries, the `maxAttempts` should be 1.
    */
   maxAttempts: number
 }
