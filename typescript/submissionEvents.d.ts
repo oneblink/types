@@ -446,6 +446,23 @@ export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
   type: 'EVENT'
   submissionEvent: T
   formSubmissionWorkflowEventId: number
+  /**
+   * The delay in seconds before the event will be processed. This is to allow
+   * for retries to be delayed to give third party systems time to recover.
+   */
+  delayInSeconds: number
+  /**
+   * A number representing the attempt. First attempt will be 1, second attempt
+   * will be 2, and so on.
+   */
+  attempt: number
+  /**
+   * Represents the number of failed attempts before an error will be reported
+   * to the customer. If the event succeeds before reaching the maximum
+   * attempts, the customer will be notified. If the event is not configured to
+   * allow retries, the `maxAttempts` should be 1.
+   */
+  maxAttempts: number
 }
 export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
   type: 'JOB'
