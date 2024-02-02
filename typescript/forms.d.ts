@@ -964,6 +964,26 @@ export type Form = {
      * requesting clarification
      */
     defaultPreventPaymentOnClarificationRequest?: boolean
+    /**
+     * The identifier for the email template to use when notifying approvers of
+     * a new approval to action
+     */
+    approvalCreatedEmailTemplateId?: number
+    /**
+     * The identifier for the email template to use when notifying the user that
+     * submitted the form that an approver has requested clarification
+     */
+    clarificationRequestEmailTemplateId?: number
+    /**
+     * The identifier for the email template to use when notifying the user that
+     * submitted the form that an approver has approved their submission
+     */
+    approvedEmailTemplateId?: number
+    /**
+     * The identifier for the email template to use when notifying the user that
+     * submitted the form that an approver has denied their submission
+     */
+    deniedEmailTemplateId?: number
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
@@ -1151,40 +1171,44 @@ export type FormElementLookupStaticDataRecordBase = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
-  inputType: 'TEXT'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: string
-}
-export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
-  inputType: 'NUMBER'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: number
-}
+export type FormElementLookupStaticDataRecordText =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'TEXT'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: string
+  }
+export type FormElementLookupStaticDataRecordNumber =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'NUMBER'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: number
+  }
 
-export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
-  inputType: 'UNDEFINED'
-}
+export type FormElementLookupStaticDataRecordUndefined =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'UNDEFINED'
+  }
 
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
   | FormElementLookupStaticDataRecordUndefined
 
-export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
-  /**
-   * Array of records, each associated with a "inputValue" that will determine
-   * the prefill data for the configured form elements based on the
-   * "FormElement.name" property.
-   */
-  records: FormElementLookupStaticDataRecord[]
-}
+export type FormElementLookupStaticDataEnvironment =
+  FormElementEnvironmentBase & {
+    /**
+     * Array of records, each associated with a "inputValue" that will determine
+     * the prefill data for the configured form elements based on the
+     * "FormElement.name" property.
+     */
+    records: FormElementLookupStaticDataRecord[]
+  }
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
@@ -1220,7 +1244,8 @@ export type FormElementLookup =
   | FormElementLookupUrl
   | FormElementLookupStaticData
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
