@@ -1259,4 +1259,6 @@ export type FormVersion = {
   id: number
   formId: number
   form: Form
+  updatedAt: string
+  name?: string
 }
