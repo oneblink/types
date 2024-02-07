@@ -504,6 +504,12 @@ export type APINSWLiquorLicenceElement = {
   FormElementRequired &
   FormElementReadOnly
 
+  export type ArcGISWebMapElement = FormElementBase & {
+    type: 'arcGISWebMap'
+    webMapId: string
+    showLayerPanel: boolean
+  }
+
 /**
  * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
  *
@@ -760,6 +766,7 @@ export type NonNestedElementsElement =
   | ComplianceElement
   | FreshdeskDependentFieldElement
   | APINSWLiquorLicenceElement
+  | ArcGISWebMapElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
