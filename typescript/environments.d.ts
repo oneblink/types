@@ -45,6 +45,7 @@ export interface FormMigrationOptions {
     sourceElementId: string
     targetFormId: number
   }>
+  versionId?: number
 }
 
 export type FormMigrationData = {
