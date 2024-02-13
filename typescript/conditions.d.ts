@@ -23,7 +23,7 @@ export type ConditionalPredicateNumeric = ConditionalPredicateBase & {
 
 export type ConditionalPredicateOptions = ConditionalPredicateBase & {
   /** Evaluate against a numeric type element or an element with options */
-  type: 'OPTIONS'
+  type?: 'OPTIONS'
   /**
    * The predicate element option identifiers that must be selected for this
    * predicate to evaluate true
