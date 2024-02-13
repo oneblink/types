@@ -19,7 +19,7 @@ import type {
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
 import { LiquorLicenceDetails } from './api-nsw'
-import { MiscTypes } from '..'
+import { MiscTypes, SubmissionTypes } from '..'
 
 ////////////////////////////////////////
 // Element Types
@@ -342,14 +342,14 @@ export type DrawElement = FormElementRequired &
   FormElementReadOnly &
   FormElementBinaryStorage & {
     type: 'draw'
-    defaultValue?: string
+    defaultValue?: SubmissionTypes.FormSubmissionAttachment
   }
 
 export type CameraElement = FormElementRequired &
   FormElementReadOnly &
   FormElementBinaryStorage & {
     type: 'camera'
-    defaultValue?: string
+    defaultValue?: SubmissionTypes.FormSubmissionAttachment
     includeTimestampWatermark: boolean
   }
 
@@ -505,11 +505,11 @@ export type APINSWLiquorLicenceElement = {
   FormElementRequired &
   FormElementReadOnly
 
-  export type ArcGISWebMapElement = FormElementBase & {
-    type: 'arcGISWebMap'
-    webMapId: string
-    showLayerPanel: boolean
-  }
+export type ArcGISWebMapElement = FormElementBase & {
+  type: 'arcGISWebMap'
+  webMapId: string
+  showLayerPanel: boolean
+}
 
 /**
  * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
@@ -858,7 +858,6 @@ export type ExternalIdGeneration =
       }
     }
 
-
 export type NewForm = {
   /** Name of the form. */
   name: string
@@ -1025,7 +1024,7 @@ export type NewForm = {
   }
 }
 
-export type Form  = MiscTypes.IdResource & NewForm
+export type Form = MiscTypes.IdResource & NewForm
 
 export type FormTemplate = {
   id: number
