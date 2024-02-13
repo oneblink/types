@@ -19,6 +19,7 @@ import type {
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
 import { LiquorLicenceDetails } from './api-nsw'
+import { MiscTypes } from '..'
 
 ////////////////////////////////////////
 // Element Types
@@ -857,9 +858,8 @@ export type ExternalIdGeneration =
       }
     }
 
-export type Form = {
-  /** Id of the form. */
-  id: number
+
+export type NewForm = {
   /** Name of the form. */
   name: string
   /** A description of the form. */
@@ -994,8 +994,6 @@ export type Form = {
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
-  createdAt: string
-  updatedAt: string
   /** The details of the form validation endpoint. */
   serverValidation?: FormServerValidation
   /**
@@ -1026,6 +1024,8 @@ export type Form = {
     name: string
   }
 }
+
+export type Form  = MiscTypes.IdResource & NewForm
 
 export type FormTemplate = {
   id: number
