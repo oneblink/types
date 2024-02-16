@@ -274,7 +274,6 @@ export type FormStoreDefinition = {
 export type BaseFormSubmissionPayment = {
   id: string
   submissionId: string
-  externalId?: string
   formId: number
   status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
 }
