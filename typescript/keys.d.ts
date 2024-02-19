@@ -1,5 +1,5 @@
 export interface NewKey {
-  secret: string | undefined
+  secret: string
   name: string
   privilege: {
     API_HOSTING?: 'DEPLOYMENT'
