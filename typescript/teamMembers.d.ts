@@ -1,3 +1,5 @@
+import { MiscTypes } from '..'
+
 interface RolePrivileges {
   API_HOSTING?: 'MANAGER' | 'DEVELOPER' | 'READONLY'
   TEAM_MEMBERS?: 'MANAGER' | 'READONLY'
@@ -47,13 +49,9 @@ interface NewRole {
   description: string
   privilege: RolePrivileges
   organisationId: string
-  createdAt: string
-  updatedAt: string
 }
 
-type Role = NewRole & {
-  id: number
-}
+type Role = NewRole & MiscTypes.IdResource
 
 interface PermissionBase {
   name?: string | null
