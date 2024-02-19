@@ -1,6 +1,5 @@
-export interface Key {
-  id: string
-  secret: string | void
+export interface NewKey {
+  secret: string | undefined
   name: string
   privilege: {
     API_HOSTING?: 'DEPLOYMENT'
@@ -11,6 +10,10 @@ export interface Key {
   links: {
     organisations: string
   }
+}
+
+export interface Key extends NewKey {
+  id: string
 }
 
 export type DeveloperKeyAccess = {
