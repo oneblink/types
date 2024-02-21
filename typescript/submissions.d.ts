@@ -45,6 +45,8 @@ export interface NewFormsAppDraft {
   taskActionId?: string
   /** The label of the scheduled task action that was used to complete the task. */
   taskActionLabel?: string
+  /** The id of the CivicPlus HCMS Content Type */
+  cpHcmsContentId?: string
 }
 
 export type FormsAppDraft = NewFormsAppDraft & {
@@ -146,6 +148,8 @@ type _FormSubmissionMeta = {
     | {
         isInvalid: false
       }
+  /** The id of the CivicPlus HCMS Content Type */
+  cpHcmsContentId?: string
 }
 
 export type NewFormSubmissionMeta = _FormSubmissionMeta & {
@@ -217,6 +221,7 @@ export type S3SubmissionData = {
   taskAction?: TaskAction
   taskGroup?: TaskGroup
   taskGroupInstance?: TaskGroupInstance
+  cpHcmsContentId?: string
 }
 
 export type NewFormSubmissionFileAccessToken = {
