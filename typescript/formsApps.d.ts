@@ -94,6 +94,8 @@ export type FormsAppCPHCMSContentMenuItem = FormsAppBaseMenuItem & {
    * records in a list format.
    */
   listDisplayAttributes: FormsAppCPHCMSContentMenuItemListDisplayAttribute[]
+  /** If true, menu item will be the default item shown */
+  isDefault: boolean
 }
 
 export type FormsAppMenuItem =
