@@ -69,6 +69,33 @@ export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean
 }
 
+export type FormsAppCPHCMSContentMenuItemListDisplayAttributeMeta = {
+  type: 'CP_HCMS_CONTENT_META'
+  attribute: 'meta.created' | 'meta.lastModified' | 'meta.id'
+}
+export type FormsAppCPHCMSContentMenuItemListDisplayAttributeFormElement = {
+  type: 'FORM_ELEMENT'
+  formElementId: string
+}
+export type FormsAppCPHCMSContentMenuItemListDisplayAttribute =
+  | FormsAppCPHCMSContentMenuItemListDisplayAttributeMeta
+  | FormsAppCPHCMSContentMenuItemListDisplayAttributeFormElement
+
+export type FormsAppCPHCMSContentMenuItem = FormsAppBaseMenuItem & {
+  /** Type of menu item */
+  type: 'CP_HCMS_CONTENT'
+  /**
+   * The identifier of the Form which must have a CP HCMS worklflow event to
+   * link the HMCS Content Type
+   */
+  formId: number
+  /**
+   * The attributes to display for each piece of content when viewing multiple
+   * records in a list format.
+   */
+  listDisplayAttributes: FormsAppCPHCMSContentMenuItemListDisplayAttribute[]
+}
+
 export type FormsAppMenuItem =
   | FormsAppHrefMenuItem
   | FormsAppContainerMenuItem
@@ -76,6 +103,7 @@ export type FormsAppMenuItem =
   | FormsAppScreenMenuItem
   | FormsAppScheduledTasksMenuItem
   | FormsAppScheduledTasksGroupMenuItem
+  | FormsAppCPHCMSContentMenuItem
 
 export type BaseFormsAppStyles = {
   /** Foreground colour of banner in Forms App */
