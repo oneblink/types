@@ -203,7 +203,7 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
     contentTypeName: string
     /**
      * The optional notificationElementId that holds the value to send a
-     * notification or not. Must be the id of a switch element.
+     * notification or not. Must be the id of a `boolean` form element.
      */
     notificationElementId?: string
     /** An array of element ids to be set as encrypted in the CivicPlus HCMS. */
