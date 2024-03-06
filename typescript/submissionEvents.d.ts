@@ -201,6 +201,11 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
   configuration: PDFConfiguration & {
     /** The content type name for the submission in the CivicPlus HCMS. */
     contentTypeName: string
+    /**
+     * The optional notificationElementId that holds the value to send a
+     * notification or not. Must be the id of a `boolean` form element.
+     */
+    notificationElementId?: string
     /** An array of element ids to be set as encrypted in the CivicPlus HCMS. */
     encryptedElementIds?: string[]
     /** Whether the generated pdf file should be encrypted. (defaults to `false`) */
