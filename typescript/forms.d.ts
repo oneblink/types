@@ -336,6 +336,7 @@ export type TelephoneElement = {
 export type ImageElement = FormElementBase & {
   type: 'image'
   defaultValue: string
+  altText?: string
 }
 
 export type DrawElement = FormElementRequired &
