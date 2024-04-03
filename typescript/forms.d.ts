@@ -996,7 +996,7 @@ export type NewForm = {
      * Approvers regarding unapproved approvals relating to this form. Set as
      * `undefined` or unset if no reminder needs to be sent.
      */
-    sendUnapprovedReminder?: {
+    unapprovedApprovalsReminder?: {
       /**
        * The interval of days that will be checked to determine whether a
        * reminder will be sent for unapproved approvals to approvers.
