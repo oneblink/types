@@ -528,4 +528,5 @@ export type PushSubscription = {
 export type EmailSubscription = {
   newApproval?: boolean
   clarificationReceived?: boolean
+  pendingApprovals?: boolean
 }
