@@ -992,16 +992,15 @@ export type NewForm = {
      */
     deniedEmailTemplateId?: number
     /**
-     * Configuration for sending a reminder after a set number of days to
-     * Approvers regarding unapproved approvals relating to this form. Set as
-     * `undefined` or unset if no reminder needs to be sent.
+     * Configuration for sending recurring reminders at an interval of days to
+     * Approvers of pending approvals for this form.
      */
     pendingApprovalsReminder?: {
       /**
-       * The interval of days that will be checked to determine whether a
-       * reminder will be sent for unapproved approvals to approvers.
+       * The amount of days that make up the interval at which reminder emails
+       * will be sent to approvers of pending approvals.
        */
-      interval: number
+      daysInterval: number
     }
   }
   /** A list of tags used to categorise or describe the form. */
