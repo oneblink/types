@@ -991,6 +991,18 @@ export type NewForm = {
      * submitted the form that an approver has denied their submission
      */
     deniedEmailTemplateId?: number
+    /**
+     * Configuration for sending a reminder after a set number of days to
+     * Approvers regarding unapproved approvals relating to this form. Set as
+     * `undefined` or unset if no reminder needs to be sent.
+     */
+    pendingApprovalsReminder?: {
+      /**
+       * The interval of days that will be checked to determine whether a
+       * reminder will be sent for unapproved approvals to approvers.
+       */
+      interval: number
+    }
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
