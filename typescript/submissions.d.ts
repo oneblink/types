@@ -146,6 +146,8 @@ type _FormSubmissionMeta = {
     | {
         isInvalid: false
       }
+  /** The IP Address of the submitter of the Form */
+  ipAddress?: string
 }
 
 export type NewFormSubmissionMeta = _FormSubmissionMeta & {
