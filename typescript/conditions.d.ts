@@ -52,9 +52,15 @@ export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
   >
 }
 
+export type ConditionalPredicateForm = ConditionalPredicateBase & {
+  type: 'FORM',
+  predicate: ConditionalPredicate
+}
+
 export type ConditionalPredicate =
   | ConditionalPredicateNumeric
   | ConditionalPredicateOptions
   | ConditionalPredicateHasValue
   | ConditionalPredicateBetween
   | ConditionalPredicateRepeatableSet
+  | ConditionalPredicateForm
