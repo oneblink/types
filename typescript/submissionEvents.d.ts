@@ -474,16 +474,12 @@ export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
    */
   maxAttempts: number
 }
-export type FormSubmissionProcessingJob = BaseFormSubmissionProcessing & {
-  type: 'JOB'
-}
 export type FormSubmissionProcessingFormStore = BaseFormSubmissionProcessing & {
   type: 'FORM_STORE'
 }
 
 export type FormSubmissionProcessing<T = undefined> =
   | FormSubmissionProcessingEvent<T>
-  | FormSubmissionProcessingJob
   | FormSubmissionProcessingFormStore
 
 export type WebhookSubmissionEventPayload = {
