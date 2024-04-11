@@ -203,16 +203,12 @@ export type S3SubmissionDataDevice =
   | S3SubmissionDataDeviceCordova
   | S3SubmissionDataDeviceBrowser
 
-export type S3SubmissionData = {
+export interface NewS3SubmissionData {
   submission: {
     [name: string]: unknown
   }
   definition: Form
-  submissionTimestamp: string
   formsAppId: number
-  ipAddress?: string
-  keyId?: string
-  user?: FormSubmissionMeta['user']
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
   externalId?: string
@@ -220,6 +216,12 @@ export type S3SubmissionData = {
   taskAction?: TaskAction
   taskGroup?: TaskGroup
   taskGroupInstance?: TaskGroupInstance
+}
+export type S3SubmissionData = NewS3SubmissionData & {
+  submissionTimestamp: string
+  ipAddress?: string
+  keyId?: string
+  user?: FormSubmissionMeta['user']
 }
 
 export type NewFormSubmissionFileAccessToken = {
