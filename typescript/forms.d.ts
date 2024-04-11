@@ -363,7 +363,7 @@ export type LocationElement = {
   type: 'location'
   defaultValue?: unknown
   showStreetAddress?: boolean
-  formattedAddressElement?: string
+  formattedAddressElementId?: string
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
