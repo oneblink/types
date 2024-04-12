@@ -999,10 +999,10 @@ export type NewForm = {
      */
     pendingApprovalsReminder?: {
       /**
-       * The amount of days that make up the interval at which reminder emails
-       * will be sent to approvers of pending approvals.
+       * The amount of days that an approval must be overdue before sending
+       * daily reminders
        */
-      daysInterval: number
+      daysBeforeSending: number
     }
   }
   /** A list of tags used to categorise or describe the form. */
