@@ -1002,7 +1002,7 @@ export type NewForm = {
        * The amount of days that an approval must be overdue before sending
        * daily reminders
        */
-      daysBeforeSending: number
+      daysInterval: number
     }
   }
   /** A list of tags used to categorise or describe the form. */
