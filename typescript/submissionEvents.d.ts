@@ -424,7 +424,7 @@ export type WebhookSubscription = NewWebhookSubscription & {
   createdAt: string
 }
 
-export interface S3SubmissionTags {
+export type S3SubmissionTags = {
   /**
    * @deprecated No longer stored as an S3 tag. It is now stored in the S3
    *   object JSON data.
