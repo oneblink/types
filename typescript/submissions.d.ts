@@ -210,10 +210,6 @@ export interface NewS3SubmissionData {
   definition: Form
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
-  task?: Task
-  taskAction?: TaskAction
-  taskGroup?: TaskGroup
-  taskGroupInstance?: TaskGroupInstance
 }
 export type S3SubmissionData = NewS3SubmissionData & {
   submissionTimestamp: string
@@ -222,6 +218,10 @@ export type S3SubmissionData = NewS3SubmissionData & {
   user?: FormSubmissionMeta['user']
   formsAppId: number
   externalId?: string
+  task?: Task
+  taskAction?: TaskAction
+  taskGroup?: TaskGroup
+  taskGroupInstance?: TaskGroupInstance
 }
 
 export type NewFormSubmissionFileAccessToken = {
