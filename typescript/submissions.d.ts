@@ -208,10 +208,8 @@ export interface NewS3SubmissionData {
     [name: string]: unknown
   }
   definition: Form
-  formsAppId: number
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
-  externalId?: string
   task?: Task
   taskAction?: TaskAction
   taskGroup?: TaskGroup
@@ -222,6 +220,8 @@ export type S3SubmissionData = NewS3SubmissionData & {
   ipAddress?: string
   keyId?: string
   user?: FormSubmissionMeta['user']
+  formsAppId: number
+  externalId?: string
 }
 
 export type NewFormSubmissionFileAccessToken = {
