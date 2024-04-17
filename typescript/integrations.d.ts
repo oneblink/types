@@ -241,7 +241,7 @@ export type IntegrationAPINSW = IntegrationBase & {
 export type IntegrationGoogleMaps = IntegrationBase & {
   type: 'GOOGLE_MAPS'
   configuration: {
-    apiKey: string
+    environments: { id: string; label: string; apiKey: string }[]
   }
 }
 
