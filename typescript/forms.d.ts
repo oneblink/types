@@ -364,7 +364,6 @@ export type LocationElement = {
   defaultValue?: unknown
   showStreetAddress?: boolean
   formattedAddressElementId?: string
-  integrationEnvironmentId?: string
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -1037,6 +1036,11 @@ export type NewForm = {
     /** The name of the key */
     name: string
   }
+  /**
+   * The environment ID of the Google Maps Integration that will be used with
+   * Location Element's `Show Street Address`
+   */
+  googleMapsIntegrationEnvironmentId?: string
 }
 
 export type Form = MiscTypes.IdResource & NewForm
