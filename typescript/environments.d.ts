@@ -18,6 +18,7 @@ export interface NewFormsAppEnvironment {
     isCloningFormContinueWithAutosave: boolean
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
+    isCloningFormGoogleMapsIntegrationEnvironmentId: boolean
   }
 }
 
@@ -46,6 +47,7 @@ export interface FormMigrationOptions {
     targetFormId: number
   }>
   versionId?: number
+  googleMapsIntegrationEnvironmentId: boolean
 }
 
 export type FormMigrationData = {
