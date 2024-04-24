@@ -14,7 +14,6 @@ export type IntegrationType =
   | 'MAILGUN'
   | 'NSW_GOV_PAY'
   | 'API_NSW'
-  | 'GOOGLE_MAPS'
 
 type IntegrationBase = {
   organisationId: string
@@ -238,19 +237,6 @@ export type IntegrationAPINSW = IntegrationBase & {
   }
 }
 
-export type IntegrationGoogleMapsEnvironment = {
-  id: string
-  label: string
-  apiKey: string
-}
-
-export type IntegrationGoogleMaps = IntegrationBase & {
-  type: 'GOOGLE_MAPS'
-  configuration: {
-    environments: IntegrationGoogleMapsEnvironment[]
-  }
-}
-
 export type DeleteIntegrationValidationResults = {
   forms: Array<{ formId: number; formName: string }>
   formsApps: Array<{ formsAppId: number; formsAppName: string }>
@@ -272,4 +258,3 @@ export type Integration =
   | IntegrationMailGun
   | IntegrationNSWGovPay
   | IntegrationAPINSW
-  | IntegrationGoogleMaps
