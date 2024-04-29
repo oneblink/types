@@ -1,5 +1,5 @@
 export type CPHCSMAccessTokenResponse = {
-  token: {
+  auth: {
     token_type: string
     access_token: string
     expires_in: number
