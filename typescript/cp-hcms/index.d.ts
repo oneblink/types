@@ -8,4 +8,5 @@ export type CPHCSMAccessTokenResponse = {
   }
   appName: string
   baseUrl: string
+  contentTypeName: string
 }
