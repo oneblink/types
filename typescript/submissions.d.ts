@@ -95,6 +95,8 @@ export type FormSubmissionDraft = {
   formsAppId: number
   /** The id of the form the draft was saved against */
   formId: number
+  /** The identifier used to store the draft locally for offline capability */
+  localKey: string
   /** The submission identifier to indicate if the draft has been submitted */
   submissionId?: string
   /** The external id provided by a developer */
