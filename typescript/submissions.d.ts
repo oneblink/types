@@ -74,9 +74,11 @@ export type FormsAppDraft = NewFormsAppDraft & {
 }
 
 export type FormSubmissionDraftVersion = {
+  /** Unique identifier for the draft version. */
+  id: string
   /** The title input by a user to identify the draft. */
   title: string
-  /** The date and time (in ISO format) when this version of the draft was last created. */
+  /** The date and time (in ISO format) when this version of the draft was created. */
   createdAt: string
   /** The UserProfile of the user who first created this version of the draft */
   createdBy: UserProfile
