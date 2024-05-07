@@ -432,16 +432,19 @@ export type FormsAppUser = FormsAppUserBase & {
   isMfaEnabled?: boolean
 }
 
+/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 type BaseFormsAppsDraft = {
   formsAppId: number
   drafts: FormsAppDraft[]
 }
 
+/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export type NewFormsAppsDraft = BaseFormsAppsDraft & {
   createdAt?: string
   updatedAt?: string
 }
 
+/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export type FormsAppsDraft = {
   createdAt: string
   updatedAt: string
