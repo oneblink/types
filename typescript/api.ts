@@ -38,24 +38,23 @@ export type APIEnvironmentSchedule = {
   failureEmailAddresses: string[]
 }
 
-export type APIEnvironmentScheduledFunction =
-  APIDeploymentPayloadScheduledFunction & {
-    /** AWS configuration */
-    aws: {
-      /** AWS Lambda configuration */
-      lambda: {
-        /** The Lambda function ARN to allow linking between EventBridge and Lambda */
-        functionArn: string
-      }
-      /** AWS EventBridge configuration */
-      eventBridge: {
-        /** The name identifier for the AWS EventBridge rule */
-        name: string
-      }
+export type APIEnvironmentScheduledFunction = APIDeploymentPayloadScheduledFunction & {
+  /** AWS configuration */
+  aws: {
+    /** AWS Lambda configuration */
+    lambda: {
+      /** The Lambda function ARN to allow linking between EventBridge and Lambda */
+      functionArn: string
     }
-    /** The schedule configuration in a structure format parsed from a cron expression */
-    schedule?: APIEnvironmentSchedule
+    /** AWS EventBridge configuration */
+    eventBridge: {
+      /** The name identifier for the AWS EventBridge rule */
+      name: string
+    }
   }
+  /** The schedule configuration in a structure format parsed from a cron expression */
+  schedule?: APIEnvironmentSchedule
+}
 
 export type APIEnvironment = {
   apiId: string
@@ -67,6 +66,7 @@ export type APIEnvironment = {
   vpcSecurityGroupIds?: string
   vpcSubnetIds?: string
   status?: 'Warning' | 'Error' | 'Okay' | 'Unknown'
+  isWafEnabled?: boolean
 }
 
 export type API = {
