@@ -45,6 +45,10 @@ export interface FormMigrationOptions {
     sourceElementId: string
     targetFormId: number
   }>
+  approvalForms?: Array<{
+    stepLabel: string
+    targetFormId: number
+  }>
   versionId?: number
 }
 
