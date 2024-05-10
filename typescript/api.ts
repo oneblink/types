@@ -109,6 +109,7 @@ export type APIDeploymentPayload = {
   }
   routes: APIEnvironmentRoute[]
   network?: APIEnvironmentNetworkConfiguration | null
+  isWafEnabled?: boolean
   memorySize?: number
   scheduledFunctions?: APIDeploymentPayloadScheduledFunction[]
 }
