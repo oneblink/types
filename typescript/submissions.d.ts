@@ -1,6 +1,6 @@
 import { Form, FormElement, FormElementWithName } from './forms'
 import { UserProfile } from './misc'
-import { S3ObjectCredentials } from './aws'
+import { S3Configuration, S3ObjectCredentials } from './aws'
 import {
   BPOINTSubmissionEvent,
   CPPaySubmissionEvent,
@@ -19,6 +19,7 @@ import {
   TaskGroupInstance,
 } from './scheduledTasks'
 
+/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export interface NewFormsAppDraft {
   /** The title input by the user to display the draft */
   title: string
@@ -47,6 +48,7 @@ export interface NewFormsAppDraft {
   taskActionLabel?: string
 }
 
+/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export type FormsAppDraft = NewFormsAppDraft & {
   /** The id of the draft */
   draftId: string
@@ -71,12 +73,53 @@ export type FormsAppDraft = NewFormsAppDraft & {
   updatedBy?: UserProfile
 }
 
+export type FormSubmissionDraftVersion = {
+  /** Unique identifier for the draft version. */
+  id: string
+  /** Unique identifier for the draft associated with this version. */
+  formSubmissionDraftId: string
+  /** The title input by a user to identify the draft. */
+  title: string
+  /** The date and time (in ISO format) when this version of the draft was created. */
+  createdAt: string
+  /** The UserProfile of the user who first created this version of the draft */
+  createdBy: UserProfile
+  /** Configuration for where the draft data is stored */
+  s3: S3Configuration
+}
+
+export type FormSubmissionDraft = {
+  /** Unique identifier for the draft. */
+  id: string
+  /** The id of the forms app the draft was created in */
+  formsAppId: number
+  /** The id of the form the draft was saved against */
+  formId: number
+  /** The submission identifier to indicate if the draft has been submitted */
+  submissionId?: string
+  /** The external id provided by a developer */
+  externalId?: string
+  /** The id of the job associated with the draft */
+  jobId?: string
+  /**
+   * The previous form submission approval id, if the draft is a response to a
+   * clarification request on the submission approval
+   */
+  previousFormSubmissionApprovalId?: string
+  /** The id of the scheduled task that was started when the draft was saved. */
+  taskId?: string
+  /** The id of the scheduled task group instance that the taskId is related to. */
+  taskGroupInstanceId?: string
+  /** The id of the scheduled task action that was used to complete the task. */
+  taskActionId?: string
+  /** The versions of the draft data */
+  versions: FormSubmissionDraftVersion[]
+}
+
 export interface NewFormsAppJob {
   username: string
   /** The id of the form associated with the job */
   formId: number
-  /** If the job was started and saved as a draft, this will include the draft. */
-  draft?: FormsAppDraft
   /** The external id set when the job was created */
   externalId?: string
   /** The id of the prefill data associated with the job */
