@@ -166,6 +166,8 @@ export type AuditRecordType =
   | 'ScheduledTaskGroup'
   | 'ScheduledTaskGroupInstance'
   | 'FormVersion'
+  | 'FormSubmissionDraft'
+  | 'FormSubmissionDraftVersion'
 
 export type NewAuditRecord = {
   type: AuditRecordType
