@@ -86,6 +86,11 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
    * included in the generated pdf (defaults to `false`).
    */
   includePaymentInPdf?: boolean
+  /**
+   * Whether the calendar booking details associated with the submission should
+   * be included in the generated pdf (defaults to `false`)
+   */
+  includeCalendarBookingInPdf?: boolean
   /** An array of element ids to exclude from the submission when generating pdf. */
   excludedElementIds?: string[]
   /** An array of class names to exclude from the submission when generating pdf. */

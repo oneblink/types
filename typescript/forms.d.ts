@@ -20,6 +20,7 @@ import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './formsApps'
 import { LiquorLicenceDetails } from './api-nsw'
 import { MiscTypes, SubmissionTypes } from '..'
+import { IntegrationGeoscape } from './integrations'
 
 ////////////////////////////////////////
 // Element Types
@@ -362,8 +363,10 @@ export type HeadingElement = FormElementBase & {
 export type LocationElement = {
   type: 'location'
   defaultValue?: unknown
-  showStreetAddress?: boolean
-  formattedAddressElementId?: string
+  reverseGeocoding?: {
+    formattedAddressElementId: string
+    integrationType: IntegrationGeoscape['type']
+  }
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -999,8 +1002,8 @@ export type NewForm = {
      */
     pendingApprovalsReminder?: {
       /**
-       * The amount of days that make up the interval at which reminder emails
-       * will be sent to approvers of pending approvals.
+       * The amount of days that an approval must be overdue before sending
+       * daily reminders
        */
       daysInterval: number
     }
