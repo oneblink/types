@@ -95,6 +95,11 @@ export type FormSubmissionDraft = {
   formsAppId: number
   /** The id of the form the draft was saved against */
   formId: number
+  /**
+   * The username of the user that the draft is associated with. Will be
+   * `undefined` if the draft is being shared.
+   */
+  username?: string
   /** The submission identifier to indicate if the draft has been submitted */
   submissionId?: string
   /** The external id provided by a developer */
