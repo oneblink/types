@@ -82,8 +82,13 @@ export type FormSubmissionDraftVersion = {
   title: string
   /** The date and time (in ISO format) when this version of the draft was created. */
   createdAt: string
-  /** The UserProfile of the user who first created this version of the draft */
-  createdBy: UserProfile
+  /** Information about the entity that created this version of the draft */
+  createdBy: {
+    /** The UserProfile of the user who created this version of the draft */
+    user?: UserProfile
+    /** Information about the key that created this version of the draft */
+    key?: NewFormSubmissionMeta['key']
+  }
   /** Configuration for where the draft data is stored */
   s3: S3Configuration
 }
