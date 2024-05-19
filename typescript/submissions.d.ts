@@ -80,6 +80,11 @@ export type FormSubmissionDraftVersion = {
   formSubmissionDraftId: string
   /** The title input by a user to identify the draft. */
   title: string
+  /**
+   * The IP Address of the request to create the draft version. This cannot be
+   * trusted as the requester could change this.
+   */
+  ipAddress?: string
   /** The date and time (in ISO format) when this version of the draft was created. */
   createdAt: string
   /** Information about the entity that created this version of the draft */
