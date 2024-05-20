@@ -31,5 +31,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/google.maps": "^3.55.9"
   }
 }

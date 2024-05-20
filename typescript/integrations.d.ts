@@ -243,6 +243,7 @@ export type IntegrationGoogleMapsKey = {
   type: 'SEARCH'
   label: string
   apiKey: string
+  formsAppIds: number[]
 }
 
 export type IntegrationGoogleMaps = IntegrationBase & {
