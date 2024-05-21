@@ -330,6 +330,8 @@ type _NewFormsApp = {
    * period is desireable. Defaults to 1 hour.
    */
   userTokensValidityInMinutes?: number
+  /** The id of the Google Maps integration key to be used for Google Maps elements. */
+  googleMapsIntegrationKeyId?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -503,7 +505,7 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
-  googleMapsIntegrationKeyId?: string
+  googleMapsApiKey?: string
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
   formsAttachmentRetention?: Array<{
