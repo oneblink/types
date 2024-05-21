@@ -501,6 +501,7 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
+  googleMapsKey?: string
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
   formsAttachmentRetention?: Array<{
