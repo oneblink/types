@@ -365,6 +365,8 @@ export type NewTilesFormsApp = _NewFormsApp & {
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
   styles: ApprovalsStyles
+  /** List of approval groups for authorising approvers when using SAML integration */
+  approvalGroups?: string[]
 }
 
 export type FormStoreAppForm = {
