@@ -21,6 +21,7 @@ import { ButtonConfiguration } from './formsApps'
 import { LiquorLicenceDetails } from './api-nsw'
 import { MiscTypes, SubmissionTypes } from '..'
 import { IntegrationGeoscape } from './integrations'
+import { GoogleMapsAddress } from './googleMaps'
 
 ////////////////////////////////////////
 // Element Types
@@ -458,10 +459,9 @@ export type PointAddressElement = {
   FormElementRequired &
   FormElementReadOnly
 
-//TODO investigate filters
 export type GoogleAddressElement = {
   type: 'googleAddress'
-  defaultValue?: string //TODO
+  defaultValue?: GoogleMapsAddress
   placeholderValue?: string
 } & LookupFormElement &
   FormElementRequired &
