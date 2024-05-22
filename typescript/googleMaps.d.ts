@@ -1,9 +1,4 @@
 export type GoogleMapsAddress = Pick<
-  google.maps.places.Place,
-  | 'id'
-  | 'displayName'
-  | 'formattedAddress'
-  | 'location'
-  | 'addressComponents'
-  | 'servesBeer'
+  google.maps.places.PlaceResult,
+  'place_id' | 'formatted_address' | 'geometry' | 'address_components'
 >
