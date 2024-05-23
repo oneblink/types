@@ -22,9 +22,16 @@ type IntegrationBase = {
   createdAt: Date
 }
 
-export type SavedSecret = {
+export type IntegrationSecret = {
+  id: number
+  createdAt: string
+  updatedAt: string
   cipherText: string
   encryptionKeyId: string
+}
+
+export type SavedSecret = {
+  secretPointer: number
 }
 export type NewSecret = string
 
