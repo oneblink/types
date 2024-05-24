@@ -332,6 +332,8 @@ type _NewFormsApp = {
   userTokensValidityInMinutes?: number
   /** The id of the Google Maps integration key to be used for Google Maps elements. */
   googleMapsIntegrationKeyId?: string
+  /** List of groups users can be assigned too */
+  groups?: string[]
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -367,8 +369,6 @@ export type NewTilesFormsApp = _NewFormsApp & {
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
   styles: ApprovalsStyles
-  /** List of approval groups for authorising approvers when using SAML integration */
-  approvalGroups?: string[]
 }
 
 export type FormStoreAppForm = {
