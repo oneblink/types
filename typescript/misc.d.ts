@@ -36,6 +36,8 @@ export interface UserProfile {
   phoneNumber?: string
   /** True if the phone number is verified */
   phoneNumberVerified?: boolean
+  /** The users list of groups from a SAML configuration */
+  groups?: string[]
 }
 export interface QueryParameters {
   [property: string]: string | Array<string | number> | null
