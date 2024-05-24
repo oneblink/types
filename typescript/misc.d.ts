@@ -186,3 +186,11 @@ export type EndpointConfigurationAPI = {
 export type EndpointConfiguration =
   | EndpointConfigurationCallback
   | EndpointConfigurationAPI
+
+export type Secret = {
+  id: number
+  createdAt: string
+  updatedAt: string
+  cipherText: string
+  encryptionKeyId: string
+}

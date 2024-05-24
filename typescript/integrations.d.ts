@@ -22,20 +22,12 @@ type IntegrationBase = {
   createdAt: Date
 }
 
-export type IntegrationSecret = {
-  id: number
-  createdAt: string
-  updatedAt: string
-  cipherText: string
-  encryptionKeyId: string
-}
-
 export type SavedSecret = {
   secretPointer: number
 }
 export type NewSecret = string
 
-export type Secret<T> = T extends SavedSecret | NewSecret ? T : SavedSecret
+type Secret<T> = T extends SavedSecret | NewSecret ? T : SavedSecret
 
 export type IntegrationTrimEnvironment<S = SavedSecret> = {
   id: string
@@ -102,7 +94,7 @@ export type IntegrationRecaptchaDomain<S = SavedSecret> = {
   id: string
   label: string
   privateKey: Secret<S>
-  publicKey: Secret<S>
+  publicKey: string
 }
 export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
   id: string
@@ -133,7 +125,7 @@ export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
   /** The client secret used for Auth2.0 authentication */
   clientSecret: Secret<S>
   /** The public key used to verify JSON web token to validate a payment */
-  jwtPublicKey: Secret<S>
+  jwtPublicKey: string
   /**
    * Optional codes that will ensure the payment goes to the correct agency
    * within NSW GovPay
@@ -173,7 +165,7 @@ export type IntegrationWestpacQuickWeb<S = SavedSecret> = IntegrationBase & {
 export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   id: string
   label: string
-  publishableApiKey: Secret<S>
+  publishableApiKey: string
   secretApiKey: Secret<S>
   supplierBusinessCode: string
   isTestMode: boolean
