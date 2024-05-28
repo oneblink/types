@@ -25,11 +25,11 @@ type IntegrationBase = {
 export type SavedSecret = {
   secretPointer: number
 }
-export type NewSecret = string
+export type RawSecret = string
 
-type Secret<T> = T extends SavedSecret | NewSecret ? T : SavedSecret
+type Secret<T> = T extends SavedSecret | RawSecret ? T : RawSecret
 
-export type IntegrationTrimEnvironment<S = SavedSecret> = {
+export type IntegrationTrimEnvironment<S = RawSecret> = {
   id: string
   label: string
   baseUrl: string
@@ -37,28 +37,28 @@ export type IntegrationTrimEnvironment<S = SavedSecret> = {
   password: Secret<S>
 }
 
-export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
+export type IntegrationTrim<S = RawSecret> = IntegrationBase & {
   type: 'TRIM'
   configuration: {
     environments: Array<IntegrationTrimEnvironment<S>>
   }
 }
 
-export type IntegrationCivicaEnvironment<S = SavedSecret> = {
+export type IntegrationCivicaEnvironment<S = RawSecret> = {
   id: string
   label: string
   baseUrl: string
   username: string
   password: Secret<S>
 }
-export type IntegrationCivica<S = SavedSecret> = IntegrationBase & {
+export type IntegrationCivica<S = RawSecret> = IntegrationBase & {
   type: 'CIVICA'
   configuration: {
     environments: Array<IntegrationCivicaEnvironment<S>>
   }
 }
 
-export type IntegrationCPPayGateway<S = SavedSecret> = {
+export type IntegrationCPPayGateway<S = RawSecret> = {
   id: string
   label: string
   clientId: string
@@ -66,7 +66,7 @@ export type IntegrationCPPayGateway<S = SavedSecret> = {
   paymentType?: number
 }
 
-export type IntegrationCPPay<S = SavedSecret> = IntegrationBase & {
+export type IntegrationCPPay<S = RawSecret> = IntegrationBase & {
   type: 'CP_PAY'
   configuration: {
     baseUrl: string
@@ -74,7 +74,7 @@ export type IntegrationCPPay<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationCPHCMS<S = SavedSecret> = IntegrationBase & {
+export type IntegrationCPHCMS<S = RawSecret> = IntegrationBase & {
   type: 'CP_HCMS'
   configuration: {
     baseUrl: string
@@ -83,20 +83,20 @@ export type IntegrationCPHCMS<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationRecaptcha<S = SavedSecret> = IntegrationBase & {
+export type IntegrationRecaptcha<S = RawSecret> = IntegrationBase & {
   type: 'RECAPTCHA'
   configuration: {
     domains: IntegrationRecaptchaDomain<S>[]
   }
 }
 
-export type IntegrationRecaptchaDomain<S = SavedSecret> = {
+export type IntegrationRecaptchaDomain<S = RawSecret> = {
   id: string
   label: string
   privateKey: Secret<S>
   publicKey: string
 }
-export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
+export type IntegrationBPOINTEnvironment<S = RawSecret> = {
   id: string
   label: string
   baseUrl: string
@@ -107,13 +107,13 @@ export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
   billerCode?: string
   isTestMode?: boolean
 }
-export type IntegrationBPOINT<S = SavedSecret> = IntegrationBase & {
+export type IntegrationBPOINT<S = RawSecret> = IntegrationBase & {
   type: 'BPOINT'
   configuration: {
     environments: IntegrationBPOINTEnvironment<S>[]
   }
 }
-export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
+export type IntegrationNSWGovPayPrimaryAgency<S = RawSecret> = {
   /** Identifier used to link to a form payment event */
   id: string
   /** Displayed to team members when configuring form payment events */
@@ -137,7 +137,7 @@ export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
    */
   isNonProd: boolean
 }
-export type IntegrationNSWGovPay<S = SavedSecret> = IntegrationBase & {
+export type IntegrationNSWGovPay<S = RawSecret> = IntegrationBase & {
   type: 'NSW_GOV_PAY'
   /** Integration configuration */
   configuration: {
@@ -146,7 +146,7 @@ export type IntegrationNSWGovPay<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationWestpacQuickWebEnvironment<S = SavedSecret> = {
+export type IntegrationWestpacQuickWebEnvironment<S = RawSecret> = {
   id: string
   label: string
   username: string
@@ -155,14 +155,14 @@ export type IntegrationWestpacQuickWebEnvironment<S = SavedSecret> = {
   communityCode: string
   isTestMode: boolean
 }
-export type IntegrationWestpacQuickWeb<S = SavedSecret> = IntegrationBase & {
+export type IntegrationWestpacQuickWeb<S = RawSecret> = IntegrationBase & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
     environments: IntegrationWestpacQuickWebEnvironment<S>[]
   }
 }
 
-export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
+export type IntegrationWestpacQuickStreamEnvironment<S = RawSecret> = {
   id: string
   label: string
   publishableApiKey: string
@@ -170,40 +170,40 @@ export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   supplierBusinessCode: string
   isTestMode: boolean
 }
-export type IntegrationWestpacQuickStream<S = SavedSecret> = IntegrationBase & {
+export type IntegrationWestpacQuickStream<S = RawSecret> = IntegrationBase & {
   type: 'WESTPAC_QUICK_STREAM'
   configuration: {
     environments: IntegrationWestpacQuickStreamEnvironment<S>[]
   }
 }
 
-export type IntegrationGeoscape<S = SavedSecret> = IntegrationBase & {
+export type IntegrationGeoscape<S = RawSecret> = IntegrationBase & {
   type: 'GEOSCAPE'
   configuration: {
     apiKey: Secret<S>
   }
 }
 
-export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
+export type IntegrationPoint<S = RawSecret> = IntegrationBase & {
   type: 'POINT'
   configuration: {
     apiKey: Secret<S>
   }
 }
 
-export type IntegrationSchedulingProvider<S = SavedSecret> = {
+export type IntegrationSchedulingProvider<S = RawSecret> = {
   nylasAccountId: string
   nylasAccountAccessToken: Secret<S>
 }
 
-export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
+export type IntegrationScheduling<S = RawSecret> = IntegrationBase & {
   type: 'SCHEDULING'
   configuration: {
     providers: IntegrationSchedulingProvider<S>[]
   }
 }
 
-export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
+export type IntegrationFreshdesk<S = RawSecret> = IntegrationBase & {
   type: 'FRESHDESK'
   configuration: {
     baseUrl: string
@@ -211,7 +211,7 @@ export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationMailGun<S = SavedSecret> = IntegrationBase & {
+export type IntegrationMailGun<S = RawSecret> = IntegrationBase & {
   type: 'MAILGUN'
   configuration: {
     domain: string
@@ -237,7 +237,7 @@ export type IntegrationMailGun<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationAPINSW<S = SavedSecret> = IntegrationBase & {
+export type IntegrationAPINSW<S = RawSecret> = IntegrationBase & {
   type: 'API_NSW'
   configuration: {
     products: {
@@ -246,14 +246,14 @@ export type IntegrationAPINSW<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationGoogleMapsKey<S = SavedSecret> = {
+export type IntegrationGoogleMapsKey<S = RawSecret> = {
   id: string
   type: 'SEARCH'
   label: string
   apiKey: Secret<S>
 }
 
-export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
+export type IntegrationGoogleMaps<S = RawSecret> = IntegrationBase & {
   type: 'GOOGLE_MAPS'
   configuration: {
     keys: IntegrationGoogleMapsKey<S>[]
@@ -265,7 +265,7 @@ export type DeleteIntegrationValidationResults = {
   formsApps: Array<{ formsAppId: number; formsAppName: string }>
 }
 
-export type Integration<S = SavedSecret> =
+export type Integration<S = RawSecret> =
   | IntegrationTrim<S>
   | IntegrationCPPay<S>
   | IntegrationCPHCMS<S>
