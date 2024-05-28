@@ -29,7 +29,7 @@ export type RawSecret = string
 
 type Secret<T> = T extends SavedSecret | RawSecret ? T : SavedSecret
 
-export type IntegrationTrimEnvironment<S = RawSecret> = {
+export type IntegrationTrimEnvironment<S = SavedSecret> = {
   id: string
   label: string
   baseUrl: string
