@@ -27,14 +27,16 @@ export type SavedSecret = {
 }
 export type RawSecret = string
 
-type Secret<T> = T extends SavedSecret | RawSecret ? T : SavedSecret
+export type Secret = SavedSecret | RawSecret
+
+type ConstrainedSecret<T> = T extends SavedSecret | RawSecret ? T : SavedSecret
 
 export type IntegrationTrimEnvironment<S = SavedSecret> = {
   id: string
   label: string
   baseUrl: string
   username: string
-  password: Secret<S>
+  password: ConstrainedSecret<S>
 }
 
 export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
@@ -49,7 +51,7 @@ export type IntegrationCivicaEnvironment<S = SavedSecret> = {
   label: string
   baseUrl: string
   username: string
-  password: Secret<S>
+  password: ConstrainedSecret<S>
 }
 export type IntegrationCivica<S = SavedSecret> = IntegrationBase & {
   type: 'CIVICA'
@@ -62,7 +64,7 @@ export type IntegrationCPPayGateway<S = SavedSecret> = {
   id: string
   label: string
   clientId: string
-  clientSecret: Secret<S>
+  clientSecret: ConstrainedSecret<S>
   paymentType?: number
 }
 
@@ -79,7 +81,7 @@ export type IntegrationCPHCMS<S = SavedSecret> = IntegrationBase & {
   configuration: {
     baseUrl: string
     clientId: string
-    clientSecret: Secret<S>
+    clientSecret: ConstrainedSecret<S>
   }
 }
 
@@ -93,7 +95,7 @@ export type IntegrationRecaptcha<S = SavedSecret> = IntegrationBase & {
 export type IntegrationRecaptchaDomain<S = SavedSecret> = {
   id: string
   label: string
-  privateKey: Secret<S>
+  privateKey: ConstrainedSecret<S>
   publicKey: string
 }
 export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
@@ -101,7 +103,7 @@ export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
   label: string
   baseUrl: string
   username: string
-  password: Secret<S>
+  password: ConstrainedSecret<S>
   merchantNumber: string
   shortMerchantName: string
   billerCode?: string
@@ -123,7 +125,7 @@ export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
   /** The client identifier used for Auth2.0 authentication */
   clientId: string
   /** The client secret used for Auth2.0 authentication */
-  clientSecret: Secret<S>
+  clientSecret: ConstrainedSecret<S>
   /** The public key used to verify JSON web token to validate a payment */
   jwtPublicKey: string
   /**
@@ -150,7 +152,7 @@ export type IntegrationWestpacQuickWebEnvironment<S = SavedSecret> = {
   id: string
   label: string
   username: string
-  password: Secret<S>
+  password: ConstrainedSecret<S>
   supplierBusinessCode: string
   communityCode: string
   isTestMode: boolean
@@ -166,7 +168,7 @@ export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   id: string
   label: string
   publishableApiKey: string
-  secretApiKey: Secret<S>
+  secretApiKey: ConstrainedSecret<S>
   supplierBusinessCode: string
   isTestMode: boolean
 }
@@ -180,20 +182,20 @@ export type IntegrationWestpacQuickStream<S = SavedSecret> = IntegrationBase & {
 export type IntegrationGeoscape<S = SavedSecret> = IntegrationBase & {
   type: 'GEOSCAPE'
   configuration: {
-    apiKey: Secret<S>
+    apiKey: ConstrainedSecret<S>
   }
 }
 
 export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
   type: 'POINT'
   configuration: {
-    apiKey: Secret<S>
+    apiKey: ConstrainedSecret<S>
   }
 }
 
 export type IntegrationSchedulingProvider<S = SavedSecret> = {
   nylasAccountId: string
-  nylasAccountAccessToken: Secret<S>
+  nylasAccountAccessToken: ConstrainedSecret<S>
 }
 
 export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
@@ -207,7 +209,7 @@ export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
   type: 'FRESHDESK'
   configuration: {
     baseUrl: string
-    apiKey: Secret<S>
+    apiKey: ConstrainedSecret<S>
   }
 }
 
@@ -215,7 +217,7 @@ export type IntegrationMailGun<S = SavedSecret> = IntegrationBase & {
   type: 'MAILGUN'
   configuration: {
     domain: string
-    apiKey: Secret<S>
+    apiKey: ConstrainedSecret<S>
     userVariables?: Array<
       {
         key: string
@@ -241,7 +243,7 @@ export type IntegrationAPINSW<S = SavedSecret> = IntegrationBase & {
   type: 'API_NSW'
   configuration: {
     products: {
-      liquor?: { apiKey: string; apiSecret: Secret<S> }
+      liquor?: { apiKey: string; apiSecret: ConstrainedSecret<S> }
     }
   }
 }
@@ -250,7 +252,7 @@ export type IntegrationGoogleMapsKey<S = SavedSecret> = {
   id: string
   type: 'SEARCH'
   label: string
-  apiKey: Secret<S>
+  apiKey: ConstrainedSecret<S>
 }
 
 export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
