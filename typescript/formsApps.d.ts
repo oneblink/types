@@ -332,8 +332,8 @@ type _NewFormsApp = {
   userTokensValidityInMinutes?: number
   /** The id of the Google Maps integration key to be used for Google Maps elements. */
   googleMapsIntegrationKeyId?: string
-  /** List of groups users can be assigned too */
-  groups?: string[]
+  /** List of groups users can be assigned too and email addresses to be notified via */
+  groups?: { name: string[]; notificationEmailAddresses: string[] }
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
