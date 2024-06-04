@@ -126,7 +126,7 @@ export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** Endpoint configuration for adding custom attachments to the email. */
   emailAttachmentsEndpoint?: EndpointConfiguration
   /** An array of element ids to exclude from the email when adding attachments. */
-  excludedElementAttachmentIds?: string[]
+  excludedAttachmentElementIds?: string[]
 }
 export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
