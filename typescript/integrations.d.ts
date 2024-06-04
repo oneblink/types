@@ -22,90 +22,100 @@ type IntegrationBase = {
   createdAt: Date
 }
 
-export type IntegrationTrimEnvironment = {
+export type SavedSecret = {
+  secretPointer: number
+}
+export type RawSecret = string
+
+export type Secret = SavedSecret | RawSecret
+
+type ConstrainedSecret<T> = T extends Secret ? T : SavedSecret
+
+export type IntegrationTrimEnvironment<S = SavedSecret> = {
   id: string
   label: string
   baseUrl: string
   username: string
-  password: string
+  password: ConstrainedSecret<S>
 }
-export type IntegrationTrim = IntegrationBase & {
+
+export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
   type: 'TRIM'
   configuration: {
-    environments: Array<IntegrationTrimEnvironment>
+    environments: Array<IntegrationTrimEnvironment<S>>
   }
 }
 
-export type IntegrationCivicaEnvironment = {
+export type IntegrationCivicaEnvironment<S = SavedSecret> = {
   id: string
   label: string
   baseUrl: string
   username: string
-  password: string
+  password: ConstrainedSecret<S>
 }
-export type IntegrationCivica = IntegrationBase & {
+export type IntegrationCivica<S = SavedSecret> = IntegrationBase & {
   type: 'CIVICA'
   configuration: {
-    environments: Array<IntegrationCivicaEnvironment>
+    environments: Array<IntegrationCivicaEnvironment<S>>
   }
 }
 
-export type IntegrationCPPayGateway = {
+export type IntegrationCPPayGateway<S = SavedSecret> = {
   id: string
   label: string
   clientId: string
-  clientSecret: string
+  clientSecret: ConstrainedSecret<S>
   paymentType?: number
 }
 
-export type IntegrationCPPay = IntegrationBase & {
+export type IntegrationCPPay<S = SavedSecret> = IntegrationBase & {
   type: 'CP_PAY'
   configuration: {
     baseUrl: string
-    gateways: IntegrationCPPayGateway[]
+    gateways: IntegrationCPPayGateway<S>[]
   }
 }
 
-export type IntegrationCPHCMS = IntegrationBase & {
+export type IntegrationCPHCMS<S = SavedSecret> = IntegrationBase & {
   type: 'CP_HCMS'
   configuration: {
     baseUrl: string
     clientId: string
-    clientSecret: string
+    clientSecret: ConstrainedSecret<S>
   }
 }
 
-export type IntegrationRecaptcha = IntegrationBase & {
+export type IntegrationRecaptcha<S = SavedSecret> = IntegrationBase & {
   type: 'RECAPTCHA'
   configuration: {
-    domains: IntegrationRecaptchaDomain[]
+    domains: IntegrationRecaptchaDomain<S>[]
   }
 }
 
-export type IntegrationRecaptchaDomain = {
+export type IntegrationRecaptchaDomain<S = SavedSecret> = {
   id: string
   label: string
-  privateKey: string
+  privateKey: ConstrainedSecret<S>
   publicKey: string
 }
-export type IntegrationBPOINTEnvironment = {
+export type IntegrationBPOINTEnvironment<S = SavedSecret> = {
   id: string
   label: string
   baseUrl: string
   username: string
-  password: string
+  password: ConstrainedSecret<S>
   merchantNumber: string
   shortMerchantName: string
   billerCode?: string
   isTestMode?: boolean
 }
-export type IntegrationBPOINT = IntegrationBase & {
+export type IntegrationBPOINT<S = SavedSecret> = IntegrationBase & {
   type: 'BPOINT'
   configuration: {
-    environments: IntegrationBPOINTEnvironment[]
+    environments: IntegrationBPOINTEnvironment<S>[]
   }
 }
-export type IntegrationNSWGovPayPrimaryAgency = {
+export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
   /** Identifier used to link to a form payment event */
   id: string
   /** Displayed to team members when configuring form payment events */
@@ -115,7 +125,7 @@ export type IntegrationNSWGovPayPrimaryAgency = {
   /** The client identifier used for Auth2.0 authentication */
   clientId: string
   /** The client secret used for Auth2.0 authentication */
-  clientSecret: string
+  clientSecret: ConstrainedSecret<S>
   /** The public key used to verify JSON web token to validate a payment */
   jwtPublicKey: string
   /**
@@ -129,85 +139,85 @@ export type IntegrationNSWGovPayPrimaryAgency = {
    */
   isNonProd: boolean
 }
-export type IntegrationNSWGovPay = IntegrationBase & {
+export type IntegrationNSWGovPay<S = SavedSecret> = IntegrationBase & {
   type: 'NSW_GOV_PAY'
   /** Integration configuration */
   configuration: {
     /** The primary agencies configured in NSW GovPay */
-    primaryAgencies: IntegrationNSWGovPayPrimaryAgency[]
+    primaryAgencies: IntegrationNSWGovPayPrimaryAgency<S>[]
   }
 }
 
-export type IntegrationWestpacQuickWebEnvironment = {
+export type IntegrationWestpacQuickWebEnvironment<S = SavedSecret> = {
   id: string
   label: string
   username: string
-  password: string
+  password: ConstrainedSecret<S>
   supplierBusinessCode: string
   communityCode: string
   isTestMode: boolean
 }
-export type IntegrationWestpacQuickWeb = IntegrationBase & {
+export type IntegrationWestpacQuickWeb<S = SavedSecret> = IntegrationBase & {
   type: 'WESTPAC_QUICK_WEB'
   configuration: {
-    environments: IntegrationWestpacQuickWebEnvironment[]
+    environments: IntegrationWestpacQuickWebEnvironment<S>[]
   }
 }
 
-export type IntegrationWestpacQuickStreamEnvironment = {
+export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   id: string
   label: string
   publishableApiKey: string
-  secretApiKey: string
+  secretApiKey: ConstrainedSecret<S>
   supplierBusinessCode: string
   isTestMode: boolean
 }
-export type IntegrationWestpacQuickStream = IntegrationBase & {
+export type IntegrationWestpacQuickStream<S = SavedSecret> = IntegrationBase & {
   type: 'WESTPAC_QUICK_STREAM'
   configuration: {
-    environments: IntegrationWestpacQuickStreamEnvironment[]
+    environments: IntegrationWestpacQuickStreamEnvironment<S>[]
   }
 }
 
-export type IntegrationGeoscape = IntegrationBase & {
+export type IntegrationGeoscape<S = SavedSecret> = IntegrationBase & {
   type: 'GEOSCAPE'
   configuration: {
-    apiKey: string
+    apiKey: ConstrainedSecret<S>
   }
 }
 
-export type IntegrationPoint = IntegrationBase & {
+export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
   type: 'POINT'
   configuration: {
-    apiKey: string
+    apiKey: ConstrainedSecret<S>
   }
 }
 
-export type IntegrationSchedulingProvider = {
+export type IntegrationSchedulingProvider<S = SavedSecret> = {
   nylasAccountId: string
-  nylasAccountAccessToken: string
+  nylasAccountAccessToken: ConstrainedSecret<S>
 }
 
-export type IntegrationScheduling = IntegrationBase & {
+export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
   type: 'SCHEDULING'
   configuration: {
-    providers: IntegrationSchedulingProvider[]
+    providers: IntegrationSchedulingProvider<S>[]
   }
 }
 
-export type IntegrationFreshdesk = IntegrationBase & {
+export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
   type: 'FRESHDESK'
   configuration: {
     baseUrl: string
-    apiKey: string
+    apiKey: ConstrainedSecret<S>
   }
 }
 
-export type IntegrationMailGun = IntegrationBase & {
+export type IntegrationMailGun<S = SavedSecret> = IntegrationBase & {
   type: 'MAILGUN'
   configuration: {
     domain: string
-    apiKey: string
+    apiKey: ConstrainedSecret<S>
     userVariables?: Array<
       {
         key: string
@@ -229,26 +239,26 @@ export type IntegrationMailGun = IntegrationBase & {
   }
 }
 
-export type IntegrationAPINSW = IntegrationBase & {
+export type IntegrationAPINSW<S = SavedSecret> = IntegrationBase & {
   type: 'API_NSW'
   configuration: {
     products: {
-      liquor?: { apiKey: string; apiSecret: string }
+      liquor?: { apiKey: string; apiSecret: ConstrainedSecret<S> }
     }
   }
 }
 
-export type IntegrationGoogleMapsKey = {
+export type IntegrationGoogleMapsKey<S = SavedSecret> = {
   id: string
   type: 'SEARCH'
   label: string
-  apiKey: string
+  apiKey: ConstrainedSecret<S>
 }
 
-export type IntegrationGoogleMaps = IntegrationBase & {
+export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
   type: 'GOOGLE_MAPS'
   configuration: {
-    keys: IntegrationGoogleMapsKey[]
+    keys: IntegrationGoogleMapsKey<S>[]
   }
 }
 
@@ -257,20 +267,20 @@ export type DeleteIntegrationValidationResults = {
   formsApps: Array<{ formsAppId: number; formsAppName: string }>
 }
 
-export type Integration =
-  | IntegrationTrim
-  | IntegrationCPPay
-  | IntegrationCPHCMS
-  | IntegrationBPOINT
-  | IntegrationGeoscape
-  | IntegrationPoint
-  | IntegrationRecaptcha
-  | IntegrationWestpacQuickWeb
-  | IntegrationWestpacQuickStream
-  | IntegrationCivica
-  | IntegrationScheduling
-  | IntegrationFreshdesk
-  | IntegrationMailGun
-  | IntegrationNSWGovPay
-  | IntegrationAPINSW
-  | IntegrationGoogleMaps
+export type Integration<S = SavedSecret> =
+  | IntegrationTrim<S>
+  | IntegrationCPPay<S>
+  | IntegrationCPHCMS<S>
+  | IntegrationBPOINT<S>
+  | IntegrationGeoscape<S>
+  | IntegrationPoint<S>
+  | IntegrationRecaptcha<S>
+  | IntegrationWestpacQuickWeb<S>
+  | IntegrationWestpacQuickStream<S>
+  | IntegrationCivica<S>
+  | IntegrationScheduling<S>
+  | IntegrationFreshdesk<S>
+  | IntegrationMailGun<S>
+  | IntegrationNSWGovPay<S>
+  | IntegrationAPINSW<S>
+  | IntegrationGoogleMaps<S>
