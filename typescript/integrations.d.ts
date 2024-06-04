@@ -29,7 +29,7 @@ export type RawSecret = string
 
 export type Secret = SavedSecret | RawSecret
 
-type ConstrainedSecret<T> = T extends SavedSecret | RawSecret ? T : SavedSecret
+type ConstrainedSecret<T> = T extends Secret ? T : SavedSecret
 
 export type IntegrationTrimEnvironment<S = SavedSecret> = {
   id: string
