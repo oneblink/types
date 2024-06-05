@@ -194,5 +194,6 @@ export type CustomerSecret = {
   createdAt: string
   updatedAt: string
   cipherText: string
-  encryptionKeyId: string
+  kmsKeyAliasArn: string
+  kmsKeyArn: string
 }
