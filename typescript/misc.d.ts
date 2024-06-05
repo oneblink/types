@@ -189,7 +189,7 @@ export type EndpointConfiguration =
   | EndpointConfigurationCallback
   | EndpointConfigurationAPI
 
-export type Secret = {
+export type CustomerSecret = {
   id: number
   createdAt: string
   updatedAt: string
