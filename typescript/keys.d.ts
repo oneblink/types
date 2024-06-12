@@ -1,5 +1,4 @@
-export interface NewKey {
-  secret: string
+export interface BaseKey {
   name: string
   privilege: {
     API_HOSTING?: 'DEPLOYMENT'
@@ -12,7 +11,12 @@ export interface NewKey {
   }
 }
 
-export interface Key extends NewKey {
+export interface NewKey extends BaseKey {
+  secret: string
+}
+
+export interface Key extends BaseKey {
+  customerSecretId: number
   id: string
 }
 
