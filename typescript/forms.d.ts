@@ -455,6 +455,7 @@ export type PointAddressElement = {
   placeholderValue?: string
   stateTerritoryFilter?: string[]
   addressTypeFilter?: string[]
+  environmentId: string
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly

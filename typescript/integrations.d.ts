@@ -186,10 +186,16 @@ export type IntegrationGeoscape<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationPointEnvironment<S = SavedSecret> = {
+  id: string
+  label: string
+  apiKey: ConstrainedSecret<S>
+}
+
 export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
   type: 'POINT'
   configuration: {
-    apiKey: ConstrainedSecret<S>
+    environments: IntegrationPointEnvironment<S>[]
   }
 }
 
