@@ -77,3 +77,4 @@ export type ConditionalPredicate =
   | ConditionalPredicateBetween
   | ConditionalPredicateRepeatableSet
   | ConditionalPredicateForm
+  | ConditionalPredicateAddressElement
