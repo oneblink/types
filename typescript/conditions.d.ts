@@ -53,8 +53,21 @@ export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
 }
 
 export type ConditionalPredicateForm = ConditionalPredicateBase & {
-  type: 'FORM',
+  type: 'FORM'
   predicate: ConditionalPredicate
+}
+
+export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
+  type: 'ADDRESS_PROPERTY'
+  definition:
+    | {
+        property: 'IS_PO_BOX_ADDRESS'
+        value: boolean
+      }
+    | {
+        property: 'STATE_EQUALITY'
+        value: string
+      }
 }
 
 export type ConditionalPredicate =
@@ -64,3 +77,4 @@ export type ConditionalPredicate =
   | ConditionalPredicateBetween
   | ConditionalPredicateRepeatableSet
   | ConditionalPredicateForm
+  | ConditionalPredicateAddressElement
