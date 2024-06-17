@@ -197,3 +197,13 @@ export type CustomerSecret = {
   kmsKeyAliasArn: string
   kmsKeyArn: string
 }
+
+export type StatesAndTerritories =
+  | 'NSW'
+  | 'QLD'
+  | 'VIC'
+  | 'ACT'
+  | 'TAS'
+  | 'SA'
+  | 'NT'
+  | 'WA'
