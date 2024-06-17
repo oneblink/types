@@ -1,4 +1,4 @@
-import { GeoscapeAddress, GeoscapeStatesAndTerritories } from './geoscape'
+import { GeoscapeAddress } from './geoscape'
 import { PointAddress, PointStatesAndTerritories } from './point'
 import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
@@ -14,6 +14,7 @@ import type {
   BaseSearchResult,
   EndpointConfiguration,
   IdResource,
+  StatesAndTerritories,
   UserProfile,
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
@@ -444,7 +445,7 @@ export type GeoscapeAddressElement = {
   type: 'geoscapeAddress'
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
-  stateTerritoryFilter?: GeoscapeStatesAndTerritories[]
+  stateTerritoryFilter?: StatesAndTerritories[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
