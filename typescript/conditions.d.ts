@@ -1,3 +1,5 @@
+import { PointStatesAndTerritories } from './point'
+
 export interface ConditionalPredicateBase {
   /** The identifier of the element to evaluate against */
   elementId: string
@@ -66,7 +68,7 @@ export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
       }
     | {
         property: 'STATE_EQUALITY'
-        value: string
+        value: PointStatesAndTerritories
       }
 }
 
