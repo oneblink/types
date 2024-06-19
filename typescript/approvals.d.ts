@@ -189,14 +189,30 @@ export type FormApprovalWebhookEvent =
   | 'NOTE_UPDATED'
   | 'NOTE_DELETED'
 
-export type NewFormApprovalWebhook = {
+export type BaseFormApprovalWebhook = {
   endpoint: EndpointConfiguration
-  secret: string
   webhookEvents: FormApprovalWebhookEvent[]
   isEnabled: boolean
   formsAppId: number
   formIds?: number[]
   label: string
+}
+
+export type FormApprovalWebhookCreatePayload = BaseFormApprovalWebhook & {
+  /** Must pass a `secret` to create a webhook */
+  secret: string
+}
+
+export type FormApprovalWebhookUpdatePayload = BaseFormApprovalWebhook & {
+  /**
+   * `secret` is optional when updating a webhook. If no secret is passed, the
+   * secret will remain unchanged.
+   */
+  secret?: string
+}
+
+export type NewFormApprovalWebhook = BaseFormApprovalWebhook & {
+  customerSecretId: number
 }
 
 export type FormApprovalWebhook = NewFormApprovalWebhook & {
@@ -222,7 +238,6 @@ export type NewFormApprovalWebhookEventRecord = {
     formSubmissionApprovalId?: string
     formApprovalFlowInstanceId?: number
     noteId?: string
-    secret: string
   }
   error?: string
   endpointStatus?: number
