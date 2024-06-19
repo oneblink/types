@@ -4,7 +4,6 @@ import { S3Configuration, S3ObjectCredentials } from './aws'
 import {
   BPOINTSubmissionEvent,
   CPPaySubmissionEvent,
-  WestpacQuickWebSubmissionEvent,
   FormWorkflowEvent,
   FormSchedulingEvent,
   NSWGovPaySubmissionEvent,
@@ -694,26 +693,6 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
   }
 }
 
-export type WestpacQuickWebPayment = BaseFormSubmissionPayment & {
-  type: WestpacQuickWebSubmissionEvent['type']
-  paymentTransaction?: {
-    sourceCode?: string
-    receiptNumber?: string
-    communityCode?: string
-    supplierBusinessCode?: string
-    paymentReference: string
-    customerReferenceNumber?: string
-    paymentAmount?: string
-    surchargeAmount?: string
-    cardScheme?: string
-    settlementDate?: string
-    createdDateTime?: string
-    responseCode?: string
-    responseDescription?: string
-    successFlag: string
-  }
-}
-
 export type BPOINTPayment = BaseFormSubmissionPayment & {
   type: BPOINTSubmissionEvent['type']
   paymentTransaction?: {
@@ -878,7 +857,6 @@ export type NSWGovPayPayment = BaseFormSubmissionPayment & {
 
 export type NewFormSubmissionPayment =
   | CPPayPayment
-  | WestpacQuickWebPayment
   | WestpacQuickStreamPayment
   | BPOINTPayment
   | NSWGovPayPayment
