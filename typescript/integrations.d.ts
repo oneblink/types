@@ -7,7 +7,6 @@ export type IntegrationType =
   | 'GEOSCAPE'
   | 'POINT'
   | 'RECAPTCHA'
-  | 'WESTPAC_QUICK_WEB'
   | 'WESTPAC_QUICK_STREAM'
   | 'SCHEDULING'
   | 'FRESHDESK'
@@ -148,22 +147,6 @@ export type IntegrationNSWGovPay<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationWestpacQuickWebEnvironment<S = SavedSecret> = {
-  id: string
-  label: string
-  username: string
-  password: ConstrainedSecret<S>
-  supplierBusinessCode: string
-  communityCode: string
-  isTestMode: boolean
-}
-export type IntegrationWestpacQuickWeb<S = SavedSecret> = IntegrationBase & {
-  type: 'WESTPAC_QUICK_WEB'
-  configuration: {
-    environments: IntegrationWestpacQuickWebEnvironment<S>[]
-  }
-}
-
 export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   id: string
   label: string
@@ -281,7 +264,6 @@ export type Integration<S = SavedSecret> =
   | IntegrationGeoscape<S>
   | IntegrationPoint<S>
   | IntegrationRecaptcha<S>
-  | IntegrationWestpacQuickWeb<S>
   | IntegrationWestpacQuickStream<S>
   | IntegrationCivica<S>
   | IntegrationScheduling<S>
