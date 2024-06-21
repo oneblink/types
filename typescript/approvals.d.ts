@@ -1,6 +1,6 @@
 import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
-import type { EndpointConfiguration } from './misc'
+import type { EndpointConfiguration, IdResource } from './misc'
 
 export type FormApprovalFlowStepBase = {
   /** The group that will be assigned an approval for this step */
@@ -212,14 +212,10 @@ export type FormApprovalWebhookUpdatePayload = BaseFormApprovalWebhook & {
 }
 
 export type NewFormApprovalWebhook = BaseFormApprovalWebhook & {
-  customerSecretId: number
+  organisationManagerSecretId: number
 }
 
-export type FormApprovalWebhook = NewFormApprovalWebhook & {
-  id: number
-  createdAt: string
-  updatedAt: string
-}
+export type FormApprovalWebhook = NewFormApprovalWebhook & IdResource
 
 export type FormApprovalCannedResponse = {
   /** The unique key for the response to allow for reporting */
