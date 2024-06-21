@@ -212,7 +212,7 @@ export type FormApprovalWebhookUpdatePayload = BaseFormApprovalWebhook & {
 }
 
 export type NewFormApprovalWebhook = BaseFormApprovalWebhook & {
-  organisationManagerSecretId: number
+  organisationManagedSecretId: number
 }
 
 export type FormApprovalWebhook = NewFormApprovalWebhook & IdResource
