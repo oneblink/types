@@ -189,14 +189,26 @@ export type EndpointConfiguration =
   | EndpointConfigurationCallback
   | EndpointConfigurationAPI
 
-export type CustomerSecret = {
-  id: number
-  createdAt: string
-  updatedAt: string
+export type NewCustomerSecret = {
+  /** The encrypted version of the secret */
   cipherText: string
+  /** The ARN of the KMS key alias that was used to encrypt the secret */
   kmsKeyAliasArn: string
+  /** The ARN of the KMS key that was used to encrypt the secret */
   kmsKeyArn: string
 }
+
+export type CustomerSecret = IdResource & NewCustomerSecret
+
+export type NewOrganisationManagedSecret = NewCustomerSecret & {
+  /** Display text to represent the secret */
+  label: string
+  /** The identifier for the organisation associated with the secret. */
+  organisationId: string
+}
+
+export type OrganisationManagedSecret = IdResource &
+  NewOrganisationManagedSecret
 
 export type StatesAndTerritories =
   | 'NSW'
