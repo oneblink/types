@@ -145,10 +145,11 @@ export type EndpointConfigurationCallback = {
     /** URL that the request is made to. */
     url: string
     /**
-     * Secret string used for verifying the authenticity of the request made
-     * from the OneBlink system.
+     * The identifier for the organisation managed secret that is associated
+     * with the endpoint. Should represent the secret string used for verifying
+     * the authenticity of the request made from the OneBlink system.
      */
-    secret?: string
+    organisationManagedSecretId?: number
   }
 }
 
@@ -178,10 +179,11 @@ export type EndpointConfigurationAPI = {
     /** The route of the specified API and Environment. */
     apiEnvironmentRoute: string
     /**
-     * Secret string used for verifying the authenticity of the request made
-     * from the OneBlink system.
+     * The identifier for the organisation managed secret that is associated
+     * with the endpoint. Should represent the secret string used for verifying
+     * the authenticity of the request made from the OneBlink system.
      */
-    secret?: string
+    organisationManagedSecretId?: number
   }
 }
 
