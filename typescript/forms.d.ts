@@ -1052,6 +1052,8 @@ export type NewForm = {
   }
   /** Point address environment id to be used for any pointAddress elements */
   pointAddressEnvironmentId?: string
+  /** Whether or not Geoscape elements can be configured for this form */
+  allowGeoscapeAddresses?: boolean
 }
 
 export type Form = MiscTypes.IdResource & NewForm
