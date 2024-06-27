@@ -414,7 +414,6 @@ export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
 
 export type NewWebhookSubscription = {
-  type?: 'POWER_AUTOMATE_FLOW' | 'CP_INTEGRATION_HUB'
   callbackUrl: string
   organisationId: string
   keyId: string
