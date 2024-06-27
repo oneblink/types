@@ -406,6 +406,7 @@ export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PowerAutomateFlowSubmissionEvent
+  | CPIntegrationHubWebhookSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
