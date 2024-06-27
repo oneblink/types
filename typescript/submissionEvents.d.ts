@@ -53,6 +53,16 @@ export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   }
 }
 
+export type CPIntegrationHubWebhookSubmissionEvent = FormEventBase & {
+  type: 'CP_INTEGRATION_HUB_WEBHOOK'
+  configuration: {
+    /** URL that the callback is made to. */
+    url: string
+    /** The unique identifier for the form that should trigger this workflow event */
+    formId?: number
+  }
+}
+
 export type PdfSubmissionEventEmailTemplateMapping = {
   /** The mustache tag to replace in the email template. */
   mustacheTag: string
@@ -382,6 +392,7 @@ export type FormSchedulingEvent = SchedulingSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PowerAutomateFlowSubmissionEvent
+  | CPIntegrationHubWebhookSubmissionEvent
   | PdfSubmissionEvent
   | OneBlinkAPISubmissionEvent
   | TrimSubmissionEvent
@@ -403,6 +414,7 @@ export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
 
 export type NewWebhookSubscription = {
+  type?: 'POWER_AUTOMATE_FLOW' | 'CP_INTEGRATION_HUB'
   callbackUrl: string
   organisationId: string
   keyId: string
