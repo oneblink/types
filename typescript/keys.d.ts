@@ -19,7 +19,6 @@ export interface NewDeveloperKey extends BaseKey {
   type: 'ROLE'
   privilege: {
     roleId: number
-    formsAppIds?: number[]
   }
 }
 
