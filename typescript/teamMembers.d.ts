@@ -20,6 +20,7 @@ interface RolePrivileges {
   EMAIL_TEMPLATES?: 'MANAGER' | 'READONLY'
   AUDITING?: 'READONLY'
   SCHEDULED_TASKS?: 'MANAGER' | 'READONLY'
+  JOBS?: 'MANAGER' | 'READONLY'
 }
 
 export interface Profile {
