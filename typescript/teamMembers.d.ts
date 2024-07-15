@@ -80,4 +80,5 @@ export interface User {
   acceptedTermsAndConditionsAt: Date | null
   hasAcceptedTermsAndConditions: boolean
   canDeleteOrganisation: boolean
+  isReadOnly: boolean
 }
