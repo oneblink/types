@@ -6,7 +6,7 @@ export interface BaseKey {
 }
 
 export interface NewLegacyKey extends BaseKey {
-  type?: 'LEGACY'
+  type: 'LEGACY'
   privilege: {
     API_HOSTING?: 'DEPLOYMENT'
     PDF?: 'BUILDER'
