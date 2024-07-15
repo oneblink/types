@@ -21,6 +21,8 @@ interface RolePrivileges {
   AUDITING?: 'READONLY'
   SCHEDULED_TASKS?: 'MANAGER' | 'READONLY'
   JOBS?: 'MANAGER' | 'READONLY'
+  PDF?: 'DEVELOPER'
+  FAAS?: 'DEVELOPER'
 }
 
 export interface Profile {
