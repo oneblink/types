@@ -252,8 +252,16 @@ export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
 }
 
 export type DeleteIntegrationValidationResults = {
-  forms: Array<{ formId: number; formName: string }>
-  formsApps: Array<{ formsAppId: number; formsAppName: string }>
+  forms: Array<{
+    formId: number
+    formName: string
+    integrationEnvironmentIds?: string[]
+  }>
+  formsApps: Array<{
+    formsAppId: number
+    formsAppName: string
+    integrationEnvironmentIds?: string[]
+  }>
 }
 
 export type Integration<S = SavedSecret> =
