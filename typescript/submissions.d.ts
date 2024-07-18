@@ -17,6 +17,7 @@ import {
   TaskGroup,
   TaskGroupInstance,
 } from './scheduledTasks'
+import { DeveloperKeyReference } from './keys'
 
 /** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export interface NewFormsAppDraft {
@@ -199,12 +200,7 @@ export type NewFormSubmissionMeta = {
    */
   ipAddress?: string
   /** Information about the key that was used to submitted the form */
-  key?: {
-    /** The id of the key */
-    id: string
-    /** The name of the key */
-    name: string
-  }
+  key?: DeveloperKeyReference
 }
 
 export type FormSubmissionMeta = NewFormSubmissionMeta & {

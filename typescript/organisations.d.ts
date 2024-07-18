@@ -1,6 +1,7 @@
 import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { UserProfile } from './misc'
+import { DeveloperKeyReference } from './keys'
 
 export interface NewFormRetentionPolicy {
   formId: number
@@ -177,10 +178,7 @@ export type NewAuditRecord = {
   operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
   organisationId: string
   user?: UserProfile
-  key?: {
-    id: string
-    name: string
-  }
+  key?: DeveloperKeyReference
 }
 
 export type AuditRecord = NewAuditRecord & {
