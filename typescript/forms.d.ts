@@ -23,6 +23,7 @@ import { LiquorLicenceDetails } from './api-nsw'
 import { MiscTypes, SubmissionTypes } from '..'
 import { IntegrationGeoscape } from './integrations'
 import { GoogleMapsAddress } from './googleMaps'
+import { DeveloperKeyReference } from './keys'
 
 ////////////////////////////////////////
 // Element Types
@@ -1045,12 +1046,7 @@ export type NewForm = {
   customCssClasses?: string[]
   /** The user that last updated the form */
   updatedByUser?: UserProfile
-  updatedByKey?: {
-    /** The id of the key */
-    id: string
-    /** The name of the key */
-    name: string
-  }
+  updatedByKey?: DeveloperKeyReference
   /** Point address environment id to be used for any pointAddress elements */
   pointAddressEnvironmentId?: string
   /** Whether or not Geoscape elements can be configured for this form */

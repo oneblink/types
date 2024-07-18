@@ -52,3 +52,10 @@ export type DeveloperKeyAccess = {
 export type DeveloperKeyJWTPayload = {
   'oneblink:access'?: DeveloperKeyAccess
 }
+
+export interface DeveloperKeyReference {
+  /** The id of the key */
+  id: string
+  /** The name of the key */
+  name: string
+}
