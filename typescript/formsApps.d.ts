@@ -77,9 +77,16 @@ export type FormsAppCPHCMSContentMenuItemListDisplayAttributeFormElement = {
   type: 'FORM_ELEMENT'
   formElementId: string
 }
+
+export type FormsAppCPHCMSContentMenuItemListDisplayAttributeSubmissionMeta = {
+  type: 'SUBMISSION_META'
+  attribute: 'externalId'
+}
+
 export type FormsAppCPHCMSContentMenuItemListDisplayAttribute =
   | FormsAppCPHCMSContentMenuItemListDisplayAttributeMeta
   | FormsAppCPHCMSContentMenuItemListDisplayAttributeFormElement
+  | FormsAppCPHCMSContentMenuItemListDisplayAttributeSubmissionMeta
 
 export type FormsAppCPHCMSContentMenuItem = FormsAppBaseMenuItem & {
   /** Type of menu item */
