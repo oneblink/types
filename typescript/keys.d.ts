@@ -22,14 +22,16 @@ export interface NewDeveloperKey extends BaseKey {
   }
 }
 
-export type NewKey = {
-  secret: string
-} & (NewLegacyKey | NewDeveloperKey)
+export interface NewPowerAutomateKey extends BaseKey {
+  type: 'POWER_AUTOMATE'
+}
+
+export type NewKey = NewLegacyKey | NewDeveloperKey | NewPowerAutomateKey
 
 export type Key = {
   customerSecretId: number
   id: string
-} & (NewLegacyKey | NewDeveloperKey)
+} & NewKey
 
 export type DeveloperKeyAccess = {
   submissions?: {
