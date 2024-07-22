@@ -125,6 +125,7 @@ export type AuditRecordType =
   | 'FormsApp'
   | 'FormsAppStyles'
   | 'FormsAppUser'
+  | 'FormsAppKey'
   | 'FormsAppRequestAccess'
   | 'FormsAppHostnameConfiguration'
   | 'FormsAppHostnameConfigurationCertificate'
