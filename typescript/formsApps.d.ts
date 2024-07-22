@@ -2,6 +2,7 @@ import { IntegrationMailGun } from './integrations'
 import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
 import { ScheduledTasksTypes } from '..'
+import { IdResource } from './misc'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -422,12 +423,19 @@ export type OrganisationAppUser = {
   formsAppIds: number[]
 }
 
-export type FormsAppUserBase = {
+export type FormsAppEntityBase = {
+  formsAppId: number
+  groups: string[]
+}
+
+export type NewFormsAppKey = FormsAppEntityBase
+
+export type FormsAppKey = IdResource & NewFormsAppKey
+
+export type FormsAppUserBase = FormsAppEntityBase & {
   email: string
   firstName?: string
   lastName?: string
-  formsAppId: number
-  groups: string[]
 }
 
 export type NewFormsAppUser = FormsAppUserBase & {
