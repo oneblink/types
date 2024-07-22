@@ -23,6 +23,8 @@ interface RolePrivileges {
   JOBS?: 'MANAGER' | 'READONLY'
   PDF?: 'DEVELOPER'
   FAAS?: 'DEVELOPER'
+  EMAIL_ATTACHMENTS?: 'MANAGER'
+  WEBHOOK_SUBSCRIPTIONS?: 'MANAGER' | 'READONLY'
 }
 
 export interface Profile {
