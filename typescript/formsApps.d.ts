@@ -428,7 +428,9 @@ export type FormsAppEntityBase = {
   groups: string[]
 }
 
-export type NewFormsAppKey = FormsAppEntityBase
+export type NewFormsAppKey = FormsAppEntityBase & {
+  keyId: string
+}
 
 export type FormsAppKey = IdResource & NewFormsAppKey
 
