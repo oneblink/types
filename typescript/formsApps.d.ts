@@ -423,14 +423,16 @@ export type OrganisationAppUser = {
   formsAppIds: number[]
 }
 
-export type NewFormsAppKey = {
+export type FormsAppEntityBase = {
   formsAppId: number
   groups: string[]
 }
 
+export type NewFormsAppKey = FormsAppEntityBase
+
 export type FormsAppKey = IdResource & NewFormsAppKey
 
-export type FormsAppUserBase = NewFormsAppKey & {
+export type FormsAppUserBase = FormsAppEntityBase & {
   email: string
   firstName?: string
   lastName?: string
