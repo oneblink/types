@@ -255,11 +255,13 @@ export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
     formName: string
+    formsAppEnvironmentName: string
     integrationEnvironmentIds?: string[]
   }>
   formsApps: Array<{
     formsAppId: number
     formsAppName: string
+    formsAppEnvironmentName: string
     integrationEnvironmentIds?: string[]
   }>
 }
