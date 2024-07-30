@@ -530,6 +530,8 @@ export type FormsAppConfiguration<
     days: number
   }>
   isAppUserSignUpEnabled: boolean
+  name: string
+  description?: string
 }
 
 export type FormsAppUserSubscription = {
