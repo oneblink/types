@@ -60,4 +60,6 @@ export interface DeveloperKeyReference {
   id: string
   /** The name of the key */
   name: string
+  /** The username that represents the user that the key was used on behalf of */
+  username?: string
 }
