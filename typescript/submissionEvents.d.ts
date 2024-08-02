@@ -1,4 +1,5 @@
 import type { ConditionalPredicate } from './conditions'
+import { DeveloperKeyReference } from './keys'
 import type {
   EndpointConfiguration,
   EndpointConfigurationAPI,
@@ -453,6 +454,7 @@ export type BaseFormSubmissionProcessing = {
   formsAppId: number
   keyId?: string
   user?: UserProfile
+  developerKey?: DeveloperKeyReference
   timezone: string
   externalId?: string
 } & S3SubmissionTags
