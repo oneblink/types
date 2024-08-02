@@ -433,8 +433,11 @@ export type S3SubmissionTags = {
    */
   externalId?: string
   jobId?: string
+  /**
+   * @deprecated `username` should be stored as a claim in token instead of
+   *   using `userToken` when submitting forms using a developer key.
+   */
   userToken?: string
-  usernameToken?: string
   previousFormSubmissionApprovalId?: string
 }
 
