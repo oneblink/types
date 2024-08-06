@@ -267,7 +267,9 @@ export interface NewS3SubmissionData {
 export type S3SubmissionData = NewS3SubmissionData & {
   submissionTimestamp: string
   ipAddress?: string
+  /** @deprecated Use `key.id` instead */
   keyId?: string
+  key?: FormSubmissionMeta['key']
   user?: FormSubmissionMeta['user']
   formsAppId: number
   externalId?: string
