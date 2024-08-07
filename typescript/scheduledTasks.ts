@@ -84,7 +84,10 @@ export interface NewTask {
   swipeLeftActionId?: string
   swipeRightActionId?: string
   /** Web link to resource associated with task */
-  resourceLink?: string
+  linkedResources?: Array<{
+    label: string
+    url: string
+  }>
 }
 
 export type EditedTask = NewTask & {
