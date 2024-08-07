@@ -83,6 +83,8 @@ export interface NewTask {
   /** Optional action identifiers for user swipe gestures */
   swipeLeftActionId?: string
   swipeRightActionId?: string
+  /** Web link to resource associated with task */
+  resourceLink?: string
 }
 
 export type EditedTask = NewTask & {
