@@ -50,6 +50,13 @@ export type _FormElementBase = {
    * for developer use.
    */
   meta?: string
+  /**
+   * Determine if the element is hidden (`true`) or not (`false`). Hidden
+   * elements exist on the page, but are not visible to the user. This means
+   * they are included in conditional logic and other dependency evaluation and
+   * are included in the submission data.
+   */
+  isHidden?: boolean
 }
 
 export type FormElementBase = _FormElementBase &
