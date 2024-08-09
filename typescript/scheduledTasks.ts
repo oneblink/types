@@ -46,6 +46,10 @@ export type EditedTaskAction = EditedFormTaskAction | EditedChangeStatusAction
 export type TaskAction = FormTaskAction | ChangeStatusTaskAction
 
 // // Task // //
+export type linkedResource = {
+  label: string
+  url: string
+}
 export interface NewTask {
   /** The name of the task */
   name: string
@@ -84,10 +88,7 @@ export interface NewTask {
   swipeLeftActionId?: string
   swipeRightActionId?: string
   /** Web links to resources associated with task */
-  linkedResources?: Array<{
-    label: string
-    url: string
-  }>
+  linkedResources?: linkedResource[]
 }
 
 export type EditedTask = NewTask & {
