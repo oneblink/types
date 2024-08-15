@@ -1058,6 +1058,8 @@ export type NewForm = {
   pointAddressEnvironmentId?: string
   /** Whether or not Geoscape elements can be configured for this form */
   allowGeoscapeAddresses?: boolean
+  /** Unique domain safe text to identify the form */
+  slug?: string
 }
 
 export type Form = MiscTypes.IdResource & NewForm
