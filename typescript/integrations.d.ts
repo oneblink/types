@@ -14,6 +14,7 @@ export type IntegrationType =
   | 'NSW_GOV_PAY'
   | 'API_NSW'
   | 'GOOGLE_MAPS'
+  | 'SCHEDULING_V2'
 
 type IntegrationBase = {
   organisationId: string
