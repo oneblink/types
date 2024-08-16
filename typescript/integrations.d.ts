@@ -14,7 +14,7 @@ export type IntegrationType =
   | 'NSW_GOV_PAY'
   | 'API_NSW'
   | 'GOOGLE_MAPS'
-  | 'SCHEDULING_V2'
+  | 'CALENDAR_BOOKING'
 
 type IntegrationBase = {
   organisationId: string
@@ -188,7 +188,7 @@ export type IntegrationSchedulingProvider<S = SavedSecret> = {
   nylasAccountAccessToken: ConstrainedSecret<S>
 }
 
-export type IntegrationSchedulingV2Provider = {
+export type IntegrationCalendarBookingProvider = {
   nylasGrantId: string
 }
 
@@ -199,10 +199,10 @@ export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationSchedulingV2 = IntegrationBase & {
-  type: 'SCHEDULING_V2'
+export type IntegrationCalendarBooking = IntegrationBase & {
+  type: 'CALENDAR_BOOKING'
   configuration: {
-    providers: IntegrationSchedulingV2Provider[]
+    providers: IntegrationCalendarBookingProvider[]
   }
 }
 
@@ -292,4 +292,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNSWGovPay<S>
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
-  | IntegrationSchedulingV2
+  | IntegrationCalendarBooking
