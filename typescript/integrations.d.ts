@@ -187,10 +187,21 @@ export type IntegrationSchedulingProvider<S = SavedSecret> = {
   nylasAccountAccessToken: ConstrainedSecret<S>
 }
 
+export type IntegrationSchedulingV2Provider = {
+  nylasGrantId: string
+}
+
 export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
   type: 'SCHEDULING'
   configuration: {
     providers: IntegrationSchedulingProvider<S>[]
+  }
+}
+
+export type IntegrationSchedulingV2 = IntegrationBase & {
+  type: 'SCHEDULING_V2'
+  configuration: {
+    providers: IntegrationSchedulingV2Provider[]
   }
 }
 
@@ -280,3 +291,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNSWGovPay<S>
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
+  | IntegrationSchedulingV2
