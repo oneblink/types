@@ -63,6 +63,7 @@ export type TierLimitation =
 export interface NewTier {
   name: string
   tierData: {
+    maximumForms?: TierLimitation
     maximumFormSubmissions: TierLimitation
     maximumAuthenticatedFormSubmissions: TierLimitation
     maximumConsoleUsers: TierLimitation
