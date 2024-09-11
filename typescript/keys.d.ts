@@ -26,7 +26,15 @@ export interface NewPowerAutomateKey extends BaseKey {
   type: 'POWER_AUTOMATE'
 }
 
-export type NewKey = NewLegacyKey | NewDeveloperKey | NewPowerAutomateKey
+export interface NewSubmissionDataKey extends BaseKey {
+  type: 'SUBMISSION_DATA'
+}
+
+export type NewKey =
+  | NewLegacyKey
+  | NewDeveloperKey
+  | NewPowerAutomateKey
+  | NewSubmissionDataKey
 
 export type Key = {
   customerSecretId: number
