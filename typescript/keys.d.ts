@@ -28,6 +28,7 @@ export interface NewPowerAutomateKey extends BaseKey {
 
 export interface NewSubmissionDataKey extends BaseKey {
   type: 'SUBMISSION_DATA'
+  privilege: Record<string, unknown>
 }
 
 export type NewKey =
