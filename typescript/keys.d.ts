@@ -44,7 +44,10 @@ export type Key = {
 
 export type DeveloperKeyAccess = {
   submissions?: {
-    create: {
+    read?: {
+      formIds: number[]
+    }
+    create?: {
       formIds: number[]
     }
   }
@@ -71,4 +74,16 @@ export interface DeveloperKeyReference {
   name: string
   /** The username that represents the user that the key was used on behalf of */
   username?: string
+}
+
+export type NewFormKeyAssociation = {
+  /** The id of the form having a key assigned to it */
+  formId: number
+  /** The id of the key being assigned to the form */
+  keyId: string
+}
+
+export type FormKeyAssociation = NewFormKeyAssociation & {
+  /** The date and time (in ISO format) the resource was created */
+  createdAt: string
 }
