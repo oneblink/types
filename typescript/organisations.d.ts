@@ -172,6 +172,7 @@ export type AuditRecordType =
   | 'FormSubmissionDraft'
   | 'PDFConversion'
   | 'OrganisationManagedSecret'
+  | 'FormKeyAssociation'
 
 export type NewAuditRecord = {
   type: AuditRecordType
