@@ -1,3 +1,5 @@
+import { IdResource } from './misc'
+
 export interface BaseKey {
   links: {
     organisations: string
@@ -83,7 +85,4 @@ export type NewFormKeyAssociation = {
   keyId: string
 }
 
-export type FormKeyAssociation = NewFormKeyAssociation & {
-  /** The date and time (in ISO format) the resource was created */
-  createdAt: string
-}
+export type FormKeyAssociation = NewFormKeyAssociation & IdResource
