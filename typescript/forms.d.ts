@@ -773,8 +773,6 @@ export type FreshdeskDependentFieldElement = {
    * the item label.
    */
   itemHint?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
-  autocompleteAttributes?: string[]
 } & FormElementWithOptionsBase
 
 export type NestedElementsElement =
