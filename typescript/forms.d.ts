@@ -57,8 +57,6 @@ export type _FormElementBase = {
    * are included in the submission data.
    */
   isHidden?: boolean
-  /** Custom autocomplete attributes that will be added to the element during rendering */
-  autocompleteAttributes?: string[]
 }
 
 export type FormElementBase = _FormElementBase &
@@ -197,6 +195,8 @@ export type FormElementWithOptionsBase = LookupFormElement &
      * element ID within the form definition
      */
     attributesMapping?: DynamicOptionsSetAttributeMap[]
+    /** Custom autocomplete attributes that will be added to the element during rendering */
+    autocompleteAttributes?: string[]
   }
 
 export type FormFormElement = _FormElementBase & {
@@ -285,6 +285,8 @@ export type FormElementWithDate = {
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -307,6 +309,8 @@ export type FormElementWithInput<DefaultValue> = {
   regexPattern?: string
   regexFlags?: string
   regexMessage?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -670,6 +674,8 @@ export type ABNElement = {
   defaultValue?: ABNRecord
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -681,6 +687,8 @@ export type BSBElement = {
   defaultValue?: string
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -753,6 +761,8 @@ export type FreshdeskDependentFieldElement = {
    * the item label.
    */
   itemHint?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & FormElementWithOptionsBase
 
 export type NestedElementsElement =
