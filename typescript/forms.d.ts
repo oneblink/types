@@ -57,6 +57,8 @@ export type _FormElementBase = {
    * are included in the submission data.
    */
   isHidden?: boolean
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 }
 
 export type FormElementBase = _FormElementBase &
