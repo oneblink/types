@@ -461,6 +461,8 @@ export type GeoscapeAddressElement = {
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: StatesAndTerritories[]
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -471,6 +473,8 @@ export type PointAddressElement = {
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -479,6 +483,8 @@ export type GoogleAddressElement = {
   type: 'googleAddress'
   defaultValue?: GoogleMapsAddress
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -493,6 +499,8 @@ export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
   defaultValue?: CivicaStreetName
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -525,6 +533,8 @@ export type CivicaNameRecordElement = {
   address1Label?: string
   address2Label?: string
   postcodeLabel?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & FormElementRequired &
   FormElementReadOnly
 
@@ -532,6 +542,8 @@ export type APINSWLiquorLicenceElement = {
   type: 'apiNSWLiquorLicence'
   defaultValue?: LiquorLicenceDetails
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
