@@ -57,8 +57,6 @@ export type _FormElementBase = {
    * are included in the submission data.
    */
   isHidden?: boolean
-  /** Custom autocomplete attributes that will be added to the element during rendering */
-  autocompleteAttributes?: string[]
 }
 
 export type FormElementBase = _FormElementBase &
@@ -197,6 +195,8 @@ export type FormElementWithOptionsBase = LookupFormElement &
      * element ID within the form definition
      */
     attributesMapping?: DynamicOptionsSetAttributeMap[]
+    /** Custom autocomplete attributes that will be added to the element during rendering */
+    autocompleteAttributes?: string[]
   }
 
 export type FormFormElement = _FormElementBase & {
@@ -285,6 +285,8 @@ export type FormElementWithDate = {
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -307,6 +309,8 @@ export type FormElementWithInput<DefaultValue> = {
   regexPattern?: string
   regexFlags?: string
   regexMessage?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -457,6 +461,8 @@ export type GeoscapeAddressElement = {
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: StatesAndTerritories[]
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -467,6 +473,8 @@ export type PointAddressElement = {
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -475,6 +483,8 @@ export type GoogleAddressElement = {
   type: 'googleAddress'
   defaultValue?: GoogleMapsAddress
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -489,6 +499,8 @@ export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
   defaultValue?: CivicaStreetName
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -521,6 +533,8 @@ export type CivicaNameRecordElement = {
   address1Label?: string
   address2Label?: string
   postcodeLabel?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & FormElementRequired &
   FormElementReadOnly
 
@@ -528,6 +542,8 @@ export type APINSWLiquorLicenceElement = {
   type: 'apiNSWLiquorLicence'
   defaultValue?: LiquorLicenceDetails
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -670,6 +686,8 @@ export type ABNElement = {
   defaultValue?: ABNRecord
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -681,6 +699,8 @@ export type BSBElement = {
   defaultValue?: string
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
