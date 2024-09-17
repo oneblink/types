@@ -195,8 +195,6 @@ export type FormElementWithOptionsBase = LookupFormElement &
      * element ID within the form definition
      */
     attributesMapping?: DynamicOptionsSetAttributeMap[]
-    /** Custom autocomplete attributes that will be added to the element during rendering */
-    autocompleteAttributes?: string[]
   }
 
 export type FormFormElement = _FormElementBase & {
@@ -225,6 +223,8 @@ export type SelectElement = FormElementWithOptionsBase & {
   multi: boolean
   defaultValue?: string | string[]
   canToggleAll?: boolean
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 }
 
 export type AutoCompleteElement = FormElementWithOptionsBase & {
@@ -242,12 +242,16 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
    */
   searchQuerystringParameter?: string
   placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
 }
 
 export type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance'
     defaultValue?: string
+    /** Custom autocomplete attributes that will be added to the element during rendering */
+    autocompleteAttributes?: string[]
   }
 
 export type FormElementWithOptions =
@@ -533,8 +537,6 @@ export type CivicaNameRecordElement = {
   address1Label?: string
   address2Label?: string
   postcodeLabel?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
-  autocompleteAttributes?: string[]
 } & FormElementRequired &
   FormElementReadOnly
 
