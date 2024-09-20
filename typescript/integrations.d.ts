@@ -90,10 +90,11 @@ export type IntegrationRecaptcha<S = SavedSecret> = IntegrationBase & {
     domains: IntegrationRecaptchaDomain<S>[]
   }
 }
-
+export type RecaptchaKeyTypes = 'INVISIBLE' | 'CHECKBOX'
+//captchaType on the OneBlink Form Base
 export type IntegrationRecaptchaDomain<S = SavedSecret> = {
   // If undefined, the default will be CHECKBOX
-  type?: 'INVISIBLE' | 'CHECKBOX'
+  type?: RecaptchaKeyTypes
   id: string
   label: string
   privateKey: ConstrainedSecret<S>
