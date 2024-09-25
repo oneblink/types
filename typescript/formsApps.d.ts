@@ -522,7 +522,7 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
-  recaptchaKeyType: IntegrationTypes.RecaptchaKeyTypes
+  recaptchaKeyType: IntegrationTypes.RecaptchaKeyType
   googleMapsApiKey: string
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
