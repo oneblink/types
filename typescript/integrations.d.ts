@@ -90,8 +90,11 @@ export type IntegrationRecaptcha<S = SavedSecret> = IntegrationBase & {
     domains: IntegrationRecaptchaDomain<S>[]
   }
 }
+export type RecaptchaKeyType = 'INVISIBLE' | 'CHECKBOX'
 
 export type IntegrationRecaptchaDomain<S = SavedSecret> = {
+  /** If `undefined`, the default will be CHECKBOX */
+  type?: RecaptchaKeyType
   id: string
   label: string
   privateKey: ConstrainedSecret<S>

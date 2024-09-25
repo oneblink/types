@@ -1,7 +1,7 @@
 import { IntegrationMailGun } from './integrations'
 import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
-import { ScheduledTasksTypes } from '..'
+import { IntegrationTypes, ScheduledTasksTypes } from '..'
 import { IdResource } from './misc'
 
 type FormsAppBaseMenuItem = {
@@ -522,6 +522,7 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
+  recaptchaKeyType: IntegrationTypes.RecaptchaKeyType
   googleMapsApiKey: string
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
