@@ -69,10 +69,10 @@ export type APIEnvironment = {
   status?: 'Warning' | 'Error' | 'Okay' | 'Unknown'
   isWafEnabled?: boolean
   /**
-   * The ID of the Forms App Environment to map this environment to. This is
+   * The IDs of the Forms App Environments to map this environment to. These are
    * used for form migrations that include Hosted API configuration.
    */
-  formsAppEnvironmentId?: number
+  formsAppEnvironmentIds?: number[]
 }
 
 export type API = {
