@@ -1084,6 +1084,8 @@ export type NewForm = {
   allowGeoscapeAddresses?: boolean
   /** Unique domain safe text to identify the form */
   slug?: string
+  /** Disables form submission based on evaluation of predicates */
+  conditionallyDisableSubmissionPredicates?: ConditionalPredicate[]
 }
 
 export type Form = MiscTypes.IdResource & NewForm
