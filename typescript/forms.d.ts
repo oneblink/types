@@ -1089,7 +1089,7 @@ export type NewForm = {
     /** Indicates if all predicates need to met to determine if submission should be allowed */
     requiresAllConditionalPredicates: boolean
     /** The predicates to determine if submission should be allowed */
-    conditionallyPredicates?: ConditionalPredicate[]
+    conditionalPredicates: ConditionalPredicate[]
   }
 }
 
