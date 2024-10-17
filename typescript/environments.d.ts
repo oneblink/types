@@ -18,6 +18,7 @@ export interface NewFormsAppEnvironment {
     isCloningFormContinueWithAutosave: boolean
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
+    isCloningScheduledTasks: boolean
   }
 }
 
