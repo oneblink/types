@@ -891,22 +891,32 @@ export interface ReceiptRandomComponent {
   lowercase: boolean
 }
 
+export interface ReceiptSequentialNumberComponent {
+  /** The type of receipt component */
+  type: 'sequentialNumber'
+}
+
 export type ReceiptComponent =
   | ReceiptTextComponent
   | ReceiptDateComponent
   | ReceiptRandomComponent
+  | ReceiptSequentialNumberComponent
+
+export type ExternalIdGenerationReceiptId = {
+  /** The type of the external id generation. */
+  type: 'RECEIPT_ID'
+  /** The configuration of the external id generation. */
+  configuration: {
+    /** The first number when including an auto incrementing component in the `externalId` */
+    startingSequentialNumber?: number
+    /** An array of receipt components used to build an external Id */
+    receiptComponents: ReceiptComponent[]
+  }
+}
 
 export type ExternalIdGeneration =
   | EndpointConfiguration
-  | {
-      /** The type of the external id generation. */
-      type: 'RECEIPT_ID'
-      /** The configuration of the external id generation. */
-      configuration: {
-        /** An array of receipt components used to build an external Id */
-        receiptComponents: ReceiptComponent[]
-      }
-    }
+  | ExternalIdGenerationReceiptId
 
 export type NewForm = {
   /** Name of the form. */
@@ -1084,9 +1094,12 @@ export type NewForm = {
   allowGeoscapeAddresses?: boolean
   /** Unique domain safe text to identify the form */
   slug?: string
-  /** Conditionally enable form submission  */
+  /** Conditionally enable form submission */
   enableSubmission?: {
-    /** Indicates if all predicates need to met to determine if submission should be allowed */
+    /**
+     * Indicates if all predicates need to met to determine if submission should
+     * be allowed
+     */
     requiresAllConditionalPredicates: boolean
     /** The predicates to determine if submission should be allowed */
     conditionalPredicates: ConditionalPredicate[]
@@ -1246,40 +1259,44 @@ export type FormElementLookupStaticDataRecordBase = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
-  inputType: 'TEXT'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: string
-}
-export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
-  inputType: 'NUMBER'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: number
-}
+export type FormElementLookupStaticDataRecordText =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'TEXT'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: string
+  }
+export type FormElementLookupStaticDataRecordNumber =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'NUMBER'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: number
+  }
 
-export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
-  inputType: 'UNDEFINED'
-}
+export type FormElementLookupStaticDataRecordUndefined =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'UNDEFINED'
+  }
 
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
   | FormElementLookupStaticDataRecordUndefined
 
-export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
-  /**
-   * Array of records, each associated with a "inputValue" that will determine
-   * the prefill data for the configured form elements based on the
-   * "FormElement.name" property.
-   */
-  records: FormElementLookupStaticDataRecord[]
-}
+export type FormElementLookupStaticDataEnvironment =
+  FormElementEnvironmentBase & {
+    /**
+     * Array of records, each associated with a "inputValue" that will determine
+     * the prefill data for the configured form elements based on the
+     * "FormElement.name" property.
+     */
+    records: FormElementLookupStaticDataRecord[]
+  }
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
@@ -1315,7 +1332,8 @@ export type FormElementLookup =
   | FormElementLookupUrl
   | FormElementLookupStaticData
 
-export type FormElementLookupSearchParameters = FormElementOptionSetSearchParameters
+export type FormElementLookupSearchParameters =
+  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
