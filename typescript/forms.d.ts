@@ -891,16 +891,16 @@ export interface ReceiptRandomComponent {
   lowercase: boolean
 }
 
-export interface ReceiptAutoIncrementComponent {
+export interface ReceiptSequentialNumberComponent {
   /** The type of receipt component */
-  type: 'auto_increment'
+  type: 'sequentialNumber'
 }
 
 export type ReceiptComponent =
   | ReceiptTextComponent
   | ReceiptDateComponent
   | ReceiptRandomComponent
-  | ReceiptAutoIncrementComponent
+  | ReceiptSequentialNumberComponent
 
 export type ExternalIdGenerationReceiptId = {
   /** The type of the external id generation. */
@@ -908,7 +908,7 @@ export type ExternalIdGenerationReceiptId = {
   /** The configuration of the external id generation. */
   configuration: {
     /** The first number when including an auto incrementing component in the `externalId` */
-    startingAutoIncrement?: number
+    startingSequentialNumber?: number
     /** An array of receipt components used to build an external Id */
     receiptComponents: ReceiptComponent[]
   }
