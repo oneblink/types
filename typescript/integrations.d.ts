@@ -14,6 +14,7 @@ export type IntegrationType =
   | 'NSW_GOV_PAY'
   | 'API_NSW'
   | 'GOOGLE_MAPS'
+  | 'NYLAS'
 
 type IntegrationBase = {
   organisationId: string
@@ -197,6 +198,17 @@ export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationNylasGrant<S = SavedSecret> = {
+  nylasGrantId: string
+}
+
+export type IntegrationNylas<S = SavedSecret> = {
+  type: 'NYLAS'
+  configuration: {
+    grants: IntegrationNylasGrant
+  }
+}
+
 export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
   type: 'FRESHDESK'
   configuration: {
@@ -283,3 +295,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNSWGovPay<S>
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
+  | IntegrationNylas<S>
