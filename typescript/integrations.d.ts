@@ -198,14 +198,14 @@ export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationNylasGrant<S = SavedSecret> = {
+export type IntegrationNylasGrant = {
   nylasGrantId: string
 }
 
-export type IntegrationNylas<S = SavedSecret> = {
+export type IntegrationNylas = {
   type: 'NYLAS'
   configuration: {
-    grants: IntegrationNylasGrant
+    grants: IntegrationNylasGrant[]
   }
 }
 
@@ -295,4 +295,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNSWGovPay<S>
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
-  | IntegrationNylas<S>
+  | IntegrationNylas
