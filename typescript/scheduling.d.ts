@@ -28,7 +28,7 @@ export type NewNylasBooking = {
   formId: number
   schedulingReceiptUrl: string
   schedulingCancelUrl: string
-  configurationId: number
+  configurationId: string
   emailAddress?: string
   name?: string
 }
@@ -44,6 +44,6 @@ export type NylasBooking = NewNylasBooking & {
   previousEndTime?: number
   timezone?: string
   cancelledReason?: string
-  createdAt?: string
-  updatedAt?: string
+  createdAt: string
+  updatedAt: string
 }
