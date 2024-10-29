@@ -202,7 +202,7 @@ export type IntegrationNylasGrant = {
   nylasGrantId: string
 }
 
-export type IntegrationNylas = {
+export type IntegrationNylas = IntegrationBase & {
   type: 'NYLAS'
   configuration: {
     grants: IntegrationNylasGrant[]
