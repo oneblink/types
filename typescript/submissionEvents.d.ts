@@ -382,6 +382,14 @@ export type SchedulingSubmissionEvent = FormEventBase & {
   }
 }
 
+export type NylasSubmissionEvent = FormEventBase & {
+  type: 'NYLAS'
+  configuration: PDFConfiguration & {
+    nylasGrantId: string
+    nylasConfigurationId: string
+  }
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -389,7 +397,9 @@ export type FormPaymentEvent =
   | WestpacQuickStreamSubmissionEvent
   | NSWGovPaySubmissionEvent
 
-export type FormSchedulingEvent = SchedulingSubmissionEvent
+export type FormSchedulingEvent =
+  | SchedulingSubmissionEvent
+  | NylasSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PowerAutomateFlowSubmissionEvent
