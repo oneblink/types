@@ -382,6 +382,27 @@ export type SchedulingSubmissionEvent = FormEventBase & {
   }
 }
 
+export type NylasSubmissionEvent = FormEventBase & {
+  type: 'NYLAS'
+  configuration: PDFConfiguration & {
+    nylasGrantId: string
+    /** The id of the Nylas scheduler configuration */
+    nylasConfigurationId: string
+    /**
+     * The id of the form element to map to the name field on the scheduling
+     * page. Must be a text element.
+     */
+    nameElementId?: string
+    /**
+     * The id of the form element to map to the email field on the scheduling
+     * page. Must be an email element.
+     */
+    emailElementId?: string
+    /** An optional extra description to be included in the email. */
+    emailDescription?: string
+  }
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -389,7 +410,9 @@ export type FormPaymentEvent =
   | WestpacQuickStreamSubmissionEvent
   | NSWGovPaySubmissionEvent
 
-export type FormSchedulingEvent = SchedulingSubmissionEvent
+export type FormSchedulingEvent =
+  | SchedulingSubmissionEvent
+  | NylasSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PowerAutomateFlowSubmissionEvent
