@@ -31,6 +31,7 @@ export type NewNylasBooking = {
   configurationId: string
   emailAddress?: string
   name?: string
+  username?: string
 }
 
 export type NylasBooking = NewNylasBooking & {
