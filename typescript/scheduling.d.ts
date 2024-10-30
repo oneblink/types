@@ -28,6 +28,7 @@ export type NewNylasBooking = {
   formId: number
   schedulingReceiptUrl: string
   schedulingCancelUrl: string
+  schedulingRescheduleUrl: string
   configurationId: string
   emailAddress?: string
   name?: string
