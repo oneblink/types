@@ -34,16 +34,20 @@ export type NewNylasBooking = {
 }
 
 export type NylasBooking = NewNylasBooking & {
-  calendarId?: string
-  bookingRef?: string
-  proposedEventId?: string
-  location?: string
-  startTime?: number
-  endTime?: number
-  previousStartTime?: number
-  previousEndTime?: number
-  timezone?: string
-  cancelledReason?: string
   createdAt: string
   updatedAt: string
-}
+} & (
+    | { bookingRef?: undefined }
+    | {
+        bookingRef: string
+        calendarId: string
+        proposedEventId?: string
+        location?: string
+        startTime: number
+        endTime: number
+        previousStartTime: number
+        previousEndTime: number
+        timezone: string
+        cancelledReason?: string
+      }
+  )
