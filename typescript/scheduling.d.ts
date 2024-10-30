@@ -45,8 +45,8 @@ export type NylasBooking = NewNylasBooking & {
         location?: string
         startTime: number
         endTime: number
-        previousStartTime: number
-        previousEndTime: number
+        previousStartTime?: number
+        previousEndTime?: number
         timezone: string
         cancelledReason?: string
       }
