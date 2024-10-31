@@ -26,7 +26,6 @@ export type SchedulingBooking = NewSchedulingBooking & {
 export type NewNylasBooking = {
   submissionId: string
   formId: number
-  schedulingReceiptUrl: string
   schedulingCancelUrl: string
   schedulingRescheduleUrl: string
   configurationId: string
