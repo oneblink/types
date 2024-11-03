@@ -183,6 +183,7 @@ export type NewAuditRecord = {
   organisationId: string
   user?: UserProfile
   key?: DeveloperKeyReference
+  clientIpAddress?: string
 }
 
 export type AuditRecord = NewAuditRecord & {
