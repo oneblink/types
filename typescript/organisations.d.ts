@@ -153,6 +153,7 @@ export type AuditRecordType =
   | 'EmailTemplate'
   | 'EmailAttachment'
   | 'SchedulingBooking'
+  | 'SchedulingBookingSession'
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
   | 'FormSubmissionAttachmentUrl'
