@@ -3,15 +3,36 @@ import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
 
 export type FormApprovalFlowStepBase = {
-  /** The group that will be assigned an approval for this step */
-  group: string
   /** The unique label for the step */
   label: string
-  /** The id of a form that should be submitted with approval */
-  approvalFormId?: number
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
-}
+} & (
+  | {
+      /**
+       * The type of the approval step. CONCURRENT steps have multiple groups
+       * assigned that must approve in parallel before the flow can move on to
+       * the next step.
+       */
+      type: 'CONCURRENT'
+      nodes: {
+        group: string
+        approvalFormId?: number
+      }[]
+    }
+  | {
+      /**
+       * The type of the approval step. CONCURRENT steps have multiple groups
+       * assigned that must approve in parallel before the flow can move on to
+       * the next step.
+       */
+      type?: 'STANDARD'
+      /** The group that will be assigned an approval for this step */
+      group: string
+      /** The id of a form that should be submitted with approval */
+      approvalFormId?: number
+    }
+)
 export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   /** Indicates if step could be conditionally skipped */
   isConditional?: boolean
