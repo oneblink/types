@@ -54,7 +54,7 @@ export type NylasBooking = NewNylasBooking & {
 
 export type NylasSchedulingConfiguration = {
   /* The Configuration object ID. */
-  ID: string
+  id: string
   /* The name of the Scheduling Page. If not set, it defaults to the organizer's name. */
   name: string
   /* The slug of the Configuration object. This is an optional, unique identifier for the Configuration object, and you can use the slug instead of the configuration_id when making requests to other Scheduling endpoints. Slugs are unique to the Nylas application. */
