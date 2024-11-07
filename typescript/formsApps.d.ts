@@ -377,6 +377,7 @@ export type NewTilesFormsApp = _NewFormsApp & {
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
   styles: ApprovalsStyles
+  requireAppUserMfa?: boolean
 }
 
 export type FormStoreAppForm = {
