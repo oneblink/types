@@ -532,6 +532,7 @@ export type FormsAppConfiguration<
     days: number
   }>
   isAppUserSignUpEnabled: boolean
+  isAppUserMfaRequired: boolean
   name: string
   description?: string
 }
