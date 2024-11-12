@@ -40,6 +40,7 @@ export type NylasBooking = NewNylasBooking & {
     | { bookingRef?: undefined }
     | {
         bookingRef: string
+        bookingId: string
         calendarId: string
         grantId: string
         proposedEventId: string
