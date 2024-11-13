@@ -2,17 +2,40 @@ import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
 
-export type FormApprovalFlowStepBase = {
-  /** The group that will be assigned an approval for this step */
-  group: string
-  /** The unique label for the step */
+export type FormApprovalFlowNodeBase = {
+  /** The unique label for the node */
   label: string
+  /** The group that will be assigned an approval for this node */
+  group: string
   /** The id of a form that should be submitted with approval */
   approvalFormId?: number
+}
+
+export type ClarificationRequestEmailTemplateProps = {
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
 }
-export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
+
+export type FormApprovalStepConcurrent<T extends FormApprovalFlowNodeBase> = {
+  /**
+   * The type of the approval step. CONCURRENT steps have multiple groups
+   * assigned that must approve in parallel before the flow can move on to the
+   * next step. STANDARD steps are completed in a specific order one step at a time.
+   */
+  type: 'CONCURRENT'
+  nodes: T[]
+}
+
+export type FormApprovalStepStandard<T extends FormApprovalFlowNodeBase> = {
+  /**
+   * The type of the approval step. CONCURRENT steps have multiple groups
+   * assigned that must approve in parallel before the flow can move on to the
+   * next step. STANDARD steps are completed in a specific order one step at a time.
+   */
+  type?: 'STANDARD'
+} & T
+
+export type FormApprovalFlowNode = FormApprovalFlowNodeBase & {
   /** Indicates if step could be conditionally skipped */
   isConditional?: boolean
   /** Indicates if all predicates need to met to determine if the step is skipped */
@@ -20,6 +43,18 @@ export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
 }
+
+export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
+  (
+    | FormApprovalStepConcurrent<FormApprovalFlowNode>
+    | FormApprovalStepStandard<FormApprovalFlowNode>
+  )
+
+export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
+  /** Indicates if step has been skipped */
+  isSkipped: boolean
+}
+
 /**
  * ### Example
  *
@@ -34,10 +69,12 @@ export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
  * }
  * ```
  */
-export type FormApprovalFlowInstanceStep = FormApprovalFlowStepBase & {
-  /** Indicates if step has been skipped */
-  isSkipped: boolean
-}
+export type FormApprovalFlowInstanceStep =
+  ClarificationRequestEmailTemplateProps &
+    (
+      | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
+      | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
+    )
 
 export type NewFormApprovalFlowInstance = {
   /** The unique identifier for the form that was submitted for approval */
