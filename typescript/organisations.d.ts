@@ -33,6 +33,7 @@ export type NewOrganisation = {
   tierOverrides?: Partial<NewTier['tierData']>
   attachmentLinkExpiryDaysOverride?: number
   timezone?: string
+  requireTeamMemberMfa?: boolean
 }
 
 export type Organisation = NewOrganisation & {
@@ -104,6 +105,7 @@ export type AuditRecordType =
   | 'Organisation'
   | 'OrganisationDeleteRequest'
   | 'OrganisationDataRetention'
+  | 'OrganisationMfaRequirement'
   | 'EnableAwsBilling'
   | 'ExtendTrial'
   | 'Key'
