@@ -11,6 +11,11 @@ export type FormApprovalFlowNodeBase = {
   approvalFormId?: number
 }
 
+export type ClarificationRequestEmailTemplateProps = {
+  /** The id of an email template to use for clarification request emails */
+  clarificationRequestEmailTemplateId?: number
+}
+
 export type FormApprovalStepConcurrent<T extends FormApprovalFlowNodeBase> = {
   /**
    * The type of the approval step. CONCURRENT steps have multiple groups
@@ -37,13 +42,11 @@ export type FormApprovalFlowNode = FormApprovalFlowNodeBase & {
   conditionalPredicates?: ConditionalPredicate[]
 }
 
-export type FormApprovalFlowStep = {
-  /** The id of an email template to use for clarification request emails */
-  clarificationRequestEmailTemplateId?: number
-} & (
-  | FormApprovalStepConcurrent<FormApprovalFlowNode>
-  | FormApprovalStepStandard<FormApprovalFlowNode>
-)
+export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
+  (
+    | FormApprovalStepConcurrent<FormApprovalFlowNode>
+    | FormApprovalStepStandard<FormApprovalFlowNode>
+  )
 
 export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   /** Indicates if step has been skipped */
@@ -65,8 +68,11 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
  * ```
  */
 export type FormApprovalFlowInstanceStep =
-  | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
-  | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
+  ClarificationRequestEmailTemplateProps &
+    (
+      | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
+      | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
+    )
 
 export type NewFormApprovalFlowInstance = {
   /** The unique identifier for the form that was submitted for approval */
