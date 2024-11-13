@@ -19,7 +19,8 @@ export type ClarificationRequestEmailTemplateProps = {
 export type FormApprovalStepConcurrent<T extends FormApprovalFlowNodeBase> = {
   /**
    * The type of the approval step. CONCURRENT steps have multiple groups
-   * assigned that must approve in parallel before the flow can move on to the next step.
+   * assigned that must approve in parallel before the flow can move on to the
+   * next step. STANDARD steps are completed in a specific order one step at a time.
    */
   type: 'CONCURRENT'
   nodes: T[]
@@ -28,7 +29,8 @@ export type FormApprovalStepConcurrent<T extends FormApprovalFlowNodeBase> = {
 export type FormApprovalStepStandard<T extends FormApprovalFlowNodeBase> = {
   /**
    * The type of the approval step. CONCURRENT steps have multiple groups
-   * assigned that must approve in parallel before the flow can move on to the next step.
+   * assigned that must approve in parallel before the flow can move on to the
+   * next step. STANDARD steps are completed in a specific order one step at a time.
    */
   type?: 'STANDARD'
 } & T
