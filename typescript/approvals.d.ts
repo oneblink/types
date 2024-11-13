@@ -2,9 +2,16 @@ import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
 
-export type FormApprovalFlowStepBase = {
-  /** The unique label for the step */
+export type FormApprovalFlowNode = {
+  /** The unique label for the node */
   label: string
+  /** The group that will be assigned an approval for this node */
+  group: string
+  /** The id of a form that should be submitted with approval */
+  approvalFormId?: number
+}
+
+export type FormApprovalFlowStepBase = {
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
 } & (
@@ -15,23 +22,16 @@ export type FormApprovalFlowStepBase = {
        * the next step.
        */
       type: 'CONCURRENT'
-      nodes: {
-        group: string
-        approvalFormId?: number
-      }[]
+      nodes: FormApprovalFlowNode[]
     }
-  | {
+  | ({
       /**
        * The type of the approval step. CONCURRENT steps have multiple groups
        * assigned that must approve in parallel before the flow can move on to
        * the next step.
        */
       type?: 'STANDARD'
-      /** The group that will be assigned an approval for this step */
-      group: string
-      /** The id of a form that should be submitted with approval */
-      approvalFormId?: number
-    }
+    } & FormApprovalFlowNode)
 )
 export type FormApprovalFlowStep = FormApprovalFlowStepBase & {
   /** Indicates if step could be conditionally skipped */
