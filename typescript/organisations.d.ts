@@ -177,7 +177,7 @@ export type AuditRecordType =
   | 'PDFConversion'
   | 'OrganisationManagedSecret'
   | 'FormKeyAssociation'
-  | 'ApprovalFormsAppMfaRequirement'
+  | 'FormsAppMfaRequirement'
 
 export type NewAuditRecord = {
   type: AuditRecordType
