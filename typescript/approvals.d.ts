@@ -206,7 +206,12 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
   /** The unique identifier for the record */
   id: string
   /** The status of the approval */
-  status: 'PENDING' | 'APPROVED' | 'CLARIFICATION_REQUIRED' | 'CLOSED'
+  status:
+    | 'PENDING'
+    | 'APPROVED'
+    | 'CLARIFICATION_REQUIRED'
+    | 'CLOSED'
+    | 'CIRCUMVENTED'
   /** The date and time (in ISO format) the approval was created */
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
@@ -220,6 +225,7 @@ export type FormApprovalWebhookEvent =
   | 'STEP_APPROVED'
   | 'STEP_CLOSED'
   | 'STEP_CLARIFICATION_REQUIRED'
+  | 'STEP_CIRCUMVENTED'
   | 'APPROVAL_APPROVED'
   | 'APPROVAL_REOPENED'
   | 'NOTE_CREATED'
