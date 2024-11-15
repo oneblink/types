@@ -211,7 +211,7 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
     | 'APPROVED'
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
-    | 'NOT_APPLICABLE'
+    | 'CANCELLED'
   /** The date and time (in ISO format) the approval was created */
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
