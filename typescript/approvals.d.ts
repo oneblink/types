@@ -211,7 +211,7 @@ export type FormSubmissionApproval = BaseFormSubmissionApproval & {
     | 'APPROVED'
     | 'CLARIFICATION_REQUIRED'
     | 'CLOSED'
-    | 'CIRCUMVENTED'
+    | 'NOT_APPLICABLE'
   /** The date and time (in ISO format) the approval was created */
   createdAt: string
   /** The date and time (in ISO format) the approval was last updated */
@@ -225,7 +225,6 @@ export type FormApprovalWebhookEvent =
   | 'STEP_APPROVED'
   | 'STEP_CLOSED'
   | 'STEP_CLARIFICATION_REQUIRED'
-  | 'STEP_CIRCUMVENTED'
   | 'APPROVAL_APPROVED'
   | 'APPROVAL_REOPENED'
   | 'NOTE_CREATED'
