@@ -533,6 +533,7 @@ export type FormsAppConfiguration<
   }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
+  cachingStrategy?: 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
   name: string
   description?: string
 }
