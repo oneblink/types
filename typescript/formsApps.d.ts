@@ -494,6 +494,8 @@ export type FormsAppSendingAddressResponse = {
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 
+type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
+
 export type FormsAppConfiguration<
   T extends BaseFormsAppStyles = BaseFormsAppStyles
 > = {
@@ -533,7 +535,10 @@ export type FormsAppConfiguration<
   }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
-  cachingStrategy?: 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
+  cachingStrategies?: {
+    singleForm?: CacheStrategy
+    app?: CacheStrategy
+  }
   name: string
   description?: string
 }
