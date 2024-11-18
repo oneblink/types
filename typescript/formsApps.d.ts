@@ -389,6 +389,7 @@ export type NewFormStoreApp = _NewFormsApp & {
   type: 'FORM_STORE'
   forms: FormStoreAppForm[]
   styles: FormStoreStyles
+  requireAppUserMfa?: boolean
 }
 
 export type NewFormsApp =
