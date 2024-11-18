@@ -537,8 +537,8 @@ export type FormsAppConfiguration<
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
   cachingStrategies?: {
-    singleForm?: CacheStrategy
-    app?: CacheStrategy
+    singleForm?: Omit<CacheStrategy, 'CACHE_FIRST'>
+    app?: Omit<CacheStrategy, 'NETWORK_FIRST'>
   }
   name: string
   description?: string
