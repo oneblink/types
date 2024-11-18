@@ -495,7 +495,7 @@ export type FormsAppSendingAddressResponse = {
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 
-type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
+type CacheStrategy = 'CACHE_FIRST' | 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
 
 export type FormsAppConfiguration<
   T extends BaseFormsAppStyles = BaseFormsAppStyles
