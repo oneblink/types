@@ -311,7 +311,6 @@ type _NewFormsApp = {
     app?: CacheStrategy
   }
   /** Forms App custom welcome email properties */
-
   welcomeEmail?: {
     /**
      * A [mustache](http://mustache.github.io/#demo) template to use when
@@ -542,10 +541,7 @@ export type FormsAppConfiguration<
   }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
-  cachingStrategies?: {
-    singleForm?: CacheStrategy
-    app?: CacheStrategy
-  }
+  cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
   description?: string
 }
