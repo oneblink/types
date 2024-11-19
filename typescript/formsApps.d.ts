@@ -292,6 +292,8 @@ type FormsAppPWASettings = {
   appleTouchStartupImages?: AppleTouchStartupImage[]
 }
 
+type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
+
 type _NewFormsApp = {
   /** Name of the forms app */
   name: string
@@ -303,7 +305,13 @@ type _NewFormsApp = {
   organisationId: string
   /** Forms App progressive web app setting */
   pwaSettings: FormsAppPWASettings
+  /** Caching strategies for the Forms App */
+  cachingStrategies?: {
+    singleForm?: CacheStrategy
+    app?: CacheStrategy
+  }
   /** Forms App custom welcome email properties */
+
   welcomeEmail?: {
     /**
      * A [mustache](http://mustache.github.io/#demo) template to use when
@@ -494,8 +502,6 @@ export type FormsAppSendingAddressResponse = {
   integration: FormsAppSendingAddressSES | FormsAppSendingAddressMailgun
   formsAppSendingAddress?: FormsAppSendingAddress
 }
-
-type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
 
 export type FormsAppConfiguration<
   T extends BaseFormsAppStyles = BaseFormsAppStyles
