@@ -292,6 +292,8 @@ type FormsAppPWASettings = {
   appleTouchStartupImages?: AppleTouchStartupImage[]
 }
 
+type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
+
 type _NewFormsApp = {
   /** Name of the forms app */
   name: string
@@ -303,6 +305,11 @@ type _NewFormsApp = {
   organisationId: string
   /** Forms App progressive web app setting */
   pwaSettings: FormsAppPWASettings
+  /** Caching strategies for the Forms App */
+  cachingStrategies?: {
+    singleForm?: CacheStrategy
+    app?: CacheStrategy
+  }
   /** Forms App custom welcome email properties */
   welcomeEmail?: {
     /**
@@ -495,8 +502,6 @@ export type FormsAppSendingAddressResponse = {
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 
-type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
-
 export type FormsAppConfiguration<
   T extends BaseFormsAppStyles = BaseFormsAppStyles
 > = {
@@ -536,10 +541,7 @@ export type FormsAppConfiguration<
   }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
-  cachingStrategies?: {
-    singleForm?: CacheStrategy
-    app?: CacheStrategy
-  }
+  cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
   description?: string
 }
