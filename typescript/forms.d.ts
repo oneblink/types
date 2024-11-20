@@ -1105,7 +1105,7 @@ export type NewForm = {
     conditionalPredicates: ConditionalPredicate[]
   }
   /** Disable form data being autosaved */
-  disableAutosaveData?: boolean
+  disableAutosave?: boolean
 }
 
 export type Form = MiscTypes.IdResource & NewForm
