@@ -15,7 +15,6 @@ export interface NewFormsAppEnvironment {
     isCloningFormPersonalisation: boolean
     isCloningFormTags: boolean
     isCloningFormSubmissionTitle: boolean
-    isCloningFormAutosavePreferences: boolean
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
     isCloningScheduledTasks: boolean
