@@ -15,7 +15,7 @@ export interface NewFormsAppEnvironment {
     isCloningFormPersonalisation: boolean
     isCloningFormTags: boolean
     isCloningFormSubmissionTitle: boolean
-    isCloningFormContinueWithAutosave: boolean
+    isCloningFormAutosavePreferences: boolean
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
     isCloningScheduledTasks: boolean
@@ -42,6 +42,7 @@ export interface FormMigrationOptions {
   serverValidation: boolean
   externalIdGenerationOnSubmit: boolean
   personalisation: boolean
+  disableAutosave: boolean
   embeddedForms?: Array<{
     sourceElementId: string
     targetFormId: number
