@@ -34,14 +34,12 @@ export interface FormMigrationOptions {
   submissionEvents: boolean
   tags: boolean
   submissionTitle: boolean
-  continueWithAutosave: boolean
   customCssClasses: boolean
   postSubmissionReceipt: boolean
   postSubmissionAction: boolean
   serverValidation: boolean
   externalIdGenerationOnSubmit: boolean
   personalisation: boolean
-  disableAutosave: boolean
   embeddedForms?: Array<{
     sourceElementId: string
     targetFormId: number
