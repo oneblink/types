@@ -150,6 +150,8 @@ export type DynamicChoiceElementOption = {
   colour?: string
   /** For autocomplete elements this option will always appear in the search results. */
   displayAlways?: boolean
+  /** An image associated with this option */
+  imageUrl?: string
 }
 
 export type ChoiceElementOptionAttribute = {
