@@ -15,7 +15,6 @@ export interface NewFormsAppEnvironment {
     isCloningFormPersonalisation: boolean
     isCloningFormTags: boolean
     isCloningFormSubmissionTitle: boolean
-    isCloningFormContinueWithAutosave: boolean
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
     isCloningScheduledTasks: boolean
@@ -35,7 +34,6 @@ export interface FormMigrationOptions {
   submissionEvents: boolean
   tags: boolean
   submissionTitle: boolean
-  continueWithAutosave: boolean
   customCssClasses: boolean
   postSubmissionReceipt: boolean
   postSubmissionAction: boolean
