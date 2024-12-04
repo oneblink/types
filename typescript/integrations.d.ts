@@ -8,7 +8,6 @@ export type IntegrationType =
   | 'POINT'
   | 'RECAPTCHA'
   | 'WESTPAC_QUICK_STREAM'
-  | 'SCHEDULING'
   | 'FRESHDESK'
   | 'MAILGUN'
   | 'NSW_GOV_PAY'
@@ -186,18 +185,6 @@ export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationSchedulingProvider<S = SavedSecret> = {
-  nylasAccountId: string
-  nylasAccountAccessToken: ConstrainedSecret<S>
-}
-
-export type IntegrationScheduling<S = SavedSecret> = IntegrationBase & {
-  type: 'SCHEDULING'
-  configuration: {
-    providers: IntegrationSchedulingProvider<S>[]
-  }
-}
-
 export type IntegrationNylasGrant = {
   nylasGrantId: string
 }
@@ -289,7 +276,6 @@ export type Integration<S = SavedSecret> =
   | IntegrationRecaptcha<S>
   | IntegrationWestpacQuickStream<S>
   | IntegrationCivica<S>
-  | IntegrationScheduling<S>
   | IntegrationFreshdesk<S>
   | IntegrationMailGun<S>
   | IntegrationNSWGovPay<S>
