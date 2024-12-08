@@ -1,10 +1,13 @@
-export type BaseFormsAppEnvironmentStyles = {
+export type FormsAppEnvironmentColours = {
   /** Foreground colour of banner in Forms App */
   foregroundColour?: string
   /** Highlight colour for elements that should stand out */
   highlightColour?: string
   /** Contrast colour applied against the highlight colour */
   contrastColour?: string
+}
+
+export type BaseFormsAppEnvironmentStyles = FormsAppEnvironmentColours & {
   /** CSS applied to the Forms App */
   customCss?: string
 }
