@@ -501,6 +501,7 @@ export type FormsAppConfiguration<
   samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
+  environmentCustomCss: string | undefined
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
