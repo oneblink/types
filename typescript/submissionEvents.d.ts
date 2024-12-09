@@ -360,28 +360,6 @@ export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventBase & {
   configuration: ApprovalFormsInclusionConfiguration
 }
 
-export type SchedulingSubmissionEvent = FormEventBase & {
-  type: 'SCHEDULING'
-  configuration: PDFConfiguration & {
-    /** The id of scheduling provider. */
-    nylasAccountId: string
-    /** The id of the scheduling page. */
-    nylasSchedulingPageId: number
-    /**
-     * The id of the form element to map to the name field on the scheduling
-     * page. Must be a text element.
-     */
-    nameElementId?: string
-    /**
-     * The id of the form element to map to the email field on the scheduling
-     * page. Must be an email element.
-     */
-    emailElementId?: string
-    /** An optional extra description to be included in the email. */
-    emailDescription?: string
-  }
-}
-
 export type NylasSubmissionEvent = FormEventBase & {
   type: 'NYLAS'
   configuration: PDFConfiguration & {
@@ -410,9 +388,7 @@ export type FormPaymentEvent =
   | WestpacQuickStreamSubmissionEvent
   | NSWGovPaySubmissionEvent
 
-export type FormSchedulingEvent =
-  | SchedulingSubmissionEvent
-  | NylasSubmissionEvent
+export type FormSchedulingEvent = NylasSubmissionEvent
 export type FormWorkflowEvent =
   | CallbackSubmissionEvent
   | PowerAutomateFlowSubmissionEvent
