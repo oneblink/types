@@ -3,6 +3,7 @@ export interface NewFormsAppEnvironment {
   description?: string
   organisationId: string
   slug: string
+  notificationEmailAddresses: string[]
   cloneOptions?: {
     sourceFormsAppEnvironmentId: number
     isCloningFormElementOptionsSets: boolean
