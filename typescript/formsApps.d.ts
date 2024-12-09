@@ -322,6 +322,7 @@ type _NewFormsApp = {
    * submission events
    */
   notificationEmailAddresses: string[]
+  inheritEnvironmentNotificationEmailAddresses?: boolean
   isClientLoggingEnabled: boolean
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
