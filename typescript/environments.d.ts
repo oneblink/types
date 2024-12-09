@@ -45,6 +45,7 @@ export interface BaseFormsAppEnvironment {
   description?: string
   organisationId: string
   slug: string
+  notificationEmailAddresses: string[]
   styles?: FormsAppEnvironmentStyles
 }
 

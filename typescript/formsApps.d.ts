@@ -311,6 +311,13 @@ type _NewFormsApp = {
   /** The exact forms app environment identifier the forms app is associated with */
   formsAppEnvironmentId: number
   /**
+   * The email addresses set in `notificationEmailAddresses` will override the
+   * email addresses set at the environment level. Set this flag to `true` to
+   * include the environment level email addresses as well as the email
+   * addresses set in `notificationEmailAddresses`.
+   */
+  isExtendingEnvironmentNotificationEmailAddresses?: boolean
+  /**
    * Array of emails addresses to be notified when an error occurs in processing
    * submission events
    */
