@@ -1,8 +1,55 @@
-export interface NewFormsAppEnvironment {
+export type FormsAppEnvironmentColours = {
+  /** Foreground colour of banner in Forms App */
+  foregroundColour?: string
+  /** Highlight colour for elements that should stand out */
+  highlightColour?: string
+  /** Contrast colour applied against the highlight colour */
+  contrastColour?: string
+}
+
+export type BaseFormsAppEnvironmentStyles = FormsAppEnvironmentColours & {
+  /** CSS applied to the Forms App */
+  customCss?: string
+}
+
+export type ButtonConfiguration = {
+  /**
+   * The icon to display on the button. Must be a valid Material Icon code as it
+   * appears here: https://fonts.google.com/icons
+   */
+  icon?: string
+  /** The text to display on the button. */
+  label?: string
+}
+
+export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
+  /** The absolute URL to the logo image displayed in Forms Apps */
+  logoUrl?: string
+  /** Configuration object for button customization */
+  buttons?: {
+    /** Button configuration for the Submit button */
+    submit?: ButtonConfiguration
+    /** Button configuration for the Cancel button */
+    cancel?: ButtonConfiguration
+    /** Button configuration for the Save Draft button */
+    saveDraft?: ButtonConfiguration
+    /** Button configuration for the Cancel Prompt dialog Yes button */
+    cancelPromptYes?: ButtonConfiguration
+    /** Button configuration for the Cancel Prompt dialog No button */
+    cancelPromptNo?: ButtonConfiguration
+  }
+}
+
+export interface BaseFormsAppEnvironment {
   name: string
   description?: string
   organisationId: string
   slug: string
+  notificationEmailAddresses: string[]
+  styles?: FormsAppEnvironmentStyles
+}
+
+export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
   cloneOptions?: {
     sourceFormsAppEnvironmentId: number
     isCloningFormElementOptionsSets: boolean
@@ -25,7 +72,7 @@ export type FormsAppEnvironment = {
   id: number
   createdAt: Date
   updatedAt: Date
-} & NewFormsAppEnvironment
+} & BaseFormsAppEnvironment
 
 export interface FormMigrationOptions {
   formsAppEnvironmentId: number
