@@ -3,6 +3,10 @@ import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
 import { IntegrationTypes, ScheduledTasksTypes } from '..'
 import { IdResource } from './misc'
+import {
+  BaseFormsAppEnvironmentStyles,
+  FormsAppEnvironmentStyles,
+} from './environments'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -115,30 +119,26 @@ export type FormsAppMenuItem =
   | FormsAppScheduledTasksGroupMenuItem
   | FormsAppCPHCMSContentMenuItem
 
-export type BaseFormsAppStyles = {
-  /** Foreground colour of banner in Forms App */
-  foregroundColour?: string
-  /** Highlight colour for elements that should stand out */
-  highlightColour?: string
-  /** Contrast colour applied against the highlight colour */
-  contrastColour?: string
-  /** CSS applied to the Forms App */
-  customCss?: string
-}
-
-export type VolunteersStyles = BaseFormsAppStyles
-export type ApprovalsStyles = BaseFormsAppStyles
-export type FormStoreStyles = BaseFormsAppStyles
-
-export type ButtonConfiguration = {
-  /**
-   * The icon to display on the button. Must be a valid Material Icon code as it
-   * appears here: https://fonts.google.com/icons
-   */
-  icon?: string
-  /** The text to display on the button. */
-  label?: string
-}
+/**
+ * Styles relating to volunteers apps.
+ *
+ * ## Examples
+ *
+ * ### Volunteer Apps
+ *
+ * ```json
+ * {
+ *   "foregroundColour": "#454545",
+ *   "highlightColour": "#676767",
+ *   "contrastColour": "#FFFFFF",
+ *   "customCss": ".ob-form { background-color: red; }",
+ *   "logoUrl": "https://my-website.com/logo.png"
+ * }
+ * ```
+ */
+export type VolunteersStyles = BaseFormsAppEnvironmentStyles
+export type ApprovalsStyles = BaseFormsAppEnvironmentStyles
+export type FormStoreStyles = BaseFormsAppEnvironmentStyles
 
 /**
  * For Forms Apps of type `TILES` ContainerMenuItem, FormMenuItem and
@@ -221,27 +221,12 @@ export type ButtonConfiguration = {
  * }
  * ```
  */
-export type FormsListStyles = BaseFormsAppStyles & {
-  /** The absolute URL to the logo image in the Forms App */
-  logoUrl?: string
+export type FormsListStyles = FormsAppEnvironmentStyles & {
   /**
    * Array of menu item objects. See above for which menu items to use for
    * different forms app types
    */
   menuItems: FormsAppMenuItem[]
-  /** Configuration object for button customization */
-  buttons?: {
-    /** Button configuration for the Submit button */
-    submit?: ButtonConfiguration
-    /** Button configuration for the Cancel button */
-    cancel?: ButtonConfiguration
-    /** Button configuration for the Save Draft button */
-    saveDraft?: ButtonConfiguration
-    /** Button configuration for the Cancel Prompt dialog Yes button */
-    cancelPromptYes?: ButtonConfiguration
-    /** Button configuration for the Cancel Prompt dialog No button */
-    cancelPromptNo?: ButtonConfiguration
-  }
 }
 
 export type TilesStyles = FormsListStyles
@@ -325,6 +310,13 @@ type _NewFormsApp = {
   enableSamlIdentityProviderLogout?: boolean
   /** The exact forms app environment identifier the forms app is associated with */
   formsAppEnvironmentId: number
+  /**
+   * The email addresses set in `notificationEmailAddresses` will override the
+   * email addresses set at the environment level. Set this flag to `true` to
+   * include the environment level email addresses as well as the email
+   * addresses set in `notificationEmailAddresses`.
+   */
+  isInheritingEnvironmentNotificationEmailAddresses?: boolean
   /**
    * Array of emails addresses to be notified when an error occurs in processing
    * submission events
@@ -503,7 +495,7 @@ export type FormsAppSendingAddressResponse = {
 }
 
 export type FormsAppConfiguration<
-  T extends BaseFormsAppStyles = BaseFormsAppStyles
+  T extends BaseFormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles
 > = {
   /** Type of the forms app. */
   type: FormsApp['type']
@@ -516,6 +508,7 @@ export type FormsAppConfiguration<
   samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
+  environmentCustomCss: string | undefined
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
