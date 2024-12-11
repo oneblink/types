@@ -40,6 +40,14 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
   }
 }
 
+export type FormsAppEnvironmentSendingAddress = {
+  emailAddress: string
+  emailName?: string
+  formsAppEnvironmentId: number
+  createdAt: string
+  updatedAt: string
+}
+
 export interface BaseFormsAppEnvironment {
   name: string
   description?: string
@@ -47,6 +55,7 @@ export interface BaseFormsAppEnvironment {
   slug: string
   notificationEmailAddresses: string[]
   styles?: FormsAppEnvironmentStyles
+  sendingAddress?: FormsAppEnvironmentSendingAddress
 }
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {

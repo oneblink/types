@@ -5,6 +5,7 @@ import { IntegrationTypes, ScheduledTasksTypes } from '..'
 import { IdResource } from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
+  FormsAppEnvironmentSendingAddress,
   FormsAppEnvironmentStyles,
 } from './environments'
 
@@ -481,12 +482,11 @@ export type FormsAppSendingAddressSES = {
   isEmailVerified: boolean
 }
 
-export type FormsAppSendingAddress = {
-  emailAddress: string
-  emailName?: string
+export type FormsAppSendingAddress = Omit<
+  FormsAppEnvironmentSendingAddress,
+  'formsAppEnvironmentId'
+> & {
   formsAppId: number
-  createdAt: string
-  updatedAt: string
 }
 
 export type FormsAppSendingAddressResponse = {
