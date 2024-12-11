@@ -316,7 +316,7 @@ type _NewFormsApp = {
    * include the environment level email addresses as well as the email
    * addresses set in `notificationEmailAddresses`.
    */
-  isExtendingEnvironmentNotificationEmailAddresses?: boolean
+  isInheritingEnvironmentNotificationEmailAddresses?: boolean
   /**
    * Array of emails addresses to be notified when an error occurs in processing
    * submission events
