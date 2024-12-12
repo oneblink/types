@@ -1,9 +1,10 @@
-import { FormsAppDraft, FormsConfiguration } from './submissions'
+import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
 import { ScheduledTasksTypes } from '..'
 import { IdResource } from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
+  FormsAppEnvironmentConfiguration,
   FormsAppEnvironmentSendingAddress,
   FormsAppEnvironmentSendingAddressMailgun,
   FormsAppEnvironmentSendingAddressSES,
@@ -490,7 +491,7 @@ export type FormsAppSendingAddressResponse = {
 
 export type FormsAppConfiguration<
   T extends BaseFormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles
-> = FormsConfiguration & {
+> = FormsAppEnvironmentConfiguration & {
   /** Type of the forms app. */
   type: FormsApp['type']
   formsAppId: number

@@ -1,4 +1,4 @@
-import { IntegrationMailGun } from './integrations'
+import { IntegrationMailGun, RecaptchaKeyType } from './integrations'
 
 export type FormsAppEnvironmentColours = {
   /** Foreground colour of banner in Forms App */
@@ -128,3 +128,22 @@ export type FormMigrationData = {
   sourceFormId: number
   targetFormId?: number
 } & FormMigrationOptions
+
+export type FormsAppEnvironmentConfiguration = {
+  organisationId: string
+  formsAppEnvironmentId: number
+  isTrialExpired: boolean
+  styles: FormsAppEnvironmentStyles
+  environmentCustomCss: string | undefined
+  locale: string
+  tz: string
+  recaptchaPublicKey: string
+  recaptchaKeyType: RecaptchaKeyType
+  googleMapsApiKey: string
+  abnLookupAuthenticationGuid?: string
+  accountAttachmentRetentionInDays?: number
+  formsAttachmentRetention?: Array<{
+    formId: number
+    days: number
+  }>
+}
