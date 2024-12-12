@@ -187,7 +187,7 @@ export type NewFormSubmissionMeta = {
   /** The id of the OneBlink Form */
   formId: number
   /** The id of the Forms App submitting for */
-  formsAppId: number
+  formsAppId?: number
   /** The date and time (in ISO format) the form was submitted. */
   dateTimeSubmitted: string
   /** Information about the user that submitted the form */
@@ -271,7 +271,7 @@ export type S3SubmissionData = NewS3SubmissionData & {
   keyId?: string
   key?: FormSubmissionMeta['key']
   user?: FormSubmissionMeta['user']
-  formsAppId: number
+  formsAppId?: number
   externalId?: string
   task?: Task
   taskAction?: TaskAction
@@ -305,7 +305,7 @@ export type FormSubmissionAttachment = {
 type _BaseFormStoreRecord = {
   _id: string
   submissionId: string
-  formsAppId: number
+  formsAppId?: number
   user?: UserProfile
   externalId?: string
   jobId?: string

@@ -450,7 +450,7 @@ export type BaseFormSubmissionProcessing = {
   key: string
   isDraft: boolean
   submissionTimestamp: string
-  formsAppId: number
+  formsAppId?: number
   keyId?: string
   user?: UserProfile
   developerKey?: DeveloperKeyReference
@@ -489,7 +489,7 @@ export type FormSubmissionProcessing<T = undefined> =
   | FormSubmissionProcessingFormStore
 
 export type WebhookSubmissionEventPayload = {
-  formsAppId: number
+  formsAppId?: number
   formId: number
   submissionId: string
   isDraft: boolean
