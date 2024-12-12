@@ -178,6 +178,8 @@ export type AuditRecordType =
   | 'OrganisationManagedSecret'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
+  | 'FormsAppEnvironmentSendingAddress'
+  | 'FormsAppEnvironmentSendingAddressResend'
 
 export type NewAuditRecord = {
   type: AuditRecordType
