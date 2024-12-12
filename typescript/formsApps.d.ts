@@ -1,7 +1,6 @@
-import { IntegrationMailGun } from './integrations'
-import { FormsAppDraft } from './submissions'
+import { FormsAppDraft, FormsConfiguration } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
-import { IntegrationTypes, ScheduledTasksTypes } from '..'
+import { ScheduledTasksTypes } from '..'
 import { IdResource } from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
@@ -491,25 +490,19 @@ export type FormsAppSendingAddressResponse = {
 
 export type FormsAppConfiguration<
   T extends BaseFormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles
-> = {
+> = FormsConfiguration & {
   /** Type of the forms app. */
   type: FormsApp['type']
-  organisationId: string
   formsAppId: number
-  formsAppEnvironmentId: number
   formsOAuthClientId?: string | null
-  isTrialExpired: boolean
   formsHostname: string
   samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
-  environmentCustomCss: string | undefined
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
   draftsAreShared?: boolean
-  locale: string
-  tz: string
   volunteers:
     | {
         categories: VolunteersFormsApp['categories']
@@ -518,15 +511,6 @@ export type FormsAppConfiguration<
     | undefined
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
-  recaptchaPublicKey: string
-  recaptchaKeyType: IntegrationTypes.RecaptchaKeyType
-  googleMapsApiKey: string
-  abnLookupAuthenticationGuid?: string
-  accountAttachmentRetentionInDays?: number
-  formsAttachmentRetention?: Array<{
-    formId: number
-    days: number
-  }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']
