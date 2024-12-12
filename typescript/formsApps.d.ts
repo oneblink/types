@@ -6,6 +6,8 @@ import { IdResource } from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
   FormsAppEnvironmentSendingAddress,
+  FormsAppEnvironmentSendingAddressMailgun,
+  FormsAppEnvironmentSendingAddressSES,
   FormsAppEnvironmentStyles,
 } from './environments'
 
@@ -473,15 +475,6 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & BaseFormsAppsDraft
 
-export type FormsAppSendingAddressMailgun = {
-  type: IntegrationMailGun['type']
-}
-
-export type FormsAppSendingAddressSES = {
-  type: 'SES'
-  isEmailVerified: boolean
-}
-
 export type FormsAppSendingAddress = Omit<
   FormsAppEnvironmentSendingAddress,
   'formsAppEnvironmentId'
@@ -490,7 +483,9 @@ export type FormsAppSendingAddress = Omit<
 }
 
 export type FormsAppSendingAddressResponse = {
-  integration: FormsAppSendingAddressSES | FormsAppSendingAddressMailgun
+  integration:
+    | FormsAppEnvironmentSendingAddressSES
+    | FormsAppEnvironmentSendingAddressMailgun
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 

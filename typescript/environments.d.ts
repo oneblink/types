@@ -1,3 +1,5 @@
+import { IntegrationMailGun } from './integrations'
+
 export type FormsAppEnvironmentColours = {
   /** Foreground colour of banner in Forms App */
   foregroundColour?: string
@@ -48,6 +50,21 @@ export type FormsAppEnvironmentSendingAddress = {
   updatedAt: string
 }
 
+export type FormsAppEnvironmentSendingAddressMailgun = {
+  type: IntegrationMailGun['type']
+}
+
+export type FormsAppEnvironmentSendingAddressSES = {
+  type: 'SES'
+  isEmailVerified: boolean
+}
+
+export type FormsAppEnvironmentSendingAddressResponse = {
+  integration:
+    | FormsAppEnvironmentSendingAddressSES
+    | FormsAppEnvironmentSendingAddressMailgun
+  formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
+}
 export interface BaseFormsAppEnvironment {
   name: string
   description?: string
