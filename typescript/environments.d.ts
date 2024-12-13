@@ -127,9 +127,9 @@ export type FormsAppEnvironmentConfiguration = {
   environmentCustomCss: string | undefined
   locale: string
   tz: string
-  recaptchaPublicKey: string
-  recaptchaKeyType: RecaptchaKeyType
-  googleMapsApiKey: string
+  recaptchaPublicKey: string | undefined
+  recaptchaKeyType: RecaptchaKeyType | undefined
+  googleMapsApiKey: string | undefined
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
   formsAttachmentRetention?: Array<{
