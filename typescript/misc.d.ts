@@ -221,3 +221,23 @@ export type StatesAndTerritories =
   | 'SA'
   | 'NT'
   | 'WA'
+
+export type EmailSendingAddressBase = {
+  emailAddress: string
+  emailName?: string
+  createdAt: string
+  updatedAt: string
+}
+
+export type EmailSendingAddressMailgun = {
+  type: 'MAILGUN'
+}
+
+export type EmailSendingAddressSES = {
+  type: 'SES'
+  isEmailVerified: boolean
+}
+
+export type EmailSendingAddressResponseBase = {
+  integration: EmailSendingAddressSES | EmailSendingAddressMailgun
+}

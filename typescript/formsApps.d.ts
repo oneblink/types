@@ -1,15 +1,17 @@
-import { IntegrationMailGun } from './integrations'
 import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
-import { IntegrationTypes, ScheduledTasksTypes } from '..'
-import { IdResource } from './misc'
+import { ScheduledTasksTypes } from '..'
+import {
+  EmailSendingAddressBase,
+  EmailSendingAddressResponseBase,
+  IdResource,
+} from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
-  FormsAppEnvironmentSendingAddress,
-  FormsAppEnvironmentSendingAddressMailgun,
-  FormsAppEnvironmentSendingAddressSES,
+  FormsAppEnvironmentConfiguration,
   FormsAppEnvironmentStyles,
 } from './environments'
+import { RecaptchaKeyType } from './integrations'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -475,41 +477,29 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & BaseFormsAppsDraft
 
-export type FormsAppSendingAddress = Omit<
-  FormsAppEnvironmentSendingAddress,
-  'formsAppEnvironmentId'
-> & {
+export type FormsAppSendingAddress = EmailSendingAddressBase & {
   formsAppId: number
 }
 
-export type FormsAppSendingAddressResponse = {
-  integration:
-    | FormsAppEnvironmentSendingAddressSES
-    | FormsAppEnvironmentSendingAddressMailgun
+export type FormsAppSendingAddressResponse = EmailSendingAddressResponseBase & {
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 
 export type FormsAppConfiguration<
   T extends BaseFormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles
-> = {
+> = FormsAppEnvironmentConfiguration & {
   /** Type of the forms app. */
   type: FormsApp['type']
-  organisationId: string
   formsAppId: number
-  formsAppEnvironmentId: number
   formsOAuthClientId?: string | null
-  isTrialExpired: boolean
   formsHostname: string
   samlIdentityProviderName?: string | null
   logoutRedirectUrl?: string
   styles: T
-  environmentCustomCss: string | undefined
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
   draftsAreShared?: boolean
-  locale: string
-  tz: string
   volunteers:
     | {
         categories: VolunteersFormsApp['categories']
@@ -519,14 +509,8 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   recaptchaPublicKey: string
-  recaptchaKeyType: IntegrationTypes.RecaptchaKeyType
+  recaptchaKeyType: RecaptchaKeyType
   googleMapsApiKey: string
-  abnLookupAuthenticationGuid?: string
-  accountAttachmentRetentionInDays?: number
-  formsAttachmentRetention?: Array<{
-    formId: number
-    days: number
-  }>
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']

@@ -1,4 +1,8 @@
-import { IntegrationMailGun } from './integrations'
+import { RecaptchaKeyType } from './integrations'
+import {
+  EmailSendingAddressBase,
+  EmailSendingAddressResponseBase,
+} from './misc'
 
 export type FormsAppEnvironmentColours = {
   /** Foreground colour of banner in Forms App */
@@ -42,29 +46,15 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
   }
 }
 
-export type FormsAppEnvironmentSendingAddress = {
-  emailAddress: string
-  emailName?: string
+export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
   formsAppEnvironmentId: number
-  createdAt: string
-  updatedAt: string
 }
 
-export type FormsAppEnvironmentSendingAddressMailgun = {
-  type: IntegrationMailGun['type']
-}
+export type FormsAppEnvironmentSendingAddressResponse =
+  EmailSendingAddressResponseBase & {
+    formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
+  }
 
-export type FormsAppEnvironmentSendingAddressSES = {
-  type: 'SES'
-  isEmailVerified: boolean
-}
-
-export type FormsAppEnvironmentSendingAddressResponse = {
-  integration:
-    | FormsAppEnvironmentSendingAddressSES
-    | FormsAppEnvironmentSendingAddressMailgun
-  formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
-}
 export interface BaseFormsAppEnvironment {
   name: string
   description?: string
@@ -128,3 +118,22 @@ export type FormMigrationData = {
   sourceFormId: number
   targetFormId?: number
 } & FormMigrationOptions
+
+export type FormsAppEnvironmentConfiguration = {
+  organisationId: string
+  formsAppEnvironmentId: number
+  isTrialExpired: boolean
+  styles: FormsAppEnvironmentStyles
+  environmentCustomCss: string | undefined
+  locale: string
+  tz: string
+  recaptchaPublicKey: string | undefined
+  recaptchaKeyType: RecaptchaKeyType | undefined
+  googleMapsApiKey: string | undefined
+  abnLookupAuthenticationGuid?: string
+  accountAttachmentRetentionInDays?: number
+  formsAttachmentRetention?: Array<{
+    formId: number
+    days: number
+  }>
+}
