@@ -56,13 +56,24 @@ export type FormsAppEnvironmentSendingAddressResponse =
   }
 
 export interface BaseFormsAppEnvironment {
+  /** Name of the Forms App Environment */
   name: string
   description?: string
+  /** The exact organisation identifier the forms app environment is associated with */
   organisationId: string
+  /** Unique domain safe text to identify the forms app environment */
   slug: string
+  /**
+   * Array of emails addresses to be notified when an error occurs in processing
+   * submission events
+   */
   notificationEmailAddresses: string[]
   styles?: FormsAppEnvironmentStyles
   sendingAddress?: FormsAppEnvironmentSendingAddress
+  /** The id of the recaptcha integration to be used */
+  recaptchaIntegrationDomainId?: string
+  /** The id of the Google Maps integration key to be used for Google Maps elements. */
+  googleMapsIntegrationKeyId?: string
 }
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
