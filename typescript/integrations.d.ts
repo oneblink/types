@@ -1,3 +1,5 @@
+import { EmailSendingAddressMailgun } from './misc'
+
 export type IntegrationType =
   | 'CP_PAY'
   | 'TRIM'
@@ -205,7 +207,7 @@ export type IntegrationFreshdesk<S = SavedSecret> = IntegrationBase & {
 }
 
 export type IntegrationMailGun<S = SavedSecret> = IntegrationBase & {
-  type: 'MAILGUN'
+  type: EmailSendingAddressMailgun['type']
   configuration: {
     domain: string
     apiKey: ConstrainedSecret<S>

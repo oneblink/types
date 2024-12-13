@@ -1,13 +1,14 @@
 import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
 import { ScheduledTasksTypes } from '..'
-import { IdResource } from './misc'
+import {
+  EmailSendingAddressBase,
+  EmailSendingAddressResponseBase,
+  IdResource,
+} from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
   FormsAppEnvironmentConfiguration,
-  FormsAppEnvironmentSendingAddress,
-  FormsAppEnvironmentSendingAddressMailgun,
-  FormsAppEnvironmentSendingAddressSES,
   FormsAppEnvironmentStyles,
 } from './environments'
 
@@ -475,17 +476,11 @@ export type FormsAppsDraft = {
   updatedAt: string
 } & BaseFormsAppsDraft
 
-export type FormsAppSendingAddress = Omit<
-  FormsAppEnvironmentSendingAddress,
-  'formsAppEnvironmentId'
-> & {
+export type FormsAppSendingAddress = EmailSendingAddressBase & {
   formsAppId: number
 }
 
-export type FormsAppSendingAddressResponse = {
-  integration:
-    | FormsAppEnvironmentSendingAddressSES
-    | FormsAppEnvironmentSendingAddressMailgun
+export type FormsAppSendingAddressResponse = EmailSendingAddressResponseBase & {
   formsAppSendingAddress?: FormsAppSendingAddress
 }
 

@@ -1,4 +1,8 @@
-import { IntegrationMailGun, RecaptchaKeyType } from './integrations'
+import { RecaptchaKeyType } from './integrations'
+import {
+  EmailSendingAddressBase,
+  EmailSendingAddressResponseBase,
+} from './misc'
 
 export type FormsAppEnvironmentColours = {
   /** Foreground colour of banner in Forms App */
@@ -42,29 +46,15 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
   }
 }
 
-export type FormsAppEnvironmentSendingAddress = {
-  emailAddress: string
-  emailName?: string
+export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
   formsAppEnvironmentId: number
-  createdAt: string
-  updatedAt: string
 }
 
-export type FormsAppEnvironmentSendingAddressMailgun = {
-  type: IntegrationMailGun['type']
-}
+export type FormsAppEnvironmentSendingAddressResponse =
+  EmailSendingAddressResponseBase & {
+    formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
+  }
 
-export type FormsAppEnvironmentSendingAddressSES = {
-  type: 'SES'
-  isEmailVerified: boolean
-}
-
-export type FormsAppEnvironmentSendingAddressResponse = {
-  integration:
-    | FormsAppEnvironmentSendingAddressSES
-    | FormsAppEnvironmentSendingAddressMailgun
-  formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
-}
 export interface BaseFormsAppEnvironment {
   name: string
   description?: string
