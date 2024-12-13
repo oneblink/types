@@ -72,7 +72,7 @@ export interface BaseFormsAppEnvironment {
   sendingAddress?: FormsAppEnvironmentSendingAddress
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
-  /** The id of the Google Maps integration key to be used for Google Maps elements. */
+  /** The id of the Google Maps integration key to be used for Google Maps elements */
   googleMapsIntegrationKeyId?: string
 }
 
