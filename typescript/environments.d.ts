@@ -68,8 +68,8 @@ export interface BaseFormsAppEnvironment {
    * submission events
    */
   notificationEmailAddresses: string[]
+  /** Customise default styles and branding for a apps and emails */
   styles?: FormsAppEnvironmentStyles
-  sendingAddress?: FormsAppEnvironmentSendingAddress
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
   /** The id of the Google Maps integration key to be used for Google Maps elements */
