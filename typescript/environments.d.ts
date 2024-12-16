@@ -68,7 +68,7 @@ export interface BaseFormsAppEnvironment {
    * submission events
    */
   notificationEmailAddresses: string[]
-  /** Customise default styles and branding for a apps and emails */
+  /** Customise default styles and branding for apps and emails */
   styles?: FormsAppEnvironmentStyles
   /** The id of the recaptcha integration to be used */
   recaptchaIntegrationDomainId?: string
