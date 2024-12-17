@@ -512,6 +512,9 @@ export type FormsAppConfiguration<
   cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
   description?: string
+  gTags?: {
+    analytics?: string[]
+  }
 }
 
 export type FormsAppUserSubscription = {
