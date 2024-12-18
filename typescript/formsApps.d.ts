@@ -346,9 +346,7 @@ type _NewFormsApp = {
   /** List of groups users can be assigned too and email addresses to be notified via */
   groups?: Array<{ name: string; notificationEmailAddresses: string[] }>
   /** Google tag ids */
-  gTags?: {
-    analytics?: string[]
-  }
+  googleAnalyticsTag?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
