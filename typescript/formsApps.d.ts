@@ -366,6 +366,10 @@ export type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
+  /** Google tag ids */
+  gTags?: {
+    analytics?: string[]
+  }
 }
 
 export type NewTilesFormsApp = _NewFormsApp & {
@@ -375,6 +379,10 @@ export type NewTilesFormsApp = _NewFormsApp & {
   styles: TilesStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
+  /** Google tag ids */
+  gTags?: {
+    analytics?: string[]
+  }
 }
 
 export type NewApprovalsApp = _NewFormsApp & {
