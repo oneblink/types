@@ -11,7 +11,6 @@ import {
   FormsAppEnvironmentConfiguration,
   FormsAppEnvironmentStyles,
 } from './environments'
-import { RecaptchaKeyType } from './integrations'
 
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
@@ -508,9 +507,6 @@ export type FormsAppConfiguration<
     | undefined
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
-  recaptchaPublicKey: string
-  recaptchaKeyType: RecaptchaKeyType
-  googleMapsApiKey: string
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']
