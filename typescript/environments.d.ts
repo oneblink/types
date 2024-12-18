@@ -130,7 +130,7 @@ export type FormMigrationData = {
   targetFormId?: number
 } & FormMigrationOptions
 
-export type FormsAppEnvironmentConfiguration = {
+export type FormsAppEnvironmentConfigurationBase = {
   organisationId: string
   formsAppEnvironmentId: number
   isTrialExpired: boolean
@@ -138,9 +138,6 @@ export type FormsAppEnvironmentConfiguration = {
   environmentCustomCss: string | undefined
   locale: string
   tz: string
-  recaptchaPublicKey: string | undefined
-  recaptchaKeyType: RecaptchaKeyType | undefined
-  googleMapsApiKey: string | undefined
   abnLookupAuthenticationGuid?: string
   accountAttachmentRetentionInDays?: number
   formsAttachmentRetention?: Array<{
@@ -148,3 +145,10 @@ export type FormsAppEnvironmentConfiguration = {
     days: number
   }>
 }
+
+export type FormsAppEnvironmentConfiguration =
+  FormsAppEnvironmentConfigurationBase & {
+    recaptchaPublicKey: string
+    recaptchaKeyType: RecaptchaKeyType
+    googleMapsApiKey: string
+  }

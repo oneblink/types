@@ -18,7 +18,7 @@ import type {
   UserProfile,
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
-import { ButtonConfiguration } from './formsApps'
+import { ButtonConfiguration } from './environments'
 import { LiquorLicenceDetails } from './api-nsw'
 import { MiscTypes, SubmissionTypes } from '..'
 import { IntegrationGeoscape } from './integrations'
