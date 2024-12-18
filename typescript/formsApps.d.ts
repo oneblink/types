@@ -345,8 +345,8 @@ type _NewFormsApp = {
   googleMapsIntegrationKeyId?: string
   /** List of groups users can be assigned too and email addresses to be notified via */
   groups?: Array<{ name: string; notificationEmailAddresses: string[] }>
-  /** Google tag ids */
-  googleAnalyticsTag?: string
+  /** Google analytics tag id */
+  googleAnalyticsTagId?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -514,9 +514,7 @@ export type FormsAppConfiguration<
   cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
   description?: string
-  gTags?: {
-    analytics?: string[]
-  }
+  googleAnalyticsTagId?: string
 }
 
 export type FormsAppUserSubscription = {
