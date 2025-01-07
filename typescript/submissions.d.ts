@@ -18,8 +18,6 @@ import {
   TaskGroupInstance,
 } from './scheduledTasks'
 import { DeveloperKeyReference } from './keys'
-import { FormsAppEnvironmentStyles } from './environments'
-import { RecaptchaKeyType } from './integrations'
 
 /** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
 export interface NewFormsAppDraft {
@@ -315,6 +313,10 @@ type _BaseFormStoreRecord = {
   submission: S3SubmissionData['submission']
   device?: S3SubmissionDataDevice
   ipAddress?: string
+  task?: Task
+  taskAction?: TaskAction
+  taskGroup?: TaskGroup
+  taskGroupInstance?: TaskGroupInstance
 }
 
 export type DbFormStoreRecord = _BaseFormStoreRecord & {
