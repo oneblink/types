@@ -1108,6 +1108,8 @@ export type NewForm = {
   }
   /** Disable form data being autosaved */
   disableAutosave?: boolean
+  /** Whether or not the form is archived. Only archived forms can be deleted */
+  isArchived?: boolean
 }
 
 export type Form = MiscTypes.IdResource & NewForm
