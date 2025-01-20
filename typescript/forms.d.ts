@@ -412,6 +412,13 @@ export type RepeatableSetElement = FormElementBase & {
       }
   addSetEntryLabel?: string
   removeSetEntryLabel?: string
+  /**
+   * Select how the repeatable set buttons render. SINGLE_ADD_BUTTON will
+   * include a single button at the end of the repeatable set to add a new
+   * entry. MULTIPLE_ADD_BUTTONS will show an add button between each entry and
+   * move the delete button to the bottom of each entry
+   */
+  layout?: 'SINGLE_ADD_BUTTON' | 'MULTIPLE_ADD_BUTTONS'
 } & _NestedElementsElement &
   FormElementReadOnly
 
