@@ -399,10 +399,22 @@ export type SharepointCreateListItemSubmissionEventMapping =
 export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_CREATE_LIST_ITEM'
   configuration: {
-    /** The id of the Sharepoint Site */
-    sharepointSiteId: string
-    /** The id of the Sharepoint List */
-    sharepointListId: string
+    /** The id of the entra application in integration configuration */
+    integrationEntraApplicationId: string
+    /** The Sharepoint Site */
+    sharepointSite: {
+      /** The id of the Sharepoint Site */
+      id: string
+      /** The display name of the Sharepoint Site */
+      displayName: string
+    }
+    /** The Sharepoint List */
+    sharepointList: {
+      /** The id of the Sharepoint List */
+      id: string
+      /** The display name of the Sharepoint List */
+      displayName: string
+    }
     /** Array of mappings. */
     mapping: SharepointCreateListItemSubmissionEventMapping[]
   }
