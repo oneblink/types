@@ -16,6 +16,7 @@ export type IntegrationType =
   | 'API_NSW'
   | 'GOOGLE_MAPS'
   | 'NYLAS'
+  | 'SHAREPOINT'
 
 type IntegrationBase = {
   organisationId: string
@@ -255,6 +256,21 @@ export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationSharepointEntraApplication<S = SavedSecret> = {
+  id: string
+  label: string
+  entraTenantId: string
+  entraApplicationId: string
+  entraClientSecret: ConstrainedSecret<S>
+}
+
+export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
+  type: 'SHAREPOINT'
+  configuration: {
+    entraApplications: IntegrationSharepointEntraApplication<S>[]
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -284,3 +300,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
   | IntegrationNylas
+  | IntegrationSharepoint
