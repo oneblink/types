@@ -300,4 +300,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
   | IntegrationNylas
-  | IntegrationSharepoint
+  | IntegrationSharepoint<S>
