@@ -311,37 +311,43 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
   }
 }
 
-export type FreshdeskSubmissionEventFieldMapping = {
+export type FormWorkflowEventElementMapping<T> = T &
+  (
+    | {
+        type: 'FORM_FORM_ELEMENT'
+        formElementId: string
+        mapping: FormWorkflowEventElementMapping<T>
+      }
+    | {
+        type: 'FORM_ELEMENT'
+        formElementId: string
+      }
+    | {
+        type: 'VALUE'
+        value: number | string | boolean
+      }
+    | {
+        type: 'SUBMISSION_ID'
+      }
+    | {
+        type: 'EXTERNAL_ID'
+      }
+  )
+
+type BaseFreshdeskSubmissionEventFieldMapping = {
   freshdeskFieldName: string
-} & (
-  | {
-      type: 'FORM_FORM_ELEMENT'
-      formElementId: string
-      mapping: FreshdeskSubmissionEventFieldMapping
-    }
-  | {
-      type: 'FORM_ELEMENT'
-      formElementId: string
-    }
-  | {
-      type: 'VALUE'
-      value: number | string | boolean
-    }
-  | {
+}
+
+export type FreshdeskSubmissionEventFieldMapping =
+  | FormWorkflowEventElementMapping<BaseFreshdeskSubmissionEventFieldMapping>
+  | (BaseFreshdeskSubmissionEventFieldMapping & {
       type: 'DEPENDENT_FIELD_VALUE'
       dependentFieldValue: {
         category: string
         subCategory: string
         item: string
       }
-    }
-  | {
-      type: 'SUBMISSION_ID'
-    }
-  | {
-      type: 'EXTERNAL_ID'
-    }
-)
+    })
 
 export type FreshdeskCreateTicketSubmissionEvent = FormEventBase & {
   /** The type of submission event. */
@@ -381,6 +387,39 @@ export type NylasSubmissionEvent = FormEventBase & {
   }
 }
 
+export type SharepointCreateListItemSubmissionEventMapping =
+  FormWorkflowEventElementMapping<{
+    /**
+     * The API-facing name of the column. Use this in the `fields` property when
+     * creating the list item.
+     */
+    sharepointColumnDefinitionName: string
+  }>
+
+export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
+  type: 'SHAREPOINT_CREATE_LIST_ITEM'
+  configuration: {
+    /** The id of the entra application in integration configuration */
+    integrationEntraApplicationId: string
+    /** The Sharepoint Site */
+    sharepointSite: {
+      /** The id of the Sharepoint Site */
+      id: string
+      /** The display name of the Sharepoint Site */
+      displayName: string
+    }
+    /** The Sharepoint List */
+    sharepointList: {
+      /** The id of the Sharepoint List */
+      id: string
+      /** The display name of the Sharepoint List */
+      displayName: string
+    }
+    /** Array of mappings. */
+    mapping: SharepointCreateListItemSubmissionEventMapping[]
+  }
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -401,6 +440,7 @@ export type FormWorkflowEvent =
   | EmailOnlySubmissionEvent
   | FreshdeskCreateTicketSubmissionEvent
   | FreshdeskAddNoteToTicketSubmissionEvent
+  | SharepointCreateListItemSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
