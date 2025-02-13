@@ -440,6 +440,11 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
        * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
        */
       folderPath?: string
+      /**
+       * Set to `true` to prevent all form submission attachments from being
+       * uploaded to SharePoint.
+       */
+      excludeAttachments: boolean
     }
 }
 
