@@ -396,18 +396,21 @@ export type SharepointCreateListItemSubmissionEventMapping =
     sharepointColumnDefinitionName: string
   }>
 
+type SharepointSubmissionEventBase = {
+  /** The id of the entra application in integration configuration */
+  integrationEntraApplicationId: string
+  /** The Sharepoint Site */
+  sharepointSite: {
+    /** The id of the Sharepoint Site */
+    id: string
+    /** The display name of the Sharepoint Site */
+    displayName: string
+  }
+}
+
 export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_CREATE_LIST_ITEM'
-  configuration: {
-    /** The id of the entra application in integration configuration */
-    integrationEntraApplicationId: string
-    /** The Sharepoint Site */
-    sharepointSite: {
-      /** The id of the Sharepoint Site */
-      id: string
-      /** The display name of the Sharepoint Site */
-      displayName: string
-    }
+  configuration: SharepointSubmissionEventBase & {
     /** The Sharepoint List */
     sharepointList: {
       /** The id of the Sharepoint List */
@@ -418,6 +421,26 @@ export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
     /** Array of mappings. */
     mapping: SharepointCreateListItemSubmissionEventMapping[]
   }
+}
+
+export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
+  type: 'SHAREPOINT_STORE_FILES'
+  configuration: PDFConfiguration &
+    SharepointSubmissionEventBase & {
+      sharepointDriveId: {
+        /** The id of the Sharepoint Drive */
+        id: string
+        /** The display name of the Sharepoint Drive */
+        displayName: string
+      }
+      /**
+       * The folder within the selected drive to upload files to. If not
+       * specified the root of the drive will be used. If the folder does not
+       * exist it will be created as part of the upload. Path must begin with a
+       * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
+       */
+      folderPath?: string
+    }
 }
 
 // EVENTS
@@ -441,6 +464,7 @@ export type FormWorkflowEvent =
   | FreshdeskCreateTicketSubmissionEvent
   | FreshdeskAddNoteToTicketSubmissionEvent
   | SharepointCreateListItemSubmissionEvent
+  | SharepointStoreFilesSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
