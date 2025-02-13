@@ -427,7 +427,7 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_STORE_FILES'
   configuration: PDFConfiguration &
     SharepointSubmissionEventBase & {
-      documentLibrary: {
+      sharepointDriveId: {
         /** The id of the Sharepoint Drive */
         id: string
         /** The display name of the Sharepoint Drive */
@@ -435,24 +435,11 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
       }
       /**
        * The folder within the selected drive to upload files to. If not
-       * specified the root of the drive will be used
+       * specified the root of the drive will be used. If the folder does not
+       * exist it will be created as part of the upload. Path must begin with a
+       * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
        */
-      existingFolder?: {
-        /** The id of the Sharepoint Folder */
-        id: string
-        /** The display name of the Sharepoint Folder */
-        displayName: string
-      }
-      /**
-       * The folder to create in sharepoint within the existing folder (or root
-       * if existing folder not specified). If the folder already exists the
-       * files will be uploaded into it. If not specified file will be created
-       * at the root of the existing folder/root folder.
-       */
-      customFolder?: {
-        /** The name of the for the new folder */
-        name: string
-      }
+      folderPath?: string
     }
 }
 
