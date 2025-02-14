@@ -427,7 +427,7 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_STORE_FILES'
   configuration: PDFConfiguration &
     SharepointSubmissionEventBase & {
-      sharepointDriveId: {
+      sharepointDrive: {
         /** The id of the Sharepoint Drive */
         id: string
         /** The display name of the Sharepoint Drive */
