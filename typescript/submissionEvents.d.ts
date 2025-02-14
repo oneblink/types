@@ -427,7 +427,7 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_STORE_FILES'
   configuration: PDFConfiguration &
     SharepointSubmissionEventBase & {
-      sharepointDriveId: {
+      sharepointDrive: {
         /** The id of the Sharepoint Drive */
         id: string
         /** The display name of the Sharepoint Drive */
@@ -440,6 +440,11 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
        * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
        */
       folderPath?: string
+      /**
+       * Set to `true` to prevent all form submission attachments from being
+       * uploaded to SharePoint.
+       */
+      excludeAttachments: boolean
     }
 }
 
