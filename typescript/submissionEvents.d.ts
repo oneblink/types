@@ -84,6 +84,19 @@ export type PdfSubmissionEventEmailTemplateMapping = {
       text: string
     }
 )
+
+export type BaseCustomPDFFieldMapping = {
+  /** The name of the field that will be replaced in the custom PDF. */
+  replaceableField: string
+}
+
+export type CustomPDFConfiguration = {
+  /** The URL of the PDF that will be used as a template. */
+  pdfUrl: string
+  /** The mapping for the custom PDF. */
+  mapping: FormWorkflowEventElementMapping<BaseCustomPDFFieldMapping>[]
+}
+
 export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** The name of the PDF file sent to the configured email address. */
   pdfFileName?: string
@@ -115,6 +128,8 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   includeExternalIdInPdf?: boolean
   /** The page size of the Generated PDF. */
   pdfSize?: FormSubmissionPDFPageSize
+  /** The configuration for the Custom PDF Template that can be uploaded and filled with data. */
+  customPDF?: CustomPDFConfiguration
 }
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
