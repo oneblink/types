@@ -92,7 +92,7 @@ export type BaseCustomPDFFieldMapping = {
 
 export type CustomPDFConfiguration = {
   /** The Id of the custom PDF that will be used. */
-  pdfId: number
+  pdfId: string
   /** The mapping for the custom PDF. */
   mapping: FormWorkflowEventElementMapping<BaseCustomPDFFieldMapping>[]
 }

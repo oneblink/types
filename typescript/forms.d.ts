@@ -931,7 +931,9 @@ export type ExternalIdGeneration =
   
 export type FormCustomPDF = {
   /** The Id of the custom PDF. */
-  id: number
+  id: string
+  /** The label of the custom PDF. */
+  label: string
   /** The S3 Configuration of the custom PDF.  */
   s3: S3Configuration
 }
