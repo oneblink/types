@@ -24,6 +24,7 @@ import { MiscTypes, SubmissionTypes } from '..'
 import { IntegrationGeoscape } from './integrations'
 import { GoogleMapsAddress } from './googleMaps'
 import { DeveloperKeyReference } from './keys'
+import { S3Configuration } from './aws'
 
 ////////////////////////////////////////
 // Element Types
@@ -927,6 +928,14 @@ export type ExternalIdGeneration =
   | EndpointConfiguration
   | ExternalIdGenerationReceiptId
 
+  
+export type FormCustomPDF = {
+  /** The Id of the custom PDF. */
+  id: number
+  /** The S3 Configuration of the custom PDF.  */
+  pdfUrl: S3Configuration
+}
+
 export type NewForm = {
   /** Name of the form. */
   name: string
@@ -1120,7 +1129,10 @@ export type NewForm = {
    * from the console
    */
   isArchived?: boolean
+  /** The custom PDFs that are associated with the form that can be used in place of an OOTB PDF. */
+  customPDFs: FormCustomPDF[]
 }
+
 
 export type Form = MiscTypes.IdResource & NewForm
 

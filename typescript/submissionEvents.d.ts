@@ -91,8 +91,8 @@ export type BaseCustomPDFFieldMapping = {
 }
 
 export type CustomPDFConfiguration = {
-  /** The URL of the PDF that will be used as a template. */
-  pdfUrl: string
+  /** The Id of the custom PDF that will be used. */
+  pdfId: number
   /** The mapping for the custom PDF. */
   mapping: FormWorkflowEventElementMapping<BaseCustomPDFFieldMapping>[]
 }
