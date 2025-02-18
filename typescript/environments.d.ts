@@ -92,6 +92,7 @@ export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
     isCloningFormPostSubmissionReceipt: boolean
     isCloningFormCustomCssClasses: boolean
     isCloningScheduledTasks: boolean
+    isCloningFormCustomPDFs: boolean
   }
 }
 
@@ -114,6 +115,7 @@ export interface FormMigrationOptions {
   serverValidation: boolean
   externalIdGenerationOnSubmit: boolean
   personalisation: boolean
+  customPDFs: boolean
   embeddedForms?: Array<{
     sourceElementId: string
     targetFormId: number
