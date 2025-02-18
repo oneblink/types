@@ -933,7 +933,7 @@ export type FormCustomPDF = {
   /** The Id of the custom PDF. */
   id: number
   /** The S3 Configuration of the custom PDF.  */
-  pdfUrl: S3Configuration
+  s3: S3Configuration
 }
 
 export type NewForm = {
@@ -1130,7 +1130,7 @@ export type NewForm = {
    */
   isArchived?: boolean
   /** The custom PDFs that are associated with the form that can be used in place of an OOTB PDF. */
-  customPDFs: FormCustomPDF[]
+  customPDFs?: FormCustomPDF[]
 }
 
 
