@@ -278,3 +278,64 @@ export type NylasSchedulingConfiguration = {
     [key: string]: string
   }
 }
+
+export type NylasCalendar = {
+  /**
+   * Calendar description: (Not supported for iCloud or EWS) A brief description
+   * of the calendar.
+   */
+  description: string
+  /** Grant ID: The ID of grant for the connected user. */
+  grant_id: string
+  /**
+   * Background color hex code: (Not supported for iCloud or EWS) The background
+   * color of the calendar, in hexadecimal format (for example, #0099EE). When
+   * empty, Nylas uses the default background color. You can set or modify this
+   * value using a PUT request only.
+   */
+  hex_color: string
+  /**
+   * Foreground color hex code: (Google only) The foreground color of the
+   * calendar, in hexadecimal format (for example, #0099EE). When empty, Nylas
+   * uses the default foreground color. You can modify this value using a PUT
+   * request only.
+   */
+  hex_foreground_color: string
+  /** ID: A globally unique object identifier. */
+  id: string
+  /**
+   * Is Owned By User: If true, indicates that the end user owns the calendar.
+   * This field cannot be modified once set.
+   */
+  is_owned_by_user: boolean
+  /** If true, indicates that the calendar is the primary for the grant. */
+  is_primary: boolean
+  /**
+   * (Not supported for iCloud or EWS) The geographic location of the calendar,
+   * as free-form text.
+   */
+  location: string
+  /**
+   * Metadata: The metadata associated with the object. For more information,
+   * see metadata.
+   */
+  metadata: {
+    /** A key-value pair. */
+    [anyKey: string]: string
+  }
+  /** The name of the calendar. */
+  name: string
+  /** The type of object. */
+  object: 'calendar'
+  /**
+   * Read-only setting: Set by the provider. If true, indicates that the
+   * calendar is read-only. If the calendar is read-only, all of its events have
+   * read_only set to true. This field cannot be modified.
+   */
+  read_only: boolean
+  /**
+   * Calendar timezone: (Google and virtual calendars only) An IANA timezone
+   * database formatted string (for example, America/New_York).
+   */
+  timezone: string
+}
