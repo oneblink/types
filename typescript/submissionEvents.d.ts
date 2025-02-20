@@ -88,47 +88,37 @@ export type PdfSubmissionEventEmailTemplateMapping = {
 export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** The name of the PDF file sent to the configured email address. */
   pdfFileName?: string
-} & (
-    | {
-        pdfType?: 'STANDARD'
-        /**
-         * Whether the submission id should be included in the generated pdf
-         * (defaults to `false`).
-         */
-        includeSubmissionIdInPdf?: boolean
-        /**
-         * Whether the payment details associated with the submission should be
-         * included in the generated pdf (defaults to `false`).
-         */
-        includePaymentInPdf?: boolean
-        /**
-         * Whether the calendar booking details associated with the submission
-         * should be included in the generated pdf (defaults to `false`)
-         */
-        includeCalendarBookingInPdf?: boolean
-        /** An array of element ids to exclude from the submission when generating pdf. */
-        excludedElementIds?: string[]
-        /** An array of class names to exclude from the submission when generating pdf. */
-        excludedCSSClasses?: string[]
-        /**
-         * Whether pages in the form submission should translate to page breaks
-         * in the PDF.
-         */
-        usePagesAsBreaks?: boolean
-        /**
-         * Whether the external id should be included in the generated pdf
-         * (defaults to `false`).
-         */
-        includeExternalIdInPdf?: boolean
-        /** The page size of the Generated PDF. */
-        pdfSize?: FormSubmissionPDFPageSize
-      }
-    | {
-        pdfType: 'CUSTOM'
-        /** The identifier for a Custom PDF. */
-        customPdfId?: string
-      }
-  )
+  /**
+   * Whether the submission id should be included in the generated pdf (defaults
+   * to `false`).
+   */
+  includeSubmissionIdInPdf?: boolean
+  /**
+   * Whether the payment details associated with the submission should be
+   * included in the generated pdf (defaults to `false`).
+   */
+  includePaymentInPdf?: boolean
+  /**
+   * Whether the calendar booking details associated with the submission should
+   * be included in the generated pdf (defaults to `false`)
+   */
+  includeCalendarBookingInPdf?: boolean
+  /** An array of element ids to exclude from the submission when generating pdf. */
+  excludedElementIds?: string[]
+  /** An array of class names to exclude from the submission when generating pdf. */
+  excludedCSSClasses?: string[]
+  /** Whether pages in the form submission should translate to page breaks in the PDF. */
+  usePagesAsBreaks?: boolean
+  /**
+   * Whether the external id should be included in the generated pdf (defaults
+   * to `false`).
+   */
+  includeExternalIdInPdf?: boolean
+  /** The page size of the Generated PDF. */
+  pdfSize?: FormSubmissionPDFPageSize
+  /** The identifier for a Custom PDF. */
+  customPdfId?: string
+}
 
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
