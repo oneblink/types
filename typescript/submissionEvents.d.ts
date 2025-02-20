@@ -85,52 +85,51 @@ export type PdfSubmissionEventEmailTemplateMapping = {
     }
 )
 
-export type BaseCustomPDFFieldMapping = {
-  /** The name of the field that will be replaced in the custom PDF. */
-  replaceableField: string
-}
-
-export type CustomPDFConfiguration = {
-  /** The Id of the custom PDF that will be used. */
-  pdfId: string
-  /** The mapping for the custom PDF. */
-  mapping: FormWorkflowEventElementMapping<BaseCustomPDFFieldMapping>[]
-}
-
 export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** The name of the PDF file sent to the configured email address. */
   pdfFileName?: string
-  /**
-   * Whether the submission id should be included in the generated pdf (defaults
-   * to `false`).
-   */
-  includeSubmissionIdInPdf?: boolean
-  /**
-   * Whether the payment details associated with the submission should be
-   * included in the generated pdf (defaults to `false`).
-   */
-  includePaymentInPdf?: boolean
-  /**
-   * Whether the calendar booking details associated with the submission should
-   * be included in the generated pdf (defaults to `false`)
-   */
-  includeCalendarBookingInPdf?: boolean
-  /** An array of element ids to exclude from the submission when generating pdf. */
-  excludedElementIds?: string[]
-  /** An array of class names to exclude from the submission when generating pdf. */
-  excludedCSSClasses?: string[]
-  /** Whether pages in the form submission should translate to page breaks in the PDF. */
-  usePagesAsBreaks?: boolean
-  /**
-   * Whether the external id should be included in the generated pdf (defaults
-   * to `false`).
-   */
-  includeExternalIdInPdf?: boolean
-  /** The page size of the Generated PDF. */
-  pdfSize?: FormSubmissionPDFPageSize
-  /** The configuration for the Custom PDF Template that can be uploaded and filled with data. */
-  customPDF?: CustomPDFConfiguration
-}
+} & (
+    | {
+        pdfType?: 'STANDARD'
+        /**
+         * Whether the submission id should be included in the generated pdf
+         * (defaults to `false`).
+         */
+        includeSubmissionIdInPdf?: boolean
+        /**
+         * Whether the payment details associated with the submission should be
+         * included in the generated pdf (defaults to `false`).
+         */
+        includePaymentInPdf?: boolean
+        /**
+         * Whether the calendar booking details associated with the submission
+         * should be included in the generated pdf (defaults to `false`)
+         */
+        includeCalendarBookingInPdf?: boolean
+        /** An array of element ids to exclude from the submission when generating pdf. */
+        excludedElementIds?: string[]
+        /** An array of class names to exclude from the submission when generating pdf. */
+        excludedCSSClasses?: string[]
+        /**
+         * Whether pages in the form submission should translate to page breaks
+         * in the PDF.
+         */
+        usePagesAsBreaks?: boolean
+        /**
+         * Whether the external id should be included in the generated pdf
+         * (defaults to `false`).
+         */
+        includeExternalIdInPdf?: boolean
+        /** The page size of the Generated PDF. */
+        pdfSize?: FormSubmissionPDFPageSize
+      }
+    | {
+        pdfType: 'CUSTOM'
+        /** The identifier for a Custom PDF. */
+        customPdfId?: string
+      }
+  )
+
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
   email?: string
@@ -326,12 +325,12 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
   }
 }
 
-export type FormWorkflowEventElementMapping<T> = T &
+export type FormElementMapping<T> = T &
   (
     | {
         type: 'FORM_FORM_ELEMENT'
         formElementId: string
-        mapping: FormWorkflowEventElementMapping<T>
+        mapping: FormElementMapping<T>
       }
     | {
         type: 'FORM_ELEMENT'
@@ -354,7 +353,7 @@ type BaseFreshdeskSubmissionEventFieldMapping = {
 }
 
 export type FreshdeskSubmissionEventFieldMapping =
-  | FormWorkflowEventElementMapping<BaseFreshdeskSubmissionEventFieldMapping>
+  | FormElementMapping<BaseFreshdeskSubmissionEventFieldMapping>
   | (BaseFreshdeskSubmissionEventFieldMapping & {
       type: 'DEPENDENT_FIELD_VALUE'
       dependentFieldValue: {
@@ -403,7 +402,7 @@ export type NylasSubmissionEvent = FormEventBase & {
 }
 
 export type SharepointCreateListItemSubmissionEventMapping =
-  FormWorkflowEventElementMapping<{
+  FormElementMapping<{
     /**
      * The API-facing name of the column. Use this in the `fields` property when
      * creating the list item.

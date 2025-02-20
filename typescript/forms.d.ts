@@ -7,6 +7,7 @@ import type {
   FormPaymentEvent,
   FormSchedulingEvent,
   PDFConfiguration,
+  FormElementMapping,
 } from './submissionEvents'
 import type { ConditionalPredicate } from './conditions'
 import type {
@@ -928,14 +929,18 @@ export type ExternalIdGeneration =
   | EndpointConfiguration
   | ExternalIdGenerationReceiptId
 
-  
 export type FormCustomPDF = {
   /** The Id of the custom PDF. */
   id: string
   /** The label of the custom PDF. */
   label: string
-  /** The S3 Configuration of the custom PDF.  */
+  /** The S3 Configuration of the custom PDF. */
   s3: S3Configuration
+  /** The mapping for the custom PDF. */
+  mapping: FormElementMapping<{
+    /** The name of the field that will be replaced in the custom PDF. */
+    replaceableField: string
+  }>[]
 }
 
 export type NewForm = {
@@ -1131,10 +1136,12 @@ export type NewForm = {
    * from the console
    */
   isArchived?: boolean
-  /** The custom PDFs that are associated with the form that can be used in place of an OOTB PDF. */
+  /**
+   * The custom PDFs that are associated with the form that can be used in place
+   * of an OOTB PDF.
+   */
   customPDFs?: FormCustomPDF[]
 }
-
 
 export type Form = MiscTypes.IdResource & NewForm
 
