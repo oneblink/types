@@ -328,7 +328,7 @@ export type FormElementMapping<T> = T &
       }
     | {
         type: 'VALUE'
-        value: number | string | boolean
+        value: number | string | boolean | string[]
       }
     | {
         type: 'SUBMISSION_ID'
