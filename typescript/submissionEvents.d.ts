@@ -411,13 +411,16 @@ export type NylasSubmissionEvent = FormEventBase & {
   }
 }
 
-export type SharepointCreateListItemSubmissionEventMapping = FormElementMapping<{
+export type SharepointColumnResourceDefinitionBase = {
   /**
    * The API-facing name of the column. Use this in the `fields` property when
    * creating the list item.
    */
   sharepointColumnDefinitionName: string
-}>
+}
+
+export type SharepointCreateListItemSubmissionEventMapping =
+  FormElementMapping<SharepointColumnResourceDefinitionBase>
 
 type SharepointSubmissionEventBase = {
   /** The id of the entra application in integration configuration */
