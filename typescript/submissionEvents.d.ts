@@ -252,6 +252,11 @@ export type CPPaySubmissionEvent = FormEventBase & {
     elementId: string
     /** The id of the OneBlink -> CP Pay integration gateway to be used. */
     gatewayId: string
+    /**
+     * Whether or not to generate a token to allow downloading the form
+     * submission PDF after a payment.
+     */
+    allowPDFDownload?: PDFConfiguration
   }
 }
 
@@ -269,6 +274,11 @@ export type BPOINTSubmissionEvent = FormEventBase & {
     crn2?: string
     /** An optional crn string. */
     crn3?: string
+    /**
+     * Whether or not to generate a token to allow downloading the form
+     * submission PDF after a payment.
+     */
+    allowPDFDownload?: PDFConfiguration
   }
 }
 
@@ -284,6 +294,11 @@ export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
     environmentId: string
     /** A crn string. */
     customerReferenceNumber: string
+    /**
+     * Whether or not to generate a token to allow downloading the form
+     * submission PDF after a payment.
+     */
+    allowPDFDownload?: PDFConfiguration
   }
 }
 
@@ -312,6 +327,11 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
      * correct agency within NSW GovPay
      */
     subAgencyCode?: string
+    /**
+     * Whether or not to generate a token to allow downloading the form
+     * submission PDF after a payment.
+     */
+    allowPDFDownload?: PDFConfiguration
   }
 }
 
@@ -391,14 +411,13 @@ export type NylasSubmissionEvent = FormEventBase & {
   }
 }
 
-export type SharepointCreateListItemSubmissionEventMapping =
-  FormElementMapping<{
-    /**
-     * The API-facing name of the column. Use this in the `fields` property when
-     * creating the list item.
-     */
-    sharepointColumnDefinitionName: string
-  }>
+export type SharepointCreateListItemSubmissionEventMapping = FormElementMapping<{
+  /**
+   * The API-facing name of the column. Use this in the `fields` property when
+   * creating the list item.
+   */
+  sharepointColumnDefinitionName: string
+}>
 
 type SharepointSubmissionEventBase = {
   /** The id of the entra application in integration configuration */
