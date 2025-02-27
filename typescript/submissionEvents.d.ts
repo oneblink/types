@@ -254,7 +254,7 @@ export type CPPaySubmissionEvent = FormEventBase & {
     gatewayId: string
     /**
      * Whether or not to generate a token to allow downloading the form
-     * submission PDF after a successful submission.
+     * submission PDF after a payment.
      */
     allowPDFDownload?: PDFConfiguration
   }
@@ -276,7 +276,7 @@ export type BPOINTSubmissionEvent = FormEventBase & {
     crn3?: string
     /**
      * Whether or not to generate a token to allow downloading the form
-     * submission PDF after a successful submission.
+     * submission PDF after a payment.
      */
     allowPDFDownload?: PDFConfiguration
   }
@@ -296,7 +296,7 @@ export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
     customerReferenceNumber: string
     /**
      * Whether or not to generate a token to allow downloading the form
-     * submission PDF after a successful submission.
+     * submission PDF after a payment.
      */
     allowPDFDownload?: PDFConfiguration
   }
@@ -329,7 +329,7 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
     subAgencyCode?: string
     /**
      * Whether or not to generate a token to allow downloading the form
-     * submission PDF after a successful submission.
+     * submission PDF after a payment.
      */
     allowPDFDownload?: PDFConfiguration
   }
