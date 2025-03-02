@@ -1141,16 +1141,6 @@ export type NewForm = {
    * of an OOTB PDF.
    */
   customPDFs?: FormCustomPDF[]
-  /**
-   * Configure custom payment behaviour
-   */
-  paymentConfiguration?: {
-    /**
-     * Whether or not to generate a token to allow downloading the form
-     * submission PDF after a verified payment.
-     */
-    allowPDFDownload?: PDFConfiguration
-  }
 }
 
 export type Form = MiscTypes.IdResource & NewForm
