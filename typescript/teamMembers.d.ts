@@ -61,6 +61,7 @@ interface PermissionBase {
   privilege: RolePrivileges
   formsAppEnvironmentIds?: number[]
   temporaryPasswordExpiry?: string
+  isMfaRequired?: boolean
   isMfaEnabled?: boolean
   links: {
     organisations: string
