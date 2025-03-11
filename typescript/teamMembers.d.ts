@@ -59,8 +59,9 @@ type Role = NewRole & MiscTypes.IdResource
 interface PermissionBase {
   name?: string | null
   privilege: RolePrivileges
-  formsAppEnvironmentIds?: number[]
+  formsAppEnvironmentIds: number[]
   temporaryPasswordExpiry?: string
+  isMfaRequired?: boolean
   isMfaEnabled?: boolean
   links: {
     organisations: string
