@@ -118,6 +118,8 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   pdfSize?: FormSubmissionPDFPageSize
   /** The identifier for a Custom PDF. */
   customPdfId?: string
+  /** Whether the Custom PDF will be editable after being generated (defaults to false) */
+  isCustomPdfEditable?: boolean
 }
 
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
