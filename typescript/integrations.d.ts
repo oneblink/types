@@ -275,7 +275,7 @@ export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
 export type IntegrationCivicRec = IntegrationBase & {
   type: 'CIVIC_REC'
   configuration: {
-    url: string
+    baseUrl: string
   }
 }
 
