@@ -458,6 +458,7 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
 
 export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
   type: 'CIVIC_REC_COMPLETE_CHECKOUT'
+  configuration: {}
 }
 
 // EVENTS
