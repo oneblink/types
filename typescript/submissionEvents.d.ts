@@ -456,6 +456,10 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
     }
 }
 
+export type CivicRecSubmissionEvent = FormEventBase & {
+  type: 'CIVIC_REC'
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -478,6 +482,7 @@ export type FormWorkflowEvent =
   | FreshdeskAddNoteToTicketSubmissionEvent
   | SharepointCreateListItemSubmissionEvent
   | SharepointStoreFilesSubmissionEvent
+  | CivicRecSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent

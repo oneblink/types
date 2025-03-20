@@ -17,6 +17,7 @@ export type IntegrationType =
   | 'GOOGLE_MAPS'
   | 'NYLAS'
   | 'SHAREPOINT'
+  | 'CIVIC_REC'
 
 type IntegrationBase = {
   organisationId: string
@@ -271,6 +272,13 @@ export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationCivicRec = IntegrationBase & {
+  type: 'CIVIC_REC'
+  configuration: {
+    url: string
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -301,3 +309,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationGoogleMaps<S>
   | IntegrationNylas
   | IntegrationSharepoint<S>
+  | IntegrationCivicRec
