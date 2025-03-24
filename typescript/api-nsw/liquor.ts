@@ -4,413 +4,413 @@
  */
 
 export interface paths {
-  "/oauth/client_credential/accesstoken": {
+  '/oauth/client_credential/accesstoken': {
     /** The client can request an access token using only its client credentials (or other supported means of authentication) when the client is requesting access to the protected resources under its control, or those of another resource owner that have been previously arranged with the authorization server. */
     get: {
       parameters: {
         query: {
           /** client_credentials */
-          grant_type: string;
-        };
+          grant_type: string
+        }
         header: {
           /** Base64 encoded value of <b>api_key:api_secret</b>. Eg 'Basic {Base64 encoded value of <b>api_key:api_secret</b>}' */
-          Authorization: string;
-        };
-      };
+          Authorization: string
+        }
+      }
       responses: {
         /** Success */
         200: {
-          schema: definitions["access_token_response"];
-        };
+          schema: definitions['access_token_response']
+        }
         /** Unauthorized */
         401: {
-          schema: definitions["access_token_failed_response"];
-        };
-      };
-    };
-  };
-  "/liquorregister/v1/browse": {
+          schema: definitions['access_token_failed_response']
+        }
+      }
+    }
+  }
+  '/liquorregister/v1/browse': {
     /** Provides the consumer with a search option to enter in partial information and returns a list of the search. */
     get: {
       parameters: {
         header: {
           /** Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security. */
-          Authorization: string;
+          Authorization: string
           /** Api key value obtained from your approved app. */
-          apikey: string;
-        };
+          apikey: string
+        }
         query: {
           /** The collection of words to be searched for. The minimum word length is two characters, noise words such as 'and', 'or' and 'the' are discarded. Most punctuation characters are discarded, the dash [-] and apostrophe [&#39;] characters being the only exceptions */
-          searchText: string;
-        };
-      };
+          searchText: string
+        }
+      }
       responses: {
         /** Success */
         200: {
-          schema: definitions["browse_results"];
-        };
+          schema: definitions['browse_results']
+        }
         /** Bad Request */
         400: {
-          schema: definitions["bad_request"];
-        };
+          schema: definitions['bad_request']
+        }
         /** Unauthorized */
         401: {
-          schema: definitions["invalid_token_response"];
-        };
+          schema: definitions['invalid_token_response']
+        }
         /** Internal Server Error */
         500: {
-          schema: definitions["internal_server_error"];
-        };
-      };
-    };
-  };
-  "/liquorregister/v1/verify": {
+          schema: definitions['internal_server_error']
+        }
+      }
+    }
+  }
+  '/liquorregister/v1/verify': {
     /** Provides the consumer with a search option to enter in partial information and returns a list of the search. It is used for quick verification of a licence. */
     get: {
       parameters: {
         query: {
           /** The licence number to be verified. */
-          licenceNumber: string;
-        };
+          licenceNumber: string
+        }
         header: {
           /** Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security. */
-          Authorization: string;
+          Authorization: string
           /** Api key value obtained from your approved app. */
-          apikey: string;
-        };
-      };
+          apikey: string
+        }
+      }
       responses: {
         /** Success */
         200: {
-          schema: definitions["verify_results"];
-        };
+          schema: definitions['verify_results']
+        }
         /** Bad Request */
         400: {
-          schema: definitions["bad_request"];
-        };
+          schema: definitions['bad_request']
+        }
         /** Unauthorized */
         401: {
-          schema: definitions["invalid_token_response"];
-        };
+          schema: definitions['invalid_token_response']
+        }
         /** Internal Server Error */
         500: {
-          schema: definitions["internal_server_error"];
-        };
-      };
-    };
-  };
-  "/liquorregister/v1/details": {
+          schema: definitions['internal_server_error']
+        }
+      }
+    }
+  }
+  '/liquorregister/v1/details': {
     /** Provides a set of detailed information about the individual licence selected that corresponds to the level of information seen on the detailed screen of the Public Register application. */
     get: {
       parameters: {
         header: {
           /** Bearer {token}, where <b>{token}</b> is the value obtained from accesstoken call under security. */
-          Authorization: string;
+          Authorization: string
           /** Api key value obtained from your approved app. */
-          apikey: string;
-        };
+          apikey: string
+        }
         query: {
           /** The 'licenceId' value for a licence returned by a browse or verify request. Every licence in the OneGov system is given a unique identifier. This item contains that unique identifier. */
-          licenceid: string;
-        };
-      };
+          licenceid: string
+        }
+      }
       responses: {
         /** Success */
         200: {
-          schema: definitions["details_results"];
-        };
+          schema: definitions['details_results']
+        }
         /** Bad Request */
         400: {
-          schema: definitions["bad_request"];
-        };
+          schema: definitions['bad_request']
+        }
         /** Unauthorized */
         401: {
-          schema: definitions["invalid_token_response"];
-        };
+          schema: definitions['invalid_token_response']
+        }
         /** Internal Server Error */
         500: {
-          schema: definitions["internal_server_error"];
-        };
-      };
-    };
-  };
+          schema: definitions['internal_server_error']
+        }
+      }
+    }
+  }
 }
 
 export interface definitions {
   /** internal_server_error */
   internal_server_error: {
-    message: string;
-  };
+    message: string
+  }
   /** bad_request */
   bad_request: {
-    message: string;
-  };
+    message: string
+  }
   /** invalid_token_response */
   invalid_token_response: {
-    message: string;
-  };
+    message: string
+  }
   /** access_token_failed_response */
   access_token_failed_response: {
-    ErrorCode: string;
-    Error: string;
-  };
+    ErrorCode: string
+    Error: string
+  }
   /** access_token_response */
   access_token_response: {
-    refresh_token_expires_in: string;
-    api_product_list_json: string[];
-    organization_name: string;
-    "developer.email": string;
-    token_type: string;
-    issued_at: string;
-    client_id: string;
-    access_token: string;
-    application_name: string;
-    scope: string;
-    expires_in: string;
-    refresh_count: string;
-    status: string;
+    refresh_token_expires_in: string
+    api_product_list_json: string[]
+    organization_name: string
+    'developer.email': string
+    token_type: string
+    issued_at: string
+    client_id: string
+    access_token: string
+    application_name: string
+    scope: string
+    expires_in: string
+    refresh_count: string
+    status: string
   } & {
-    api_product_list: unknown;
-  };
+    api_product_list: unknown
+  }
   browse_results: {
-    licenceID?: string;
-    licensee?: string;
-    licenceName?: string;
-    licenceNumber?: string;
-    licenceType?: string;
-    status?: string;
-    suburb?: string;
-    postcode?: string;
-    businessNames?: string;
-    categories?: string;
-    classes?: string;
-  }[];
+    licenceID?: string
+    licensee?: string
+    licenceName?: string
+    licenceNumber?: string
+    licenceType?: string
+    status?: string
+    suburb?: string
+    postcode?: string
+    businessNames?: string
+    categories?: string
+    classes?: string
+  }[]
   /** verify_results */
   verify_results: {
-    licenceID?: string;
-    licenceNumber?: string;
-    status?: string;
-    startDate?: string;
-    expiryDate?: string;
-    refusedDate?: string;
-    licenceType?: string;
-    licenceName?: string;
-    licensee?: string;
-    address?: string;
-    vehicleRegistration?: string;
-    businessNames?: string;
-    categories?: string;
-    classes?: string;
-    suburb?: string;
-    postcode?: string;
-  }[];
+    licenceID?: string
+    licenceNumber?: string
+    status?: string
+    startDate?: string
+    expiryDate?: string
+    refusedDate?: string
+    licenceType?: string
+    licenceName?: string
+    licensee?: string
+    address?: string
+    vehicleRegistration?: string
+    businessNames?: string
+    categories?: string
+    classes?: string
+    suburb?: string
+    postcode?: string
+  }[]
   /** details_results */
   details_results: {
     /** licensingAgency */
     licensingAgency?: {
       /** contactLink */
-      contactLink: string;
+      contactLink: string
       /** name */
-      name: string;
-    };
+      name: string
+    }
     /** licenceDetail */
     licenceDetail?: {
       /** addressType */
-      addressType?: string;
+      addressType?: string
       /** address */
-      address?: string;
+      address?: string
       /** licenceName */
-      licenceName?: string;
+      licenceName?: string
       /** licenceNumber */
-      licenceNumber?: string;
+      licenceNumber?: string
       /** licensee */
-      licensee?: string;
+      licensee?: string
       /** licenceType */
-      licenceType?: string;
+      licenceType?: string
       /** licenseeBirthdate */
-      licenseeBirthdate?: string;
+      licenseeBirthdate?: string
       /** status */
-      status?: string;
+      status?: string
       /** licenceTypeName */
-      licenceTypeName?: string;
+      licenceTypeName?: string
       /** refusedDate */
-      refusedDate?: string;
+      refusedDate?: string
       /** startDate */
-      startDate?: string;
+      startDate?: string
       /** expiryDate */
-      expiryDate?: string;
+      expiryDate?: string
       /** licenceeABN */
-      licenceeABN?: string;
+      licenceeABN?: string
       /** licenceeACN */
-      licenceeACN?: string;
-    };
+      licenceeACN?: string
+    }
     /** licenceClasses */
     licenceClasses?: {
-      className?: string;
-      isActive?: string;
-      description?: string;
-      startDate?: string;
-      endDate?: string;
-    }[];
+      className?: string
+      isActive?: string
+      description?: string
+      startDate?: string
+      endDate?: string
+    }[]
     /** conditions */
     conditions?: {
-      licenceClass?: string;
-      isActive?: string;
-      description?: string;
-      startDate?: string;
-      endDate?: string;
-    }[];
+      licenceClass?: string
+      isActive?: string
+      description?: string
+      startDate?: string
+      endDate?: string
+    }[]
     /** histories */
-    histories?: string[];
+    histories?: string[]
     /** premises */
     premises?: {
-      type?: string;
-      businessName?: string;
-      businessAddress?: string;
-    }[];
+      type?: string
+      businessName?: string
+      businessAddress?: string
+    }[]
     /** vehicleRegistrations */
     vehicleRegistrations?: {
-      vehicleRegistrationNumber?: string;
-    }[];
+      vehicleRegistrationNumber?: string
+    }[]
     /** businessNames */
     businessNames?: {
-      businessName?: string;
-    }[];
+      businessName?: string
+    }[]
     /** administration */
     administration?: {
       /** manager */
       manager?: {
-        licenceNumber?: string;
-        surname?: string;
-        firstName?: string;
-        dateAppointed?: string;
-      };
+        licenceNumber?: string
+        surname?: string
+        firstName?: string
+        dateAppointed?: string
+      }
       /** receiver */
       receiver?: {
-        surname?: string;
-        firstName?: string;
-        phoneNumber?: string;
-        dateAppointed?: string;
-      };
+        surname?: string
+        firstName?: string
+        phoneNumber?: string
+        dateAppointed?: string
+      }
       /** administrators */
       administrators?: {
-        surname?: string;
-        firstName?: string;
-        dateAppointed?: string;
-        dateCeased?: string;
-        isActive?: string;
-      }[];
-    };
+        surname?: string
+        firstName?: string
+        dateAppointed?: string
+        dateCeased?: string
+        isActive?: string
+      }[]
+    }
     /** associatedLicences */
     associatedLicences?: {
-      name?: unknown;
-      isActive?: string;
-      licenceNumber?: string;
-      licenceStatus?: string;
-      startDate?: string;
-      endDate?: string;
-    }[];
+      name?: unknown
+      isActive?: string
+      licenceNumber?: string
+      licenceStatus?: string
+      startDate?: string
+      endDate?: string
+    }[]
     /** associatedParties */
     associatedParties?: {
-      name?: string;
-      isActive?: string;
-      role?: string;
-      dateOfBirth?: string;
-      yearOfBirth?: string;
-      startDate?: string;
-      endDate?: string;
-      address?: string;
-    }[];
+      name?: string
+      isActive?: string
+      role?: string
+      dateOfBirth?: string
+      yearOfBirth?: string
+      startDate?: string
+      endDate?: string
+      address?: string
+    }[]
     /** complianceActions */
     complianceActions?: {
       /** refusedRenewals */
       refusedRenewals?: {
-        dateRefused?: string;
-        isActive?: string;
-      }[];
+        dateRefused?: string
+        isActive?: string
+      }[]
       /** statusInstruction */
-      statusInstruction?: string[];
+      statusInstruction?: string[]
       /** disciplinaryActions */
       disciplinaryActions?: {
-        name?: string;
-        section?: string;
-        act?: string;
-        penalty?: string;
-        date?: string;
-        startDate?: string;
-        EndDate?: string;
-      }[];
+        name?: string
+        section?: string
+        act?: string
+        penalty?: string
+        date?: string
+        startDate?: string
+        EndDate?: string
+      }[]
       /** suspensions */
       suspensions?: {
-        name?: string;
-        startDate?: string;
-        endDate?: string;
-      }[];
+        name?: string
+        startDate?: string
+        endDate?: string
+      }[]
       /** prosecutions */
       prosecutions?: {
-        isActive?: string;
-        offence?: string;
-        section?: string;
-        act?: string;
-        penalty?: string;
-        date?: string;
-        court?: string;
-        result?: string;
-      }[];
+        isActive?: string
+        offence?: string
+        section?: string
+        act?: string
+        penalty?: string
+        date?: string
+        court?: string
+        result?: string
+      }[]
       /** infringementNotices */
       infringementNotices?: {
-        name?: string;
-        section?: string;
-        act?: string;
-        penalty?: string;
-        date?: string;
-      }[];
+        name?: string
+        section?: string
+        act?: string
+        penalty?: string
+        date?: string
+      }[]
       /** ctttOrders */
       ctttOrders?: {
-        judgementDate?: string;
-        complyByDate?: string;
-      }[];
+        judgementDate?: string
+        complyByDate?: string
+      }[]
       /** publicWarnings */
       publicWarnings?: {
-        isActive?: string;
-        publicWarningText?: string;
-      }[];
-      publicWarningsCount?: number;
+        isActive?: string
+        publicWarningText?: string
+      }[]
+      publicWarningsCount?: number
       /** insuranceClaimCounts */
       insuranceClaimCounts?: {
-        claimCount?: number;
-        claimCountOldScheme?: number;
-        insuranceClaimsPaid?: number;
-        statutoryInsuranceClaimsPaid?: number;
-      };
-      cautionReprimandCount?: number;
-    };
+        claimCount?: number
+        claimCountOldScheme?: number
+        insuranceClaimsPaid?: number
+        statutoryInsuranceClaimsPaid?: number
+      }
+      cautionReprimandCount?: number
+    }
     /** venues */
     venues?: {
-      type?: string;
-      address?: string;
-    }[];
+      type?: string
+      address?: string
+    }[]
     /** buildingSites */
     buildingSites?: {
-      address?: string;
-      councilDANumber?: string;
-      complyingDCNumber?: string;
-      constructionCertificateNumber?: string;
-      ownerBuilderWorkDescription?: string;
-    };
+      address?: string
+      councilDANumber?: string
+      complyingDCNumber?: string
+      constructionCertificateNumber?: string
+      ownerBuilderWorkDescription?: string
+    }
     /** drawDetails */
     drawDetails?: {
-      drawDateTime?: string;
-    }[];
+      drawDateTime?: string
+    }[]
     /** lotteryDetails */
     lotteryDetails?: {
-      lotteryName?: string;
-    }[];
+      lotteryName?: string
+    }[]
     /** prizeDetails */
     prizeDetails?: {
-      totalValueOfPrizesInNSW?: string;
-    }[];
-  };
+      totalValueOfPrizesInNSW?: string
+    }[]
+  }
 }
 
 export interface operations {}
