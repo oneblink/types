@@ -1219,7 +1219,7 @@ export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 export type NewFormElementOptionSetSharePointListColumn =
   NewFormElementOptionSetBase & {
     type: 'SHAREPOINT_LIST_COLUMN'
-    sharepointConfiguration: {
+    environments: {
       /** The id of the entra application in integration configuration */
       integrationEntraApplicationId: string
       /** The id of the Sharepoint Site */
@@ -1228,7 +1228,7 @@ export type NewFormElementOptionSetSharePointListColumn =
       listId: string
       /** The id of the column to use as a List */
       columnId: string
-    }
+    }[]
   }
 export type FormElementOptionSetSharePointListColumn = IdResource &
   NewFormElementOptionSetSharePointListColumn
@@ -1237,11 +1237,13 @@ export type NewFormElementOptionSet =
   | NewFormElementOptionSetStatic
   | NewFormElementOptionSetHostedApi
   | NewFormElementOptionSetUrl
+  | NewFormElementOptionSetSharePointListColumn
 
 export type FormElementOptionSet =
   | FormElementOptionSetStatic
   | FormElementOptionSetHostedApi
   | FormElementOptionSetUrl
+  | FormElementOptionSetSharePointListColumn
 
 export type FormElementOptionSetSearchParameters = {
   organisationIds: string[]
