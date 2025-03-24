@@ -5,15 +5,15 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Messages = string[]
+export type Messages = string[];
 
 export interface AddressSuggestion {
   suggest: {
-    id?: string
-    address?: string
-    rank?: number
-    [k: string]: unknown
-  }[]
-  messages?: Messages
-  [k: string]: unknown
+    id?: string;
+    address?: string;
+    rank?: number;
+    [k: string]: unknown;
+  }[];
+  messages?: Messages;
+  [k: string]: unknown;
 }

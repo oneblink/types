@@ -49,7 +49,6 @@ export type CDNEnvironment = NewCDNEnvironment & {
 }
 
 export type WebApp = CDN
-export type NewWebAppEnvironmentDistributionConfiguration =
-  NewCDNEnvironmentDistributionConfiguration
+export type NewWebAppEnvironmentDistributionConfiguration = NewCDNEnvironmentDistributionConfiguration
 export type NewWebAppEnvironment = NewCDNEnvironment
 export type WebAppEnvironment = CDNEnvironment
