@@ -1,2 +1,5 @@
 typescript/cp-hcms/*.ts
 typescript/cp-pay/*.ts
+typescript/api-nsw/*.ts
+typescript/geoscape/*.ts
+typescript/point/*.ts
