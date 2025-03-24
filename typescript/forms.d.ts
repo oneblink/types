@@ -1216,21 +1216,36 @@ export type NewFormElementOptionSetUrl = NewFormElementOptionSetBase & {
 }
 export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 
+export type FormElementOptionSetEnvironmentSharePointListColumn =
+  FormElementEnvironmentBase & {
+    /** The id of the entra application in integration configuration */
+    integrationEntraApplicationId: string
+    /** The Sharepoint Site */
+    sharepointSite: {
+      /** The id of the Sharepoint Site */
+      id: string
+      /** The display name of the Sharepoint Site */
+      displayName: string
+    }
+    /** The Sharepoint List */
+    sharepointList: {
+      /** The id of the Sharepoint List */
+      id: string
+      /** The display name of the Sharepoint List */
+      displayName: string
+    }
+    /** The Sharepoint Column */
+    sharepointColumn: {
+      /** The id of the Sharepoint Column */
+      id: string
+      /** The display name of the Sharepoint Column */
+      displayName: string
+    }
+  }
 export type NewFormElementOptionSetSharePointListColumn =
   NewFormElementOptionSetBase & {
     type: 'SHAREPOINT_LIST_COLUMN'
-    environments: Array<
-      FormElementEnvironmentBase & {
-        /** The id of the entra application in integration configuration */
-        integrationEntraApplicationId: string
-        /** The id of the Sharepoint Site */
-        siteId: string
-        /** The id of the Sharepoint List */
-        listId: string
-        /** The id of the column to use as a List */
-        columnId: string
-      }
-    >
+    environments: FormElementOptionSetEnvironmentSharePointListColumn[]
   }
 export type FormElementOptionSetSharePointListColumn = IdResource &
   NewFormElementOptionSetSharePointListColumn
