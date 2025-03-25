@@ -490,6 +490,11 @@ export type PointAddressElement = {
   addressTypeFilter?: string[]
   /** Custom autocomplete attributes that will be added to the element during rendering */
   autocompleteAttributes?: string[]
+  /**
+   * Determine if address information should be displayed to user after
+   * selecting an address.
+   */
+  isDisplayingAddressInformation?: boolean
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
