@@ -290,6 +290,11 @@ export type DeleteIntegrationValidationResults = {
     formsAppName: string
     integrationEnvironmentIds?: string[]
   }>
+  optionSets: Array<{
+    optionSetId: number
+    optionSetName: string
+    integrationEnvironmentIds?: string[]
+  }>
 }
 
 export type Integration<S = SavedSecret> =
