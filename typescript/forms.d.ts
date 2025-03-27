@@ -1126,7 +1126,7 @@ export type NewForm = {
    * Sharepoint entra application id to be used for any sharepoint elements or
    * workflow events
    */
-  sharepointEntraApplicationId?: string
+  sharepointIntegrationEntraApplicationId?: string
   /** Unique domain safe text to identify the form */
   slug?: string
   /** Conditionally enable form submission */
