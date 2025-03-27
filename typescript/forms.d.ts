@@ -1122,6 +1122,8 @@ export type NewForm = {
   pointAddressEnvironmentId?: string
   /** Whether or not Geoscape elements can be configured for this form */
   allowGeoscapeAddresses?: boolean
+  /** Sharepoint entra application id */
+  sharepointEntraApplicationId?: string
   /** Unique domain safe text to identify the form */
   slug?: string
   /** Conditionally enable form submission */
