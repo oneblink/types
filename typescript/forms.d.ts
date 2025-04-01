@@ -1182,6 +1182,7 @@ export type FormQuerystringParameters = {
 export type NewFormElementOptionSetBase = {
   name: string
   organisationId: string
+  requiresAuthorisation?: boolean
 }
 
 // Static Options
