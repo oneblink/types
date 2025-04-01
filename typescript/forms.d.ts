@@ -1275,6 +1275,7 @@ export type FormElementOptionSet =
 
 export type FormElementOptionSetSearchParameters = {
   organisationIds: string[]
+  requiresAuthorisation?: boolean
   limit?: number
   offset?: number
 }
