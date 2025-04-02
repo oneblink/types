@@ -272,10 +272,11 @@ export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationCivicRec = IntegrationBase & {
+export type IntegrationCivicRec<S = SavedSecret> = IntegrationBase & {
   type: 'CIVIC_REC'
   configuration: {
     baseUrl: string
+    secret: ConstrainedSecret<S>
   }
 }
 
