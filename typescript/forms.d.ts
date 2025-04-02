@@ -1267,13 +1267,6 @@ export type FormElementOptionSet =
   | FormElementOptionSetUrl
   | FormElementOptionSetSharePointListColumn
 
-export type FormElementOptionSetSearchParameters = {
-  organisationIds: string[]
-  requiresAuthorisation?: boolean
-  limit?: number
-  offset?: number
-}
-
 //
 //
 // Lookups
@@ -1410,9 +1403,6 @@ export type NewFormElementLookup =
 export type FormElementLookup =
   | FormElementLookupUrl
   | FormElementLookupStaticData
-
-export type FormElementLookupSearchParameters =
-  FormElementOptionSetSearchParameters
 
 export type FormElementLookupSearchResponse = {
   formElementLookups: FormElementLookup[]
