@@ -315,4 +315,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationGoogleMaps<S>
   | IntegrationNylas
   | IntegrationSharepoint<S>
-  | IntegrationCivicRec
+  | IntegrationCivicRec<S>
