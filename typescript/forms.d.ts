@@ -1122,11 +1122,6 @@ export type NewForm = {
   pointAddressEnvironmentId?: string
   /** Whether or not Geoscape elements can be configured for this form */
   allowGeoscapeAddresses?: boolean
-  /**
-   * Sharepoint entra application id to be used for any sharepoint elements or
-   * workflow events
-   */
-  sharepointIntegrationEntraApplicationId?: string
   /** Unique domain safe text to identify the form */
   slug?: string
   /** Conditionally enable form submission */
@@ -1182,7 +1177,6 @@ export type FormQuerystringParameters = {
 export type NewFormElementOptionSetBase = {
   name: string
   organisationId: string
-  requiresAuthorisation?: boolean
 }
 
 // Static Options
