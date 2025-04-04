@@ -11,3 +11,13 @@ export type Addresses = {
   rank?: number;
   [k: string]: unknown;
 }[];
+
+export type AddressesV3 = {
+  suggest?: {
+    id?: string;
+    address?: string;
+    rank?: number;
+    [k: string]: unknown;
+  }[];
+
+};

@@ -180,7 +180,14 @@ export type IntegrationPointEnvironment<S = SavedSecret> = {
   id: string
   label: string
   apiKey: ConstrainedSecret<S>
-}
+} & (
+  | {
+      version?: 'v2'
+    }
+  | {
+      version: 'v3'
+    }
+)
 
 export type IntegrationPoint<S = SavedSecret> = IntegrationBase & {
   type: 'POINT'

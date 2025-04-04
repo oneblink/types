@@ -1,5 +1,9 @@
 import { GeoscapeAddress } from './geoscape'
-import { PointAddress, PointStatesAndTerritories } from './point'
+import {
+  PointAddress,
+  PointAddressResponseV3,
+  PointStatesAndTerritories,
+} from './point'
 import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
 import type {
@@ -484,7 +488,6 @@ export type GeoscapeAddressElement = {
 
 export type PointAddressElement = {
   type: 'pointAddress'
-  defaultValue?: PointAddress
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
@@ -497,7 +500,17 @@ export type PointAddressElement = {
   isDisplayingAddressInformation?: boolean
 } & LookupFormElement &
   FormElementRequired &
-  FormElementReadOnly
+  FormElementReadOnly &
+  (
+    | {
+        defaultValue?: PointAddress
+        version?: 'v2'
+      }
+    | {
+        defaultValue?: PointAddressResponseV3
+        version: 'v3'
+      }
+  )
 
 export type GoogleAddressElement = {
   type: 'googleAddress'
