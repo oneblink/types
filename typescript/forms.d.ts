@@ -26,6 +26,7 @@ import { IntegrationGeoscape } from './integrations'
 import { GoogleMapsAddress } from './googleMaps'
 import { DeveloperKeyReference } from './keys'
 import { S3Configuration } from './aws'
+import { ArcGISWebMapElementValue } from './arcgis'
 
 ////////////////////////////////////////
 // Element Types
@@ -566,11 +567,14 @@ export type APINSWLiquorLicenceElement = {
   FormElementRequired &
   FormElementReadOnly
 
-export type ArcGISWebMapElement = FormElementBase & {
+export type ArcGISWebMapElement = {
   type: 'arcGISWebMap'
   webMapId: string
   showLayerPanel: boolean
-}
+  defaultValue?: ArcGISWebMapElementValue
+} & LookupFormElement &
+  FormElementRequired &
+  FormElementReadOnly
 
 /**
  * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
