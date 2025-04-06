@@ -7,10 +7,13 @@ type ArcGISGraphic = Record<string, unknown>
 
 export type ArcGISWebMapElementValue = {
   /**
-   * A representation of the Graphics created via the drawing tool, not intended to be modified externally (ie. in lookups).
+   * An array of Graphics created via the drawing tool, not intended to be modified externally (ie. in lookups).
    * To modify drawn Graphics within a lookup, use the `drawingLayer` property instead.
    */
   userInput?: ArcGISGraphic[]
+  /**
+   * An array of Graphics created via the drawing tool, intended for modification in lookups.
+   */
   drawingLayer?: ArcGISGraphic[]
   layers?: {
     title: string
