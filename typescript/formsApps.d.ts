@@ -19,13 +19,25 @@ type FormsAppBaseMenuItem = {
   icon: string
 }
 
-export type FormsAppScreenMenuItem = FormsAppBaseMenuItem & {
-  /** Type of menu item */
-  type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PENDING_SUBMISSIONS' | 'PROFILE'
+type FormsAppScreenMenuItemBase = FormsAppBaseMenuItem & {
   /** If true, menu item will be hidden */
   isHidden: boolean
   /** If true, menu item will be the default item shown */
   isDefault: boolean
+}
+
+export type FormsAppPendingSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
+  /** Type of menu item */
+  type: 'PENDING_SUBMISSIONS'
+  /**
+   * If true, submissions will always go through the pending queuing and be
+   * submitted in the background
+   */
+  isAlwaysSubmittingViaPendingQueue?: boolean
+}
+export type FormsAppScreenMenuItem = FormsAppScreenMenuItemBase & {
+  /** Type of menu item */
+  type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PROFILE'
 }
 
 export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
@@ -118,6 +130,7 @@ export type FormsAppMenuItem =
   | FormsAppHrefMenuItem
   | FormsAppContainerMenuItem
   | FormsAppFormMenuItem
+  | FormsAppPendingSubmissionsMenuItem
   | FormsAppScreenMenuItem
   | FormsAppScheduledTasksMenuItem
   | FormsAppScheduledTasksGroupMenuItem
