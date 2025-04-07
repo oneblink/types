@@ -582,7 +582,7 @@ export type APINSWLiquorLicenceElement = {
 
 export type ArcGISWebMapElement = {
   type: 'arcGISWebMap'
-  webMapId: string
+  webMapId?: string
   showLayerPanel: boolean
   defaultValue?: ArcGISWebMapElementValue
 } & LookupFormElement &
