@@ -19,4 +19,9 @@ export type ArcGISWebMapElementValue = {
     title: string
     graphics: ArcGISGraphic[]
   }[]
+  view?: {
+    zoom: number
+    latitude: number
+    longitude: number
+  }
 }
