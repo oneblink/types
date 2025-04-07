@@ -33,7 +33,7 @@ export type FormsAppPendingSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
    * If true, submissions will always go through the pending queuing and be
    * submitted in the background
    */
-  isAlwaysSubmittingViaPendingQueue?: boolean
+  alwaysSubmitViaPendingQueue?: boolean
 }
 export type FormsAppScreenMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
