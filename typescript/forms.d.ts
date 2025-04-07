@@ -584,6 +584,10 @@ export type ArcGISWebMapElement = {
   type: 'arcGISWebMap'
   webMapId?: string
   showLayerPanel: boolean
+  /**
+   * The id of the basemap to be displayed to the user (https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap)
+   */
+  basemapId?: string
   defaultValue?: ArcGISWebMapElementValue
 } & LookupFormElement &
   FormElementRequired &
