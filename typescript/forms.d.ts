@@ -589,6 +589,14 @@ export type ArcGISWebMapElement = {
    */
   basemapId?: string
   defaultValue?: ArcGISWebMapElementValue
+  /** Configure to allow which drawing widgets are available to the user (https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Sketch.html#availableCreateTools) */
+  allowedDrawingWidgets?: {
+    type: string
+  }[]
+  /** Show and allow the user to enter an address via the address search widget */
+  addressSearchWidgetEnabled?: boolean
+  /** Show and allow the user to use the home widget */
+  homeWidgetEnabled?: boolean
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
@@ -1242,37 +1250,35 @@ export type NewFormElementOptionSetUrl = NewFormElementOptionSetBase & {
 }
 export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 
-export type FormElementOptionSetEnvironmentSharePointListColumn =
-  FormElementEnvironmentBase & {
-    /** The id of the entra application in integration configuration */
-    integrationEntraApplicationId: string
-    /** The Sharepoint Site */
-    sharepointSite: {
-      /** The id of the Sharepoint Site */
-      id: string
-      /** The display name of the Sharepoint Site */
-      displayName: string
-    }
-    /** The Sharepoint List */
-    sharepointList: {
-      /** The id of the Sharepoint List */
-      id: string
-      /** The display name of the Sharepoint List */
-      displayName: string
-    }
-    /** The Sharepoint Column */
-    sharepointColumn: {
-      /** The id of the Sharepoint Column */
-      id: string
-      /** The display name of the Sharepoint Column */
-      displayName: string
-    }
+export type FormElementOptionSetEnvironmentSharePointListColumn = FormElementEnvironmentBase & {
+  /** The id of the entra application in integration configuration */
+  integrationEntraApplicationId: string
+  /** The Sharepoint Site */
+  sharepointSite: {
+    /** The id of the Sharepoint Site */
+    id: string
+    /** The display name of the Sharepoint Site */
+    displayName: string
   }
-export type NewFormElementOptionSetSharePointListColumn =
-  NewFormElementOptionSetBase & {
-    type: 'SHAREPOINT_LIST_COLUMN'
-    environments: FormElementOptionSetEnvironmentSharePointListColumn[]
+  /** The Sharepoint List */
+  sharepointList: {
+    /** The id of the Sharepoint List */
+    id: string
+    /** The display name of the Sharepoint List */
+    displayName: string
   }
+  /** The Sharepoint Column */
+  sharepointColumn: {
+    /** The id of the Sharepoint Column */
+    id: string
+    /** The display name of the Sharepoint Column */
+    displayName: string
+  }
+}
+export type NewFormElementOptionSetSharePointListColumn = NewFormElementOptionSetBase & {
+  type: 'SHAREPOINT_LIST_COLUMN'
+  environments: FormElementOptionSetEnvironmentSharePointListColumn[]
+}
 export type FormElementOptionSetSharePointListColumn = IdResource &
   NewFormElementOptionSetSharePointListColumn
 
@@ -1352,44 +1358,40 @@ export type FormElementLookupStaticDataRecordBase = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataRecordText =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'TEXT'
-    /**
-     * The value that will be matched exactly on the form element this lookup is
-     * associated when the user is completing the form.
-     */
-    inputValue: string
-  }
-export type FormElementLookupStaticDataRecordNumber =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'NUMBER'
-    /**
-     * The value that will be matched exactly on the form element this lookup is
-     * associated when the user is completing the form.
-     */
-    inputValue: number
-  }
+export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
+  inputType: 'TEXT'
+  /**
+   * The value that will be matched exactly on the form element this lookup is
+   * associated when the user is completing the form.
+   */
+  inputValue: string
+}
+export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
+  inputType: 'NUMBER'
+  /**
+   * The value that will be matched exactly on the form element this lookup is
+   * associated when the user is completing the form.
+   */
+  inputValue: number
+}
 
-export type FormElementLookupStaticDataRecordUndefined =
-  FormElementLookupStaticDataRecordBase & {
-    inputType: 'UNDEFINED'
-  }
+export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
+  inputType: 'UNDEFINED'
+}
 
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
   | FormElementLookupStaticDataRecordUndefined
 
-export type FormElementLookupStaticDataEnvironment =
-  FormElementEnvironmentBase & {
-    /**
-     * Array of records, each associated with a "inputValue" that will determine
-     * the prefill data for the configured form elements based on the
-     * "FormElement.name" property.
-     */
-    records: FormElementLookupStaticDataRecord[]
-  }
+export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
+  /**
+   * Array of records, each associated with a "inputValue" that will determine
+   * the prefill data for the configured form elements based on the
+   * "FormElement.name" property.
+   */
+  records: FormElementLookupStaticDataRecord[]
+}
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
