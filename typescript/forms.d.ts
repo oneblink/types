@@ -495,11 +495,10 @@ export type PointAddressElement = {
    * selecting an address.
    */
   isDisplayingAddressInformation?: boolean
+  defaultValue?: PointAddress
 } & LookupFormElement &
   FormElementRequired &
-  FormElementReadOnly & {
-    defaultValue?: PointAddress
-  }
+  FormElementReadOnly
 
 export type GoogleAddressElement = {
   type: 'googleAddress'
