@@ -1,5 +1,9 @@
 import { GeoscapeAddress } from './geoscape'
-import { PointAddress, PointStatesAndTerritories } from './point'
+import {
+  PointAddress,
+  PointCadastralParcelResponse,
+  PointStatesAndTerritories,
+} from './point'
 import { CivicaStreetName } from './civica/street-name'
 import { CivicaNameRecord } from './civica/name-record'
 import type {
@@ -500,6 +504,16 @@ export type PointAddressElement = {
   FormElementRequired &
   FormElementReadOnly
 
+export type PointCadastralParcelElement = {
+  type: 'pointCadastralParcel'
+  placeholderValue?: string
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
+  defaultValue?: PointCadastralParcelResponse
+} & LookupFormElement &
+  FormElementRequired &
+  FormElementReadOnly
+
 export type GoogleAddressElement = {
   type: 'googleAddress'
   defaultValue?: GoogleMapsAddress
@@ -841,6 +855,7 @@ export type NonNestedElementsElement =
   | SummaryElement
   | GeoscapeAddressElement
   | PointAddressElement
+  | PointCadastralParcelElement
   | GoogleAddressElement
   | BooleanElement
   | CivicaStreetNameElement
