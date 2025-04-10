@@ -599,8 +599,9 @@ export type ArcGISWebMapElement = {
     type: string
     /** Additional options to present to the user after selecting the drawing widget */
     graphicTypes?: {
-      /** Label shown in the widget selection menu and when viewing the resulting drawn graphic */
+      /** Label shown in the list of options presented to the user and when selecting the resulting drawn graphic */
       label: string
+      /** Value to be stored on the "name" attribute of the resulting drawn graphic */
       value: string
     }[]
   }[]
