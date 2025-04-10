@@ -597,7 +597,7 @@ export type ArcGISWebMapElement = {
    */
   allowedDrawingTools?: {
     type: string
-    /** Additional options to present to the user after selecting the drawing widget */
+    /** Additional options to present to the user after selecting this drawing tool */
     graphicTypes?: {
       /** Label shown in the widget selection menu and when viewing the resulting drawn graphic */
       label: string
