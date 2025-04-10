@@ -592,10 +592,10 @@ export type ArcGISWebMapElement = {
   basemapId?: string
   defaultValue?: ArcGISWebMapElementValue
   /**
-   * Configure to allow which drawing widgets are available to the user
+   * Configure to allow which drawing tools are available to the user
    * (https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Sketch.html#availableCreateTools)
    */
-  allowedDrawingWidgets?: {
+  allowedDrawingTools?: {
     type: string
     /** Additional options to present to the user after selecting the drawing widget */
     graphicTypes?: {
