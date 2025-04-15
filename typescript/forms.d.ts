@@ -599,6 +599,8 @@ export type ArcGISWebMapElement = {
     type: string
     /** Additional options to present to the user after selecting this drawing tool */
     graphicTypes?: {
+      /** The unique identifier for an individual graphics type. */
+      id: string
       /** Label shown in the list of options presented to the user and when selecting the resulting drawn graphic */
       label: string
       /** Value to be stored on the "name" attribute of the resulting drawn graphic */
