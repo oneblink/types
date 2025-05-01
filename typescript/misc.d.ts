@@ -15,6 +15,8 @@ export interface UserProfile {
   emailVerified?: boolean
   /** The user's first name */
   firstName?: string
+  /** The user's middle name */
+  middleName?: string
   /** The user's last name */
   lastName?: string
   /** The user's full name */
@@ -38,6 +40,30 @@ export interface UserProfile {
   phoneNumberVerified?: boolean
   /** The users list of groups from a SAML configuration */
   groups?: string[]
+  /** The user's address area/zip/post code */
+  areaCode?: string
+  /** The user's address */
+  address?: string
+  /** The user's city */
+  city?: string
+  /** The user's state */
+  state?: string
+  /** The user's country */
+  country?: string
+  /** The user's country calling code */
+  countryCallingCode?: string
+  /** The user's department */
+  department?: string
+  /** The user's division */
+  division?: string
+  /** The user's bargain */
+  bargain?: string
+  /** The user's employee number */
+  employeeNumber?: string
+  /** The users' department head's full name */
+  departmentHeadFullName?: string
+  /** The users' department head's email address */
+  departmentHeadEmail?: string
 }
 export interface QueryParameters {
   [property: string]: string | Array<string | number> | null
