@@ -358,6 +358,8 @@ type _NewFormsApp = {
   googleMapsIntegrationKeyId?: string
   /** List of groups users can be assigned too and email addresses to be notified via */
   groups?: Array<{ name: string; notificationEmailAddresses: string[] }>
+  /** Google analytics tag id */
+  googleAnalyticsTagId?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
