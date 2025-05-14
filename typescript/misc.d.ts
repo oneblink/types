@@ -40,7 +40,7 @@ export interface UserProfile {
   phoneNumberVerified?: boolean
   /** The users list of groups from a SAML configuration */
   groups?: string[]
-  /** The user's address area/zip/post code */
+  /** The user's area code */
   areaCode?: string
   /** The user's address */
   address?: string
@@ -52,6 +52,10 @@ export interface UserProfile {
   country?: string
   /** The user's country calling code */
   countryCallingCode?: string
+  /** The user's ZIP code */
+  zipCode?: string
+  /** The user's postal code */
+  postalCode?: string
   /** The user's department */
   department?: string
   /** The user's division */
