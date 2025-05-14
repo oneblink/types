@@ -531,6 +531,7 @@ export type FormsAppConfiguration<
     title: string
     description?: string
   }
+  googleAnalyticsTagId?: string
 }
 
 export type FormsAppUserSubscription = {
