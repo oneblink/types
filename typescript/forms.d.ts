@@ -351,6 +351,7 @@ export type TextareaElement = {
 
 export type EmailElement = {
   type: 'email'
+  requiresConfirmation?: boolean
 } & FormElementWithInput<string>
 
 export type BarcodeScannerElement = {
