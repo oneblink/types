@@ -31,6 +31,8 @@ export type ButtonConfiguration = {
 export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
   /** The absolute URL to the logo image displayed in Forms Apps */
   logoUrl?: string
+  /** The absolute URL to the favicon image displayed in Forms Apps and any Appless Forms */
+  faviconUrl?: string
   /** Configuration object for button customization */
   buttons?: {
     /** Button configuration for the Submit button */
