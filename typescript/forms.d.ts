@@ -530,6 +530,7 @@ export type BooleanElement = LookupFormElement &
   FormElementReadOnly & {
     type: 'boolean'
     defaultValue: boolean
+    displayAsCheckbox?: boolean
   }
 export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
