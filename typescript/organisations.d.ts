@@ -181,8 +181,8 @@ export type AuditRecordType =
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
   | 'FormsAppEnvironmentSendingAddressResend'
-  | 'FormsAppHostnameConfiguration'
-  | 'FormsAppHostnameConfigurationCertificate'
+  | 'FormsAppEnvironmentHostnameConfiguration'
+  | 'FormsAppEnvironmentHostnameConfigurationCertificate'
 
 export type NewAuditRecord = {
   type: AuditRecordType
