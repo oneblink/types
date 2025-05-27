@@ -257,8 +257,7 @@ export type AppleTouchStartupImage = {
   }
 }
 
-export type FormsAppHostnameConfiguration = {
-  formsAppId: number
+export type BaseHostnameConfiguration = {
   createdAt: string
   updatedAt: string
   acm: {
@@ -274,6 +273,10 @@ export type FormsAppHostnameConfiguration = {
     distributionDomain: string
   }
 }
+
+export type FormsAppHostnameConfiguration = {
+  formsAppId: number
+} & BaseHostnameConfiguration
 
 type FormsAppPWASettings = {
   /**

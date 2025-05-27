@@ -1,3 +1,4 @@
+import { BaseHostnameConfiguration } from './formsApps'
 import { RecaptchaKeyType } from './integrations'
 import {
   EmailSendingAddressBase,
@@ -50,10 +51,9 @@ export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
   formsAppEnvironmentId: number
 }
 
-export type FormsAppEnvironmentSendingAddressResponse =
-  EmailSendingAddressResponseBase & {
-    formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
-  }
+export type FormsAppEnvironmentSendingAddressResponse = EmailSendingAddressResponseBase & {
+  formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
+}
 
 export interface BaseFormsAppEnvironment {
   /** Name of the Forms App Environment */
@@ -150,9 +150,12 @@ export type FormsAppEnvironmentConfigurationBase = {
   }>
 }
 
-export type FormsAppEnvironmentConfiguration =
-  FormsAppEnvironmentConfigurationBase & {
-    recaptchaPublicKey: string
-    recaptchaKeyType: RecaptchaKeyType
-    googleMapsApiKey: string
-  }
+export type FormsAppEnvironmentConfiguration = FormsAppEnvironmentConfigurationBase & {
+  recaptchaPublicKey: string
+  recaptchaKeyType: RecaptchaKeyType
+  googleMapsApiKey: string
+}
+
+export type FormsAppEnvironmentHostnameConfiguration = {
+  formsAppEnvironmentId: number
+} & BaseHostnameConfiguration
