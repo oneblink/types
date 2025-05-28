@@ -76,6 +76,7 @@ export interface BaseFormsAppEnvironment {
   googleMapsIntegrationKeyId?: string
   /** The absolute URL to the favicon image displayed in Forms Apps and any Appless Forms */
   faviconUrl?: string
+  customHostname?: string
 }
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
@@ -154,7 +155,6 @@ export type FormsAppEnvironmentConfiguration = FormsAppEnvironmentConfigurationB
   recaptchaPublicKey: string
   recaptchaKeyType: RecaptchaKeyType
   googleMapsApiKey: string
-  customHostname?: string
 }
 
 export type FormsAppEnvironmentHostnameConfiguration = {
