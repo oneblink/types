@@ -154,6 +154,7 @@ export type FormsAppEnvironmentConfiguration = FormsAppEnvironmentConfigurationB
   recaptchaPublicKey: string
   recaptchaKeyType: RecaptchaKeyType
   googleMapsApiKey: string
+  customHostname?: string
 }
 
 export type FormsAppEnvironmentHostnameConfiguration = {
