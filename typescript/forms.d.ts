@@ -333,7 +333,8 @@ export type NumberElement = {
   minNumber?: number
   maxNumber?: number
   isSlider: boolean
-  isCurrency?: boolean
+  /** If true, the form will indicate the number is a currency value. */
+  displayAsCurrency?: boolean
   sliderIncrement?: number
   isInteger?: boolean
 } & FormElementWithInput<number>
