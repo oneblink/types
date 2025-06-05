@@ -363,6 +363,16 @@ type _NewFormsApp = {
   groups?: Array<{ name: string; notificationEmailAddresses: string[] }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
+  /**
+   * A group that represents administrators within this application. If left as
+   * `undefined` will be `"oneblink:administrator"`
+   */
+  administratorGroupName?: string
+  /**
+   * A group that represents managers within this application. If left as
+   * `undefined` will be `"oneblink:manager"`
+   */
+  managerGroupName?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -535,6 +545,10 @@ export type FormsAppConfiguration<
     description?: string
   }
   googleAnalyticsTagId?: string
+  /** A group that represents administrators within this application. */
+  administratorGroupName: string
+  /** A group that represents managers within this application. */
+  managerGroupName: string
 }
 
 export type FormsAppUserSubscription = {
