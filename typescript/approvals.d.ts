@@ -100,8 +100,6 @@ export type FormApprovalFlowInstanceStep =
       | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
     )
 
-
-
 export type NewFormApprovalFlowInstance = {
   /** The unique identifier for the form that was submitted for approval */
   formId: number
@@ -293,5 +291,3 @@ export type FormApprovalWebhookEventRecord =
     id: number
     createdAt: string
   }
-
-
