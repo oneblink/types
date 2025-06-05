@@ -27,6 +27,12 @@ export type FlowInstanceNodeMeta = {
   isAfterClarificationRequiredStep: boolean
   /** Description of node's state */
   description: string
+  /** An alternate id for parent that uses concurrent node labels e.g `Node Label 1_Node Label 2`*/
+  parentStepLabelsId: string
+  /** Node is concurrent with previous node in flow */
+  isConcurrentWithPrevious: boolean
+  /** Node is concurrent with next node in flow */
+  isConcurrentWithNext: boolean
 }
 
 export type ClarificationRequestEmailTemplateProps = {
