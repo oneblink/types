@@ -11,6 +11,24 @@ export type FormApprovalFlowNodeBase = {
   approvalFormId?: number
 }
 
+export type FlowInstanceNodeMeta = {
+  /** The label and value of status e.g {label: 'Approved', value: 'APPROVED'} */
+  status?: {
+    label: string
+    value: string
+  }
+  /** Approval is denied in this step (always false if node is not concurrent) */
+  isDeniedInConcurrentStep: boolean
+  /** Flow has been denied in previous step */
+  isAfterDeniedStep: boolean 
+  /** Approval requires clarification in step (always false if node is not concurrent) */
+  isClarificationRequiredInConcurrentStep: boolean
+  /** Flow has been sent for clarification in previous step */
+  isAfterClarificationRequiredStep: boolean
+  /** Description of node's state */
+  description: string
+}
+
 export type ClarificationRequestEmailTemplateProps = {
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
@@ -75,6 +93,8 @@ export type FormApprovalFlowInstanceStep =
       | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
       | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
     )
+
+
 
 export type NewFormApprovalFlowInstance = {
   /** The unique identifier for the form that was submitted for approval */
@@ -267,3 +287,5 @@ export type FormApprovalWebhookEventRecord =
     id: number
     createdAt: string
   }
+
+
