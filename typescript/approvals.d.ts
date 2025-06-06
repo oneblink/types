@@ -79,6 +79,8 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   isSkipped: boolean
 }
 
+type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode & FlowInstanceNodeMeta
+
 /**
  * ### Example
  *
