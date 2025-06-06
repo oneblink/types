@@ -11,6 +11,30 @@ export type FormApprovalFlowNodeBase = {
   approvalFormId?: number
 }
 
+export type FlowInstanceNodeMeta = {
+  /** The label and value of status e.g {label: 'Approved', value: 'APPROVED'} */
+  status?: {
+    label: string
+    value: string
+  }
+  /** Approval is denied in this step (always false if node is not concurrent) */
+  isDeniedInConcurrentStep: boolean
+  /** Flow has been denied in previous step */
+  isAfterDeniedStep: boolean 
+  /** Approval requires clarification in step (always false if node is not concurrent) */
+  isClarificationRequiredInConcurrentStep: boolean
+  /** Flow has been sent for clarification in previous step */
+  isAfterClarificationRequiredStep: boolean
+  /** Description of node's state */
+  description: string
+  /** An alternate id for parent that uses concurrent node labels e.g `Node Label 1_Node Label 2`*/
+  parentStepLabelsId: string
+  /** Node is concurrent with previous node in flow */
+  isConcurrentWithPrevious: boolean
+  /** Node is concurrent with next node in flow */
+  isConcurrentWithNext: boolean
+}
+
 export type ClarificationRequestEmailTemplateProps = {
   /** The id of an email template to use for clarification request emails */
   clarificationRequestEmailTemplateId?: number
