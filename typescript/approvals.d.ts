@@ -79,7 +79,8 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   isSkipped: boolean
 }
 
-type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode & FlowInstanceNodeMeta
+type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode & FlowInstanceNodeMeta & 
+  Omit<FormSubmissionApproval, 'stepLabel' | 'group' | 'approvalFormId' | 'status'>
 
 /**
  * ### Example
