@@ -34,6 +34,7 @@ export type NewOrganisation = {
   attachmentLinkExpiryDaysOverride?: number
   timezone?: string
   requireTeamMemberMfa?: boolean
+  environmentOrdering?: number[]
 }
 
 export type Organisation = NewOrganisation & {
