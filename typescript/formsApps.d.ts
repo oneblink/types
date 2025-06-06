@@ -360,19 +360,19 @@ type _NewFormsApp = {
   /** The id of the Google Maps integration key to be used for Google Maps elements. */
   googleMapsIntegrationKeyId?: string
   /** List of groups users can be assigned too and email addresses to be notified via */
-  groups?: Array<{ name: string; notificationEmailAddresses: string[] }>
+  groups?: Array<{
+    name: string
+    notificationEmailAddresses: string[]
+    /**
+     * If `true` users with this group will have administrator access within
+     * this application.
+     */
+    isAdministrator?: boolean
+    /** If `true` users with this group will have manager access within this application. */
+    isManager?: boolean
+  }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
-  /**
-   * A group that represents administrators within this application. If left as
-   * `undefined` will be `"oneblink:administrator"`
-   */
-  administratorGroupName?: string
-  /**
-   * A group that represents managers within this application. If left as
-   * `undefined` will be `"oneblink:manager"`
-   */
-  managerGroupName?: string
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -545,10 +545,10 @@ export type FormsAppConfiguration<
     description?: string
   }
   googleAnalyticsTagId?: string
-  /** A group that represents administrators within this application. */
-  administratorGroupName: string
-  /** A group that represents managers within this application. */
-  managerGroupName: string
+  /** Groups that represents administrators within this application. */
+  administratorGroupNames?: string[]
+  /** Groups that represents managers within this application. */
+  managerGroupNames?: string[]
 }
 
 export type FormsAppUserSubscription = {
