@@ -80,7 +80,7 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
 }
 
 type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode & FlowInstanceNodeMeta & 
-  Omit<FormSubmissionApproval, 'stepLabel' | 'group' | 'approvalFormId' | 'status'>
+  Partial<Omit<FormSubmissionApproval, 'stepLabel' | 'group' | 'approvalFormId' | 'status'>>
 
 /**
  * ### Example
