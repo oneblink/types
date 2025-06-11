@@ -612,6 +612,8 @@ export type ArcGISWebMapElement = {
       label: string
       /** Value to be stored on the "name" attribute of the resulting drawn graphic */
       value: string
+      /** Description of the drawn graphic */
+      description?: string
     }[]
   }[]
   /** Show and allow the user to enter an address via the address search widget */
