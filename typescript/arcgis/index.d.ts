@@ -16,6 +16,7 @@ export type ArcGISWebMapElementValue = {
    */
   drawingLayer?: ArcGISGraphic[]
   layers?: {
+    id: string
     title: string
     graphics: ArcGISGraphic[]
   }[]
