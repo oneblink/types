@@ -184,6 +184,7 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentSendingAddressResend'
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
+  | 'FormsAppEnvironmentReordering'
 
 export type NewAuditRecord = {
   type: AuditRecordType
