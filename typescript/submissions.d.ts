@@ -263,7 +263,7 @@ export interface NewS3SubmissionData {
   definition: Form
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
-  sectionState: { id: string, state: 'COLLAPSED' | 'EXPANDED' }[]
+  sectionState?: { id: string, state: 'COLLAPSED' | 'EXPANDED' }[]
 }
 export type S3SubmissionData = NewS3SubmissionData & {
   submissionTimestamp: string
