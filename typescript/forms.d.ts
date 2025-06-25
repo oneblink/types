@@ -851,6 +851,62 @@ export type NestedElementsElement =
   | RepeatableSetElement
   | SectionElement
 
+type LookupButtonFormElementDependency =
+  | {
+      /** The type of dependency. */
+      type: 'FORM_ELEMENT'
+      /** The identifier for a Form Element to determine if the lookup should be run */
+      elementId: string
+    }
+  | {
+      /** The type of dependency. */
+      type: 'FORM_FORM_ELEMENT' | 'REPEATABLE_SET_FORM_ELEMENT'
+      /** The identifier for a Form Element to determine if the lookup should be run */
+      elementId: string
+      /** The nested Form Element to determine if the lookup should be run */
+      elementDependency: LookupButtonFormElementDependency
+    }
+
+/**
+ * Allow the user to run a lookup by clicking a button. The lookup will be
+ * triggered automatically if all its dependencies are auto-lookup form elements.
+ *
+ * ### Example
+ *
+ * ```json
+ * {
+ *   "id": "b1311ae0-6bb7-11e9-a923-1681be663d3e",
+ *   "type": "lookupButton",
+ *   "name": "My_Lookup",
+ *   "label": "My Lookup",
+ *   "hint": "Please run me, I like to be run."
+ * }
+ * ```
+ *
+ * ### Example Submission Data
+ *
+ * Submission value will be `true` if the lookup ran before submitting or
+ * `false` if it did not run. It will also be `false` if it ran but its
+ * dependencies changed before submitting the form.
+ *
+ * ```json
+ * {
+ *   "submission": {
+ *     "[element.name]": true
+ *   }
+ * }
+ * ```
+ */
+export type LookupButtonFormElement = {
+  /** The type of Form Element. */
+  type: 'lookupButton'
+  /**
+   * The Form Elements that will determine if the lookup should be run. If any
+   * of the dependency elements are required, the lookup will be required.
+   */
+  elementDependencies: LookupButtonFormElementDependency[]
+} & LookupFormElement
+
 export type NonNestedElementsElement =
   | ABNElement
   | TextElement
@@ -888,6 +944,7 @@ export type NonNestedElementsElement =
   | FreshdeskDependentFieldElement
   | APINSWLiquorLicenceElement
   | ArcGISWebMapElement
+  | LookupButtonFormElement
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
@@ -1277,35 +1334,37 @@ export type NewFormElementOptionSetUrl = NewFormElementOptionSetBase & {
 }
 export type FormElementOptionSetUrl = IdResource & NewFormElementOptionSetUrl
 
-export type FormElementOptionSetEnvironmentSharePointListColumn = FormElementEnvironmentBase & {
-  /** The id of the entra application in integration configuration */
-  integrationEntraApplicationId: string
-  /** The Sharepoint Site */
-  sharepointSite: {
-    /** The id of the Sharepoint Site */
-    id: string
-    /** The display name of the Sharepoint Site */
-    displayName: string
+export type FormElementOptionSetEnvironmentSharePointListColumn =
+  FormElementEnvironmentBase & {
+    /** The id of the entra application in integration configuration */
+    integrationEntraApplicationId: string
+    /** The Sharepoint Site */
+    sharepointSite: {
+      /** The id of the Sharepoint Site */
+      id: string
+      /** The display name of the Sharepoint Site */
+      displayName: string
+    }
+    /** The Sharepoint List */
+    sharepointList: {
+      /** The id of the Sharepoint List */
+      id: string
+      /** The display name of the Sharepoint List */
+      displayName: string
+    }
+    /** The Sharepoint Column */
+    sharepointColumn: {
+      /** The id of the Sharepoint Column */
+      id: string
+      /** The display name of the Sharepoint Column */
+      displayName: string
+    }
   }
-  /** The Sharepoint List */
-  sharepointList: {
-    /** The id of the Sharepoint List */
-    id: string
-    /** The display name of the Sharepoint List */
-    displayName: string
+export type NewFormElementOptionSetSharePointListColumn =
+  NewFormElementOptionSetBase & {
+    type: 'SHAREPOINT_LIST_COLUMN'
+    environments: FormElementOptionSetEnvironmentSharePointListColumn[]
   }
-  /** The Sharepoint Column */
-  sharepointColumn: {
-    /** The id of the Sharepoint Column */
-    id: string
-    /** The display name of the Sharepoint Column */
-    displayName: string
-  }
-}
-export type NewFormElementOptionSetSharePointListColumn = NewFormElementOptionSetBase & {
-  type: 'SHAREPOINT_LIST_COLUMN'
-  environments: FormElementOptionSetEnvironmentSharePointListColumn[]
-}
 export type FormElementOptionSetSharePointListColumn = IdResource &
   NewFormElementOptionSetSharePointListColumn
 
@@ -1385,40 +1444,44 @@ export type FormElementLookupStaticDataRecordBase = {
   preFills: FormElementLookupStaticDataPreFill[]
 }
 
-export type FormElementLookupStaticDataRecordText = FormElementLookupStaticDataRecordBase & {
-  inputType: 'TEXT'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: string
-}
-export type FormElementLookupStaticDataRecordNumber = FormElementLookupStaticDataRecordBase & {
-  inputType: 'NUMBER'
-  /**
-   * The value that will be matched exactly on the form element this lookup is
-   * associated when the user is completing the form.
-   */
-  inputValue: number
-}
+export type FormElementLookupStaticDataRecordText =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'TEXT'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: string
+  }
+export type FormElementLookupStaticDataRecordNumber =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'NUMBER'
+    /**
+     * The value that will be matched exactly on the form element this lookup is
+     * associated when the user is completing the form.
+     */
+    inputValue: number
+  }
 
-export type FormElementLookupStaticDataRecordUndefined = FormElementLookupStaticDataRecordBase & {
-  inputType: 'UNDEFINED'
-}
+export type FormElementLookupStaticDataRecordUndefined =
+  FormElementLookupStaticDataRecordBase & {
+    inputType: 'UNDEFINED'
+  }
 
 export type FormElementLookupStaticDataRecord =
   | FormElementLookupStaticDataRecordText
   | FormElementLookupStaticDataRecordNumber
   | FormElementLookupStaticDataRecordUndefined
 
-export type FormElementLookupStaticDataEnvironment = FormElementEnvironmentBase & {
-  /**
-   * Array of records, each associated with a "inputValue" that will determine
-   * the prefill data for the configured form elements based on the
-   * "FormElement.name" property.
-   */
-  records: FormElementLookupStaticDataRecord[]
-}
+export type FormElementLookupStaticDataEnvironment =
+  FormElementEnvironmentBase & {
+    /**
+     * Array of records, each associated with a "inputValue" that will determine
+     * the prefill data for the configured form elements based on the
+     * "FormElement.name" property.
+     */
+    records: FormElementLookupStaticDataRecord[]
+  }
 
 export type NewFormElementLookupBase = {
   /** A human readable identifier for the Lookup. */
