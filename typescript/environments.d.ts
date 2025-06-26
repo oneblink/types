@@ -52,8 +52,8 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
      * https://fonts.google.com/icons
      */
     icon: string
-    /** The alt text for the icon */
-    altText?: string
+    /** The accessible label for the icon. This will be displayed to screen readers. */
+    accessibleLabel?: string
   }
 }
 
