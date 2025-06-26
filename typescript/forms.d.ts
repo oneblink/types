@@ -465,6 +465,7 @@ export type FilesElement = FormElementBinaryStorage &
     restrictedFileTypes?: string[]
     defaultValue?: unknown
     allowExtensionlessAttachments?: boolean
+    restrictFileSize: boolean
     /** The maximum size (in Megabytes) that an individual file can be */
     maxFileSize?: number
   }
