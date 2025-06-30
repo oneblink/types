@@ -77,12 +77,6 @@ export interface BaseFormsAppEnvironment {
   recaptchaIntegrationDomainId?: string
   /** The id of the Google Maps integration key to be used for Google Maps elements */
   googleMapsIntegrationKeyId?: string
-  /**
-   * @deprecated Use `styles.faviconUrl` instead
-   *
-   *   The absolute URL to the favicon image displayed in Forms Apps and any Appless Forms
-   */
-  faviconUrl?: string
   customHostname?: string
 }
 
