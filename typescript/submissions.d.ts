@@ -263,9 +263,18 @@ export interface NewS3SubmissionData {
   definition: Form
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
-  sectionState?: { id: string, state: 'COLLAPSED' | 'EXPANDED' }[]
+  sectionState?: { id: string; state: 'COLLAPSED' | 'EXPANDED' }[]
+  /**
+   * The date and time (in ISO format) the form was completed I.e. when the user
+   * clicked the submit button
+   */
+  completionTimestamp?: string
 }
 export type S3SubmissionData = NewS3SubmissionData & {
+  /**
+   * The date and time (in ISO format) the submission was received by the
+   * submission service.
+   */
   submissionTimestamp: string
   ipAddress?: string
   /** @deprecated Use `key.id` instead */
@@ -321,12 +330,14 @@ type _BaseFormStoreRecord = {
 }
 
 export type DbFormStoreRecord = _BaseFormStoreRecord & {
+  dateTimeCompleted: Date | undefined
   dateTimeSubmitted: Date
   createdAt: Date
 }
 export type NewDbFormStoreRecord = Omit<DbFormStoreRecord, '_id'>
 
 export type FormStoreRecord = _BaseFormStoreRecord & {
+  dateTimeCompleted: string | undefined
   dateTimeSubmitted: string
   createdAt: string
 }
