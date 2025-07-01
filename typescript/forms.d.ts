@@ -851,21 +851,21 @@ export type NestedElementsElement =
   | RepeatableSetElement
   | SectionElement
 
-type LookupButtonFormElementDependency =
+export type LookupButtonFormElementDependency = {
+  /** The identifier for a Form Element to determine if the lookup should be run */
+  elementId: string
+} & (
   | {
       /** The type of dependency. */
       type: 'FORM_ELEMENT'
-      /** The identifier for a Form Element to determine if the lookup should be run */
-      elementId: string
     }
   | {
       /** The type of dependency. */
       type: 'FORM_FORM_ELEMENT' | 'REPEATABLE_SET_FORM_ELEMENT'
-      /** The identifier for a Form Element to determine if the lookup should be run */
-      elementId: string
       /** The nested Form Element to determine if the lookup should be run */
       elementDependency: LookupButtonFormElementDependency
     }
+)
 
 /**
  * Allow the user to run a lookup by clicking a button. The lookup will be
