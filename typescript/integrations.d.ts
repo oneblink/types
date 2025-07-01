@@ -18,6 +18,7 @@ export type IntegrationType =
   | 'NYLAS'
   | 'SHAREPOINT'
   | 'CIVIC_REC'
+  | 'OAUTH_2'
 
 type IntegrationBase = {
   organisationId: string
@@ -302,6 +303,22 @@ export type IntegrationCivicRec<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationOAuth2Provider<S = SavedSecret> = {
+  id: string
+  label: string
+  clientId: string
+  clientSecret: ConstrainedSecret<S>
+  attributeRequestMethod: 'GET' | 'POST'
+  issuerURL: string
+}
+
+export type IntegrationOAuth2<S = SavedSecret> = IntegrationBase & {
+  type: 'OAUTH_2'
+  configuration: {
+    providers: IntegrationOAuth2Provider<S>[]
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -338,3 +355,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNylas
   | IntegrationSharepoint<S>
   | IntegrationCivicRec<S>
+  | IntegrationOAuth2<S>
