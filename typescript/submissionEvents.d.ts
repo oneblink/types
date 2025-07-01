@@ -495,6 +495,7 @@ export type FormWorkflowEvent =
   | SharepointCreateListItemSubmissionEvent
   | SharepointStoreFilesSubmissionEvent
   | CivicRecCompleteCheckoutSubmissionEvent
+  | GoodToGoUpdateAssetSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
