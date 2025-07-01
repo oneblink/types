@@ -18,7 +18,7 @@ export type ArcGISWebMapElementValue = {
   layers?: {
     id: string
     title: string
-    visible: boolean
+    visible?: boolean
     graphics: ArcGISGraphic[]
   }[]
   view?: {
