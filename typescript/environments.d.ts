@@ -17,6 +17,8 @@ export type FormsAppEnvironmentColours = {
 export type BaseFormsAppEnvironmentStyles = FormsAppEnvironmentColours & {
   /** CSS applied to the Forms App */
   customCss?: string
+  /** The absolute URL to the favicon image displayed in Forms Apps and any Appless Forms */
+  faviconUrl?: string
 }
 
 export type ButtonConfiguration = {
@@ -45,15 +47,26 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
     /** Button configuration for the Cancel Prompt dialog No button */
     cancelPromptNo?: ButtonConfiguration
   }
+  /** The icon to display on validation error messages */
+  validationIcon?: {
+    /**
+     * Must be a valid Material Icon code as it appears here:
+     * https://fonts.google.com/icons
+     */
+    icon: string
+    /** The accessible label for the icon. This will be displayed to screen readers. */
+    accessibleLabel?: string
+  }
 }
 
 export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
   formsAppEnvironmentId: number
 }
 
-export type FormsAppEnvironmentSendingAddressResponse = EmailSendingAddressResponseBase & {
-  formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
-}
+export type FormsAppEnvironmentSendingAddressResponse =
+  EmailSendingAddressResponseBase & {
+    formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
+  }
 
 export interface BaseFormsAppEnvironment {
   /** Name of the Forms App Environment */
@@ -74,8 +87,6 @@ export interface BaseFormsAppEnvironment {
   recaptchaIntegrationDomainId?: string
   /** The id of the Google Maps integration key to be used for Google Maps elements */
   googleMapsIntegrationKeyId?: string
-  /** The absolute URL to the favicon image displayed in Forms Apps and any Appless Forms */
-  faviconUrl?: string
   customHostname?: string
 }
 
@@ -151,11 +162,12 @@ export type FormsAppEnvironmentConfigurationBase = {
   }>
 }
 
-export type FormsAppEnvironmentConfiguration = FormsAppEnvironmentConfigurationBase & {
-  recaptchaPublicKey: string
-  recaptchaKeyType: RecaptchaKeyType
-  googleMapsApiKey: string
-}
+export type FormsAppEnvironmentConfiguration =
+  FormsAppEnvironmentConfigurationBase & {
+    recaptchaPublicKey: string
+    recaptchaKeyType: RecaptchaKeyType
+    googleMapsApiKey: string
+  }
 
 export type FormsAppEnvironmentHostnameConfiguration = {
   formsAppEnvironmentId: number
