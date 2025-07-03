@@ -303,16 +303,16 @@ export type IntegrationCivicRec<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type GoodToGoEnvironmentKey<S = SavedSecret> = {
+export type IntegrationGoodToGoEnvironmentKey<S = SavedSecret> = {
   id: string
   label: string
   apiKey: ConstrainedSecret<S>
 }
 
-export type GoodToGoIntegration<S = SavedSecret> = IntegrationBase & {
+export type IntegrationGoodToGo<S = SavedSecret> = IntegrationBase & {
   type: 'GOOD_TO_GO'
   configuration: {
-    keys: GoodToGoEnvironmentKey<S>[]
+    keys: IntegrationGoodToGoEnvironmentKey<S>[]
   }
 }
 
@@ -352,4 +352,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNylas
   | IntegrationSharepoint<S>
   | IntegrationCivicRec<S>
-  | GoodToGoIntegration<S>
+  | IntegrationGoodToGo<S>
