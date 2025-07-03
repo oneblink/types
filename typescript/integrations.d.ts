@@ -18,6 +18,7 @@ export type IntegrationType =
   | 'NYLAS'
   | 'SHAREPOINT'
   | 'CIVIC_REC'
+  | 'GOOD_TO_GO'
 
 type IntegrationBase = {
   organisationId: string
