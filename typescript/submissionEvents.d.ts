@@ -461,6 +461,10 @@ export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
   configuration: {}
 }
 
+export type GoodToGoUpdateAssetResourceDefinition = {
+  goodToGoCustomFieldName: string
+}
+
 export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
   type: 'GOOD_TO_GO_UPDATE_ASSET'
   configuration: {
@@ -468,7 +472,7 @@ export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
     elementId: string
     /** The id of the OneBlink -> GoodToGo integration API key to be used. */
     integratonKeyId: string
-    mapping: FormElementMapping<{ goodToGoCustomFieldName: string }>[]
+    mapping: FormElementMapping<GoodToGoUpdateAssetResourceDefinition>[]
   }
 }
 
