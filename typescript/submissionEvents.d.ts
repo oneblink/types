@@ -465,6 +465,9 @@ export type GoodToGoUpdateAssetResourceDefinition = {
   goodToGoCustomFieldName: string
 }
 
+export type GoodToGoUpdateAssetSubmissionEventMapping =
+  FormElementMapping<GoodToGoUpdateAssetResourceDefinition>
+
 export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
   type: 'GOOD_TO_GO_UPDATE_ASSET'
   configuration: {
@@ -472,7 +475,7 @@ export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
     elementId: string
     /** The id of the OneBlink -> GoodToGo integration API key to be used. */
     integrationKeyId: string
-    mapping: FormElementMapping<GoodToGoUpdateAssetResourceDefinition>[]
+    mapping: GoodToGoUpdateAssetSubmissionEventMapping[]
   }
 }
 
