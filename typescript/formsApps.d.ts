@@ -244,6 +244,11 @@ export type FormsListStyles = FormsAppEnvironmentStyles & {
    * different forms app types
    */
   menuItems: FormsAppMenuItem[]
+  /** Configuration to add a footer displayed at the bottom of the page. */
+  footer?: {
+    /** The HTML to display as the footer. */
+    html: string
+  }
 }
 
 export type TilesStyles = FormsListStyles

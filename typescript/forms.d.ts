@@ -1264,11 +1264,6 @@ export type NewForm = {
    * of an OOTB PDF.
    */
   customPDFs?: FormCustomPDF[]
-  /** Configuration to add a footer displayed at the bottom of the form. */
-  footer?: {
-    /** The HTML to display as the footer. */
-    html: string
-  }
 }
 
 export type Form = MiscTypes.IdResource & NewForm
