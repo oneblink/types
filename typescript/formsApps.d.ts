@@ -378,6 +378,16 @@ type _NewFormsApp = {
   }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
+  /**
+   * OAuth2 authentication settings for the forms app.
+   *
+   * If `forceOAuthAuthentication` is `true`, all users will be required to
+   * authenticate via the OAuth2 provider specified in `integrationProviderId`.
+   */
+  oAuth2Authentication?: {
+    integrationProviderId: string
+    forceOAuthAuthentication?: boolean
+  }
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
