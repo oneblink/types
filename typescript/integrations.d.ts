@@ -18,6 +18,7 @@ export type IntegrationType =
   | 'NYLAS'
   | 'SHAREPOINT'
   | 'CIVIC_REC'
+  | 'GOOD_TO_GO'
 
 type IntegrationBase = {
   organisationId: string
@@ -177,6 +178,7 @@ export type IntegrationWestpacQuickStreamEnvironment<S = SavedSecret> = {
   supplierBusinessCode: string
   isTestMode: boolean
 }
+
 export type IntegrationWestpacQuickStream<S = SavedSecret> = IntegrationBase & {
   type: 'WESTPAC_QUICK_STREAM'
   configuration: {
@@ -302,6 +304,19 @@ export type IntegrationCivicRec<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationGoodToGoEnvironmentKey<S = SavedSecret> = {
+  id: string
+  label: string
+  apiKey: ConstrainedSecret<S>
+}
+
+export type IntegrationGoodToGo<S = SavedSecret> = IntegrationBase & {
+  type: 'GOOD_TO_GO'
+  configuration: {
+    keys: IntegrationGoodToGoEnvironmentKey<S>[]
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -338,3 +353,4 @@ export type Integration<S = SavedSecret> =
   | IntegrationNylas
   | IntegrationSharepoint<S>
   | IntegrationCivicRec<S>
+  | IntegrationGoodToGo<S>
