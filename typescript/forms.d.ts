@@ -1408,6 +1408,7 @@ export type FormElementOptionSet =
   | FormElementOptionSetHostedApi
   | FormElementOptionSetUrl
   | FormElementOptionSetSharePointListColumn
+  | FormElementOptionSetGoodToGoCustomField
 
 //
 //
