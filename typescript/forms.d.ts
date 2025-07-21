@@ -1380,7 +1380,7 @@ export type FormElementOptionSetEnvironmentGoodToGoCustomField =
     /** The id of the Good To Go Key in integration configuration */
     integrationKeyId: string
     /** The Good To Go Custom Field */
-    goodToGoField: {
+    goodToGoCustomField: {
       /** The id of the Good To Go Custom Field */
       id: string
       /** The display name of the Good To Go Custom Field */
