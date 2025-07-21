@@ -1396,6 +1396,12 @@ export type NewFormElementOptionSetGoodToGoCustomField =
 export type FormElementOptionSetGoodToGoCustomField = IdResource &
   NewFormElementOptionSetGoodToGoCustomField
 
+export type FormElementOptionSetEnvironment =
+  | FormElementOptionSetEnvironmentGoodToGoCustomField
+  | FormElementOptionSetEnvironmentSharePointListColumn
+  | FormElementOptionSetEnvironmentStatic
+  | FormElementOptionSetEnvironmentUrl
+
 export type NewFormElementOptionSet =
   | NewFormElementOptionSetStatic
   | NewFormElementOptionSetHostedApi
