@@ -1390,7 +1390,7 @@ export type FormElementOptionSetEnvironmentGoodToGoCustomField =
 
 export type NewFormElementOptionSetGoodToGoCustomField =
   NewFormElementOptionSetBase & {
-    type: 'GOOD_TO_GO_LIST_COLUMN'
+    type: 'GOOD_TO_GO_CUSTOM_FIELD'
     environments: FormElementOptionSetEnvironmentGoodToGoCustomField[]
   }
 export type FormElementOptionSetGoodToGoCustomField = IdResource &
