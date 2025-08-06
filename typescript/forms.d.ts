@@ -627,6 +627,7 @@ export type ArcGISWebMapElement = {
   /** Show dimensions on drawing lines if enabled */
   measurementDimensionsEnabled?: boolean
 } & LookupFormElement &
+  FormElementBinaryStorage &
   FormElementRequired &
   FormElementReadOnly
 
@@ -979,6 +980,7 @@ export type StorageElement =
   | ComplianceElement
   | CameraElement
   | DrawElement
+  | ArcGISWebMapElement
 
 ///////////////////////////////////////////////////////////////
 
