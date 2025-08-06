@@ -34,6 +34,6 @@ export type ArcGISWebMapElementValue = {
     latitude: number
     longitude: number
   }
-  /** A non-interactive snapshot image of the map */
-  snapshotImage?: FormSubmissionAttachment
+  /** Non-interactive snapshot images of the map */
+  snapshotImages?: FormSubmissionAttachment[]
 }
