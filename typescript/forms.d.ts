@@ -626,6 +626,16 @@ export type ArcGISWebMapElement = {
   homeWidgetEnabled?: boolean
   /** Show dimensions on drawing lines if enabled */
   measurementDimensionsEnabled?: boolean
+  /** Allow users to upload snapshot images if enabled */
+  snapshotImagesEnabled?: boolean
+  /** The minimum number of images the user is allowed to upload */
+  minSnapshotImages?: number
+  /** The minimum number of images the user is allowed to upload */
+  maxSnapshotImages?: number
+  /** The text displayed on the button to capture a snapshot image of the map */
+  snapshotImageButtonText?: string
+  /** The icon displayed on the button to capture a snapshot image of the map */
+  snapshotImageButtonIcon?: string
 } & LookupFormElement &
   FormElementBinaryStorage &
   FormElementRequired &
