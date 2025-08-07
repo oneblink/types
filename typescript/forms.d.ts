@@ -620,6 +620,8 @@ export type ArcGISWebMapElement = {
       description?: string
     }[]
   }[]
+  /** The zoom, latitude and longitude of the view to be used for auto-snapshotting. */
+  autoSnaphotViews?: NonNullable<ArcGISWebMapElementValue['view']>[]
   /** Show and allow the user to enter an address via the address search widget */
   addressSearchWidgetEnabled?: boolean
   /** Show and allow the user to use the home widget */
