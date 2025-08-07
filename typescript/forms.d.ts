@@ -620,6 +620,7 @@ export type ArcGISWebMapElement = {
       description?: string
     }[]
   }[]
+  autoSnaphotViews: NonNullable<ArcGISWebMapElementValue['view']>[]
   /** Show and allow the user to enter an address via the address search widget */
   addressSearchWidgetEnabled?: boolean
   /** Show and allow the user to use the home widget */
