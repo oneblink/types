@@ -200,6 +200,11 @@ export type FormElementWithOptionsBase = LookupFormElement &
     /** The ID(s) of elements used in the 'conditionally show' process. */
     conditionallyShowOptionsElementIds?: string[]
     /**
+     * Whether or not all the predicates must match for the options to be shown
+     * (`true`) or if only one needs to match (`false`).
+     */
+    requiresAllConditionallyShowOptionsPredicates?: boolean
+    /**
      * Used to map an attribute from a dynamic options source with an option
      * element ID within the form definition
      */
