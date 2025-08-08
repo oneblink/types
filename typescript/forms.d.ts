@@ -621,7 +621,9 @@ export type ArcGISWebMapElement = {
     }[]
   }[]
   /** The zoom, latitude and longitude of the view to be used for auto-snapshotting. */
-  autoSnaphotViews?: NonNullable<ArcGISWebMapElementValue['view']>[]
+  autoSnapshotViews?: NonNullable<ArcGISWebMapElementValue['view']>[]
+  /** The text and icon displayed on the button to take a snapshot image(s) of the map */
+  autoSnapshotButton?: ButtonConfiguration
   /** Show and allow the user to enter an address via the address search widget */
   addressSearchWidgetEnabled?: boolean
   /** Show and allow the user to use the home widget */
@@ -629,15 +631,13 @@ export type ArcGISWebMapElement = {
   /** Show dimensions on drawing lines if enabled */
   measurementDimensionsEnabled?: boolean
   /** Allow users to upload snapshot images if enabled */
-  snapshotImagesEnabled?: boolean
+  manualSnapshotEnabled?: boolean
   /** The minimum number of images the user is allowed to upload */
-  minSnapshotImages?: number
+  minManualSnapshot?: number
   /** The minimum number of images the user is allowed to upload */
-  maxSnapshotImages?: number
+  maxManualSnapshot?: number
   /** The text displayed on the button to capture a snapshot image of the map */
-  snapshotImageButtonText?: string
-  /** The icon displayed on the button to capture a snapshot image of the map */
-  snapshotImageButtonIcon?: string
+  manualSnapshotButton?: ButtonConfiguration
 } & LookupFormElement &
   FormElementBinaryStorage &
   FormElementRequired &
