@@ -253,7 +253,7 @@ export type StatesAndTerritories =
   | 'WA'
 
 export type EmailSendingAddressBase = {
-  emailAddress: string
+  emailAddress?: string
   emailName?: string
   createdAt: string
   updatedAt: string
