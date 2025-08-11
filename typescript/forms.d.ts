@@ -1128,6 +1128,7 @@ export type NewForm = {
      * submission PDF after a successful submission.
      */
     allowPDFDownload?: PDFConfiguration
+    allowAttachmentsDownload?: EndpointConfiguration
   }
   cancelAction: FormPostSubmissionAction
   cancelRedirectUrl?: string
