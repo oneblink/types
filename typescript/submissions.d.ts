@@ -304,7 +304,6 @@ export type FormSubmissionAttachment = {
     key: string
     region: string
   }
-  url: string
   contentType: string
   fileName: string
   id: string
