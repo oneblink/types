@@ -300,12 +300,9 @@ export type FormSubmissionFileAccessToken = {
 
 export type FormSubmissionAttachment = {
   s3: S3Configuration
-  /**
-   * @deprecated Use tenant origin with the `pathname` property to construct an
-   *   absolute URL
-   */
+  /** @deprecated Use tenant origin with the `path` property to construct an absolute URL */
   url: string
-  pathname: string
+  path: string
   contentType: string
   fileName: string
   id: string
