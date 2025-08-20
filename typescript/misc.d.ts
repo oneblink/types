@@ -269,5 +269,5 @@ export type EmailSendingAddressSES = {
 }
 
 export type EmailSendingAddressResponseBase = {
-  integration: EmailSendingAddressSES | EmailSendingAddressMailgun
+  integration?: EmailSendingAddressSES | EmailSendingAddressMailgun
 }
