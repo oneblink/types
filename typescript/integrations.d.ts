@@ -65,13 +65,22 @@ export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationCivicaEnvironment<S = SavedSecret> = {
-  id: string
-  label: string
-  baseUrl: string
-  username: string
-  password: ConstrainedSecret<S>
-}
+export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
+  IntegrationTrimEnvironmentBase & {
+    authType?: 'USERNAME'
+    username: string
+    password: ConstrainedSecret<S>
+  }
+export type IntegrationCivicaEnvironmentOAuth<S = SavedSecret> =
+  IntegrationTrimEnvironmentBase & {
+    authType: 'OAUTH'
+    tokenUrl: string
+    clientId: string
+    clientSecret: ConstrainedSecret<S>
+  }
+export type IntegrationCivicaEnvironment<S = SavedSecret> =
+  | IntegrationCivicaEnvironmentUsername<S>
+  | IntegrationCivicaEnvironmentOAuth<S>
 export type IntegrationCivica<S = SavedSecret> = IntegrationBase & {
   type: 'CIVICA'
   configuration: {
