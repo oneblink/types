@@ -64,16 +64,18 @@ export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
     environments: Array<IntegrationTrimEnvironment<S>>
   }
 }
-
-export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
+type IntegrationCivicaEnvironmentBase<S = SavedSecret> =
   IntegrationTrimEnvironmentBase & {
-    authType?: 'USERNAME'
     username: string
     password: ConstrainedSecret<S>
   }
+export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType?: 'BASIC'
+  }
 export type IntegrationCivicaEnvironmentOAuth<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
-    authType: 'OAUTH'
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType: 'OAUTH_PASSWORD'
     tokenUrl: string
     clientId: string
     clientSecret: ConstrainedSecret<S>
