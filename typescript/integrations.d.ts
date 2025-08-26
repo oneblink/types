@@ -35,19 +35,19 @@ export type Secret = SavedSecret | RawSecret
 
 type ConstrainedSecret<T> = T extends Secret ? T : SavedSecret
 
-export type IntegrationTrimEnvironmentBase = {
+type IntegrationEnvironmentBaseUrl = {
   id: string
   label: string
   baseUrl: string
 }
 export type IntegrationTrimEnvironmentUsername<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
+  IntegrationEnvironmentBaseUrl & {
     authType?: 'USERNAME'
     username: string
     password: ConstrainedSecret<S>
   }
 export type IntegrationTrimEnvironmentOAuth<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
+  IntegrationEnvironmentBaseUrl & {
     authType: 'OAUTH'
     tokenUrl: string
     clientId: string
@@ -65,7 +65,7 @@ export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
   }
 }
 type IntegrationCivicaEnvironmentBase<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
+  IntegrationEnvironmentBaseUrl & {
     username: string
     password: ConstrainedSecret<S>
   }
