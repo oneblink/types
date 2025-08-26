@@ -71,7 +71,7 @@ type IntegrationCivicaEnvironmentBase<S = SavedSecret> =
   }
 export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
   IntegrationCivicaEnvironmentBase<S> & {
-    authType?: 'BASIC'
+    authType?: 'USERNAME'
   }
 export type IntegrationCivicaEnvironmentOAuth<S = SavedSecret> =
   IntegrationCivicaEnvironmentBase<S> & {
