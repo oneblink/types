@@ -35,19 +35,19 @@ export type Secret = SavedSecret | RawSecret
 
 type ConstrainedSecret<T> = T extends Secret ? T : SavedSecret
 
-export type IntegrationTrimEnvironmentBase = {
+type IntegrationEnvironmentBaseUrl = {
   id: string
   label: string
   baseUrl: string
 }
 export type IntegrationTrimEnvironmentUsername<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
+  IntegrationEnvironmentBaseUrl & {
     authType?: 'USERNAME'
     username: string
     password: ConstrainedSecret<S>
   }
 export type IntegrationTrimEnvironmentOAuth<S = SavedSecret> =
-  IntegrationTrimEnvironmentBase & {
+  IntegrationEnvironmentBaseUrl & {
     authType: 'OAUTH'
     tokenUrl: string
     clientId: string
@@ -64,14 +64,25 @@ export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
     environments: Array<IntegrationTrimEnvironment<S>>
   }
 }
-
-export type IntegrationCivicaEnvironment<S = SavedSecret> = {
-  id: string
-  label: string
-  baseUrl: string
-  username: string
-  password: ConstrainedSecret<S>
-}
+type IntegrationCivicaEnvironmentBase<S = SavedSecret> =
+  IntegrationEnvironmentBaseUrl & {
+    username: string
+    password: ConstrainedSecret<S>
+  }
+export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType?: 'USERNAME'
+  }
+export type IntegrationCivicaEnvironmentOAuth<S = SavedSecret> =
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType: 'OAUTH_PASSWORD'
+    tokenUrl: string
+    clientId: string
+    clientSecret: ConstrainedSecret<S>
+  }
+export type IntegrationCivicaEnvironment<S = SavedSecret> =
+  | IntegrationCivicaEnvironmentUsername<S>
+  | IntegrationCivicaEnvironmentOAuth<S>
 export type IntegrationCivica<S = SavedSecret> = IntegrationBase & {
   type: 'CIVICA'
   configuration: {
