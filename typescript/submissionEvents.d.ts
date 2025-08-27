@@ -558,6 +558,7 @@ export type BaseFormSubmissionProcessing = {
   key: string
   isDraft: boolean
   submissionTimestamp: string
+  completionTimestamp?: string
   formsAppId?: number
   keyId?: string
   user?: UserProfile
