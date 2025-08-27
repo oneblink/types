@@ -338,6 +338,12 @@ export type FormElementMapping<T> = T &
     | {
         type: 'EXTERNAL_ID'
       }
+    | {
+        type: 'SUBMISSION_TIMESTAMP'
+      }
+    | {
+        type: 'COMPLETION_TIMESTAMP'
+      }
   )
 
 type BaseFreshdeskSubmissionEventFieldMapping = {
