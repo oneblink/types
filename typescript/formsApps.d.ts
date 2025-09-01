@@ -378,6 +378,8 @@ type _NewFormsApp = {
   }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
+  /** If `true`, app users will be required to login before being able to view any of the Forms App content */
+  requireAppUserLogin?: boolean
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -542,6 +544,7 @@ export type FormsAppConfiguration<
   isClientLoggingEnabled: boolean
   isAppUserSignUpEnabled: boolean
   isAppUserMfaRequired: boolean
+  isAppUserLoginRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
   description?: string
