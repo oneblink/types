@@ -378,8 +378,6 @@ type _NewFormsApp = {
   }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
-  /** If `true`, app users will be required to login before being able to view any of the Forms App content */
-  requireAppUserLogin?: boolean
 }
 
 export type NewVolunteersFormsApp = _NewFormsApp & {
@@ -401,6 +399,8 @@ export type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
+   /** If `true`, app users will be required to login before being able to view any of the Forms App content */
+  requireAppUserLogin?: boolean
 }
 
 export type NewTilesFormsApp = _NewFormsApp & {
@@ -410,6 +410,8 @@ export type NewTilesFormsApp = _NewFormsApp & {
   styles: TilesStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
+   /** If `true`, app users will be required to login before being able to view any of the Forms App content */
+  requireAppUserLogin?: boolean
 }
 
 export type NewApprovalsApp = _NewFormsApp & {
