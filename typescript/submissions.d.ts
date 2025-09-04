@@ -814,7 +814,7 @@ export type BPOINTPayment = BaseFormSubmissionPayment & {
 export type NSWGovPayPayment = BaseFormSubmissionPayment & {
   type: NSWGovPaySubmissionEvent['type']
   /** Payment details specific to NSW GovPay payments */
-  paymentTransaction: {
+  paymentTransaction?: {
     /** The URL to redirect the user back to after a payment attempt */
     redirectUrl: string
     /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
