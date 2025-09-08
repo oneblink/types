@@ -343,12 +343,22 @@ export type FormStoreDefinition = {
   formElements: FormElementWithName[]
 }
 
-export type BaseFormSubmissionPayment = {
+type _BaseFormSubmissionPayment = {
   id: string
   submissionId: string
   formId: number
-  status: 'PENDING' | 'SUCCEEDED' | 'FAILED'
 }
+
+export type BaseFormSubmissionPayment = _BaseFormSubmissionPayment &
+  (
+    | {
+        status: 'PENDING' | 'SUCCEEDED'
+      }
+    | {
+        status: 'FAILED'
+        errorMessage?: string
+      }
+  )
 
 export type CPPayPayment = BaseFormSubmissionPayment & {
   type: CPPaySubmissionEvent['type']
