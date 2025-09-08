@@ -244,6 +244,14 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
   }
 }
 
+export type CPPayPaymentDisplayDetailKey =
+  | 'CP_PAY_TRANSACTION_ID'
+  | 'CP_PAY_ORDER_NUMBER'
+  | 'CP_PAY_PAYMENT_TYPE'
+  | 'CP_PAY_CREDIT_CARD_MASK'
+  | 'CP_PAY_AMOUNT'
+  | 'CP_PAY_CREATED_DATE_TIME'
+
 export type CPPaySubmissionEvent = FormEventBase & {
   type: 'CP_PAY'
   configuration: {
@@ -256,6 +264,17 @@ export type CPPaySubmissionEvent = FormEventBase & {
     gatewayId: string
   }
 }
+
+export type BPointPaymentDisplayDetailKey =
+  | 'BPOINT_RECEIPT_NUMBER'
+  | 'BPOINT_CRN1'
+  | 'BPOINT_CRN2'
+  | 'BPOINT_CRN3'
+  | 'BPOINT_BILLER_CODE'
+  | 'BPOINT_CREDIT_CARD_MASK'
+  | 'BPOINT_AMOUNT'
+  | 'BPOINT_SURCHARGE_AMOUNT'
+  | 'BPOINT_PROCESSED_DATE_TIME'
 
 export type BPOINTSubmissionEvent = FormEventBase & {
   type: 'BPOINT'
@@ -274,6 +293,14 @@ export type BPOINTSubmissionEvent = FormEventBase & {
   }
 }
 
+export type WestpacQuickStreamPaymentDisplayDetailKey =
+  | 'WESTPAC_QUICK_STREAM_RECEIPT_NUMBER'
+  | 'WESTPAC_QUICK_STREAM_PAYMENT_REFERENCE_NUMBER'
+  | 'WESTPAC_QUICK_STREAM_CUSTOMER_REFERENCE_NUMBER'
+  | 'WESTPAC_QUICK_STREAM_AMOUNT'
+  | 'WESTPAC_QUICK_STREAM_SURCHARGE_AMOUNT'
+  | 'WESTPAC_QUICK_STREAM_SETTLEMENT_DATE'
+
 export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
   type: 'WESTPAC_QUICK_STREAM'
   configuration: {
@@ -288,6 +315,18 @@ export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
     customerReferenceNumber: string
   }
 }
+
+export type NSWGovPayPaymentDisplayDetailKey =
+  | 'NSW_GOV_PAY_COMPLETION_REFERENCE'
+  | 'NSW_GOV_PAY_PAYMENT_REFERENCE'
+  | 'NSW_GOV_PAY_BANK_REFERENCE'
+  | 'NSW_GOV_PAY_PAYMENT_METHOD'
+  | 'NSW_GOV_PAY_BPAY_BILLER_CODE'
+  | 'NSW_GOV_PAY_CREDIT_CARD_NUMBER'
+  | 'NSW_GOV_PAY_AMOUNT'
+  | 'NSW_GOV_PAY_SURCHARGE_AMOUNT'
+  | 'NSW_GOV_PAY_SURCHARGE_GST'
+  | 'NSW_GOV_PAY_CREATED_DATE_TIME'
 
 export type NSWGovPaySubmissionEvent = FormEventBase & {
   type: 'NSW_GOV_PAY'
@@ -317,6 +356,12 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
   }
 }
 
+export type PaymentDisplayDetailKey =
+  | NSWGovPayPaymentDisplayDetailKey
+  | BPointPaymentDisplayDetailKey
+  | CPPayPaymentDisplayDetailKey
+  | WestpacQuickStreamPaymentDisplayDetailKey
+
 export type FormElementMapping<T> = T &
   (
     | {
@@ -343,6 +388,10 @@ export type FormElementMapping<T> = T &
       }
     | {
         type: 'COMPLETION_TIMESTAMP'
+      }
+    | {
+        type: 'PAYMENT_DETAIL'
+        key: PaymentDisplayDetailKey
       }
   )
 
