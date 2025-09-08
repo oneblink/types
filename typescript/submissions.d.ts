@@ -356,7 +356,7 @@ export type BaseFormSubmissionPayment = _BaseFormSubmissionPayment &
       }
     | {
         status: 'FAILED'
-        errorMessage?: string
+        message?: string
       }
   )
 
