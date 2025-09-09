@@ -39,7 +39,7 @@ export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 
 export type _FormElementBase = {
   isNew?: boolean
-  /** The unique identifier for an individual form element. */
+  /** The unique V4 UUID for an individual form element. */
   id: string
   /** Determine if the element is conditionally shown (`true`) or not (`false`). */
   conditionallyShow: boolean
@@ -169,7 +169,7 @@ export type ChoiceElementOptionAttribute = {
 }
 
 export type ChoiceElementOption = {
-  /** The unique identifier for an individual option. */
+  /** The globally unique V4 UUID for an individual option. */
   id: string
   /** An array of option attributes associated with an individual option. */
   attributes?: ChoiceElementOptionAttribute[]
