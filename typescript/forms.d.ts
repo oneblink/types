@@ -345,29 +345,52 @@ export type FormElementWithInput<DefaultValue> = {
 
 export type NumberElement = {
   type: 'number'
+  /** Prevent the user from entering a number less than this number. */
   minNumber?: number
+  /** Prevent the user from entering a number more than this number. */
   maxNumber?: number
+  /**
+   * If `true`, the input will display as a slider instead of a numeric input
+   * and the `sliderIncrement` is required.
+   */
   isSlider: boolean
   /** If true, the form will indicate the number is a currency value. */
   displayAsCurrency?: boolean
+  /**
+   * Required if `isSlider` is `true`, otherwise must be `undefined`. The
+   * increment the slider will go up and down by. Must be greater than 0 and
+   * supports decimals.
+   */
   sliderIncrement?: number
+  /**
+   * If true, the user will not be able to enter a decimal number, only integers
+   * are allowed.
+   */
   isInteger?: boolean
 } & FormElementWithInput<number>
 
 export type TextElement = {
   type: 'text'
+  /** Prevent the user from entering a less than this number of characters. */
   minLength?: number
+  /** Prevent the user from entering a more than this number of characters. */
   maxLength?: number
 } & FormElementWithInput<string>
 
 export type TextareaElement = {
   type: 'textarea'
+  /** Prevent the user from entering a less than this number of characters. */
   minLength?: number
+  /** Prevent the user from entering a more than this number of characters. */
   maxLength?: number
 } & FormElementWithInput<string>
 
 export type EmailElement = {
   type: 'email'
+  /**
+   * Display a second input on the form that is required to match this input
+   * exactly before the user can submit the form.
+   */
   requiresConfirmation?: boolean
 } & FormElementWithInput<string>
 
@@ -383,6 +406,7 @@ export type TelephoneElement = {
 
 export type ImageElement = FormElementBase & {
   type: 'image'
+  /** An absolute URL to the image to display in the form. */
   defaultValue: string
   decorativeImage?: boolean
 }
@@ -488,6 +512,10 @@ export type HtmlElement = FormElementBase & {
   defaultValue: string
 }
 
+/**
+ * Use this element type to display a input on the form to check if the user is
+ * a human and not a bot.
+ */
 export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
@@ -498,20 +526,66 @@ export type FilesElement = FormElementBinaryStorage &
     type: 'files'
     minEntries?: number
     maxEntries?: number
+    /**
+     * If `true`, will restrict the types of files a user can upload based on
+     * the file extensions set in `restrictFileTypes`.
+     */
     restrictFileTypes: boolean
+    /**
+     * Required if `restrictFileTypes` is `true`. File types must be file
+     * extensions without the dot at the beginning. For example:
+     *
+     * - "png" is valid
+     * - ".png" is not valid
+     */
     restrictedFileTypes?: string[]
     defaultValue?: unknown
     allowExtensionlessAttachments?: boolean
+    /**
+     * If `true`, will prevent the user from uploading files that exceed the
+     * value set in `maxFileSize`.
+     */
     restrictFileSize?: boolean
-    /** The maximum size (in Megabytes) that an individual file can be */
+    /**
+     * Required if `restrictFileSize` is `true`. The maximum size (in Megabytes)
+     * that an individual file can be
+     */
     maxFileSize?: number
   }
 
 export type CalculationElement = FormElementBase & {
   type: 'calculation'
+  /**
+   * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
+   * be displayed to users when completing the form. The `label` property will
+   * not be displayed on the form. The result of the calculation is represented
+   * as `{RESULT}`. The HTML must include the result.
+   */
   defaultValue: string
+  /**
+   * The calculation algorithm that must return a number. The following snytax
+   * is supported:
+   *
+   * - `*` equates to multiply
+   * - `/` equates to divide
+   * - `+` equates to add
+   * - `-` equates to minus
+   * - `(` and `)` parentheses can be used to dictate the order of operations
+   * - `ROUND(n)` will round "n" to the nearest whole number
+   * - `ISNULL(n, x)` will use the value of `n` if it is a number, otherwise the
+   *   value of `x` will be used
+   * - `{ELEMENT:elementName}` will use the value from another element on the
+   *   form. `elementName` must match the `name` property of an element on the form.
+   */
   calculation: string
+  /**
+   * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
+   * be displayed to users when completing the form before until the
+   * `calculation` returns a valid number. Use this to give the user
+   * instructions on what is need to complete the calculation
+   */
   preCalculationDisplay?: string
+  /** If true, the `{RESULT}` in the `defaultValue` will be displayed as currency. */
   displayAsCurrency?: boolean
 }
 
