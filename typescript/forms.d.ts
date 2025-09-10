@@ -39,7 +39,10 @@ export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 
 export type _FormElementBase = {
   isNew?: boolean
-  /** The unique V4 UUID for an individual form element. */
+  /**
+   * The unique [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html) for an
+   * individual form element.
+   */
   id: string
   /** Determine if the element is conditionally shown (`true`) or not (`false`). */
   conditionallyShow: boolean
@@ -169,7 +172,10 @@ export type ChoiceElementOptionAttribute = {
 }
 
 export type ChoiceElementOption = {
-  /** The globally unique V4 UUID for an individual option. */
+  /**
+   * The globally unique [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html)
+   * for an individual option.
+   */
   id: string
   /** An array of option attributes associated with an individual option. */
   attributes?: ChoiceElementOptionAttribute[]
@@ -280,8 +286,9 @@ export type FormElementWithOptions =
 // date element types
 export type FormElementWithDate = {
   /**
-   * A string GUID that references the ID of an element. This takes precedence
-   * over fromDate if both are used for date ranges.
+   * A string [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html) that
+   * references the ID of an element. This takes precedence over fromDate if
+   * both are used for date ranges.
    */
   fromDateElementId?: string
   /**
@@ -291,8 +298,9 @@ export type FormElementWithDate = {
   fromDate?: string | 'NOW'
   fromDateDaysOffset?: number
   /**
-   * A string GUID that references the ID of an element. This takes precedence
-   * over toDate if both are used for date ranges.
+   * A string [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html) that
+   * references the ID of an element. This takes precedence over toDate if both
+   * are used for date ranges.
    */
   toDateElementId?: string
   /**
@@ -463,6 +471,11 @@ export type SectionElement = _FormElementBase &
 
 export type HtmlElement = FormElementBase & {
   type: 'html'
+  /**
+   * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
+   * be displayed to users when completing the form. The `label` property will
+   * not be displayed on the form.
+   */
   defaultValue: string
 }
 
