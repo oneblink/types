@@ -456,6 +456,14 @@ export type RepeatableSetElement = FormElementBase & {
 } & _NestedElementsElement &
   FormElementReadOnly
 
+/**
+ * `PageElement`s must only be used when the form has more than 1 page. If the
+ * form has multiple pages, the `isMultiPage` must be set to `true`. If the form
+ * should only be displayed as a single page. There should be no `PageElement`
+ * types in the `elements` array on the `Form`. If the form has more than 1
+ * page, only the root elements in the `elements` array on the form should
+ * contain `PageElement` types. You cannot nest `PageElement` types.
+ */
 export type PageElement = _FormElementBase & {
   type: 'page'
   label: string
@@ -1121,7 +1129,15 @@ export type NewForm = {
   elements: Array<FormElement>
   /** Whether or not the form can only be viewed by an Authenticated user. */
   isAuthenticated: boolean
-  /** Whether or not the form contains multiple pages. */
+  /**
+   * Whether or not the form contains multiple pages.
+   *
+   * If set to `true`, the `elements` array must only contain `PageElement`
+   * types. The `elements` array in each `PageElement` type can include all of
+   * the other `FormElement` types.
+   *
+   * If it is `false`, the `elements` array must not contain any `PageElement` types.
+   */
   isMultiPage: boolean
   /** The date and time (in ISO format) a form becomes available. */
   publishStartDate?: string
