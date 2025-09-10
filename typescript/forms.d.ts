@@ -395,6 +395,16 @@ export type CameraElement = FormElementRequired &
 
 export type HeadingElement = FormElementBase & {
   type: 'heading'
+  /**
+   * Heading type will determine the size of the heading. The available heading
+   * types are the following (from largest to smallest):
+   *
+   * - 1 = Title
+   * - 2 = Large
+   * - 3 = Medium
+   * - 4 = Small
+   * - 5 = Normal
+   */
   headingType: number
 }
 
