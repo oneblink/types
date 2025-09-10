@@ -331,6 +331,7 @@ export type TimeElement = FormElementWithDate & {
 }
 
 export type FormElementWithInput<DefaultValue> = {
+  /** Empty strings are not support. Set to `undefined` if there is no default value. */
   defaultValue?: DefaultValue
   placeholderValue?: string
   regexPattern?: string
