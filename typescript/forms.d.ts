@@ -349,12 +349,16 @@ export type NumberElement = {
    * Prevent the user from entering a number less than this number.
    *
    * If `isInteger` is `true`, this value must also be an integer.
+   *
+   * Must be less than the `maxNumber` if `maxNumber` is set to a number.
    */
   minNumber?: number
   /**
    * Prevent the user from entering a number more than this number.
    *
    * If `isInteger` is `true`, this value must also be an integer.
+   *
+   * Must be more than the `minNumber` if `minNumber` is set to a number.
    */
   maxNumber?: number
   /**
@@ -382,13 +386,15 @@ export type NumberElement = {
 
 export type CharacterLengthElement = {
   /**
-   * Prevent the user from entering less than this number of characters. Must be
-   * less than the `maxLength` if `maxLength` is set to a number.
+   * Prevent the user from entering less than this number of characters.
+   *
+   * Must be less than the `maxLength` if `maxLength` is set to a number.
    */
   minLength?: number
   /**
-   * Prevent the user from entering more than this number of characters. Must be
-   * more than the `minLength` if `minLength` is set to a number.
+   * Prevent the user from entering more than this number of characters.
+   *
+   * Must be more than the `minLength` if `minLength` is set to a number.
    */
   maxLength?: number
 }
