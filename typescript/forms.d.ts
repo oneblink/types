@@ -345,9 +345,17 @@ export type FormElementWithInput<DefaultValue> = {
 
 export type NumberElement = {
   type: 'number'
-  /** Prevent the user from entering a number less than this number. */
+  /**
+   * Prevent the user from entering a number less than this number.
+   *
+   * If `isInteger` is `true`, this value must also be an integer.
+   */
   minNumber?: number
-  /** Prevent the user from entering a number more than this number. */
+  /**
+   * Prevent the user from entering a number more than this number.
+   *
+   * If `isInteger` is `true`, this value must also be an integer.
+   */
   maxNumber?: number
   /**
    * If `true`, the input will display as a slider instead of a numeric input
@@ -357,9 +365,12 @@ export type NumberElement = {
   /** If true, the form will indicate the number is a currency value. */
   displayAsCurrency?: boolean
   /**
-   * Required if `isSlider` is `true`, otherwise must be `undefined`. The
-   * increment the slider will go up and down by. Must be greater than 0 and
+   * Required if `isSlider` is `true`, otherwise must be `undefined`.
+   *
+   * The increment the slider will go up and down by. Must be greater than 0 and
    * supports decimals.
+   *
+   * If `isInteger` is `true`, this value must also be an integer.
    */
   sliderIncrement?: number
   /**
@@ -369,21 +380,28 @@ export type NumberElement = {
   isInteger?: boolean
 } & FormElementWithInput<number>
 
+export type CharacterLengthElement = {
+  /**
+   * Prevent the user from entering less than this number of characters. Must be
+   * less than the `maxLength` if `maxLength` is set to a number.
+   */
+  minLength?: number
+  /**
+   * Prevent the user from entering more than this number of characters. Must be
+   * more than the `minLength` if `minLength` is set to a number.
+   */
+  maxLength?: number
+}
+
 export type TextElement = {
   type: 'text'
-  /** Prevent the user from entering a less than this number of characters. */
-  minLength?: number
-  /** Prevent the user from entering a more than this number of characters. */
-  maxLength?: number
-} & FormElementWithInput<string>
+} & FormElementWithInput<string> &
+  CharacterLengthElement
 
 export type TextareaElement = {
   type: 'textarea'
-  /** Prevent the user from entering a less than this number of characters. */
-  minLength?: number
-  /** Prevent the user from entering a more than this number of characters. */
-  maxLength?: number
-} & FormElementWithInput<string>
+} & FormElementWithInput<string> &
+  CharacterLengthElement
 
 export type EmailElement = {
   type: 'email'
