@@ -48,10 +48,14 @@ export type _FormElementBase = {
   conditionallyShow: boolean
   /**
    * Determine if the predicates must all match (`true`) or if only one needs to
-   * match (`false`) for the element to shown.
+   * match (`false`) for the element to be shown.
    */
   requiresAllConditionallyShowPredicates?: boolean
-  /** Predicates to evaluate. */
+  /**
+   * Predicates to evaluate to determine if the element should be shown.
+   *
+   * Required if `conditionallyShow` is `true`.
+   */
   conditionallyShowPredicates?: ConditionalPredicate[]
   /** Custom CSS classes that will be added to the element during rendering */
   customCssClasses?: string[]
@@ -74,6 +78,8 @@ export type FormElementBase = _FormElementBase &
     /**
      * The key that will be assigned a value in the submission data when the
      * form is submitted.
+     *
+     * Should match this regex pattern: /[a-zA-Z\d_-]+/
      */
     name: string
     /** Display text presented to the user above the input by default. */
@@ -165,9 +171,15 @@ export type DynamicChoiceElementOption = {
 }
 
 export type ChoiceElementOptionAttribute = {
-  /** The external element ID used in the 'conditionally show option' process */
+  /**
+   * The `id` of the element with options to determine if the option containing
+   * this attribute should be shown.
+   */
   elementId: string
-  /** An array of option IDs associated with an individual option */
+  /**
+   * The `id`s of the options on the element referenced by the `elementId` on
+   * this attribute.
+   */
   optionIds: string[]
 }
 
@@ -177,7 +189,12 @@ export type ChoiceElementOption = {
    * for an individual option.
    */
   id: string
-  /** An array of option attributes associated with an individual option. */
+  /**
+   * Attributes are used to conditionally display options. This property must be
+   * used with the `conditionallyShowOptions` and
+   * `conditionallyShowOptionsElementIds` properties on the element containing
+   * this option.
+   */
   attributes?: ChoiceElementOptionAttribute[]
 } & Omit<DynamicChoiceElementOption, 'attributes'>
 
@@ -201,9 +218,13 @@ export type FormElementWithOptionsBase = LookupFormElement &
     freshdeskFieldName?: string
     /** The ID of the dynamic options set configured in the OneBlink System. */
     dynamicOptionSetId?: number
-    /** Whether or not the elements options are to be shown conditionally. */
+    /** Whether or not the element's options are to be shown conditionally. */
     conditionallyShowOptions?: boolean
-    /** The ID(s) of elements used in the 'conditionally show' process. */
+    /**
+     * The ID(s) of elements which will filter the each option to be
+     * conditionally displayed. An option can only be filtered by another
+     * element's options
+     */
     conditionallyShowOptionsElementIds?: string[]
     /**
      * Whether or not all the predicates must match for the options to be shown
@@ -526,12 +547,20 @@ export type SectionElement = _FormElementBase &
     canCollapseFromBottom?: boolean
   } & _NestedElementsElement
 
+/** Display information to the user. Also know as the "Information Form Element" */
 export type HtmlElement = FormElementBase & {
   type: 'html'
   /**
+   * Also know as the "Information Form Element"
+   *
    * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
-   * be displayed to users when completing the form. The `label` property will
-   * not be displayed on the form.
+   * be displayed to users when completing the form.
+   *
+   * The `label` property will not be displayed on the form.
+   *
+   * Other form element's values can be injected into the HTML using the
+   * following syntax: `{ELEMENT:elementName}`. The `elementName` part must
+   * match the `name` property of an element on the form.
    */
   defaultValue: string
 }
@@ -587,7 +616,7 @@ export type CalculationElement = FormElementBase & {
    */
   defaultValue: string
   /**
-   * The calculation algorithm that must return a number. The following snytax
+   * The calculation algorithm that must return a number. The following syntax
    * is supported:
    *
    * - `*` equates to multiply
