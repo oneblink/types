@@ -570,6 +570,7 @@ export type CalculationElement = FormElementBase & {
    * - `/` equates to divide
    * - `+` equates to add
    * - `-` equates to minus
+   * - `%` equates to modulo
    * - `(` and `)` parentheses can be used to dictate the order of operations
    * - `ROUND(n)` will round "n" to the nearest whole number
    * - `ISNULL(n, x)` will use the value of `n` if it is a number, otherwise the
