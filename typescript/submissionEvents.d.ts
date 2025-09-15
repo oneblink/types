@@ -145,15 +145,25 @@ export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** An array of element ids to exclude from the email when adding attachments. */
   excludedAttachmentElementIds?: string[]
 }
+
+/**
+ * @deprecated Use the `EmailSubmissionEvent` instead with the
+ *   `pdfConfigurations` property set.
+ */
 export type PdfSubmissionEvent = FormEventBase & {
   type: 'PDF'
   configuration: PDFConfiguration & EmailConfiguration
 }
 
-export type EmailOnlySubmissionEvent = FormEventBase & {
+export type EmailSubmissionEvent = FormEventBase & {
   type: 'EMAIL'
-  configuration: EmailConfiguration
+  configuration: EmailConfiguration & {
+    pdfConfigurations?: PDFConfiguration[]
+  }
 }
+
+/** @deprecated Use the `EmailSubmissionEvent` type instead. */
+export type EmailOnlySubmissionEvent = EmailSubmissionEvent
 
 export type OneBlinkAPISubmissionEvent = FormEventBase &
   EndpointConfigurationAPI
