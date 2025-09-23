@@ -68,6 +68,8 @@ export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
   taskAllocations: Array<{ taskId: string }>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
+  /** Unique domain safe text to identify the menu item */
+  slug?: string
 }
 
 export type TaskGroupInstanceAllocation = {
@@ -88,6 +90,8 @@ export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   taskGroupInstanceAllocations: Array<TaskGroupInstanceAllocation>
   /** If true, menu item will be the default item shown */
   isDefault: boolean
+  /** Unique domain safe text to identify the menu item */
+  slug?: string
 }
 
 export type FormsAppCPHCMSContentMenuItemListDisplayAttributeMeta = {
@@ -399,7 +403,10 @@ export type NewFormsListFormsApp = _NewFormsApp & {
   styles: FormsListStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
-   /** If `true`, app users will be required to login before being able to view any of the Forms App content */
+  /**
+   * If `true`, app users will be required to login before being able to view
+   * any of the Forms App content
+   */
   requireAppUserLogin?: boolean
 }
 
@@ -410,7 +417,10 @@ export type NewTilesFormsApp = _NewFormsApp & {
   styles: TilesStyles
   /** Whether draft submissions are shared between all app users for this app. */
   draftsAreShared?: boolean
-   /** If `true`, app users will be required to login before being able to view any of the Forms App content */
+  /**
+   * If `true`, app users will be required to login before being able to view
+   * any of the Forms App content
+   */
   requireAppUserLogin?: boolean
 }
 
