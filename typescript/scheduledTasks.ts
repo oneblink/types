@@ -134,8 +134,8 @@ export type NewTaskGroup = {
   /** The label of the task group */
   name: string
   /**
-   * The identifiers of tasks that the task group will show within a Forms App.
-   * The order of the identifiers is respected when displayingActions
+   * The identifiers of tasks/sub-groups that the task group will show within a
+   * Forms App. The order of the identifiers is respected when displaying actions.
    */
   taskIds: Array<Task['taskId'] | { tasksIds: Task['taskId'][]; label: string }>
   /** The related forms app environment id that this task group belongs to */
