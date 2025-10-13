@@ -92,6 +92,7 @@ export interface NewTier {
     allowApprovalsSolution?: boolean
     allowVolunteersSolution?: boolean
     allowSubmissionTitleSearch?: boolean
+    allowCivicPlusForethoughtChatbot?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
