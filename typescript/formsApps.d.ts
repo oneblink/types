@@ -47,7 +47,10 @@ export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
   formIds: number[]
 }
 
-export type FormsAppFormMenuItem = Omit<FormsAppBaseMenuItem, 'isHidden'> & {
+export type FormsAppFormMenuItem = Omit<
+  FormsAppScreenMenuItemBase,
+  'isHidden'
+> & {
   /** Type of menu item */
   type: 'FORM'
   /** The id of the form */
