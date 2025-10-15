@@ -62,6 +62,9 @@ export type TierLimitation =
       unlimited: false
     }
 
+export interface AvailableUserAuthentication {
+  SAML: boolean
+}
 export interface NewTier {
   name: string
   tierData: {
@@ -93,6 +96,7 @@ export interface NewTier {
     allowVolunteersSolution?: boolean
     allowSubmissionTitleSearch?: boolean
     allowCivicPlusForethoughtChatbot?: boolean
+    availableUserAuthentication: AvailableUserAuthentication
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
