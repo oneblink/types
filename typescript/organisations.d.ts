@@ -2,6 +2,7 @@ import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
 import { UserProfile } from './misc'
 import { DeveloperKeyReference } from './keys'
+import { IntegrationType } from './integrations'
 
 export interface NewFormRetentionPolicy {
   formId: number
@@ -87,6 +88,7 @@ export interface NewTier {
     maximumEmailTemplates: TierLimitation
     availableFormSubmissionEvents?: FormEventType[] | null
     availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
+    availableIntegrations?: IntegrationType[] | null
     allowFormsAppPWASettings: boolean
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
