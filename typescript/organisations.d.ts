@@ -84,6 +84,7 @@ export interface NewTier {
     maximumScheduledTaskCompletions: TierLimitation
     maximumFormSequentialNumberReceiptComponents: TierLimitation
     maximumFormCustomPDFs: TierLimitation
+    maximumEmailTemplates: TierLimitation
     availableFormSubmissionEvents?: FormEventType[] | null
     availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
     allowFormsAppPWASettings: boolean
