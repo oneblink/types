@@ -1229,6 +1229,25 @@ export type ExternalIdGeneration =
   | EndpointConfiguration
   | ExternalIdGenerationReceiptId
 
+export type FormCustomPDFMappingFont =
+  | 'Courier'
+  | 'Courier-Bold'
+  | 'Courier-Oblique'
+  | 'Courier-BoldOblique'
+  | 'Helvetica'
+  | 'Helvetica-Bold'
+  | 'Helvetica-Oblique'
+  | 'Helvetica-BoldOblique'
+  | 'Times-Roman'
+  | 'Times-Bold'
+  | 'Times-Italic'
+  | 'Times-BoldItalic'
+  | 'Symbol'
+  | 'ZapfDingbats'
+  // Above are the default fonts from `pdf-lib`
+  // Below are custom embedded fonts
+  | 'Brush Script MT Italic'
+
 export type FormCustomPDF = {
   /** The Id of the custom PDF. */
   id: string
@@ -1240,6 +1259,8 @@ export type FormCustomPDF = {
   mapping: FormElementMapping<{
     /** The name of the field that will be replaced in the custom PDF. */
     replaceableField: string
+    /** The font to use when setting the field value. */
+    font?: FormCustomPDFMappingFont
   }>[]
 }
 
