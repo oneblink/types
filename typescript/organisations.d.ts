@@ -97,6 +97,7 @@ export interface NewTier {
     allowSubmissionTitleSearch?: boolean
     allowCivicPlusForethoughtChatbot?: boolean
     allowSAMLUserAuthentication: boolean
+    allowAIFormCreateAndUpdate?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
