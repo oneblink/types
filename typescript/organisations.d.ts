@@ -36,6 +36,7 @@ export type NewOrganisation = {
   timezone?: string
   requireTeamMemberMfa?: boolean
   environmentOrdering?: number[]
+  systemIdOverride?: number
 }
 
 export type Organisation = NewOrganisation & {
