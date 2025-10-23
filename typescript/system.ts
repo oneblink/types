@@ -5,7 +5,7 @@ export interface FormsBuilderAISystemConfiguration extends IdResource {
   temperature: number
   topP: number
   topK: number
-  maxTokensPerRequest: number
+  maxTokensPerResponse: number
   lastUsedAt?: string
   isInUse: boolean
 }
