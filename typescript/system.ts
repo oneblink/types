@@ -11,5 +11,5 @@ export interface FormsBuilderAISystemConfiguration
   extends IdResource,
     NewFormsBuilderAISystemConfiguration {
   lastUsedAt?: string
-  isInUse: boolean
+  isEnabled: boolean
 }
