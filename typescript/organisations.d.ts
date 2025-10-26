@@ -36,6 +36,7 @@ export type NewOrganisation = {
   timezone?: string
   requireTeamMemberMfa?: boolean
   environmentOrdering?: number[]
+  formsBuilderAISystemConfigurationIdOverride?: number
 }
 
 export type Organisation = NewOrganisation & {
@@ -97,6 +98,7 @@ export interface NewTier {
     allowSubmissionTitleSearch?: boolean
     allowCivicPlusForethoughtChatbot?: boolean
     allowSAMLUserAuthentication: boolean
+    allowAIFormBuilder?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
