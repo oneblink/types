@@ -9,12 +9,13 @@ export interface FormsBuilderAISystemConfiguration {
 }
 
 export interface NewAISystemConfiguration {
+  name: string
   configuration: FormsBuilderAISystemConfiguration
   isEnabled: boolean
 }
 
-export interface AISystemConfiguration 
-  extends IdResource, 
-    NewAISystemConfiguration { 
+export interface AISystemConfiguration
+  extends IdResource,
+    NewAISystemConfiguration {
   lastUsedAt?: string
 }
