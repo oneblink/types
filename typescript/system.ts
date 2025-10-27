@@ -10,11 +10,11 @@ export interface FormsBuilderAISystemConfiguration {
 
 export interface NewAISystemConfiguration {
   configuration: FormsBuilderAISystemConfiguration
+  isEnabled: boolean
 }
 
 export interface AISystemConfiguration 
   extends IdResource, 
     NewAISystemConfiguration { 
   lastUsedAt?: string
-  isEnabled: boolean
 }
