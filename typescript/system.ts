@@ -1,12 +1,20 @@
 import { IdResource } from './misc'
 
-export interface FormsBuilderAISystemConfiguration {
+export type FormsBuilderAISystemConfiguration = {
   systemPrompt: string
-  temperature: number
   topP: number
-  topK: number
   maxTokensPerResponse: number
-}
+} & (
+  | {
+      shouldReason?: false
+      topK: number
+      temperature: number
+    }
+  | {
+      shouldReason: true
+      reasoningTokenBudget?: number
+    }
+)
 
 export interface NewAISystemConfiguration {
   name: string
