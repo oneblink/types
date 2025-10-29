@@ -12,7 +12,7 @@ export type FormsBuilderAISystemConfiguration = {
     }
   | {
       shouldReason: true
-      reasoningTokenBudget?: number
+      reasoningTokenBudget: number
     }
 )
 
