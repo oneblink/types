@@ -40,8 +40,10 @@ export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 export type _FormElementBase = {
   isNew?: boolean
   /**
-   * The unique [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html) for an
-   * individual form element.
+   * The identifier for this element. The value must be a universally unique
+   * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+   * conform to the formatting requirements defined in this RFC 9562
+   * specification: https://www.rfc-editor.org/rfc/rfc9562.html
    */
   id: string
   /** Determine if the element is conditionally shown (`true`) or not (`false`). */
@@ -208,7 +210,14 @@ export type DynamicOptionsSetAttributeMap = {
 export type FormElementWithOptionsBase = LookupFormElement &
   FormElementRequired &
   FormElementReadOnly & {
-    /** An array of options, relevant to the element. */
+    /**
+     * An array of options, relevant to the element.
+     *
+     * Each option must have an `id` property that contains a universally unique
+     * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+     * conform to the formatting requirements defined in this RFC 9562
+     * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+     */
     options?: ChoiceElementOption[]
     /**
      * Whether or not the options set is defined within the form definition
@@ -238,6 +247,14 @@ export type FormElementWithOptionsBase = LookupFormElement &
     attributesMapping?: DynamicOptionsSetAttributeMap[]
   }
 
+/**
+ * An element to allow nested form with in a form.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type FormFormElement = _FormElementBase &
   FormElementReadOnly & {
     type: 'form' | 'infoPage'
@@ -246,12 +263,28 @@ export type FormFormElement = _FormElementBase &
     elements?: FormElement[]
   }
 
+/**
+ * An element to display multiple options to a user and only allowing them to choose one.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type RadioButtonElement = FormElementWithOptionsBase & {
   type: 'radio'
   buttons: boolean
   defaultValue?: string
 }
 
+/**
+ * An element to display multiple options to a user and allowing them choose multiple.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type CheckboxElement = FormElementWithOptionsBase & {
   type: 'checkboxes'
   buttons: boolean
@@ -260,6 +293,15 @@ export type CheckboxElement = FormElementWithOptionsBase & {
   requiredAll?: boolean
 }
 
+/**
+ * An element to display multiple options to a user and allowing them choose one
+ * or multiple based on the value of the `multi` property.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type SelectElement = FormElementWithOptionsBase & {
   type: 'select'
   multi: boolean
@@ -269,6 +311,14 @@ export type SelectElement = FormElementWithOptionsBase & {
   autocompleteAttributes?: string[]
 }
 
+/**
+ * An element to display multiple options to a user and only allowing them to choose one.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type AutoCompleteElement = FormElementWithOptionsBase & {
   type: 'autocomplete'
   defaultValue?: string
@@ -288,6 +338,15 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
   autocompleteAttributes?: string[]
 }
 
+/**
+ * An element to display multiple options to a user and only allowing them to
+ * choose one as well as enter notes and upload file attachments.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type ComplianceElement = FormElementWithOptionsBase &
   FormElementBinaryStorage & {
     type: 'compliance'
@@ -304,7 +363,6 @@ export type FormElementWithOptions =
   | ComplianceElement
   | FreshdeskDependentFieldElement
 
-// date element types
 export type FormElementWithDate = {
   /**
    * A string [V4 UUID](https://www.rfc-editor.org/rfc/rfc9562.html) that
@@ -339,14 +397,38 @@ export type FormElementWithDate = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to supply a date.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type DateElement = FormElementWithDate & {
   type: 'date'
 }
 
+/**
+ * An element to allow the user to supply a date and time.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type DateTimeElement = FormElementWithDate & {
   type: 'datetime'
 }
 
+/**
+ * An element to allow the user to supply a time.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type TimeElement = FormElementWithDate & {
   type: 'time'
 }
@@ -364,6 +446,14 @@ export type FormElementWithInput<DefaultValue> = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to supply a number.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type NumberElement = {
   type: 'number'
   /**
@@ -420,16 +510,40 @@ export type CharacterLengthElement = {
   maxLength?: number
 }
 
+/**
+ * An element to allow the user to supply text.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type TextElement = {
   type: 'text'
 } & FormElementWithInput<string> &
   CharacterLengthElement
 
+/**
+ * An element to allow the user to supply text with line breaks.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type TextareaElement = {
   type: 'textarea'
 } & FormElementWithInput<string> &
   CharacterLengthElement
 
+/**
+ * An element to allow the user to supply an email address.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type EmailElement = {
   type: 'email'
   /**
@@ -439,16 +553,40 @@ export type EmailElement = {
   requiresConfirmation?: boolean
 } & FormElementWithInput<string>
 
+/**
+ * An element to allow the user to supply the value from a barcode.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type BarcodeScannerElement = {
   type: 'barcodeScanner'
   restrictBarcodeTypes: boolean
   restrictedBarcodeTypes?: string[]
 } & FormElementWithInput<string>
 
+/**
+ * An element to allow the user to supply a phone number.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type TelephoneElement = {
   type: 'telephone'
 } & FormElementWithInput<string>
 
+/**
+ * An element to display an image to the user.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type ImageElement = FormElementBase & {
   type: 'image'
   /** An absolute URL to the image to display in the form. */
@@ -456,6 +594,15 @@ export type ImageElement = FormElementBase & {
   decorativeImage?: boolean
 }
 
+/**
+ * An element to allow the user to supply a drawing (usually used to allow the
+ * user to supply a signature).
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type DrawElement = FormElementRequired &
   FormElementReadOnly &
   FormElementBinaryStorage & {
@@ -463,6 +610,14 @@ export type DrawElement = FormElementRequired &
     defaultValue?: SubmissionTypes.FormSubmissionAttachment
   }
 
+/**
+ * An element to allow the user to supply a file attachment that is an image.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type CameraElement = FormElementRequired &
   FormElementReadOnly &
   FormElementBinaryStorage & {
@@ -471,6 +626,14 @@ export type CameraElement = FormElementRequired &
     includeTimestampWatermark: boolean
   }
 
+/**
+ * An element to display a heading to the user.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type HeadingElement = FormElementBase & {
   type: 'heading'
   /**
@@ -486,6 +649,14 @@ export type HeadingElement = FormElementBase & {
   headingType: number
 }
 
+/**
+ * An element to allow the user to choose a location by dropping a pin on a map.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type LocationElement = {
   type: 'location'
   defaultValue?: unknown
@@ -500,6 +671,15 @@ export type _NestedElementsElement = {
   elements: FormElement[]
 }
 
+/**
+ * An element to allow the user to create multiple entries. The data captured in
+ * each entry is based on the form elements in the `elements` array.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type RepeatableSetElement = FormElementBase & {
   type: 'repeatableSet'
   minSetEntries?:
@@ -533,12 +713,25 @@ export type RepeatableSetElement = FormElementBase & {
  * types in the `elements` array on the `Form`. If the form has more than 1
  * page, only the root elements in the `elements` array on the form should
  * contain `PageElement` types. You cannot nest `PageElement` types.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  */
 export type PageElement = _FormElementBase & {
   type: 'page'
   label: string
 } & _NestedElementsElement
 
+/**
+ * An element to group together multiple form elements.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type SectionElement = _FormElementBase &
   FormElementHint & {
     type: 'section'
@@ -547,7 +740,15 @@ export type SectionElement = _FormElementBase &
     canCollapseFromBottom?: boolean
   } & _NestedElementsElement
 
-/** Display information to the user. Also know as the "Information Form Element" */
+/**
+ * An element to display information to the user. Also know as the "Information
+ * Form Element".
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type HtmlElement = FormElementBase & {
   type: 'html'
   /**
@@ -566,13 +767,26 @@ export type HtmlElement = FormElementBase & {
 }
 
 /**
- * Use this element type to display a input on the form to check if the user is
- * a human and not a bot.
+ * An element to display a input on the form to check if the user is a human and
+ * not a bot.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  */
 export type CaptchaElement = FormElementRequired & {
   type: 'captcha'
 }
 
+/**
+ * An element to allow the user to upload multiple file attachments.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type FilesElement = FormElementBinaryStorage &
   LookupFormElement &
   FormElementReadOnly & {
@@ -606,6 +820,14 @@ export type FilesElement = FormElementBinaryStorage &
     maxFileSize?: number
   }
 
+/**
+ * An element to calculate a value for the user based on other form element values.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type CalculationElement = FormElementBase & {
   type: 'calculation'
   /**
@@ -643,11 +865,27 @@ export type CalculationElement = FormElementBase & {
   displayAsCurrency?: boolean
 }
 
+/**
+ * An element to summarize other form element values.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type SummaryElement = FormElementBase & {
   type: 'summary'
   elementIds: string[]
 }
 
+/**
+ * An element to allow the user to choose an address from the Geoscape service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type GeoscapeAddressElement = {
   type: 'geoscapeAddress'
   defaultValue?: GeoscapeAddress
@@ -659,6 +897,14 @@ export type GeoscapeAddressElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to choose an address from the NSW Point service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type PointAddressElement = {
   type: 'pointAddress'
   placeholderValue?: string
@@ -676,6 +922,14 @@ export type PointAddressElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to choose an cadastral parcel from the NSW Point service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type PointCadastralParcelElement = {
   type: 'pointCadastralParcel'
   placeholderValue?: string
@@ -686,6 +940,14 @@ export type PointCadastralParcelElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to choose an address from the Google Maps service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type GoogleAddressElement = {
   type: 'googleAddress'
   defaultValue?: GoogleMapsAddress
@@ -696,6 +958,14 @@ export type GoogleAddressElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to choose yes or no.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type BooleanElement = LookupFormElement &
   FormElementRequired &
   FormElementReadOnly & {
@@ -703,6 +973,15 @@ export type BooleanElement = LookupFormElement &
     defaultValue: boolean
     displayAsCheckbox?: boolean
   }
+
+/**
+ * An element to allow the user to street name from the Civica service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
   defaultValue?: CivicaStreetName
@@ -713,6 +992,14 @@ export type CivicaStreetNameElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to create a Name Record in the Civica service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type CivicaNameRecordElement = {
   type: 'civicaNameRecord'
   defaultValue?: CivicaNameRecord
@@ -744,6 +1031,14 @@ export type CivicaNameRecordElement = {
 } & FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to choose a liquor licence from the API NSW service.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type APINSWLiquorLicenceElement = {
   type: 'apiNSWLiquorLicence'
   defaultValue?: LiquorLicenceDetails
@@ -754,6 +1049,14 @@ export type APINSWLiquorLicenceElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to display an information map to the user.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type ArcGISWebMapElement = {
   type: 'arcGISWebMap'
   webMapId?: string
@@ -809,9 +1112,15 @@ export type ArcGISWebMapElement = {
   FormElementReadOnly
 
 /**
- * Allow the user to enter a valid ABN (as per https://abr.business.gov.au/).
+ * An element to allow the user to enter a valid ABN (as per
+ * https://abr.business.gov.au/).
  *
- * ### Example
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ *
+ * ### Example Submission Data
  *
  * ```json
  * {
@@ -946,6 +1255,14 @@ export type ABNElement = {
   FormElementRequired &
   FormElementReadOnly
 
+/**
+ * An element to allow the user to supply a BSB number.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
 export type BSBElement = {
   /** The type of Form Element. */
   type: 'bsb'
@@ -969,7 +1286,13 @@ export type FreshdeskDependentFieldElementValue = {
 }
 
 /**
- * Allow the user to select an item after being filter down via category and sub-category
+ * An element to allow the user to select an item after being filter down via
+ * category and sub-category.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  *
  * ### Example
  *
@@ -1051,8 +1374,13 @@ export type LookupButtonFormElementDependency = {
 )
 
 /**
- * Allow the user to run a lookup by clicking a button. The lookup will be
- * triggered automatically if all its dependencies are auto-lookup form elements.
+ * An element to allow the user to run a lookup by clicking a button. The lookup
+ * will be triggered automatically if all its dependencies are auto-lookup form elements.
+ *
+ * The element must have an `id` property that contains a universally unique
+ * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ * conform to the formatting requirements defined in this RFC 9562
+ * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  *
  * ### Example
  *
@@ -1275,7 +1603,14 @@ export type NewForm = {
   formsAppEnvironmentId: number
   /** ID's of any Forms Apps that the form is included in. */
   formsAppIds: number[]
-  /** All elements contained within the form itself. */
+  /**
+   * An array of elements associated with the form.
+   *
+   * Each element must include an `id` property that contains a universally
+   * unique identifier (UUID). The identifier must be a Version 4 (V4) UUID and
+   * must conform to the formatting requirements defined in this RFC 9562
+   * specification: https://www.rfc-editor.org/rfc/rfc9562.html
+   */
   elements: Array<FormElement>
   /** Whether or not the form can only be viewed by an Authenticated user. */
   isAuthenticated: boolean
