@@ -1786,6 +1786,8 @@ export type NewForm = {
        */
       daysInterval: number
     }
+    /** Configuration to hide the deny button on approval actioning screens */
+    hideApprovalDenyButton?: boolean
   }
   /** A list of tags used to categorise or describe the form. */
   tags: Array<string>
