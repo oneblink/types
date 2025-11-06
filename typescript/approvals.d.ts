@@ -20,14 +20,17 @@ export type FlowInstanceNodeMeta = {
   /** Approval is denied in this step (always false if node is not concurrent) */
   isDeniedInConcurrentStep: boolean
   /** Flow has been denied in previous step */
-  isAfterDeniedStep: boolean 
+  isAfterDeniedStep: boolean
   /** Approval requires clarification in step (always false if node is not concurrent) */
   isClarificationRequiredInConcurrentStep: boolean
   /** Flow has been sent for clarification in previous step */
   isAfterClarificationRequiredStep: boolean
   /** Description of node's state */
   description: string
-  /** An alternate id for parent that uses concurrent node labels e.g `Node Label 1_Node Label 2`*/
+  /**
+   * An alternate id for parent that uses concurrent node labels e.g `Node Label
+   * 1_Node Label 2`
+   */
   parentStepLabelsId: string
   /** Node is concurrent with previous node in flow */
   isConcurrentWithPrevious: boolean
@@ -66,6 +69,8 @@ export type FormApprovalFlowNode = FormApprovalFlowNodeBase & {
   requiresAllConditionalPredicates?: boolean
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
+  /** Configuration to hide the deny button on approval actioning screens */
+  hideApprovalDenyButton?: boolean
 }
 
 export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
@@ -79,7 +84,8 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   isSkipped: boolean
 }
 
-type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode & FlowInstanceNodeMeta 
+type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode &
+  FlowInstanceNodeMeta
 
 /**
  * ### Example
