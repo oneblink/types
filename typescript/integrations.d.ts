@@ -272,7 +272,7 @@ export type IntegrationGoogleMaps<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationSharepointEntraApplication<S = SavedSecret> = {
+export type IntegrationMicrosoftEntraApplication<S = SavedSecret> = {
   id: string
   label: string
   entraTenantId: string
@@ -283,14 +283,14 @@ export type IntegrationSharepointEntraApplication<S = SavedSecret> = {
 export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
   type: 'SHAREPOINT'
   configuration: {
-    entraApplications: IntegrationSharepointEntraApplication<S>[]
+    entraApplications: IntegrationMicrosoftEntraApplication<S>[]
   }
 }
 
 export type IntegrationExcel<S = SavedSecret> = IntegrationBase & {
   type: 'EXCEL'
   configuration: {
-    entraApplications: IntegrationSharepointEntraApplication<S>[]
+    entraApplications: IntegrationMicrosoftEntraApplication<S>[]
   }
 }
 
