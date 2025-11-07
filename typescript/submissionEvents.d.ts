@@ -523,34 +523,32 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
 
 export type ExcelAddRowSubmissionEvent = FormEventBase & {
   type: 'EXCEL_ADD_ROW'
-  configuration: PDFConfiguration &
-    SharepointSubmissionEventBase & {
-      sharepointDrive: {
-        /** The id of the Sharepoint Drive */
-        id: string
-        /** The display name of the Sharepoint Drive */
-        displayName: string
-      }
-      /**
-       * The folder within the selected drive to upload files to. If not
-       * specified the root of the drive will be used. If the folder does not
-       * exist it will be created as part of the upload. Path must begin with a
-       * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
-       */
-      folderPath: string
-      excelFile: {
-        /* the id of the excel file */
-        id: string
-        /* the name of the excel file */
-        displayName: string
-      }
-      table: {
-        /* the id of the table */
-        id: string
-        /* the name of the table */
-        displayName: string
-      }
+  configuration: SharepointSubmissionEventBase & {
+    sharepointDrive: {
+      /** The id of the Sharepoint Drive */
+      id: string
+      /** The display name of the Sharepoint Drive */
+      displayName: string
     }
+    /**
+     * The folder within the selected drive where the excel file is located.
+     * Path must begin with a forward slash and not end with a forward slash
+     * e.g. "/documents"
+     */
+    folderPath: string
+    excelFile: {
+      /* the id of the excel file */
+      id: string
+      /* the name of the excel file */
+      displayName: string
+    }
+    table: {
+      /* the id of the table */
+      id: string
+      /* the name of the table */
+      displayName: string
+    }
+  }
 }
 
 export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
