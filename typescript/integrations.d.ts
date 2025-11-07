@@ -1,25 +1,5 @@
 import { EmailSendingAddressMailgun } from './misc'
 
-export type IntegrationType =
-  | 'CP_PAY'
-  | 'TRIM'
-  | 'CIVICA'
-  | 'CP_HCMS'
-  | 'BPOINT'
-  | 'GEOSCAPE'
-  | 'POINT'
-  | 'RECAPTCHA'
-  | 'WESTPAC_QUICK_STREAM'
-  | 'FRESHDESK'
-  | 'MAILGUN'
-  | 'NSW_GOV_PAY'
-  | 'API_NSW'
-  | 'GOOGLE_MAPS'
-  | 'NYLAS'
-  | 'SHAREPOINT'
-  | 'CIVIC_REC'
-  | 'GOOD_TO_GO'
-
 type IntegrationBase = {
   organisationId: string
   updatedAt: Date
@@ -376,3 +356,6 @@ export type Integration<S = SavedSecret> =
   | IntegrationSharepoint<S>
   | IntegrationCivicRec<S>
   | IntegrationGoodToGo<S>
+  | IntegrationExcel<S>
+
+export type IntegrationType = Integration['type']
