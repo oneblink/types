@@ -521,6 +521,14 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
     }
 }
 
+export type ExcelFileColumnResourceDefinitionBase = {
+  /** The name of the column */
+  columnName: string
+}
+
+export type ExcelFileColumnResourceDefinition =
+  FormElementMapping<ExcelFileColumnResourceDefinitionBase>
+
 export type ExcelAddRowSubmissionEvent = FormEventBase & {
   type: 'EXCEL_ADD_ROW'
   configuration: SharepointSubmissionEventBase & {
@@ -548,6 +556,8 @@ export type ExcelAddRowSubmissionEvent = FormEventBase & {
       /* the name of the table */
       displayName: string
     }
+    /** Array of mappings. */
+    mapping: ExcelFileColumnResourceDefinition[]
   }
 }
 
