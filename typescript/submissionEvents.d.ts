@@ -469,9 +469,12 @@ export type SharepointColumnResourceDefinitionBase = {
 export type SharepointCreateListItemSubmissionEventMapping =
   FormElementMapping<SharepointColumnResourceDefinitionBase>
 
-type SharepointSubmissionEventBase = {
+type MicrosoftSubmissionEventBase = {
   /** The id of the entra application in integration configuration */
   integrationEntraApplicationId: string
+}
+
+type SharepointSubmissionEventBase = MicrosoftSubmissionEventBase & {
   /** The Sharepoint Site */
   sharepointSite: {
     /** The id of the Sharepoint Site */
@@ -531,11 +534,17 @@ export type ExcelFileColumnResourceDefinition =
 
 export type ExcelAddRowSubmissionEvent = FormEventBase & {
   type: 'EXCEL_ADD_ROW'
-  configuration: SharepointSubmissionEventBase & {
-    sharepointDrive: {
-      /** The id of the Sharepoint Drive */
+  configuration: MicrosoftSubmissionEventBase & {
+    site: {
+      /** The id of the Microsoft Site */
       id: string
-      /** The display name of the Sharepoint Drive */
+      /** The display name of the Microsoft Site */
+      displayName: string
+    }
+    drive: {
+      /** The id of the Microsoft Drive */
+      id: string
+      /** The display name of the Microsoft Drive */
       displayName: string
     }
     /**
