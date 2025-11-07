@@ -251,6 +251,11 @@ export type FormsListStyles = FormsAppEnvironmentStyles & {
    * different forms app types
    */
   menuItems: FormsAppMenuItem[]
+  /** Configuration to add a header displayed at the top of the page. */
+  header?: {
+    /** The HTML to display as the header. */
+    html: string
+  }
   /** Configuration to add a footer displayed at the bottom of the page. */
   footer?: {
     /** The HTML to display as the footer. */
