@@ -521,9 +521,39 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
     }
 }
 
+export type ExcelAddRowSubmissionEvent = FormEventBase & {
+  type: 'EXCEL_ADD_ROW'
+  configuration: SharepointSubmissionEventBase & {
+    sharepointDrive: {
+      /** The id of the Sharepoint Drive */
+      id: string
+      /** The display name of the Sharepoint Drive */
+      displayName: string
+    }
+    /**
+     * The folder within the selected drive where the excel file is located.
+     * Path must begin with a forward slash and not end with a forward slash
+     * e.g. "/documents"
+     */
+    folderPath: string
+    excelFile: {
+      /* the id of the excel file */
+      id: string
+      /* the name of the excel file */
+      displayName: string
+    }
+    table: {
+      /* the id of the table */
+      id: string
+      /* the name of the table */
+      displayName: string
+    }
+  }
+}
+
 export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
   type: 'CIVIC_REC_COMPLETE_CHECKOUT'
-  configuration: { environmentId: string}
+  configuration: { environmentId: string }
 }
 
 export type GoodToGoUpdateAssetResourceDefinition = {

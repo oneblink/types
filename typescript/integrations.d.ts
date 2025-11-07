@@ -40,21 +40,19 @@ type IntegrationEnvironmentBaseUrl = {
   label: string
   baseUrl: string
 }
-export type IntegrationTrimEnvironmentUsername<
-  S = SavedSecret
-> = IntegrationEnvironmentBaseUrl & {
-  authType?: 'USERNAME'
-  username: string
-  password: ConstrainedSecret<S>
-}
-export type IntegrationTrimEnvironmentOAuth<
-  S = SavedSecret
-> = IntegrationEnvironmentBaseUrl & {
-  authType: 'OAUTH'
-  tokenUrl: string
-  clientId: string
-  clientSecret: ConstrainedSecret<S>
-}
+export type IntegrationTrimEnvironmentUsername<S = SavedSecret> =
+  IntegrationEnvironmentBaseUrl & {
+    authType?: 'USERNAME'
+    username: string
+    password: ConstrainedSecret<S>
+  }
+export type IntegrationTrimEnvironmentOAuth<S = SavedSecret> =
+  IntegrationEnvironmentBaseUrl & {
+    authType: 'OAUTH'
+    tokenUrl: string
+    clientId: string
+    clientSecret: ConstrainedSecret<S>
+  }
 
 export type IntegrationTrimEnvironment<S = SavedSecret> =
   | IntegrationTrimEnvironmentUsername<S>
@@ -66,25 +64,22 @@ export type IntegrationTrim<S = SavedSecret> = IntegrationBase & {
     environments: Array<IntegrationTrimEnvironment<S>>
   }
 }
-type IntegrationCivicaEnvironmentBase<
-  S = SavedSecret
-> = IntegrationEnvironmentBaseUrl & {
-  username: string
-  password: ConstrainedSecret<S>
-}
-export type IntegrationCivicaEnvironmentUsername<
-  S = SavedSecret
-> = IntegrationCivicaEnvironmentBase<S> & {
-  authType?: 'USERNAME'
-}
-export type IntegrationCivicaEnvironmentOAuth<
-  S = SavedSecret
-> = IntegrationCivicaEnvironmentBase<S> & {
-  authType: 'OAUTH_PASSWORD'
-  tokenUrl: string
-  clientId: string
-  clientSecret: ConstrainedSecret<S>
-}
+type IntegrationCivicaEnvironmentBase<S = SavedSecret> =
+  IntegrationEnvironmentBaseUrl & {
+    username: string
+    password: ConstrainedSecret<S>
+  }
+export type IntegrationCivicaEnvironmentUsername<S = SavedSecret> =
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType?: 'USERNAME'
+  }
+export type IntegrationCivicaEnvironmentOAuth<S = SavedSecret> =
+  IntegrationCivicaEnvironmentBase<S> & {
+    authType: 'OAUTH_PASSWORD'
+    tokenUrl: string
+    clientId: string
+    clientSecret: ConstrainedSecret<S>
+  }
 export type IntegrationCivicaEnvironment<S = SavedSecret> =
   | IntegrationCivicaEnvironmentUsername<S>
   | IntegrationCivicaEnvironmentOAuth<S>
@@ -312,11 +307,17 @@ export type IntegrationSharepoint<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationCivicRecEnvironment<
-  S = SavedSecret
-> = IntegrationEnvironmentBaseUrl & {
-  secret: ConstrainedSecret<S>
+export type IntegrationExcel<S = SavedSecret> = IntegrationBase & {
+  type: 'EXCEL'
+  configuration: {
+    entraApplications: IntegrationSharepointEntraApplication<S>[]
+  }
 }
+
+export type IntegrationCivicRecEnvironment<S = SavedSecret> =
+  IntegrationEnvironmentBaseUrl & {
+    secret: ConstrainedSecret<S>
+  }
 
 export type IntegrationCivicRec<S = SavedSecret> = IntegrationBase & {
   type: 'CIVIC_REC'
