@@ -9,6 +9,8 @@ export type FormApprovalFlowNodeBase = {
   group: string
   /** The id of a form that should be submitted with approval */
   approvalFormId?: number
+  /** Configuration to hide the deny button on approval actioning screens */
+  hideApprovalDenyButton?: boolean
 }
 
 export type FlowInstanceNodeMeta = {
@@ -69,8 +71,6 @@ export type FormApprovalFlowNode = FormApprovalFlowNodeBase & {
   requiresAllConditionalPredicates?: boolean
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
-  /** Configuration to hide the deny button on approval actioning screens */
-  hideApprovalDenyButton?: boolean
 }
 
 export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
