@@ -931,7 +931,7 @@ export type GeoscapeAddressElement = {
   FormElementReadOnly
 
 /**
- * @deprecated Use PointAddressElementV2 instead
+ * @deprecated Use PointAddressElementV3 instead
  *
  *   An element to allow the user to choose an address from the NSW Point service.
  *
@@ -965,8 +965,8 @@ export type PointAddressElement = {
  * conform to the formatting requirements defined in this RFC 9562
  * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  */
-export type PointAddressElementV2 = {
-  type: 'pointAddressV2'
+export type PointAddressElementV3 = {
+  type: 'pointAddressV3'
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
@@ -1516,7 +1516,7 @@ export type NonNestedElementsElement =
   | APINSWLiquorLicenceElement
   | ArcGISWebMapElement
   | LookupButtonFormElement
-  | PointAddressElementV2
+  | PointAddressElementV3
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
