@@ -931,15 +931,42 @@ export type GeoscapeAddressElement = {
   FormElementReadOnly
 
 /**
- * An element to allow the user to choose an address from the NSW Point service.
+ * @deprecated Use PointAddressElementV2 instead
+ *
+ *   An element to allow the user to choose an address from the NSW Point service.
+ *
+ *   The element must have an `id` property that contains a universally unique
+ *   identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
+ *   conform to the formatting requirements defined in this RFC 9562
+ *   specification: https://www.rfc-editor.org/rfc/rfc9562.html
+ */
+export type PointAddressElement = {
+  type: 'pointAddress'
+  placeholderValue?: string
+  stateTerritoryFilter?: PointStatesAndTerritories[]
+  addressTypeFilter?: string[]
+  /** Custom autocomplete attributes that will be added to the element during rendering */
+  autocompleteAttributes?: string[]
+  /**
+   * Determine if address information should be displayed to user after
+   * selecting an address.
+   */
+  isDisplayingAddressInformation?: boolean
+  defaultValue?: PointAddress
+} & LookupFormElement &
+  FormElementRequired &
+  FormElementReadOnly
+
+/**
+ * An element to allow the user to choose an address from version 3 the NSW Point service.
  *
  * The element must have an `id` property that contains a universally unique
  * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
  * conform to the formatting requirements defined in this RFC 9562
  * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  */
-export type PointAddressElement = {
-  type: 'pointAddress'
+export type PointAddressElementV2 = {
+  type: 'pointAddressV2'
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
@@ -1489,6 +1516,7 @@ export type NonNestedElementsElement =
   | APINSWLiquorLicenceElement
   | ArcGISWebMapElement
   | LookupButtonFormElement
+  | PointAddressElementV2
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
