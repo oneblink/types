@@ -8,6 +8,10 @@ export { Addresses as PointAddressesSearchResult }
 export type PointStatesAndTerritories = StatesAndTerritories | 'OT'
 
 type PointCadastralParcelResponse = paths['/api/cadastralParcel']['get']['responses']['200']['content']['application/json']
+type PointAddressV3SearchResponse = paths['/api/getSuggestedAddresses']['get']['responses']['200']['content']['application/json']
+type PointAddressV3GetAddressDetailsResponse = paths['/api/getAddressDetails']['get']['responses']['200']['content']['application/json']
 export {
-  PointCadastralParcelResponse
+  PointCadastralParcelResponse,
+  PointAddressV3SearchResponse,
+  PointAddressV3GetAddressDetailsResponse
 }
