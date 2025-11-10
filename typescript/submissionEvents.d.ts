@@ -529,7 +529,7 @@ export type ExcelFileColumnResourceDefinitionBase = {
   columnName: string
 }
 
-export type ExcelFileColumnResourceDefinition =
+export type ExcelAddRowSubmissionEventMapping =
   FormElementMapping<ExcelFileColumnResourceDefinitionBase>
 
 export type ExcelAddRowSubmissionEvent = FormEventBase & {
@@ -560,7 +560,7 @@ export type ExcelAddRowSubmissionEvent = FormEventBase & {
       displayName: string
     }
     /** Array of mappings. */
-    mapping: ExcelFileColumnResourceDefinition[]
+    mapping: ExcelAddRowSubmissionEventMapping[]
   }
 }
 
