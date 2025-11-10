@@ -1,6 +1,7 @@
 import { IdResource } from './misc'
 
 export type FormsBuilderAISystemConfiguration = {
+  shouldParseIncompleteForm?: boolean
   systemPrompt: string
   topPOrTemperature: 'TOP_P' | 'TEMPERATURE'
   topP: number
