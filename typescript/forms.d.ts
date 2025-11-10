@@ -969,8 +969,8 @@ export type PointAddressElement = {
 export type PointAddressV3Element = {
   type: 'pointAddressV3'
   placeholderValue?: string
-  stateTerritoryFilter?: PointStatesAndTerritories[]
-  addressTypeFilter?: string[]
+  stateFilter?: PointStatesAndTerritories[]
+  excludeAliases?: boolean
   /** Custom autocomplete attributes that will be added to the element during rendering */
   autocompleteAttributes?: string[]
   /**
