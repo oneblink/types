@@ -958,14 +958,15 @@ export type PointAddressElement = {
   FormElementReadOnly
 
 /**
- * An element to allow the user to choose an address from version 3 the NSW Point service.
+ * An element to allow the user to choose an address using version 3 of the NSW
+ * Point service.
  *
  * The element must have an `id` property that contains a universally unique
  * identifier (UUID). The identifier must be a Version 4 (V4) UUID and must
  * conform to the formatting requirements defined in this RFC 9562
  * specification: https://www.rfc-editor.org/rfc/rfc9562.html
  */
-export type PointAddressElementV3 = {
+export type PointAddressV3Element = {
   type: 'pointAddressV3'
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
@@ -1516,7 +1517,7 @@ export type NonNestedElementsElement =
   | APINSWLiquorLicenceElement
   | ArcGISWebMapElement
   | LookupButtonFormElement
-  | PointAddressElementV3
+  | PointAddressV3Element
 
 export type FormElementWithoutForm =
   | NonNestedElementsElement
