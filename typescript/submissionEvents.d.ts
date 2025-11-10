@@ -547,12 +547,6 @@ export type ExcelAddRowSubmissionEvent = FormEventBase & {
       /** The display name of the Microsoft Drive */
       displayName: string
     }
-    /**
-     * The folder within the selected drive where the excel file is located.
-     * Path must begin with a forward slash and not end with a forward slash
-     * e.g. "/documents"
-     */
-    folderPath: string
     excelFile: {
       /* the id of the excel file */
       id: string
