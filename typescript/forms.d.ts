@@ -1,6 +1,7 @@
 import { GeoscapeAddress } from './geoscape'
 import {
   PointAddress,
+  PointAddressV3GetAddressDetailsResponse,
   PointCadastralParcelResponse,
   PointStatesAndTerritories,
 } from './point'
@@ -980,7 +981,7 @@ export type PointAddressV3Element = {
    * selecting an address.
    */
   isDisplayingAddressInformation?: boolean
-  defaultValue?: PointAddress
+  defaultValue?: PointAddressV3GetAddressDetailsResponse
 } & LookupFormElement &
   FormElementRequired &
   FormElementReadOnly
