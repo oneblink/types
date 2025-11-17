@@ -1716,7 +1716,7 @@ export type NewForm = {
      * Whether or not to generate a token to allow downloading the form
      * submission PDF after a successful submission.
      */
-    allowPDFDownload?: PDFConfiguration
+    allowPDFDownload?: PDFConfiguration | PDFConfiguration[]
     allowAttachmentsDownload?: EndpointConfiguration
   }
   cancelAction: FormPostSubmissionAction
