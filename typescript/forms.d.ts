@@ -1712,11 +1712,13 @@ export type NewForm = {
      * successful submission.
      */
     html?: string
+    /** @deprecated Use `pdfConfigurations` instead */
+    allowPDFDownload?: PDFConfiguration
     /**
      * Whether or not to generate a token to allow downloading the form
      * submission PDF after a successful submission.
      */
-    allowPDFDownload?: PDFConfiguration
+    pdfConfigurations?: Record<string, PDFConfiguration>
     allowAttachmentsDownload?: EndpointConfiguration
   }
   cancelAction: FormPostSubmissionAction
