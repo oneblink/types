@@ -37,6 +37,7 @@ export type NewOrganisation = {
   requireTeamMemberMfa?: boolean
   environmentOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
+  aiFormsBuilderEnvironmentIds?: number[]
 }
 
 export type Organisation = NewOrganisation & {
@@ -192,6 +193,7 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
+  | 'AIDisclaimer'
 
 export type NewAuditRecord = {
   type: AuditRecordType
@@ -225,4 +227,15 @@ export type ProductNotification = NewProductNotification & {
   id: number
   createdAt: string
   updatedAt: string
+}
+
+export type NewAIDisclaimer = {
+  organisationId: string
+  type: 'FORMS_BUILDER'
+  user?: UserProfile
+}
+
+export type AIDisclaimer = NewAIDisclaimer & {
+  id: number
+  createdAt: string
 }
