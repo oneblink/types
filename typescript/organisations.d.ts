@@ -232,7 +232,7 @@ export type ProductNotification = NewProductNotification & {
 export type NewAIDisclaimer = {
   organisationId: string
   type: 'FORMS_BUILDER'
-  user?: UserProfile
+  user: UserProfile
 }
 
 export type AIDisclaimer = NewAIDisclaimer & {
