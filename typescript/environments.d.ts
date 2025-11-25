@@ -1,3 +1,4 @@
+import { FormStyle } from './styling-engine'
 import { BaseHostnameConfiguration } from './formsApps'
 import { RecaptchaKeyType } from './integrations'
 import {
@@ -57,6 +58,7 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
     /** The accessible label for the icon. This will be displayed to screen readers. */
     accessibleLabel?: string
   }
+  formStyling?: FormStyle
 }
 
 export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
