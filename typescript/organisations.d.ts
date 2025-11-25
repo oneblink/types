@@ -37,7 +37,6 @@ export type NewOrganisation = {
   requireTeamMemberMfa?: boolean
   environmentOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
-  aiFormsBuilderEnvironmentIds?: number[]
 }
 
 export type Organisation = NewOrganisation & {
@@ -233,9 +232,13 @@ export type NewAIDisclaimer = {
   organisationId: string
   type: 'FORMS_BUILDER'
   user: UserProfile
+  data: {
+    aiFormsBuilderEnvironmentIds?: number[]
+  }
 }
 
 export type AIDisclaimer = NewAIDisclaimer & {
   id: number
   createdAt: string
+  updatedAt: string
 }
