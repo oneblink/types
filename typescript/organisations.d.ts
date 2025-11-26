@@ -231,9 +231,10 @@ export type ProductNotification = NewProductNotification & {
 export type NewAIDisclaimer = {
   organisationId: string
   type: 'FORMS_BUILDER'
-  user: UserProfile
+  acceptedBy: UserProfile
+  updatedBy?: UserProfile
   data: {
-    aiFormsBuilderEnvironmentIds?: number[]
+    allowedFormsAppEnvironmentIds: number[]
   }
 }
 
