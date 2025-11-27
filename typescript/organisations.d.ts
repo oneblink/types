@@ -228,7 +228,7 @@ export type ProductNotification = NewProductNotification & {
   updatedAt: string
 }
 
-export type NewAIDisclaimer = {
+export type NewAIDisclaimerConsent = {
   organisationId: string
   type: 'FORMS_BUILDER'
   acceptedBy: UserProfile
@@ -238,7 +238,7 @@ export type NewAIDisclaimer = {
   }
 }
 
-export type AIDisclaimer = NewAIDisclaimer & {
+export type AIDisclaimerConsent = NewAIDisclaimerConsent & {
   id: number
   createdAt: string
   updatedAt: string
