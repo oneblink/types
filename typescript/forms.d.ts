@@ -1872,8 +1872,6 @@ export type NewForm = {
    * of an OOTB PDF.
    */
   customPDFs?: FormCustomPDF[]
-  /** Whether or not the form can be edited using an AI builder. */
-  isAIBuilderSupported?: boolean
 }
 
 export type Form = MiscTypes.IdResource & NewForm
