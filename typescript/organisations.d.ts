@@ -228,18 +228,10 @@ export type ProductNotification = NewProductNotification & {
   updatedAt: string
 }
 
-export type NewAIDisclaimerConsent = {
+export type DisclaimerConsent = {
   organisationId: string
   type: 'FORMS_BUILDER'
-  acceptedBy: UserProfile
-  updatedBy: UserProfile
   data: {
     allowedFormsAppEnvironmentIds: number[]
   }
-}
-
-export type AIDisclaimerConsent = NewAIDisclaimerConsent & {
-  id: number
-  acceptedAt: string
-  updatedAt: string
 }
