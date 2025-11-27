@@ -240,6 +240,6 @@ export type NewAIDisclaimerConsent = {
 
 export type AIDisclaimerConsent = NewAIDisclaimerConsent & {
   id: number
-  createdAt: string
+  acceptedAt: string
   updatedAt: string
 }
