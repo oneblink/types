@@ -229,7 +229,6 @@ export type ProductNotification = NewProductNotification & {
 }
 
 export type DisclaimerConsent = {
-  id: number
   organisationId: string
   type: 'AI_FORMS_BUILDER'
   allowedFormsAppEnvironmentIds: number[]
