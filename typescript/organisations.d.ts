@@ -192,7 +192,7 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
-  | 'AIFormsBuilderDisclaimerConsent'
+  | 'DisclaimerConsent'
 
 export type NewAuditRecord = {
   type: AuditRecordType
