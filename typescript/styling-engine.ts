@@ -10,7 +10,7 @@ export type FormStyle = BackgroundStyle & {
       maxWidth?: number
       /** The container that houses the form elements */
       elementContainer?: {
-        /** In pixels */
+        /** In REM */
         marginBottom?: number
 
         label?: FontStyles
@@ -28,7 +28,7 @@ export type FormStyle = BackgroundStyle & {
 }
 
 export type FontStyles = {
-  /** In pixels */
+  /** In REM */
   fontSize?: number
   /** Font weight eg. 300, 500, 700 etc. */
   fontWeight?: number
