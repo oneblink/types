@@ -192,7 +192,6 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
-  | 'AIFormsBuilderDisclaimerConsent'
 
 export type NewAuditRecord = {
   type: AuditRecordType
@@ -226,10 +225,4 @@ export type ProductNotification = NewProductNotification & {
   id: number
   createdAt: string
   updatedAt: string
-}
-
-export type DisclaimerConsent = {
-  organisationId: string
-  type: 'AI_FORMS_BUILDER'
-  allowedFormsAppEnvironmentIds: number[]
 }
