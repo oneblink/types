@@ -8,6 +8,8 @@ export type FormStyle = BackgroundStyle & {
     BackgroundStyle & {
       /** In pixels */
       maxWidth?: number
+      /** In REM */
+      padding?: number
       /** The container that houses the form elements */
       elementContainer?: {
         /** In REM */
