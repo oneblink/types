@@ -15,8 +15,17 @@ import {
 type FormsAppBaseMenuItem = {
   /** Label for the menu item */
   label: string
-  /** Icon to be used for the menu item */
-  icon: string
+  /**
+   * Icon to be used for the menu item. If both `icon` and `imageUrl` are not
+   * set, a default icon will be displayed for the menu item.
+   */
+  icon?: string
+  /**
+   * URL for the image to be used for the menu item. If both `imageUrl` and
+   * `icon` are set, the `imageUrl` will be displayed and the `icon` will not be
+   * displayed.
+   */
+  imageUrl?: string
 }
 
 type FormsAppScreenMenuItemBase = FormsAppBaseMenuItem & {
