@@ -5,11 +5,10 @@ export type FormStyle = BackgroundStyle & {
   fontFamily?: string
   /** The container that houses the form elements */
   formContainer?: BorderStyle &
-    BackgroundStyle & {
+    BackgroundStyle &
+    PaddingStyle & {
       /** In pixels */
       maxWidth?: number
-      /** In REM */
-      padding?: number
       /** The container that houses the form elements */
       elementContainer?: {
         /** In REM */
@@ -18,7 +17,8 @@ export type FormStyle = BackgroundStyle & {
         label?: FontStyles
         /** The heading element */
         heading?: BorderStyle &
-          BackgroundStyle & {
+          BackgroundStyle &
+          PaddingStyle & {
             /**
              * A map of styles assigned to heading sizes. Possible options are
              * 1-5. See also {@link HeadingElement.headingType}
@@ -50,4 +50,9 @@ export type BorderStyle = {
 export type BackgroundStyle = {
   /** Hex code */
   backgroundColour?: string
+}
+
+export type PaddingStyle = {
+  /** In REM */
+  padding?: number
 }
