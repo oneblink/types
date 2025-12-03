@@ -1640,6 +1640,7 @@ export type FormCustomPDFMappingFont =
   // Above are the default fonts from `pdf-lib`
   // Below are custom embedded fonts
   | 'Brush Script MT Italic'
+  | 'Public Sans'
 
 export type FormCustomPDF = {
   /** The Id of the custom PDF. */
