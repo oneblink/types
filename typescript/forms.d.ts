@@ -624,6 +624,8 @@ export type ImageElement = FormElementBase & {
   /** An absolute URL to the image to display in the form. */
   defaultValue: string
   decorativeImage?: boolean
+  /** Max width, in pixels, to be used when the image is rendered */
+  maxWidthPixels?: number
 }
 
 /**
