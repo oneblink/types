@@ -624,6 +624,8 @@ export type ImageElement = FormElementBase & {
   /** An absolute URL to the image to display in the form. */
   defaultValue: string
   decorativeImage?: boolean
+  /** Max width, in pixels, to be used when the image is rendered */
+  maxWidthPixels?: number
 }
 
 /**
@@ -1640,7 +1642,10 @@ export type FormCustomPDFMappingFont =
   // Above are the default fonts from `pdf-lib`
   // Below are custom embedded fonts
   | 'Brush Script MT Italic'
-  | 'Public Sans'
+  | 'PublicSans'
+  | 'PublicSans-Bold'
+  | 'PublicSans-Italic'
+  | 'PublicSans-BoldItalic'
 
 export type FormCustomPDF = {
   /** The Id of the custom PDF. */
