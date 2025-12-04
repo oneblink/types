@@ -264,6 +264,8 @@ export interface NewS3SubmissionData {
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
   sectionState?: { id: string; state: 'COLLAPSED' | 'EXPANDED' }[]
+  /** The previous elapsed duration in seconds taken to by the user to complete the form */
+  previousElapsedDurationSeconds?: number
   /**
    * The date and time (in ISO format) the form was completed I.e. when the user
    * clicked the submit button
