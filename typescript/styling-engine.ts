@@ -3,8 +3,8 @@ import { HeadingElement } from './forms'
 export type FormsAppStyle = {
   /** The font family to use for the entire app */
   fontFamily?: string
-  /** In pixels */
   contentContainer?: {
+    /** In pixels */
     maxWidth?: number
   }
 }
