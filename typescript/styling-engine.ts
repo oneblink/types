@@ -1,14 +1,19 @@
 import { HeadingElement } from './forms'
 
-export type FormStyle = BackgroundStyle & {
-  /** The font family to use for the entire form page */
+export type FormsAppStyle = {
+  /** The font family to use for the entire app */
   fontFamily?: string
+  contentContainer?: {
+    /** In pixels */
+    maxWidth?: number
+  }
+}
+
+export type FormStyle = BackgroundStyle & {
   /** The container that houses the form elements */
   formContainer?: BorderStyle &
     BackgroundStyle &
     PaddingStyle & {
-      /** In pixels */
-      maxWidth?: number
       /** The container that houses the form elements */
       elementContainer?: {
         /** In REM */
