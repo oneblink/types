@@ -1,4 +1,4 @@
-import { FormStyle } from './styling-engine'
+import { FormsAppStyle, FormStyle } from './styling-engine'
 import { BaseHostnameConfiguration } from './formsApps'
 import { RecaptchaKeyType } from './integrations'
 import {
@@ -59,6 +59,7 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
     accessibleLabel?: string
   }
   formStyling?: FormStyle
+  appStyling?: FormsAppStyle
 }
 
 export type FormsAppEnvironmentSendingAddress = EmailSendingAddressBase & {
