@@ -7,33 +7,41 @@ export type FormsAppStyle = {
     /** In pixels */
     maxWidth?: number
   }
+  formPage?: FormStyle
 }
 
 export type FormStyle = BackgroundStyle & {
   /** The container that houses the form elements */
-  formContainer?: BorderStyle &
-    BackgroundStyle &
-    PaddingStyle & {
-      /** The container that houses the form elements */
-      elementContainer?: {
-        /** In REM */
-        marginBottom?: number
-
-        label?: FontStyles
-        /** The heading element */
-        heading?: BorderStyle &
-          BackgroundStyle &
-          PaddingStyle & {
-            /**
-             * A map of styles assigned to heading sizes. Possible options are
-             * 1-5. See also {@link HeadingElement.headingType}
-             */
-            headingSize?: Record<number, FontStyles>
-          }
-      }
-    }
+  formContainer?: FormContainerStyle
 }
 
+export type FormContainerStyle = BorderStyle &
+  BackgroundStyle &
+  PaddingStyle & {
+    /** The container that houses the form elements */
+    elementContainer?: ElementContainerStyle
+  }
+
+export type ElementContainerStyle = {
+  /** In REM */
+  marginBottom?: number
+
+  label?: FontStyles
+  /** The heading element */
+  heading?: HeadingElementStyle
+}
+
+export type HeadingElementStyle = BorderStyle &
+  BackgroundStyle &
+  PaddingStyle & {
+    /**
+     * A map of styles assigned to heading sizes. Possible options are 1-5. See
+     * also {@link HeadingElement.headingType}
+     */
+    headingSize?: Record<number, FontStyles>
+  }
+
+// Re-usable types
 export type FontStyles = {
   /** In REM */
   fontSize?: number
