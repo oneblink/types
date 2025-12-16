@@ -48,7 +48,7 @@ export type FontStyles = {
   /** Font weight eg. 300, 500, 700 etc. */
   fontWeight?: number
   /** Hex code */
-  fontColor?: string
+  fontColour?: string
 }
 
 export type BorderStyle = {
