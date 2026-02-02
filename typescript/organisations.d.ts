@@ -37,6 +37,7 @@ export type NewOrganisation = {
   requireTeamMemberMfa?: boolean
   environmentOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
+  externalId?: string
 }
 
 export type Organisation = NewOrganisation & {
@@ -57,12 +58,12 @@ export interface AWSAccount {
 
 export type TierLimitation =
   | {
-      unlimited: true
-    }
+    unlimited: true
+  }
   | {
-      limit: number
-      unlimited: false
-    }
+    limit: number
+    unlimited: false
+  }
 
 export interface NewTier {
   name: string
