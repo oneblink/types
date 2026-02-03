@@ -152,24 +152,6 @@ export type FormsAppMenuItem =
   | FormsAppScheduledTasksGroupMenuItem
   | FormsAppCPHCMSContentMenuItem
 
-/**
- * Styles relating to volunteers apps.
- *
- * ## Examples
- *
- * ### Volunteer Apps
- *
- * ```json
- * {
- *   "foregroundColour": "#454545",
- *   "highlightColour": "#676767",
- *   "contrastColour": "#FFFFFF",
- *   "customCss": ".ob-form { background-color: red; }",
- *   "logoUrl": "https://my-website.com/logo.png"
- * }
- * ```
- */
-export type VolunteersStyles = BaseFormsAppEnvironmentStyles
 export type ApprovalsStyles = BaseFormsAppEnvironmentStyles
 export type FormStoreStyles = BaseFormsAppEnvironmentStyles
 
@@ -239,18 +221,6 @@ export type FormStoreStyles = BaseFormsAppEnvironmentStyles
  *       "href": "https://google.com"
  *     }
  *   ]
- * }
- * ```
- *
- * ### Volunteer Apps
- *
- * ```json
- * {
- *   "foregroundColour": "#454545",
- *   "highlightColour": "#676767",
- *   "contrastColour": "#FFFFFF",
- *   "customCss": ".ob-form { background-color: red; }",
- *   "logoUrl": "https://my-website.com/logo.png"
  * }
  * ```
  */
@@ -401,13 +371,6 @@ type _NewFormsApp = {
   googleAnalyticsTagId?: string
 }
 
-export type NewVolunteersFormsApp = _NewFormsApp & {
-  type: 'VOLUNTEERS'
-  styles: VolunteersStyles
-  categories: Array<{ label: string }>
-  waiverUrl: string | null // nullable to allow creating solution without waiver
-}
-
 export type NewFormsListFormsApp = _NewFormsApp & {
   type: 'FORMS_LIST'
   /** Unique domain safe text to identify the app */
@@ -461,7 +424,6 @@ export type NewFormStoreApp = _NewFormsApp & {
 
 export type NewFormsApp =
   | NewFormsListFormsApp
-  | NewVolunteersFormsApp
   | NewTilesFormsApp
   | NewApprovalsApp
   | NewFormStoreApp
@@ -477,13 +439,12 @@ type _FormsApp = {
 
 export type FormsListFormsApp = NewFormsListFormsApp & _FormsApp
 
-export type VolunteersFormsApp = NewVolunteersFormsApp & _FormsApp
 export type ApprovalsApp = NewApprovalsApp & _FormsApp
 export type FormStoreApp = NewFormStoreApp & _FormsApp
 
 export type TilesFormsApp = NewTilesFormsApp & _FormsApp
 
-export type SolutionsApp = VolunteersFormsApp | ApprovalsApp | FormStoreApp
+export type SolutionsApp = ApprovalsApp | FormStoreApp
 
 export type FormsApp = FormsListFormsApp | SolutionsApp | TilesFormsApp
 
@@ -563,12 +524,6 @@ export type FormsAppConfiguration<
   pwaSettings?: FormsAppPWASettings | null
   isDraftsEnabled: boolean
   draftsAreShared?: boolean
-  volunteers:
-    | {
-        categories: VolunteersFormsApp['categories']
-        waiverUrl: VolunteersFormsApp['waiverUrl']
-      }
-    | undefined
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   isAppUserSignUpEnabled: boolean
