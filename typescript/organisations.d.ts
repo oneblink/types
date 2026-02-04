@@ -94,7 +94,6 @@ export interface NewTier {
     allowFormsAppCustomDomains: boolean
     allowFormsAppMenu: boolean
     allowApprovalsSolution?: boolean
-    allowVolunteersSolution?: boolean
     allowSubmissionTitleSearch?: boolean
     allowCivicPlusForethoughtChatbot?: boolean
     allowSAMLUserAuthentication: boolean
