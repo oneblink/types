@@ -33,11 +33,16 @@ export interface NewSubmissionDataKey extends BaseKey {
   privilege: Record<string, unknown>
 }
 
+export interface NewSymphony3SmartGlueKey extends BaseKey {
+  type: 'SYMPHONY_3_SMART_GLUE'
+}
+
 export type NewKey =
   | NewLegacyKey
   | NewDeveloperKey
   | NewPowerAutomateKey
   | NewSubmissionDataKey
+  | NewSymphony3SmartGlueKey
 
 export type Key = {
   customerSecretId: number
