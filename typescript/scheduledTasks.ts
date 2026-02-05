@@ -69,14 +69,8 @@ export interface NewTask {
           interval: 'DAY'
         }
       | {
-          /** @deprecated use `WEEK_MULTI` instead */
           interval: 'WEEK'
-          /** @deprecated use `WEEK_MULTI` instead */
-          day: DayOfWeek
-        }
-      | {
-          interval: 'WEEK_MULTI'
-          days: DayOfWeek[]
+          day: DayOfWeek | DayOfWeek[]
         }
       | {
           interval: 'CUSTOM'
