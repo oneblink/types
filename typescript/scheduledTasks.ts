@@ -73,6 +73,10 @@ export interface NewTask {
           day: DayOfWeek
         }
       | {
+          interval: 'WEEK_MULTI'
+          days: DayOfWeek[]
+        }
+      | {
           interval: 'CUSTOM'
           days: number
         }
