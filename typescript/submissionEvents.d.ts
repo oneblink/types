@@ -32,13 +32,13 @@ export type FormEventBase = FormEventConditional & {
 
 export type ApprovalFormsInclusionConfiguration = {
   approvalFormsInclusion?:
-  | {
-    value: 'ALL'
-  }
-  | {
-    value: 'PARTIAL'
-    approvalStepLabels: string[]
-  }
+    | {
+        value: 'ALL'
+      }
+    | {
+        value: 'PARTIAL'
+        approvalStepLabels: string[]
+      }
 }
 
 export type CallbackSubmissionEvent = FormEventBase &
@@ -78,7 +78,7 @@ export type PdfSubmissionEventEmailTemplateMapping = {
   /** The mustache tag to replace in the email template. */
   mustacheTag: string
 } & (
-    | {
+  | {
       /** Type of mapping */
       type: 'FORM_ELEMENT'
       /**
@@ -87,13 +87,13 @@ export type PdfSubmissionEventEmailTemplateMapping = {
        */
       formElementId: string
     }
-    | {
+  | {
       /** Type of mapping */
       type: 'TEXT'
       /** The free text to insert if type is */
       text: string
     }
-  )
+)
 
 export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   /** The name of the PDF file sent to the configured email address. */
@@ -385,34 +385,34 @@ export type PaymentDisplayDetailKey =
 export type FormElementMapping<T> = T &
   (
     | {
-      type: 'FORM_FORM_ELEMENT'
-      formElementId: string
-      mapping: FormElementMapping<T>
-    }
+        type: 'FORM_FORM_ELEMENT'
+        formElementId: string
+        mapping: FormElementMapping<T>
+      }
     | {
-      type: 'FORM_ELEMENT'
-      formElementId: string
-    }
+        type: 'FORM_ELEMENT'
+        formElementId: string
+      }
     | {
-      type: 'VALUE'
-      value: number | string | boolean | string[]
-    }
+        type: 'VALUE'
+        value: number | string | boolean | string[]
+      }
     | {
-      type: 'SUBMISSION_ID'
-    }
+        type: 'SUBMISSION_ID'
+      }
     | {
-      type: 'EXTERNAL_ID'
-    }
+        type: 'EXTERNAL_ID'
+      }
     | {
-      type: 'SUBMISSION_TIMESTAMP'
-    }
+        type: 'SUBMISSION_TIMESTAMP'
+      }
     | {
-      type: 'COMPLETION_TIMESTAMP'
-    }
+        type: 'COMPLETION_TIMESTAMP'
+      }
     | {
-      type: 'PAYMENT_DETAIL'
-      key: PaymentDisplayDetailKey
-    }
+        type: 'PAYMENT_DETAIL'
+        key: PaymentDisplayDetailKey
+      }
   )
 
 type BaseFreshdeskSubmissionEventFieldMapping = {
@@ -422,13 +422,13 @@ type BaseFreshdeskSubmissionEventFieldMapping = {
 export type FreshdeskSubmissionEventFieldMapping =
   | FormElementMapping<BaseFreshdeskSubmissionEventFieldMapping>
   | (BaseFreshdeskSubmissionEventFieldMapping & {
-    type: 'DEPENDENT_FIELD_VALUE'
-    dependentFieldValue: {
-      category: string
-      subCategory: string
-      item: string
-    }
-  })
+      type: 'DEPENDENT_FIELD_VALUE'
+      dependentFieldValue: {
+        category: string
+        subCategory: string
+        item: string
+      }
+    })
 
 export type FreshdeskCreateTicketSubmissionEvent = FormEventBase & {
   /** The type of submission event. */
@@ -512,26 +512,26 @@ export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
 export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
   type: 'SHAREPOINT_STORE_FILES'
   configuration: PDFConfiguration &
-  SharepointSubmissionEventBase & {
-    sharepointDrive: {
-      /** The id of the Sharepoint Drive */
-      id: string
-      /** The display name of the Sharepoint Drive */
-      displayName: string
+    SharepointSubmissionEventBase & {
+      sharepointDrive: {
+        /** The id of the Sharepoint Drive */
+        id: string
+        /** The display name of the Sharepoint Drive */
+        displayName: string
+      }
+      /**
+       * The folder within the selected drive to upload files to. If not
+       * specified the root of the drive will be used. If the folder does not
+       * exist it will be created as part of the upload. Path must begin with a
+       * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
+       */
+      folderPath?: string
+      /**
+       * Set to `true` to prevent all form submission attachments from being
+       * uploaded to SharePoint.
+       */
+      excludeAttachments: boolean
     }
-    /**
-     * The folder within the selected drive to upload files to. If not
-     * specified the root of the drive will be used. If the folder does not
-     * exist it will be created as part of the upload. Path must begin with a
-     * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
-     */
-    folderPath?: string
-    /**
-     * Set to `true` to prevent all form submission attachments from being
-     * uploaded to SharePoint.
-     */
-    excludeAttachments: boolean
-  }
 }
 
 export type ExcelFileColumnResourceDefinitionBase = {
