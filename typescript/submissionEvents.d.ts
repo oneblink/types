@@ -54,6 +54,16 @@ export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   }
 }
 
+export type Symphony3SmartGlueSubmissionEvent = FormEventBase & {
+  type: 'SYMPHONY_3_SMART_GLUE'
+  configuration: {
+    /** URL that the callback is made to. */
+    url: string
+    /** The unique identifier for the key that should be used for this workflow event */
+    keyId: number
+  }
+}
+
 export type CPIntegrationHubWebhookSubmissionEvent = FormEventBase & {
   type: 'CP_INTEGRATION_HUB_WEBHOOK'
   configuration: {
@@ -612,6 +622,7 @@ export type FormWorkflowEvent =
   | CivicRecCompleteCheckoutSubmissionEvent
   | GoodToGoUpdateAssetSubmissionEvent
   | ExcelAddRowSubmissionEvent
+  | Symphony3SmartGlueSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
