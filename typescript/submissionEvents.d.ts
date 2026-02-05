@@ -60,7 +60,7 @@ export type Symphony3SmartGlueSubmissionEvent = FormEventBase & {
     /** URL that the callback is made to. */
     url: string
     /** The unique identifier for the key that should be used for this workflow event */
-    keyId: number
+    keyId: string
   }
 }
 
