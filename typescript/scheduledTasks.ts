@@ -70,10 +70,8 @@ export interface NewTask {
         }
       | {
           interval: 'WEEK'
+          /** @deprecated use days instead */
           day: DayOfWeek
-        }
-      | {
-          interval: 'WEEK_MULTI'
           days: DayOfWeek[]
         }
       | {
