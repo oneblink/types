@@ -1625,22 +1625,10 @@ export type ExternalIdGeneration =
   | ExternalIdGenerationReceiptId
 
 export type FormCustomPDFMappingFont =
-  | 'Courier'
-  | 'Courier-Bold'
-  | 'Courier-Oblique'
-  | 'Courier-BoldOblique'
   | 'Helvetica'
   | 'Helvetica-Bold'
   | 'Helvetica-Oblique'
   | 'Helvetica-BoldOblique'
-  | 'Times-Roman'
-  | 'Times-Bold'
-  | 'Times-Italic'
-  | 'Times-BoldItalic'
-  | 'Symbol'
-  | 'ZapfDingbats'
-  // Above are the default fonts from `pdf-lib`
-  // Below are custom embedded fonts
   | 'Brush Script MT Italic'
   | 'PublicSans'
   | 'PublicSans-Bold'
