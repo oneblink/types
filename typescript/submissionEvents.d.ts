@@ -597,6 +597,26 @@ export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
   }
 }
 
+export type SalesforceObjectRecordFieldResourceDefinition = {
+  sharepointObjectRecordFieldName: string
+}
+
+export type SalesforceCreateObjectRecordSubmissionEventMapping =
+  FormElementMapping<SalesforceObjectRecordFieldResourceDefinition>
+
+export type SalesforceCreateObjectSubmissionEvent = FormEventBase & {
+  type: 'SALESFORCE_CREATE_OBJECT_RECORD'
+  configuration: {
+    /** The id of the OneBlink -> Salesforce integration API key to be used. */
+    integrationKeyId: string
+    object: {
+      id: string
+      displayName: string
+    }
+    mapping: SalesforceCreateObjectRecordSubmissionEventMapping[]
+  }
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -623,6 +643,7 @@ export type FormWorkflowEvent =
   | GoodToGoUpdateAssetSubmissionEvent
   | ExcelAddRowSubmissionEvent
   | Symphony3SmartGlueSubmissionEvent
+  | SalesforceCreateObjectSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
