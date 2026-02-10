@@ -58,12 +58,12 @@ export interface AWSAccount {
 
 export type TierLimitation =
   | {
-    unlimited: true
-  }
+      unlimited: true
+    }
   | {
-    limit: number
-    unlimited: false
-  }
+      limit: number
+      unlimited: false
+    }
 
 export interface NewTier {
   name: string
