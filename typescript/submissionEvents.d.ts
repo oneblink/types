@@ -607,7 +607,7 @@ export type SalesforceCreateObjectRecordSubmissionEventMapping =
 export type SalesforceCreateObjectSubmissionEvent = FormEventBase & {
   type: 'SALESFORCE_CREATE_OBJECT_RECORD'
   configuration: {
-    /** The id of the OneBlink -> Salesforce integration API key to be used. */
+    /** The id of the OneBlink -> Salesforce integration Environment to be used. */
     integrationKeyId: string
     object: {
       id: string
