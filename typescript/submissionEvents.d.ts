@@ -598,7 +598,7 @@ export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
 }
 
 export type SalesforceObjectRecordFieldResourceDefinition = {
-  sharepointObjectRecordFieldName: string
+  salesforceObjectRecordFieldName: string
 }
 
 export type SalesforceCreateObjectRecordSubmissionEventMapping =
