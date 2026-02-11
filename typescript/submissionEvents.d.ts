@@ -610,8 +610,8 @@ export type SalesforceCreateObjectSubmissionEvent = FormEventBase & {
     /** The id of the OneBlink -> Salesforce integration Environment to be used. */
     environmentId: string
     object: {
-      id: string
-      displayName: string
+      name: string
+      label: string
     }
     mapping: SalesforceCreateObjectRecordSubmissionEventMapping[]
   }
