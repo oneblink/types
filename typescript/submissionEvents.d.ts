@@ -604,7 +604,7 @@ export type SalesforceObjectRecordFieldResourceDefinition = {
 export type SalesforceCreateObjectRecordSubmissionEventMapping =
   FormElementMapping<SalesforceObjectRecordFieldResourceDefinition>
 
-export type SalesforceCreateObjectSubmissionEvent = FormEventBase & {
+export type SalesforceCreateObjectRecordSubmissionEvent = FormEventBase & {
   type: 'SALESFORCE_CREATE_OBJECT_RECORD'
   configuration: {
     /** The id of the OneBlink -> Salesforce integration Environment to be used. */
@@ -643,7 +643,7 @@ export type FormWorkflowEvent =
   | GoodToGoUpdateAssetSubmissionEvent
   | ExcelAddRowSubmissionEvent
   | Symphony3SmartGlueSubmissionEvent
-  | SalesforceCreateObjectSubmissionEvent
+  | SalesforceCreateObjectRecordSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
