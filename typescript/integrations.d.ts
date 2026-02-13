@@ -319,6 +319,20 @@ export type IntegrationGoodToGo<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationSalesForceEnvironment<S = SavedSecret> = {
+  id: string
+  label: string
+  consumerKey: string
+  consumerSecret: ConstrainedSecret<S>
+  loginUrl: string
+}
+export type IntegrationSalesForce<S = SavedSecret> = IntegrationBase & {
+  type: 'SALES_FORCE'
+  configuration: {
+    environments: IntegrationSalesForceEnvironment<S>[]
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -357,5 +371,5 @@ export type Integration<S = SavedSecret> =
   | IntegrationCivicRec<S>
   | IntegrationGoodToGo<S>
   | IntegrationExcel<S>
-
+  | IntegrationSalesForce<S>
 export type IntegrationType = Integration['type']
