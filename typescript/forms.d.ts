@@ -2001,11 +2001,41 @@ export type NewFormElementOptionSetGoodToGoCustomField =
 export type FormElementOptionSetGoodToGoCustomField = IdResource &
   NewFormElementOptionSetGoodToGoCustomField
 
+export type FormElementOptionSetEnvironmentSalesforcePicklist =
+  FormElementEnvironmentBase & {
+    /** The id of the salesforce key in integration configuration. */
+    integrationEnvironmentId: string
+    /** The Salesforce Object containing the picklist field */
+    object: {
+      /** The API name of the Salesforce Object */
+      name: string
+      /** The display label of the Salesforce Object */
+      label: string
+    }
+    /** The Salesforce Picklist or MultiselectPicklist field */
+    field: {
+      /** The API name of the Salesforce field */
+      name: string
+      /** The display label of the Salesforce field */
+      label: string
+    }
+  }
+
+export type NewFormElementOptionSetSalesforcePicklist =
+  NewFormElementOptionSetBase & {
+    type: 'SALESFORCE_PICKLIST'
+    environments: FormElementOptionSetEnvironmentSalesforcePicklist[]
+  }
+
+export type FormElementOptionSetSalesforcePicklist = IdResource &
+  NewFormElementOptionSetSalesforcePicklist
+
 export type FormElementOptionSetEnvironment =
   | FormElementOptionSetEnvironmentGoodToGoCustomField
   | FormElementOptionSetEnvironmentSharePointListColumn
   | FormElementOptionSetEnvironmentStatic
   | FormElementOptionSetEnvironmentUrl
+  | FormElementOptionSetEnvironmentSalesforcePicklist
 
 export type NewFormElementOptionSet =
   | NewFormElementOptionSetStatic
@@ -2013,6 +2043,7 @@ export type NewFormElementOptionSet =
   | NewFormElementOptionSetUrl
   | NewFormElementOptionSetSharePointListColumn
   | NewFormElementOptionSetGoodToGoCustomField
+  | NewFormElementOptionSetSalesforcePicklist
 
 export type FormElementOptionSet =
   | FormElementOptionSetStatic
@@ -2020,6 +2051,7 @@ export type FormElementOptionSet =
   | FormElementOptionSetUrl
   | FormElementOptionSetSharePointListColumn
   | FormElementOptionSetGoodToGoCustomField
+  | FormElementOptionSetSalesforcePicklist
 
 //
 //
