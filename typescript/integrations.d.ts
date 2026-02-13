@@ -324,7 +324,7 @@ export type IntegrationSalesforceEnvironment<S = SavedSecret> = {
   label: string
   consumerKey: string
   consumerSecret: ConstrainedSecret<S>
-  loginUrl: string
+  instanceUrl: string
 }
 export type IntegrationSalesforce<S = SavedSecret> = IntegrationBase & {
   type: 'SALESFORCE'
