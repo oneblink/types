@@ -319,17 +319,17 @@ export type IntegrationGoodToGo<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationSalesForceEnvironment<S = SavedSecret> = {
+export type IntegrationSalesforceEnvironment<S = SavedSecret> = {
   id: string
   label: string
   consumerKey: string
   consumerSecret: ConstrainedSecret<S>
   loginUrl: string
 }
-export type IntegrationSalesForce<S = SavedSecret> = IntegrationBase & {
-  type: 'SALES_FORCE'
+export type IntegrationSalesforce<S = SavedSecret> = IntegrationBase & {
+  type: 'SALESFORCE'
   configuration: {
-    environments: IntegrationSalesForceEnvironment<S>[]
+    environments: IntegrationSalesforceEnvironment<S>[]
   }
 }
 
@@ -371,5 +371,5 @@ export type Integration<S = SavedSecret> =
   | IntegrationCivicRec<S>
   | IntegrationGoodToGo<S>
   | IntegrationExcel<S>
-  | IntegrationSalesForce<S>
+  | IntegrationSalesforce<S>
 export type IntegrationType = Integration['type']
