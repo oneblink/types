@@ -274,7 +274,7 @@ export type EmailSendingAddressResponseBase = {
 
 export interface WithWorkspaceAssociation {
   /** The identifier of the workspace the resource is associated with */
-  workspaceId?: string
+  workspaceId?: number
 }
 
 export interface WithOrganisationAssociation {
