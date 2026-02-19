@@ -68,6 +68,7 @@ export type TierLimitation =
 export interface NewTier {
   name: string
   tierData: {
+    maximumWorkspaces?: TierLimitation
     maximumForms?: TierLimitation
     maximumFormSubmissions: TierLimitation
     maximumAuthenticatedFormSubmissions: TierLimitation
@@ -193,6 +194,7 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
   | 'FeatureFlag'
+  | 'Workspace'
 
 export type NewAuditRecord = {
   type: AuditRecordType

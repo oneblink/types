@@ -1,4 +1,5 @@
 import { MiscTypes } from '..'
+import { WithCommonAssociations } from './misc'
 
 interface WithVersion {
   versionId: number
@@ -7,15 +8,11 @@ interface WithVersion {
 export type DayOfWeek = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN'
 
 // // Task Action // //
-type BaseTaskAction = {
+type BaseTaskAction = WithCommonAssociations & {
   /** The label of the action */
   label: string
   /** The icon that will be displayed with the action */
   icon: string
-  /** The related forms app environment id that this action belongs to */
-  formsAppEnvironmentId: number
-  /** The organisation id that this action belongs to */
-  organisationId: string
 }
 
 // Form Task Action //
@@ -50,13 +47,9 @@ export type LinkedResource = {
   label: string
   url: string
 }
-export interface NewTask {
+export interface NewTask extends WithCommonAssociations {
   /** The name of the task */
   name: string
-  /** The related forms app environment id that this task belongs to */
-  formsAppEnvironmentId: number
-  /** The organisation id that this task belongs to */
-  organisationId: string
   /** The schedule that will determine a task's frequency and date range */
   schedule: {
     /** The date a task becomes available */
@@ -131,7 +124,7 @@ export interface CompletedTask extends NewCompletedTask {
 // // Task Group // //
 
 export type TaskGroupSubGroup = { taskIds: Task['taskId'][]; label: string }
-export type NewTaskGroup = {
+export type NewTaskGroup = WithCommonAssociations & {
   /** The label of the task group */
   name: string
   /**
@@ -139,10 +132,6 @@ export type NewTaskGroup = {
    * Forms App. The order of the identifiers is respected when displaying actions.
    */
   taskIds: Array<Task['taskId'] | TaskGroupSubGroup>
-  /** The related forms app environment id that this task group belongs to */
-  formsAppEnvironmentId: number
-  /** The organisation id that this task group belongs to */
-  organisationId: string
 }
 
 export type EditedTaskGroup = NewTaskGroup & {

@@ -271,3 +271,22 @@ export type EmailSendingAddressSES = {
 export type EmailSendingAddressResponseBase = {
   integration?: EmailSendingAddressSES | EmailSendingAddressMailgun
 }
+
+export interface WithWorkspaceAssociation {
+  /** The identifier of the workspace the resource is associated with */
+  workspaceId?: number
+}
+
+export interface WithOrganisationAssociation {
+  /** The identifier of the organisation the resource is associated with */
+  organisationId: string
+}
+
+export interface WithEnvironmentAssociation {
+  /** The identifier of the forms app environment the resource is associated with */
+  formsAppEnvironmentId: number
+}
+
+export type WithCommonAssociations = WithWorkspaceAssociation &
+  WithOrganisationAssociation &
+  WithEnvironmentAssociation

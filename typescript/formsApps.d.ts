@@ -5,6 +5,7 @@ import {
   EmailSendingAddressBase,
   EmailSendingAddressResponseBase,
   IdResource,
+  WithCommonAssociations,
 } from './misc'
 import {
   BaseFormsAppEnvironmentStyles,
@@ -295,15 +296,13 @@ type FormsAppPWASettings = {
 
 type CacheStrategy = 'NETWORK_FIRST' | 'STALE_WHILE_REVALIDATE'
 
-type _NewFormsApp = {
+type _NewFormsApp = WithCommonAssociations & {
   /** Name of the forms app */
   name: string
   description?: string
   hostname: string
   /** The identifier of the OAuth Client for the forms app */
   oAuthClientId?: string | null
-  /** The exact organisation identifier the forms app is associated with */
-  organisationId: string
   /** Forms App progressive web app setting */
   pwaSettings: FormsAppPWASettings
   /** Caching strategies for the Forms App */
@@ -324,8 +323,6 @@ type _NewFormsApp = {
   /** True when using a SAML identity provider */
   hasSamlIdentityProvider: boolean
   enableSamlIdentityProviderLogout?: boolean
-  /** The exact forms app environment identifier the forms app is associated with */
-  formsAppEnvironmentId: number
   /**
    * The email addresses set in `notificationEmailAddresses` will override the
    * email addresses set at the environment level. Set this flag to `true` to

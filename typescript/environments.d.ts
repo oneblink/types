@@ -4,6 +4,8 @@ import { RecaptchaKeyType } from './integrations'
 import {
   EmailSendingAddressBase,
   EmailSendingAddressResponseBase,
+  WithEnvironmentAssociation,
+  WithOrganisationAssociation,
 } from './misc'
 
 export type FormsAppEnvironmentColours = {
@@ -70,12 +72,10 @@ export type FormsAppEnvironmentSendingAddressResponse =
     formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
   }
 
-export interface BaseFormsAppEnvironment {
+export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
   /** Name of the Forms App Environment */
   name: string
   description?: string
-  /** The exact organisation identifier the forms app environment is associated with */
-  organisationId: string
   /** Unique domain safe text to identify the forms app environment */
   slug: string
   /**
@@ -148,21 +148,20 @@ export type FormMigrationData = {
   targetFormId?: number
 } & FormMigrationOptions
 
-export type FormsAppEnvironmentConfigurationBase = {
-  organisationId: string
-  formsAppEnvironmentId: number
-  isTrialExpired: boolean
-  styles: FormsAppEnvironmentStyles
-  environmentCustomCss: string | undefined
-  locale: string
-  tz: string
-  abnLookupAuthenticationGuid?: string
-  accountAttachmentRetentionInDays?: number
-  formsAttachmentRetention?: Array<{
-    formId: number
-    days: number
-  }>
-}
+export type FormsAppEnvironmentConfigurationBase = WithOrganisationAssociation &
+  WithEnvironmentAssociation & {
+    isTrialExpired: boolean
+    styles: FormsAppEnvironmentStyles
+    environmentCustomCss: string | undefined
+    locale: string
+    tz: string
+    abnLookupAuthenticationGuid?: string
+    accountAttachmentRetentionInDays?: number
+    formsAttachmentRetention?: Array<{
+      formId: number
+      days: number
+    }>
+  }
 
 export type FormsAppEnvironmentConfiguration =
   FormsAppEnvironmentConfigurationBase & {

@@ -1,6 +1,6 @@
-import { IdResource } from './misc'
+import { IdResource, WithWorkspaceAssociation } from './misc'
 
-export interface BaseKey {
+export interface BaseKey extends WithWorkspaceAssociation {
   links: {
     organisations: string
   }
