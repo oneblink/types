@@ -1,11 +1,12 @@
-export type EmailTemplateEnvironment = {
+import { WithCommonAssociations, WithEnvironmentAssociation } from './misc'
+
+export type EmailTemplateEnvironment = WithEnvironmentAssociation & {
   template: string
-  formsAppEnvironmentId: number
 }
 
-export type NewEmailTemplate = {
+export type NewEmailTemplate = WithCommonAssociations & {
   name: string
-  organisationId: string
+
   environments: EmailTemplateEnvironment[]
   type:
     | 'FORM_SUBMISSION_EVENT_PDF'
