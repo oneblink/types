@@ -2,6 +2,9 @@ import { IdResource, WithOrganisationAssociation } from './misc'
 import { BaseFormsAppEnvironment } from './environments'
 export interface NewWorkspace extends WithOrganisationAssociation {
   label: string
+  /** The icon to display on the workspace */
+  icon?: string
+  /** Whether the workspace is the default workspace. An organisation can only have one default workspace. */
   isDefault?: boolean
   /** The description of the workspace */
   description?: string
