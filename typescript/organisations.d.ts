@@ -65,29 +65,32 @@ export type TierLimitation =
       unlimited: false
     }
 
+export interface TierDataMaximumContraints {
+  maximumWorkspaces?: TierLimitation
+  maximumForms?: TierLimitation
+  maximumFormSubmissions: TierLimitation
+  maximumAuthenticatedFormSubmissions: TierLimitation
+  maximumConsoleUsers: TierLimitation
+  maximumAppUsers: TierLimitation
+  maximumFormAppsEnvironments: TierLimitation
+  maximumFormElementLookups: TierLimitation
+  maximumFormElementOptionsSets: TierLimitation
+  maximumDeveloperKeys: TierLimitation
+  maximumAPIHostingInstances: TierLimitation
+  maximumCDNHostingInstances: TierLimitation
+  maximumFormsApps: TierLimitation
+  maximumSchedulingCalendars: TierLimitation
+  maximumFormStoreForms: TierLimitation
+  maximumFormStoreAppUsers: TierLimitation
+  maximumScheduledFunctions: TierLimitation
+  maximumScheduledTaskCompletions: TierLimitation
+  maximumFormSequentialNumberReceiptComponents: TierLimitation
+  maximumFormCustomPDFs: TierLimitation
+  maximumEmailTemplates: TierLimitation
+}
 export interface NewTier {
   name: string
-  tierData: {
-    maximumForms?: TierLimitation
-    maximumFormSubmissions: TierLimitation
-    maximumAuthenticatedFormSubmissions: TierLimitation
-    maximumConsoleUsers: TierLimitation
-    maximumAppUsers: TierLimitation
-    maximumFormAppsEnvironments: TierLimitation
-    maximumFormElementLookups: TierLimitation
-    maximumFormElementOptionsSets: TierLimitation
-    maximumDeveloperKeys: TierLimitation
-    maximumAPIHostingInstances: TierLimitation
-    maximumCDNHostingInstances: TierLimitation
-    maximumFormsApps: TierLimitation
-    maximumSchedulingCalendars: TierLimitation
-    maximumFormStoreForms: TierLimitation
-    maximumFormStoreAppUsers: TierLimitation
-    maximumScheduledFunctions: TierLimitation
-    maximumScheduledTaskCompletions: TierLimitation
-    maximumFormSequentialNumberReceiptComponents: TierLimitation
-    maximumFormCustomPDFs: TierLimitation
-    maximumEmailTemplates: TierLimitation
+  tierData: TierDataMaximumContraints & {
     availableFormSubmissionEvents?: FormEventType[] | null
     availableFormPostSubmissionActions?: FormPostSubmissionAction[] | null
     availableIntegrations?: IntegrationType[] | null
@@ -193,6 +196,7 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
   | 'FeatureFlag'
+  | 'Workspace'
 
 export type NewAuditRecord = {
   type: AuditRecordType

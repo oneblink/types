@@ -22,6 +22,9 @@ import type {
   IdResource,
   StatesAndTerritories,
   UserProfile,
+  WithCommonAssociations,
+  WithOrganisationAssociation,
+  WithWorkspaceAssociation,
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './environments'
@@ -1651,15 +1654,11 @@ export type FormCustomPDF = {
   }>[]
 }
 
-export type NewForm = {
+export type NewForm = WithCommonAssociations & {
   /** Name of the form. */
   name: string
   /** A description of the form. */
   description: string
-  /** The organisation ID the form belong to. */
-  organisationId: string
-  /** The forms app environment ID the form belong to. */
-  formsAppEnvironmentId: number
   /** ID's of any Forms Apps that the form is included in. */
   formsAppIds: number[]
   /**
@@ -1899,10 +1898,10 @@ export type FormQuerystringParameters = {
 // Options Sets
 //
 //
-export type NewFormElementOptionSetBase = {
-  name: string
-  organisationId: string
-}
+export type NewFormElementOptionSetBase = WithOrganisationAssociation &
+  WithWorkspaceAssociation & {
+    name: string
+  }
 
 // Static Options
 export type FormElementOptionSetEnvironmentStatic = {
@@ -2156,12 +2155,11 @@ export type FormElementLookupStaticDataEnvironment =
     records: FormElementLookupStaticDataRecord[]
   }
 
-export type NewFormElementLookupBase = {
-  /** A human readable identifier for the Lookup. */
-  name: string
-  /** The identifier for the organisation associated with the Lookup. */
-  organisationId: string
-}
+export type NewFormElementLookupBase = WithOrganisationAssociation &
+  WithWorkspaceAssociation & {
+    /** A human readable identifier for the Lookup. */
+    name: string
+  }
 
 export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   apiId?: string

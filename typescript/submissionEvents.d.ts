@@ -5,6 +5,7 @@ import type {
   EndpointConfigurationAPI,
   EndpointConfigurationCallback,
   UserProfile,
+  WithCommonAssociations,
 } from './misc'
 import { FormSubmissionPDFPageSize } from './pdf'
 
@@ -684,11 +685,9 @@ export type S3SubmissionTags = {
   previousFormSubmissionApprovalId?: string
 }
 
-export type BaseFormSubmissionProcessing = {
+export type BaseFormSubmissionProcessing = WithCommonAssociations & {
   submissionId: string
   formId: number
-  formsAppEnvironmentId: number
-  organisationId: string
   bucketName: string
   key: string
   isDraft: boolean
