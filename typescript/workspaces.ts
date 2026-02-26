@@ -26,11 +26,11 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   >
 }
 
-export type DefaultWorkspace = IdResource &
-  Omit<NewWorkspace, 'isDefault' | 'slug'> & {
-    isDefault: true
-    slug?: string
-  }
+export type NewDefaultWorkspace = Omit<NewWorkspace, 'isDefault' | 'slug'> & {
+  isDefault: true
+  slug?: string
+}
+export type DefaultWorkspace = IdResource & NewDefaultWorkspace
 export type CustomWorkspace = IdResource & NewWorkspace
 
 export type Workspace = CustomWorkspace | DefaultWorkspace
