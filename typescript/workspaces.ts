@@ -10,6 +10,8 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   isDefault?: boolean
   /** The description of the workspace */
   description?: string
+  /** The slug appended to any apps in the workspace */
+  slug?: string
   /** Environment config overrides */
   environmentConfig: Record<
     number,
