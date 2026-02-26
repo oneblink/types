@@ -102,6 +102,7 @@ export interface NewTier {
     allowCivicPlusForethoughtChatbot?: boolean
     allowSAMLUserAuthentication: boolean
     allowAIFormBuilder?: boolean
+    allowPDFConversion?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
