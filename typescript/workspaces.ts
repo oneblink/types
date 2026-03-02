@@ -6,12 +6,10 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   icon?: string
   /** The colour of the workspace, in hexadecimal format (for example, #0099EE) */
   colour?: string
-  /** Whether the workspace is the default workspace. An organisation can only have one default workspace. */
-  isDefault?: false
   /** The description of the workspace */
   description?: string
   /** The slug appended to any apps in the workspace */
-  slug: string
+  slug?: string
   /** Environment config overrides */
   environmentConfig: Record<
     number,
@@ -26,11 +24,4 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   >
 }
 
-export type NewDefaultWorkspace = Omit<NewWorkspace, 'isDefault' | 'slug'> & {
-  isDefault: true
-  slug?: string
-}
-export type DefaultWorkspace = IdResource & NewDefaultWorkspace
-export type CustomWorkspace = IdResource & NewWorkspace
-
-export type Workspace = CustomWorkspace | DefaultWorkspace
+export type Workspace = IdResource & NewWorkspace
