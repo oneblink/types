@@ -1,4 +1,5 @@
 import { MiscTypes } from '..'
+import { DeveloperKeyReference } from './keys'
 
 interface WithVersion {
   versionId: number
@@ -113,6 +114,8 @@ export interface NewCompletedTask {
   submissionId?: string
   /** The user which actioned the task */
   completedBy?: MiscTypes.UserProfile
+  /** The developer key which actioned the task */
+  completedByKey?: DeveloperKeyReference
   /** The timestamp for when the user marked the task as done */
   createdAt: string
   /**
