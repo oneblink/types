@@ -95,6 +95,7 @@ export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
   cloneOptions?: {
     sourceFormsAppEnvironmentId: number
+    targetWorkspaceId: number | undefined
     isCloningFormElementOptionsSets: boolean
     isCloningFormElementLookups: boolean
     isCloningFormSubmissionEvents: boolean
