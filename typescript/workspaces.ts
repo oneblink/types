@@ -1,4 +1,8 @@
-import { IdResource, WithOrganisationAssociation } from './misc'
+import {
+  BaseCloneOptions,
+  IdResource,
+  WithOrganisationAssociation,
+} from './misc'
 import { BaseFormsAppEnvironment } from './environments'
 export interface NewWorkspace extends WithOrganisationAssociation {
   label: string
@@ -22,6 +26,9 @@ export interface NewWorkspace extends WithOrganisationAssociation {
       | 'slug'
     >
   >
+  cloneOptions?: BaseCloneOptions & {
+    sourceWorkspaceId: number
+  }
 }
 
 export type Workspace = IdResource & NewWorkspace
