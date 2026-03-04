@@ -96,12 +96,10 @@ export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
   cloneOptions?: BaseCloneOptions & {
     sourceFormsAppEnvironmentId: number
-    workspaceMapping?: [
-      {
-        sourceWorkspaceId: number
-        targetWorkspaceId: number
-      }
-    ]
+    workspaceMapping?: {
+      sourceWorkspaceId: number
+      targetWorkspaceId: number
+    }[]
   }
 }
 
