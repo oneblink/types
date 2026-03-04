@@ -6,6 +6,7 @@ import {
   EmailSendingAddressResponseBase,
   WithEnvironmentAssociation,
   WithOrganisationAssociation,
+  BaseCloneOptions,
 } from './misc'
 
 export type FormsAppEnvironmentColours = {
@@ -93,22 +94,14 @@ export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
 }
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
-  cloneOptions?: {
+  cloneOptions?: BaseCloneOptions & {
     sourceFormsAppEnvironmentId: number
-    isCloningFormElementOptionsSets: boolean
-    isCloningFormElementLookups: boolean
-    isCloningFormSubmissionEvents: boolean
-    isCloningFormApprovalSteps: boolean
-    isCloningFormPostSubmissionActions: boolean
-    isCloningFormServerValidation: boolean
-    isCloningFormExternalIdGenerationOnSubmit: boolean
-    isCloningFormPersonalisation: boolean
-    isCloningFormTags: boolean
-    isCloningFormSubmissionTitle: boolean
-    isCloningFormPostSubmissionReceipt: boolean
-    isCloningFormCustomCssClasses: boolean
-    isCloningScheduledTasks: boolean
-    isCloningFormCustomPDFs: boolean
+    workspaceMapping?: [
+      {
+        sourceWorkspaceId: number
+        targetWorkspaceId: number
+      }
+    ]
   }
 }
 
