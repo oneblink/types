@@ -287,23 +287,5 @@ export interface WithEnvironmentAssociation {
   formsAppEnvironmentId: number
 }
 
-export type WithCommonAssociations = WithWorkspaceAssociation &
-  WithOrganisationAssociation &
+export type WithCommonAssociations = WithOrganisationAssociation &
   WithEnvironmentAssociation
-
-export type BaseCloneOptions = {
-  isCloningFormElementOptionsSets: boolean
-  isCloningFormElementLookups: boolean
-  isCloningFormSubmissionEvents: boolean
-  isCloningFormApprovalSteps: boolean
-  isCloningFormPostSubmissionActions: boolean
-  isCloningFormServerValidation: boolean
-  isCloningFormExternalIdGenerationOnSubmit: boolean
-  isCloningFormPersonalisation: boolean
-  isCloningFormTags: boolean
-  isCloningFormSubmissionTitle: boolean
-  isCloningFormPostSubmissionReceipt: boolean
-  isCloningFormCustomCssClasses: boolean
-  isCloningScheduledTasks: boolean
-  isCloningFormCustomPDFs: boolean
-}
