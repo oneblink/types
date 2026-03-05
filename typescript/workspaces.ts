@@ -1,9 +1,5 @@
-import {
-  BaseCloneOptions,
-  IdResource,
-  WithOrganisationAssociation,
-} from './misc'
-import { BaseFormsAppEnvironment } from './environments'
+import { IdResource, WithOrganisationAssociation } from './misc'
+
 export interface NewWorkspace extends WithOrganisationAssociation {
   label: string
   /** The icon to display on the workspace */
@@ -14,21 +10,6 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   description?: string
   /** The slug appended to any apps in the workspace */
   slug?: string
-  /** Environment config overrides */
-  environmentConfig: Record<
-    number,
-    Pick<
-      BaseFormsAppEnvironment,
-      | 'styles'
-      | 'googleMapsIntegrationKeyId'
-      | 'notificationEmailAddresses'
-      | 'recaptchaIntegrationDomainId'
-      | 'slug'
-    >
-  >
-  cloneOptions?: BaseCloneOptions & {
-    sourceWorkspaceId: number
-  }
 }
 
 export type Workspace = IdResource & NewWorkspace

@@ -6,7 +6,7 @@ import {
   EmailSendingAddressResponseBase,
   WithEnvironmentAssociation,
   WithOrganisationAssociation,
-  BaseCloneOptions,
+  WithWorkspaceAssociation,
 } from './misc'
 
 export type FormsAppEnvironmentColours = {
@@ -73,7 +73,9 @@ export type FormsAppEnvironmentSendingAddressResponse =
     formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
   }
 
-export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
+export interface BaseFormsAppEnvironment
+  extends WithOrganisationAssociation,
+    WithWorkspaceAssociation {
   /** Name of the Forms App Environment */
   name: string
   description?: string
@@ -94,12 +96,22 @@ export interface BaseFormsAppEnvironment extends WithOrganisationAssociation {
 }
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
-  cloneOptions?: BaseCloneOptions & {
+  cloneOptions?: {
     sourceFormsAppEnvironmentId: number
-    workspaceMapping?: {
-      sourceWorkspaceId: number
-      targetWorkspaceId: number
-    }[]
+    isCloningFormElementOptionsSets: boolean
+    isCloningFormElementLookups: boolean
+    isCloningFormSubmissionEvents: boolean
+    isCloningFormApprovalSteps: boolean
+    isCloningFormPostSubmissionActions: boolean
+    isCloningFormServerValidation: boolean
+    isCloningFormExternalIdGenerationOnSubmit: boolean
+    isCloningFormPersonalisation: boolean
+    isCloningFormTags: boolean
+    isCloningFormSubmissionTitle: boolean
+    isCloningFormPostSubmissionReceipt: boolean
+    isCloningFormCustomCssClasses: boolean
+    isCloningScheduledTasks: boolean
+    isCloningFormCustomPDFs: boolean
   }
 }
 
