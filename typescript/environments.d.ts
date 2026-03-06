@@ -73,9 +73,7 @@ export type FormsAppEnvironmentSendingAddressResponse =
     formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
   }
 
-export interface BaseFormsAppEnvironment
-  extends WithOrganisationAssociation,
-    WithWorkspaceAssociation {
+export interface _BaseFormsAppEnvironment {
   /** Name of the Forms App Environment */
   name: string
   description?: string
@@ -94,6 +92,11 @@ export interface BaseFormsAppEnvironment
   googleMapsIntegrationKeyId?: string
   customHostname?: string
 }
+
+export interface BaseFormsAppEnvironment
+  extends _BaseFormsAppEnvironment,
+    WithOrganisationAssociation,
+    WithWorkspaceAssociation {}
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
   cloneOptions?: {

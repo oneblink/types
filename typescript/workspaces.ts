@@ -1,4 +1,4 @@
-import { BaseFormsAppEnvironment } from './environments'
+import { _BaseFormsAppEnvironment } from './environments'
 import { IdResource, WithOrganisationAssociation } from './misc'
 
 export interface BaseWorkspace extends WithOrganisationAssociation {
@@ -13,7 +13,7 @@ export interface BaseWorkspace extends WithOrganisationAssociation {
 
 export interface NewWorkspace extends BaseWorkspace {
   /** When a workspace is created an environment will automatically be created.  The environmentOptions will be used to create the environment for the workspace */
-  environmentOptions: BaseFormsAppEnvironment
+  environmentOptions: _BaseFormsAppEnvironment
 }
 
 export type Workspace = IdResource & BaseWorkspace
