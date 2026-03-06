@@ -8,8 +8,6 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   colour?: string
   /** The description of the workspace */
   description?: string
-  /** The slug appended to any apps in the workspace */
-  slug?: string
 }
 
 export type Workspace = IdResource & NewWorkspace
