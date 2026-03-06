@@ -1,6 +1,7 @@
+import { BaseFormsAppEnvironment } from './environments'
 import { IdResource, WithOrganisationAssociation } from './misc'
 
-export interface NewWorkspace extends WithOrganisationAssociation {
+export interface BaseWorkspace extends WithOrganisationAssociation {
   label: string
   /** The icon to display on the workspace */
   icon?: string
@@ -10,4 +11,9 @@ export interface NewWorkspace extends WithOrganisationAssociation {
   description?: string
 }
 
-export type Workspace = IdResource & NewWorkspace
+export interface NewWorkspace extends BaseWorkspace {
+  /** When a workspace is created an environment will automatically be created.  The environmentOptions will be used to create the environment for the workspace */
+  environmentOptions?: BaseFormsAppEnvironment
+}
+
+export type Workspace = IdResource & BaseWorkspace
