@@ -34,7 +34,6 @@ export interface Profile {
 type TeamMemberBase = Profile & {
   roleId: number
   formsAppEnvironmentIds?: number[]
-  workspaceIds?: number[]
 }
 
 type NewTeamMember = TeamMemberBase & {
