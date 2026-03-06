@@ -12,7 +12,7 @@ export interface BaseWorkspace extends WithOrganisationAssociation {
 }
 
 export interface NewWorkspace extends BaseWorkspace {
-  /** When a workspace is created a workspace will automatically be created.  The environmentOptions will be used to create the environment for the workspace */
+  /** When a workspace is created an environment will automatically be created.  The environmentOptions will be used to create the environment for the workspace */
   environmentOptions?: BaseFormsAppEnvironment
 }
 
