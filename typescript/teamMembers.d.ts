@@ -61,7 +61,6 @@ interface PermissionBase {
   name?: string | null
   privilege: RolePrivileges
   formsAppEnvironmentIds?: number[]
-  workspaceIds?: number[]
   temporaryPasswordExpiry?: string
   isMfaRequired?: boolean
   isMfaEnabled?: boolean

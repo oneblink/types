@@ -208,6 +208,7 @@ export type NewAuditRecord = {
   user?: UserProfile
   key?: DeveloperKeyReference
   clientIpAddress?: string
+  workspaceId?: number
 }
 
 export type AuditRecord = NewAuditRecord & {
