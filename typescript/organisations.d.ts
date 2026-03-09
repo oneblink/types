@@ -145,6 +145,7 @@ type AuditRecordTypeExcludingWorkspace =
   | 'ScheduledTaskGroupInstance'
   | 'OrganisationManagedSecret'
   | 'FeatureFlag'
+  | 'EmailAttachment'
 
 export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
@@ -174,7 +175,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormApprovalWebhook'
   | 'FormRetentionPolicy'
   | 'EmailTemplate'
-  | 'EmailAttachment'
   | 'SchedulingBooking'
   | 'SchedulingBookingSession'
   | 'FormSubmissionPayment'
