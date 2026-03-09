@@ -147,11 +147,6 @@ type AuditRecordTypeExcludingWorkspace =
   | 'FeatureFlag'
   | 'EmailAttachment'
   | 'EmailTemplate'
-  | 'FormSubmissionApproval'
-  | 'FormApprovalWebhook'
-  | 'FormSubmissionApprovalAdditionalNote'
-  | 'FormApprovalFlowInstance'
-  | 'WebhookSubscription'
   | 'FormSubmissionStatistics'
 
 export type AuditRecordTypeIncludingWorkspace =
@@ -194,6 +189,11 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
   | 'Workspace'
+  | 'FormApprovalWebhook'
+  | 'WebhookSubscription'
+  | 'FormSubmissionApproval'
+  | 'FormSubmissionApprovalAdditionalNote'
+  | 'FormApprovalFlowInstance'
 
 export type AuditRecordTypeOptionalWorkspace =
   | 'FormSubmissionMeta'
