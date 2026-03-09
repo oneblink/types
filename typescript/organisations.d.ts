@@ -160,7 +160,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppRequestAccess'
   | 'FormsAppHostnameConfiguration'
   | 'FormsAppHostnameConfigurationCertificate'
-  | 'FormSubmission'
   | 'FormSubmissionUrl'
   | 'FormSubmissionExtract'
   | 'FormSubmissionStatistics'
@@ -199,7 +198,10 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironmentReordering'
   | 'Workspace'
 
-export type AuditRecordTypeOptionalWorkspace = 'FormSubmissionMeta' | 'Job'
+export type AuditRecordTypeOptionalWorkspace =
+  | 'FormSubmissionMeta'
+  | 'Job'
+  | 'FormSubmission'
 
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
