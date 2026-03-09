@@ -145,6 +145,7 @@ type AuditRecordTypeExcludingWorkspace =
   | 'ScheduledTaskGroupInstance'
   | 'OrganisationManagedSecret'
   | 'FeatureFlag'
+  | 'FormSubmissionMeta'
 
 export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
@@ -161,7 +162,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppHostnameConfiguration'
   | 'FormsAppHostnameConfigurationCertificate'
   | 'Job'
-  | 'FormSubmissionMeta'
   | 'FormSubmission'
   | 'FormSubmissionUrl'
   | 'FormSubmissionExtract'
