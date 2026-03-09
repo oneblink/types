@@ -145,7 +145,6 @@ type AuditRecordTypeExcludingWorkspace =
   | 'ScheduledTaskGroupInstance'
   | 'OrganisationManagedSecret'
   | 'FeatureFlag'
-  | 'FormSubmissionMeta'
 
 export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
@@ -201,9 +200,12 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironmentReordering'
   | 'Workspace'
 
+export type AuditRecordTypeOptionalWorkspace = 'FormSubmissionMeta'
+
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
   | AuditRecordTypeIncludingWorkspace
+  | AuditRecordTypeOptionalWorkspace
 
 type NewAuditRecordBase = {
   recordId: Record<string, unknown>
@@ -222,6 +224,10 @@ export type NewAuditRecord =
   | (NewAuditRecordBase & {
       type: AuditRecordTypeIncludingWorkspace
       workspaceId: number
+    })
+  | (NewAuditRecordBase & {
+      type: AuditRecordTypeOptionalWorkspace
+      workspaceId?: number
     })
 
 export type AuditRecord = Omit<NewAuditRecord, 'workspaceId'> & {
