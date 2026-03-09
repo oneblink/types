@@ -114,7 +114,7 @@ export type Tier = NewTier & {
   updatedAt: string
 }
 
-export type AuditRecordType =
+type AuditRecordTypeExcludingWorkspace =
   | 'Organisation'
   | 'OrganisationDeleteRequest'
   | 'OrganisationDataRetention'
@@ -129,16 +129,30 @@ export type AuditRecordType =
   | 'APIEnvironmentServe'
   | 'APIEnvironmentSchedule'
   | 'APIEnvironmentScheduleInvocation'
+  | 'WebApp'
+  | 'WebAppEnvironment'
+  | 'WebAppEnvironmentCustomDomain'
+  | 'WebAppEnvironmentCustomDomainCertificate'
+  | 'Role'
+  | 'TeamMember'
+  | 'Integration'
+  | 'Audit'
+  | 'AccountAsset'
+  | 'ScheduledTask'
+  | 'CompletedTask'
+  | 'ScheduledTaskAction'
+  | 'ScheduledTaskGroup'
+  | 'ScheduledTaskGroupInstance'
+  | 'OrganisationManagedSecret'
+  | 'FeatureFlag'
+
+export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
   | 'FormsAppEnvironmentApproverGroup'
   | 'FormElementDynamicOptionSet'
   | 'FormElementLookup'
   | 'Form'
   | 'FormJsonSchema'
-  | 'WebApp'
-  | 'WebAppEnvironment'
-  | 'WebAppEnvironmentCustomDomain'
-  | 'WebAppEnvironmentCustomDomainCertificate'
   | 'FormsApp'
   | 'FormsAppStyles'
   | 'FormsAppUser'
@@ -154,13 +168,10 @@ export type AuditRecordType =
   | 'FormSubmissionStatistics'
   | 'FormWorkflowEventReplay'
   | 'WebhookSubscription'
-  | 'Role'
-  | 'TeamMember'
   | 'FormsAppDraft'
   | 'FormsAppUserSubscription'
   | 'FormsAppSendingAddress'
   | 'FormsAppSendingAddressResend'
-  | 'Integration'
   | 'FormApprovalFlowInstance'
   | 'FormSubmissionApproval'
   | 'FormApprovalWebhook'
@@ -172,23 +183,15 @@ export type AuditRecordType =
   | 'FormSubmissionPayment'
   | 'FormSubmissionAttachment'
   | 'FormSubmissionAttachmentUrl'
-  | 'Audit'
-  | 'AccountAsset'
   | 'FormsAppSamlIdentityProvider'
   | 'FormStore'
   | 'FormStoreExport'
   | 'FormStoreFormDefinition'
   | 'FormSubmissionApprovalAdditionalNote'
   | 'FormApprovalWebhookEventReplay'
-  | 'ScheduledTask'
-  | 'CompletedTask'
-  | 'ScheduledTaskAction'
-  | 'ScheduledTaskGroup'
-  | 'ScheduledTaskGroupInstance'
   | 'FormVersion'
   | 'FormSubmissionDraft'
   | 'PDFConversion'
-  | 'OrganisationManagedSecret'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
@@ -196,11 +199,13 @@ export type AuditRecordType =
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
   | 'FormsAppEnvironmentReordering'
-  | 'FeatureFlag'
   | 'Workspace'
 
-export type NewAuditRecord = {
-  type: AuditRecordType
+export type AuditRecordType =
+  | AuditRecordTypeExcludingWorkspace
+  | AuditRecordTypeIncludingWorkspace
+
+type NewAuditRecordBase = {
   recordId: Record<string, unknown>
   recordLabel?: string
   operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
@@ -210,9 +215,19 @@ export type NewAuditRecord = {
   clientIpAddress?: string
 }
 
-export type AuditRecord = NewAuditRecord & {
+export type NewAuditRecord =
+  | (NewAuditRecordBase & {
+      type: AuditRecordTypeExcludingWorkspace
+    })
+  | (NewAuditRecordBase & {
+      type: AuditRecordTypeIncludingWorkspace
+      workspaceId: number
+    })
+
+export type AuditRecord = Omit<NewAuditRecord, 'workspaceId'> & {
   id: number
   createdAt: string
+  workspaceId?: number
 }
 
 export type NewProductNotification = {
