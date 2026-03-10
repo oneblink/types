@@ -192,11 +192,11 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormSubmissionApproval'
   | 'FormSubmissionApprovalAdditionalNote'
   | 'FormApprovalFlowInstance'
+  | 'FormSubmission'
+  | 'FormSubmissionMeta'
 
 export type AuditRecordTypeOptionalWorkspace =
-  | 'FormSubmissionMeta'
   | 'Job'
-  | 'FormSubmission'
   | 'FormElementLookup'
   | 'FormElementDynamicOptionSet'
   | 'FormRetentionPolicy'
