@@ -148,6 +148,9 @@ type AuditRecordTypeExcludingWorkspace =
   | 'EmailAttachment'
   | 'EmailTemplate'
   | 'FormSubmissionStatistics'
+  | 'WebhookSubscription'
+  | 'FormsAppUser'
+  | 'FormsAppEnvironmentReordering'
 
 export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
@@ -156,7 +159,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormJsonSchema'
   | 'FormsApp'
   | 'FormsAppStyles'
-  | 'FormsAppUser'
   | 'FormsAppKey'
   | 'FormsAppRequestAccess'
   | 'FormsAppHostnameConfiguration'
@@ -187,10 +189,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironmentSendingAddressResend'
   | 'FormsAppEnvironmentHostnameConfiguration'
   | 'FormsAppEnvironmentHostnameConfigurationCertificate'
-  | 'FormsAppEnvironmentReordering'
-  | 'Workspace'
-  | 'FormApprovalWebhook'
-  | 'WebhookSubscription'
   | 'FormSubmissionApproval'
   | 'FormSubmissionApprovalAdditionalNote'
   | 'FormApprovalFlowInstance'
@@ -202,6 +200,8 @@ export type AuditRecordTypeOptionalWorkspace =
   | 'FormElementLookup'
   | 'FormElementDynamicOptionSet'
   | 'FormRetentionPolicy'
+  | 'FormApprovalWebhook'
+  | 'Workspace'
 
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
