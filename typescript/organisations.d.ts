@@ -146,10 +146,8 @@ type AuditRecordTypeExcludingWorkspace =
   | 'OrganisationManagedSecret'
   | 'FeatureFlag'
   | 'EmailAttachment'
-  | 'EmailTemplate'
   | 'FormSubmissionStatistics'
   | 'WebhookSubscription'
-  | 'FormsAppEnvironmentReordering'
 
 export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
@@ -200,6 +198,8 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormApprovalWebhook'
   | 'Workspace'
   | 'FormsAppUser'
+  | 'EmailTemplate'
+  | 'FormsAppEnvironmentReordering'
 
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
