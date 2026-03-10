@@ -149,7 +149,6 @@ type AuditRecordTypeExcludingWorkspace =
   | 'EmailTemplate'
   | 'FormSubmissionStatistics'
   | 'WebhookSubscription'
-  | 'FormsAppUser'
   | 'FormsAppEnvironmentReordering'
 
 export type AuditRecordTypeIncludingWorkspace =
@@ -202,6 +201,7 @@ export type AuditRecordTypeOptionalWorkspace =
   | 'FormRetentionPolicy'
   | 'FormApprovalWebhook'
   | 'Workspace'
+  | 'FormsAppUser'
 
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
