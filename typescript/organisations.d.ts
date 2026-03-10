@@ -193,8 +193,6 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormApprovalFlowInstance'
   | 'FormSubmission'
   | 'FormSubmissionMeta'
-
-export type AuditRecordTypeOptionalWorkspace =
   | 'Job'
   | 'FormElementLookup'
   | 'FormElementDynamicOptionSet'
@@ -206,7 +204,6 @@ export type AuditRecordTypeOptionalWorkspace =
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
   | AuditRecordTypeIncludingWorkspace
-  | AuditRecordTypeOptionalWorkspace
 
 type NewAuditRecordBase = {
   recordId: Record<string, unknown>
@@ -225,10 +222,6 @@ export type NewAuditRecord =
   | (NewAuditRecordBase & {
       type: AuditRecordTypeIncludingWorkspace
       workspaceId: number
-    })
-  | (NewAuditRecordBase & {
-      type: AuditRecordTypeOptionalWorkspace
-      workspaceId?: number
     })
 
 export type AuditRecord = Omit<NewAuditRecord, 'workspaceId'> & {
