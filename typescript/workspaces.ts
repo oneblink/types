@@ -9,6 +9,8 @@ export interface BaseWorkspace extends WithOrganisationAssociation {
   colour?: string
   /** The description of the workspace */
   description?: string
+  /** The ordering of the environments in the workspace */
+  environmentOrdering?: number[]
 }
 
 export interface NewWorkspace extends BaseWorkspace {

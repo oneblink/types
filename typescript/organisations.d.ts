@@ -35,7 +35,7 @@ export type NewOrganisation = {
   attachmentLinkExpiryDaysOverride?: number
   timezone?: string
   requireTeamMemberMfa?: boolean
-  environmentOrdering?: number[]
+  workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
   externalId?: string
 }
