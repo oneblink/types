@@ -200,6 +200,7 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppUser'
   | 'EmailTemplate'
   | 'FormsAppEnvironmentReordering'
+  | 'WorkspaceReordering'
 
 export type AuditRecordType =
   | AuditRecordTypeExcludingWorkspace
