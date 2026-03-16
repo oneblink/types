@@ -114,7 +114,7 @@ export type Tier = NewTier & {
   updatedAt: string
 }
 
-type AuditRecordTypeExcludingWorkspace =
+type AuditRecordType =
   | 'Organisation'
   | 'OrganisationDeleteRequest'
   | 'OrganisationDataRetention'
@@ -148,8 +148,6 @@ type AuditRecordTypeExcludingWorkspace =
   | 'EmailAttachment'
   | 'FormSubmissionStatistics'
   | 'WebhookSubscription'
-
-export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironment'
   | 'FormsAppEnvironmentApproverGroup'
   | 'Form'
@@ -202,11 +200,8 @@ export type AuditRecordTypeIncludingWorkspace =
   | 'FormsAppEnvironmentReordering'
   | 'WorkspaceReordering'
 
-export type AuditRecordType =
-  | AuditRecordTypeExcludingWorkspace
-  | AuditRecordTypeIncludingWorkspace
-
-type NewAuditRecordBase = {
+export type NewAuditRecord = {
+  type: AuditRecordType
   recordId: Record<string, unknown>
   recordLabel?: string
   operation: 'VIEW' | 'CREATE' | 'UPDATE' | 'DELETE' | 'SEARCH'
@@ -216,19 +211,9 @@ type NewAuditRecordBase = {
   clientIpAddress?: string
 }
 
-export type NewAuditRecord =
-  | (NewAuditRecordBase & {
-      type: AuditRecordTypeExcludingWorkspace
-    })
-  | (NewAuditRecordBase & {
-      type: AuditRecordTypeIncludingWorkspace
-      workspaceId: number
-    })
-
-export type AuditRecord = Omit<NewAuditRecord, 'workspaceId'> & {
+export type AuditRecord = NewAuditRecord & {
   id: number
   createdAt: string
-  workspaceId?: number
 }
 
 export type NewProductNotification = {
