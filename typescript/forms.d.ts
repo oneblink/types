@@ -24,7 +24,7 @@ import type {
   UserProfile,
   WithCommonAssociations,
   WithOrganisationAssociation,
-  WithWorkspaceAssociation,
+  WithWorkspacesAssociation,
 } from './misc'
 import { FormApprovalCannedResponse, FormApprovalFlowStep } from './approvals'
 import { ButtonConfiguration } from './environments'
@@ -1899,7 +1899,7 @@ export type FormQuerystringParameters = {
 //
 //
 export type NewFormElementOptionSetBase = WithOrganisationAssociation &
-  WithWorkspaceAssociation & {
+  WithWorkspacesAssociation & {
     name: string
   }
 
@@ -2156,7 +2156,7 @@ export type FormElementLookupStaticDataEnvironment =
   }
 
 export type NewFormElementLookupBase = WithOrganisationAssociation &
-  WithWorkspaceAssociation & {
+  WithWorkspacesAssociation & {
     /** A human readable identifier for the Lookup. */
     name: string
   }

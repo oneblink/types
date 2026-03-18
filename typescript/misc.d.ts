@@ -272,6 +272,11 @@ export type EmailSendingAddressResponseBase = {
   integration?: EmailSendingAddressSES | EmailSendingAddressMailgun
 }
 
+export interface WithWorkspacesAssociation {
+  /** The identifiers of the workspaces the resource is associated with */
+  workspaceIds: number[]
+}
+
 export interface WithWorkspaceAssociation {
   /** The identifier of the workspace the resource is associated with */
   workspaceId: number
