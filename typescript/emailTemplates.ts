@@ -1,7 +1,7 @@
 import {
   WithEnvironmentAssociation,
   WithOrganisationAssociation,
-  WithWorkspaceAssociation,
+  WithWorkspacesAssociation,
 } from './misc'
 
 export type EmailTemplateEnvironment = WithEnvironmentAssociation & {
@@ -9,7 +9,7 @@ export type EmailTemplateEnvironment = WithEnvironmentAssociation & {
 }
 
 export type NewEmailTemplate = WithOrganisationAssociation &
-  WithWorkspaceAssociation & {
+  WithWorkspacesAssociation & {
     name: string
 
     environments: EmailTemplateEnvironment[]
