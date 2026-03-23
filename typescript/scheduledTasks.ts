@@ -111,12 +111,6 @@ export interface NewCompletedTask {
   completedByKey?: DeveloperKeyReference
   /** The timestamp for when the user marked the task as done */
   createdAt: string
-  /**
-   * If there is no form action then this will be the same as createdAt if there
-   * is a form action this will be the timestamp for when a lambda has triggered
-   * after the uploading of the s3 data
-   */
-  completedAt?: string
 }
 
 export interface CompletedTask extends NewCompletedTask {
