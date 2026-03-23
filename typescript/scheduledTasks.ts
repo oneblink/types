@@ -122,6 +122,8 @@ export interface NewCompletedTask {
 export interface CompletedTask extends NewCompletedTask {
   /** The id of the completed task record */
   id: string
+  /** The timestamp for when this record was saved */
+  savedAt: string
 }
 
 // // Task Group // //
