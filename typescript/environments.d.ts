@@ -1,4 +1,4 @@
-import { FormsAppStyle, FormStyle } from './styling-engine'
+import { FormsAppStyle } from './styling-engine'
 import { BaseHostnameConfiguration } from './formsApps'
 import { RecaptchaKeyType } from './integrations'
 import {
@@ -73,7 +73,9 @@ export type FormsAppEnvironmentSendingAddressResponse =
     formsAppEnvironmentSendingAddress?: FormsAppEnvironmentSendingAddress
   }
 
-export interface _BaseFormsAppEnvironment {
+export interface BaseFormsAppEnvironment
+  extends WithOrganisationAssociation,
+    WithWorkspaceAssociation {
   /** Name of the Forms App Environment */
   name: string
   description?: string
@@ -92,11 +94,6 @@ export interface _BaseFormsAppEnvironment {
   googleMapsIntegrationKeyId?: string
   customHostname?: string
 }
-
-export interface BaseFormsAppEnvironment
-  extends _BaseFormsAppEnvironment,
-    WithOrganisationAssociation,
-    WithWorkspaceAssociation {}
 
 export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
   cloneOptions?: {
