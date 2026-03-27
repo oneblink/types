@@ -2203,3 +2203,8 @@ export type FormVersion = {
   updatedAt: string
   name?: string
 }
+
+export type FormSubmissionDataPreFillRecord = {
+  id: string
+  username: string
+}
