@@ -37,12 +37,17 @@ export interface NewSymphony3SmartGlueKey extends BaseKey {
   type: 'SYMPHONY_3_SMART_GLUE'
 }
 
+export interface NewAppUserKey extends BaseKey {
+  type: 'APP_USER'
+}
+
 export type NewKey =
   | NewLegacyKey
   | NewDeveloperKey
   | NewPowerAutomateKey
   | NewSubmissionDataKey
   | NewSymphony3SmartGlueKey
+  | NewAppUserKey
 
 export type Key = {
   customerSecretId: number
