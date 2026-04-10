@@ -1,6 +1,6 @@
 import { IdResource } from './misc'
 
-export type FormsBuilderAISystemConfiguration = {
+export type ClaudeBedrockAISystemConfiguration = {
   shouldParseIncompleteForm?: boolean
   systemPrompt: string
   topPOrTemperature: 'TOP_P' | 'TEMPERATURE'
@@ -20,7 +20,8 @@ export type FormsBuilderAISystemConfiguration = {
 
 export interface NewAISystemConfiguration {
   name: string
-  configuration: FormsBuilderAISystemConfiguration
+  type: 'FORM_COMPOSER' | 'APP_STYLING_ASSISTANT'
+  configuration: ClaudeBedrockAISystemConfiguration
   isEnabled: boolean
 }
 
