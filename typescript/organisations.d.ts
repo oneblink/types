@@ -103,6 +103,7 @@ export interface NewTier {
     allowSAMLUserAuthentication: boolean
     allowAIFormBuilder?: boolean
     allowPDFConversion?: boolean
+    allowAIAppStylist?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
@@ -179,6 +180,7 @@ type AuditRecordType =
   | 'FormSubmissionDraft'
   | 'PDFConversion'
   | 'AIFormsBuilder'
+  | 'AIAppStylist'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
@@ -237,6 +239,6 @@ export type ProductNotification = NewProductNotification & {
 
 export type FeatureFlag = {
   organisationId: string
-  type: 'AI_FORMS_BUILDER'
+  type: 'AI_FORMS_BUILDER' | 'AI_APP_STYLIST'
   allowedFormsAppEnvironmentIds: number[]
 }
