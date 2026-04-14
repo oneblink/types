@@ -180,7 +180,7 @@ type AuditRecordType =
   | 'FormSubmissionDraft'
   | 'PDFConversion'
   | 'AIFormsBuilder'
-  | 'AIAppStylist'
+  | 'AIEnvironmentStylist'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
