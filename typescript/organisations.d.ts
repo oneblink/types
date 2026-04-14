@@ -37,6 +37,7 @@ export type NewOrganisation = {
   requireTeamMemberMfa?: boolean
   workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
+  environmentStylistAISystemConfigurationIdOverride?: number
   externalId?: string
 }
 
