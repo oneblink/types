@@ -240,6 +240,6 @@ export type ProductNotification = NewProductNotification & {
 
 export type FeatureFlag = {
   organisationId: string
-  type: 'AI_FORMS_BUILDER' | 'ENVIRONMENT_STYLIST'
+  type: 'AI_FORMS_BUILDER' | 'AI_ENVIRONMENT_STYLIST'
   allowedFormsAppEnvironmentIds: number[]
 }
