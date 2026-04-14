@@ -37,7 +37,7 @@ export type NewOrganisation = {
   requireTeamMemberMfa?: boolean
   workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
-  environmentStylistAISystemConfigurationIdOverride?: number
+  environmentAppStylesBuilderAISystemConfigurationIdOverride?: number
   externalId?: string
 }
 
@@ -104,7 +104,7 @@ export interface NewTier {
     allowSAMLUserAuthentication: boolean
     allowAIFormBuilder?: boolean
     allowPDFConversion?: boolean
-    allowAIAppStylist?: boolean
+    allowAIEnvironmentAppStylesBuilder?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
@@ -181,7 +181,7 @@ type AuditRecordType =
   | 'FormSubmissionDraft'
   | 'PDFConversion'
   | 'AIFormsBuilder'
-  | 'AIEnvironmentStylist'
+  | 'AIEnvironmentAppStylesBuilder'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
