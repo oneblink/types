@@ -18,9 +18,16 @@ export type ClaudeBedrockAISystemConfiguration = {
     }
 )
 
+export type AISystemConfigurationTypeFormsBuilder = 'FORMS_BUILDER'
+export type AISystemConfigurationTypeEnvironmentStylist = 'ENVIRONMENT_STYLIST'
+
+export type AISystemConfigurationType =
+  | AISystemConfigurationTypeFormsBuilder
+  | AISystemConfigurationTypeEnvironmentStylist
+
 export interface NewAISystemConfiguration {
   name: string
-  type: 'FORMS_BUILDER' | 'ENVIRONMENT_STYLIST'
+  type: AISystemConfigurationType
   configuration: ClaudeBedrockAISystemConfiguration
   isEnabled: boolean
 }
