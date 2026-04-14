@@ -20,7 +20,7 @@ export type ClaudeBedrockAISystemConfiguration = {
 
 export interface NewAISystemConfiguration {
   name: string
-  type: 'FORM_ELEMENTS_BUILDER' | 'ENVIRONMENT_STYLIST'
+  type: 'FORMS_BUILDER' | 'ENVIRONMENT_APP_STYLES_BUILDER'
   configuration: ClaudeBedrockAISystemConfiguration
   isEnabled: boolean
 }
