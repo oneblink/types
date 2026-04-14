@@ -104,7 +104,7 @@ export interface NewTier {
     allowSAMLUserAuthentication: boolean
     allowAIFormBuilder?: boolean
     allowPDFConversion?: boolean
-    allowAIEnvironmentAppStylesBuilder?: boolean
+    allowAIAppStylesBuilder?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
