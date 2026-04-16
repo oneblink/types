@@ -1,7 +1,6 @@
 import { IdResource } from './misc'
 
 export type ClaudeBedrockAISystemConfiguration = {
-  shouldParseIncompleteForm?: boolean
   systemPrompt: string
   topPOrTemperature: 'TOP_P' | 'TEMPERATURE'
   topP: number
@@ -28,7 +27,9 @@ export type AISystemConfigurationType =
 export interface NewAISystemConfiguration {
   name: string
   type: AISystemConfigurationType
-  configuration: ClaudeBedrockAISystemConfiguration
+  configuration: ClaudeBedrockAISystemConfiguration & {
+    shouldParseIncompleteResource?: boolean
+  }
   isEnabled: boolean
 }
 
