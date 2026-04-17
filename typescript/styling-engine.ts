@@ -48,7 +48,10 @@ export type HeadingElementStyle = BorderStyle &
 export type FontStyles = {
   /** In REM */
   fontSize?: number
-  /** Font weight eg. 300, 500, 700 etc. */
+  /** Font weight eg. 300, 500, 700 etc.
+   * @max 1000
+   * @min 100
+   */
   fontWeight?: number
   /** Hex code */
   fontColour?: string
@@ -57,9 +60,15 @@ export type FontStyles = {
 export type BorderStyle = {
   /** Hex code */
   borderColour?: string
-  /** In pixels */
+  /** In pixels
+   * @max 25
+   * @min 0
+   */
   borderRadius?: number
-  /* In pixels */
+  /**  In pixels
+   * @max 10
+   * @min 0
+   */
   borderWidth?: number
 }
 
