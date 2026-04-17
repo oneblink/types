@@ -7,25 +7,28 @@ export type FormsAppStyle = {
     /** In pixels */
     maxWidth?: number
   }
+  /** The entire form page. `formPage.backgroundColour` does not effect `formPage.formContainer.backgroundColour`. It only sets the background colour outside of it. */
   formPage?: FormStyle
 }
 
 export type FormStyle = BackgroundStyle & {
-  /** The container that houses the form elements */
+  /** The container that houses all the form elements.
+   * `backgroundColour` defaults to `white`. Does not inherit from `formPage.backgroundColour`.
+   */
   formContainer?: FormContainerStyle
 }
 
 export type FormContainerStyle = BorderStyle &
   BackgroundStyle &
   PaddingStyle & {
-    /** The container that houses the form elements */
+    /** The container that houses each individual form element */
     elementContainer?: ElementContainerStyle
   }
 
 export type ElementContainerStyle = {
   /** In REM */
   marginBottom?: number
-
+  /** The label for form elements */
   label?: FontStyles
   /** The heading element */
   heading?: HeadingElementStyle
@@ -36,7 +39,7 @@ export type HeadingElementStyle = BorderStyle &
   PaddingStyle & {
     /**
      * A map of styles assigned to heading sizes. Possible options are 1-5. See
-     * also {@link HeadingElement.headingType}
+     * also {@link HeadingElement.headingType}. When setting font colours, ensure you define all options.
      */
     headingSize?: Record<number, FontStyles>
   }

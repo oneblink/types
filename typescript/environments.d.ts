@@ -61,6 +61,7 @@ export type FormsAppEnvironmentStyles = BaseFormsAppEnvironmentStyles & {
     /** The accessible label for the icon. This will be displayed to screen readers. */
     accessibleLabel?: string
   }
+  /** Granular styling options for forms apps. */
   formsAppStyling?: FormsAppStyle
 }
 
