@@ -52,7 +52,7 @@ export interface NewTask extends WithCommonAssociations {
   /** The name of the task */
   name: string
   /** The schedule that will determine a task's frequency and date range */
-  schedule: {
+  schedule?: {
     /** The date a task becomes available */
     startDate: string
     /** The date a task becomes unavailable */
@@ -83,6 +83,8 @@ export interface NewTask extends WithCommonAssociations {
   swipeRightActionId?: string
   /** Web links to resources associated with task */
   linkedResources?: LinkedResource[]
+  /** If true, the task is considered adhoc and does not require a schedule */
+  isAdhoc?: boolean
 }
 
 export type EditedTask = NewTask & {
