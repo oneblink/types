@@ -111,6 +111,8 @@ export interface NewCompletedTask {
   completedByKey?: DeveloperKeyReference
   /** The timestamp for when the user marked the task as done */
   createdAt: string
+  /** If true, the task was added and completed by a user ad hoc */
+  isAdhoc?: boolean
 }
 
 export interface CompletedTask extends NewCompletedTask {

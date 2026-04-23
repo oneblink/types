@@ -83,6 +83,8 @@ export type FormsAppScheduledTasksMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean
   /** Unique domain safe text to identify the menu item */
   slug?: string
+  /** Allow users to add adhoc tasks */
+  allowAdhocTasks?: boolean
 }
 
 export type TaskGroupInstanceAllocation = {
@@ -105,6 +107,8 @@ export type FormsAppScheduledTasksGroupMenuItem = FormsAppBaseMenuItem & {
   isDefault: boolean
   /** Unique domain safe text to identify the menu item */
   slug?: string
+  /** Allow users to add adhoc tasks */
+  allowAdhocTasks?: boolean
 }
 
 export type FormsAppCPHCMSContentMenuItemListDisplayAttributeMeta = {
