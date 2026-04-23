@@ -608,6 +608,7 @@ export type SalesforceCreateObjectRecordSubmissionEventMapping =
 export type SalesforceCreateObjectRecordSubmissionEvent = FormEventBase & {
   type: 'SALESFORCE_CREATE_OBJECT_RECORD'
   configuration: {
+    pdfConfigurations?: PDFConfiguration[]
     /** The id of the OneBlink -> Salesforce integration Environment to be used. */
     environmentId: string
     object: {
