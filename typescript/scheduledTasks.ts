@@ -111,7 +111,7 @@ export interface NewCompletedTask {
   completedByKey?: DeveloperKeyReference
   /** The timestamp for when the user marked the task as done */
   createdAt: string
-  /** If true, the task is considered adhoc and does not require a schedule */
+  /** If true, the task was completed ad hoc (outside of its normal schedule) */
   isAdhoc?: boolean
 }
 
