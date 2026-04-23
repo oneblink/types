@@ -391,6 +391,13 @@ export type FormElementMapping<T> = T &
         mapping: FormElementMapping<T>
       }
     | {
+        type: 'REPEATABLE_SET_FORM_ELEMENT'
+        formElementId: string
+        mapping: FormElementMapping<T>
+        /** The number of the entry in the repeatable set. Starts at 1 for the first entry. */
+        entryNumber: number
+      }
+    | {
         type: 'FORM_ELEMENT'
         formElementId: string
       }
