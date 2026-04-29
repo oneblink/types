@@ -45,6 +45,20 @@ export type FormsAppPendingSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
    */
   alwaysSubmitViaPendingQueue?: boolean
 }
+
+export type FormsAppSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
+  /** Type of menu item */
+  type: 'SUBMISSIONS'
+  /** the columns to display in the submissions list */
+  listDisplayAttributes: Array<
+    | 'dateTimeSubmitted'
+    | 'formName'
+    | 'submissionTitle'
+    | 'externalId'
+    | 'submissionId'
+  >
+}
+
 export type FormsAppScreenMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
   type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PROFILE'
@@ -156,6 +170,7 @@ export type FormsAppMenuItem =
   | FormsAppScheduledTasksMenuItem
   | FormsAppScheduledTasksGroupMenuItem
   | FormsAppCPHCMSContentMenuItem
+  | FormsAppSubmissionsMenuItem
 
 export type ApprovalsStyles = BaseFormsAppEnvironmentStyles
 export type FormStoreStyles = BaseFormsAppEnvironmentStyles
