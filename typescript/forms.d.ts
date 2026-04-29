@@ -746,9 +746,9 @@ export type RepeatableSetElement = FormElementBase & {
    * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
    * be displayed to users when completing the form.
    *
-   * * Other form element's values can be injected into the HTML using the
+   * * Repeatable set entry element's values can be injected into the HTML using the
    * following syntax: `{ELEMENT:elementName}`. The `elementName` part must
-   * match the `name` property of an element on the form.
+   * match the `name` property of an element within the repeatable set entry.
    *
    */
   entrySummary?: string
