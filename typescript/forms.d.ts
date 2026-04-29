@@ -740,6 +740,18 @@ export type RepeatableSetElement = FormElementBase & {
    * move the delete button to the bottom of each entry
    */
   layout?: 'SINGLE_ADD_BUTTON' | 'MULTIPLE_ADD_BUTTONS'
+  /**
+   * HTML to display a summary of elements within the repeatable set entry.
+   * *
+   * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
+   * be displayed to users when completing the form.
+   *
+   * * Other form element's values can be injected into the HTML using the
+   * following syntax: `{ELEMENT:elementName}`. The `elementName` part must
+   * match the `name` property of an element on the form.
+   *
+   */
+  entrySummary?: string
 } & _NestedElementsElement &
   FormElementReadOnly
 
