@@ -317,12 +317,16 @@ type _NewFormsApp = WithCommonAssociations & {
   /** Forms App custom welcome email properties */
   welcomeEmail?: {
     /**
+     * @deprecated Use `emailTemplateId` instead
+     *
      * A [mustache](http://mustache.github.io/#demo) template to use when
      * sending welcome emails to new app users.
      */
     body?: string
     /** The subject to use when sending welcome emails to new app users */
     subject?: string
+    /** The id of the email template to use when sending welcome emails to new app users */
+    emailTemplateId?: number
   }
   /** True when using a SAML identity provider */
   hasSamlIdentityProvider: boolean
