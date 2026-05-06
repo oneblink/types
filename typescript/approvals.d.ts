@@ -2,6 +2,42 @@ import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
 
+/** Container kinds that appear in {@link FormApprovalPrefillElementPath.containers}. */
+export type FormApprovalPrefillPathContainerKind = 'repeatableSet' | 'form'
+
+/**
+ * One nesting level from the form root toward a field (repeatable set row or
+ * nested form submission object).
+ */
+export type FormApprovalPrefillPathSegment = {
+  kind: FormApprovalPrefillPathContainerKind
+  /** `id` of the repeatable set or nested form element */
+  formElementId: string
+}
+
+/**
+ * Locates a field in the form tree: outermost container first, then the leaf
+ * element that holds the submission value. Repeatable sets are **not** scoped
+ * to a single row — prefill copies **every** source row to the same index on
+ * the target repeatable set.
+ */
+export type FormApprovalPrefillElementPath = {
+  containers: FormApprovalPrefillPathSegment[]
+  /** Leaf element `id` (must have a `name` used in submission). */
+  formElementId: string
+}
+
+/**
+ * Maps one source field path to one approval field path. Repeatable set levels
+ * must align with repeatable sets on the other side; nested form (`form`)
+ * wrappers may appear on only one side (extra `form` segments are skipped when
+ * aligning).
+ */
+export type FormApprovalFormPrefillMapping = {
+  sourcePath: FormApprovalPrefillElementPath
+  approvalPath: FormApprovalPrefillElementPath
+}
+
 export type FormApprovalFlowNodeBase = {
   /** The unique label for the node */
   label: string
@@ -9,6 +45,11 @@ export type FormApprovalFlowNodeBase = {
   group: string
   /** The id of a form that should be submitted with approval */
   approvalFormId?: number
+  /**
+   * Prefill the approval form from the original submission when the approver
+   * opens it. Requires {@link FormApprovalFlowNodeBase.approvalFormId}.
+   */
+  approvalFormPrefillMappings?: FormApprovalFormPrefillMapping[]
   /** Configuration to hide the deny button on approval actioning screens */
   hideApprovalDenyButton?: boolean
 }
