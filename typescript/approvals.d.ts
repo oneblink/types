@@ -245,7 +245,7 @@ type BaseFormSubmissionApproval = {
   approvalFormId?: number
   /**
    * Prefill the approval form from the original submission when the approver
-   * opens it. Requires {@link FormApprovalFlowNodeBase.approvalFormId}.
+   * opens it. Requires {@link BaseFormSubmissionApproval.approvalFormId}.
    */
   approvalFormPrefillMappings?: FormApprovalFormPrefillMapping[]
   /** The id of a form that should be submitted with approval */
