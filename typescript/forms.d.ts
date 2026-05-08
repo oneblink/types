@@ -1497,7 +1497,7 @@ export type LookupButtonFormElement = {
    * of the dependency elements are required, the lookup will be required.
    */
   elementDependencies: LookupButtonFormElementDependency[]
-} & LookupFormElement
+} & LookupFormElement & FormElementRequired
 
 export type NonNestedElementsElement =
   | ABNElement
