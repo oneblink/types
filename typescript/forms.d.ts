@@ -119,16 +119,17 @@ export type LookupFormElement = FormElementBase & {
 }
 
 export type FormElementReadOnly = {
-  /* Determine if this input can be edited by the user (`false`) or not (`true`). */
+  /** Determine if this input can be edited by the user (`false`) or not (`true`). */
   readOnly?: boolean
 }
 
 export type FormElementRequired = FormElementBase & {
   /**
    * Determine if this input requires a value entered by the user (`true`) or
-   * not (`false`).
+   * not (`false`). For a `lookupButton` form element, if this property is
+   * omitted or `undefined`, the lookup will be required based on its dependencies.
    */
-  required: boolean
+  required?: boolean
   /** The validation message to display if this input requires a value entered by the user. */
   requiredMessage?: string
 }
@@ -741,15 +742,13 @@ export type RepeatableSetElement = FormElementBase & {
    */
   layout?: 'SINGLE_ADD_BUTTON' | 'MULTIPLE_ADD_BUTTONS'
   /**
-   * HTML to display a summary of elements within the repeatable set entry.
-   * *
+   * HTML to display a summary of elements within the repeatable set entry. *
    * This value should be valid [HTML](https://html.spec.whatwg.org/). It will
    * be displayed to users when completing the form.
    *
-   * * Repeatable set entry element's values can be injected into the HTML using the
-   * following syntax: `{ELEMENT:elementName}`. The `elementName` part must
-   * match the `name` property of an element within the repeatable set entry.
-   *
+   * - Repeatable set entry element's values can be injected into the HTML using
+   *   the following syntax: `{ELEMENT:elementName}`. The `elementName` part
+   *   must match the `name` property of an element within the repeatable set entry.
    */
   entrySummary?: string
 } & _NestedElementsElement &
@@ -1497,7 +1496,8 @@ export type LookupButtonFormElement = {
    * of the dependency elements are required, the lookup will be required.
    */
   elementDependencies: LookupButtonFormElementDependency[]
-} & LookupFormElement & FormElementRequired
+} & LookupFormElement &
+  FormElementRequired
 
 export type NonNestedElementsElement =
   | ABNElement
