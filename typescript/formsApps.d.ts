@@ -49,7 +49,7 @@ export type FormsAppPendingSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
 export type FormsAppSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
   type: 'SUBMISSIONS'
-  /** the columns to display in the submissions list */
+  /** The columns to display in the submissions list */
   listDisplayAttributes: Array<
     | 'dateTimeSubmitted'
     | 'formName'
@@ -334,8 +334,8 @@ type _NewFormsApp = WithCommonAssociations & {
     /**
      * @deprecated Use `emailTemplateId` instead
      *
-     * A [mustache](http://mustache.github.io/#demo) template to use when
-     * sending welcome emails to new app users.
+     *   A [mustache](http://mustache.github.io/#demo) template to use when
+     *   sending welcome emails to new app users.
      */
     body?: string
     /** The subject to use when sending welcome emails to new app users */
@@ -389,6 +389,11 @@ type _NewFormsApp = WithCommonAssociations & {
   }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
+  /**
+   * If `true`, app users will be required to enable multi-factor authentication
+   * before being able to perform any actions within the Forms App
+   */
+  requireAppUserMfa?: boolean
 }
 
 export type NewFormsListFormsApp = _NewFormsApp & {
@@ -427,7 +432,6 @@ export type NewTilesFormsApp = _NewFormsApp & {
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
   styles: ApprovalsStyles
-  requireAppUserMfa?: boolean
 }
 
 export type FormStoreAppForm = {
@@ -439,7 +443,6 @@ export type NewFormStoreApp = _NewFormsApp & {
   type: 'FORM_STORE'
   forms: FormStoreAppForm[]
   styles: FormStoreStyles
-  requireAppUserMfa?: boolean
 }
 
 export type NewFormsApp =
