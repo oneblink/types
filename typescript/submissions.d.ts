@@ -19,60 +19,6 @@ import {
 } from './scheduledTasks'
 import { DeveloperKeyReference } from './keys'
 
-/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
-export interface NewFormsAppDraft {
-  /** The title input by the user to display the draft */
-  title: string
-  /** The id of the form the draft was saved against */
-  formId: number
-  /** The external id provided by a developer */
-  externalId?: string | null
-  /** The id of the job associated with the draft */
-  jobId?: string | null
-  /**
-   * The previous form submission approval id, if the draft is a response to a
-   * clarification request on the submission approval
-   */
-  previousFormSubmissionApprovalId?: string
-  /** The id of the scheduled task that was started when the draft was saved. */
-  taskId?: string
-  /** The name of the scheduled task that was started when the draft was saved. */
-  taskName?: string
-  /** The id of the scheduled task group instance that the taskId is related to. */
-  taskGroupInstanceId?: string
-  /** The label of the scheduled task group instance that the taskId is related to. */
-  taskGroupInstanceLabel?: string
-  /** The id of the scheduled task action that was used to complete the task. */
-  taskActionId?: string
-  /** The label of the scheduled task action that was used to complete the task. */
-  taskActionLabel?: string
-}
-
-/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
-export type FormsAppDraft = NewFormsAppDraft & {
-  /** The id of the draft */
-  draftId: string
-  /** The id of the draft data stored */
-  draftDataId?: string
-  /**
-   * The date and time (in ISO format) when the draft was last synced with the
-   * server. It is NOT when a user last saved the draft after partially
-   * completing the form. This property should have actually been called `syncedAt`.
-   */
-  updatedAt?: string
-  /**
-   * The date and time (in ISO format) the when a user last saved the draft
-   * after partially completing the form. When a draft is updated, `createdAt`
-   * is also updated to reflect when the draft was updated. This property should
-   * have actually been called `updatedAt`.
-   */
-  createdAt?: string
-  /** The UserProfile of the user who first created the draft */
-  createdBy?: UserProfile
-  /** The UserProfile of the user who last updated the draft */
-  updatedBy?: UserProfile
-}
-
 export type FormSubmissionDraftVersion = {
   /** Unique identifier for the draft version. */
   id: string
