@@ -1,4 +1,3 @@
-import { FormsAppDraft } from './submissions'
 import { TaskGroupInstance } from './scheduledTasks'
 import { ScheduledTasksTypes } from '..'
 import {
@@ -502,24 +501,6 @@ export type FormsAppUser = FormsAppUserBase & {
   temporaryPasswordExpiry?: string
   isMfaEnabled?: boolean
 }
-
-/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
-type BaseFormsAppsDraft = {
-  formsAppId: number
-  drafts: FormsAppDraft[]
-}
-
-/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
-export type NewFormsAppsDraft = BaseFormsAppsDraft & {
-  createdAt?: string
-  updatedAt?: string
-}
-
-/** @deprecated Replaced with FormSubmissionDraft and FormSubmissionDraftVersion */
-export type FormsAppsDraft = {
-  createdAt: string
-  updatedAt: string
-} & BaseFormsAppsDraft
 
 export type FormsAppSendingAddress = EmailSendingAddressBase & {
   formsAppId: number
