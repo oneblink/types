@@ -182,6 +182,7 @@ type AuditRecordType =
   | 'PDFConversion'
   | 'AIFormsBuilder'
   | 'AIEnvironmentStylist'
+  | 'AIHelp'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
