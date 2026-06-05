@@ -38,6 +38,7 @@ export type NewOrganisation = {
   workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
   environmentStylistAISystemConfigurationIdOverride?: number
+  helpAISystemConfigurationIdOverride?: number
   externalId?: string
 }
 
