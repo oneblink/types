@@ -13,7 +13,10 @@ export type ClaudeBedrockAISystemConfiguration = {
     }
   | {
       shouldReason: true
-      reasoningTokenBudget: number
+      /** @deprecated Use `reasoningLevel` instead. (This no longer does anything) */
+      reasoningTokenBudget?: number
+      /** @default 'medium' */
+      reasoningLevel?: 'low' | 'medium' | 'high'
     }
 )
 

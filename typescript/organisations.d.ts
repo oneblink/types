@@ -105,6 +105,7 @@ export interface NewTier {
     allowAIFormBuilder?: boolean
     allowPDFConversion?: boolean
     allowAIAppStylist?: boolean
+    allowAIHelp?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
