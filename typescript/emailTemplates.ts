@@ -52,9 +52,9 @@ export type EmailClassificationEnvironment = WithEnvironmentAssociation & {
    * example, NSW Government classifications may use centred, all-caps text
    * styled with `#630019` at 12pt.
    */
-  content: string
+  content: string | undefined
   /** Custom email headers applied to affected emails. */
-  emailHeaders: EmailClassificationEmailHeader[]
+  emailHeaders: EmailClassificationEmailHeader[] | undefined
 }
 
 /**
