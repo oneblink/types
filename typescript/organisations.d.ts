@@ -201,6 +201,7 @@ type AuditRecordType =
   | 'Workspace'
   | 'FormsAppUser'
   | 'EmailTemplate'
+  | 'EmailClassification'
   | 'FormsAppEnvironmentReordering'
   | 'WorkspaceReordering'
 
