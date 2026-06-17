@@ -560,7 +560,20 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   isAppUserSignUpEnabled: boolean
+  /**
+   * @deprecated Use `appUserMfaRequirement` instead
+   *
+   *   If `true`, app users will be required to enable multi-factor authentication
+   *   before being able to perform any actions within the Forms App
+   */
   isAppUserMfaRequired: boolean
+  /**
+   * Configuration for multi-factor authentication requirements for app users
+   * before being able to perform any actions within the Forms App. If
+   * `undefined`, no multi-factor authentication will be required but all MFA
+   * options will be available to app users.
+   */
+  appUserMfaRequirement?: MfaRequirement
   isAppUserLoginRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string
