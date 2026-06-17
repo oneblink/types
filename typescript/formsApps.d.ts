@@ -5,6 +5,7 @@ import {
   EmailSendingAddressBase,
   EmailSendingAddressResponseBase,
   IdResource,
+  MfaRequirement,
   WithCommonAssociations,
 } from './misc'
 import {
@@ -390,10 +391,19 @@ type _NewFormsApp = WithCommonAssociations & {
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
   /**
-   * If `true`, app users will be required to enable multi-factor authentication
-   * before being able to perform any actions within the Forms App
+   * @deprecated Use `appUserMfaRequirement` instead
+   *
+   *   If `true`, app users will be required to enable multi-factor authentication
+   *   before being able to perform any actions within the Forms App
    */
   requireAppUserMfa?: boolean
+  /**
+   * Configuration for multi-factor authentication requirements for app users
+   * before being able to perform any actions within the Forms App. If
+   * `undefined`, no multi-factor authentication will be required but all MFA
+   * options will be available to app users.
+   */
+  appUserMfaRequirement?: MfaRequirement
 }
 
 export type NewFormsListFormsApp = _NewFormsApp & {
