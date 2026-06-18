@@ -38,6 +38,7 @@ export type NewOrganisation = {
   workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
   environmentStylistAISystemConfigurationIdOverride?: number
+  helpAISystemConfigurationIdOverride?: number
   externalId?: string
 }
 
@@ -240,8 +241,17 @@ export type ProductNotification = NewProductNotification & {
   updatedAt: string
 }
 
-export type FeatureFlag = {
+type BaseFeatureFlag = {
   organisationId: string
+}
+
+type GlobalFeatureFlag = BaseFeatureFlag & {
+  type: 'AI_HELP'
+}
+
+type EnvironmentFeatureFlag = BaseFeatureFlag & {
   type: 'AI_FORMS_BUILDER' | 'AI_APP_STYLIST'
   allowedFormsAppEnvironmentIds: number[]
 }
+
+export type FeatureFlag = GlobalFeatureFlag | EnvironmentFeatureFlag
