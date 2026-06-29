@@ -48,9 +48,11 @@ export type EmailClassificationEmailHeader = {
  */
 export type EmailClassificationEnvironment = WithEnvironmentAssociation & {
   /**
-   * HTML content displayed at the top and/or tail of affected emails. For
-   * example, NSW Government classifications may use centred, all-caps text
-   * styled with `#630019` at 12pt.
+   * HTML content displayed at the top and/or tail of affected emails. For example:
+   *
+   * ```html
+   * <div><span style="color: #630019; font-size: 12pt">NSW Government Classification</div>
+   * ```
    */
   content: string | undefined
   /** Custom email headers applied to affected emails. */
