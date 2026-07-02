@@ -532,6 +532,7 @@ export type FormsAppConfiguration<
   formsOAuthClientId?: string | null
   formsHostname: string
   samlIdentityProviderName?: string | null
+  samlGroups?: string[]
   logoutRedirectUrl?: string
   styles: T
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
