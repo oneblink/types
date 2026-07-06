@@ -97,6 +97,11 @@ export interface NewFormsAppJob {
     type?: string
     /** The job priority */
     priority?: number
+    /**
+     * The email address to send job notification emails to. If not provided, no
+     * email notification will be sent
+     */
+    emailAddress?: string
   }
 }
 

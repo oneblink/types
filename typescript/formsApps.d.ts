@@ -59,9 +59,19 @@ export type FormsAppSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
   >
 }
 
+export type FormsAppJobsMenuItem = FormsAppScreenMenuItemBase & {
+  /** Type of menu item */
+  type: 'JOBS'
+  /**
+   * If true, app users will receive an email notification when a new job is
+   * assigned to them
+   */
+  isEmailNotificationEnabled?: boolean
+}
+
 export type FormsAppScreenMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
-  type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PROFILE'
+  type: 'FORMS_LIST' | 'DRAFTS' | 'PROFILE'
 }
 
 export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
@@ -166,6 +176,7 @@ export type FormsAppMenuItem =
   | FormsAppContainerMenuItem
   | FormsAppFormMenuItem
   | FormsAppPendingSubmissionsMenuItem
+  | FormsAppJobsMenuItem
   | FormsAppScreenMenuItem
   | FormsAppScheduledTasksMenuItem
   | FormsAppScheduledTasksGroupMenuItem
