@@ -294,3 +294,10 @@ export interface WithEnvironmentAssociation {
 
 export type WithCommonAssociations = WithOrganisationAssociation &
   WithEnvironmentAssociation
+
+export type MfaRequirement = {
+  /** Whether SMS is allowed for multi-factor authentication */
+  sms: boolean
+  /** Whether the authenticator app is allowed for multi-factor authentication */
+  authenticatorApp: boolean
+}

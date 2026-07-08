@@ -113,6 +113,8 @@ export interface NewFormsAppEnvironment extends BaseFormsAppEnvironment {
     isCloningFormCustomCssClasses: boolean
     isCloningScheduledTasks: boolean
     isCloningFormCustomPDFs: boolean
+    isCloningEmailTemplates: boolean
+    isCloningEmailClassifications: boolean
   }
 }
 

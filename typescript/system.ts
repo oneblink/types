@@ -22,10 +22,12 @@ export type ClaudeBedrockAISystemConfiguration = {
 
 export type AISystemConfigurationTypeFormsBuilder = 'FORMS_BUILDER'
 export type AISystemConfigurationTypeEnvironmentStylist = 'ENVIRONMENT_STYLIST'
+export type AISystemConfigurationTypeHelp = 'HELP'
 
 export type AISystemConfigurationType =
   | AISystemConfigurationTypeFormsBuilder
   | AISystemConfigurationTypeEnvironmentStylist
+  | AISystemConfigurationTypeHelp
 
 export interface NewAISystemConfiguration {
   name: string

@@ -4,6 +4,7 @@ import {
   EmailSendingAddressBase,
   EmailSendingAddressResponseBase,
   IdResource,
+  MfaRequirement,
   WithCommonAssociations,
 } from './misc'
 import {
@@ -48,7 +49,7 @@ export type FormsAppPendingSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
 export type FormsAppSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
   type: 'SUBMISSIONS'
-  /** the columns to display in the submissions list */
+  /** The columns to display in the submissions list */
   listDisplayAttributes: Array<
     | 'dateTimeSubmitted'
     | 'formName'
@@ -58,9 +59,19 @@ export type FormsAppSubmissionsMenuItem = FormsAppScreenMenuItemBase & {
   >
 }
 
+export type FormsAppJobsMenuItem = FormsAppScreenMenuItemBase & {
+  /** Type of menu item */
+  type: 'JOBS'
+  /**
+   * If true, app users will receive an email notification when a new job is
+   * assigned to them
+   */
+  isEmailNotificationEnabled?: boolean
+}
+
 export type FormsAppScreenMenuItem = FormsAppScreenMenuItemBase & {
   /** Type of menu item */
-  type: 'FORMS_LIST' | 'JOBS' | 'DRAFTS' | 'PROFILE'
+  type: 'FORMS_LIST' | 'DRAFTS' | 'PROFILE'
 }
 
 export type FormsAppContainerMenuItem = FormsAppBaseMenuItem & {
@@ -165,6 +176,7 @@ export type FormsAppMenuItem =
   | FormsAppContainerMenuItem
   | FormsAppFormMenuItem
   | FormsAppPendingSubmissionsMenuItem
+  | FormsAppJobsMenuItem
   | FormsAppScreenMenuItem
   | FormsAppScheduledTasksMenuItem
   | FormsAppScheduledTasksGroupMenuItem
@@ -333,8 +345,8 @@ type _NewFormsApp = WithCommonAssociations & {
     /**
      * @deprecated Use `emailTemplateId` instead
      *
-     * A [mustache](http://mustache.github.io/#demo) template to use when
-     * sending welcome emails to new app users.
+     *   A [mustache](http://mustache.github.io/#demo) template to use when
+     *   sending welcome emails to new app users.
      */
     body?: string
     /** The subject to use when sending welcome emails to new app users */
@@ -388,6 +400,20 @@ type _NewFormsApp = WithCommonAssociations & {
   }>
   /** Google analytics tag id */
   googleAnalyticsTagId?: string
+  /**
+   * @deprecated Use `appUserMfaRequirement` instead
+   *
+   *   If `true`, app users will be required to enable multi-factor authentication
+   *   before being able to perform any actions within the Forms App
+   */
+  requireAppUserMfa?: boolean
+  /**
+   * Configuration for multi-factor authentication requirements for app users
+   * before being able to perform any actions within the Forms App. If
+   * `undefined`, no multi-factor authentication will be required but all MFA
+   * options will be available to app users.
+   */
+  appUserMfaRequirement?: MfaRequirement
 }
 
 export type NewFormsListFormsApp = _NewFormsApp & {
@@ -426,7 +452,6 @@ export type NewTilesFormsApp = _NewFormsApp & {
 export type NewApprovalsApp = _NewFormsApp & {
   type: 'APPROVALS'
   styles: ApprovalsStyles
-  requireAppUserMfa?: boolean
 }
 
 export type FormStoreAppForm = {
@@ -438,7 +463,6 @@ export type NewFormStoreApp = _NewFormsApp & {
   type: 'FORM_STORE'
   forms: FormStoreAppForm[]
   styles: FormStoreStyles
-  requireAppUserMfa?: boolean
 }
 
 export type NewFormsApp =
@@ -519,6 +543,7 @@ export type FormsAppConfiguration<
   formsOAuthClientId?: string | null
   formsHostname: string
   samlIdentityProviderName?: string | null
+  samlGroups?: string[]
   logoutRedirectUrl?: string
   styles: T
   taskGroupInstances?: ScheduledTasksTypes.TaskGroupInstance[]
@@ -528,7 +553,20 @@ export type FormsAppConfiguration<
   isGoogleLoginSupported: boolean
   isClientLoggingEnabled: boolean
   isAppUserSignUpEnabled: boolean
+  /**
+   * @deprecated Use `appUserMfaRequirement` instead
+   *
+   *   If `true`, app users will be required to enable multi-factor authentication
+   *   before being able to perform any actions within the Forms App
+   */
   isAppUserMfaRequired: boolean
+  /**
+   * Configuration for multi-factor authentication requirements for app users
+   * before being able to perform any actions within the Forms App. If
+   * `undefined`, no multi-factor authentication will be required but all MFA
+   * options will be available to app users.
+   */
+  appUserMfaRequirement?: MfaRequirement
   isAppUserLoginRequired: boolean
   cachingStrategies?: _NewFormsApp['cachingStrategies']
   name: string

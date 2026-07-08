@@ -1,6 +1,6 @@
 import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
-import { UserProfile } from './misc'
+import { MfaRequirement, UserProfile } from './misc'
 import { DeveloperKeyReference } from './keys'
 import { IntegrationType } from './integrations'
 
@@ -34,10 +34,24 @@ export type NewOrganisation = {
   tierOverrides?: Partial<NewTier['tierData']>
   attachmentLinkExpiryDaysOverride?: number
   timezone?: string
+  /**
+   * @deprecated Use `teamMemberMfaRequirement` instead
+   *
+   *   If `true`, team members will be required to enable multi-factor
+   *   authentication before being able to perform any actions within the organisation.
+   */
   requireTeamMemberMfa?: boolean
+  /**
+   * Configuration for multi-factor authentication requirements for team members
+   * before being able to perform any actions within the organisation. If
+   * `undefined`, no multi-factor authentication will be required but all MFA
+   * options will be available to team members.
+   */
+  teamMemberMfaRequirement?: MfaRequirement
   workspaceOrdering?: number[]
   formsBuilderAISystemConfigurationIdOverride?: number
   environmentStylistAISystemConfigurationIdOverride?: number
+  helpAISystemConfigurationIdOverride?: number
   externalId?: string
 }
 
@@ -105,6 +119,7 @@ export interface NewTier {
     allowAIFormBuilder?: boolean
     allowPDFConversion?: boolean
     allowAIAppStylist?: boolean
+    allowAIHelp?: boolean
   }
   isTrialTier: boolean
   awsDimensionAPIName?: string
@@ -182,6 +197,7 @@ type AuditRecordType =
   | 'PDFConversion'
   | 'AIFormsBuilder'
   | 'AIEnvironmentStylist'
+  | 'AIHelp'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
   | 'FormsAppEnvironmentSendingAddress'
@@ -201,6 +217,7 @@ type AuditRecordType =
   | 'Workspace'
   | 'FormsAppUser'
   | 'EmailTemplate'
+  | 'EmailClassification'
   | 'FormsAppEnvironmentReordering'
   | 'WorkspaceReordering'
 
@@ -238,8 +255,17 @@ export type ProductNotification = NewProductNotification & {
   updatedAt: string
 }
 
-export type FeatureFlag = {
+type BaseFeatureFlag = {
   organisationId: string
+}
+
+type GlobalFeatureFlag = BaseFeatureFlag & {
+  type: 'AI_HELP'
+}
+
+type EnvironmentFeatureFlag = BaseFeatureFlag & {
   type: 'AI_FORMS_BUILDER' | 'AI_APP_STYLIST'
   allowedFormsAppEnvironmentIds: number[]
 }
+
+export type FeatureFlag = GlobalFeatureFlag | EnvironmentFeatureFlag
