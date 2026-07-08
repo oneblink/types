@@ -138,7 +138,6 @@ export interface FormMigrationOptions {
   externalIdGenerationOnSubmit: boolean
   personalisation: boolean
   customPDFs: boolean
-  developerToolsConfiguration: boolean
   pointAddressEnvironmentId?: string
   pointAddressV3EnvironmentId?: string
   allowGeoscapeAddresses?: boolean
