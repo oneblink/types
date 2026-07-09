@@ -276,6 +276,10 @@ type _BaseFormStoreRecord = {
   taskAction?: TaskAction
   taskGroup?: TaskGroup
   taskGroupInstance?: TaskGroupInstance
+  calendarEvent?: {
+    name: string
+    dateTime: string
+  }
 }
 
 export type DbFormStoreRecord = _BaseFormStoreRecord & {
