@@ -22,7 +22,7 @@
     "index.d.ts"
   ],
   "homepage": "https://github.com/oneblink/types#readme",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "main": "index.js",
   "private": true,
   "repository": {
