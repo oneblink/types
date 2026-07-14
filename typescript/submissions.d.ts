@@ -31,7 +31,10 @@ export type FormSubmissionDraftVersion = {
    * trusted as the requester could change this.
    */
   ipAddress?: string
-  /** The date and time (in ISO format) when this version of the draft was created. */
+  /**
+   * The date and time (in ISO format) when this version of the draft was
+   * created.
+   */
   createdAt: string
   /** Information about the entity that created this version of the draft */
   createdBy: {
@@ -215,7 +218,10 @@ export interface NewS3SubmissionData {
   device?: S3SubmissionDataDevice
   lastElementUpdated?: FormElement
   sectionState?: { id: string; state: 'COLLAPSED' | 'EXPANDED' }[]
-  /** The previous elapsed duration in seconds taken to by the user to complete the form */
+  /**
+   * The previous elapsed duration in seconds taken to by the user to complete
+   * the form
+   */
   previousElapsedDurationSeconds?: number
   /**
    * The date and time (in ISO format) the form was completed I.e. when the user
@@ -279,6 +285,7 @@ type _BaseFormStoreRecord = {
   calendarEvent?: {
     name: string
     dateTime: string
+    cancelledReason?: string
   }
 }
 
@@ -351,7 +358,10 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
     receiptNumber: string
     /** PAYMENT, REFUND, PREAUTH, CAPTURE or ACCOUNT_VERIFICATION. */
     transactionType: string
-    /** INCREMENTAL, EXTENSION, REAUTHORISATION. For pre-authorisation transactions only. */
+    /**
+     * INCREMENTAL, EXTENSION, REAUTHORISATION. For pre-authorisation
+     * transactions only.
+     */
     authorisationType?: string
     /** FULL or PARTIAL. For pre-authorisation cancellations only. */
     cancellationType?: string
@@ -466,7 +476,10 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
       /** The currency accepted by this merchant facility. */
       currency: string
     }
-    /** For Australian bank account payments, your direct entry settlement account. */
+    /**
+     * For Australian bank account payments, your direct entry settlement
+     * account.
+     */
     directEntryAccount?: {
       /** A customer-friendly display name. */
       displayName: string
@@ -485,10 +498,16 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
       settlementBsb: string
       /** The account number of your settlement bank account. */
       settlementAccountNumber: string
-      /** Trading Name of your business. This appears on your customer's bank statement. */
+      /**
+       * Trading Name of your business. This appears on your customer's bank
+       * statement.
+       */
       remitterName: string
     }
-    /** For New Zealand bank account payments, your direct entry settlement account. */
+    /**
+     * For New Zealand bank account payments, your direct entry settlement
+     * account.
+     */
     nzDirectEntryAccount?: {
       /** A customer-friendly display name. */
       displayName: string
@@ -630,7 +649,10 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
      * state of the sub-merchant's trading address.
      */
     merchantState?: string
-    /** This field is only relevant for credit card payments for Aggregators. Always AU. */
+    /**
+     * This field is only relevant for credit card payments for Aggregators.
+     * Always AU.
+     */
     merchantCountry?: string
     /**
      * This field is only relevant for credit card payments for Aggregators. The
@@ -645,14 +667,16 @@ export type WestpacQuickStreamPayment = BaseFormSubmissionPayment & {
     subMerchantId?: string
     /**
      * The authorisation code returned from the issuing bank for pre-auth
-     * transactions (at most 6 characters). Only for approved pre-auth transactions.
+     * transactions (at most 6 characters). Only for approved pre-auth
+     * transactions.
      */
     authorisationCode?: string
     /** @deprecated Use networkTransactionId. */
     authorisationTraceId: string
     /**
      * Returned by Visa and Mastercard to identify the lifecycle of a pre-auth
-     * or purchase (at most 15 characters). In most cases you can ignore this field.
+     * or purchase (at most 15 characters). In most cases you can ignore this
+     * field.
      */
     networkTransactionId?: string
     /** Links to related resources/documentation. */
@@ -784,9 +808,15 @@ export type NSWGovPayPayment = BaseFormSubmissionPayment & {
   paymentTransaction?: {
     /** The URL to redirect the user back to after a payment attempt */
     redirectUrl: string
-    /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
+    /**
+     * The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be
+     * used.
+     */
     integrationPrimaryAgencyId: string
-    /** The Payment Reference created when the requesting a payment from NSW GovPay */
+    /**
+     * The Payment Reference created when the requesting a payment from NSW
+     * GovPay
+     */
     nswGovPayPaymentReference: string
     /**
      * The fields returned in the payment completion notification, will be
