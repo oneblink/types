@@ -131,7 +131,7 @@ export type Tier = NewTier & {
   updatedAt: string
 }
 
-type AuditRecordType =
+export type AuditRecordType =
   | 'Organisation'
   | 'OrganisationDeleteRequest'
   | 'OrganisationDataRetention'
@@ -195,8 +195,25 @@ type AuditRecordType =
   | 'FormVersion'
   | 'FormSubmissionDraft'
   | 'PDFConversion'
+  /**
+   * Unified AI conversations. Mode and target details are carried on `recordId`
+   * rather than separate per-mode audit types.
+   */
+  | 'AIConversation'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIFormsBuilder'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIEnvironmentStylist'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIHelp'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
