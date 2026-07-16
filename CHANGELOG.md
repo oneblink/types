@@ -7,11 +7,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-### Added
-
-- `AIConversation` audit record type for unified AI conversations
-- Exported `AuditRecordType` for api and console consumption
-
-### Deprecated
-
-- `AIFormsBuilder`, `AIEnvironmentStylist`, and `AIHelp` audit record types for new writes
+Initial release

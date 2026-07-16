@@ -38,7 +38,8 @@ export type NewOrganisation = {
    * @deprecated Use `teamMemberMfaRequirement` instead
    *
    *   If `true`, team members will be required to enable multi-factor
-   *   authentication before being able to perform any actions within the organisation.
+   *   authentication before being able to perform any actions within the
+   *   organisation.
    */
   requireTeamMemberMfa?: boolean
   /**
@@ -131,7 +132,7 @@ export type Tier = NewTier & {
   updatedAt: string
 }
 
-export type AuditRecordType =
+type AuditRecordType =
   | 'Organisation'
   | 'OrganisationDeleteRequest'
   | 'OrganisationDataRetention'
