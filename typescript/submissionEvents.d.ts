@@ -127,6 +127,8 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   includeExternalIdInPdf?: boolean
   /** The page size of the Generated PDF. */
   pdfSize?: FormSubmissionPDFPageSize
+  /** Whether the generated pdf should be combined with the pdf attachments. */
+  combineWithPdfAttachments?: boolean
   /** The identifier for a Custom PDF. */
   customPdfId?: string
   /** Whether the Custom PDF will be editable after being generated (defaults to false) */
