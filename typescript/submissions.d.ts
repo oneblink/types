@@ -286,6 +286,7 @@ type _BaseFormStoreRecord = {
     name: string
     dateTime: string
     cancelledReason?: string
+    calendarName?: string
   }
 }
 
