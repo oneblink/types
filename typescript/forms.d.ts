@@ -14,7 +14,7 @@ import type {
   PDFConfiguration,
   FormElementMapping,
 } from './submissionEvents'
-import type { ConditionalPredicate } from './conditions'
+import type { FormElementConditionalPredicate } from './conditions'
 import type {
   ABNRecord,
   BaseSearchResult,
@@ -60,7 +60,7 @@ export type _FormElementBase = {
    *
    * Required if `conditionallyShow` is `true`.
    */
-  conditionallyShowPredicates?: ConditionalPredicate[]
+  conditionallyShowPredicates?: FormElementConditionalPredicate[]
   /** Custom CSS classes that will be added to the element during rendering */
   customCssClasses?: string[]
   /**
@@ -98,14 +98,20 @@ export type FormElementHint = {
 }
 
 export type LookupFormElement = FormElementBase & {
-  /** Determine if the element is a Data Lookup element (`true`) or not (`false`). */
+  /**
+   * Determine if the element is a Data Lookup element (`true`) or not
+   * (`false`).
+   */
   isDataLookup: boolean
   /**
    * The Id of the Data Lookup configured in the OneBlink System which will
    * return updated submission data.
    */
   dataLookupId?: number
-  /** Determine if the element is a Data Lookup element (`true`) or not (`false`). */
+  /**
+   * Determine if the element is a Data Lookup element (`true`) or not
+   * (`false`).
+   */
   isElementLookup: boolean
   /**
    * The Id of the Element Lookup configured in the OneBlink System which will
@@ -117,7 +123,10 @@ export type LookupFormElement = FormElementBase & {
 }
 
 export type FormElementReadOnly = {
-  /** Determine if this input can be edited by the user (`false`) or not (`true`). */
+  /**
+   * Determine if this input can be edited by the user (`false`) or not
+   * (`true`).
+   */
   readOnly?: boolean
 }
 
@@ -125,10 +134,14 @@ export type FormElementRequired = FormElementBase & {
   /**
    * Determine if this input requires a value entered by the user (`true`) or
    * not (`false`). For a `lookupButton` form element, if this property is
-   * omitted or `undefined`, the lookup will be required based on its dependencies.
+   * omitted or `undefined`, the lookup will be required based on its
+   * dependencies.
    */
   required?: boolean
-  /** The validation message to display if this input requires a value entered by the user. */
+  /**
+   * The validation message to display if this input requires a value entered by
+   * the user.
+   */
   requiredMessage?: string
 }
 
@@ -169,7 +182,10 @@ export type DynamicChoiceElementOption = {
    * `buttons` configured as `true`.
    */
   colour?: string
-  /** For autocomplete elements this option will always appear in the search results. */
+  /**
+   * For autocomplete elements this option will always appear in the search
+   * results.
+   */
   displayAlways?: boolean
   /** An image associated with this option */
   imageUrl?: string
@@ -206,7 +222,10 @@ export type ChoiceElementOption = {
 export type DynamicOptionsSetAttributeMap = {
   /** The ID of the option value for the attribute to be mapped to. */
   elementId: string
-  /** The attribute from the dynamic options set to be mapped to the option element ID. */
+  /**
+   * The attribute from the dynamic options set to be mapped to the option
+   * element ID.
+   */
   attribute: string
 }
 
@@ -263,7 +282,8 @@ export type FormFormElement = _FormElementBase &
   }
 
 /**
- * An element to display multiple options to a user and only allowing them to choose one.
+ * An element to display multiple options to a user and only allowing them to
+ * choose one.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -282,7 +302,8 @@ export type RadioButtonElement = FormElementWithOptionsBase & {
 }
 
 /**
- * An element to display multiple options to a user and allowing them choose multiple.
+ * An element to display multiple options to a user and allowing them choose
+ * multiple.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -319,12 +340,16 @@ export type SelectElement = FormElementWithOptionsBase & {
    */
   defaultValue?: string | string[]
   canToggleAll?: boolean
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 }
 
 /**
- * An element to display multiple options to a user and only allowing them to choose one.
+ * An element to display multiple options to a user and only allowing them to
+ * choose one.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -350,7 +375,10 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
    */
   searchQuerystringParameter?: string
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 }
 
@@ -371,7 +399,10 @@ export type ComplianceElement = FormElementWithOptionsBase &
      * the option from the `options` array to be chosen by default.
      */
     defaultValue?: string
-    /** Custom autocomplete attributes that will be added to the element during rendering */
+    /**
+     * Custom autocomplete attributes that will be added to the element during
+     * rendering
+     */
     autocompleteAttributes?: string[]
   }
 
@@ -409,7 +440,10 @@ export type FormElementWithDate = {
   defaultValue?: string | 'NOW'
   defaultValueDaysOffset?: number
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -446,13 +480,19 @@ export type TimeElement = FormElementWithDate & {
 }
 
 export type FormElementWithInput<DefaultValue> = {
-  /** Empty strings are not supported. Set to `undefined` if there is no default value. */
+  /**
+   * Empty strings are not supported. Set to `undefined` if there is no default
+   * value.
+   */
   defaultValue?: DefaultValue
   placeholderValue?: string
   regexPattern?: string
   regexFlags?: string
   regexMessage?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -700,7 +740,8 @@ export type RepeatableSetElement = FormElementBase & {
    *
    * - Repeatable set entry element's values can be injected into the HTML using
    *   the following syntax: `{ELEMENT:elementName}`. The `elementName` part
-   *   must match the `name` property of an element within the repeatable set entry.
+   *   must match the `name` property of an element within the repeatable set
+   *   entry.
    */
   entrySummary?: string
 } & _NestedElementsElement &
@@ -813,7 +854,8 @@ export type FilesElement = FormElementBinaryStorage &
   }
 
 /**
- * An element to calculate a value for the user based on other form element values.
+ * An element to calculate a value for the user based on other form element
+ * values.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -841,7 +883,8 @@ export type CalculationElement = FormElementBase & {
    * - `ISNULL(n, x)` will use the value of `n` if it is a number, otherwise the
    *   value of `x` will be used
    * - `{ELEMENT:elementName}` will use the value from another element on the
-   *   form. `elementName` must match the `name` property of an element on the form.
+   *   form. `elementName` must match the `name` property of an element on the
+   *   form.
    */
   calculation: string
   /**
@@ -851,7 +894,10 @@ export type CalculationElement = FormElementBase & {
    * instructions on what is need to complete the calculation
    */
   preCalculationDisplay?: string
-  /** If true, the `{RESULT}` in the `defaultValue` will be displayed as currency. */
+  /**
+   * If true, the `{RESULT}` in the `defaultValue` will be displayed as
+   * currency.
+   */
   displayAsCurrency?: boolean
 }
 
@@ -877,7 +923,10 @@ export type GeoscapeAddressElement = {
   defaultValue?: GeoscapeAddress
   placeholderValue?: string
   stateTerritoryFilter?: StatesAndTerritories[]
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -896,7 +945,10 @@ export type PointAddressElement = {
   placeholderValue?: string
   stateTerritoryFilter?: PointStatesAndTerritories[]
   addressTypeFilter?: string[]
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
   /**
    * Determine if address information should be displayed to user after
@@ -922,7 +974,10 @@ export type PointAddressV3Element = {
   excludeAliases?: boolean
   addressTypeFilter?: string[]
   datasetFilter?: string[]
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
   /**
    * Determine if address information should be displayed to user after
@@ -935,7 +990,8 @@ export type PointAddressV3Element = {
   FormElementReadOnly
 
 /**
- * An element to allow the user to choose an cadastral parcel from the NSW Point service.
+ * An element to allow the user to choose an cadastral parcel from the NSW Point
+ * service.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -943,7 +999,10 @@ export type PointAddressV3Element = {
 export type PointCadastralParcelElement = {
   type: 'pointCadastralParcel'
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
   defaultValue?: PointCadastralParcelResponse
 } & LookupFormElement &
@@ -951,7 +1010,8 @@ export type PointCadastralParcelElement = {
   FormElementReadOnly
 
 /**
- * An element to allow the user to choose an address from the Google Maps service.
+ * An element to allow the user to choose an address from the Google Maps
+ * service.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -960,7 +1020,10 @@ export type GoogleAddressElement = {
   type: 'googleAddress'
   defaultValue?: GoogleMapsAddress
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -990,7 +1053,10 @@ export type CivicaStreetNameElement = {
   type: 'civicaStreetName'
   defaultValue?: CivicaStreetName
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -1034,7 +1100,8 @@ export type CivicaNameRecordElement = {
   FormElementReadOnly
 
 /**
- * An element to allow the user to choose a liquor licence from the API NSW service.
+ * An element to allow the user to choose a liquor licence from the API NSW
+ * service.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -1043,7 +1110,10 @@ export type APINSWLiquorLicenceElement = {
   type: 'apiNSWLiquorLicence'
   defaultValue?: LiquorLicenceDetails
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -1071,7 +1141,10 @@ export type ArcGISWebMapElement = {
    */
   allowedDrawingTools?: {
     type: string
-    /** Additional options to present to the user after selecting this drawing tool */
+    /**
+     * Additional options to present to the user after selecting this drawing
+     * tool
+     */
     graphicAttributeOptions?: {
       /** The unique identifier for an individual graphics type. */
       id: string
@@ -1080,15 +1153,24 @@ export type ArcGISWebMapElement = {
        * selecting the resulting drawn graphic
        */
       label: string
-      /** Value to be stored on the "name" attribute of the resulting drawn graphic */
+      /**
+       * Value to be stored on the "name" attribute of the resulting drawn
+       * graphic
+       */
       value: string
       /** Description of the drawn graphic */
       description?: string
     }[]
   }[]
-  /** The zoom, latitude and longitude of the view to be used for auto-snapshotting. */
+  /**
+   * The zoom, latitude and longitude of the view to be used for
+   * auto-snapshotting.
+   */
   autoSnapshotViews?: NonNullable<ArcGISWebMapElementValue['view']>[]
-  /** The text and icon displayed on the button to take a snapshot image(s) of the map */
+  /**
+   * The text and icon displayed on the button to take a snapshot image(s) of
+   * the map
+   */
   autoSnapshotButton?: ButtonConfiguration
   /** Show and allow the user to enter an address via the address search widget */
   addressSearchWidgetEnabled?: boolean
@@ -1245,7 +1327,10 @@ export type ABNElement = {
   defaultValue?: ABNRecord
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -1264,7 +1349,10 @@ export type BSBElement = {
   defaultValue?: string
   /** The content to appear in the form control when the form control is empty. */
   placeholderValue?: string
-  /** Custom autocomplete attributes that will be added to the element during rendering */
+  /**
+   * Custom autocomplete attributes that will be added to the element during
+   * rendering
+   */
   autocompleteAttributes?: string[]
 } & LookupFormElement &
   FormElementRequired &
@@ -1367,7 +1455,8 @@ export type LookupButtonFormElementDependency = {
 
 /**
  * An element to allow the user to run a lookup by clicking a button. The lookup
- * will be triggered automatically if all its dependencies are auto-lookup form elements.
+ * will be triggered automatically if all its dependencies are auto-lookup form
+ * elements.
  *
  * The element must have an `id` property with a value that is globally unique
  * within the form definition.
@@ -1538,7 +1627,10 @@ export type ExternalIdGenerationReceiptId = {
   type: 'RECEIPT_ID'
   /** The configuration of the external id generation. */
   configuration: {
-    /** The first number when including an auto incrementing component in the `externalId` */
+    /**
+     * The first number when including an auto incrementing component in the
+     * `externalId`
+     */
     startingSequentialNumber?: number
     /** An array of receipt components used to build an external Id */
     receiptComponents: ReceiptComponent[]
@@ -1599,7 +1691,8 @@ export type NewForm = WithCommonAssociations & {
    * types. The `elements` array in each `PageElement` type can include all of
    * the other `FormElement` types.
    *
-   * If it is `false`, the `elements` array must not contain any `PageElement` types.
+   * If it is `false`, the `elements` array must not contain any `PageElement`
+   * types.
    */
   isMultiPage: boolean
   /** The date and time (in ISO format) a form becomes available. */
@@ -1688,7 +1781,10 @@ export type NewForm = WithCommonAssociations & {
          * this address will also receive a notification email.
          */
         notificationEmailAddress?: string[]
-        /** Key to associate a canned response with an approval to allow for reporting */
+        /**
+         * Key to associate a canned response with an approval to allow for
+         * reporting
+         */
         cannedResponseKey?: string
       }
 
@@ -1762,7 +1858,10 @@ export type NewForm = WithCommonAssociations & {
   updatedByKey?: DeveloperKeyReference
   /** Point address environment id to be used for any pointAddress elements */
   pointAddressEnvironmentId?: string
-  /** Point address V3 environment id to be used for any pointCadastralParcel elements */
+  /**
+   * Point address V3 environment id to be used for any pointCadastralParcel
+   * elements
+   */
   pointAddressV3EnvironmentId?: string
   /** Whether or not Geoscape elements can be configured for this form */
   allowGeoscapeAddresses?: boolean
@@ -1776,7 +1875,7 @@ export type NewForm = WithCommonAssociations & {
      */
     requiresAllConditionalPredicates: boolean
     /** The predicates to determine if submission should be allowed */
-    conditionalPredicates: ConditionalPredicate[]
+    conditionalPredicates: FormElementConditionalPredicate[]
   }
   /** Disable form data being autosaved */
   disableAutosave?: boolean
@@ -2003,7 +2102,10 @@ export type FormElementLookupEnvironmentUrl = FormElementEnvironmentUrl & {
 }
 
 export type FormElementLookupStaticDataPreFillBase = {
-  /** Must match a "FormElement.name" property exactly to pre-fill with the "preFillValue". */
+  /**
+   * Must match a "FormElement.name" property exactly to pre-fill with the
+   * "preFillValue".
+   */
   formElementName: string
 }
 
@@ -2092,7 +2194,10 @@ export type NewFormElementLookupUrl = NewFormElementLookupBase & {
   environments: FormElementLookupEnvironmentUrl[]
   type: 'ELEMENT' | 'DATA'
   builtInId?: number
-  /** Indicates whether the form definition will be excluded from the dynamic lookup call */
+  /**
+   * Indicates whether the form definition will be excluded from the dynamic
+   * lookup call
+   */
   excludeDefinition?: boolean
 }
 
