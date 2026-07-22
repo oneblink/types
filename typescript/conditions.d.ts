@@ -72,6 +72,74 @@ export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
       }
 }
 
+/**
+ * A date used when evaluating a datetime condition. Either a custom ISO date or
+ * a date/datetime element, with an optional day offset.
+ *
+ * @example
+ *   // Custom date with a +30 day offset
+ *   { compareWith: 'VALUE', value: '2026-07-01', daysOffset: 30 }
+ *
+ * @example
+ *   // Date element with a -14 day offset
+ *   { compareWith: 'ELEMENT', formElementId: '<date-element-id>', daysOffset: -14 }
+ */
+export type ConditionalPredicateDateValue =
+  | {
+      compareWith?: 'VALUE'
+      /** An ISO date string to compare against the datetime */
+      value: string
+      /** The number of days to offset the comparison date */
+      daysOffset?: number
+    }
+  | {
+      compareWith: 'ELEMENT'
+      /**
+       * The id of a date or datetime element to compare against the submission
+       * datetime
+       */
+      formElementId: string
+      /** The number of days to offset the comparison date */
+      daysOffset?: number
+    }
+
+/**
+ * Evaluate against the timestamp the form was submitted. Intended for
+ * conditional logic configured outside the form (e.g. workflow events and
+ * approval steps).
+ *
+ * - `AFTER` — submission timestamp is after (exclusive) the comparison date
+ * - `BEFORE` — submission timestamp is before (exclusive) the comparison date
+ * - `BETWEEN` — submission timestamp is between `min` and `max` (inclusive)
+ *
+ * @example
+ *   // Submission is before AGM + 30 days
+ *   const predicate = {
+ *     type: 'SUBMISSION_TIMESTAMP',
+ *     operator: 'BEFORE',
+ *     compareWith: 'ELEMENT',
+ *     formElementId: '<agm-date-element-id>',
+ *     daysOffset: 30,
+ *   }
+ */
+export type ConditionalPredicateSubmissionTimestamp = {
+  type: 'SUBMISSION_TIMESTAMP'
+} & (
+  | ({
+      /**
+       * How the submission timestamp will be compared to the date value.
+       * `AFTER` is exclusive, `BEFORE` is exclusive.
+       */
+      operator: 'AFTER' | 'BEFORE'
+    } & ConditionalPredicateDateValue)
+  | {
+      /** Inclusive range check between `min` and `max` */
+      operator: 'BETWEEN'
+      min: ConditionalPredicateDateValue
+      max: ConditionalPredicateDateValue
+    }
+)
+
 export type ConditionalPredicate =
   | ConditionalPredicateNumeric
   | ConditionalPredicateOptions
@@ -80,3 +148,4 @@ export type ConditionalPredicate =
   | ConditionalPredicateRepeatableSet
   | ConditionalPredicateForm
   | ConditionalPredicateAddressElement
+  | ConditionalPredicateSubmissionTimestamp
