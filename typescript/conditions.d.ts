@@ -49,14 +49,14 @@ export type ConditionalPredicateBetween = ConditionalPredicateBase & {
 export type ConditionalPredicateRepeatableSet = ConditionalPredicateBase & {
   type: 'REPEATABLESET'
   repeatableSetPredicate: Exclude<
-    ConditionalPredicate,
+    FormElementConditionalPredicate,
     ConditionalPredicateRepeatableSet
   >
 }
 
 export type ConditionalPredicateForm = ConditionalPredicateBase & {
   type: 'FORM'
-  predicate: ConditionalPredicate
+  predicate: FormElementConditionalPredicate
 }
 
 export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
@@ -140,7 +140,7 @@ export type ConditionalPredicateSubmissionTimestamp = {
     }
 )
 
-export type ConditionalPredicate =
+export type FormElementConditionalPredicate =
   | ConditionalPredicateNumeric
   | ConditionalPredicateOptions
   | ConditionalPredicateHasValue
@@ -148,4 +148,7 @@ export type ConditionalPredicate =
   | ConditionalPredicateRepeatableSet
   | ConditionalPredicateForm
   | ConditionalPredicateAddressElement
+
+export type ConditionalPredicate =
+  | FormElementConditionalPredicate
   | ConditionalPredicateSubmissionTimestamp
