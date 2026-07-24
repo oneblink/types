@@ -86,7 +86,7 @@ export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
  */
 export type ConditionalPredicateDateValue =
   | {
-      compareWith?: 'VALUE'
+      compareWith: 'VALUE'
       /** An ISO date string to compare against the datetime */
       value: string
       /** The number of days to offset the comparison date */
