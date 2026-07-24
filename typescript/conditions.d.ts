@@ -98,7 +98,7 @@ export type ConditionalPredicateDateValue =
        * The id of a date or datetime element to compare against the submission
        * datetime
        */
-      formElementId: string
+      elementId: string
       /** The number of days to offset the comparison date */
       daysOffset?: number
     }
