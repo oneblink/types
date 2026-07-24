@@ -287,6 +287,10 @@ type _BaseFormStoreRecord = {
     dateTime: string
     cancelledReason?: string
   }
+  payment?: {
+    status: FormSubmissionPayment['status']
+    providerTransactionId?: string
+  }
 }
 
 export type DbFormStoreRecord = _BaseFormStoreRecord & {
