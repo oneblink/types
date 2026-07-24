@@ -267,6 +267,30 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
   }
 }
 
+/**
+ * Determines the amount to be paid for a payment event. Exactly one of
+ * `elementId`, `paymentAmount`, or `paymentCalculation` must be provided.
+ */
+export type FormPaymentEventAmountConfiguration =
+  | {
+      /**
+       * The elementId that holds the value that will be paid. Must be the id of a
+       * number or calculation element.
+       */
+      elementId: string
+    }
+  | {
+      /** A fixed amount that will be paid. */
+      paymentAmount: number
+    }
+  | {
+      /**
+       * The calculation algorithm that must return a number. Supports the same
+       * syntax as calculation form elements.
+       */
+      paymentCalculation: string
+    }
+
 export type CPPayPaymentDisplayDetailKey =
   | 'CP_PAY_TRANSACTION_ID'
   | 'CP_PAY_ORDER_NUMBER'
@@ -277,12 +301,7 @@ export type CPPayPaymentDisplayDetailKey =
 
 export type CPPaySubmissionEvent = FormEventBase & {
   type: 'CP_PAY'
-  configuration: {
-    /**
-     * The elementId that holds the value that will be paid. Must be the id of a
-     * number or calculation element.
-     */
-    elementId: string
+  configuration: FormPaymentEventAmountConfiguration & {
     /** The id of the OneBlink -> CP Pay integration gateway to be used. */
     gatewayId: string
   }
@@ -301,12 +320,7 @@ export type BPointPaymentDisplayDetailKey =
 
 export type BPOINTSubmissionEvent = FormEventBase & {
   type: 'BPOINT'
-  configuration: {
-    /**
-     * The elementId that holds the value that will be paid. Must be the id of a
-     * number or calculation element.
-     */
-    elementId: string
+  configuration: FormPaymentEventAmountConfiguration & {
     /** The id of the OneBlink -> BPOINT integration environment to be used. */
     environmentId: string
     /** An optional crn string. */
@@ -326,12 +340,7 @@ export type WestpacQuickStreamPaymentDisplayDetailKey =
 
 export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
   type: 'WESTPAC_QUICK_STREAM'
-  configuration: {
-    /**
-     * The elementId that holds the value that will be paid. Must be the id of a
-     * number or calculation element.
-     */
-    elementId: string
+  configuration: FormPaymentEventAmountConfiguration & {
     /** The id of the OneBlink -> WestpacQuickStream integration environment to be used. */
     environmentId: string
     /** A crn string. */
@@ -353,12 +362,7 @@ export type NSWGovPayPaymentDisplayDetailKey =
 
 export type NSWGovPaySubmissionEvent = FormEventBase & {
   type: 'NSW_GOV_PAY'
-  configuration: {
-    /**
-     * The elementId that holds the value that will be paid. Must be the id of a
-     * number or calculation element.
-     */
-    elementId: string
+  configuration: FormPaymentEventAmountConfiguration & {
     /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
     primaryAgencyId: string
     /**
