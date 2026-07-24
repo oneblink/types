@@ -82,7 +82,7 @@ export type ConditionalPredicateAddressElement = ConditionalPredicateBase & {
  *
  * @example
  *   // Date element with a -14 day offset
- *   { compareWith: 'ELEMENT', formElementId: '<date-element-id>', daysOffset: -14 }
+ *   { compareWith: 'ELEMENT', elementId: '<date-element-id>', daysOffset: -14 }
  */
 export type ConditionalPredicateDateValue =
   | {
@@ -118,7 +118,7 @@ export type ConditionalPredicateDateValue =
  *     type: 'SUBMISSION_TIMESTAMP',
  *     operator: 'BEFORE',
  *     compareWith: 'ELEMENT',
- *     formElementId: '<agm-date-element-id>',
+ *     elementId: '<agm-date-element-id>',
  *     daysOffset: 30,
  *   }
  */
