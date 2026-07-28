@@ -38,7 +38,8 @@ export type NewOrganisation = {
    * @deprecated Use `teamMemberMfaRequirement` instead
    *
    *   If `true`, team members will be required to enable multi-factor
-   *   authentication before being able to perform any actions within the organisation.
+   *   authentication before being able to perform any actions within the
+   *   organisation.
    */
   requireTeamMemberMfa?: boolean
   /**
@@ -195,8 +196,25 @@ type AuditRecordType =
   | 'FormVersion'
   | 'FormSubmissionDraft'
   | 'PDFConversion'
+  /**
+   * Unified AI conversations. Mode and target details are carried on `recordId`
+   * rather than separate per-mode audit types.
+   */
+  | 'AIConversation'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIFormsBuilder'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIEnvironmentStylist'
+  /**
+   * @deprecated Use `AIConversation` for new writes. Retained for historical
+   *   audit records.
+   */
   | 'AIHelp'
   | 'FormKeyAssociation'
   | 'FormsAppMfaRequirement'
