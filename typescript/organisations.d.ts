@@ -1,6 +1,10 @@
 import { FormEventType } from './submissionEvents'
 import { FormPostSubmissionAction } from './forms'
-import { MfaRequirement, UserProfile } from './misc'
+import {
+  MfaRequirement,
+  UserProfile,
+  WithOrganisationAssociation,
+} from './misc'
 import { DeveloperKeyReference } from './keys'
 import { IntegrationType } from './integrations'
 
@@ -273,17 +277,9 @@ export type ProductNotification = NewProductNotification & {
   updatedAt: string
 }
 
-type BaseFeatureFlag = {
-  organisationId: string
-}
-
-type GlobalFeatureFlag = BaseFeatureFlag & {
-  type: 'AI_HELP'
-}
-
-type EnvironmentFeatureFlag = BaseFeatureFlag & {
-  type: 'AI_FORMS_BUILDER' | 'AI_APP_STYLIST'
+export type FeatureFlagAIConversionsBuildMode = WithOrganisationAssociation & {
+  type: 'AI_CONVERSIONS_BUILD_MODE'
   allowedFormsAppEnvironmentIds: number[]
 }
 
-export type FeatureFlag = GlobalFeatureFlag | EnvironmentFeatureFlag
+export type FeatureFlag = FeatureFlagAIConversionsBuildMode
