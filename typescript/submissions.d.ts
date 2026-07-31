@@ -288,7 +288,6 @@ type _BaseFormStoreRecord = {
     cancelledReason?: string
   }
   payment?: {
-    type: FormSubmissionPayment['type']
     status: FormSubmissionPayment['status']
     providerTransactionId?: string
     providerReceiptNumber?: string
