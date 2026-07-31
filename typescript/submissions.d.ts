@@ -288,6 +288,11 @@ type _BaseFormStoreRecord = {
     cancelledReason?: string
     calendarName?: string
   }
+  payment?: {
+    status: FormSubmissionPayment['status']
+    providerTransactionId?: string
+    providerReceiptNumber?: string
+  }
 }
 
 export type DbFormStoreRecord = _BaseFormStoreRecord & {
