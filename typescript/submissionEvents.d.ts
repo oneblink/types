@@ -273,17 +273,23 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
  */
 export type FormPaymentEventAmountConfiguration =
   | {
+      /** Amount is taken from a form element value. */
+      type?: 'FORM_ELEMENT'
       /**
-       * The elementId that holds the value that will be paid. Must be the id of a
-       * number or calculation element.
+       * The elementId that holds the value that will be paid. Must be the id of
+       * a number or calculation element.
        */
       elementId: string
     }
   | {
+      /** Amount is a fixed number. */
+      type: 'NUMBER'
       /** A fixed amount that will be paid. */
       paymentAmount: number
     }
   | {
+      /** Amount is calculated from an expression. */
+      type: 'EXPRESSION'
       /**
        * The calculation algorithm that must return a number. Supports the same
        * syntax as calculation form elements.
