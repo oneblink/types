@@ -75,8 +75,13 @@ export type _FormElementBase = {
    * are included in the submission data.
    */
   isHidden?: boolean
-  /** Determine if the element is visible to approvers (`true`) or not (`false`). */
-  isVisibleToApprovers?: boolean
+  /**
+   * Determine if the element is hidden from approvers (`true`) or not (`false`). Hidden
+   * elements exist on the page, but are not visible to the approver. This means
+   * they are included in conditional logic and other dependency evaluation and
+   * are included in the submission data.
+   */
+  isHiddenFromApprovers?: boolean
 }
 
 export type FormElementBase = _FormElementBase &
