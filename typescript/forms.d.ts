@@ -801,6 +801,11 @@ export type HtmlElement = FormElementBase & {
    * match the `name` property of an element on the form.
    */
   defaultValue: string
+  /**
+   * When `true`, the information content will be announced to screen readers
+   * as an alert.
+   */
+  screenReaderAlert?: boolean
 }
 
 /**
