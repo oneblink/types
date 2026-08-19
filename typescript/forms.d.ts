@@ -41,6 +41,14 @@ import { ArcGISWebMapElementValue } from './arcgis'
 
 export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 
+/**
+ * Audiences that a hidden form element can be restricted to.
+ *
+ * - `FORM_COMPLETER` — users completing the form
+ * - `APPROVER` — approvers reviewing the form submission
+ */
+export type FormElementHiddenFromAudience = 'FORM_COMPLETER' | 'APPROVER'
+
 export type _FormElementBase = {
   isNew?: boolean
   /**
@@ -70,11 +78,23 @@ export type _FormElementBase = {
   meta?: string
   /**
    * Determine if the element is hidden (`true`) or not (`false`). Hidden
-   * elements exist on the page, but are not visible to the user. This means
-   * they are included in conditional logic and other dependency evaluation and
-   * are included in the submission data.
+   * elements exist on the page, but are not visible. This means they are
+   * included in conditional logic and other dependency evaluation and are
+   * included in the submission data.
+   *
+   * When `true` and `hiddenFrom` is omitted, the element is hidden from all
+   * audiences (users completing the form and approvers reviewing the
+   * submission).
+   *
+   * When `true` and `hiddenFrom` is set, the element is hidden only from the
+   * listed audiences.
    */
   isHidden?: boolean
+  /**
+   * Audiences to hide the element from when `isHidden` is `true`. Omitted means
+   * all audiences, which preserves the original `isHidden` behaviour.
+   */
+  hiddenFrom?: FormElementHiddenFromAudience[]
 }
 
 export type FormElementBase = _FormElementBase &
