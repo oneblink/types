@@ -44,10 +44,10 @@ export type HintPositionEnum = 'BELOW_LABEL' | 'TOOLTIP'
 /**
  * Audiences that a hidden form element can be restricted to.
  *
- * - `FORM_COMPLETER` — users completing the form
+ * - `SUBMITTER` — users submitting the form
  * - `APPROVER` — approvers reviewing the form submission
  */
-export type FormElementHiddenFromAudience = 'FORM_COMPLETER' | 'APPROVER'
+export type FormElementHiddenFromAudience = 'SUBMITTER' | 'APPROVER'
 
 export type _FormElementBase = {
   isNew?: boolean
@@ -83,8 +83,7 @@ export type _FormElementBase = {
    * included in the submission data.
    *
    * When `true` and `hiddenFrom` is omitted, the element is hidden from all
-   * audiences (users completing the form and approvers reviewing the
-   * submission).
+   * audiences (submitters and approvers reviewing the submission).
    *
    * When `true` and `hiddenFrom` is set, the element is hidden only from the
    * listed audiences.
