@@ -237,6 +237,7 @@ type AuditRecordType =
   | 'FormsAppUser'
   | 'EmailTemplate'
   | 'EmailClassification'
+  | 'ScheduledFormMigration'
   | 'FormsAppEnvironmentReordering'
   | 'WorkspaceReordering'
 
