@@ -13,7 +13,7 @@ import {
  */
 export type NewScheduledFormMigration = WithOrganisationAssociation &
   Omit<FormMigrationData, 'versionId'> & {
-    /** The identifier of the named form version to migrate */
+    /** The identifier of the named form version to migrate (`FormVersion.id`) */
     versionId: number
     /** The date and time (in ISO format) the form migration is scheduled to run */
     scheduledAt: string
