@@ -141,12 +141,31 @@ export type LookupFormElement = FormElementBase & {
   lookupButton?: ButtonConfiguration
 }
 
+/**
+ * Configuration for which approval flow steps may edit this element.
+ *
+ * Currently only `ALL_STEPS` is supported. Additional union members (for
+ * example a step allow-list) can be added later without replacing this type
+ * with a boolean.
+ *
+ * When omitted on the element, approvers cannot edit this element.
+ */
+export type FormElementApproverEditability = {
+  /** Every approval step on the form may edit this element. */
+  type: 'ALL_STEPS'
+}
+
 export type FormElementReadOnly = {
   /**
    * Determine if this input can be edited by the user (`false`) or not
    * (`true`).
    */
   readOnly?: boolean
+  /**
+   * When omitted, approvers cannot edit this element. When set, must be `{
+   * type: 'ALL_STEPS' }`.
+   */
+  approverEditability?: FormElementApproverEditability
 }
 
 export type FormElementRequired = FormElementBase & {
@@ -821,8 +840,8 @@ export type HtmlElement = FormElementBase & {
    */
   defaultValue: string
   /**
-   * When `true`, the information content will be announced to screen readers
-   * as an alert.
+   * When `true`, the information content will be announced to screen readers as
+   * an alert.
    */
   screenReaderAlert?: boolean
 }
