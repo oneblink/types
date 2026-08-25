@@ -256,6 +256,11 @@ export type FormSubmissionMetaEdit = NewFormSubmissionMetaEdit & {
   id: string
   /** The date and time (in ISO format) the record was created */
   createdAt: string
+  /**
+   * The S3 VersionId of the canonical submission object after this edit was
+   * applied. Omitted while the edit is still in flight.
+   */
+  s3ObjectVersionId?: string
 }
 
 export interface FormSubmissionRequest {
@@ -316,6 +321,11 @@ export interface NewS3SubmissionData {
 }
 
 export type S3SubmissionDataEdit = {
+  /**
+   * The identifier of the {@link FormSubmissionMetaEdit} that produced this
+   * canonical submission version.
+   */
+  formSubmissionMetaEditId: string
   /**
    * The date and time (in ISO format) the edit was received by the submission
    * service. Copied from {@link FormSubmissionMetaEdit.dateTimeEdited}.
