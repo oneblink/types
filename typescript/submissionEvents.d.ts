@@ -741,14 +741,6 @@ export type S3SubmissionTags = {
    */
   userToken?: string
   previousFormSubmissionApprovalId?: string
-  /**
-   * The FormSubmissionApproval being actioned by an approver overwrite of the
-   * existing submission. Distinct from
-   * {@link S3SubmissionTags.previousFormSubmissionApprovalId}, which is a
-   * clarification resubmit. Presence of this tag indicates a staging edit
-   * object, not a new submission.
-   */
-  formSubmissionApprovalId?: string
 }
 
 export type BaseFormSubmissionProcessing = WithCommonAssociations & {
