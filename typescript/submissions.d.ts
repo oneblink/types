@@ -172,22 +172,11 @@ export type FormSubmissionMeta = NewFormSubmissionMeta & {
         isInvalid: false
       }
   /**
-   * The date and time (in ISO format) the submission was last edited. Omitted
+   * The most recent {@link FormSubmissionMetaEdit} for this submission. Omitted
    * when the submission has never been edited. Presence of this property
    * indicates there is more than one version of the submission.
    */
-  lastEditedAt?: string
-  /**
-   * The user that last edited the submission. Omitted when the last edit was
-   * not made by a logged-in user, or when the submission has never been
-   * edited.
-   */
-  lastEditedByUser?: UserProfile
-  /**
-   * The key that last edited the submission. Omitted when the last edit was not
-   * made with a developer key, or when the submission has never been edited.
-   */
-  lastEditedByKey?: DeveloperKeyReference
+  lastEdit?: FormSubmissionMetaEdit
 }
 
 export type FormSubmissionApprovalEditContext = {
