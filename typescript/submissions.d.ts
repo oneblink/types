@@ -171,6 +171,85 @@ export type FormSubmissionMeta = NewFormSubmissionMeta & {
     | {
         isInvalid: false
       }
+  /**
+   * The most recent {@link FormSubmissionMetaEdit} for this submission. Omitted
+   * when the submission has never been edited. Presence of this property
+   * indicates there is more than one version of the submission.
+   */
+  lastEdit?: FormSubmissionMetaEdit
+}
+
+export type FormSubmissionApprovalEditContext = {
+  /** The type of business context associated with the edit */
+  type: 'FORM_SUBMISSION_APPROVAL'
+  /** The FormSubmissionApproval actioned after the S3 copy succeeds */
+  formSubmissionApprovalId: string
+  /** Notes sent to the user that submitted the form */
+  notes?: string
+  /** Key to associate a canned response with an approval to allow for reporting */
+  cannedResponseKey?: string
+  /** Internal notes that are not seen by the user that submitted the form */
+  internalNotes?: string
+  /** The email addresses of the users to be notified of the result */
+  notificationEmailAddress?: string[]
+}
+
+/**
+ * The business context associated with a form submission edit.
+ *
+ * Additional context types can be added to this union as new edit flows are
+ * introduced.
+ */
+export type FormSubmissionMetaEditContext = FormSubmissionApprovalEditContext
+
+export type NewFormSubmissionMetaEdit = {
+  /** The id of the submission being edited */
+  submissionId: string
+  /** The id of the OneBlink Form */
+  formId: number
+  /**
+   * Why this edit was submitted. Not stored on {@link S3SubmissionData}.
+   */
+  context: FormSubmissionMetaEditContext
+  /**
+   * The S3 VersionId of the canonical submission object being edited.
+   *
+   * Also distinguishes in-flight vs applied: the edit is still in flight while
+   * this value equals the live canonical VersionId. After the async submission
+   * service copies staging onto the canonical object, that VersionId changes
+   * and the edit is done.
+   * Used to reject stale edit requests when another edit has been applied or is
+   * in flight since they loaded the submission.
+   */
+  editedS3ObjectVersionId: string
+  /**
+   * The date and time (in ISO format) the edit was received by the submission
+   * service.
+   */
+  dateTimeEdited: string
+  /** Information about the user that edited the submission */
+  user?: UserProfile
+  /**
+   * The IP Address of the requester. This cannot be trusted as the requester
+   * could change this.
+   */
+  ipAddress?: string
+  /** Information about the key that was used to edit the submission */
+  key?: DeveloperKeyReference
+  /** Configuration for where the staging edit data is stored */
+  s3: S3Configuration
+}
+
+export type FormSubmissionMetaEdit = NewFormSubmissionMetaEdit & {
+  /** The unique identifier for the record */
+  id: string
+  /** The date and time (in ISO format) the record was created */
+  createdAt: string
+  /**
+   * The S3 VersionId of the canonical submission object after this edit was
+   * applied. Omitted while the edit is still in flight.
+   */
+  s3ObjectVersionId?: string
 }
 
 export interface FormSubmissionRequest {
@@ -229,6 +308,41 @@ export interface NewS3SubmissionData {
    */
   completionTimestamp?: string
 }
+
+export type S3SubmissionDataEdit = {
+  /**
+   * The identifier of the {@link FormSubmissionMetaEdit} that produced this
+   * canonical submission version.
+   */
+  formSubmissionMetaEditId: string
+  /**
+   * The date and time (in ISO format) the edit was received by the submission
+   * service. Copied from {@link FormSubmissionMetaEdit.dateTimeEdited}.
+   */
+  editedAt: string
+  ipAddress?: string
+  user?: FormSubmissionMeta['user']
+  key?: FormSubmissionMeta['key']
+  /**
+   * The device used when the edit was submitted. Copied from the staging
+   * {@link NewS3SubmissionData.device}. Root `device` on
+   * {@link S3SubmissionData} remains the original submitter.
+   */
+  device?: S3SubmissionDataDevice
+  /**
+   * The date and time (in ISO format) the editor completed the edit. Copied
+   * from the staging {@link NewS3SubmissionData.completionTimestamp}. Root
+   * `completionTimestamp` on {@link S3SubmissionData} remains the original
+   * submitter.
+   */
+  completionTimestamp?: string
+  /**
+   * The S3 VersionId of the canonical submission JSON immediately before this
+   * overwrite.
+   */
+  previousS3ObjectVersionId: string
+}
+
 export type S3SubmissionData = NewS3SubmissionData & {
   /**
    * The date and time (in ISO format) the submission was received by the
@@ -246,6 +360,11 @@ export type S3SubmissionData = NewS3SubmissionData & {
   taskAction?: TaskAction
   taskGroup?: TaskGroup
   taskGroupInstance?: TaskGroupInstance
+  /**
+   * Submission edits, oldest first. Omitted when the submission has never been
+   * edited. `submission` and `definition` always reflect the latest version.
+   */
+  edits?: S3SubmissionDataEdit[]
 }
 
 export type NewFormSubmissionFileAccessToken = {

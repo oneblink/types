@@ -50,7 +50,10 @@ export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
   configuration: {
     /** URL that the callback is made to. */
     url: string
-    /** The unique identifier for the form that should trigger this workflow event */
+    /**
+     * The unique identifier for the form that should trigger this workflow
+     * event
+     */
     formId?: number
   }
 }
@@ -60,7 +63,10 @@ export type Symphony3SmartGlueSubmissionEvent = FormEventBase & {
   configuration: {
     /** URL that the callback is made to. */
     url: string
-    /** The unique identifier for the key that should be used for this workflow event */
+    /**
+     * The unique identifier for the key that should be used for this workflow
+     * event
+     */
     keyId: string
   }
 }
@@ -70,7 +76,10 @@ export type CPIntegrationHubWebhookSubmissionEvent = FormEventBase & {
   configuration: {
     /** URL that the callback is made to. */
     url: string
-    /** The unique identifier for the form that should trigger this workflow event */
+    /**
+     * The unique identifier for the form that should trigger this workflow
+     * event
+     */
     formId?: number
   }
 }
@@ -118,7 +127,10 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   excludedElementIds?: string[]
   /** An array of class names to exclude from the submission when generating pdf. */
   excludedCSSClasses?: string[]
-  /** Whether pages in the form submission should translate to page breaks in the PDF. */
+  /**
+   * Whether pages in the form submission should translate to page breaks in the
+   * PDF.
+   */
   usePagesAsBreaks?: boolean
   /**
    * Whether the external id should be included in the generated pdf (defaults
@@ -131,18 +143,30 @@ export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
   combineWithPdfAttachments?: boolean
   /** The identifier for a Custom PDF. */
   customPdfId?: string
-  /** Whether the Custom PDF will be editable after being generated (defaults to false) */
+  /**
+   * Whether the Custom PDF will be editable after being generated (defaults to
+   * false)
+   */
   isCustomPdfEditable?: boolean
 }
 
 export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
   /** @deprecated: use toEmail instead */
   email?: string
-  /** The to: email addresses in which a PDF copy of the form submission will be sent. */
+  /**
+   * The to: email addresses in which a PDF copy of the form submission will be
+   * sent.
+   */
   toEmail?: string[]
-  /** The cc: email addresses in which a PDF copy of the form submission will be sent. */
+  /**
+   * The cc: email addresses in which a PDF copy of the form submission will be
+   * sent.
+   */
   ccEmail?: string[]
-  /** The bcc: email addresses in which a PDF copy of the form submission will be sent. */
+  /**
+   * The bcc: email addresses in which a PDF copy of the form submission will be
+   * sent.
+   */
   bccEmail?: string[]
   /** The subject line of the email sent to the configured email address. */
   emailSubjectLine?: string
@@ -250,7 +274,8 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
     contentTypeName: string
     /**
      * The optional notificationElementId that holds the value which determines
-     * whether to send a notification or not. Must be the id of a `boolean` form element.
+     * whether to send a notification or not. Must be the id of a `boolean` form
+     * element.
      */
     notificationElementId?: string
     /** An array of element ids to be set as encrypted in the CivicPlus HCMS. */
@@ -259,7 +284,10 @@ export type CPHCMSSubmissionEvent = FormEventBase & {
     encryptPdf?: boolean
     /** Tags that should be added to the content created in the CivicPlus HCMS. */
     tags?: string[]
-    /** The categories that should be added to the content created in the CivicPlus HCMS. */
+    /**
+     * The categories that should be added to the content created in the
+     * CivicPlus HCMS.
+     */
     categories?: Array<{
       id: string
       name: string
@@ -347,7 +375,10 @@ export type WestpacQuickStreamPaymentDisplayDetailKey =
 export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
   type: 'WESTPAC_QUICK_STREAM'
   configuration: FormPaymentEventAmountConfiguration & {
-    /** The id of the OneBlink -> WestpacQuickStream integration environment to be used. */
+    /**
+     * The id of the OneBlink -> WestpacQuickStream integration environment to
+     * be used.
+     */
     environmentId: string
     /** A crn string. */
     customerReferenceNumber: string
@@ -369,7 +400,10 @@ export type NSWGovPayPaymentDisplayDetailKey =
 export type NSWGovPaySubmissionEvent = FormEventBase & {
   type: 'NSW_GOV_PAY'
   configuration: FormPaymentEventAmountConfiguration & {
-    /** The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be used. */
+    /**
+     * The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be
+     * used.
+     */
     primaryAgencyId: string
     /**
      * Used to describe the product the customer is purchasing. Passed on NSW
@@ -406,7 +440,10 @@ export type FormElementMapping<T> = T &
         type: 'REPEATABLE_SET_FORM_ELEMENT'
         formElementId: string
         mapping: FormElementMapping<T>
-        /** The number of the entry in the repeatable set. Starts at 1 for the first entry. */
+        /**
+         * The number of the entry in the repeatable set. Starts at 1 for the
+         * first entry.
+         */
         entryNumber: number
       }
     | {
@@ -543,7 +580,8 @@ export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
        * The folder within the selected drive to upload files to. If not
        * specified the root of the drive will be used. If the folder does not
        * exist it will be created as part of the upload. Path must begin with a
-       * forward slash and not end with a forward slash e.g. "/forms/1/submissions"
+       * forward slash and not end with a forward slash e.g.
+       * "/forms/1/submissions"
        */
       folderPath?: string
       /**

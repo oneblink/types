@@ -228,6 +228,7 @@ type AuditRecordType =
   | 'FormApprovalFlowInstance'
   | 'FormSubmission'
   | 'FormSubmissionMeta'
+  | 'FormSubmissionMetaEdit'
   | 'Job'
   | 'FormElementLookup'
   | 'FormElementDynamicOptionSet'
