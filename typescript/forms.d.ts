@@ -160,8 +160,7 @@ export type FormElementReadOnly = {
    */
   readOnly?: boolean
   /**
-   * When omitted, approvers cannot edit this element. When set, must be `{
-   * type: 'ALL_STEPS' }`.
+   * When omitted, approvers cannot edit this element.
    */
   approverEditability?: FormElementApproverEditability
 }
