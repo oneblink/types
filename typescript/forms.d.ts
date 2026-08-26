@@ -142,7 +142,7 @@ export type LookupFormElement = FormElementBase & {
 }
 
 /**
- * Configuration for which approval flow steps may edit this element.
+ * Configuration for which approval flow steps may edit an element.
  *
  * Currently only `ALL_STEPS` is supported.
  *
