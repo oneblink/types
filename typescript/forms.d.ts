@@ -144,9 +144,7 @@ export type LookupFormElement = FormElementBase & {
 /**
  * Configuration for which approval flow steps may edit this element.
  *
- * Currently only `ALL_STEPS` is supported. Additional union members (for
- * example a step allow-list) can be added later without replacing this type
- * with a boolean.
+ * Currently only `ALL_STEPS` is supported.
  *
  * When omitted on the element, approvers cannot edit this element.
  */
