@@ -42,8 +42,7 @@ export type NewOrganisation = {
    * @deprecated Use `teamMemberMfaRequirement` instead
    *
    *   If `true`, team members will be required to enable multi-factor
-   *   authentication before being able to perform any actions within the
-   *   organisation.
+   *   authentication before being able to perform any actions within the organisation.
    */
   requireTeamMemberMfa?: boolean
   /**
@@ -240,6 +239,7 @@ type AuditRecordType =
   | 'EmailClassification'
   | 'FormsAppEnvironmentReordering'
   | 'WorkspaceReordering'
+  | 'ScheduledFormMigration'
 
 export type NewAuditRecord = {
   type: AuditRecordType
