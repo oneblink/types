@@ -52,6 +52,12 @@ export type FormApprovalFlowNodeBase = {
   approvalFormPrefillMappings?: FormApprovalFormPrefillMapping[]
   /** Configuration to hide the deny button on approval actioning screens */
   hideApprovalDenyButton?: boolean
+  /**
+   * The ids of elements in the submitted form that an approver assigned to this
+   * node may edit. When omitted, the approver cannot edit any form elements.
+   * Must contain at least one id when present.
+   */
+  editableFormElementIds?: string[]
 }
 
 export type FlowInstanceNodeMeta = {

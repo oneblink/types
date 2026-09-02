@@ -184,6 +184,13 @@ export type FormSubmissionApprovalEditContext = {
   type: 'FORM_SUBMISSION_APPROVAL'
   /** The FormSubmissionApproval actioned after the S3 copy succeeds */
   formSubmissionApprovalId: string
+  /**
+   * The id of a submission that was submitted with the approval, if the step
+   * requires an approval form. Stored on
+   * {@link FormSubmissionApproval.approvalFormSubmissionId} after the edit is
+   * applied.
+   */
+  approvalFormSubmissionId?: string
   /** Notes sent to the user that submitted the form */
   notes?: string
   /** Key to associate a canned response with an approval to allow for reporting */
