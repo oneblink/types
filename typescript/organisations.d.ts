@@ -42,7 +42,8 @@ export type NewOrganisation = {
    * @deprecated Use `teamMemberMfaRequirement` instead
    *
    *   If `true`, team members will be required to enable multi-factor
-   *   authentication before being able to perform any actions within the organisation.
+   *   authentication before being able to perform any actions within the
+   *   organisation.
    */
   requireTeamMemberMfa?: boolean
   /**
@@ -103,6 +104,24 @@ export interface TierDataMaximumContraints {
   maximumFormSequentialNumberReceiptComponents: TierLimitation
   maximumFormCustomPDFs: TierLimitation
   maximumEmailTemplates: TierLimitation
+  /**
+   * Monthly limit on AI input tokens for the organisation.
+   *
+   * - `{ unlimited: true }` — no monthly input token cap.
+   * - `{ unlimited: false, limit: n }` where `n > 0` — capped at `n` input tokens
+   *   per month.
+   * - `{ unlimited: false, limit: 0 }` — input token usage is off.
+   */
+  maximumMonthlyAIInputTokens?: TierLimitation
+  /**
+   * Monthly limit on AI output tokens for the organisation.
+   *
+   * - `{ unlimited: true }` — no monthly output token cap.
+   * - `{ unlimited: false, limit: n }` where `n > 0` — capped at `n` output
+   *   tokens per month.
+   * - `{ unlimited: false, limit: 0 }` — output token usage is off.
+   */
+  maximumMonthlyAIOutputTokens?: TierLimitation
 }
 export interface NewTier {
   name: string
