@@ -2259,7 +2259,7 @@ export type FormVersion = {
    * Whether AI assistance made a successful change while creating this version,
    * including changes that were later reverted.
    */
-  isAIAssisted: boolean
+  wasAIAssisted: boolean
   updatedAt: string
   name?: string
 }
