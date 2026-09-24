@@ -2255,6 +2255,11 @@ export type FormVersion = {
   id: number
   formId: number
   form: Form
+  /**
+   * Whether AI assistance made a successful change while creating this version,
+   * including changes that were later reverted.
+   */
+  wasAIAssisted: boolean
   updatedAt: string
   name?: string
 }
