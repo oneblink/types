@@ -14,6 +14,7 @@ Allow the user to take a photo using native camera functionality (or select an e
 | `required`                  | Yes      | `boolean` | `false`    | Determine if this input requires a value entered by the user (`true`) or not (`false`).     |
 | `hint`                      | No       | `string`  |            | A hint triggered by an icon tooltip to be displayed when hovering beside the element label. |
 | `includeTimestampWatermark` | no       | `boolean` | `false`    | Whether a watermark with a timestamp should be placed on images captured with this element. |
+| `hideImagePreview`         | no       | `boolean` | `false`    | When `true`, show the file name instead of an image preview on the form, in submission views, and in the submission PDF. Form users can still remove, open, annotate, and crop the file. |
 | `storageType`               | no       | `string`  |            | How the photo taken by a user will be stored: `private`, `public`, `legacy`                 |
 
 Camera element also inherits the properties of the following:
