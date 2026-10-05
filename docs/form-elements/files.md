@@ -14,6 +14,7 @@ Allow the user upload a array of files from their device.
 | `hint`         | No       | `string` |           | A hint triggered by an icon tooltip to be displayed when hovering beside the element label.                                                       |
 | `minEntries`   | No       | `string` |           | Minimum number of files required                                                                                                                  |
 | `storageType`  | no       | `string` |           | How the files uploaded by a user will be stored: `private`, `public`, `legacy`                                                                    |
+| `hideImagePreview` | no | `boolean` | `false` | When `true`, show the file name instead of an image preview on the form, in submission views, and in the submission PDF. Form users can still remove, open, annotate, and crop the file. |
 | `defaultValue` | no       | `Array`  |           | An array of attachments, see [Example Submission Data](#example-submission-data) below for structure which is based on the `storageType` property |
 
 Files element also inherits the properties of the following:

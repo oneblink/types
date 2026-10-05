@@ -169,6 +169,16 @@ export type FormElementBinaryStorage = FormElementBase & {
   storageType?: 'public' | 'private'
 }
 
+export type FormElementHideImagePreview = {
+  /**
+   * When `true`, an uploaded image is shown as its file name instead of an
+   * image preview. This applies wherever the form data is viewed, including
+   * the form, the submission PDF, approvals, and submission menus. Form users
+   * can still remove, open, annotate, and crop the file.
+   */
+  hideImagePreview?: boolean
+}
+
 export type DynamicChoiceElementOptionAttribute = {
   /**
    * The label to display in the forms builder when selecting an element to
@@ -675,7 +685,8 @@ export type DrawElement = FormElementRequired &
  */
 export type CameraElement = FormElementRequired &
   FormElementReadOnly &
-  FormElementBinaryStorage & {
+  FormElementBinaryStorage &
+  FormElementHideImagePreview & {
     type: 'camera'
     defaultValue?: SubmissionTypes.FormSubmissionAttachment
     includeTimestampWatermark: boolean
@@ -846,7 +857,8 @@ export type CaptchaElement = FormElementRequired & {
  */
 export type FilesElement = FormElementBinaryStorage &
   LookupFormElement &
-  FormElementReadOnly & {
+  FormElementReadOnly &
+  FormElementHideImagePreview & {
     type: 'files'
     minEntries?: number
     maxEntries?: number
