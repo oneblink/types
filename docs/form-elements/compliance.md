@@ -16,6 +16,7 @@ Allow the user to select a single option from a list of options displayed as but
 | `required`     | Yes      | `boolean` | `false`        | Determine if this element requires an option to be selected (`true`) or not (`false`).      |
 | `readOnly`     | Yes      | `boolean` | `false`        | Determine if this selected option be changed by the user (`false`) or not (`true`).         |
 | `storageType`  | no       | `string`  |                | How the media uploaded by a user will be stored: `private`, `public`, `legacy`              |
+| `hideImagePreview` | no | `boolean` | `false` | When `true`, show the file name instead of an image preview for media on the form, in submission views, and in the submission PDF. Form users can still remove, open, annotate, and crop the file. |
 
 Compliance element also inherits the properties of the following:
 

@@ -419,7 +419,8 @@ export type AutoCompleteElement = FormElementWithOptionsBase & {
  * within the form definition.
  */
 export type ComplianceElement = FormElementWithOptionsBase &
-  FormElementBinaryStorage & {
+  FormElementBinaryStorage &
+  FormElementHideImagePreview & {
     type: 'compliance'
     /**
      * While this property is called `defaultValue`, it should actually be
