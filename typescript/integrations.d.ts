@@ -333,6 +333,19 @@ export type IntegrationSalesforce<S = SavedSecret> = IntegrationBase & {
   }
 }
 
+export type IntegrationLuminSignApiKey<S = SavedSecret> = {
+  id: string
+  label: string
+  apiKey: ConstrainedSecret<S>
+}
+
+export type IntegrationLuminSign<S = SavedSecret> = IntegrationBase & {
+  type: 'LUMIN_SIGN'
+  configuration: {
+    keys: IntegrationLuminSignApiKey<S>[]
+  }
+}
+
 export type DeleteIntegrationValidationResults = {
   forms: Array<{
     formId: number
@@ -372,4 +385,5 @@ export type Integration<S = SavedSecret> =
   | IntegrationGoodToGo<S>
   | IntegrationExcel<S>
   | IntegrationSalesforce<S>
+  | IntegrationLuminSign<S>
 export type IntegrationType = Integration['type']

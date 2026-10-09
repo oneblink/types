@@ -676,6 +676,110 @@ export type SalesforceCreateObjectRecordSubmissionEvent = FormEventBase & {
   }
 }
 
+export type LuminSignRequestSignatureValueMapping = FormElementMapping<
+  Record<string, never>
+>
+
+export type LuminSignRequestSignatureSignerConfiguration = {
+  /**
+   * The signer role name as defined on the selected Lumin Sign template. Must
+   * match a role returned by the Lumin template details endpoint.
+   */
+  signerRole: string
+  /** Mapping for the signer's display name sent to Lumin Sign. */
+  name: LuminSignRequestSignatureValueMapping
+  /** Mapping for the signer's email address sent to Lumin Sign. */
+  emailAddress: LuminSignRequestSignatureValueMapping
+}
+
+export type LuminSignTemplateMergeTagResourceDefinition = {
+  /**
+   * The merge tag name on the Sign template. Keys must match the Lumin `tags`
+   * object.
+   */
+  luminMergeTagName: string
+}
+
+export type LuminSignTemplateFieldResourceDefinition = {
+  /**
+   * The form field name on the template. Keys must match the Lumin `fields`
+   * object.
+   */
+  luminFieldName: string
+}
+
+export type LuminSignTemplateVariableResourceDefinition = {
+  /**
+   * The variable name on an AgreementGen template. Keys must match the Lumin
+   * `variables` object.
+   */
+  luminVariableName: string
+}
+
+export type LuminSignRequestSignatureMergeTagMapping =
+  FormElementMapping<LuminSignTemplateMergeTagResourceDefinition>
+
+export type LuminSignRequestSignatureFieldMapping =
+  FormElementMapping<LuminSignTemplateFieldResourceDefinition>
+
+export type LuminSignRequestSignatureVariableMapping =
+  FormElementMapping<LuminSignTemplateVariableResourceDefinition>
+
+export type LuminSignRequestSignatureLuminConfiguration = {
+  /** The Lumin Sign template used to create the signature request. */
+  template: {
+    /** The Lumin template id, including its prefix (e.g. `sign_`). */
+    id: string
+    /** The display name of the Lumin template. */
+    name: string
+  }
+  /**
+   * Signer configuration for each role defined on the Lumin template. The
+   * number of signers and signing order are inherited from the template.
+   */
+  signers: LuminSignRequestSignatureSignerConfiguration[]
+  /**
+   * Mapping for the signature request `title` sent to Lumin Sign (shown as
+   * agreement name in the console).
+   */
+  title: LuminSignRequestSignatureValueMapping
+  /**
+   * Mapping for when the signature request expires. Manual `VALUE` mappings
+   * should use an ISO 8601 datetime string. Converted to a Unix epoch timestamp
+   * in milliseconds when the signature request is sent.
+   */
+  expiresAt: LuminSignRequestSignatureValueMapping
+  /**
+   * Mapping for the signer email subject. Sent to Lumin Sign as
+   * `custom_email.subject_name`.
+   */
+  emailSubject?: LuminSignRequestSignatureValueMapping
+  /**
+   * Mapping for the signer email title (heading in the custom email). Sent to
+   * Lumin Sign as `custom_email.title`.
+   */
+  emailTitle?: LuminSignRequestSignatureValueMapping
+  /** Mappings from form data to merge tags on the Sign template (Lumin `tags`). */
+  mergeTagMapping?: LuminSignRequestSignatureMergeTagMapping[]
+  /** Mappings from form data to form fields on the template (Lumin `fields`). */
+  fieldMapping?: LuminSignRequestSignatureFieldMapping[]
+  /**
+   * Mappings from form data to variables on an AgreementGen template (Lumin
+   * `variables`).
+   */
+  variableMapping?: LuminSignRequestSignatureVariableMapping[]
+}
+
+export type LuminSignRequestSignatureSubmissionEvent = FormEventBase & {
+  type: 'LUMIN_SIGN_REQUEST_SIGNATURE'
+  configuration: {
+    /** The id of the OneBlink -> Lumin Sign integration API key to be used. */
+    integrationKeyId: string
+    /** Lumin Sign signature request settings sent to the Lumin API. */
+    lumin: LuminSignRequestSignatureLuminConfiguration
+  }
+}
+
 // EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
@@ -703,6 +807,7 @@ export type FormWorkflowEvent =
   | ExcelAddRowSubmissionEvent
   | Symphony3SmartGlueSubmissionEvent
   | SalesforceCreateObjectRecordSubmissionEvent
+  | LuminSignRequestSignatureSubmissionEvent
 
 export type FormEvent =
   | FormPaymentEvent
