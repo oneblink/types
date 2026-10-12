@@ -333,16 +333,18 @@ export type IntegrationSalesforce<S = SavedSecret> = IntegrationBase & {
   }
 }
 
-export type IntegrationLuminSignApiKey<S = SavedSecret> = {
+/** API key for the Lumin integration. */
+export type IntegrationLuminApiKey<S = SavedSecret> = {
   id: string
   label: string
   apiKey: ConstrainedSecret<S>
 }
 
-export type IntegrationLuminSign<S = SavedSecret> = IntegrationBase & {
-  type: 'LUMIN_SIGN'
+/** OneBlink integration with Lumin. */
+export type IntegrationLumin<S = SavedSecret> = IntegrationBase & {
+  type: 'LUMIN'
   configuration: {
-    keys: IntegrationLuminSignApiKey<S>[]
+    keys: IntegrationLuminApiKey<S>[]
   }
 }
 
@@ -385,5 +387,5 @@ export type Integration<S = SavedSecret> =
   | IntegrationGoodToGo<S>
   | IntegrationExcel<S>
   | IntegrationSalesforce<S>
-  | IntegrationLuminSign<S>
+  | IntegrationLumin<S>
 export type IntegrationType = Integration['type']
