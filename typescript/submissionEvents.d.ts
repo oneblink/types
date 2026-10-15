@@ -96,6 +96,19 @@ export type PdfSubmissionEventEmailTemplateMapping = {
        * `'FORM_ELEMENT'`.
        */
       formElementId: string
+      /**
+       * When `formElementId` references a repeatable set, controls how the
+       * mapped value is passed to the mustache template.
+       *
+       * - `'SUMMARY'` (default when omitted): HTML from the repeatable set
+       *   `entrySummary`.
+       * - `'RAW'`: the repeatable set submission value (an array of entry objects
+       *   keyed by child element `name`, as stored on `submission`) for section
+       *   tags such as `{{#custom:People}}` … `{{/custom:People}}`. Which
+       *   fields appear in the email is controlled by the template (for example
+       *   `{{Name}}` vs `{{Order}}`).
+       */
+      repeatableSetValue?: 'SUMMARY' | 'RAW'
     }
   | {
       /** Type of mapping */
