@@ -129,6 +129,11 @@ export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
 export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   /** Indicates if step has been skipped */
   isSkipped: boolean
+  /**
+   * When true, this step must not be used for group-based authorisation (e.g.
+   * administrative close/reopen overlays assigned to `oneblink:manager`).
+   */
+  excludeFromGroupAuthorisation?: boolean
 }
 
 type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode &
@@ -260,6 +265,11 @@ type BaseFormSubmissionApproval = {
   approvalFormSubmissionId?: string
   /** Prevent the payment on a clarification request */
   preventPayment?: boolean
+  /**
+   * When true, this approval must not be used for group-based authorisation
+   * (e.g. administrative close/reopen overlays).
+   */
+  excludeFromGroupAuthorisation?: boolean
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
