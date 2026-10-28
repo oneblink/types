@@ -55,6 +55,12 @@ export type NewOrganisation = {
   teamMemberMfaRequirement?: MfaRequirement
   workspaceOrdering?: number[]
   externalId?: string
+  /**
+   * Display name to be shown in multi-factor authentication apps
+   *
+   * If `undefined`, `name` will be used.
+   */
+  formsAppMfaDisplayName?: string
 }
 
 export type Organisation = NewOrganisation & {
