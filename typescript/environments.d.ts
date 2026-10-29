@@ -167,6 +167,12 @@ export type FormsAppEnvironmentConfigurationBase = WithOrganisationAssociation &
       formId: number
       days: number
     }>
+    /**
+     * Name shown in authenticator apps when app users set up multi-factor
+     * authentication. This is the account's `formsAppMfaDisplayName`, or the
+     * account name when that has not been set.
+     */
+    formsAppMfaDisplayName?: string
   }
 
 export type FormsAppEnvironmentConfiguration =
