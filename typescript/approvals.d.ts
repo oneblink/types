@@ -1,7 +1,7 @@
 import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
-import type { FormPaymentEvent } from './submissionEvents'
+import type { FormEventBase, FormPaymentEvent } from './submissionEvents'
 
 /** Container kinds that appear in {@link FormApprovalPrefillElementPath.containers}. */
 export type FormApprovalPrefillPathContainerKind = 'repeatableSet' | 'form'
@@ -127,6 +127,17 @@ export type ApprovalStepConditionalProps = {
 }
 
 /**
+ * A payment provider configuration for an approval step. Unlike a form payment
+ * event, it has no label, retry flag, or conditional execution. Those belong
+ * to the step.
+ */
+export type ApprovalStepPaymentEvent = FormPaymentEvent extends infer Event
+  ? Event extends FormPaymentEvent
+    ? Omit<Event, keyof FormEventBase>
+    : never
+  : never
+
+/**
  * A sequential step completed by a successful payment or an explicit skip. One
  * label, one approval group, and one payment configuration.
  */
@@ -137,7 +148,7 @@ export type FormApprovalStepPayment = {
   /** The group that will be assigned this payment step */
   group: string
   /** Payment configuration, snapshotted onto the flow instance */
-  paymentEvent: FormPaymentEvent
+  paymentEvent: ApprovalStepPaymentEvent
 } & ApprovalStepConditionalProps
 
 export type FormApprovalFlowNode = FormApprovalFlowNodeBase &
