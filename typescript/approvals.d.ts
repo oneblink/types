@@ -1,6 +1,7 @@
 import { MiscTypes } from '..'
 import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
+import type { FormPaymentEvent } from './submissionEvents'
 
 /** Container kinds that appear in {@link FormApprovalPrefillElementPath.containers}. */
 export type FormApprovalPrefillPathContainerKind = 'repeatableSet' | 'form'
@@ -85,6 +86,8 @@ export type FlowInstanceNodeMeta = {
   isConcurrentWithPrevious: boolean
   /** Node is concurrent with next node in flow */
   isConcurrentWithNext: boolean
+  /** True when this node is a payment step rather than an approval */
+  isPaymentStep?: boolean
 }
 
 export type ClarificationRequestEmailTemplateProps = {
@@ -107,24 +110,46 @@ export type FormApprovalStepStandard<T extends FormApprovalFlowNodeBase> = {
    * The type of the approval step. CONCURRENT steps have multiple groups
    * assigned that must be approved in parallel before the flow can move on to
    * the next step. STANDARD steps are single steps approved sequentially.
+   * PAYMENT steps are single steps completed by a successful payment or an
+   * explicit skip.
    */
   type?: 'STANDARD'
 } & T
 
-export type FormApprovalFlowNode = FormApprovalFlowNodeBase & {
+/** Conditional logic that can skip a standard, concurrent, or payment step. */
+export type ApprovalStepConditionalProps = {
   /** Indicates if step could be conditionally skipped */
   isConditional?: boolean
-  /** Indicates if all predicates need to met to determine if the step is skipped */
+  /** Indicates if all predicates need to be met to determine if the step is skipped */
   requiresAllConditionalPredicates?: boolean
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
 }
 
-export type FormApprovalFlowStep = ClarificationRequestEmailTemplateProps &
-  (
-    | FormApprovalStepConcurrent<FormApprovalFlowNode>
-    | FormApprovalStepStandard<FormApprovalFlowNode>
-  )
+/**
+ * A sequential step completed by a successful payment or an explicit skip. One
+ * label, one approval group, and one payment configuration.
+ */
+export type FormApprovalStepPayment = {
+  type: 'PAYMENT'
+  /** The unique label for the step */
+  label: string
+  /** The group that will be assigned this payment step */
+  group: string
+  /** Payment configuration, snapshotted onto the flow instance */
+  paymentEvent: FormPaymentEvent
+} & ApprovalStepConditionalProps
+
+export type FormApprovalFlowNode = FormApprovalFlowNodeBase &
+  ApprovalStepConditionalProps
+
+export type FormApprovalFlowStep =
+  | (ClarificationRequestEmailTemplateProps &
+      (
+        | FormApprovalStepConcurrent<FormApprovalFlowNode>
+        | FormApprovalStepStandard<FormApprovalFlowNode>
+      ))
+  | FormApprovalStepPayment
 
 export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   /** Indicates if step has been skipped */
@@ -136,7 +161,7 @@ export type FormApprovalFlowInstanceNode = FormApprovalFlowNodeBase & {
   excludeFromGroupAuthorisation?: boolean
 }
 
-type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode &
+export type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode &
   FlowInstanceNodeMeta
 
 /**
@@ -153,12 +178,23 @@ type FlowInstanceNodeWithMeta = FormApprovalFlowInstanceNode &
  * }
  * ```
  */
+export type FormApprovalFlowInstanceStepPayment = FormApprovalStepPayment & {
+  /** Indicates if step has been skipped */
+  isSkipped: boolean
+  /**
+   * When true, this step must not be used for group-based authorisation (e.g.
+   * administrative close/reopen overlays assigned to `oneblink:manager`).
+   */
+  excludeFromGroupAuthorisation?: boolean
+}
+
 export type FormApprovalFlowInstanceStep =
-  ClarificationRequestEmailTemplateProps &
-    (
-      | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
-      | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
-    )
+  | (ClarificationRequestEmailTemplateProps &
+      (
+        | FormApprovalStepConcurrent<FormApprovalFlowInstanceNode>
+        | FormApprovalStepStandard<FormApprovalFlowInstanceNode>
+      ))
+  | FormApprovalFlowInstanceStepPayment
 
 export type NewFormApprovalFlowInstance = {
   /** The unique identifier for the form that was submitted for approval */
@@ -270,6 +306,10 @@ type BaseFormSubmissionApproval = {
    * (e.g. administrative close/reopen overlays).
    */
   excludeFromGroupAuthorisation?: boolean
+  /** True when this approval was created for a payment step */
+  isPaymentStep?: boolean
+  /** True when the approver skipped the payment instead of taking it */
+  paymentSkipped?: boolean
 }
 
 export type NewFormSubmissionApproval = BaseFormSubmissionApproval & {
