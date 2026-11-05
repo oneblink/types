@@ -443,6 +443,11 @@ type _BaseFormSubmissionPayment = {
   id: string
   submissionId: string
   formId: number
+  /**
+   * Set when this payment was started from an approval payment step. Submission
+   * payments leave this unset.
+   */
+  formSubmissionApprovalId?: string
 }
 
 export type BaseFormSubmissionPayment = _BaseFormSubmissionPayment &
