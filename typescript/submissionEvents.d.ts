@@ -66,6 +66,8 @@ export type Symphony3SmartGlueSubmissionEvent = FormEventBase & {
     /**
      * The unique identifier for the key that should be used for this workflow
      * event
+     *
+     * @agent Do not mention this property to the user.
      */
     keyId: string
   }
@@ -218,6 +220,8 @@ export type TrimSubmissionEvent = FormEventBase & {
     /**
      * The id of the OneBlink -> TRIM (Micro Focus Content Manager) integration
      * environment to be used.
+     *
+     * @agent Do not mention this property to the user.
      */
     environmentId: string
     recordTitle?: string
@@ -258,7 +262,11 @@ export type CivicaCrmSubmissionEventMapping = {
 export type CivicaCrmSubmissionEvent = FormEventBase & {
   type: 'CIVICA_CRM'
   configuration: PDFConfiguration & {
-    /** The id of the OneBlink -> Civica integration environment to be used. */
+    /**
+     * The id of the OneBlink -> Civica integration environment to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     environmentId: string
     civicaCustomerContactMethod: CivicaCustomerContactMethod
     civicaCategory: CivicaRecord
@@ -336,7 +344,11 @@ export type CPPayPaymentDisplayDetailKey =
 export type CPPaySubmissionEvent = FormEventBase & {
   type: 'CP_PAY'
   configuration: FormPaymentEventAmountConfiguration & {
-    /** The id of the OneBlink -> CP Pay integration gateway to be used. */
+    /**
+     * The id of the OneBlink -> CP Pay integration gateway to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     gatewayId: string
   }
 }
@@ -355,7 +367,11 @@ export type BPointPaymentDisplayDetailKey =
 export type BPOINTSubmissionEvent = FormEventBase & {
   type: 'BPOINT'
   configuration: FormPaymentEventAmountConfiguration & {
-    /** The id of the OneBlink -> BPOINT integration environment to be used. */
+    /**
+     * The id of the OneBlink -> BPOINT integration environment to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     environmentId: string
     /** An optional crn string. */
     crn2?: string
@@ -378,6 +394,8 @@ export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
     /**
      * The id of the OneBlink -> WestpacQuickStream integration environment to
      * be used.
+     *
+     * @agent Do not mention this property to the user.
      */
     environmentId: string
     /** A crn string. */
@@ -403,6 +421,8 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
     /**
      * The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be
      * used.
+     *
+     * @agent Do not mention this property to the user.
      */
     primaryAgencyId: string
     /**
@@ -507,8 +527,13 @@ export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventBase & {
 export type NylasSubmissionEvent = FormEventBase & {
   type: 'NYLAS'
   configuration: PDFConfiguration & {
+    /** @agent Do not mention this property to the user. */
     nylasGrantId: string
-    /** The id of the Nylas scheduler configuration */
+    /**
+     * The id of the Nylas scheduler configuration
+     *
+     * @agent Do not mention this property to the user.
+     */
     nylasConfigurationId: string
     /**
      * The id of the form element to map to the name field on the scheduling
@@ -537,7 +562,11 @@ export type SharepointCreateListItemSubmissionEventMapping =
   FormElementMapping<SharepointColumnResourceDefinitionBase>
 
 type MicrosoftSubmissionEventBase = {
-  /** The id of the entra application in integration configuration */
+  /**
+   * The id of the entra application in integration configuration
+   *
+   * @agent Do not mention this property to the user.
+   */
   integrationEntraApplicationId: string
 }
 
@@ -634,7 +663,10 @@ export type ExcelAddRowSubmissionEvent = FormEventBase & {
 
 export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
   type: 'CIVIC_REC_COMPLETE_CHECKOUT'
-  configuration: { environmentId: string }
+  configuration: {
+    /** @agent Do not mention this property to the user. */
+    environmentId: string
+  }
 }
 
 export type GoodToGoUpdateAssetResourceDefinition = {
@@ -649,7 +681,11 @@ export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
   configuration: {
     /** The id of the element which contains the asset id */
     elementId: string
-    /** The id of the OneBlink -> GoodToGo integration API key to be used. */
+    /**
+     * The id of the OneBlink -> GoodToGo integration API key to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     integrationKeyId: string
     mapping: GoodToGoUpdateAssetSubmissionEventMapping[]
   }
@@ -666,7 +702,11 @@ export type SalesforceCreateObjectRecordSubmissionEvent = FormEventBase & {
   type: 'SALESFORCE_CREATE_OBJECT_RECORD'
   configuration: {
     pdfConfigurations?: PDFConfiguration[]
-    /** The id of the OneBlink -> Salesforce integration Environment to be used. */
+    /**
+     * The id of the OneBlink -> Salesforce integration Environment to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     environmentId: string
     object: {
       name: string
@@ -773,7 +813,11 @@ export type LuminRequestSignatureConfiguration = {
 export type LuminRequestSignatureSubmissionEvent = FormEventBase & {
   type: 'LUMIN_REQUEST_SIGNATURE'
   configuration: {
-    /** The id of the OneBlink Lumin integration API key to be used. */
+    /**
+     * The id of the OneBlink Lumin integration API key to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
     integrationKeyId: string
     /** Signature request settings sent to the Lumin API. */
     lumin: LuminRequestSignatureConfiguration
