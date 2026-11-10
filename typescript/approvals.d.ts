@@ -110,8 +110,8 @@ export type FormApprovalStepStandard<T extends FormApprovalFlowNodeBase> = {
    * The type of the approval step. CONCURRENT steps have multiple groups
    * assigned that must be approved in parallel before the flow can move on to
    * the next step. STANDARD steps are single steps approved sequentially.
-   * PAYMENT steps are single steps completed by a successful payment or an
-   * explicit skip.
+   * PAYMENT steps are single steps completed by a successful payment, an
+   * explicit skip, or a denial.
    */
   type?: 'STANDARD'
 } & T
@@ -138,8 +138,8 @@ export type ApprovalStepPaymentEvent = FormPaymentEvent extends infer Event
   : never
 
 /**
- * A sequential step completed by a successful payment or an explicit skip. One
- * label, one approval group, and one payment configuration.
+ * A sequential step completed by a successful payment, an explicit skip, or a
+ * denial. One label, one approval group, and one payment configuration.
  */
 export type FormApprovalStepPayment = {
   type: 'PAYMENT'
