@@ -1,830 +1,135 @@
-import type { ConditionalPredicate } from './conditions'
-import { DeveloperKeyReference } from './keys'
-import type {
-  EndpointConfiguration,
-  EndpointConfigurationAPI,
-  EndpointConfigurationCallback,
-  UserProfile,
-  WithCommonAssociations,
-} from './misc'
-import { FormSubmissionPDFPageSize } from './pdf'
+// Event declarations live in ./submission-events so a prompt can include only
+// the files for the event types a tenant supports. This module re-exports every
+// declaration and the full unions.
+export type {
+  FormEventConditional,
+  FormEventBase,
+  ApprovalFormsInclusionConfiguration,
+  PdfSubmissionEventEmailTemplateMapping,
+  PDFConfiguration,
+  EmailConfiguration,
+} from './submission-events/common'
+export type { FormPaymentEventAmountConfiguration } from './submission-events/payment-amount'
+export type { CallbackSubmissionEvent } from './submission-events/callback'
+export type { PowerAutomateFlowSubmissionEvent } from './submission-events/power-automate-flow'
+export type { Symphony3SmartGlueSubmissionEvent } from './submission-events/symphony-3-smart-glue'
+export type { CPIntegrationHubWebhookSubmissionEvent } from './submission-events/cp-integration-hub-webhook'
+export type { PdfSubmissionEvent } from './submission-events/pdf'
+export type {
+  EmailSubmissionEvent,
+  EmailOnlySubmissionEvent,
+} from './submission-events/email'
+export type { OneBlinkAPISubmissionEvent } from './submission-events/oneblink-api'
+export type {
+  TrimUriOption,
+  TrimSubmissionEvent,
+} from './submission-events/trim'
+export type {
+  CivicaRecord,
+  CivicaCustomerContactMethod,
+  CivicaCrmSubmissionEventMapping,
+  CivicaCrmSubmissionEvent,
+} from './submission-events/civica-crm'
+export type { CPHCMSSubmissionEvent } from './submission-events/cp-hcms'
+export type {
+  CPPayPaymentDisplayDetailKey,
+  CPPaySubmissionEvent,
+} from './submission-events/cp-pay'
+export type {
+  BPointPaymentDisplayDetailKey,
+  BPOINTSubmissionEvent,
+} from './submission-events/bpoint'
+export type {
+  WestpacQuickStreamPaymentDisplayDetailKey,
+  WestpacQuickStreamSubmissionEvent,
+} from './submission-events/westpac-quick-stream'
+export type {
+  NSWGovPayPaymentDisplayDetailKey,
+  NSWGovPaySubmissionEvent,
+} from './submission-events/nsw-gov-pay'
+export type { PaymentDisplayDetailKey } from './submission-events/payment-display-detail-key'
+export type { FormElementMapping } from './submission-events/form-element-mapping'
+export type {
+  BaseFreshdeskSubmissionEventFieldMapping,
+  FreshdeskSubmissionEventFieldMapping,
+  FreshdeskCreateTicketSubmissionEvent,
+} from './submission-events/freshdesk-create-ticket'
+export type { FreshdeskAddNoteToTicketSubmissionEvent } from './submission-events/freshdesk-add-note-to-ticket'
+export type {
+  MicrosoftSubmissionEventBase,
+  SharepointSubmissionEventBase,
+} from './submission-events/microsoft'
+export type { NylasSubmissionEvent } from './submission-events/nylas'
+export type {
+  SharepointColumnResourceDefinitionBase,
+  SharepointCreateListItemSubmissionEventMapping,
+  SharepointCreateListItemSubmissionEvent,
+} from './submission-events/sharepoint-create-list-item'
+export type { SharepointStoreFilesSubmissionEvent } from './submission-events/sharepoint-store-files'
+export type {
+  ExcelFileColumnResourceDefinitionBase,
+  ExcelAddRowSubmissionEventMapping,
+  ExcelAddRowSubmissionEvent,
+} from './submission-events/excel-add-row'
+export type { CivicRecCompleteCheckoutSubmissionEvent } from './submission-events/civic-rec-complete-checkout'
+export type {
+  GoodToGoUpdateAssetResourceDefinition,
+  GoodToGoUpdateAssetSubmissionEventMapping,
+  GoodToGoUpdateAssetSubmissionEvent,
+} from './submission-events/good-to-go-update-asset'
+export type {
+  SalesforceObjectRecordFieldResourceDefinition,
+  SalesforceCreateObjectRecordSubmissionEventMapping,
+  SalesforceCreateObjectRecordSubmissionEvent,
+} from './submission-events/salesforce-create-object-record'
+export type {
+  LuminRequestSignatureValueMapping,
+  LuminRequestSignatureSignerConfiguration,
+  LuminTemplateMergeTagResourceDefinition,
+  LuminTemplateFieldResourceDefinition,
+  LuminTemplateVariableResourceDefinition,
+  LuminRequestSignatureMergeTagMapping,
+  LuminRequestSignatureFieldMapping,
+  LuminRequestSignatureVariableMapping,
+  LuminRequestSignatureConfiguration,
+  LuminRequestSignatureSubmissionEvent,
+} from './submission-events/lumin-request-signature'
+export type {
+  NewWebhookSubscription,
+  WebhookSubscription,
+  S3SubmissionTags,
+  BaseFormSubmissionProcessing,
+  FormSubmissionProcessingEvent,
+  FormSubmissionProcessingFormStore,
+  FormSubmissionProcessing,
+  WebhookSubmissionEventPayload,
+} from './submission-events/processing'
 
-export type FormEventConditional = {
-  /** Whether the submission event should be conditionally executed. */
-  conditionallyExecute?: boolean
-  /**
-   * Whether the conditional execution requires all predicates to be true as
-   * opposed to one.
-   */
-  requiresAllConditionallyExecutePredicates?: boolean
-  /** Array of the conditional predicates. */
-  conditionallyExecutePredicates?: ConditionalPredicate[]
-}
+import type { BPOINTSubmissionEvent } from './submission-events/bpoint'
+import type { CallbackSubmissionEvent } from './submission-events/callback'
+import type { CivicRecCompleteCheckoutSubmissionEvent } from './submission-events/civic-rec-complete-checkout'
+import type { CivicaCrmSubmissionEvent } from './submission-events/civica-crm'
+import type { CPIntegrationHubWebhookSubmissionEvent } from './submission-events/cp-integration-hub-webhook'
+import type { CPHCMSSubmissionEvent } from './submission-events/cp-hcms'
+import type { CPPaySubmissionEvent } from './submission-events/cp-pay'
+import type { EmailOnlySubmissionEvent } from './submission-events/email'
+import type { ExcelAddRowSubmissionEvent } from './submission-events/excel-add-row'
+import type { FreshdeskAddNoteToTicketSubmissionEvent } from './submission-events/freshdesk-add-note-to-ticket'
+import type { FreshdeskCreateTicketSubmissionEvent } from './submission-events/freshdesk-create-ticket'
+import type { GoodToGoUpdateAssetSubmissionEvent } from './submission-events/good-to-go-update-asset'
+import type { LuminRequestSignatureSubmissionEvent } from './submission-events/lumin-request-signature'
+import type { NSWGovPaySubmissionEvent } from './submission-events/nsw-gov-pay'
+import type { NylasSubmissionEvent } from './submission-events/nylas'
+import type { OneBlinkAPISubmissionEvent } from './submission-events/oneblink-api'
+import type { PdfSubmissionEvent } from './submission-events/pdf'
+import type { PowerAutomateFlowSubmissionEvent } from './submission-events/power-automate-flow'
+import type { SalesforceCreateObjectRecordSubmissionEvent } from './submission-events/salesforce-create-object-record'
+import type { SharepointCreateListItemSubmissionEvent } from './submission-events/sharepoint-create-list-item'
+import type { SharepointStoreFilesSubmissionEvent } from './submission-events/sharepoint-store-files'
+import type { Symphony3SmartGlueSubmissionEvent } from './submission-events/symphony-3-smart-glue'
+import type { TrimSubmissionEvent } from './submission-events/trim'
+import type { WestpacQuickStreamSubmissionEvent } from './submission-events/westpac-quick-stream'
 
-export type FormEventBase = FormEventConditional & {
-  /** A label to identify the event. */
-  label?: string
-  /**
-   * Whether the event can be retried automatically after a failure that was
-   * deemed to be the customers fault.
-   */
-  isRetryable?: boolean
-}
-
-export type ApprovalFormsInclusionConfiguration = {
-  approvalFormsInclusion?:
-    | {
-        value: 'ALL'
-      }
-    | {
-        value: 'PARTIAL'
-        approvalStepLabels: string[]
-      }
-}
-
-export type CallbackSubmissionEvent = FormEventBase &
-  EndpointConfigurationCallback
-
-export type PowerAutomateFlowSubmissionEvent = FormEventBase & {
-  type: 'POWER_AUTOMATE_FLOW'
-  configuration: {
-    /** URL that the callback is made to. */
-    url: string
-    /**
-     * The unique identifier for the form that should trigger this workflow
-     * event
-     */
-    formId?: number
-  }
-}
-
-export type Symphony3SmartGlueSubmissionEvent = FormEventBase & {
-  type: 'SYMPHONY_3_SMART_GLUE'
-  configuration: {
-    /** URL that the callback is made to. */
-    url: string
-    /**
-     * The unique identifier for the key that should be used for this workflow
-     * event
-     *
-     * @agent Do not mention this property to the user.
-     */
-    keyId: string
-  }
-}
-
-export type CPIntegrationHubWebhookSubmissionEvent = FormEventBase & {
-  type: 'CP_INTEGRATION_HUB_WEBHOOK'
-  configuration: {
-    /** URL that the callback is made to. */
-    url: string
-    /**
-     * The unique identifier for the form that should trigger this workflow
-     * event
-     */
-    formId?: number
-  }
-}
-
-export type PdfSubmissionEventEmailTemplateMapping = {
-  /** The mustache tag to replace in the email template. */
-  mustacheTag: string
-} & (
-  | {
-      /** Type of mapping */
-      type: 'FORM_ELEMENT'
-      /**
-       * The value from the form submission for a form element if type is
-       * `'FORM_ELEMENT'`.
-       */
-      formElementId: string
-    }
-  | {
-      /** Type of mapping */
-      type: 'TEXT'
-      /** The free text to insert if type is */
-      text: string
-    }
-)
-
-export type PDFConfiguration = ApprovalFormsInclusionConfiguration & {
-  /** The name of the PDF file sent to the configured email address. */
-  pdfFileName?: string
-  /**
-   * Whether the submission id should be included in the generated pdf (defaults
-   * to `false`).
-   */
-  includeSubmissionIdInPdf?: boolean
-  /**
-   * Whether the payment details associated with the submission should be
-   * included in the generated pdf (defaults to `false`).
-   */
-  includePaymentInPdf?: boolean
-  /**
-   * Whether the calendar booking details associated with the submission should
-   * be included in the generated pdf (defaults to `false`)
-   */
-  includeCalendarBookingInPdf?: boolean
-  /** An array of element ids to exclude from the submission when generating pdf. */
-  excludedElementIds?: string[]
-  /** An array of class names to exclude from the submission when generating pdf. */
-  excludedCSSClasses?: string[]
-  /**
-   * Whether pages in the form submission should translate to page breaks in the
-   * PDF.
-   */
-  usePagesAsBreaks?: boolean
-  /**
-   * Whether the external id should be included in the generated pdf (defaults
-   * to `false`).
-   */
-  includeExternalIdInPdf?: boolean
-  /** The page size of the Generated PDF. */
-  pdfSize?: FormSubmissionPDFPageSize
-  /** Whether the generated pdf should be combined with the pdf attachments. */
-  combineWithPdfAttachments?: boolean
-  /** The identifier for a Custom PDF. */
-  customPdfId?: string
-  /**
-   * Whether the Custom PDF will be editable after being generated (defaults to
-   * false)
-   */
-  isCustomPdfEditable?: boolean
-}
-
-export type EmailConfiguration = ApprovalFormsInclusionConfiguration & {
-  /** @deprecated: use toEmail instead */
-  email?: string
-  /**
-   * The to: email addresses in which a PDF copy of the form submission will be
-   * sent.
-   */
-  toEmail?: string[]
-  /**
-   * The cc: email addresses in which a PDF copy of the form submission will be
-   * sent.
-   */
-  ccEmail?: string[]
-  /**
-   * The bcc: email addresses in which a PDF copy of the form submission will be
-   * sent.
-   */
-  bccEmail?: string[]
-  /** The subject line of the email sent to the configured email address. */
-  emailSubjectLine?: string
-  /** A reference to a custom template for the email body. */
-  emailTemplate?: {
-    /** The `id` of the `emailTemplate`. */
-    id: number
-    /** The mappings required from the email template. */
-    mapping: Array<PdfSubmissionEventEmailTemplateMapping>
-  }
-  /** Endpoint configuration for adding custom attachments to the email. */
-  emailAttachmentsEndpoint?: EndpointConfiguration
-  /** An array of element ids to exclude from the email when adding attachments. */
-  excludedAttachmentElementIds?: string[]
-}
-
-/**
- * @deprecated Use the `EmailSubmissionEvent` instead with the
- *   `pdfConfigurations` property set.
- */
-export type PdfSubmissionEvent = FormEventBase & {
-  type: 'PDF'
-  configuration: PDFConfiguration & EmailConfiguration
-}
-
-export type EmailSubmissionEvent = FormEventBase & {
-  type: 'EMAIL'
-  configuration: EmailConfiguration & {
-    pdfConfigurations?: PDFConfiguration[]
-  }
-}
-
-/** @deprecated Use the `EmailSubmissionEvent` type instead. */
-export type EmailOnlySubmissionEvent = EmailSubmissionEvent
-
-export type OneBlinkAPISubmissionEvent = FormEventBase &
-  EndpointConfigurationAPI
-
-export type TrimUriOption = {
-  /** The attribute label. */
-  label: string
-  /** The attribute uri. */
-  uri: number
-}
-
-export type TrimSubmissionEvent = FormEventBase & {
-  type: 'TRIM'
-  configuration: PDFConfiguration & {
-    /**
-     * The id of the OneBlink -> TRIM (Micro Focus Content Manager) integration
-     * environment to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    environmentId: string
-    recordTitle?: string
-    /** The container object. Contains the container properties. */
-    container: TrimUriOption
-    /** The recordType object. Contains the recordType properties. */
-    recordType: TrimUriOption
-    /** The actionDefinition object. Contains the actionDefinition properties. */
-    actionDefinition?: TrimUriOption
-    /** The location object. Contains the location properties. */
-    location?: TrimUriOption
-    /** The author object. Contains the author properties. */
-    author?: TrimUriOption
-    /**
-     * Whether the submission pdf and attachments should be zipped before
-     * uploading (defaults to `false`).
-     */
-    groupFiles?: boolean
-  }
-}
-
-export type CivicaRecord = {
-  id: number
-  label: string
-}
-export type CivicaCustomerContactMethod = {
-  code: string
-  description: string
-}
-
-export type CivicaCrmSubmissionEventMapping = {
-  isDescription: boolean
-  /** The item number of the civica category to map the OB form field to. */
-  civicaCategoryItemNumber: number
-  /** The elementId of the field to map to the civica category. */
-  formElementId: string
-}
-export type CivicaCrmSubmissionEvent = FormEventBase & {
-  type: 'CIVICA_CRM'
-  configuration: PDFConfiguration & {
-    /**
-     * The id of the OneBlink -> Civica integration environment to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    environmentId: string
-    civicaCustomerContactMethod: CivicaCustomerContactMethod
-    civicaCategory: CivicaRecord
-    /** An array containing mapping information. */
-    mapping: CivicaCrmSubmissionEventMapping[]
-  }
-}
-
-export type CPHCMSSubmissionEvent = FormEventBase & {
-  type: 'CP_HCMS'
-  configuration: PDFConfiguration & {
-    /** The content type name for the submission in the CivicPlus HCMS. */
-    contentTypeName: string
-    /**
-     * The optional notificationElementId that holds the value which determines
-     * whether to send a notification or not. Must be the id of a `boolean` form
-     * element.
-     */
-    notificationElementId?: string
-    /** An array of element ids to be set as encrypted in the CivicPlus HCMS. */
-    encryptedElementIds?: string[]
-    /** Whether the generated pdf file should be encrypted. (defaults to `false`) */
-    encryptPdf?: boolean
-    /** Tags that should be added to the content created in the CivicPlus HCMS. */
-    tags?: string[]
-    /**
-     * The categories that should be added to the content created in the
-     * CivicPlus HCMS.
-     */
-    categories?: Array<{
-      id: string
-      name: string
-    }>
-  }
-}
-
-/**
- * Determines the amount to be paid for a payment event. Exactly one of
- * `elementId`, `paymentAmount`, or `paymentCalculation` must be provided.
- */
-export type FormPaymentEventAmountConfiguration =
-  | {
-      /** Amount is taken from a form element value. */
-      amountType?: 'FORM_ELEMENT'
-      /**
-       * The elementId that holds the value that will be paid. Must be the id of
-       * a number or calculation element.
-       */
-      elementId: string
-    }
-  | {
-      /** Amount is a fixed number. */
-      amountType: 'NUMBER'
-      /** A fixed amount that will be paid. */
-      paymentAmount: number
-    }
-  | {
-      /** Amount is calculated from an expression. */
-      amountType: 'EXPRESSION'
-      /**
-       * The calculation algorithm that must return a number. Supports the same
-       * syntax as calculation form elements.
-       */
-      paymentCalculation: string
-    }
-
-export type CPPayPaymentDisplayDetailKey =
-  | 'CP_PAY_TRANSACTION_ID'
-  | 'CP_PAY_ORDER_NUMBER'
-  | 'CP_PAY_PAYMENT_TYPE'
-  | 'CP_PAY_CREDIT_CARD_MASK'
-  | 'CP_PAY_AMOUNT'
-  | 'CP_PAY_CREATED_DATE_TIME'
-
-export type CPPaySubmissionEvent = FormEventBase & {
-  type: 'CP_PAY'
-  configuration: FormPaymentEventAmountConfiguration & {
-    /**
-     * The id of the OneBlink -> CP Pay integration gateway to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    gatewayId: string
-  }
-}
-
-export type BPointPaymentDisplayDetailKey =
-  | 'BPOINT_RECEIPT_NUMBER'
-  | 'BPOINT_CRN1'
-  | 'BPOINT_CRN2'
-  | 'BPOINT_CRN3'
-  | 'BPOINT_BILLER_CODE'
-  | 'BPOINT_CREDIT_CARD_MASK'
-  | 'BPOINT_AMOUNT'
-  | 'BPOINT_SURCHARGE_AMOUNT'
-  | 'BPOINT_PROCESSED_DATE_TIME'
-
-export type BPOINTSubmissionEvent = FormEventBase & {
-  type: 'BPOINT'
-  configuration: FormPaymentEventAmountConfiguration & {
-    /**
-     * The id of the OneBlink -> BPOINT integration environment to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    environmentId: string
-    /** An optional crn string. */
-    crn2?: string
-    /** An optional crn string. */
-    crn3?: string
-  }
-}
-
-export type WestpacQuickStreamPaymentDisplayDetailKey =
-  | 'WESTPAC_QUICK_STREAM_RECEIPT_NUMBER'
-  | 'WESTPAC_QUICK_STREAM_PAYMENT_REFERENCE_NUMBER'
-  | 'WESTPAC_QUICK_STREAM_CUSTOMER_REFERENCE_NUMBER'
-  | 'WESTPAC_QUICK_STREAM_AMOUNT'
-  | 'WESTPAC_QUICK_STREAM_SURCHARGE_AMOUNT'
-  | 'WESTPAC_QUICK_STREAM_SETTLEMENT_DATE'
-
-export type WestpacQuickStreamSubmissionEvent = FormEventBase & {
-  type: 'WESTPAC_QUICK_STREAM'
-  configuration: FormPaymentEventAmountConfiguration & {
-    /**
-     * The id of the OneBlink -> WestpacQuickStream integration environment to
-     * be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    environmentId: string
-    /** A crn string. */
-    customerReferenceNumber: string
-  }
-}
-
-export type NSWGovPayPaymentDisplayDetailKey =
-  | 'NSW_GOV_PAY_COMPLETION_REFERENCE'
-  | 'NSW_GOV_PAY_PAYMENT_REFERENCE'
-  | 'NSW_GOV_PAY_BANK_REFERENCE'
-  | 'NSW_GOV_PAY_PAYMENT_METHOD'
-  | 'NSW_GOV_PAY_BPAY_BILLER_CODE'
-  | 'NSW_GOV_PAY_CREDIT_CARD_NUMBER'
-  | 'NSW_GOV_PAY_AMOUNT'
-  | 'NSW_GOV_PAY_SURCHARGE_AMOUNT'
-  | 'NSW_GOV_PAY_SURCHARGE_GST'
-  | 'NSW_GOV_PAY_CREATED_DATE_TIME'
-
-export type NSWGovPaySubmissionEvent = FormEventBase & {
-  type: 'NSW_GOV_PAY'
-  configuration: FormPaymentEventAmountConfiguration & {
-    /**
-     * The id of the OneBlink -> NSW_GOV_PAY integration primary agency to be
-     * used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    primaryAgencyId: string
-    /**
-     * Used to describe the product the customer is purchasing. Passed on NSW
-     * GovPay during the request payment process
-     */
-    productDescription: string
-    /**
-     * An optional customer reference that will be passed on NSW GovPay during
-     * the request payment process
-     */
-    customerReference?: string
-    /**
-     * A optional sub agency code that will ensure the payment goes to the
-     * correct agency within NSW GovPay
-     */
-    subAgencyCode?: string
-  }
-}
-
-export type PaymentDisplayDetailKey =
-  | NSWGovPayPaymentDisplayDetailKey
-  | BPointPaymentDisplayDetailKey
-  | CPPayPaymentDisplayDetailKey
-  | WestpacQuickStreamPaymentDisplayDetailKey
-
-export type FormElementMapping<T> = T &
-  (
-    | {
-        type: 'FORM_FORM_ELEMENT'
-        formElementId: string
-        mapping: FormElementMapping<T>
-      }
-    | {
-        type: 'REPEATABLE_SET_FORM_ELEMENT'
-        formElementId: string
-        mapping: FormElementMapping<T>
-        /**
-         * The number of the entry in the repeatable set. Starts at 1 for the
-         * first entry.
-         */
-        entryNumber: number
-      }
-    | {
-        type: 'FORM_ELEMENT'
-        formElementId: string
-      }
-    | {
-        type: 'VALUE'
-        value: number | string | boolean | string[]
-      }
-    | {
-        type: 'SUBMISSION_ID'
-      }
-    | {
-        type: 'EXTERNAL_ID'
-      }
-    | {
-        type: 'SUBMISSION_TIMESTAMP'
-      }
-    | {
-        type: 'COMPLETION_TIMESTAMP'
-      }
-    | {
-        type: 'PAYMENT_DETAIL'
-        key: PaymentDisplayDetailKey
-      }
-  )
-
-type BaseFreshdeskSubmissionEventFieldMapping = {
-  freshdeskFieldName: string
-}
-
-export type FreshdeskSubmissionEventFieldMapping =
-  | FormElementMapping<BaseFreshdeskSubmissionEventFieldMapping>
-  | (BaseFreshdeskSubmissionEventFieldMapping & {
-      type: 'DEPENDENT_FIELD_VALUE'
-      dependentFieldValue: {
-        category: string
-        subCategory: string
-        item: string
-      }
-    })
-
-export type FreshdeskCreateTicketSubmissionEvent = FormEventBase & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_CREATE_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: ApprovalFormsInclusionConfiguration & {
-    /** Array of freshdesk field mappings. */
-    mapping: FreshdeskSubmissionEventFieldMapping[]
-  }
-}
-
-export type FreshdeskAddNoteToTicketSubmissionEvent = FormEventBase & {
-  /** The type of submission event. */
-  type: 'FRESHDESK_ADD_NOTE_TO_TICKET'
-  /** Configuration specific to the type of submission event. */
-  configuration: ApprovalFormsInclusionConfiguration
-}
-
-export type NylasSubmissionEvent = FormEventBase & {
-  type: 'NYLAS'
-  configuration: PDFConfiguration & {
-    /** @agent Do not mention this property to the user. */
-    nylasGrantId: string
-    /**
-     * The id of the Nylas scheduler configuration
-     *
-     * @agent Do not mention this property to the user.
-     */
-    nylasConfigurationId: string
-    /**
-     * The id of the form element to map to the name field on the scheduling
-     * page. Must be a text element.
-     */
-    nameElementId?: string
-    /**
-     * The id of the form element to map to the email field on the scheduling
-     * page. Must be an email element.
-     */
-    emailElementId?: string
-    /** An optional extra description to be included in the email. */
-    emailDescription?: string
-  }
-}
-
-export type SharepointColumnResourceDefinitionBase = {
-  /**
-   * The API-facing name of the column. Use this in the `fields` property when
-   * creating the list item.
-   */
-  sharepointColumnDefinitionName: string
-}
-
-export type SharepointCreateListItemSubmissionEventMapping =
-  FormElementMapping<SharepointColumnResourceDefinitionBase>
-
-type MicrosoftSubmissionEventBase = {
-  /**
-   * The id of the entra application in integration configuration
-   *
-   * @agent Do not mention this property to the user.
-   */
-  integrationEntraApplicationId: string
-}
-
-type SharepointSubmissionEventBase = MicrosoftSubmissionEventBase & {
-  /** The Sharepoint Site */
-  sharepointSite: {
-    /** The id of the Sharepoint Site */
-    id: string
-    /** The display name of the Sharepoint Site */
-    displayName: string
-  }
-}
-
-export type SharepointCreateListItemSubmissionEvent = FormEventBase & {
-  type: 'SHAREPOINT_CREATE_LIST_ITEM'
-  configuration: SharepointSubmissionEventBase & {
-    /** The Sharepoint List */
-    sharepointList: {
-      /** The id of the Sharepoint List */
-      id: string
-      /** The display name of the Sharepoint List */
-      displayName: string
-    }
-    /** Array of mappings. */
-    mapping: SharepointCreateListItemSubmissionEventMapping[]
-  }
-}
-
-export type SharepointStoreFilesSubmissionEvent = FormEventBase & {
-  type: 'SHAREPOINT_STORE_FILES'
-  configuration: PDFConfiguration &
-    SharepointSubmissionEventBase & {
-      sharepointDrive: {
-        /** The id of the Sharepoint Drive */
-        id: string
-        /** The display name of the Sharepoint Drive */
-        displayName: string
-      }
-      /**
-       * The folder within the selected drive to upload files to. If not
-       * specified the root of the drive will be used. If the folder does not
-       * exist it will be created as part of the upload. Path must begin with a
-       * forward slash and not end with a forward slash e.g.
-       * "/forms/1/submissions"
-       */
-      folderPath?: string
-      /**
-       * Set to `true` to prevent all form submission attachments from being
-       * uploaded to SharePoint.
-       */
-      excludeAttachments: boolean
-    }
-}
-
-export type ExcelFileColumnResourceDefinitionBase = {
-  /** The name of the column */
-  columnName: string
-}
-
-export type ExcelAddRowSubmissionEventMapping =
-  FormElementMapping<ExcelFileColumnResourceDefinitionBase>
-
-export type ExcelAddRowSubmissionEvent = FormEventBase & {
-  type: 'EXCEL_ADD_ROW'
-  configuration: MicrosoftSubmissionEventBase & {
-    site: {
-      /** The id of the Microsoft Site */
-      id: string
-      /** The display name of the Microsoft Site */
-      displayName: string
-    }
-    drive: {
-      /** The id of the Microsoft Drive */
-      id: string
-      /** The display name of the Microsoft Drive */
-      displayName: string
-    }
-    excelFile: {
-      /* the id of the excel file */
-      id: string
-      /* the name of the excel file */
-      displayName: string
-    }
-    table: {
-      /* the id of the table */
-      id: string
-      /* the name of the table */
-      displayName: string
-    }
-    /** Array of mappings. */
-    mapping: ExcelAddRowSubmissionEventMapping[]
-  }
-}
-
-export type CivicRecCompleteCheckoutSubmissionEvent = FormEventBase & {
-  type: 'CIVIC_REC_COMPLETE_CHECKOUT'
-  configuration: {
-    /** @agent Do not mention this property to the user. */
-    environmentId: string
-  }
-}
-
-export type GoodToGoUpdateAssetResourceDefinition = {
-  goodToGoCustomFieldName: string
-}
-
-export type GoodToGoUpdateAssetSubmissionEventMapping =
-  FormElementMapping<GoodToGoUpdateAssetResourceDefinition>
-
-export type GoodToGoUpdateAssetSubmissionEvent = FormEventBase & {
-  type: 'GOOD_TO_GO_UPDATE_ASSET'
-  configuration: {
-    /** The id of the element which contains the asset id */
-    elementId: string
-    /**
-     * The id of the OneBlink -> GoodToGo integration API key to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    integrationKeyId: string
-    mapping: GoodToGoUpdateAssetSubmissionEventMapping[]
-  }
-}
-
-export type SalesforceObjectRecordFieldResourceDefinition = {
-  salesforceObjectRecordFieldName: string
-}
-
-export type SalesforceCreateObjectRecordSubmissionEventMapping =
-  FormElementMapping<SalesforceObjectRecordFieldResourceDefinition>
-
-export type SalesforceCreateObjectRecordSubmissionEvent = FormEventBase & {
-  type: 'SALESFORCE_CREATE_OBJECT_RECORD'
-  configuration: {
-    pdfConfigurations?: PDFConfiguration[]
-    /**
-     * The id of the OneBlink -> Salesforce integration Environment to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    environmentId: string
-    object: {
-      name: string
-      label: string
-    }
-    mapping: SalesforceCreateObjectRecordSubmissionEventMapping[]
-  }
-}
-
-export type LuminRequestSignatureValueMapping = FormElementMapping<
-  Record<string, never>
->
-
-export type LuminRequestSignatureSignerConfiguration = {
-  /**
-   * The signer role name as defined on the selected Lumin template. Must match
-   * a role returned by the Lumin template details endpoint.
-   */
-  signerRole: string
-  /** Mapping for the signer's display name sent to Lumin. */
-  name: LuminRequestSignatureValueMapping
-  /** Mapping for the signer's email address sent to Lumin. */
-  emailAddress: LuminRequestSignatureValueMapping
-}
-
-export type LuminTemplateMergeTagResourceDefinition = {
-  /**
-   * The merge tag name on the Lumin template. Keys must match the Lumin `tags`
-   * object.
-   */
-  luminMergeTagName: string
-}
-
-export type LuminTemplateFieldResourceDefinition = {
-  /**
-   * The form field name on the template. Keys must match the Lumin `fields`
-   * object.
-   */
-  luminFieldName: string
-}
-
-export type LuminTemplateVariableResourceDefinition = {
-  /**
-   * The variable name on an AgreementGen template. Keys must match the Lumin
-   * `variables` object.
-   */
-  luminVariableName: string
-}
-
-export type LuminRequestSignatureMergeTagMapping =
-  FormElementMapping<LuminTemplateMergeTagResourceDefinition>
-
-export type LuminRequestSignatureFieldMapping =
-  FormElementMapping<LuminTemplateFieldResourceDefinition>
-
-export type LuminRequestSignatureVariableMapping =
-  FormElementMapping<LuminTemplateVariableResourceDefinition>
-
-export type LuminRequestSignatureConfiguration = {
-  /** The Lumin template used to create the signature request. */
-  template: {
-    /** The Lumin template id, including its prefix (e.g. `sign_`). */
-    id: string
-    /** The display name of the Lumin template. */
-    name: string
-  }
-  /**
-   * Signer configuration for each role defined on the Lumin template. The
-   * number of signers and signing order are inherited from the template.
-   */
-  signers: LuminRequestSignatureSignerConfiguration[]
-  /**
-   * Mapping for the signature request `title` sent to Lumin (shown as agreement
-   * name in the console).
-   */
-  title: LuminRequestSignatureValueMapping
-  /**
-   * Mapping for when the signature request expires. Manual `VALUE` mappings
-   * should use an ISO 8601 datetime string. Converted to a Unix epoch timestamp
-   * in milliseconds when the signature request is sent.
-   */
-  expiresAt: LuminRequestSignatureValueMapping
-  /**
-   * Mapping for the signer email subject. Sent to Lumin as
-   * `custom_email.subject_name`.
-   */
-  emailSubject?: LuminRequestSignatureValueMapping
-  /**
-   * Mapping for the signer email title (heading in the custom email). Sent to
-   * Lumin as `custom_email.title`.
-   */
-  emailTitle?: LuminRequestSignatureValueMapping
-  /** Mappings from form data to merge tags on the Lumin template (`tags`). */
-  mergeTagMapping?: LuminRequestSignatureMergeTagMapping[]
-  /** Mappings from form data to form fields on the template (Lumin `fields`). */
-  fieldMapping?: LuminRequestSignatureFieldMapping[]
-  /**
-   * Mappings from form data to variables on an AgreementGen template (Lumin
-   * `variables`).
-   */
-  variableMapping?: LuminRequestSignatureVariableMapping[]
-}
-
-export type LuminRequestSignatureSubmissionEvent = FormEventBase & {
-  type: 'LUMIN_REQUEST_SIGNATURE'
-  configuration: {
-    /**
-     * The id of the OneBlink Lumin integration API key to be used.
-     *
-     * @agent Do not mention this property to the user.
-     */
-    integrationKeyId: string
-    /** Signature request settings sent to the Lumin API. */
-    lumin: LuminRequestSignatureConfiguration
-  }
-}
-
-// EVENTS
 export type FormPaymentEvent =
   | CPPaySubmissionEvent
   | BPOINTSubmissionEvent
@@ -858,94 +163,7 @@ export type FormEvent =
   | FormSchedulingEvent
   | FormWorkflowEvent
 
-// EVENT TYPE PROPERTY TYPES
 export type FormPaymentEventType = FormPaymentEvent['type']
 export type FormSchedulingEventType = FormSchedulingEvent['type']
 export type FormWorkflowEventType = FormWorkflowEvent['type']
 export type FormEventType = FormEvent['type']
-
-export type NewWebhookSubscription = {
-  callbackUrl: string
-  organisationId: string
-  keyId: string
-  label?: string
-  formId?: number
-  trigger?: 'AFTER_SUBMISSION' | 'AFTER_APPROVAL'
-}
-export type WebhookSubscription = NewWebhookSubscription & {
-  id: number
-  createdAt: string
-}
-
-export type S3SubmissionTags = {
-  /**
-   * @deprecated No longer stored as an S3 tag. It is now stored in the S3
-   *   object JSON data.
-   */
-  externalId?: string
-  jobId?: string
-  /**
-   * @deprecated `username` should be stored as a claim in token instead of
-   *   using `userToken` when submitting forms using a developer key.
-   */
-  userToken?: string
-  previousFormSubmissionApprovalId?: string
-}
-
-export type BaseFormSubmissionProcessing = WithCommonAssociations & {
-  submissionId: string
-  formId: number
-  bucketName: string
-  key: string
-  isDraft: boolean
-  submissionTimestamp: string
-  formsAppId?: number
-  keyId?: string
-  user?: UserProfile
-  developerKey?: DeveloperKeyReference
-  timezone: string
-  externalId?: string
-} & S3SubmissionTags
-
-export type FormSubmissionProcessingEvent<T> = BaseFormSubmissionProcessing & {
-  type: 'EVENT'
-  submissionEvent: T
-  formSubmissionWorkflowEventId: number
-  /**
-   * The delay in seconds before the event will be processed. This is to allow
-   * for retries to be delayed to give third party systems time to recover.
-   */
-  delayInSeconds: number
-  /**
-   * A number representing the attempt. First attempt will be 1, second attempt
-   * will be 2, and so on.
-   */
-  attempt: number
-  /**
-   * Represents the number of failed attempts before an error will be reported
-   * to the customer. If the event succeeds before reaching the maximum
-   * attempts, the customer will be notified. If the event is not configured to
-   * allow retries, the `maxAttempts` should be 1.
-   */
-  maxAttempts: number
-}
-export type FormSubmissionProcessingFormStore = BaseFormSubmissionProcessing & {
-  type: 'FORM_STORE'
-}
-
-export type FormSubmissionProcessing<T = undefined> =
-  | FormSubmissionProcessingEvent<T>
-  | FormSubmissionProcessingFormStore
-
-export type WebhookSubmissionEventPayload = {
-  formsAppId?: number
-  formId: number
-  submissionId: string
-  isDraft: boolean
-  submissionTimestamp: string
-  jobId?: string
-  externalId?: string
-  userToken?: string
-  username?: string
-  secret?: string
-}
