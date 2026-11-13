@@ -178,6 +178,15 @@ export type EndpointConfigurationCallback = {
      * The identifier for the organisation managed secret that is associated
      * with the endpoint. Should represent the secret string used for verifying
      * the authenticity of the request made from the OneBlink system.
+     *
+     * @agent You may remove this property when the user asks to clear the
+     * secret. On a callback workflow event, do that with a workflow_event_patch
+     * that sets this property to null, and leave the URL unchanged. Do not set
+     * it to a new id. A callback workflow event cannot be saved from the
+     * Workflow tab without a secret, so tell the user they need to choose one
+     * before saving. On an email or PDF attachment endpoint this secret can
+     * stay removed: omit it from the endpoint, do not set it to null. Do not
+     * mention this property name to the user.
      */
     organisationManagedSecretId?: number
   }
@@ -212,6 +221,13 @@ export type EndpointConfigurationAPI = {
      * The identifier for the organisation managed secret that is associated
      * with the endpoint. Should represent the secret string used for verifying
      * the authenticity of the request made from the OneBlink system.
+     *
+     * @agent You may remove this property when the user asks to clear the
+     * secret. Do that with a workflow_event_patch that sets this property to
+     * null, and leave the hosted API, environment, and route unchanged. Do not
+     * set it to a new id. A hosted API workflow event cannot be saved without
+     * a secret, so tell the user they need to choose one on the Workflow tab
+     * before saving. Do not mention this property name to the user.
      */
     organisationManagedSecretId?: number
   }
