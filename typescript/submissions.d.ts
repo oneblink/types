@@ -456,6 +456,13 @@ export type BaseFormSubmissionPayment = _BaseFormSubmissionPayment &
         status: 'PENDING' | 'SUCCEEDED'
       }
     | {
+        /**
+         * This checkout was cancelled so another attempt could start. A later
+         * provider result is stored as its own payment.
+         */
+        status: 'REPLACED'
+      }
+    | {
         status: 'FAILED'
         message?: string
       }
