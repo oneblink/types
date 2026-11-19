@@ -172,9 +172,9 @@ export type FormElementBinaryStorage = FormElementBase & {
 export type FormElementHideImagePreview = {
   /**
    * When `true`, an uploaded image is shown as its file name instead of an
-   * image preview. This applies wherever the form data is viewed, including
-   * the form, the submission PDF, approvals, and submission menus. Form users
-   * can still remove, open, annotate, and crop the file.
+   * image preview. This applies wherever the form data is viewed, including the
+   * form, the submission PDF, approvals, and submission menus. Form users can
+   * still remove, open, annotate, and crop the file.
    */
   hideImagePreview?: boolean
 }
@@ -1855,6 +1855,12 @@ export type NewForm = WithCommonAssociations & {
      * submitted the form that an approver has denied their submission
      */
     deniedEmailTemplateId?: number
+    /**
+     * The identifier for the email template to use when an approver sends a
+     * payment step to a recipient. Every payment step on the form uses this
+     * template.
+     */
+    paymentStepEmailTemplateId?: number
     /**
      * Configuration for sending recurring reminders at an interval of days to
      * Approvers of pending approvals for this form.

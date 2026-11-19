@@ -21,6 +21,7 @@ export type NewEmailTemplate = WithOrganisationAssociation &
       | 'APPROVAL_CLARIFICATION_REQUEST'
       | 'APPROVAL_APPROVED'
       | 'APPROVAL_DENIED'
+      | 'APPROVAL_PAYMENT_STEP'
       | 'TO_APPROVER_APPROVAL_CREATED'
       | 'FORM_SUBMISSION_EVENT_EMAIL'
   }
@@ -48,7 +49,8 @@ export type EmailClassificationEmailHeader = {
  */
 export type EmailClassificationEnvironment = WithEnvironmentAssociation & {
   /**
-   * HTML content displayed at the top and/or tail of affected emails. For example:
+   * HTML content displayed at the top and/or tail of affected emails. For
+   * example:
    *
    * ```html
    * <div><span style="color: #630019; font-size: 12pt">NSW Government Classification</div>
