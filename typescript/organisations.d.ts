@@ -211,6 +211,7 @@ type AuditRecordType =
   | 'SchedulingBooking'
   | 'SchedulingBookingSession'
   | 'FormSubmissionPayment'
+  | 'FormSubmissionPaymentRequest'
   | 'FormSubmissionAttachment'
   | 'FormSubmissionAttachmentUrl'
   | 'FormsAppSamlIdentityProvider'
