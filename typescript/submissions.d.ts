@@ -460,8 +460,6 @@ export type FormSubmissionPaymentRequest = {
   formSubmissionApprovalId: string
   /** How the request was sent, and to whom. */
   delivery: FormSubmissionPaymentRequestDelivery
-  /** The date and time (in ISO format) the link stops revealing the submission. */
-  expiresAt: string
   /** The date and time (in ISO format) the request was sent. */
   createdAt: string
   /**

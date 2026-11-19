@@ -158,12 +158,6 @@ export type FormApprovalStepPayment = {
   group: string
   /** Payment configuration, snapshotted onto the flow instance */
   paymentEvent: ApprovalStepPaymentEvent
-  /**
-   * When set, the request-payment dialog defaults the expiry date to today plus
-   * this many days. Approvers can change the date. When unset, the dialog does
-   * not default a date.
-   */
-  paymentRequestExpiryDays?: number
 } & ApprovalStepConditionalProps
 
 export type FormApprovalFlowNode = FormApprovalFlowNodeBase &
