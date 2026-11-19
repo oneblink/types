@@ -3,7 +3,10 @@ import type { ConditionalPredicate } from './conditions'
 import type { EndpointConfiguration, IdResource } from './misc'
 import type { FormEventBase, FormPaymentEvent } from './submissionEvents'
 
-/** Container kinds that appear in {@link FormApprovalPrefillElementPath.containers}. */
+/**
+ * Container kinds that appear in
+ * {@link FormApprovalPrefillElementPath.containers}.
+ */
 export type FormApprovalPrefillPathContainerKind = 'repeatableSet' | 'form'
 
 /**
@@ -71,7 +74,10 @@ export type FlowInstanceNodeMeta = {
   isDeniedInConcurrentStep: boolean
   /** Flow has been denied in previous step */
   isAfterDeniedStep: boolean
-  /** Approval requires clarification in step (always false if node is not concurrent) */
+  /**
+   * Approval requires clarification in step (always false if node is not
+   * concurrent)
+   */
   isClarificationRequiredInConcurrentStep: boolean
   /** Flow has been sent for clarification in previous step */
   isAfterClarificationRequiredStep: boolean
@@ -120,7 +126,10 @@ export type FormApprovalStepStandard<T extends FormApprovalFlowNodeBase> = {
 export type ApprovalStepConditionalProps = {
   /** Indicates if step could be conditionally skipped */
   isConditional?: boolean
-  /** Indicates if all predicates need to be met to determine if the step is skipped */
+  /**
+   * Indicates if all predicates need to be met to determine if the step is
+   * skipped
+   */
   requiresAllConditionalPredicates?: boolean
   /** The predicates to determine if the step is skipped */
   conditionalPredicates?: ConditionalPredicate[]
@@ -128,8 +137,8 @@ export type ApprovalStepConditionalProps = {
 
 /**
  * A payment provider configuration for an approval step. Unlike a form payment
- * event, it has no label, retry flag, or conditional execution. Those belong
- * to the step.
+ * event, it has no label, retry flag, or conditional execution. Those belong to
+ * the step.
  */
 export type ApprovalStepPaymentEvent = FormPaymentEvent extends infer Event
   ? Event extends FormPaymentEvent
@@ -149,6 +158,12 @@ export type FormApprovalStepPayment = {
   group: string
   /** Payment configuration, snapshotted onto the flow instance */
   paymentEvent: ApprovalStepPaymentEvent
+  /**
+   * When set, the request-payment dialog defaults the expiry date to today plus
+   * this many days. Approvers can change the date. When unset, the dialog does
+   * not default a date.
+   */
+  paymentRequestExpiryDays?: number
 } & ApprovalStepConditionalProps
 
 export type FormApprovalFlowNode = FormApprovalFlowNodeBase &
@@ -212,7 +227,10 @@ export type NewFormApprovalFlowInstance = {
   formId: number
   /** The unique identifier for the submission being approved */
   submissionId: string
-  /** The unique identifier for the Approvals Forms App associated with the approval */
+  /**
+   * The unique identifier for the Approvals Forms App associated with the
+   * approval
+   */
   approvalsFormsAppId: number
   /**
    * The unique identifier for the previous FormSubmissionApproval that lead to
@@ -287,7 +305,10 @@ type BaseFormSubmissionApproval = {
   group: string
   /** The email addresses of the users to be notified of the result */
   notificationEmailAddress?: string[]
-  /** The unique identifier for the FormApprovalFlowInstance of this approval flow */
+  /**
+   * The unique identifier for the FormApprovalFlowInstance of this approval
+   * flow
+   */
   formApprovalFlowInstanceId: number
   /** The unique label for the step */
   stepLabel: string
@@ -389,7 +410,10 @@ export type FormApprovalCannedResponse = {
   key: string
   /** The human readable text to represent the response */
   label: string
-  /** The text to prefill as the notes for an approval (should respect line breaks) */
+  /**
+   * The text to prefill as the notes for an approval (should respect line
+   * breaks)
+   */
   notes: string
 }
 

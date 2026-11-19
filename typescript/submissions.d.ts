@@ -214,9 +214,7 @@ export type NewFormSubmissionMetaEdit = {
   submissionId: string
   /** The id of the OneBlink Form */
   formId: number
-  /**
-   * Why this edit was submitted. Not stored on {@link S3SubmissionData}.
-   */
+  /** Why this edit was submitted. Not stored on {@link S3SubmissionData}. */
   context: FormSubmissionMetaEditContext
   /**
    * The S3 VersionId of the canonical submission object being edited.
@@ -224,9 +222,8 @@ export type NewFormSubmissionMetaEdit = {
    * Also distinguishes in-flight vs applied: the edit is still in flight while
    * this value equals the live canonical VersionId. After the async submission
    * service copies staging onto the canonical object, that VersionId changes
-   * and the edit is done.
-   * Used to reject stale edit requests when another edit has been applied or is
-   * in flight since they loaded the submission.
+   * and the edit is done. Used to reject stale edit requests when another edit
+   * has been applied or is in flight since they loaded the submission.
    */
   editedS3ObjectVersionId: string
   /**
@@ -332,8 +329,8 @@ export type S3SubmissionDataEdit = {
   key?: FormSubmissionMeta['key']
   /**
    * The device used when the edit was submitted. Copied from the staging
-   * {@link NewS3SubmissionData.device}. Root `device` on
-   * {@link S3SubmissionData} remains the original submitter.
+   * {@link NewS3SubmissionData.device}. Root `device` on {@link S3SubmissionData}
+   * remains the original submitter.
    */
   device?: S3SubmissionDataDevice
   /**
@@ -437,6 +434,44 @@ export type FormStoreRecord = _BaseFormStoreRecord & {
 export type FormStoreDefinition = {
   formId: number
   formElements: FormElementWithName[]
+}
+
+/**
+ * How a payment request is sent to a recipient. `EMAIL` is the only method
+ * implemented today. Another method is a new member of this union.
+ */
+export type FormSubmissionPaymentRequestDelivery = {
+  method: 'EMAIL'
+  /** The recipient email address. */
+  email: string
+  /** Optional display name for the recipient. */
+  name?: string
+}
+
+/**
+ * A request for someone to review a submission and pay. The raw
+ * `paymentRequestToken` is not stored or returned. Public callers present the
+ * token, which is matched to `tokenHash`.
+ */
+export type FormSubmissionPaymentRequest = {
+  /** Internal identifier. Not a public credential. */
+  id: string
+  /** The approval payment step this request was sent for. */
+  formSubmissionApprovalId: string
+  /** How the request was sent, and to whom. */
+  delivery: FormSubmissionPaymentRequestDelivery
+  /** The date and time (in ISO format) the link stops revealing the submission. */
+  expiresAt: string
+  /** The date and time (in ISO format) the request was sent. */
+  createdAt: string
+  /**
+   * The user or developer key that sent the request. Exactly one of `user` or
+   * `key` is set.
+   */
+  createdBy: {
+    user?: UserProfile
+    key?: DeveloperKeyReference
+  }
 }
 
 type _BaseFormSubmissionPayment = {
