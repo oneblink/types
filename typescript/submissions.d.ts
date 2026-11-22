@@ -481,6 +481,12 @@ type _BaseFormSubmissionPayment = {
    * payments leave this unset.
    */
   formSubmissionApprovalId?: string
+  /**
+   * Set when this payment was started by someone using the link from a
+   * `FormSubmissionPaymentRequest`. Payments started by an approver leave this
+   * unset.
+   */
+  formSubmissionPaymentRequestId?: string
 }
 
 export type BaseFormSubmissionPayment = _BaseFormSubmissionPayment &
