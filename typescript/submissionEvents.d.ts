@@ -443,11 +443,38 @@ export type NSWGovPaySubmissionEvent = FormEventBase & {
   }
 }
 
+export type StripePaymentDisplayDetailKey =
+  | 'STRIPE_CHECKOUT_SESSION_ID'
+  | 'STRIPE_PAYMENT_INTENT_ID'
+  | 'STRIPE_CUSTOMER_EMAIL'
+  | 'STRIPE_CARD_BRAND'
+  | 'STRIPE_CREDIT_CARD_MASK'
+  | 'STRIPE_AMOUNT'
+  | 'STRIPE_CREATED_DATE_TIME'
+
+export type StripeSubmissionEvent = FormEventBase & {
+  type: 'STRIPE'
+  configuration: FormPaymentEventAmountConfiguration & {
+    /**
+     * The id of the OneBlink -> Stripe integration environment to be used.
+     *
+     * @agent Do not mention this property to the user.
+     */
+    environmentId: string
+    /**
+     * The name of the product the customer is purchasing. Displayed to the
+     * customer on the Stripe Checkout page.
+     */
+    productName: string
+  }
+}
+
 export type PaymentDisplayDetailKey =
   | NSWGovPayPaymentDisplayDetailKey
   | BPointPaymentDisplayDetailKey
   | CPPayPaymentDisplayDetailKey
   | WestpacQuickStreamPaymentDisplayDetailKey
+  | StripePaymentDisplayDetailKey
 
 export type FormElementMapping<T> = T &
   (
@@ -830,6 +857,7 @@ export type FormPaymentEvent =
   | BPOINTSubmissionEvent
   | WestpacQuickStreamSubmissionEvent
   | NSWGovPaySubmissionEvent
+  | StripeSubmissionEvent
 
 export type FormSchedulingEvent = NylasSubmissionEvent
 export type FormWorkflowEvent =

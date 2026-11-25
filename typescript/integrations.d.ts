@@ -133,7 +133,10 @@ export type IntegrationNSWGovPayPrimaryAgency<S = SavedSecret> = {
   id: string
   /** Displayed to team members when configuring form payment events */
   label: string
-  /** The unique identifier that NSW GovPay need to validate primary agency details */
+  /**
+   * The unique identifier that NSW GovPay need to validate primary agency
+   * details
+   */
   callingSystem: string
   /** The client identifier used for Auth2.0 authentication */
   clientId: string
@@ -158,6 +161,29 @@ export type IntegrationNSWGovPay<S = SavedSecret> = IntegrationBase & {
   configuration: {
     /** The primary agencies configured in NSW GovPay */
     primaryAgencies: IntegrationNSWGovPayPrimaryAgency<S>[]
+  }
+}
+
+export type IntegrationStripeEnvironment<S = SavedSecret> = {
+  /** Identifier used to link to a form payment event */
+  id: string
+  /** Displayed to team members when configuring form payment events */
+  label: string
+  /**
+   * The Stripe secret API key used to create Checkout Sessions. This determines
+   * test/live environment in stripe.
+   */
+  secretKey: ConstrainedSecret<S>
+  /** The signing secret used to verify webhook events sent from Stripe */
+  webhookSigningSecret: ConstrainedSecret<S>
+}
+
+export type IntegrationStripe<S = SavedSecret> = IntegrationBase & {
+  type: 'STRIPE'
+  /** Integration configuration */
+  configuration: {
+    /** The environments configured for Stripe */
+    environments: IntegrationStripeEnvironment<S>[]
   }
 }
 
@@ -379,6 +405,7 @@ export type Integration<S = SavedSecret> =
   | IntegrationFreshdesk<S>
   | IntegrationMailGun<S>
   | IntegrationNSWGovPay<S>
+  | IntegrationStripe<S>
   | IntegrationAPINSW<S>
   | IntegrationGoogleMaps<S>
   | IntegrationNylas
