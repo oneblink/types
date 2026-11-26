@@ -261,6 +261,7 @@ type AuditRecordType =
   | 'FormApprovalWebhook'
   | 'Workspace'
   | 'FormsAppUser'
+  | 'FormsAppUserMfa'
   | 'EmailTemplate'
   | 'EmailClassification'
   | 'FormsAppEnvironmentReordering'
