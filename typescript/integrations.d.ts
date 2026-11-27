@@ -169,6 +169,8 @@ export type IntegrationStripeEnvironment<S = SavedSecret> = {
   id: string
   /** Displayed to team members when configuring form payment events */
   label: string
+  /** How the Stripe Checkout page is displayed to the customer */
+  mode: 'HOSTED'
   /**
    * The Stripe secret API key used to create Checkout Sessions. This determines
    * test/live environment in stripe.
