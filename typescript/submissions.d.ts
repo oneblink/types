@@ -1107,6 +1107,8 @@ export type StripeCheckoutSession = {
   /** Unique identifier for the object. */
   id: string
   object: 'checkout.session'
+  /** The id of the form submission the Checkout Session was created for. */
+  client_reference_id?: string | null
   /**
    * Total of all items after discounts and taxes, in the smallest currency
    * unit.
