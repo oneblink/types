@@ -7,6 +7,7 @@ import {
   FormWorkflowEvent,
   FormSchedulingEvent,
   NSWGovPaySubmissionEvent,
+  StripeSubmissionEvent,
   WestpacQuickStreamSubmissionEvent,
 } from './submissionEvents'
 import { components as cpPayV1Components } from './cp-pay/swagger.v1'
@@ -1045,11 +1046,114 @@ export type NSWGovPayPayment = BaseFormSubmissionPayment & {
   }
 }
 
+/**
+ * A subset of the Stripe Charge object.
+ *
+ * @see https://docs.stripe.com/api/charges/object
+ */
+export type StripeCharge = {
+  /** Unique identifier for the object. */
+  id: string
+  object: 'charge'
+  /** Amount collected, in the smallest currency unit (e.g. cents). */
+  amount: number
+  /** Time the charge was created, in seconds since the Unix epoch. */
+  created: number
+  status: 'failed' | 'pending' | 'succeeded'
+  /** Details about the payment method at the time of the transaction. */
+  payment_method_details?: {
+    /** The type of payment method used, e.g. `card`. */
+    type: string
+    card?: {
+      /** Card brand, e.g. `visa` or `mastercard`. */
+      brand?: string | null
+      /** The last four digits of the card. */
+      last4?: string | null
+    }
+  } | null
+}
+
+/**
+ * A subset of the Stripe PaymentIntent object.
+ *
+ * @see https://docs.stripe.com/api/payment_intents/object
+ */
+export type StripePaymentIntent = {
+  /** Unique identifier for the object. */
+  id: string
+  object: 'payment_intent'
+  /** Amount collected, in the smallest currency unit (e.g. cents). */
+  amount_received?: number
+  /** Time the PaymentIntent was created, in seconds since the Unix epoch. */
+  created: number
+  status:
+    | 'canceled'
+    | 'processing'
+    | 'requires_action'
+    | 'requires_capture'
+    | 'requires_confirmation'
+    | 'requires_payment_method'
+    | 'succeeded'
+  /** The latest Charge, always stored expanded. */
+  latest_charge: StripeCharge
+}
+
+/**
+ * A subset of the Stripe Checkout Session object.
+ *
+ * @see https://docs.stripe.com/api/checkout/sessions/object
+ */
+export type StripeCheckoutSession = {
+  /** Unique identifier for the object. */
+  id: string
+  object: 'checkout.session'
+  /**
+   * Total of all items after discounts and taxes, in the smallest currency
+   * unit.
+   */
+  amount_total?: number | null
+  /** Three-letter ISO currency code, in lowercase. */
+  currency?: string | null
+  /** Time the Checkout Session was created, in seconds since the Unix epoch. */
+  created: number
+  /** The customer details collected during the Checkout Session. */
+  customer_details?: {
+    email?: string | null
+    name?: string | null
+  } | null
+  /** `true` if the object exists in live mode, `false` if in test mode. */
+  livemode: boolean
+  payment_status: 'no_payment_required' | 'paid' | 'unpaid'
+  status?: 'complete' | 'expired' | 'open' | null
+  /** The PaymentIntent, always stored expanded. */
+  payment_intent: StripePaymentIntent
+}
+
+export type StripePayment = BaseFormSubmissionPayment & {
+  type: StripeSubmissionEvent['type']
+  /** Payment details specific to Stripe payments */
+  paymentTransaction?: {
+    /** The URL to redirect the user back to after a payment attempt */
+    redirectUrl: string
+    /** The id of the OneBlink -> Stripe integration environment to be used. */
+    integrationEnvironmentId: string
+    /** The id of the Stripe Checkout Session created for this payment */
+    checkoutSessionId: string
+    /**
+     * The Checkout Session returned by Stripe, will be `undefined` until the
+     * payment is completed. Must be retrieved with the
+     * `payment_intent.latest_charge` expansion before it is stored.
+     */
+    checkoutSession?: StripeCheckoutSession
+  }
+}
+
 export type NewFormSubmissionPayment =
   | CPPayPayment
   | WestpacQuickStreamPayment
   | BPOINTPayment
   | NSWGovPayPayment
+  | StripePayment
 
 export type FormSubmissionPayment = NewFormSubmissionPayment & {
   createdAt: string
